@@ -2,71 +2,49 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const sql = neon(process.env.DATABASE_URL!);
-const resend = new Resend(process.env.RESEND_API_KEY!);
-
-// Куда приходят уведомления о новых лидах
 const NOTIFY_EMAIL = 'mkagency2020@hotmail.com';
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
-    const { name, email, phone, insurance_type, zip_code, message } = body;
-
-    // Проверка обязательных полей
-    if (!name || !phone || !zip_code) {
-      return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
-        { status: 400 }
-      );
+    const b = await req.json();
+    if (!b.name || !b.phone) {
+      return NextResponse.json({ error: 'missing fields' }, { status: 400 });
     }
 
-    // 1. Сохраняем лид в Neon
-    const result = await sql`
-      INSERT INTO leads (name, email, phone, insurance_type, zip_code, message, source)
-      VALUES (
-        ${name}, 
-        ${email || ''}, 
-        ${phone}, 
-        ${insurance_type}, 
-        ${zip_code}, 
-        ${message || ''}, 
-        'website'
-      )
-      RETURNING id
-    `;
+    // 1) Save to Neon (TCPA paper trail: verbatim consent text + timestamp)
+    if (process.env.DATABASE_URL) {
+      const sql = neon(process.env.DATABASE_URL);
+      await sql`CREATE TABLE IF NOT EXISTS leads (
+        id SERIAL PRIMARY KEY,
+        insurance_type TEXT, zip_code TEXT, name TEXT, phone TEXT,
+        email TEXT, message TEXT, consent_text TEXT, lang TEXT,
+        created_at TIMESTAMPTZ DEFAULT now()
+      )`;
+      await sql`INSERT INTO leads (insurance_type, zip_code, name, phone, email, message, consent_text, lang)
+        VALUES (${b.insurance_type}, ${b.zip_code}, ${b.name}, ${b.phone}, ${b.email}, ${b.message}, ${b.consent_text}, ${b.lang})`;
+    }
 
-    // 2. Отправляем email
-    try {
+    // 2) Email notification to the agency
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
-        from: 'M&K Agency <noreply@mkagency2026.com>', // ← лучше, чем resend.dev
+        from: 'M&K Website <onboarding@resend.dev>',
         to: NOTIFY_EMAIL,
-        subject: `🔔 Новый лид: ${name} (${insurance_type})`,
-        html: `
-          <h2>Новый лид с сайта mkagency2026.com</h2>
-          <p><strong>ID:</strong> ${result[0].id}</p>
-          <p><strong>Имя:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email || '—'}</p>
-          <p><strong>Телефон:</strong> ${phone}</p>
-          <p><strong>Тип страховки:</strong> ${insurance_type}</p>
-          <p><strong>ZIP код:</strong> ${zip_code}</p>
-          <p><strong>Сообщение:</strong> ${message || '—'}</p>
-          <hr>
-          <p><small>Время: ${new Date().toLocaleString('ru-RU')}</small></p>
-        `,
+        subject: `🔥 New lead: ${b.insurance_type} — ${b.name}`,
+        html: `<h2>New quote request (${b.lang})</h2>
+          <p><b>Type:</b> ${b.insurance_type}</p>
+          <p><b>Name:</b> ${b.name}</p>
+          <p><b>Phone:</b> ${b.phone}</p>
+          <p><b>Email:</b> ${b.email || '—'}</p>
+          <p><b>ZIP:</b> ${b.zip_code || '—'}</p>
+          <p><b>Message:</b> ${b.message || '—'}</p>
+          <hr /><p style="font-size:12px;color:#777">TCPA consent given. Verbatim text stored in Neon.</p>`,
       });
-    } catch (emailError) {
-      console.error('Email send failed:', emailError);
-      // Лид уже сохранён, поэтому не возвращаем ошибку
     }
 
-    return NextResponse.json({ success: true, id: result[0].id });
-
-  } catch (error: any) {
-    console.error('Lead route error:', error);
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    console.error('lead error', e);
+    return NextResponse.json({ error: 'server error' }, { status: 500 });
   }
 }
