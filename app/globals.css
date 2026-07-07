@@ -187,3 +187,37 @@
     .stats-in{grid-template-columns:1fr 1fr}.hero p.sub{max-width:none}
   }
   @media(max-width:480px){.tl{grid-template-columns:1fr}}
+
+  /* ===== Rotating hero threat photo (added) ===== */
+  .hero-photo-wrap{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+  .hero-photo-wrap img.on{opacity:1}
+  .hero-photo-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,39,79,.55),rgba(7,39,79,.72))}
+  .hero.has-photo .hero-grid,.hero.has-photo .eyebrow,.hero.has-photo .sub,.hero.has-photo h1{position:relative;z-index:2}
+  .hero.has-photo h1,.hero.has-photo .sub{color:#fff}
+  .hero.has-photo .hl{color:var(--gold)}
+  .hero.has-photo .eyebrow{background:rgba(255,255,255,.92)}
+  .threat-tag{position:relative;z-index:2;display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;font-size:.78rem;letter-spacing:.03em;padding:.35rem .8rem;border-radius:999px;margin-bottom:.9rem}
+
+  /* ===== Floating AI chat + callback widget (added) ===== */
+  .mk-fab-group{position:fixed;bottom:1.4rem;right:1.4rem;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem}
+  .mk-fab{display:flex;align-items:center;gap:.6rem;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:.85rem 1.3rem;font-weight:700;font-size:1rem;box-shadow:var(--shadow);cursor:pointer}
+  .mk-fab:hover{background:var(--blue-d)}
+  .mk-fab.secondary{background:#fff;color:var(--blue-d);border:1.5px solid var(--line)}
+  .mk-panel{width:320px;max-width:88vw;height:440px;background:#fff;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+  .mk-panel-head{background:var(--navy);color:#fff;padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+  .mk-panel-head button{background:transparent;border:0;color:#cfe0f2;font-size:1.1rem;cursor:pointer}
+  .mk-panel-tabs{display:flex;border-bottom:1px solid var(--line)}
+  .mk-panel-tabs button{flex:1;padding:.6rem;border:0;background:#fff;font-weight:700;font-size:.82rem;color:var(--muted);cursor:pointer}
+  .mk-panel-tabs button.active{color:var(--blue);border-bottom:2px solid var(--blue)}
+  .mk-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.5rem;font-size:.88rem}
+  .mk-msg{padding:.55rem .8rem;border-radius:12px;max-width:85%}
+  .mk-msg.bot{background:var(--ice);align-self:flex-start}
+  .mk-msg.me{background:var(--blue);color:#fff;align-self:flex-end}
+  .mk-input-row{display:flex;gap:.4rem;padding:.6rem;border-top:1px solid var(--line)}
+  .mk-input-row input{flex:1;padding:.6rem .7rem;border:1.5px solid var(--line);border-radius:999px;font-size:.88rem}
+  .mk-input-row button{background:var(--blue);color:#fff;border:0;border-radius:999px;width:38px;height:38px;flex:none;cursor:pointer;font-size:1rem}
+  .mk-callback-form{padding:1rem;display:flex;flex-direction:column;gap:.6rem}
+  .mk-callback-form input,.mk-callback-form select{padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:10px;font-size:.9rem;font-family:inherit}
+  .mk-callback-form button{background:var(--blue);color:#fff;border:0;border-radius:999px;padding:.75rem;font-weight:700;cursor:pointer}
+  .mk-callback-ok{padding:1.4rem;text-align:center;color:var(--navy)}

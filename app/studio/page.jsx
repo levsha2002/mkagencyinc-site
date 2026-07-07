@@ -10,6 +10,10 @@ const SCENES = {
   "Hurricane / storm": "a Florida single-family home as a hurricane storm approaches, dark dramatic clouds, palm trees bending in wind, cinematic, photoreal, no people, tense but not graphic",
   "Car accident aftermath": "a calm {g}, age {age}, standing beside a car with a minor fender bender on a sunny street, phone to ear looking relieved, no injuries, no gore, soft daylight, hopeful mood, photoreal",
   "Small business owner": "a {g}, age {age}, proud small business owner standing in their shop or storefront, warm confident smile, photoreal, natural light",
+  "Hero: Hurricane damage": "wide cinematic photo of a Florida residential street the morning after a hurricane, downed palm fronds, roof tarps, dramatic sky clearing, no visible people, no gore, editorial insurance-ad style, photoreal, 16:9",
+  "Hero: Storm-chaser contractor fraud": "a stranger in a work vest knocking on a Florida homeowner's front door holding a clipboard, homeowner visible through a slightly open door looking wary, daylight, tense but not scary, editorial photoreal style, 16:9",
+  "Hero: Underinsured home": "a modest Florida single-family home with visible storm damage on the roof, moody overcast sky, no people, conveys financial vulnerability without being graphic, photoreal, 16:9",
+  "Hero: Flood water street": "a quiet Florida suburban street with several inches of floodwater reflecting the sky, palm trees, no people, calm but serious mood, photoreal, 16:9",
 };
 const RATIOS = ["1:1", "4:3", "3:4", "16:9", "9:16"];
 
