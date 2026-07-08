@@ -7,7 +7,7 @@
 - Форма котировки (TCPA-галочка) → Neon + письмо на mkagency2020@hotmail.com
 - Виджет «Chat with Mike» (ИИ через xAI) + вкладка «Request a callback»
   Копия переписки уходит в агентство, когда клиент ставит галочку согласия
-- Телефон и SMS везде: (305) 859-3954
+- Телефон и SMS везде: (305) 247-8877
 - SEO: title/description на каждой странице на каждом языке, schema.org
   InsuranceAgency, sitemap.xml, robots.txt
 - Без упоминаний Allstate (compliance для Exclusive Agent)
