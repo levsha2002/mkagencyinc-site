@@ -1,5 +1,5 @@
-export const PHONE_DISPLAY = '(305) 859-3954';
-export const PHONE_TEL = '+13058593954';
+export const PHONE_DISPLAY = '(305) 247-8877';
+export const PHONE_TEL = '+13052478877';
 export const ADDRESS = '33550 S Dixie Hwy, Suite 102, Florida City, FL 33034';
 
 export type Lang = 'en' | 'es' | 'ru';
@@ -30,13 +30,13 @@ const en = {
     submit: 'See my quote →',
     sending: 'Sending...',
     ok: 'Thank you! A licensed agent will contact you shortly.',
-    err: 'Something went wrong. Please call us at (305) 859-3954.',
+    err: 'Something went wrong. Please call us at (305) 247-8877.',
     privacy: 'Your info stays private. No spam, ever.',
   },
   services: {
     title: 'One trusted agency for everything you protect',
     metaTitle: 'Auto, Home & Commercial Insurance in Florida | M&K Agency',
-    metaDesc: 'Compare auto, home, condo, commercial and life insurance quotes from 15+ A-rated Florida carriers. Independent agency in Florida City serving all of Florida. Free quotes: (305) 859-3954.',
+    metaDesc: 'Compare auto, home, condo, commercial and life insurance quotes from 15+ A-rated Florida carriers. Independent agency in Florida City serving all of Florida. Free quotes: (305) 2478877.',
     auto: { h: 'Auto Insurance', p: 'Florida drivers pay some of the highest auto rates in the country. We shop multiple A-rated carriers to find real coverage at the right price — liability, full coverage, SR-22, rideshare and more. Same-day proof of insurance available.' },
     home: { h: 'Home & Condo Insurance', p: 'Hurricanes, floods, and rising premiums make Florida home insurance complicated. We work with Citizens, Florida Peninsula, Edison, Heritage and other trusted carriers to protect your biggest investment — including wind mitigation and four-point inspection guidance.' },
     commercial: { h: 'Commercial Insurance', p: 'From general liability and workers\u2019 comp to commercial auto and BOP policies — we protect contractors, restaurants, truckers, and small businesses across Florida with carriers like Next, Progressive, and Hiscox.' },
@@ -45,7 +45,7 @@ const en = {
   },
   about: {
     metaTitle: 'About M&K Agency | Independent Insurance Agency in Florida City, FL',
-    metaDesc: 'M&K Agency Inc. is a bilingual independent insurance agency in Florida City serving all of Florida. Real licensed agents, 15+ carriers, 334+ five-star reviews. Call (305) 859-3954.',
+    metaDesc: 'M&K Agency Inc. is a bilingual independent insurance agency in Florida City serving all of Florida. Real licensed agents, 15+ carriers, 334+ five-star reviews. Call (305) 247-8877.',
     h: 'Real people. Real protection.',
     p1: 'M&K Agency Inc. is an independent insurance agency headquartered in Florida City and serving families and businesses across the entire state of Florida. We are not a call center — when you call, a licensed agent who knows your name picks up.',
     p2: 'Founded by Mikhail Kozlov, our team speaks English, Spanish, and Russian, and we believe insurance should be explained, not sold. We compare 15+ A-rated carriers so you get the right coverage at the right price — and we stay by your side at claim time, when it matters most.',
@@ -53,7 +53,7 @@ const en = {
     visit: 'Visit us',
   },
   contact: {
-    metaTitle: 'Contact M&K Agency | Free Insurance Quotes | (305) 859-3954',
+    metaTitle: 'Contact M&K Agency | Free Insurance Quotes | (305) 247-8877',
     metaDesc: 'Call, text, or visit M&K Agency in Florida City, FL. Free auto, home and commercial insurance quotes across Florida. Se habla español. Говорим по-русски.',
     h: 'Talk to a real agent',
     sub: 'Call, text, chat, or request a callback — whatever is easiest for you.',
@@ -74,7 +74,7 @@ const en = {
     cbSubmit: 'Call me back',
     cbSending: 'Sending...',
     cbOk: 'Got it! We will call you back shortly.',
-    errMsg: 'Something went wrong. Please call us at (305) 859-3954.',
+    errMsg: 'Something went wrong. Please call us at (305) 247-8877.',
   },
   footer: {
     lic: 'M&K Agency Inc. · Independent Insurance Agency · Serving all of Florida',
@@ -82,7 +82,7 @@ const en = {
   },
   meta: {
     title: 'Florida Insurance Agency | Auto, Home & Commercial Quotes | M&K Agency',
-    desc: 'Independent insurance agency in Florida City serving all of Florida. Compare 15+ A-rated carriers for auto, home & commercial insurance. Free quotes in 30 seconds — (305) 859-3954.',
+    desc: 'Independent insurance agency in Florida City serving all of Florida. Compare 15+ A-rated carriers for auto, home & commercial insurance. Free quotes in 30 seconds — (305) 247-8877.',
   },
 };
 
@@ -111,13 +111,13 @@ const es: typeof en = {
     submit: 'Ver mi cotización →',
     sending: 'Enviando...',
     ok: '¡Gracias! Un agente licenciado le contactará pronto.',
-    err: 'Algo salió mal. Llámenos al (305) 859-3954.',
+    err: 'Algo salió mal. Llámenos al (305) 247-8877.',
     privacy: 'Su información es privada. Nunca spam.',
   },
   services: {
     title: 'Una sola agencia de confianza para todo lo que usted protege',
     metaTitle: 'Seguro de Auto, Casa y Comercial en Florida | M&K Agency',
-    metaDesc: 'Compare cotizaciones de seguro de auto, casa, condominio, comercial y vida de más de 15 aseguradoras clasificación A en Florida. Agencia independiente en Florida City. Cotizaciones gratis: (305) 859-3954.',
+    metaDesc: 'Compare cotizaciones de seguro de auto, casa, condominio, comercial y vida de más de 15 aseguradoras clasificación A en Florida. Agencia independiente en Florida City. Cotizaciones gratis: (305) 247-8877.',
     auto: { h: 'Seguro de Auto', p: 'Los conductores de Florida pagan algunas de las tarifas más altas del país. Comparamos múltiples aseguradoras clasificación A para encontrar cobertura real al precio correcto — responsabilidad civil, cobertura completa, SR-22, rideshare y más. Prueba de seguro el mismo día.' },
     home: { h: 'Seguro de Casa y Condominio', p: 'Huracanes, inundaciones y primas en aumento hacen complicado el seguro de vivienda en Florida. Trabajamos con Citizens, Florida Peninsula, Edison, Heritage y otras aseguradoras de confianza para proteger su mayor inversión — incluyendo orientación sobre mitigación de viento e inspección de cuatro puntos.' },
     commercial: { h: 'Seguro Comercial', p: 'Desde responsabilidad general y compensación laboral hasta auto comercial y pólizas BOP — protegemos contratistas, restaurantes, camioneros y pequeños negocios en toda la Florida con aseguradoras como Next, Progressive e Hiscox.' },
@@ -126,7 +126,7 @@ const es: typeof en = {
   },
   about: {
     metaTitle: 'Sobre M&K Agency | Agencia de Seguros Independiente en Florida City, FL',
-    metaDesc: 'M&K Agency Inc. es una agencia de seguros independiente y bilingüe en Florida City que sirve a toda la Florida. Agentes licenciados reales, 15+ aseguradoras, 334+ reseñas de cinco estrellas. Llame al (305) 859-3954.',
+    metaDesc: 'M&K Agency Inc. es una agencia de seguros independiente y bilingüe en Florida City que sirve a toda la Florida. Agentes licenciados reales, 15+ aseguradoras, 334+ reseñas de cinco estrellas. Llame al (305) 247-8877.',
     h: 'Personas reales. Protección real.',
     p1: 'M&K Agency Inc. es una agencia de seguros independiente con sede en Florida City que sirve a familias y negocios en todo el estado de Florida. No somos un call center — cuando usted llama, contesta un agente licenciado que conoce su nombre.',
     p2: 'Fundada por Mikhail Kozlov, nuestro equipo habla inglés, español y ruso, y creemos que el seguro debe explicarse, no venderse. Comparamos más de 15 aseguradoras clasificación A para que usted obtenga la cobertura correcta al precio correcto — y estamos a su lado al momento del reclamo, cuando más importa.',
@@ -134,7 +134,7 @@ const es: typeof en = {
     visit: 'Visítenos',
   },
   contact: {
-    metaTitle: 'Contacte a M&K Agency | Cotizaciones Gratis | (305) 859-3954',
+    metaTitle: 'Contacte a M&K Agency | Cotizaciones Gratis | (305) 247-8877 ',
     metaDesc: 'Llame, envíe texto o visite M&K Agency en Florida City, FL. Cotizaciones gratis de seguro de auto, casa y comercial en toda la Florida. Se habla español.',
     h: 'Hable con un agente real',
     sub: 'Llame, envíe texto, chatee o pida que le devolvamos la llamada — lo que sea más fácil para usted.',
@@ -155,7 +155,7 @@ const es: typeof en = {
     cbSubmit: 'Llámenme',
     cbSending: 'Enviando...',
     cbOk: '¡Listo! Le llamaremos en breve.',
-    errMsg: 'Algo salió mal. Llámenos al (305) 859-3954.',
+    errMsg: 'Algo salió mal. Llámenos al (305) 247-8877.',
   },
   footer: {
     lic: 'M&K Agency Inc. · Agencia de Seguros Independiente · Servimos toda la Florida',
@@ -163,7 +163,7 @@ const es: typeof en = {
   },
   meta: {
     title: 'Agencia de Seguros en Florida | Auto, Casa y Comercial | M&K Agency',
-    desc: 'Agencia de seguros independiente en Florida City que sirve a toda la Florida. Compare 15+ aseguradoras clasificación A para auto, casa y comercial. Cotización gratis en 30 segundos — (305) 859-3954.',
+    desc: 'Agencia de seguros independiente en Florida City que sirve a toda la Florida. Compare 15+ aseguradoras clasificación A para auto, casa y comercial. Cotización gratis en 30 segundos — (305) 247-8877.',
   },
 };
 
@@ -192,13 +192,13 @@ const ru: typeof en = {
     submit: 'Узнать мою котировку →',
     sending: 'Отправка...',
     ok: 'Спасибо! Лицензированный агент свяжется с вами в ближайшее время.',
-    err: 'Что-то пошло не так. Позвоните нам: (305) 859-3954.',
+    err: 'Что-то пошло не так. Позвоните нам: (305) 247-8877.',
     privacy: 'Ваши данные конфиденциальны. Никакого спама.',
   },
   services: {
     title: 'Одно надёжное агентство для всего, что вы защищаете',
     metaTitle: 'Страхование авто, дома и бизнеса во Флориде | M&K Agency',
-    metaDesc: 'Сравните котировки страхования авто, дома, кондо, бизнеса и жизни от 15+ компаний Флориды с рейтингом «A». Независимое агентство в Florida City, работаем по всей Флориде. Бесплатные котировки: (305) 859-3954.',
+    metaDesc: 'Сравните котировки страхования авто, дома, кондо, бизнеса и жизни от 15+ компаний Флориды с рейтингом «A». Независимое агентство в Florida City, работаем по всей Флориде. Бесплатные котировки: (305) 247-8877.',
     auto: { h: 'Автострахование', p: 'Водители Флориды платят одни из самых высоких тарифов в стране. Мы сравниваем несколько компаний с рейтингом «A», чтобы найти реальное покрытие по правильной цене — liability, полное покрытие, SR-22, rideshare и другое. Подтверждение страховки в тот же день.' },
     home: { h: 'Страхование дома и кондо', p: 'Ураганы, наводнения и растущие тарифы делают страхование жилья во Флориде сложным. Мы работаем с Citizens, Florida Peninsula, Edison, Heritage и другими надёжными компаниями, чтобы защитить вашу главную инвестицию — включая помощь с wind mitigation и four-point inspection.' },
     commercial: { h: 'Страхование бизнеса', p: 'От general liability и workers\u2019 comp до коммерческого авто и полисов BOP — мы защищаем подрядчиков, рестораны, дальнобойщиков и малый бизнес по всей Флориде с компаниями Next, Progressive и Hiscox.' },
@@ -207,7 +207,7 @@ const ru: typeof en = {
   },
   about: {
     metaTitle: 'О компании M&K Agency | Независимое страховое агентство во Флориде',
-    metaDesc: 'M&K Agency Inc. — независимое страховое агентство в Florida City, работающее по всей Флориде. Живые лицензированные агенты, 15+ страховых компаний, 334+ пятизвёздочных отзывов. Говорим по-русски: (305) 859-3954.',
+    metaDesc: 'M&K Agency Inc. — независимое страховое агентство в Florida City, работающее по всей Флориде. Живые лицензированные агенты, 15+ страховых компаний, 334+ пятизвёздочных отзывов. Говорим по-русски: (305) 247-8877.',
     h: 'Живые люди. Настоящая защита.',
     p1: 'M&K Agency Inc. — независимое страховое агентство со штаб-квартирой в Florida City, обслуживающее семьи и бизнес по всему штату Флорида. Мы не колл-центр: когда вы звоните, трубку берёт лицензированный агент, который знает вас по имени.',
     p2: 'Агентство основал Михаил Козлов. Наша команда говорит на английском, испанском и русском, и мы убеждены: страхование нужно объяснять, а не «продавать». Мы сравниваем 15+ компаний с рейтингом «A», чтобы вы получили правильное покрытие по правильной цене — и остаёмся рядом при страховом случае, когда это важнее всего.',
@@ -215,7 +215,7 @@ const ru: typeof en = {
     visit: 'Наш офис',
   },
   contact: {
-    metaTitle: 'Контакты M&K Agency | Бесплатные котировки | (305) 859-3954',
+    metaTitle: 'Контакты M&K Agency | Бесплатные котировки | (305) 247-8877',
     metaDesc: 'Позвоните, напишите SMS или приезжайте в офис M&K Agency в Florida City, FL. Бесплатные котировки страхования авто, дома и бизнеса по всей Флориде. Говорим по-русски.',
     h: 'Поговорите с живым агентом',
     sub: 'Позвоните, напишите, начните чат или закажите обратный звонок — как вам удобнее.',
@@ -236,7 +236,7 @@ const ru: typeof en = {
     cbSubmit: 'Перезвоните мне',
     cbSending: 'Отправка...',
     cbOk: 'Принято! Мы перезвоним вам в ближайшее время.',
-    errMsg: 'Что-то пошло не так. Позвоните нам: (305) 859-3954.',
+    errMsg: 'Что-то пошло не так. Позвоните нам: (305) 247-8877.',
   },
   footer: {
     lic: 'M&K Agency Inc. · Независимое страховое агентство · Работаем по всей Флориде',
@@ -244,7 +244,7 @@ const ru: typeof en = {
   },
   meta: {
     title: 'Страховое агентство во Флориде | Авто, Дом, Бизнес | M&K Agency',
-    desc: 'Независимое страховое агентство в Florida City, работаем по всей Флориде. Сравниваем 15+ компаний с рейтингом «A»: авто, дом, бизнес. Бесплатная котировка за 30 секунд — (305) 859-3954. Говорим по-русски.',
+    desc: 'Независимое страховое агентство в Florida City, работаем по всей Флориде. Сравниваем 15+ компаний с рейтингом «A»: авто, дом, бизнес. Бесплатная котировка за 30 секунд — (305) 247-8877. Говорим по-русски.',
   },
 };
 

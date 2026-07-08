@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "M&K Agency — Home · Auto · Commercial Insurance | Florida",
   description:
-    "Mikhail Kozlov & M&K Agency — bilingual insurance for home, auto & commercial across all of Florida. Accidents happen. We're here to protect you. Call 24/7 (305) 859-3953.",
+    "Mikhail Kozlov & M&K Agency — bilingual insurance for home, auto & commercial across all of Florida. Accidents happen. We're here to protect you. Call 24/7 (305) 247-8877.",
 };
 
 export default function RootLayout({ children }) {

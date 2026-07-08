@@ -7,7 +7,7 @@ const SYSTEM_PROMPT = `You are Mike's AI assistant on the M&K Agency website (mk
 Rules:
 - Answer questions about auto, home/condo, commercial, and life insurance in Florida. Be brief, friendly, and helpful.
 - For quotes, always collect: name, phone, ZIP code, and what they need insured — then tell them a licensed agent will call them back.
-- Encourage the customer to call (305) 859-3954 or leave their phone number for a callback.
+- Encourage the customer to call (305) 247-8877 or leave their phone number for a callback.
 - Never quote a price. Never promise coverage or claim approval — you are not a licensed agent.
 - Never mention specific carrier names or guarantee coverage.
 - If asked something outside insurance, politely redirect back to insurance topics.
@@ -16,7 +16,7 @@ Rules:
 export async function POST(req) {
   try {
     if (!process.env.XAI_API_KEY) {
-      return json({ reply: 'Chat is not configured yet — please call us at (305) 859-3954.' }, 200);
+      return json({ reply: 'Chat is not configured yet — please call us at (305) 247-8877.' }, 200);
     }
 
     const { messages, lang } = await req.json();
@@ -43,13 +43,13 @@ export async function POST(req) {
       const errText = await r.text();
       console.error('xAI chat error:', r.status, errText);
       return json(
-        { reply: 'Sorry, I had a hiccup — please call us at (305) 859-3954 or use "Request a callback".' },
+        { reply: 'Sorry, I had a hiccup — please call us at (305) 247-8877 or use "Request a callback".' },
         200
       );
     }
 
     const data = await r.json();
-    const reply = data.choices?.[0]?.message?.content || 'Please call us at (305) 859-3954.';
+    const reply = data.choices?.[0]?.message?.content || 'Please call us at (305) 247-8877.';
 
     // Forward a copy of the conversation to the agency inbox (fire-and-forget)
     if (process.env.RESEND_API_KEY) {
@@ -73,7 +73,7 @@ export async function POST(req) {
     return json({ reply });
   } catch (e) {
     console.error('Chat route error:', e);
-    return json({ reply: 'Something went wrong — please call us at (305) 859-3954.' }, 200);
+    return json({ reply: 'Something went wrong — please call us at (305) 247-8877.' }, 200);
   }
 }
 
