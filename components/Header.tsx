@@ -24,8 +24,11 @@ export default function Header({ lang }: { lang: string }) {
           ))}
         </div>
         <a href={`tel:${PHONE_TEL}`} className="call-btn">
-          📞 {t.call247} · {PHONE_DISPLAY}
+          	📞 {t.call247} · {PHONE_DISPLAY}
         </a>
+	      <a href={`sms:${PHONE_TEL}`} className="text-btn">
+  		      💬 Text us
+	</a>
       </div>
     </header>
   );
