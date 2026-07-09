@@ -5,6 +5,18 @@ import { getDict } from '@/lib/dictionaries';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
+// Detects a phone number or email address anywhere in the visitor's messages.
+const PHONE_REGEX = /(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
+const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
+
+function hasContactInfo(messages: Msg[]) {
+  const visitorText = messages
+    .filter((m) => m.role === 'user')
+    .map((m) => m.content)
+    .join(' \n ');
+  return PHONE_REGEX.test(visitorText) || EMAIL_REGEX.test(visitorText);
+}
+
 export default function ChatWidget({ lang }: { lang: string }) {
   const t = getDict(lang).chat;
   const [open, setOpen] = useState(false);
@@ -14,6 +26,8 @@ export default function ChatWidget({ lang }: { lang: string }) {
   const [busy, setBusy] = useState(false);
   const [consent, setConsent] = useState(false);
   const [visitorEmail, setVisitorEmail] = useState('');
+  // sentRef persists for the whole conversation — once true, never reset,
+  // so the transcript email fires at most ONCE per chat session.
   const sentRef = useRef(false);
   const bodyRef = useRef<HTMLDivElement>(null);
 
@@ -24,17 +38,25 @@ export default function ChatWidget({ lang }: { lang: string }) {
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
   }, [messages, open]);
 
-  // Send transcript copy to the agency when consent is on and chat has content
+  // Send transcript copy to the agency ONCE — only after the visitor has
+  // shared a phone number or email in the conversation (or typed one into
+  // the optional field), and only if they've checked the consent box.
   useEffect(() => {
-    if (!consent || messages.length < 2 || sentRef.current) return;
+    if (!consent || sentRef.current) return;
+    const contactShared = hasContactInfo(messages) || /@/.test(visitorEmail);
+    if (!contactShared) return;
+
     const timer = setTimeout(() => {
-      sentRef.current = true;
+      sentRef.current = true; // locked for the rest of this session
       fetch('/api/transcript', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages, visitorEmail, lang }),
-      }).catch(() => {});
-    }, 4000);
+      }).catch(() => {
+        // If the send fails, allow one retry attempt on the next message.
+        sentRef.current = false;
+      });
+    }, 2000);
     return () => clearTimeout(timer);
   }, [consent, messages, visitorEmail, lang]);
 
@@ -45,7 +67,8 @@ export default function ChatWidget({ lang }: { lang: string }) {
     setMessages(next);
     setInput('');
     setBusy(true);
-    sentRef.current = false;
+    // NOTE: sentRef is intentionally NOT reset here — the email should only
+    // ever go out once per conversation, not once per message.
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
