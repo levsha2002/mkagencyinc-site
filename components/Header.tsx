@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, locales } from '@/lib/dictionaries';
 
 export default function Header({ lang }: { lang: string }) {
@@ -7,6 +8,9 @@ export default function Header({ lang }: { lang: string }) {
     <header className="header">
       <div className="container header-in">
         <Link href={`/${lang}`} className="logo">
+          <Image src="/images/mikhail.jpg" alt="Mikhail Kozlov, M&K Agency"
+            width={38} height={38}
+            style={{ borderRadius: '50%', objectFit: 'cover', border: '2px solid #F5A623' }} />
           <span className="logo-badge">M&K</span> M&K Agency
         </Link>
         <nav className="nav">
@@ -24,11 +28,9 @@ export default function Header({ lang }: { lang: string }) {
           ))}
         </div>
         <a href={`tel:${PHONE_TEL}`} className="call-btn">
-          	📞 {t.call247} · {PHONE_DISPLAY}
+          📞 {t.call247} · {PHONE_DISPLAY}
         </a>
-	      <a href={`sms:${PHONE_TEL}`} className="text-btn">
-  		      💬 Text us
-	</a>
+        <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 Text us</a>
       </div>
     </header>
   );
