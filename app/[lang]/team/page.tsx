@@ -1,6 +1,5 @@
 import { getDict } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
-import LifeGallery from '@/components/LifeGallery';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
@@ -38,8 +37,6 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
       </section>
 
       <TeamSection lang={params.lang} />
-
-      <LifeGallery />
 
       <section
         className="team-community-banner"

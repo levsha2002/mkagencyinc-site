@@ -7,7 +7,7 @@ export const locales: Lang[] = ['en', 'es', 'ru'];
 
 const en = {
   tagline: 'In God We Trust · We build our future together',
-  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', team: 'Team', quote: 'Get My Free Quote' },
+  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', team: 'Team', life: 'Life', quote: 'Get My Free Quote' },
   call247: 'Call 24/7',
   hero: {
     badge1: 'Average claim: $42K. Average coverage limit: $25K.',
@@ -73,6 +73,14 @@ const en = {
     officeKicker: 'Our home base',
     officeTitle: 'The last stop before the Florida Keys',
     officeBody: "Our office sits in Florida City — the final exit off US-1 before the highway becomes the Overseas Highway, stretching all the way to Key West. We're proud to call this stretch of Florida home.",
+    officeMapLabel: 'Find our office',
+  },
+  life: {
+    metaTitle: 'Life at M&K Agency | Our Team, Our Community',
+    metaDesc: "A look inside M&K Agency — real moments with our team, our clients, and the Florida communities we call home.",
+    h1: 'Life at M&K Agency.',
+    tagline: 'We are a family.',
+    sub: "From holiday parties to community events — this is what it's really like behind the scenes at M&K.",
   },
   chat: {
     fab: 'Chat with Mike',
@@ -103,7 +111,7 @@ const en = {
 
 const es: typeof en = {
   tagline: 'En Dios confiamos · Construimos nuestro futuro juntos',
-  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', team: 'Equipo', quote: 'Cotización gratis' },
+  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', team: 'Equipo', life: 'Vida', quote: 'Cotización gratis' },
   call247: 'Llame 24/7',
   hero: {
     badge1: 'Reclamo promedio: $42K. Límite de cobertura promedio: $25K.',
@@ -169,6 +177,14 @@ const es: typeof en = {
     officeKicker: 'Nuestra sede',
     officeTitle: 'La última parada antes de los Cayos de Florida',
     officeBody: 'Nuestra oficina está en Florida City — la última salida de la US-1 antes de que la carretera se convierta en la Overseas Highway hacia Key West. Nos enorgullece llamar hogar a esta parte de Florida.',
+    officeMapLabel: 'Encuentre nuestra oficina',
+  },
+  life: {
+    metaTitle: 'La vida en M&K Agency | Nuestro equipo, nuestra comunidad',
+    metaDesc: 'Un vistazo dentro de M&K Agency — momentos reales con nuestro equipo, nuestros clientes y las comunidades de Florida que llamamos hogar.',
+    h1: 'La vida en M&K Agency.',
+    tagline: 'Somos una familia.',
+    sub: 'Desde fiestas navideñas hasta eventos comunitarios — así es realmente el día a día en M&K.',
   },
   chat: {
     fab: 'Chatear con Mike',
@@ -199,7 +215,7 @@ const es: typeof en = {
 
 const ru: typeof en = {
   tagline: 'In God We Trust · Мы строим наше будущее вместе',
-  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', team: 'Команда', quote: 'Бесплатная котировка' },
+  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', team: 'Команда', life: 'Жизнь', quote: 'Бесплатная котировка' },
   call247: 'Звоните 24/7',
   hero: {
     badge1: 'Средний убыток: $42K. Средний лимит покрытия: $25K.',
@@ -265,6 +281,14 @@ const ru: typeof en = {
     officeKicker: 'Наш офис',
     officeTitle: 'Последняя остановка перед Флорида-Кис',
     officeBody: 'Наш офис находится в Florida City — последний съезд с трассы US-1 перед тем, как дорога становится Overseas Highway, ведущей до Ки-Уэста. Мы гордимся тем, что называем этот уголок Флориды своим домом.',
+    officeMapLabel: 'Найдите наш офис',
+  },
+  life: {
+    metaTitle: 'Жизнь в M&K Agency | Наша команда, наше сообщество',
+    metaDesc: 'Загляните за кулисы M&K Agency — реальные моменты с нашей командой, клиентами и сообществами Флориды, которые мы называем своим домом.',
+    h1: 'Жизнь в M&K Agency.',
+    tagline: 'Мы — семья.',
+    sub: 'От праздничных вечеринок до общественных мероприятий — вот как на самом деле проходят будни в M&K.',
   },
   chat: {
     fab: 'Чат с Майком',

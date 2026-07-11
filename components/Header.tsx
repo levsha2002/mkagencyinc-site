@@ -18,7 +18,8 @@ export default function Header({ lang }: { lang: string }) {
           <Link href={`/${lang}/services`}>{t.nav.services}</Link>
           <Link href={`/${lang}/about`}>{t.nav.about}</Link>
           <Link href={`/${lang}/contact`}>{t.nav.contact}</Link>
-	  <Link href={`/${lang}/team`}>{t.nav.team}</Link>
+          <Link href={`/${lang}/team`}>{t.nav.team}</Link>
+          <Link href={`/${lang}/life`}>{t.nav.life}</Link>
         </nav>
         <div className="spacer" />
         <div className="lang">
