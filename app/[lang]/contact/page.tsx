@@ -1,5 +1,6 @@
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import AgentAvatars from '@/components/AgentAvatars';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
@@ -22,6 +23,9 @@ export default function Contact({ params }: { params: { lang: string } }) {
           <p className="kicker">{t.nav.contact}</p>
           <h2>{t.contact.h}</h2>
           <p style={{ textAlign: 'center', color: 'var(--muted)' }}>{t.contact.sub}</p>
+
+          <AgentAvatars />
+
           <div className="contact-cards">
             <div className="ccard">
               <div className="ico">📞</div>
