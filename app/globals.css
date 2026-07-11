@@ -630,3 +630,61 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   color: var(--navy);
 }
+
+/* ===== Office map section ===== */
+
+.office-map-section {
+  padding: 56px 0 40px;
+  background: #fff;
+}
+.office-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.office-map-embed {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(7, 39, 79, 0.08);
+  aspect-ratio: 4 / 3;
+}
+.office-map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media (max-width: 780px) {
+  .office-map-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Key West banner ===== */
+
+.key-west-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+}
+.key-west-overlay {
+  width: 100%;
+  background: rgba(7, 39, 79, 0.6);
+  padding: 56px 0;
+  color: #fff;
+  text-align: center;
+}
+.key-west-overlay h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.key-west-overlay p {
+  max-width: 640px;
+  margin: 0 auto;
+  opacity: 0.95;
+  font-size: 1.05rem;
+}

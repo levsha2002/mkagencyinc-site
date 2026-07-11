@@ -70,6 +70,9 @@ const en = {
     communityBody: "From coaching youth sports to helping neighbors recover after hurricanes, our agents give their time to the communities they serve — not just their business.",
     previewKicker: 'Meet the team',
     previewTitle: 'Real agents. Real community.',
+    officeKicker: 'Our home base',
+    officeTitle: 'The last stop before the Florida Keys',
+    officeBody: "Our office sits in Florida City — the final exit off US-1 before the highway becomes the Overseas Highway, stretching all the way to Key West. We're proud to call this stretch of Florida home.",
   },
   chat: {
     fab: 'Chat with Mike',
@@ -163,6 +166,9 @@ const es: typeof en = {
     communityBody: 'Desde entrenar deportes juveniles hasta ayudar a vecinos a recuperarse después de huracanes, nuestros agentes dan su tiempo a las comunidades que sirven — no solo a su negocio.',
     previewKicker: 'Conozca al equipo',
     previewTitle: 'Agentes reales. Comunidad real.',
+    officeKicker: 'Nuestra sede',
+    officeTitle: 'La última parada antes de los Cayos de Florida',
+    officeBody: 'Nuestra oficina está en Florida City — la última salida de la US-1 antes de que la carretera se convierta en la Overseas Highway hacia Key West. Nos enorgullece llamar hogar a esta parte de Florida.',
   },
   chat: {
     fab: 'Chatear con Mike',
@@ -256,6 +262,9 @@ const ru: typeof en = {
     communityBody: 'От тренировки детских спортивных команд до помощи соседям восстановиться после ураганов — наши агенты отдают своё время сообществам, которым служат, а не только своему бизнесу.',
     previewKicker: 'Познакомьтесь с командой',
     previewTitle: 'Настоящие агенты. Настоящее сообщество.',
+    officeKicker: 'Наш офис',
+    officeTitle: 'Последняя остановка перед Флорида-Кис',
+    officeBody: 'Наш офис находится в Florida City — последний съезд с трассы US-1 перед тем, как дорога становится Overseas Highway, ведущей до Ки-Уэста. Мы гордимся тем, что называем этот уголок Флориды своим домом.',
   },
   chat: {
     fab: 'Чат с Майком',
