@@ -1,9 +1,0 @@
-Сюда нужно положить 4 файла (сгенерируй их через /studio, см. INSTRUCTIONS_RU.md):
-
-  hero-hurricane.jpg
-  hero-fraud.jpg
-  hero-underinsured.jpg
-  hero-family.jpg
-
-Пока их тут нет — на месте картинки в шапке сайта будет просто пусто/серый фон,
-остальной сайт при этом будет работать нормально.

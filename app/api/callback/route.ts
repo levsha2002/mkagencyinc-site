@@ -7,27 +7,57 @@ const NOTIFY_EMAIL = 'mkagency2020@hotmail.com';
 export async function POST(req: Request) {
   try {
     const b = await req.json();
+
     if (!b.name || !b.phone) {
       return NextResponse.json({ error: 'missing fields' }, { status: 400 });
     }
+    // Server-side consent guard — never trust the frontend alone for TCPA compliance.
+    if (!b.consent) {
+      return NextResponse.json({ error: 'consent required' }, { status: 400 });
+    }
+
+    const urgent: boolean = b.urgent === true;
+    const contactMethod: 'call' | 'text' =
+      b.contact_method === 'text' ? 'text' : 'call';
+
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
       await sql`CREATE TABLE IF NOT EXISTS callbacks (
-        id SERIAL PRIMARY KEY, name TEXT, phone TEXT, lang TEXT,
+        id SERIAL PRIMARY KEY,
+        name TEXT,
+        phone TEXT,
+        lang TEXT,
+        urgent BOOLEAN DEFAULT false,
+        contact_method TEXT DEFAULT 'call',
+        consent BOOLEAN DEFAULT false,
         created_at TIMESTAMPTZ DEFAULT now()
       )`;
-      await sql`INSERT INTO callbacks (name, phone, lang) VALUES (${b.name}, ${b.phone}, ${b.lang})`;
+      // Adds the new columns if this table already existed before this update.
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS urgent BOOLEAN DEFAULT false`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS contact_method TEXT DEFAULT 'call'`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS consent BOOLEAN DEFAULT false`;
+
+      await sql`INSERT INTO callbacks (name, phone, lang, urgent, contact_method, consent)
+        VALUES (${b.name}, ${b.phone}, ${b.lang}, ${urgent}, ${contactMethod}, ${b.consent})`;
     }
+
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
+      const urgentTag = urgent ? '🔴 URGENT — ' : '';
+      const methodLabel = contactMethod === 'text' ? 'TEXT' : 'CALL';
+
       await resend.emails.send({
         from: 'M&K Website <onboarding@resend.dev>',
         to: NOTIFY_EMAIL,
-        subject: `📞 Callback request — ${b.name}`,
-        html: `<h2>Callback request (${b.lang})</h2>
-          <p><b>Name:</b> ${b.name}</p><p><b>Phone:</b> ${b.phone}</p>`,
+        subject: `${urgentTag}${methodLabel} request — ${b.name}`,
+        html: `<h2>${urgent ? 'Urgent c' : 'C'}allback request (${b.lang})</h2>
+          <p><b>Name:</b> ${b.name}</p>
+          <p><b>Phone:</b> ${b.phone}</p>
+          <p><b>Preferred contact method:</b> ${methodLabel}</p>
+          <p><b>TCPA consent given:</b> Yes</p>`,
       });
     }
+
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error('callback error', e);

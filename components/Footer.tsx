@@ -9,7 +9,7 @@ export default function Footer({ lang }: { lang: string }) {
         <p style={{ margin: '8px 0' }}>
           {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>
         </p>
-        <p>© {new Date().getFullYear()} M&K Agency Inc. {t.footer.rights}</p>
+        <p suppressHydrationWarning>© {new Date().getFullYear()} M&K Agency Inc. {t.footer.rights}</p>
       </div>
     </footer>
   );

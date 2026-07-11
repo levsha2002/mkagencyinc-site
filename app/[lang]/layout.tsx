@@ -1,8 +1,10 @@
 import '../globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getDict, locales, PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
+import TalkNowWidget from '@/components/TalkNowWidget';
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -64,6 +66,8 @@ export default function RootLayout({
         {children}
         <Footer lang={params.lang} />
         <ChatWidget lang={params.lang} />
+        <TalkNowWidget lang={params.lang} />
+        {process.env.NODE_ENV === 'production' && <SpeedInsights />}
       </body>
     </html>
   );
