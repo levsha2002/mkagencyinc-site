@@ -7,7 +7,7 @@ export const locales: Lang[] = ['en', 'es', 'ru'];
 
 const en = {
   tagline: 'In God We Trust · We build our future together',
-  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', quote: 'Get My Free Quote' },
+  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', team: 'Team', quote: 'Get My Free Quote' },
   call247: 'Call 24/7',
   hero: {
     badge1: 'Average claim: $42K. Average coverage limit: $25K.',
@@ -100,7 +100,7 @@ const en = {
 
 const es: typeof en = {
   tagline: 'En Dios confiamos · Construimos nuestro futuro juntos',
-  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', quote: 'Cotización gratis' },
+  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', team: 'Equipo', quote: 'Cotización gratis' },
   call247: 'Llame 24/7',
   hero: {
     badge1: 'Reclamo promedio: $42K. Límite de cobertura promedio: $25K.',
@@ -193,7 +193,7 @@ const es: typeof en = {
 
 const ru: typeof en = {
   tagline: 'In God We Trust · Мы строим наше будущее вместе',
-  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', quote: 'Бесплатная котировка' },
+  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', team: 'Команда', quote: 'Бесплатная котировка' },
   call247: 'Звоните 24/7',
   hero: {
     badge1: 'Средний убыток: $42K. Средний лимит покрытия: $25K.',
