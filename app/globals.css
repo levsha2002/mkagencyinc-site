@@ -638,7 +638,6 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  max-width: 380px;
 }
 .office-map-embed {
   border-radius: 14px;
@@ -662,6 +661,5 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .office-map-side {
     grid-template-columns: 1fr 1fr;
-    max-width: 100%;
   }
 }
