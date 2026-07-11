@@ -1,4 +1,4 @@
-import { getDict, ADDRESS } from '@/lib/dictionaries';
+import { getDict } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
 import LifeGallery from '@/components/LifeGallery';
 
@@ -38,31 +38,6 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
       </section>
 
       <TeamSection lang={params.lang} />
-
-      <section className="office-map-section">
-        <div className="container office-map-grid">
-          <div className="office-map-embed">
-            <iframe
-              title="M&K Agency office location"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(ADDRESS)}&output=embed`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <div>
-            <p className="kicker">{t.officeKicker}</p>
-            <h2 style={{ textAlign: 'left' }}>{t.officeTitle}</h2>
-            <p style={{ color: 'var(--muted)' }}>{t.officeBody}</p>
-          </div>
-        </div>
-        <div className="container">
-          <img
-            src="/images/key-west.jpg"
-            alt="Key West coastline"
-            className="key-west-img"
-          />
-        </div>
-      </section>
 
       <LifeGallery />
 
