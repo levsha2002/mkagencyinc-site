@@ -1,29 +1,32 @@
 'use client';
 import { useState } from 'react';
+import { team } from '@/lib/team-data';
+
+const AGENT_OPTIONS = team.filter((m) => m.slug !== 'mikhail-kozlov');
 
 export default function TalkNowWidget({ lang }: { lang: string }) {
   const [open, setOpen] = useState(false);
   const [method, setMethod] = useState<'call' | 'text'>('call');
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
+  const [agentName, setAgentName] = useState(''); // '' = no preference, defaults to 'agent'
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
 
   const closeAndReset = () => {
     setOpen(false);
-    // Reset only if the last attempt succeeded or failed — keeps in-progress
-    // typed data if user accidentally closes mid-fill.
     if (status === 'ok' || status === 'err') {
       setStatus('');
       setName('');
       setPhone('');
+      setAgentName('');
       setConsent(false);
     }
   };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consent) return; // extra guard alongside `required` on the checkbox
+    if (!consent) return;
     setStatus('sending');
     try {
       const res = await fetch('/api/callback', {
@@ -34,14 +37,16 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
           phone,
           lang,
           urgent: true,
-          contact_method: method, // 'call' or 'text'
+          contact_method: method,
           consent: true,
+          agent_name: agentName || 'agent',
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');
       if (res.ok) {
         setName('');
         setPhone('');
+        setAgentName('');
         setConsent(false);
       }
     } catch {
@@ -114,6 +119,17 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
+                </label>
+                <label>
+                  Prefer a specific agent? (optional)
+                  <select value={agentName} onChange={(e) => setAgentName(e.target.value)}>
+                    <option value="">No preference — any available agent</option>
+                    {AGENT_OPTIONS.map((a) => (
+                      <option key={a.slug} value={a.name}>
+                        {a.name}
+                      </option>
+                    ))}
+                  </select>
                 </label>
 
                 <label className="talk-now-consent">
