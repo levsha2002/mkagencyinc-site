@@ -687,3 +687,58 @@ img { max-width: 100%; display: block; }
   color: #d7e3f7;
   font-size: 1.1rem;
 }
+
+/* ===== Mobile header & burger menu ===== */
+
+.burger {
+  display: none;
+  background: none;
+  border: 1px solid #dde5f0;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  color: var(--navy);
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1150px) {
+  .burger { display: block; }
+
+  /* Compact controls kick in at the SAME breakpoint the burger appears —
+     previously this was a separate 900px query, which left a broken
+     901-1150px zone where the burger showed but the full-text call button
+     and language switcher were still visible, overflowing the header. */
+  .header-in { gap: 8px; }
+  .lang { display: none; }
+  .text-btn-text { display: none; }
+  .text-btn { padding: 11px 13px; }
+  .call-btn-text { display: none; }
+  .call-btn { padding: 11px 13px; }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-top: 1px solid #e6ecf5;
+    box-shadow: 0 14px 24px rgba(7, 39, 79, 0.12);
+  }
+  .mobile-menu a {
+    padding: 15px 20px;
+    font-weight: 700;
+    color: var(--navy);
+    border-bottom: 1px solid #f0f3f8;
+  }
+  .mobile-menu a:active { background: #f2f7ff; }
+  .mobile-menu-call { color: var(--blue) !important; }
+}
+
+@media (max-width: 560px) {
+  .logo-text { display: none; }
+  .logo { font-size: 1.05rem; }
+}

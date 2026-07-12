@@ -1,9 +1,23 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, locales } from '@/lib/dictionaries';
 
 export default function Header({ lang }: { lang: string }) {
   const t = getDict(lang);
+  const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: `/${lang}`, label: t.nav.home },
+    { href: `/${lang}/services`, label: t.nav.services },
+    { href: `/${lang}/about`, label: t.nav.about },
+    { href: `/${lang}/contact`, label: t.nav.contact },
+    { href: `/${lang}/team`, label: t.nav.team },
+    { href: `/${lang}/life`, label: t.nav.life },
+  ];
+
   return (
     <header className="header">
       <div className="container header-in">
@@ -11,17 +25,18 @@ export default function Header({ lang }: { lang: string }) {
           <Image src="/images/mikhail.jpg" alt="Mikhail Kozlov, M&K Agency"
             width={38} height={38}
             style={{ borderRadius: '50%', objectFit: 'cover', border: '2px solid #F5A623' }} />
-          <span className="logo-badge">M&K</span> M&K Agency
+          <span className="logo-badge">M&K</span>
+          <span className="logo-text">M&K Agency</span>
         </Link>
+
         <nav className="nav">
-          <Link href={`/${lang}`}>{t.nav.home}</Link>
-          <Link href={`/${lang}/services`}>{t.nav.services}</Link>
-          <Link href={`/${lang}/about`}>{t.nav.about}</Link>
-          <Link href={`/${lang}/contact`}>{t.nav.contact}</Link>
-          <Link href={`/${lang}/team`}>{t.nav.team}</Link>
-          <Link href={`/${lang}/life`}>{t.nav.life}</Link>
+          {links.map((l) => (
+            <Link key={l.href} href={l.href}>{l.label}</Link>
+          ))}
         </nav>
+
         <div className="spacer" />
+
         <div className="lang">
           {locales.map((l) => (
             <Link key={l} href={`/${l}`} className={l === lang ? 'active' : ''}>
@@ -29,11 +44,35 @@ export default function Header({ lang }: { lang: string }) {
             </Link>
           ))}
         </div>
+
         <a href={`tel:${PHONE_TEL}`} className="call-btn">
-          📞 {t.call247} · {PHONE_DISPLAY}
+          📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
         </a>
-        <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 Text us</a>
+        <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">Text us</span></a>
+
+        <button
+          type="button"
+          className="burger"
+          aria-label="Menu"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? '✕' : '☰'}
+        </button>
       </div>
+
+      {open && (
+        <nav className="mobile-menu">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              {l.label}
+            </Link>
+          ))}
+          <a href={`tel:${PHONE_TEL}`} className="mobile-menu-call">
+            📞 {t.call247} · {PHONE_DISPLAY}
+          </a>
+        </nav>
+      )}
     </header>
   );
 }
