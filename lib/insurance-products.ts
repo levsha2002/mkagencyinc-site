@@ -10,6 +10,8 @@ export type InsuranceProduct = {
   requiresDrivers: boolean;
   images?: { src: string; alt: string }[]; // representative photos
   subtypes?: { name: string; description: string }[]; // e.g. motorcycle styles
+  liabilityExamples?: string[]; // plain-language "what could go wrong" examples
+  humanLifeValueNote?: string; // shown above the Human Life Value calculator
 };
 
 export const insuranceProducts: InsuranceProduct[] = [
@@ -20,8 +22,8 @@ export const insuranceProducts: InsuranceProduct[] = [
     title: 'Personal Auto Insurance',
     shortIntro: 'Coverage for the vehicle you drive every day — to work, school, and everywhere in between.',
     article: [
-      'Florida requires every driver to carry Personal Injury Protection (PIP) and Property Damage Liability at minimum — but minimum coverage rarely reflects what a real accident actually costs. We help you choose coverage that matches your actual risk, not just the state minimum.',
-      'We compare rates across 15+ A-rated carriers, so you get real protection at a fair price instead of overpaying with a single insurer.',
+      "A car accident doesn't just damage your vehicle — it can put your savings, your income, and your financial future at risk. We focus on coverage that protects what you've built, not just the state minimum.",
+      "For drivers who want more, we can offer accident forgiveness so one mistake doesn't spike your rate, plus 24/7 online access to your policy — view your ID cards, make payments, and file a claim from your phone.",
     ],
     coverageHighlights: [
       'Bodily injury & property damage liability',
@@ -69,6 +71,20 @@ export const insuranceProducts: InsuranceProduct[] = [
     requiresDrivers: true,
   },
 
+  {
+    slug: 'auto-electric-vehicle',
+    category: 'auto',
+    title: 'Electric Vehicle Insurance',
+    shortIntro: 'Competitive auto insurance rates for electric vehicles.',
+    article: [
+      "We don't sell vehicle warranties — that's not something we offer. What we do offer is competitive auto insurance rates for electric vehicles, from Tesla to Rivian to any EV on the road.",
+      'Get a fast, no-pressure quote from a real local agent.',
+    ],
+    coverageHighlights: [],
+    requiresVIN: true,
+    requiresDrivers: true,
+  },
+
   // ===== HOME =====
   {
     slug: 'home-single-family',
@@ -84,6 +100,12 @@ export const insuranceProducts: InsuranceProduct[] = [
       'Wind & hurricane coverage',
       'Liability & medical payments coverage',
       'Loss of use / additional living expenses',
+    ],
+    liabilityExamples: [
+      "You hire a handyman or contractor who doesn't carry his own insurance or workers' comp — he falls off your roof or is shocked doing electrical work. Without coverage of his own, the medical bills often land on you, and they can be enormous.",
+      'Neighborhood kids come over to play in your yard or pool and one of them breaks an arm or a leg — medical bills alone can run into the hundreds of thousands of dollars, and as the property owner you can be held liable even if you did nothing wrong.',
+      "A tree branch from your yard falls and damages a neighbor's roof or car.",
+      'A delivery driver trips on a broken step and is injured on your property.',
     ],
     note: 'Homes older than 20 years typically require a 4-point inspection and wind mitigation inspection before a carrier will issue a new policy. We can point you to inspectors who turn these around quickly.',
     requiresVIN: false,
@@ -116,6 +138,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     article: [
       "Your condo association's master policy covers the building itself, but it almost never covers your flooring, cabinets, appliances, personal belongings, or liability inside your unit. That's what an HO-6 condo policy is for.",
       "Many mortgage lenders require proof of condo insurance before closing — we can typically turn around a quote and binder quickly.",
+      "If a pipe bursts or your bathtub overflows and water damage spreads into a neighbor's unit, your liability exposure can be enormous — repair costs, temporary housing for your neighbor, and even bodily injury claims if someone is hurt. Standard condo liability limits are often not enough to cover a claim like this.",
     ],
     coverageHighlights: [
       'Interior unit coverage (HO-6)',
@@ -218,6 +241,7 @@ export const insuranceProducts: InsuranceProduct[] = [
       'Coverage amounts to fit any budget',
       'No medical exam options available for many applicants',
     ],
+    humanLifeValueNote: "One way to think about how much life insurance you need is your \"Human Life Value\" — essentially, the financial value you provide to the people who depend on you. It factors in your income, how many working years you have left, and your outstanding debts. It's not a perfect science, but it's a useful starting point. Try the calculator below.",
     requiresVIN: false,
     requiresDrivers: false,
   },

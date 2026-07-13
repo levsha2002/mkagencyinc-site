@@ -102,6 +102,8 @@ const en = {
   footer: {
     lic: 'M&K Agency Inc. · Independent Insurance Agency · Serving all of Florida',
     rights: 'All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
   },
   meta: {
     title: 'Florida Insurance Agency | Auto, Home & Commercial Quotes | M&K Agency',
@@ -206,6 +208,8 @@ const es: typeof en = {
   footer: {
     lic: 'M&K Agency Inc. · Agencia de Seguros Independiente · Servimos toda la Florida',
     rights: 'Todos los derechos reservados.',
+    privacy: 'Política de Privacidad',
+    terms: 'Términos de Servicio',
   },
   meta: {
     title: 'Agencia de Seguros en Florida | Auto, Casa y Comercial | M&K Agency',
@@ -310,6 +314,8 @@ const ru: typeof en = {
   footer: {
     lic: 'M&K Agency Inc. · Независимое страховое агентство · Работаем по всей Флориде',
     rights: 'Все права защищены.',
+    privacy: 'Политика конфиденциальности',
+    terms: 'Условия использования',
   },
   meta: {
     title: 'Страховое агентство во Флориде | Авто, Дом, Бизнес | M&K Agency',

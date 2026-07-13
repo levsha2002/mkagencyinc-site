@@ -1,13 +1,14 @@
-import { referralRules } from '@/lib/legal-content';
+import { privacyPolicy } from '@/lib/legal-content';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as 'en' | 'es' | 'ru') in referralRules ? (params.lang as 'en' | 'es' | 'ru') : 'en';
-  return { title: `${referralRules[lang].title} | M&K Agency` };
+  const lang = (params.lang as 'en' | 'es' | 'ru') in privacyPolicy ? (params.lang as 'en' | 'es' | 'ru') : 'en';
+  const doc = privacyPolicy[lang];
+  return { title: `${doc.title} | M&K Agency` };
 }
 
-export default function ReferralRulesPage({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as 'en' | 'es' | 'ru') in referralRules ? (params.lang as 'en' | 'es' | 'ru') : 'en';
-  const doc = referralRules[lang];
+export default function PrivacyPage({ params }: { params: { lang: string } }) {
+  const lang = (params.lang as 'en' | 'es' | 'ru') in privacyPolicy ? (params.lang as 'en' | 'es' | 'ru') : 'en';
+  const doc = privacyPolicy[lang];
 
   return (
     <main>

@@ -1,6 +1,9 @@
+import fs from 'fs';
+import path from 'path';
 import { notFound } from 'next/navigation';
 import { insuranceProducts, getProductBySlug } from '@/lib/insurance-products';
 import InsuranceQuoteForm from '@/components/InsuranceQuoteForm';
+import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));
@@ -15,6 +18,25 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
+const VALID_EXT = new Set(['.jpg', '.jpeg', '.png', '.webp']);
+
+// Auto-discovers every photo dropped into public/images/insurance/<slug>/ —
+// same pattern as the Life at M&K gallery. Drop in as many photos as you
+// want; no code changes needed. Falls back to the hardcoded product.images
+// (if any) when no dedicated folder exists yet.
+function getProductPhotos(slug: string): string[] {
+  const dir = path.join(process.cwd(), 'public', 'images', 'insurance', slug);
+  try {
+    return fs
+      .readdirSync(dir)
+      .filter((f) => VALID_EXT.has(path.extname(f).toLowerCase()))
+      .sort()
+      .map((f) => `/images/insurance/${slug}/${f}`);
+  } catch {
+    return [];
+  }
+}
+
 export default function InsuranceProductPage({
   params,
 }: {
@@ -22,6 +44,12 @@ export default function InsuranceProductPage({
 }) {
   const product = getProductBySlug(params.slug);
   if (!product) return notFound();
+
+  const folderPhotos = getProductPhotos(product.slug);
+  const photos =
+    folderPhotos.length > 0
+      ? folderPhotos
+      : (product.images || []).map((img) => img.src);
 
   return (
     <main>
@@ -60,6 +88,25 @@ export default function InsuranceProductPage({
               ))}
             </ul>
 
+            {product.liabilityExamples && product.liabilityExamples.length > 0 && (
+              <div style={{ marginTop: 20 }}>
+                <h3 style={{ color: 'var(--navy)', fontSize: '1.1rem', marginBottom: 10 }}>
+                  What do liability claims actually look like?
+                </h3>
+                <ul>
+                  {product.liabilityExamples.map((ex, i) => (
+                    <li key={i} style={{ marginBottom: 10 }}>{ex}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {product.humanLifeValueNote && (
+              <p style={{ color: '#444', lineHeight: 1.6, marginTop: 20 }}>
+                {product.humanLifeValueNote}
+              </p>
+            )}
+
             {product.subtypes && product.subtypes.length > 0 && (
               <div style={{ marginTop: 28 }}>
                 <h3 style={{ color: 'var(--navy)', fontSize: '1.1rem', marginBottom: 14 }}>
@@ -87,34 +134,17 @@ export default function InsuranceProductPage({
               </div>
             )}
 
-            {product.images && product.images.length > 0 && (
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: `repeat(${product.images.length}, 1fr)`,
-                  gap: 10,
-                  marginTop: 24,
-                }}
-              >
-                {product.images.map((img) => (
-                  <img
-                    key={img.src}
-                    src={img.src}
-                    alt={img.alt}
-                    style={{
-                      width: '100%',
-                      aspectRatio: '4 / 3',
-                      objectFit: 'cover',
-                      borderRadius: 14,
-                      background: '#dfe4ea',
-                    }}
-                  />
+            {photos.length > 0 && (
+              <div className="insurance-photo-grid" style={{ marginTop: 24 }}>
+                {photos.map((src) => (
+                  <img key={src} src={src} alt={product.title} />
                 ))}
               </div>
             )}
           </div>
 
           <InsuranceQuoteForm product={product} lang={params.lang} />
+          {product.slug === 'life-insurance' && <HumanLifeValueCalculator />}
         </div>
       </section>
     </main>

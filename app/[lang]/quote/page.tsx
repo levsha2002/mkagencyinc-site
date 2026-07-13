@@ -24,9 +24,9 @@ const CATS: {
       { id: 'auto-standard', title: 'Standard / Low-Risk Auto', desc: 'Clean driving record? Competitive coverage for your everyday car, truck, or SUV.' },
       { id: 'auto-sr22', title: 'High-Risk · SR-22 / FR-44', desc: 'Need an SR-22 or FR-44 filing after a ticket, DUI, or lapse? We help high-risk and distressed drivers get back on the road and stay compliant.' },
       { id: 'auto-classic', title: 'Classic & Collector', desc: 'Antique, collector, and show cars — specialized agreed-value protection built for limited-use vehicles.' },
-      { id: 'auto-ev', title: 'Electric Vehicle (EV)', desc: 'Coverage tailored to EVs — the battery, charging equipment, and the higher repair costs electric cars can carry.' },
+      { id: 'auto-ev', title: 'Electric Vehicle (EV)', desc: "We don't sell warranties — just competitive rates for EVs, from Tesla to Rivian to any electric vehicle on the road." },
       { id: 'auto-commercial', title: 'Commercial Auto', desc: 'Vehicles used for business — from a single work van to a small fleet.' },
-      { id: 'auto-rideshare', title: 'Rideshare · Uber / Lyft', desc: 'Drive for Uber or Lyft? Close the gap between your personal policy and the app’s coverage.' },
+      { id: 'auto-rideshare', title: 'Rideshare · Uber / Lyft', desc: "Drive for Uber or Lyft? Close the gap between your personal policy and the app's coverage." },
     ],
   },
   {
@@ -35,7 +35,7 @@ const CATS: {
     label: { en: 'Home', es: 'Hogar', ru: 'Дом' },
     types: [
       { id: 'home-single', title: 'Single-Family Home', desc: 'Protect the house you own — structure, belongings, and liability, built for Florida risks.' },
-      { id: 'home-condo', title: 'Condo (HO-6)', desc: 'Coverage for what’s inside your unit and your personal liability, beyond the HOA’s master policy.' },
+      { id: 'home-condo', title: 'Condo (HO-6)', desc: "Coverage for what's inside your unit and your personal liability, beyond the HOA's master policy." },
       { id: 'home-townhouse', title: 'Townhouse', desc: 'Tailored to attached homes — structure and interior depending on your association setup.' },
       { id: 'home-renters', title: 'Renters', desc: 'Affordable protection for your belongings and personal liability while you rent.' },
     ],
@@ -45,7 +45,7 @@ const CATS: {
     icon: '❤️',
     label: { en: 'Life', es: 'Vida', ru: 'Жизнь' },
     types: [
-      { id: 'life-term', title: 'Term Life', desc: 'Straightforward coverage for a set period — protect your family’s income during the years it matters most.' },
+      { id: 'life-term', title: 'Term Life', desc: "Straightforward coverage for a set period — protect your family's income during the years it matters most." },
       { id: 'life-whole', title: 'Whole Life', desc: 'Lifelong coverage that builds cash value over time.' },
     ],
   },
@@ -99,7 +99,7 @@ const UI: Record<Lang, Record<string, string>> = {
     step2: 'Ваши данные', selected: 'Выбрано', change: 'изменить',
     zip: 'Индекс (ZIP)', name: 'Полное имя', phName: 'Ваше имя', phone: 'Телефон', email: 'Эл. почта',
     message: 'Сообщение (необязательно)', phMessage: 'Что нам важно знать?',
-    consent: 'Я согласен(на), что M&K Agency может связываться со мной по телефону, SMS или с помощью автоматических/ИИ-звонков по указанному номеру по вопросам страхования, даже если номер внесён в список «Не звонить». Согласие не является условием покупки. Может взиматься плата за сообщения/данные.',
+    consent: 'Я согласен(на), что M&K Agency может связаться со мной по телефону, SMS или с помощью автоматических/ИИ-звонков по указанному номеру по вопросам страхования, даже если номер внесён в список «Не звонить». Согласие не является условием покупки. Может взиматься плата за сообщения/данные.',
     submit: 'Получить расчёт →', sending: 'Отправка…',
     err: 'Что-то пошло не так — попробуйте ещё раз или позвоните (305) 247-8877.',
     errConsent: 'Отметьте согласие, чтобы мы могли с вами связаться.',
