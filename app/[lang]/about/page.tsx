@@ -34,7 +34,7 @@ export default function About({ params }: { params: { lang: string } }) {
               <div className="office-map-embed">
                 <iframe
                   title="M&K Agency office location"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(ADDRESS)}&output=embed`}
+                  src="https://www.google.com/maps?q=25.4567,-80.4746&z=17&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />

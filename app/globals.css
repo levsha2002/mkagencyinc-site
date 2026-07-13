@@ -303,7 +303,7 @@ img { max-width: 100%; display: block; }
 .team-hero {
   position: relative;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   min-height: 360px;
   display: flex;
   align-items: center;
@@ -448,6 +448,7 @@ img { max-width: 100%; display: block; }
   width: 140px;
   height: 175px; /* 4:5 crop per team photo style guide */
   object-fit: cover;
+  object-position: top center; /* keeps faces in frame instead of centering on chest/torso */
   border-radius: 14px;
   background: #dfe4ea; /* fallback tone if photo hasn't been uploaded yet */
 }
@@ -484,7 +485,7 @@ img { max-width: 100%; display: block; }
 .team-community-banner {
   position: relative;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   min-height: 280px;
   display: flex;
   align-items: center;
@@ -617,6 +618,7 @@ img { max-width: 100%; display: block; }
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: top center;
   border: 2px solid #e6ecf5;
   background: #dfe4ea;
   transition: transform 0.15s, border-color 0.15s;
