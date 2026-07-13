@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getDict, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
+import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 
 const meet: Record<string, Record<string, string>> = {
@@ -109,10 +109,6 @@ export default function Home({ params }: { params: { lang: string } }) {
             <div className="svc"><div className="ico">🏠</div><h3>{t.services.home.h}</h3><p>{t.services.home.p}</p></div>
             <div className="svc"><div className="ico">🏢</div><h3>{t.services.commercial.h}</h3><p>{t.services.commercial.p}</p></div>
             <div className="svc"><div className="ico">❤️</div><h3>{t.services.life.h}</h3><p>{t.services.life.p}</p></div>
-          </div>
-          <div className="center-cta">
-            <a href={`/${lang}/quote`} className="cta" style={{ marginRight: '8px' }}>🧾 {m.quote}</a>
-            <a href={`tel:${PHONE_TEL}`} className="cta">📞 {t.call247} · {PHONE_DISPLAY}</a>
           </div>
         </div>
       </section>
