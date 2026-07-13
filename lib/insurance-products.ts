@@ -84,6 +84,24 @@ export const insuranceProducts: InsuranceProduct[] = [
     requiresVIN: true,
     requiresDrivers: true,
   },
+{
+    slug: 'auto-classic',
+    category: 'auto',
+    title: 'Classic Auto Insurance',
+    shortIntro: 'Low-mileage coverage built for the car you show, not the car you commute in.',
+    article: [
+      "A classic car isn't just transportation — it's an investment, and a standard auto policy treats it like any other depreciating vehicle. Classic auto insurance is built differently: it typically offers Replacement Coverage (also called agreed or guaranteed value) so a total loss pays out the value you and the carrier agreed on up front, not a depreciated market estimate.",
+      "Because classic cars are driven far less than a daily driver, carriers offer significantly lower rates for limited-use vehicles — typically up to 5,000 miles a year — plus coverage built around authentic, OEM replacement parts if a repair is ever needed.",
+    ],
+    coverageHighlights: [
+      'Replacement (agreed/guaranteed value) coverage — no depreciation surprises on a total loss',
+      'Low-mileage program pricing for vehicles driven up to 5,000 miles per year',
+      'Coverage for authentic/OEM replacement parts',
+      'Roadside assistance suited for classic and collector vehicles',
+    ],
+    requiresVIN: true,
+    requiresDrivers: true,
+  },
 
   // ===== HOME =====
   {
