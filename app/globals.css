@@ -448,7 +448,6 @@ img { max-width: 100%; display: block; }
   width: 140px;
   height: 175px; /* 4:5 crop per team photo style guide */
   object-fit: cover;
-  object-position: top center; /* keeps faces in frame instead of centering on chest/torso */
   border-radius: 14px;
   background: #dfe4ea; /* fallback tone if photo hasn't been uploaded yet */
 }
@@ -759,4 +758,48 @@ img { max-width: 100%; display: block; }
   object-position: center;
   border-radius: 14px;
   background: #dfe4ea;
+}
+
+/* ===== Combined Insurance hub: horizontal sticky category nav ===== */
+
+.insurance-cat-nav-wrap {
+  position: sticky;
+  top: 64px; /* sits just below the main sticky header */
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid #e6ecf5;
+}
+.insurance-cat-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 12px 20px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.insurance-cat-nav button {
+  background: #f2f7ff;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--navy);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.insurance-cat-nav button.on {
+  background: var(--blue);
+  color: #fff;
+}
+
+.insurance-cat-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 130px;
+}
+.insurance-cat-section h2 {
+  color: var(--navy);
+  margin-bottom: 18px;
 }

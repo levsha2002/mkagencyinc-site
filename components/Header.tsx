@@ -11,7 +11,6 @@ export default function Header({ lang }: { lang: string }) {
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
-    { href: `/${lang}/services`, label: t.nav.services },
     { href: `/${lang}/insurance`, label: t.nav.insurance },
     { href: `/${lang}/about`, label: t.nav.about },
     { href: `/${lang}/contact`, label: t.nav.contact },

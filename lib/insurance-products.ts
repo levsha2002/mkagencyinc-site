@@ -1,6 +1,6 @@
 export type InsuranceProduct = {
   slug: string;
-  category: 'auto' | 'home' | 'commercial' | 'specialty';
+  category: 'auto' | 'home' | 'commercial' | 'life' | 'specialty';
   title: string;
   shortIntro: string;
   article: string[]; // paragraphs
@@ -200,6 +200,26 @@ export const insuranceProducts: InsuranceProduct[] = [
     ],
     requiresVIN: true,
     requiresDrivers: true,
+  },
+
+  // ===== LIFE =====
+  {
+    slug: 'life-insurance',
+    category: 'life',
+    title: 'Life Insurance',
+    shortIntro: 'Protect the people who depend on you, with coverage that fits your budget.',
+    article: [
+      "Life insurance isn't about you — it's about making sure the people who depend on you are financially protected if something happens to you. We help you compare term and whole life options so your family's future is never left to chance.",
+      'We work with multiple A-rated carriers to find coverage that fits your budget and life stage, whether you need simple term coverage or a permanent policy that builds cash value.',
+    ],
+    coverageHighlights: [
+      'Term life coverage (10, 20, 30-year options)',
+      'Whole life & permanent coverage options',
+      'Coverage amounts to fit any budget',
+      'No medical exam options available for many applicants',
+    ],
+    requiresVIN: false,
+    requiresDrivers: false,
   },
 
   // ===== SPECIALTY / OTHER PRIVATE INSURANCE =====
