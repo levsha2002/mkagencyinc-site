@@ -9,6 +9,8 @@ export default function Header({ lang }: { lang: string }) {
   const t = getDict(lang);
   const [open, setOpen] = useState(false);
 
+  const communityLabel = lang === 'es' ? 'Comunidad' : lang === 'ru' ? 'Сообщество' : 'Community';
+
   const links = [
     { href: `/${lang}`, label: t.nav.home },
     { href: `/${lang}/insurance`, label: t.nav.insurance },
@@ -16,6 +18,7 @@ export default function Header({ lang }: { lang: string }) {
     { href: `/${lang}/contact`, label: t.nav.contact },
     { href: `/${lang}/team`, label: t.nav.team },
     { href: `/${lang}/life`, label: t.nav.life },
+    { href: `/${lang}/referral`, label: communityLabel },
   ];
 
   return (
