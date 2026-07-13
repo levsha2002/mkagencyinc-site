@@ -124,7 +124,7 @@ img { max-width: 100%; display: block; }
 .mk-cb input { padding: 12px; border: 1px solid #d8e0ec; border-radius: 10px; font-size: .95rem; }
 .mk-cb button { background: var(--blue); color: #fff; border: none; border-radius: 999px; padding: 13px; font-weight: 800; cursor: pointer; }
 
-@media (max-width: 1150px) {
+@media (max-width: 1250px) {
   .nav { display: none; }
 }
 @media (max-width: 900px) {
@@ -709,7 +709,7 @@ img { max-width: 100%; display: block; }
   display: none;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1250px) {
   .burger { display: block; }
 
   /* Compact controls kick in at the SAME breakpoint the burger appears —
@@ -743,4 +743,20 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .logo-text { display: none; }
   .logo { font-size: 1.05rem; }
+}
+
+/* ===== Insurance product page photo grid (auto-discovered, any count) ===== */
+
+.insurance-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.insurance-photo-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  background: #dfe4ea;
 }

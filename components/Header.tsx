@@ -12,6 +12,7 @@ export default function Header({ lang }: { lang: string }) {
   const links = [
     { href: `/${lang}`, label: t.nav.home },
     { href: `/${lang}/services`, label: t.nav.services },
+    { href: `/${lang}/insurance`, label: t.nav.insurance },
     { href: `/${lang}/about`, label: t.nav.about },
     { href: `/${lang}/contact`, label: t.nav.contact },
     { href: `/${lang}/team`, label: t.nav.team },
@@ -68,6 +69,18 @@ export default function Header({ lang }: { lang: string }) {
               {l.label}
             </Link>
           ))}
+          <div className="mobile-menu-lang">
+            {locales.map((l) => (
+              <Link
+                key={l}
+                href={`/${l}`}
+                className={l === lang ? 'active' : ''}
+                onClick={() => setOpen(false)}
+              >
+                {l.toUpperCase()}
+              </Link>
+            ))}
+          </div>
           <a href={`tel:${PHONE_TEL}`} className="mobile-menu-call">
             📞 {t.call247} · {PHONE_DISPLAY}
           </a>
