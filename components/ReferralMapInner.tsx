@@ -10,7 +10,7 @@ import 'leaflet/dist/leaflet.css';
 // during server-side rendering. Because the imports here are normal static
 // imports (not wrapped in dynamic() individually), TypeScript sees the real
 // react-leaflet prop types with no casting needed.
-export default function ReferralMapInner() {
+export default function ReferralMapInner({ searchPlaceholder }: { searchPlaceholder?: string }) {
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
 
@@ -20,7 +20,9 @@ export default function ReferralMapInner() {
       const matchesSearch =
         search.trim() === '' ||
         b.name.toLowerCase().includes(search.toLowerCase()) ||
-        b.city.toLowerCase().includes(search.toLowerCase());
+        b.city.toLowerCase().includes(search.toLowerCase()) ||
+        b.address.toLowerCase().includes(search.toLowerCase()) ||
+        b.zip.includes(search.trim());
       return matchesCategory && matchesSearch;
     });
   }, [category, search]);
@@ -29,7 +31,7 @@ export default function ReferralMapInner() {
     <div className="referral-map-card">
       <div className="referral-map-toolbar">
         <input
-          placeholder="Search by business name or city..."
+          placeholder={searchPlaceholder || 'Search by business name, address, city, or ZIP code...'}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -52,7 +54,13 @@ export default function ReferralMapInner() {
           {...({
             center: [27.8, -81.5],
             zoom: 6,
+            minZoom: 6,
             scrollWheelZoom: true,
+            maxBounds: [
+              [24.3, -87.7], // SW corner — south of Key West, west of the panhandle
+              [31.1, -79.8], // NE corner — north of the FL/GA border, east of Palm Beach
+            ],
+            maxBoundsViscosity: 1.0, // hard stop — can't drag the map past Florida
             style: { height: '100%', width: '100%' },
           } as any)}
         >
@@ -65,15 +73,28 @@ export default function ReferralMapInner() {
           {filtered.map((b) => (
             <Marker key={b.slug} {...({ position: [b.lat, b.lng] } as any)}>
               <Popup>
-                <strong>{b.name}</strong>
-                <br />
-                <span className="referral-badge">✓ Verified by M&amp;K Agency</span>
-                <br />
-                {b.category} · {b.city}
-                <br />
-                {b.description}
-                <br />
-                <a href={`tel:${b.phone.replace(/[^0-9+]/g, '')}`}>{b.phone}</a>
+                <div className="referral-popup">
+                  {b.cardImage && (
+                    <img src={b.cardImage} alt={`${b.name} business card`} className="referral-popup-card" />
+                  )}
+                  <strong>{b.name}</strong>
+                  <br />
+                  <span className="referral-badge">✓ Verified by M&amp;K Agency</span>
+                  <br />
+                  {b.category} · {b.address}, {b.city} {b.zip}
+                  <br />
+                  {b.description}
+                  <br />
+                  <a href={`tel:${b.phone.replace(/[^0-9+]/g, '')}`}>{b.phone}</a>
+                  {b.website && (
+                    <>
+                      <br />
+                      <a href={b.website} target="_blank" rel="noopener noreferrer">
+                        Visit website →
+                      </a>
+                    </>
+                  )}
+                </div>
               </Popup>
             </Marker>
           ))}

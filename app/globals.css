@@ -863,3 +863,21 @@ img { max-width: 100%; display: block; }
     height: 360px;
   }
 }
+
+/* ===== Referral popup: business card image + website link ===== */
+
+.referral-popup {
+  max-width: 220px;
+}
+.referral-popup-card {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #f7f8fa;
+}
+.referral-popup a {
+  color: var(--blue);
+  font-weight: 600;
+}

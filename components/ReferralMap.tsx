@@ -13,6 +13,6 @@ const ReferralMapInner = dynamic(() => import('./ReferralMapInner'), {
   ),
 });
 
-export default function ReferralMap() {
-  return <ReferralMapInner />;
+export default function ReferralMap({ searchPlaceholder }: { searchPlaceholder?: string }) {
+  return <ReferralMapInner searchPlaceholder={searchPlaceholder} />;
 }
