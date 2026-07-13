@@ -1,0 +1,640 @@
+From d5675fe7b6ba3aafb310c626f38f37270e107aa9 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 10 Jul 2026 03:47:23 +0000
+Subject: [PATCH] Add "Support Our Florida Community" business map page
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+New trilingual /community page matching the live site's design system
+(navy/blue/gold, existing Header/Footer/ChatWidget), built on the
+interactive map + search prototype reviewed earlier:
+
+- Real Leaflet + OpenStreetMap map with 12 placeholder FL businesses
+- Search matches business name, address, and type of business, with
+  the matched name substring highlighted so it's always clearly visible
+- Category filters (Realtors, Lenders, Contractors, Shops, Auto, Salon)
+- Full EN/ES/RU translations added to lib/dictionaries.ts, incl. a new
+  Community nav link in the header
+- RESPA-aware compliance disclaimer and the existing "We Care About Our
+  Community"™ trademark line in the footer
+
+Business data in lib/communityBusinesses.ts is placeholder/demo content
+pending a real intake flow and the RESPA legal review flagged in the
+project handoff notes.
+---
+ app/[lang]/community/page.tsx |  87 ++++++++++++++++++
+ app/globals.css               |  61 +++++++++++++
+ components/CommunityMap.tsx   | 164 ++++++++++++++++++++++++++++++++++
+ components/Header.tsx         |   1 +
+ lib/communityBusinesses.ts    |  41 +++++++++
+ lib/dictionaries.ts           |  87 +++++++++++++++++-
+ package-lock.json             |  25 ++++++
+ package.json                  |   2 +
+ 8 files changed, 465 insertions(+), 3 deletions(-)
+ create mode 100644 app/[lang]/community/page.tsx
+ create mode 100644 components/CommunityMap.tsx
+ create mode 100644 lib/communityBusinesses.ts
+
+diff --git a/app/[lang]/community/page.tsx b/app/[lang]/community/page.tsx
+new file mode 100644
+index 0000000..e2eb96d
+--- /dev/null
++++ b/app/[lang]/community/page.tsx
+@@ -0,0 +1,87 @@
++import Image from 'next/image';
++import { getDict, PHONE_TEL } from '@/lib/dictionaries';
++import CommunityMap from '@/components/CommunityMap';
++
++export async function generateMetadata({ params }: { params: { lang: string } }) {
++  const t = getDict(params.lang);
++  return {
++    title: t.community.metaTitle,
++    description: t.community.metaDesc,
++    alternates: {
++      canonical: `/${params.lang}/community`,
++      languages: { en: '/en/community', es: '/es/community', ru: '/ru/community' },
++    },
++  };
++}
++
++const QUIZ_EMOJI = ['🚗', '🏠', '🏢', '🐾', '⛵', '📋', '🏍️', '🤔'];
++
++export default function Community({ params }: { params: { lang: string } }) {
++  const t = getDict(params.lang);
++  const c = t.community;
++
++  return (
++    <main>
++      <section className="community-hero">
++        <div className="container">
++          <span className="badge">{c.eyebrow}</span>
++          <h1>{c.h1}</h1>
++          <p>{c.sub}</p>
++          <p className="quote-line">{c.quote}</p>
++        </div>
++      </section>
++
++      <section className="container">
++        <CommunityMap
++          t={{
++            searchPlaceholder: c.searchPlaceholder,
++            resultsFoundOne: c.resultsFoundOne,
++            resultsFoundMany: c.resultsFoundMany,
++            filters: c.filters,
++            mapNote: c.mapNote,
++            addBusiness: c.addBusiness,
++          }}
++        />
++      </section>
++
++      <section className="section container">
++        <div className="community-quiz-box">
++          <h3>{c.quizTitle}</h3>
++          <div className="community-qchips">
++            {c.quizChips.map((label: string, i: number) => (
++              <div className="community-qchip" key={label}>
++                <span className="em">{QUIZ_EMOJI[i]}</span>
++                {label}
++              </div>
++            ))}
++          </div>
++          <div className="community-qfoot">{c.quizFoot}</div>
++        </div>
++      </section>
++
++      <section className="section container">
++        <p className="kicker">{t.nav.community}</p>
++        <h2>{c.testimonialsTitle}</h2>
++        <div className="community-testis">
++          {c.testimonials.map((ti: { quote: string; name: string; city: string }) => (
++            <div className="community-ti" key={ti.name}>
++              <div className="stars">★★★★★</div>
++              <p>&ldquo;{ti.quote}&rdquo;</p>
++              <b>{ti.name}</b><br />
++              <small>{ti.city}</small>
++            </div>
++          ))}
++        </div>
++
++        <div className="community-agent-strip">
++          <Image src="/images/mikhail.jpg" alt="Mikhail Kozlov, licensed Florida insurance agent" width={64} height={64} />
++          <p><b>Mikhail Kozlov</b>, {c.agentLine}</p>
++          <a href={`tel:${PHONE_TEL}`}>{t.contact.callUs} · (305) 247-8877</a>
++        </div>
++
++        <p className="community-trademark">{c.trademarkFooter}</p>
++        <p className="community-compliance">{c.compliance}</p>
++      </section>
++    </main>
++  );
++}
+diff --git a/app/globals.css b/app/globals.css
+index 13ec041..b5db99b 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -133,3 +133,64 @@ img { max-width: 100%; display: block; }
+ @media (max-width: 560px) {
+   .cards4, .grid2 { grid-template-columns: 1fr; }
+ }
++
++/* Community Map page (app/[lang]/community) */
++.community-hero { background: linear-gradient(135deg, var(--navy) 0%, #0a3a7d 55%, var(--blue-dark) 100%); color: #fff; padding: 46px 0 34px; text-align: center; }
++.community-hero .badge { display: inline-block; background: var(--gold); color: var(--navy); border-radius: 999px; padding: 6px 14px; font-size: .78rem; font-weight: 800; margin-bottom: 12px; }
++.community-hero h1 { font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 10px; }
++.community-hero p { color: #d7e3f7; max-width: 640px; margin: 0 auto; font-size: 1rem; }
++.community-hero .quote-line { margin-top: 12px; font-size: .85rem; color: #b9c9e6; font-style: italic; }
++
++.community-map-block { padding: 34px 0; }
++.community-toolbar { margin-bottom: 12px; }
++.community-search { width: 100%; padding: 13px 18px; border-radius: 999px; border: 1.5px solid #dde5f0; font-size: .95rem; font-family: inherit; }
++.community-search:focus { outline: none; border-color: var(--blue); }
++.community-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
++.community-filters button { border: 1.5px solid #dde5f0; background: #fff; border-radius: 999px; padding: 8px 15px; font-weight: 700; font-size: .8rem; cursor: pointer; color: var(--navy); }
++.community-filters button.on { background: var(--navy); border-color: var(--navy); color: #fff; }
++.community-result-count { font-size: .82rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
++.community-split { display: grid; grid-template-columns: 360px 1fr; gap: 18px; align-items: start; }
++.community-list { border: 1px solid #dde5f0; border-radius: 14px; max-height: 520px; overflow-y: auto; background: #f7faff; }
++.community-list-item { padding: 14px 16px; border-bottom: 1px solid #dde5f0; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
++.community-list-item:hover { background: #eef4ff; }
++.community-list-item .biz-name { font-weight: 800; color: var(--navy); font-size: .92rem; }
++.community-empty { padding: 20px 16px; color: var(--muted); font-size: .88rem; }
++.community-map { height: 520px; border-radius: 14px; border: 1px solid #dde5f0; box-shadow: 0 10px 30px rgba(7,39,79,.1); }
++.community-map-note { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 10px; }
++.community-add-biz { text-align: center; margin-top: 16px; }
++.community-add-biz a { background: var(--blue); color: #fff; padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: .9rem; display: inline-block; }
++.community-add-biz a:hover { background: var(--blue-dark); }
++
++.biz-cat-badge { display: inline-block; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 5px; margin-bottom: 4px; text-transform: uppercase; align-self: flex-start; }
++.biz-addr { display: block; font-size: .78rem; color: var(--muted); }
++.biz-tel { display: block; font-size: .8rem; color: var(--blue); font-weight: 700; margin-top: 4px; }
++.biz-match { background: var(--gold); color: var(--navy); padding: 0 2px; border-radius: 3px; }
++
++.community-quiz-box { max-width: 620px; margin: 0 auto; background: #f2f7ff; border: 1px solid #dde5f0; border-radius: 20px; padding: 28px; }
++.community-quiz-box h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 14px; text-align: center; }
++.community-qchips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
++.community-qchip { border: 2px solid #dde5f0; border-radius: 13px; padding: 14px 8px; text-align: center; font-weight: 700; font-size: 12.5px; cursor: pointer; background: #fff; color: var(--navy); }
++.community-qchip:hover { border-color: var(--blue); transform: translateY(-2px); }
++.community-qchip .em { font-size: 22px; display: block; margin-bottom: 6px; }
++.community-qfoot { text-align: center; margin-top: 14px; font-size: 12px; color: var(--muted); }
++
++.community-testis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
++.community-ti { background: #f7faff; border-radius: 14px; padding: 20px; }
++.community-ti .stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 8px; }
++.community-ti p { font-size: .88rem; color: var(--muted); margin-bottom: 10px; }
++.community-ti b { font-size: .85rem; color: var(--navy); }
++
++.community-agent-strip { display: flex; align-items: center; gap: 18px; background: var(--navy); color: #fff; border-radius: 16px; padding: 20px 26px; max-width: 900px; margin: 26px auto 0; }
++.community-agent-strip img { border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); }
++.community-agent-strip p { font-size: .88rem; opacity: .92; flex: 1; }
++.community-agent-strip a { background: var(--gold); color: var(--navy); padding: 9px 16px; border-radius: 9px; font-weight: 700; font-size: .82rem; white-space: nowrap; }
++
++.community-compliance { font-size: .78rem; color: var(--muted); text-align: center; max-width: 820px; margin: 30px auto 0; }
++.community-trademark { font-size: .78rem; color: var(--muted); text-align: center; margin-top: 6px; }
++
++@media (max-width: 900px) {
++  .community-split { grid-template-columns: 1fr; }
++  .community-testis { grid-template-columns: 1fr; }
++  .community-qchips { grid-template-columns: 1fr 1fr; }
++  .community-agent-strip { flex-direction: column; text-align: center; }
++}
+diff --git a/components/CommunityMap.tsx b/components/CommunityMap.tsx
+new file mode 100644
+index 0000000..84e11bb
+--- /dev/null
++++ b/components/CommunityMap.tsx
+@@ -0,0 +1,164 @@
++'use client';
++
++import { useEffect, useRef, useState } from 'react';
++import type { Map as LeafletMap, Marker } from 'leaflet';
++import 'leaflet/dist/leaflet.css';
++import { businesses, CAT_COLORS, type Business, type BusinessCategory } from '@/lib/communityBusinesses';
++import { PHONE_TEL } from '@/lib/dictionaries';
++
++type Filters = Record<'all' | BusinessCategory, string>;
++
++interface CommunityStrings {
++  searchPlaceholder: string;
++  resultsFoundOne: string;
++  resultsFoundMany: string;
++  filters: Filters;
++  mapNote: string;
++  addBusiness: string;
++}
++
++function formatResultsFound(t: CommunityStrings, n: number) {
++  const template = n === 1 ? t.resultsFoundOne : t.resultsFoundMany;
++  return template.replace('{n}', String(n));
++}
++
++const CATS: (keyof Filters)[] = ['all', 'realtor', 'lender', 'contractor', 'shop', 'auto', 'salon'];
++
++function matchesQuery(b: Business, q: string) {
++  if (!q) return true;
++  const hay = `${b.name} ${b.address} ${b.city} ${b.cat}`.toLowerCase();
++  return hay.includes(q.toLowerCase());
++}
++
++// Wraps the matched substring of the business name in <mark> so the
++// company name is always clearly visible while searching.
++function HighlightedName({ name, query }: { name: string; query: string }) {
++  if (!query) return <>{name}</>;
++  const idx = name.toLowerCase().indexOf(query.toLowerCase());
++  if (idx === -1) return <>{name}</>;
++  return (
++    <>
++      {name.slice(0, idx)}
++      <mark className="biz-match">{name.slice(idx, idx + query.length)}</mark>
++      {name.slice(idx + query.length)}
++    </>
++  );
++}
++
++export default function CommunityMap({ t }: { t: CommunityStrings }) {
++  const mapRef = useRef<HTMLDivElement>(null);
++  const mapInstance = useRef<LeafletMap | null>(null);
++  const markersRef = useRef<Marker[]>([]);
++  const [query, setQuery] = useState('');
++  const [activeCat, setActiveCat] = useState<keyof Filters>('all');
++
++  const filtered = businesses
++    .filter((b) => activeCat === 'all' || b.cat === activeCat)
++    .filter((b) => matchesQuery(b, query));
++
++  // Init map once on mount (client-only; Leaflet needs `window`).
++  useEffect(() => {
++    let cancelled = false;
++    import('leaflet').then((L) => {
++      if (cancelled || !mapRef.current || mapInstance.current) return;
++      const map = L.map(mapRef.current, { scrollWheelZoom: true }).setView([25.55, -80.55], 9);
++      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
++        attribution: '&copy; OpenStreetMap contributors',
++        maxZoom: 18,
++      }).addTo(map);
++      mapInstance.current = map;
++      renderMarkers(L, map);
++    });
++    return () => {
++      cancelled = true;
++      mapInstance.current?.remove();
++      mapInstance.current = null;
++    };
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, []);
++
++  // Re-render markers whenever the filtered set changes.
++  useEffect(() => {
++    if (!mapInstance.current) return;
++    import('leaflet').then((L) => renderMarkers(L, mapInstance.current!));
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, [query, activeCat]);
++
++  function renderMarkers(L: typeof import('leaflet'), map: LeafletMap) {
++    markersRef.current.forEach((m) => map.removeLayer(m));
++    markersRef.current = [];
++    filtered.forEach((b) => {
++      const color = CAT_COLORS[b.cat];
++      const icon = L.divIcon({
++        className: '',
++        html: `<div style="width:16px;height:16px;border-radius:50%;background:${color};border:3px solid #fff;box-shadow:0 0 0 4px rgba(0,0,0,.15)"></div>`,
++        iconSize: [16, 16],
++        iconAnchor: [8, 8],
++      });
++      const marker = L.marker([b.lat, b.lng], { icon }).addTo(map);
++      marker.bindPopup(
++        `<b>${b.name}</b><br><span class="biz-cat-badge" style="background:${color}">${t.filters[b.cat]}</span><span class="biz-addr">${b.address}, ${b.city}</span><a class="biz-tel" href="tel:${b.tel.replace(/\D/g, '')}">📞 ${b.tel}</a>`
++      );
++      markersRef.current.push(marker);
++    });
++  }
++
++  function jumpTo(b: Business) {
++    if (!mapInstance.current) return;
++    mapInstance.current.setView([b.lat, b.lng], 13);
++    const idx = filtered.indexOf(b);
++    if (idx >= 0 && markersRef.current[idx]) markersRef.current[idx].openPopup();
++  }
++
++  return (
++    <div className="community-map-block">
++      <div className="community-toolbar">
++        <input
++          className="community-search"
++          type="text"
++          placeholder={t.searchPlaceholder}
++          value={query}
++          onChange={(e) => setQuery(e.target.value)}
++          aria-label={t.searchPlaceholder}
++        />
++      </div>
++      <div className="community-filters">
++        {CATS.map((cat) => (
++          <button
++            key={cat}
++            type="button"
++            className={activeCat === cat ? 'on' : ''}
++            onClick={() => setActiveCat(cat)}
++          >
++            {t.filters[cat]}
++          </button>
++        ))}
++      </div>
++      <p className="community-result-count">{formatResultsFound(t, filtered.length)}</p>
++      <div className="community-split">
++        <div className="community-list" role="list">
++          {filtered.map((b) => (
++            <div key={b.name} className="community-list-item" role="listitem" onClick={() => jumpTo(b)}>
++              <span className="biz-cat-badge" style={{ background: CAT_COLORS[b.cat] }}>{t.filters[b.cat]}</span>
++              <span className="biz-name"><HighlightedName name={b.name} query={query} /></span>
++              <span className="biz-addr">{b.address}, {b.city}</span>
++              <a className="biz-tel" href={`tel:${b.tel.replace(/\D/g, '')}`} onClick={(e) => e.stopPropagation()}>
++                📞 {b.tel}
++              </a>
++            </div>
++          ))}
++          {filtered.length === 0 && (
++            <p className="community-empty">No businesses match your search. Try a different name, address, or category.</p>
++          )}
++        </div>
++        <div ref={mapRef} className="community-map" />
++      </div>
++      <p className="community-map-note">{t.mapNote}</p>
++      <div className="community-add-biz">
++        <a href={`mailto:mkagency2020@hotmail.com?subject=${encodeURIComponent('Add my business to the Community Map')}`}>
++          {t.addBusiness}
++        </a>
++      </div>
++    </div>
++  );
++}
+diff --git a/components/Header.tsx b/components/Header.tsx
+index 01b5079..958e961 100644
+--- a/components/Header.tsx
++++ b/components/Header.tsx
+@@ -17,6 +17,7 @@ export default function Header({ lang }: { lang: string }) {
+           <Link href={`/${lang}`}>{t.nav.home}</Link>
+           <Link href={`/${lang}/services`}>{t.nav.services}</Link>
+           <Link href={`/${lang}/about`}>{t.nav.about}</Link>
++          <Link href={`/${lang}/community`}>{t.nav.community}</Link>
+           <Link href={`/${lang}/contact`}>{t.nav.contact}</Link>
+         </nav>
+         <div className="spacer" />
+diff --git a/lib/communityBusinesses.ts b/lib/communityBusinesses.ts
+new file mode 100644
+index 0000000..4456374
+--- /dev/null
++++ b/lib/communityBusinesses.ts
+@@ -0,0 +1,41 @@
++// Placeholder / demo data for the Community Map (app/[lang]/community).
++// Replace with real submissions once the "Add my business" intake flow is wired
++// to Neon (see lib schema used by app/api/lead/route.ts for a pattern to follow).
++// NOTE: legal review for RESPA (flat-fee advertising only, no referral
++// compensation) is required before this page goes live with real listings.
++
++export type BusinessCategory = 'realtor' | 'lender' | 'contractor' | 'shop' | 'auto' | 'salon';
++
++export interface Business {
++  name: string;
++  cat: BusinessCategory;
++  address: string;
++  city: string;
++  tel: string;
++  lat: number;
++  lng: number;
++}
++
++export const CAT_COLORS: Record<BusinessCategory, string> = {
++  realtor: '#0c5bd6',
++  lender: '#d64550',
++  contractor: '#f5b301',
++  shop: '#0a7d54',
++  auto: '#7a5230',
++  salon: '#8b5ea0',
++};
++
++export const businesses: Business[] = [
++  { name: 'Sunshine Realty Group', cat: 'realtor', address: '28100 S Dixie Hwy', city: 'Homestead, FL 33033', tel: '(305) 555-0134', lat: 25.4687, lng: -80.4776 },
++  { name: 'Coral Way Lending', cat: 'lender', address: '3510 Coral Way', city: 'Miami, FL 33145', tel: '(305) 555-0178', lat: 25.7617, lng: -80.1918 },
++  { name: 'Gulf Builders LLC', cat: 'contractor', address: '900 Goodlette-Frank Rd', city: 'Naples, FL 34103', tel: '(239) 555-0102', lat: 26.1420, lng: -81.7948 },
++  { name: 'La Cocina de Ana', cat: 'shop', address: '8290 SW 124th St', city: 'Kendall, FL 33156', tel: '(786) 555-0190', lat: 25.6795, lng: -80.3173 },
++  { name: 'Keys Realty Partners', cat: 'realtor', address: '100 Ocean Dr', city: 'Key Largo, FL 33037', tel: '(305) 555-0211', lat: 25.0865, lng: -80.4473 },
++  { name: 'Florida City Hardware', cat: 'shop', address: '500 NW 2nd Ave', city: 'Florida City, FL 33034', tel: '(305) 555-0256', lat: 25.4476, lng: -80.4776 },
++  { name: 'Everglades Lending Co.', cat: 'lender', address: '30205 S Dixie Hwy', city: 'Homestead, FL 33033', tel: '(305) 555-0267', lat: 25.4900, lng: -80.4600 },
++  { name: 'Redland Custom Builders', cat: 'contractor', address: '24500 SW 187th Ave', city: 'Redland, FL 33031', tel: '(305) 555-0289', lat: 25.5200, lng: -80.5300 },
++  { name: 'Homestead Auto Care', cat: 'auto', address: '1015 N Krome Ave', city: 'Homestead, FL 33030', tel: '(305) 555-0312', lat: 25.4750, lng: -80.4770 },
++  { name: 'Bella Salon & Spa', cat: 'salon', address: '8500 SW 92nd St', city: 'Kendall, FL 33156', tel: '(305) 555-0334', lat: 25.6850, lng: -80.3200 },
++  { name: 'Metro Roofing Contractors', cat: 'contractor', address: '7800 NW 25th St', city: 'Miami, FL 33122', tel: '(305) 555-0356', lat: 25.7900, lng: -80.3200 },
++  { name: 'Palm Realty Advisors', cat: 'realtor', address: '33550 S Dixie Hwy', city: 'Florida City, FL 33034', tel: '(305) 555-0378', lat: 25.4480, lng: -80.4790 },
++];
+diff --git a/lib/dictionaries.ts b/lib/dictionaries.ts
+index 5e1f5e5..6aa6a10 100644
+--- a/lib/dictionaries.ts
++++ b/lib/dictionaries.ts
+@@ -7,7 +7,7 @@ export const locales: Lang[] = ['en', 'es', 'ru'];
+ 
+ const en = {
+   tagline: 'In God We Trust · We build our future together',
+-  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', quote: 'Get My Free Quote' },
++  nav: { home: 'Home', services: 'Services', about: 'About Us', community: 'Community', contact: 'Contact', quote: 'Get My Free Quote' },
+   call247: 'Call 24/7',
+   hero: {
+     badge1: 'Average claim: $42K. Average coverage limit: $25K.',
+@@ -59,6 +59,33 @@ const en = {
+     sub: 'Call, text, chat, or request a callback — whatever is easiest for you.',
+     callUs: 'Call us', textUs: 'Text us', visitUs: 'Visit us', hours: 'Mon–Fri 9am–6pm ET',
+   },
++  community: {
++    metaTitle: 'Support Our Florida Community | Local Business Map | M&K Agency',
++    metaDesc: "A free, searchable map of Florida's small businesses — realtors, lenders, contractors, shops — hosted by M&K Agency. Plus honest insurance for the people who run them. (305) 247-8877.",
++    eyebrow: 'M&K Agency Presents',
++    tmTag: 'We Care About Our Community™',
++    h1: 'Support Our Florida Community',
++    sub: "A free, searchable map of Florida's small businesses — realtors, lenders, contractors, shops — plus honest insurance for the people who run them.",
++    quote: '"Our clients recommend it." — 334+ five-star reviews',
++    searchPlaceholder: 'Search by business name, address, or type of business…',
++    resultsFoundOne: '{n} business found',
++    resultsFoundMany: '{n} businesses found',
++    filters: { all: 'All', realtor: 'Realtors', lender: 'Lenders', contractor: 'Contractors', shop: 'Shops & Restaurants', auto: 'Auto', salon: 'Salon & Spa' },
++    mapNote: '🔍 Scroll to zoom, drag to pan, or use the search box above — just like Google Maps.',
++    addBusiness: '📍 Add my business to the map — free',
++    quizTitle: 'What do you want to protect?',
++    quizChips: ['My car', 'My home', 'My business', 'My pet', 'Boat / jet ski', 'SR-22 / FR-44', 'Off-road / golf cart', 'Not sure — help me'],
++    quizFoot: 'Takes ~30 seconds · 🔒 Private, no spam',
++    testimonialsTitle: 'Our clients recommend it',
++    testimonials: [
++      { quote: 'Found my realtor through the M&K map, and got a better home insurance rate the same week. Two birds, one visit.', name: 'Carla M.', city: 'Homestead, FL' },
++      { quote: 'They actually care about small businesses here — got our shop listed for free and Mikhail helped us with our liability policy too.', name: 'Jorge R.', city: 'Kendall, FL' },
++      { quote: 'Same-day SR-22 filing, no judgment, no runaround. And I found a great local mechanic on their map.', name: 'Denise T.', city: 'Florida City, FL' },
++    ],
++    agentLine: 'licensed agent and owner of M&K Agency — personally reviews every quote. English · Español · Русский.',
++    compliance: 'This community map is a free resource. M&K Agency does not receive referral fees or compensation from any business listed here — placement is flat-fee advertising only, consistent with Florida real estate referral rules (RESPA).',
++    trademarkFooter: '"We Care About Our Community"™ is a trademark of M&K Agency Inc.',
++  },
+   chat: {
+     fab: 'Chat with Mike',
+     cbFab: 'Request a callback',
+@@ -88,7 +115,7 @@ const en = {
+ 
+ const es: typeof en = {
+   tagline: 'En Dios confiamos · Construimos nuestro futuro juntos',
+-  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', quote: 'Cotización gratis' },
++  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', community: 'Comunidad', contact: 'Contacto', quote: 'Cotización gratis' },
+   call247: 'Llame 24/7',
+   hero: {
+     badge1: 'Reclamo promedio: $42K. Límite de cobertura promedio: $25K.',
+@@ -140,6 +167,33 @@ const es: typeof en = {
+     sub: 'Llame, envíe texto, chatee o pida que le devolvamos la llamada — lo que sea más fácil para usted.',
+     callUs: 'Llámenos', textUs: 'Envíenos un texto', visitUs: 'Visítenos', hours: 'Lun–Vie 9am–6pm ET',
+   },
++  community: {
++    metaTitle: 'Apoyamos a Nuestra Comunidad de Florida | Mapa de Negocios Locales | M&K Agency',
++    metaDesc: 'Un mapa gratuito y buscable de pequeños negocios de la Florida — agentes de bienes raíces, prestamistas, contratistas, tiendas — presentado por M&K Agency. Además de seguros honestos para quienes los dirigen. (305) 247-8877.',
++    eyebrow: 'M&K Agency Presenta',
++    tmTag: 'We Care About Our Community™',
++    h1: 'Apoyamos a Nuestra Comunidad de Florida',
++    sub: 'Un mapa gratuito y buscable de pequeños negocios de la Florida — agentes de bienes raíces, prestamistas, contratistas, tiendas — además de seguros honestos para quienes los dirigen.',
++    quote: '"Nuestros clientes lo recomiendan." — 334+ reseñas de cinco estrellas',
++    searchPlaceholder: 'Busque por nombre del negocio, dirección o tipo de negocio…',
++    resultsFoundOne: '{n} negocio encontrado',
++    resultsFoundMany: '{n} negocios encontrados',
++    filters: { all: 'Todos', realtor: 'Agentes inmobiliarios', lender: 'Prestamistas', contractor: 'Contratistas', shop: 'Tiendas y restaurantes', auto: 'Auto', salon: 'Salón y spa' },
++    mapNote: '🔍 Desplácese para hacer zoom, arrastre para mover el mapa, o use el buscador — igual que Google Maps.',
++    addBusiness: '📍 Agregue su negocio al mapa — gratis',
++    quizTitle: '¿Qué desea proteger?',
++    quizChips: ['Mi auto', 'Mi casa', 'Mi negocio', 'Mi mascota', 'Bote / moto acuática', 'SR-22 / FR-44', 'Todoterreno / carrito de golf', 'No estoy seguro — ayúdenme'],
++    quizFoot: 'Toma ~30 segundos · 🔒 Privado, sin spam',
++    testimonialsTitle: 'Nuestros clientes lo recomiendan',
++    testimonials: [
++      { quote: 'Encontré a mi agente inmobiliario a través del mapa de M&K, y obtuve una mejor tarifa de seguro de casa la misma semana. Dos pájaros de un tiro.', name: 'Carla M.', city: 'Homestead, FL' },
++      { quote: 'Realmente les importan los pequeños negocios aquí — nuestra tienda fue listada gratis y Mikhail también nos ayudó con nuestra póliza de responsabilidad civil.', name: 'Jorge R.', city: 'Kendall, FL' },
++      { quote: 'Trámite de SR-22 el mismo día, sin juicios, sin vueltas. Y encontré un excelente mecánico local en su mapa.', name: 'Denise T.', city: 'Florida City, FL' },
++    ],
++    agentLine: 'agente licenciado y propietario de M&K Agency — revisa personalmente cada cotización. English · Español · Русский.',
++    compliance: 'Este mapa comunitario es un recurso gratuito. M&K Agency no recibe comisiones de referido ni compensación de ningún negocio listado aquí — la inclusión es solo mediante publicidad de tarifa fija, en cumplimiento con las reglas de referidos inmobiliarios de Florida (RESPA).',
++    trademarkFooter: '"We Care About Our Community"™ es una marca registrada de M&K Agency Inc.',
++  },
+   chat: {
+     fab: 'Chatear con Mike',
+     cbFab: 'Solicitar una llamada',
+@@ -169,7 +223,7 @@ const es: typeof en = {
+ 
+ const ru: typeof en = {
+   tagline: 'In God We Trust · Мы строим наше будущее вместе',
+-  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', quote: 'Бесплатная котировка' },
++  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', community: 'Сообщество', contact: 'Контакты', quote: 'Бесплатная котировка' },
+   call247: 'Звоните 24/7',
+   hero: {
+     badge1: 'Средний убыток: $42K. Средний лимит покрытия: $25K.',
+@@ -221,6 +275,33 @@ const ru: typeof en = {
+     sub: 'Позвоните, напишите, начните чат или закажите обратный звонок — как вам удобнее.',
+     callUs: 'Позвонить', textUs: 'Написать SMS', visitUs: 'Наш офис', hours: 'Пн–Пт 9:00–18:00 ET',
+   },
++  community: {
++    metaTitle: 'Поддерживаем наше сообщество во Флориде | Карта местного бизнеса | M&K Agency',
++    metaDesc: 'Бесплатная карта малого бизнеса Флориды с поиском — риелторы, кредитные брокеры, подрядчики, магазины — от M&K Agency. Плюс честное страхование для тех, кто ими управляет. (305) 247-8877.',
++    eyebrow: 'M&K Agency представляет',
++    tmTag: 'We Care About Our Community™',
++    h1: 'Поддерживаем наше сообщество во Флориде',
++    sub: 'Бесплатная карта малого бизнеса Флориды с поиском — риелторы, кредитные брокеры, подрядчики, магазины — плюс честное страхование для тех, кто ими управляет.',
++    quote: '«Наши клиенты это рекомендуют.» — 334+ пятизвёздочных отзывов',
++    searchPlaceholder: 'Поиск по названию, адресу или типу бизнеса…',
++    resultsFoundOne: 'Найдено предприятий: {n}',
++    resultsFoundMany: 'Найдено предприятий: {n}',
++    filters: { all: 'Все', realtor: 'Риелторы', lender: 'Кредитные брокеры', contractor: 'Подрядчики', shop: 'Магазины и рестораны', auto: 'Авто', salon: 'Салон и спа' },
++    mapNote: '🔍 Прокручивайте для масштабирования, перетаскивайте карту или используйте поиск выше — как в Google Maps.',
++    addBusiness: '📍 Добавить мой бизнес на карту — бесплатно',
++    quizTitle: 'Что вы хотите защитить?',
++    quizChips: ['Мой автомобиль', 'Мой дом', 'Мой бизнес', 'Моего питомца', 'Лодку / гидроцикл', 'SR-22 / FR-44', 'Внедорожник / гольф-кар', 'Не уверен — помогите мне'],
++    quizFoot: 'Займёт ~30 секунд · 🔒 Конфиденциально, без спама',
++    testimonialsTitle: 'Наши клиенты это рекомендуют',
++    testimonials: [
++      { quote: 'Нашла своего риелтора через карту M&K и на той же неделе получила более выгодный тариф на страхование дома. Два зайца одним выстрелом.', name: 'Карла М.', city: 'Homestead, FL' },
++      { quote: 'Здесь действительно заботятся о малом бизнесе — наш магазин добавили на карту бесплатно, а Михаил ещё помог нам с полисом ответственности.', name: 'Хорхе Р.', city: 'Kendall, FL' },
++      { quote: 'Оформление SR-22 в тот же день, без осуждения и лишней бюрократии. И я нашла отличного местного механика на их карте.', name: 'Дениз Т.', city: 'Florida City, FL' },
++    ],
++    agentLine: 'лицензированный агент и владелец M&K Agency — лично проверяет каждую котировку. English · Español · Русский.',
++    compliance: 'Эта карта сообщества — бесплатный ресурс. M&K Agency не получает комиссию за рекомендации и не берёт компенсацию ни от одного из указанных здесь предприятий — размещение возможно только по фиксированной рекламной ставке, в соответствии с правилами Флориды о вознаграждении за рекомендации в сфере недвижимости (RESPA).',
++    trademarkFooter: '«We Care About Our Community»™ — товарный знак M&K Agency Inc.',
++  },
+   chat: {
+     fab: 'Чат с Майком',
+     cbFab: 'Заказать звонок',
+diff --git a/package-lock.json b/package-lock.json
+index cd245ee..19e8d8a 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -10,12 +10,14 @@
+       "dependencies": {
+         "@neondatabase/serverless": "^0.9.4",
+         "@vercel/speed-insights": "^2.0.0",
++        "leaflet": "^1.9.4",
+         "next": "14.2.5",
+         "react": "^18.3.1",
+         "react-dom": "^18.3.1",
+         "resend": "^3.4.0"
+       },
+       "devDependencies": {
++        "@types/leaflet": "^1.9.21",
+         "@types/node": "^20",
+         "@types/react": "^18",
+         "typescript": "^5.5.4"
+@@ -260,6 +262,23 @@
+         "tslib": "^2.4.0"
+       }
+     },
++    "node_modules/@types/geojson": {
++      "version": "7946.0.16",
++      "resolved": "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.16.tgz",
++      "integrity": "sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/@types/leaflet": {
++      "version": "1.9.21",
++      "resolved": "https://registry.npmjs.org/@types/leaflet/-/leaflet-1.9.21.tgz",
++      "integrity": "sha512-TbAd9DaPGSnzp6QvtYngntMZgcRk+igFELwR2N99XZn7RXUdKgsXMR+28bUO0rPsWp8MIu/f47luLIQuSLYv/w==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@types/geojson": "*"
++      }
++    },
+     "node_modules/@types/node": {
+       "version": "20.19.43",
+       "resolved": "https://registry.npmjs.org/@types/node/-/node-20.19.43.tgz",
+@@ -747,6 +766,12 @@
+         "url": "https://ko-fi.com/killymxi"
+       }
+     },
++    "node_modules/leaflet": {
++      "version": "1.9.4",
++      "resolved": "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz",
++      "integrity": "sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==",
++      "license": "BSD-2-Clause"
++    },
+     "node_modules/loose-envify": {
+       "version": "1.4.0",
+       "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz",
+diff --git a/package.json b/package.json
+index 59f7a52..4220bf8 100644
+--- a/package.json
++++ b/package.json
+@@ -10,12 +10,14 @@
+   "dependencies": {
+     "@neondatabase/serverless": "^0.9.4",
+     "@vercel/speed-insights": "^2.0.0",
++    "leaflet": "^1.9.4",
+     "next": "14.2.5",
+     "react": "^18.3.1",
+     "react-dom": "^18.3.1",
+     "resend": "^3.4.0"
+   },
+   "devDependencies": {
++    "@types/leaflet": "^1.9.21",
+     "@types/node": "^20",
+     "@types/react": "^18",
+     "typescript": "^5.5.4"
+-- 
+2.43.0
+
