@@ -31,16 +31,16 @@ export const referralBusinesses: ReferralBusiness[] = [
     description: 'Residential real estate serving South Miami-Dade families.',
   },
   {
-    slug: 'example-auto-repair',
-    name: 'Example Auto Repair',
-    category: 'Auto Repair',
+    slug: 'example-home-inspection',
+    name: 'Example Home Inspection',
+    category: 'Home Inspection',
     address: '200 W Mowry Dr',
     city: 'Homestead, FL',
     zip: '33030',
     lat: 25.4687,
     lng: -80.4776,
     phone: '(305) 555-0178',
-    description: 'Family-owned auto repair shop, honest pricing.',
+    description: 'Thorough, honest 4-point and wind mitigation inspections.',
   },
 ];
 
@@ -49,7 +49,6 @@ export const CATEGORIES = [
   'Realtor',
   'Contractor',
   'Home Inspection',
-  'Auto Repair',
   'Restaurant',
   'Retail',
   'Home Services',
