@@ -17,16 +17,15 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     metadataBase: new URL(base),
     title: t.meta.title,
     description: t.meta.desc,
-    alternates: {
-      canonical: `/${params.lang}`,
-      languages: { en: '/en', es: '/es', ru: '/ru', 'x-default': '/en' },
-    },
     openGraph: {
       title: t.meta.title,
       description: t.meta.desc,
       type: 'website',
-      locale: params.lang,
+      siteName: 'M&K Agency Inc.',
+      locale: ({ en: 'en_US', es: 'es_US', ru: 'ru_RU' } as Record<string, string>)[params.lang] ?? 'en_US',
+      images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'M&K Agency — Florida Insurance: Auto, Home, Commercial' }],
     },
+    twitter: { card: 'summary_large_image', images: ['/og.jpg'] },
   };
 }
 

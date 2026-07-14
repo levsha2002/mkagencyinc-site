@@ -1,8 +1,9 @@
 import { referralRules } from '@/lib/legal-content';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const lang = (params.lang as 'en' | 'es' | 'ru') in referralRules ? (params.lang as 'en' | 'es' | 'ru') : 'en';
-  return { title: `${referralRules[lang].title} | M&K Agency` };
+  return { title: `${referralRules[lang].title} | M&K Agency`, alternates: buildAlternates(params.lang, '/referral/rules') };
 }
 
 export default function ReferralRulesPage({ params }: { params: { lang: string } }) {

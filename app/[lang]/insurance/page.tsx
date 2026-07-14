@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getProductsByCategory } from '@/lib/insurance-products';
 import InsuranceCategoryNav from '@/components/InsuranceCategoryNav';
+import { buildAlternates } from '@/lib/seo';
 
 const CATEGORIES: {
   key: 'auto' | 'home' | 'commercial' | 'life' | 'specialty';
@@ -14,11 +15,12 @@ const CATEGORIES: {
   { key: 'specialty', title: 'Other Private Insurance', icon: '⛵' },
 ];
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: { lang: string } }) {
   return {
     title: 'Insurance Services | M&K Agency, Florida',
     description:
       'Auto, home, commercial, life, and specialty insurance coverage options from M&K Agency — serving all of Florida.',
+    alternates: buildAlternates(params.lang, '/insurance'),
   };
 }
 

@@ -1,9 +1,10 @@
 import { termsOfService } from '@/lib/legal-content';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const lang = (params.lang as 'en' | 'es' | 'ru') in termsOfService ? (params.lang as 'en' | 'es' | 'ru') : 'en';
   const doc = termsOfService[lang];
-  return { title: `${doc.title} | M&K Agency` };
+  return { title: `${doc.title} | M&K Agency`, alternates: buildAlternates(params.lang, '/terms') };
 }
 
 export default function TermsPage({ params }: { params: { lang: string } }) {

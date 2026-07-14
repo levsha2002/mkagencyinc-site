@@ -1,16 +1,14 @@
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import AgentAvatars from '@/components/AgentAvatars';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
   return {
     title: t.contact.metaTitle,
     description: t.contact.metaDesc,
-    alternates: {
-      canonical: `/${params.lang}/contact`,
-      languages: { en: '/en/contact', es: '/es/contact', ru: '/ru/contact' },
-    },
+    alternates: buildAlternates(params.lang, '/contact'),
   };
 }
 

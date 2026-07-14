@@ -1,5 +1,0 @@
-import { redirect } from 'next/navigation';
-
-export default function AboutRedirect({ params }: { params: { lang: string } }) {
-  redirect(`/${params.lang}/team`);
-}

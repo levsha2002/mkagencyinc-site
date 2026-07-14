@@ -1,11 +1,13 @@
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
   return {
     title: t.metaTitle,
     description: t.metaDesc,
+    alternates: buildAlternates(params.lang, '/team'),
   };
 }
 

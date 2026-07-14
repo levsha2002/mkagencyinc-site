@@ -1,6 +1,16 @@
 import Link from 'next/link';
 import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import { buildAlternates } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: { lang: string } }) {
+  const t = getDict(params.lang);
+  return {
+    title: t.meta.title,
+    description: t.meta.desc,
+    alternates: buildAlternates(params.lang, ''),
+  };
+}
 
 const meet: Record<string, Record<string, string>> = {
   en: {

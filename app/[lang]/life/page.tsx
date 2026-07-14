@@ -1,11 +1,13 @@
 import { getDict } from '@/lib/dictionaries';
 import LifeGallery from '@/components/LifeGallery';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).life;
   return {
     title: t.metaTitle,
     description: t.metaDesc,
+    alternates: buildAlternates(params.lang, '/life'),
   };
 }
 

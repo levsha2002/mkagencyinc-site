@@ -4,17 +4,19 @@ import { notFound } from 'next/navigation';
 import { insuranceProducts, getProductBySlug } from '@/lib/insurance-products';
 import InsuranceQuoteForm from '@/components/InsuranceQuoteForm';
 import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { lang: string; slug: string } }) {
   const product = getProductBySlug(params.slug);
   if (!product) return {};
   return {
     title: `${product.title} | M&K Agency, Florida`,
     description: product.shortIntro,
+    alternates: buildAlternates(params.lang, `/insurance/${params.slug}`),
   };
 }
 

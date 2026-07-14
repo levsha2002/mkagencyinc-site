@@ -2,12 +2,14 @@ import Link from 'next/link';
 import { getDict } from '@/lib/dictionaries';
 import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
+import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).referral;
   return {
     title: `${t.heroTitle} | M&K Agency, Florida`,
     description: t.heroSub,
+    alternates: buildAlternates(params.lang, '/referral'),
   };
 }
 
