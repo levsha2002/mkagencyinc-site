@@ -17,6 +17,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     metadataBase: new URL(base),
     title: t.meta.title,
     description: t.meta.desc,
+    verification: {
+      google: 'staOoPCHQsMrcss7DijPAzbyaZXmepRi4eTf62-zvQI',
+    },
     openGraph: {
       title: t.meta.title,
       description: t.meta.desc,
