@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '', priority: 1 },
     { path: '/insurance', priority: 0.9 },
     { path: '/quote', priority: 0.9 },
+    { path: '/car-insurance-florida-city', priority: 0.9 },
     { path: '/team', priority: 0.7 },
     { path: '/contact', priority: 0.8 },
     { path: '/life', priority: 0.5 },
