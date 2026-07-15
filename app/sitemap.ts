@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/motorcycle-insurance-florida-city', priority: 0.9 },
     { path: '/classic-car-insurance-florida-city', priority: 0.9 },
     { path: '/homeowners-insurance-florida-city', priority: 0.9 },
+    { path: '/new-construction-home-insurance-florida', priority: 0.9 },
     { path: '/team', priority: 0.7 },
     { path: '/contact', priority: 0.8 },
     { path: '/life', priority: 0.5 },
