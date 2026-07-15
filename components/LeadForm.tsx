@@ -28,13 +28,17 @@ export default function LeadForm({ lang }: { lang: string }) {
       });
       if (res.ok) {
         setStatus('ok');
-        // Google Ads / GA4 lead event — fires on every successful form submit.
-        // NOTE: this is a generic "generate_lead" signal, not yet a counted
-        // Google Ads "Conversion". Once we have the specific conversion
-        // label (AW-18321801016/xxxxxxxxxx) from Tools & Settings ->
-        // Conversions in Google Ads, swap the send_to value below to make
-        // this show up as a real Conversion with cost-per-lead reporting.
+        // Fires on every successful form submit.
         if (typeof window !== 'undefined' && window.gtag) {
+          // 1) Google Ads conversion — this is what makes the submission
+          // count as a "Conversion" (with cost-per-lead reporting) in
+          // Google Ads, tied to the "Submit lead form" action created in
+          // Conversions -> Summary.
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-18321801016/-1BtCL2Fj9EcELj-waBE',
+          });
+          // 2) Generic GA4-style signal, kept for broader analytics/event
+          // history (not required for Google Ads conversion counting).
           window.gtag('event', 'generate_lead', {
             currency: 'USD',
             value: 1,
