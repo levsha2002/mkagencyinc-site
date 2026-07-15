@@ -41,7 +41,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     shortIntro: 'For vehicles used for work — deliveries, service calls, hauling equipment, or transporting goods.',
     article: [
       "If you use your vehicle for anything beyond a personal commute — deliveries, client visits, hauling tools or inventory — a personal auto policy typically won't cover a claim that happens during business use. Commercial use coverage closes that gap.",
-      'We work with carriers who understand small business realities in Florida, from single-vehicle operators to small fleets.',
+      'We understand small business realities in Florida, from single-vehicle operators to small fleets, and help you find coverage that actually fits how you use your vehicle.',
     ],
     coverageHighlights: [
       'Liability coverage for business-use driving',
