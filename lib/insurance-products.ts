@@ -356,7 +356,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     title: 'Motorcycle Insurance',
     shortIntro: "Coverage built around how you actually ride — from a daily-commute standard bike to a collector's vintage classic.",
     article: [
-      "Motorcycle insurance isn't one-size-fits-all. A supersport bike built for the track carries a very different risk profile than a touring bike built for cross-country comfort, and carriers price coverage accordingly. We shop multiple A-rated carriers to match your specific bike, riding style, and experience level to the right policy.",
+      "Motorcycle insurance isn't one-size-fits-all. A supersport bike built for the track carries a very different risk profile than a touring bike built for cross-country comfort, and pricing reflects that. We review your specific bike, riding style, and experience level closely to find the right policy at a fair price.",
       "Whichever you ride, we'll help you find liability, collision, and comprehensive coverage at a fair price — including gear, accessory, and custom parts coverage on many policies.",
     ],
     coverageHighlights: [
