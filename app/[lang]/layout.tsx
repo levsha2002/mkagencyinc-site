@@ -1,4 +1,5 @@
 import '../globals.css';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getDict, locales, PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import Header from '@/components/Header';
@@ -69,7 +70,12 @@ export default function RootLayout({
         <Footer lang={params.lang} />
         <ChatWidget lang={params.lang} />
         <TalkNowWidget lang={params.lang} />
-        {process.env.NODE_ENV === 'production' && <SpeedInsights />}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );
