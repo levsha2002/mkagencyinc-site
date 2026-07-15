@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import { getDict } from '@/lib/dictionaries';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function LeadForm({ lang }: { lang: string }) {
   const t = getDict(lang).form;
   const [formData, setFormData] = useState({
@@ -22,6 +28,19 @@ export default function LeadForm({ lang }: { lang: string }) {
       });
       if (res.ok) {
         setStatus('ok');
+        // Google Ads / GA4 lead event — fires on every successful form submit.
+        // NOTE: this is a generic "generate_lead" signal, not yet a counted
+        // Google Ads "Conversion". Once we have the specific conversion
+        // label (AW-18321801016/xxxxxxxxxx) from Tools & Settings ->
+        // Conversions in Google Ads, swap the send_to value below to make
+        // this show up as a real Conversion with cost-per-lead reporting.
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'generate_lead', {
+            currency: 'USD',
+            value: 1,
+            insurance_type: formData.insurance_type,
+          });
+        }
         setFormData({ insurance_type: 'Auto', zip_code: '', name: '', phone: '', email: '', message: '' });
         setConsent(false);
       } else setStatus('err');
@@ -34,8 +53,8 @@ export default function LeadForm({ lang }: { lang: string }) {
       <p className="sub">{t.sub}</p>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label>{t.need}</label>
-          <select value={formData.insurance_type}
+          <label htmlFor="lead-insurance-type">{t.need}</label>
+          <select id="lead-insurance-type" value={formData.insurance_type}
             onChange={(e) => setFormData({ ...formData, insurance_type: e.target.value })}>
             <option value="Auto">{t.auto}</option>
             <option value="Home">{t.home}</option>
@@ -45,31 +64,31 @@ export default function LeadForm({ lang }: { lang: string }) {
         </div>
         <div className="grid2">
           <div className="field">
-            <label>{t.zip}</label>
-            <input type="text" required placeholder="33196" value={formData.zip_code}
+            <label htmlFor="lead-zip">{t.zip}</label>
+            <input id="lead-zip" type="text" required placeholder="33196" value={formData.zip_code}
               onChange={(e) => setFormData({ ...formData, zip_code: e.target.value })} />
           </div>
           <div className="field">
-            <label>{t.name}</label>
-            <input type="text" required value={formData.name}
+            <label htmlFor="lead-name">{t.name}</label>
+            <input id="lead-name" type="text" required value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
           </div>
         </div>
         <div className="grid2">
           <div className="field">
-            <label>{t.phone}</label>
-            <input type="tel" required value={formData.phone}
+            <label htmlFor="lead-phone">{t.phone}</label>
+            <input id="lead-phone" type="tel" required value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
           </div>
           <div className="field">
-            <label>{t.email}</label>
-            <input type="email" required value={formData.email}
+            <label htmlFor="lead-email">{t.email}</label>
+            <input id="lead-email" type="email" required value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
           </div>
         </div>
         <div className="field">
-          <label>{t.message}</label>
-          <textarea rows={3} placeholder={t.msgPh} value={formData.message}
+          <label htmlFor="lead-message">{t.message}</label>
+          <textarea id="lead-message" rows={3} placeholder={t.msgPh} value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
         </div>
         <label className="consent">

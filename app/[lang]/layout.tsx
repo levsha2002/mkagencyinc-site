@@ -1,10 +1,16 @@
 import '../globals.css';
+import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getDict, locales, PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import TalkNowWidget from '@/components/TalkNowWidget';
+
+// Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
+// per-lead "conversion" event fires from LeadForm.tsx once the form is
+// successfully submitted. See components/LeadForm.tsx for the event call.
+const GOOGLE_ADS_ID = 'AW-18321801016';
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -70,6 +76,22 @@ export default function RootLayout({
         <ChatWidget lang={params.lang} />
         <TalkNowWidget lang={params.lang} />
         {process.env.NODE_ENV === 'production' && <SpeedInsights />}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GOOGLE_ADS_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
