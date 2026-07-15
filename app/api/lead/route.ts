@@ -39,9 +39,10 @@ export async function POST(req: Request) {
     }
 
     // 2) Email the agency
+    let emailOk = true;
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
+      const { error: resendError } = await resend.emails.send({
         from: process.env.RESEND_FROM || 'M&K Website <onboarding@resend.dev>',
         to: AGENCY_EMAIL,
         subject: `🔥 New ${insurance_type} lead: ${name} (${zip_code})`,
@@ -60,9 +61,20 @@ export async function POST(req: Request) {
             <tr><td><b>Time</b></td><td>${new Date().toISOString()}</td></tr>
           </table>`,
       });
+      if (resendError) {
+        emailOk = false;
+        // Surfaced in Netlify function logs (Site -> Logs -> Functions) so a
+        // silent Resend failure (bad/missing API key, unverified from-domain,
+        // etc.) is no longer invisible. The lead is still saved to the DB
+        // above regardless, so no lead data is lost even if this fails.
+        console.error('Lead API: Resend email failed:', JSON.stringify(resendError));
+      }
+    } else {
+      emailOk = false;
+      console.error('Lead API: RESEND_API_KEY is not set — email notification skipped');
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, emailOk });
   } catch (err) {
     console.error('Lead API error:', err);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });

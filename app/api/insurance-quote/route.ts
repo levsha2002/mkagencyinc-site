@@ -35,9 +35,10 @@ export async function POST(req: NextRequest) {
                 ${b.comments || ''}, ${b.product_slug}, ${b.product_title}, ${b.lang}, ${b.consent})`;
     }
 
+    let emailOk = true;
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
+      const { error: resendError } = await resend.emails.send({
         from: 'M&K Website <onboarding@resend.dev>',
         to: NOTIFY_EMAIL,
         subject: `New quote request: ${b.product_title} — ${b.name}`,
@@ -50,9 +51,16 @@ export async function POST(req: NextRequest) {
           ${b.comments ? `<p><b>Additional comments / coverages:</b> ${b.comments}</p>` : ''}
           <p><b>TCPA consent given:</b> Yes</p>`,
       });
+      if (resendError) {
+        emailOk = false;
+        console.error('Insurance-quote API: Resend email failed:', JSON.stringify(resendError));
+      }
+    } else {
+      emailOk = false;
+      console.error('Insurance-quote API: RESEND_API_KEY is not set — email notification skipped');
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, emailOk });
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
