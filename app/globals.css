@@ -881,3 +881,45 @@ img { max-width: 100%; display: block; }
   color: var(--blue);
   font-weight: 600;
 }
+
+/* ===== Readability pass (larger type / more contrast for 40-60 audience) ===== */
+body { font-size: 16.5px; }
+.hero .sub { font-size: 1.12rem; line-height: 1.6; }
+.section p { font-size: 1.02rem; }
+.svc h3 { font-size: 1.18rem; }
+.badge { font-size: .92rem; }
+.rated { font-size: .95rem; }
+
+/* ===== Sticky mobile Call/Text bar =====
+   Hidden on desktop. On phones, pins Call + Text buttons to the bottom of
+   the screen at all times — the single most-requested mobile pattern for
+   this audience ("always-visible call button"). The floating chat/talk-now
+   buttons get pushed up (see below) so nothing overlaps. */
+.sticky-call-bar {
+  display: none;
+}
+@media (max-width: 640px) {
+  .sticky-call-bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 95;
+    box-shadow: 0 -4px 18px rgba(7, 39, 79, 0.18);
+  }
+  .scb-btn {
+    flex: 1;
+    text-align: center;
+    padding: 14px 8px;
+    font-weight: 800;
+    font-size: 0.98rem;
+  }
+  .scb-call { background: var(--blue); color: #fff; }
+  .scb-text { background: var(--gold); color: var(--navy); }
+  /* Room at the bottom of every page so the sticky bar never covers content */
+  body { padding-bottom: 58px; }
+  /* Push the floating chat + talk-now buttons above the sticky bar */
+  .mk-widget { bottom: 70px; }
+  .talk-now { bottom: 70px; }
+}

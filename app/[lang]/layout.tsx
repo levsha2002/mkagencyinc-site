@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import TalkNowWidget from '@/components/TalkNowWidget';
+import StickyCallBar from '@/components/StickyCallBar';
 
 // Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
 // per-lead "conversion" event fires from LeadForm.tsx once the form is
@@ -75,6 +76,7 @@ export default function RootLayout({
         <Footer lang={params.lang} />
         <ChatWidget lang={params.lang} />
         <TalkNowWidget lang={params.lang} />
+        <StickyCallBar lang={params.lang} />
         {process.env.NODE_ENV === 'production' && <SpeedInsights />}
         {process.env.NODE_ENV === 'production' && (
           <>

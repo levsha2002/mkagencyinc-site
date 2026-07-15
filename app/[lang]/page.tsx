@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import { buildAlternates } from '@/lib/seo';
@@ -40,8 +41,21 @@ export default function Home({ params }: { params: { lang: string } }) {
   const lang = params.lang;
   const t = getDict(lang);
   const m = meet[lang] || meet.en;
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: t.homeFaq.items.map((f: { q: string; a: string }) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+
       <section className="hero">
         <div className="container hero-grid">
           <div>
@@ -78,11 +92,14 @@ export default function Home({ params }: { params: { lang: string } }) {
             justifyContent: 'center',
           }}
         >
-          <img
+          <Image
             src="/images/mikhail.jpg"
             alt="Mikhail Kozlov, Founder of M&K Agency"
+            width={270}
+            height={338}
             style={{
               width: '270px',
+              height: 'auto',
               maxWidth: '100%',
               borderRadius: '20px',
               boxShadow: '0 14px 44px rgba(8,42,89,.20)',
@@ -119,6 +136,35 @@ export default function Home({ params }: { params: { lang: string } }) {
             <div className="svc"><div className="ico">🏠</div><h3>{t.services.home.h}</h3><p>{t.services.home.p}</p></div>
             <div className="svc"><div className="ico">🏢</div><h3>{t.services.commercial.h}</h3><p>{t.services.commercial.p}</p></div>
             <div className="svc"><div className="ico">❤️</div><h3>{t.services.life.h}</h3><p>{t.services.life.p}</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FAQ — answers the questions people quietly worry about ===== */}
+      <section className="section" style={{ background: '#f2f7ff' }}>
+        <div className="container">
+          <h2>{t.homeFaq.title}</h2>
+          <div style={{ maxWidth: '46rem', margin: '0 auto' }}>
+            {t.homeFaq.items.map((f: { q: string; a: string }) => (
+              <details
+                key={f.q}
+                style={{
+                  background: '#fff',
+                  border: '1px solid #e6ecf5',
+                  borderRadius: 14,
+                  padding: '14px 18px',
+                  marginBottom: 10,
+                }}
+              >
+                <summary style={{ fontWeight: 700, color: 'var(--navy)', cursor: 'pointer', fontSize: '1.05rem' }}>
+                  {f.q}
+                </summary>
+                <p style={{ marginTop: 8, color: 'var(--muted)' }}>{f.a}</p>
+              </details>
+            ))}
+            <p style={{ textAlign: 'center', marginTop: 22 }}>
+              <a className="cta" href="#quote">{t.hero.cta} →</a>
+            </p>
           </div>
         </div>
       </section>
