@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import RelatedCoverage from '@/components/RelatedCoverage';
 import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
@@ -139,16 +140,22 @@ export default function Home({ params }: { params: { lang: string } }) {
 
       <section className="section">
         <div className="container">
-          <p className="kicker">{t.nav.services}</p>
+          <p className="kicker">{t.nav.insurance}</p>
           <h2>{t.services.title}</h2>
           <div className="cards4">
-            <div className="svc"><div className="ico">🚗</div><h3>{t.services.auto.h}</h3><p>{t.services.auto.p}</p></div>
-            <div className="svc"><div className="ico">🏠</div><h3>{t.services.home.h}</h3><p>{t.services.home.p}</p></div>
-            <div className="svc"><div className="ico">🏢</div><h3>{t.services.commercial.h}</h3><p>{t.services.commercial.p}</p></div>
-            <div className="svc"><div className="ico">❤️</div><h3>{t.services.life.h}</h3><p>{t.services.life.p}</p></div>
+            <Link className="svc" href={`/${lang}/car-insurance-florida-city`} style={{ textDecoration: 'none', color: 'inherit' }}><div className="ico">🚗</div><h3>{t.services.auto.h}</h3><p>{t.services.auto.p}</p></Link>
+            <Link className="svc" href={`/${lang}/homeowners-insurance-florida-city`} style={{ textDecoration: 'none', color: 'inherit' }}><div className="ico">🏠</div><h3>{t.services.home.h}</h3><p>{t.services.home.p}</p></Link>
+            <Link className="svc" href={`/${lang}/insurance#commercial`} style={{ textDecoration: 'none', color: 'inherit' }}><div className="ico">🏢</div><h3>{t.services.commercial.h}</h3><p>{t.services.commercial.p}</p></Link>
+            <Link className="svc" href={`/${lang}/life`} style={{ textDecoration: 'none', color: 'inherit' }}><div className="ico">❤️</div><h3>{t.services.life.h}</h3><p>{t.services.life.p}</p></Link>
           </div>
+          <p style={{ textAlign: 'center', marginTop: 18 }}>
+            <Link className="cta" href={`/${lang}/insurance`}>{t.nav.insurance} →</Link>
+          </p>
         </div>
       </section>
+
+      {/* ===== All coverage cross-links (Auto, Home, SR-22, Umbrella, …) ===== */}
+      <RelatedCoverage lang={lang} />
 
       {/* ===== FAQ — answers the questions people quietly worry about ===== */}
       <section className="section" style={{ background: '#f2f7ff' }}>

@@ -78,6 +78,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Your info stays private. No spam, ever.',
     pickFirst: 'Choose an option above to get started.',
     okH1: "You're all set!", okSub: 'Thanks — our team will call you back shortly. Need us now?', okCall: '📞 Call (305) 859-3953',
+    scan: 'Scan to open or share this page on your phone',
   },
   es: {
     tagline: 'Hogar · Auto · Comercial · Florida', call: 'Llamar',
@@ -92,6 +93,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Tu información es privada. Sin spam, nunca.',
     pickFirst: 'Elige una opción arriba para comenzar.',
     okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo te llamará en breve. ¿Nos necesitas ahora?', okCall: '📞 Llamar (305) 859-3953',
+    scan: 'Escanee para abrir o compartir esta página en su teléfono',
   },
   ru: {
     tagline: 'Дом · Авто · Бизнес · Флорида', call: 'Звонок',
@@ -106,6 +108,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Ваши данные конфиденциальны. Никакого спама.',
     pickFirst: 'Выберите вариант выше, чтобы начать.',
     okH1: 'Готово!', okSub: 'Спасибо — наша команда скоро перезвонит. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 859-3953',
+    scan: 'Отсканируйте, чтобы открыть или поделиться этой страницей',
   },
 };
 
@@ -255,6 +258,11 @@ export default function QuotePage() {
           )}
           <p className="qh-priv">{t.privacy}</p>
         </form>
+
+        <div className="qh-qr">
+          <Image src="/images/quote-qr.png" alt="QR code — M&K Agency callback form" width={116} height={116} />
+          <span>{t.scan}</span>
+        </div>
       </div>
     </main>
   );
@@ -304,5 +312,7 @@ const CSS = `
 .qh-check{width:64px;height:64px;border-radius:50%;background:#1d6fe0;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 22px}
 .qh-ok-box h1{font-size:30px;margin:0 0 10px}
 .qh-ok-box p{color:#c9dcf5;font-size:17px;margin:0}
+.qh-qr{display:flex;flex-direction:column;align-items:center;gap:8px;margin:26px auto 0;padding:18px;background:#fff;border:1px solid #e6ecf5;border-radius:18px;max-width:220px;text-align:center}
+.qh-qr span{font-size:12px;color:#5b6b7f;line-height:1.4}
 @media(max-width:520px){.qh-grid{grid-template-columns:1fr}.qh-h1{font-size:24px}}
 `;

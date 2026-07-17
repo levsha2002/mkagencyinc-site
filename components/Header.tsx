@@ -10,11 +10,13 @@ export default function Header({ lang }: { lang: string }) {
   const [open, setOpen] = useState(false);
 
   const communityLabel = lang === 'es' ? 'Comunidad' : lang === 'ru' ? 'Сообщество' : 'Community';
+  const callbackLabel = lang === 'es' ? 'Solicitar llamada' : lang === 'ru' ? 'Заказать звонок' : 'Request a Callback';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
     { href: `/${lang}/insurance`, label: t.nav.insurance },
     { href: `/${lang}/contact`, label: t.nav.contact },
+    { href: `/${lang}/quote`, label: callbackLabel },
     { href: `/${lang}/team`, label: t.nav.team },
     { href: `/${lang}/life`, label: t.nav.life },
     { href: `/${lang}/referral`, label: communityLabel },

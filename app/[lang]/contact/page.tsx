@@ -1,7 +1,14 @@
+import Link from 'next/link';
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import AgentAvatars from '@/components/AgentAvatars';
 import { buildAlternates } from '@/lib/seo';
+
+const GUIDED: Record<string, { line: string; btn: string }> = {
+  en: { line: 'Prefer a guided, step-by-step form? Tell us what you need and a licensed agent calls you back.', btn: 'Request a callback →' },
+  es: { line: '¿Prefiere un formulario guiado paso a paso? Díganos qué necesita y un agente licenciado le devuelve la llamada.', btn: 'Solicitar una llamada →' },
+  ru: { line: 'Хотите удобную пошаговую форму? Скажите, что нужно, и лицензированный агент перезвонит вам.', btn: 'Заказать обратный звонок →' },
+};
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
@@ -47,6 +54,14 @@ export default function Contact({ params }: { params: { lang: string } }) {
       </section>
       <section className="section" style={{ background: '#f2f7ff' }}>
         <div className="container" style={{ maxWidth: 640 }}>
+          <div style={{ textAlign: 'center', marginBottom: 22 }}>
+            <p style={{ color: 'var(--muted)', marginBottom: 12 }}>
+              {(GUIDED[params.lang] || GUIDED.en).line}
+            </p>
+            <Link className="cta" href={`/${params.lang}/quote`}>
+              {(GUIDED[params.lang] || GUIDED.en).btn}
+            </Link>
+          </div>
           <LeadForm lang={params.lang} />
         </div>
       </section>
