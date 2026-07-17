@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const AGENCY_EMAIL = process.env.AGENCY_EMAIL || 'mkagency2020@hotmail.com';
+const AGENCY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
 
 export async function POST(req: Request) {
   try {

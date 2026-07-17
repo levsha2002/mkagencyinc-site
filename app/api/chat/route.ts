@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const AGENCY_EMAIL = process.env.AGENCY_EMAIL || 'mkagency2020@hotmail.com';
+const AGENCY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
 const PHONE_DISPLAY = process.env.AGENCY_PHONE_DISPLAY || '(305) 247-8877';
 const PHONE_TEL = process.env.AGENCY_PHONE_TEL || '3052478877';
 

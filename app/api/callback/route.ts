@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const NOTIFY_EMAIL = 'mkagency2020@hotmail.com';
+const NOTIFY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
 
 export async function POST(req: Request) {
   try {

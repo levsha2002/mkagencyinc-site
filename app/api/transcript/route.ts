@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const NOTIFY_EMAIL = process.env.AGENCY_EMAIL || 'mkagency2020@hotmail.com';
+const NOTIFY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
 
 // Called ONLY when the visitor checked the consent box in the chat widget.
 // 1) Saves the transcript to Neon, 2) emails a copy to the agency,
