@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import RelatedCoverage from '@/components/RelatedCoverage';
 import { buildAlternates } from '@/lib/seo';
 
 // Гео-лендинг: New Construction Home & Condo Insurance — вся Флорида
@@ -229,6 +230,7 @@ export default function NewConstructionHomeInsuranceFlorida({ params }: { params
           </div>
         </div>
       </section>
+      <RelatedCoverage lang={l} current="/new-construction-home-insurance-florida" />
     </main>
   );
 }

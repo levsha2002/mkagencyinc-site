@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import RelatedCoverage from '@/components/RelatedCoverage';
 import { buildAlternates } from '@/lib/seo';
 
 // Гео-лендинг: Condo Insurance (HO-6) — Florida City / Homestead.
@@ -228,6 +229,7 @@ export default function CondoInsuranceFloridaCity({ params }: { params: { lang: 
           </div>
         </div>
       </section>
+      <RelatedCoverage lang={l} current="/condo-insurance-florida-city" />
     </main>
   );
 }

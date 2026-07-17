@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import RelatedCoverage from '@/components/RelatedCoverage';
 import { buildAlternates } from '@/lib/seo';
 
 // Гео-лендинг: Homeowners Insurance — Florida City / Homestead.
@@ -228,6 +229,7 @@ export default function HomeownersInsuranceFloridaCity({ params }: { params: { l
           </div>
         </div>
       </section>
+      <RelatedCoverage lang={l} current="/homeowners-insurance-florida-city" />
     </main>
   );
 }

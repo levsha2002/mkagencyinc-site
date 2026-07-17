@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import RelatedCoverage from '@/components/RelatedCoverage';
 import { buildAlternates } from '@/lib/seo';
 
 // Гео-лендинг: Classic & Collector Car Insurance — Florida City / Homestead.
@@ -228,6 +229,7 @@ export default function ClassicCarInsuranceFloridaCity({ params }: { params: { l
           </div>
         </div>
       </section>
+      <RelatedCoverage lang={l} current="/classic-car-insurance-florida-city" />
     </main>
   );
 }
