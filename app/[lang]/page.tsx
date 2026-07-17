@@ -19,21 +19,21 @@ const meet: Record<string, Record<string, string>> = {
     h: "Hi, I'm Mikhail Kozlov.",
     bio: 'For years, my family and I have protected families and businesses across Florida. Insurance is about people, not policies — when you call, you reach me and my team, in English, Spanish, or Russian.',
     talk: 'Talk to Mikhail',
-    quote: 'Get a free quote →',
+    quote: 'Request a callback →',
   },
   es: {
     kicker: 'Conoce a tu agente',
     h: 'Hola, soy Mikhail Kozlov.',
     bio: 'Durante años, mi familia y yo hemos protegido a familias y negocios en Florida. El seguro se trata de personas, no de pólizas — cuando llamas, hablas conmigo y mi equipo, en inglés, español o ruso.',
     talk: 'Habla con Mikhail',
-    quote: 'Cotización gratis →',
+    quote: 'Solicitar una llamada →',
   },
   ru: {
     kicker: 'Ваш агент',
     h: 'Здравствуйте, я Михаил Козлов.',
     bio: 'Уже много лет мы с семьёй защищаем семьи и бизнес по всей Флориде. Страхование — это о людях, а не о полисах. Когда вы звоните, вы говорите со мной и моей командой — на английском, испанском или русском.',
     talk: 'Поговорить с Михаилом',
-    quote: 'Бесплатный расчёт →',
+    quote: 'Заказать звонок →',
   },
 };
 

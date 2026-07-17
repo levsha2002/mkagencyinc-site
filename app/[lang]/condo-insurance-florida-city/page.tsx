@@ -17,7 +17,7 @@ const C: Record<Lang, any> = {
     h1a: 'Condo insurance in Florida City & Homestead,',
     h1b: 'for what your HOA doesn’t cover.',
     sub: 'Your condo association’s master policy protects the building. An HO-6 policy protects your unit, your belongings, and you. We shop 15+ A-rated carriers so closing isn’t held up by an insurance gap.',
-    cta: 'Get my free condo quote',
+    cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why condo insurance in Florida has gotten more complicated — and what we do about it',
     whyText:
@@ -35,7 +35,7 @@ const C: Record<Lang, any> = {
     localText:
       'We’re at 33550 S Dixie Hwy, Suite 102, Florida City — serving condo owners across Homestead, Leisure City, Naranja and South Miami-Dade. Walk in, call, or text. We’ll also review your HOA’s master policy documents with you at no charge, so you know exactly what you’re responsible for.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare 15+ carriers now',
+    formTitle: 'Talk to a licensed agent',
     faqTitle: 'Condo insurance (HO-6) in Florida City — common questions',
     faq: [
       { q: 'What does HO-6 condo insurance actually cover?', a: 'HO-6 covers the interior of your unit (flooring, cabinets, fixtures, upgrades), your personal belongings, liability for injuries inside your unit, and loss of use if you can’t live there after a covered claim. It does not cover the building structure itself — that’s the HOA’s master policy.' },
@@ -54,7 +54,7 @@ const C: Record<Lang, any> = {
     h1a: 'Seguro de condominio en Florida City y Homestead,',
     h1b: 'para lo que su HOA no cubre.',
     sub: 'La póliza maestra de su asociación protege el edificio. Una póliza HO-6 lo protege a usted, su unidad y sus pertenencias. Comparamos 15+ aseguradoras A-rated para que el cierre no se retrase por un vacío de cobertura.',
-    cta: 'Cotización gratis de condominio',
+    cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de condominio en Florida se ha complicado — y qué hacemos al respecto',
     whyText:
@@ -72,7 +72,7 @@ const C: Record<Lang, any> = {
     localText:
       'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City — atendemos a propietarios de condominios en Homestead, Leisure City, Naranja y el sur de Miami-Dade. Visítenos, llame o envíe un texto. También revisamos sin costo los documentos de la póliza maestra de su HOA con usted, para que sepa exactamente de qué es responsable.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare 15+ aseguradoras ahora',
+    formTitle: 'Hable con un agente licenciado',
     faqTitle: 'Seguro de condominio (HO-6) en Florida City — preguntas frecuentes',
     faq: [
       { q: '¿Qué cubre realmente el seguro HO-6 de condominio?', a: 'HO-6 cubre el interior de su unidad (pisos, gabinetes, instalaciones, mejoras), sus pertenencias personales, responsabilidad civil por lesiones dentro de su unidad, y pérdida de uso si no puede vivir ahí tras un siniestro cubierto. No cubre la estructura del edificio — eso corresponde a la póliza maestra de la HOA.' },
@@ -91,7 +91,7 @@ const C: Record<Lang, any> = {
     h1a: 'Страховка кондоминиума во Florida City и Homestead —',
     h1b: 'на то, что не покрывает HOA.',
     sub: 'Master-полис вашей ассоциации защищает здание. Полис HO-6 защищает вашу квартиру, вещи и вас лично. Мы сравним 15+ страховых A-rated, чтобы closing не задержался из-за пробела в покрытии.',
-    cta: 'Бесплатный расчёт страховки кондо',
+    cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему страховка кондо во Флориде усложнилась — и что мы с этим делаем',
     whyText:
@@ -109,7 +109,7 @@ const C: Record<Lang, any> = {
     localText:
       'Мы находимся по адресу 33550 S Dixie Hwy, Suite 102, Florida City — работаем с владельцами кондо в Homestead, Leisure City, Naranja и на юге Miami-Dade. Заходите, звоните или пишите. Также бесплатно разберём документы master-полиса вашей HOA, чтобы вы точно знали, за что отвечаете сами.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Сравнить 15+ страховых сейчас',
+    formTitle: 'Поговорить с лицензированным агентом',
     faqTitle: 'Страховка кондо (HO-6) во Florida City — частые вопросы',
     faq: [
       { q: 'Что реально покрывает HO-6 страховка кондо?', a: 'HO-6 покрывает интерьер квартиры (полы, шкафы, встроенные элементы, улучшения), личные вещи, liability за травмы внутри квартиры и loss of use, если жить там временно нельзя после покрытого случая. Саму конструкцию здания не покрывает — это зона master-полиса HOA.' },

@@ -18,7 +18,7 @@ const C: Record<Lang, any> = {
     h1a: 'New construction home insurance,',
     h1b: 'priced for the home you just built.',
     sub: 'Builders often bundle you into one insurance option at closing — usually not the cheapest one. We compare 15+ A-rated Florida carriers so your new home is covered at a fair price from day one.',
-    cta: 'Get my free new-home quote',
+    cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why new construction buyers overpay — and what we do about it',
     whyText:
@@ -36,7 +36,7 @@ const C: Record<Lang, any> = {
     localText:
       'Our office is in Florida City, but new construction is booming everywhere in Florida — The Villages, Poinciana, Davenport, Apopka, Cape Coral, Tampa Bay and beyond. We handle new-home insurance for buyers across the entire state, all by phone, text, or email — no need to visit in person to get covered before closing.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare new-home insurance rates now',
+    formTitle: 'Talk to a licensed agent',
     faqTitle: 'New construction home insurance in Florida — common questions',
     faq: [
       { q: 'Do I need homeowners insurance before I close on a new construction home?', a: 'Yes — if you’re financing the home, your lender will require proof of homeowners (or condo/HO-6) insurance in place before closing. Even if you’re paying cash, it’s strongly recommended to have coverage starting the day you take ownership.' },
@@ -55,7 +55,7 @@ const C: Record<Lang, any> = {
     h1a: 'Seguro para casas de nueva construcción,',
     h1b: 'con el precio justo para su nueva casa.',
     sub: 'Los constructores suelen incluirlo en una sola opción de seguro al cierre — normalmente no la más barata. Comparamos 15+ aseguradoras A-rated de Florida para que su nueva casa esté protegida a un precio justo desde el primer día.',
-    cta: 'Cotización gratis para mi casa nueva',
+    cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué los compradores de casas nuevas pagan de más — y qué hacemos al respecto',
     whyText:
@@ -73,7 +73,7 @@ const C: Record<Lang, any> = {
     localText:
       'Nuestra oficina está en Florida City, pero la nueva construcción está en auge en toda Florida — The Villages, Poinciana, Davenport, Apopka, Cape Coral, Tampa Bay y más. Atendemos seguros de casa nueva para compradores en todo el estado, todo por teléfono, texto o correo electrónico — no necesita visitarnos en persona para estar cubierto antes del cierre.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare tarifas de seguro de casa nueva ahora',
+    formTitle: 'Hable con un agente licenciado',
     faqTitle: 'Seguro de casa de nueva construcción en Florida — preguntas frecuentes',
     faq: [
       { q: '¿Necesito seguro de casa antes de cerrar una casa de nueva construcción?', a: 'Sí — si está financiando la casa, su prestamista exigirá comprobante de seguro de casa (o condominio/HO-6) antes del cierre. Incluso si paga en efectivo, se recomienda tener cobertura desde el día en que toma posesión.' },
@@ -92,7 +92,7 @@ const C: Record<Lang, any> = {
     h1a: 'Страховка нового дома —',
     h1b: 'по цене, справедливой именно для новостройки.',
     sub: 'Застройщики часто предлагают один "готовый" вариант страховки при closing — обычно не самый дешёвый. Мы сравним 15+ страховых A-rated Флориды, чтобы ваш новый дом был застрахован по честной цене с первого дня.',
-    cta: 'Бесплатный расчёт для нового дома',
+    cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему покупатели новостроек переплачивают — и что мы с этим делаем',
     whyText:
@@ -110,7 +110,7 @@ const C: Record<Lang, any> = {
     localText:
       'Наш офис в Florida City, но новостройки сейчас растут по всей Флориде — The Villages, Poinciana, Davenport, Apopka, Cape Coral, Tampa Bay и дальше. Мы оформляем страховку нового дома для покупателей по всему штату — полностью по телефону, смс или email, приезжать лично не нужно, чтобы получить покрытие до closing.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Сравнить тарифы на страховку нового дома сейчас',
+    formTitle: 'Поговорить с лицензированным агентом',
     faqTitle: 'Страховка новостроек во Флориде — частые вопросы',
     faq: [
       { q: 'Нужна ли страховка дома перед closing по новостройке?', a: 'Да — если дом в ипотеке, кредитор потребует подтверждение страховки дома (или кондо/HO-6) перед closing. Даже при оплате наличными настоятельно рекомендуется иметь покрытие с того дня, когда вы вступаете во владение.' },

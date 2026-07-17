@@ -17,7 +17,7 @@ const C: Record<Lang, any> = {
     h1a: 'Motorcycle insurance in Florida City & Homestead,',
     h1b: 'priced for how you actually ride.',
     sub: 'A supersport bike, a Harley, and a vintage cruiser don’t carry the same risk — and they shouldn’t carry the same rate. We’ll price your exact bike and riding profile carefully, in three languages.',
-    cta: 'Get my free motorcycle quote',
+    cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why one-size-fits-all motorcycle rates cost you money — and what we do about it',
     whyText:
@@ -35,7 +35,7 @@ const C: Record<Lang, any> = {
     localText:
       'We’re at 33550 S Dixie Hwy, Suite 102, Florida City — close to Homestead, Leisure City and Naranja, and a short ride from the Keys. Walk in, call, or text. Same-day proof of insurance and claims guidance from agents who understand riders.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Get my free motorcycle quote',
+    formTitle: 'Talk to a licensed agent',
     faqTitle: 'Motorcycle insurance in Florida City — common questions',
     faq: [
       { q: 'Is motorcycle insurance legally required in Florida?', a: 'Florida doesn’t require standalone liability insurance to register most motorcycles the way it does for cars — but you remain financially responsible for any damage or injury you cause. Carrying real coverage protects your savings if you’re ever at fault in an accident, and lenders require it if the bike is financed.' },
@@ -54,7 +54,7 @@ const C: Record<Lang, any> = {
     h1a: 'Seguro de motocicleta en Florida City y Homestead,',
     h1b: 'con el precio de cómo usted realmente maneja.',
     sub: 'Una moto supersport, una Harley y una crucero vintage no tienen el mismo riesgo — y no deberían tener la misma tarifa. Cotizamos su moto y su perfil exactos con cuidado, en tres idiomas.',
-    cta: 'Cotización gratis de motocicleta',
+    cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué una tarifa “talla única” le cuesta dinero — y qué hacemos al respecto',
     whyText:
@@ -72,7 +72,7 @@ const C: Record<Lang, any> = {
     localText:
       'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City — cerca de Homestead, Leisure City y Naranja, y a poca distancia de los Cayos. Visítenos, llame o envíe un texto. Comprobante de seguro el mismo día y acompañamiento en reclamos de agentes que entienden a los motociclistas.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Obtener mi cotización gratis de motocicleta',
+    formTitle: 'Hable con un agente licenciado',
     faqTitle: 'Seguro de motocicleta en Florida City — preguntas frecuentes',
     faq: [
       { q: '¿Es obligatorio el seguro de motocicleta en Florida?', a: 'Florida no exige un seguro de responsabilidad civil independiente para registrar la mayoría de las motocicletas como sí lo hace con los autos — pero usted sigue siendo responsable financieramente por cualquier daño o lesión que cause. Tener cobertura real protege sus ahorros, y los prestamistas la exigen si la moto está financiada.' },
@@ -91,7 +91,7 @@ const C: Record<Lang, any> = {
     h1a: 'Страховка мотоцикла во Florida City и Homestead —',
     h1b: 'по цене, соответствующей тому, как вы ездите.',
     sub: 'Спортбайк, Harley и винтажный круизер несут разный риск — и не должны стоить одинаково. Мы внимательно рассчитаем тариф для вашего конкретного байка и профиля вождения, на трёх языках.',
-    cta: 'Бесплатный расчёт страховки мотоцикла',
+    cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему единый тариф на мотоциклы невыгоден — и что мы с этим делаем',
     whyText:
@@ -109,7 +109,7 @@ const C: Record<Lang, any> = {
     localText:
       'Мы находимся по адресу 33550 S Dixie Hwy, Suite 102, Florida City — рядом Homestead, Leisure City, Naranja и недалеко от Keys. Заходите, звоните или пишите. Подтверждение страховки в тот же день и сопровождение по клеймам от агентов, которые понимают байкеров.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Получить бесплатный расчёт страховки мотоцикла',
+    formTitle: 'Поговорить с лицензированным агентом',
     faqTitle: 'Страховка мотоцикла во Florida City — частые вопросы',
     faq: [
       { q: 'Обязательна ли страховка мотоцикла во Флориде по закону?', a: 'Флорида не требует отдельной liability-страховки для регистрации большинства мотоциклов, как для машин, — но вы всё равно несёте финансовую ответственность за причинённый ущерб или травмы. Реальное покрытие защищает ваши сбережения, а кредиторы требуют его, если байк в кредите.' },

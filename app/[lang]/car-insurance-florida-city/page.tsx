@@ -17,7 +17,7 @@ const C: Record<Lang, any> = {
     h1a: 'Car insurance in Florida City & Homestead,',
     h1b: 'without overpaying.',
     sub: 'Your neighbors on S Dixie Hwy will find you real auto coverage at a competitive rate. One call, three languages, real local agents.',
-    cta: 'Get my free auto quote',
+    cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why auto insurance costs more around here — and what we do about it',
     whyText:
@@ -35,7 +35,7 @@ const C: Record<Lang, any> = {
     localText:
       'We’re at 33550 S Dixie Hwy, Suite 102, Florida City — next to Homestead, Leisure City and Naranja. Walk in, call, or text. Same-day proof of insurance, help with FL DHSMV paperwork, and claims guidance from people who know your roads.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Get my free auto quote',
+    formTitle: 'Talk to a licensed agent',
     faqTitle: 'Car insurance in Florida City — common questions',
     faq: [
       { q: 'What car insurance is required in Florida City, FL?', a: 'Florida law requires $10,000 in Personal Injury Protection (PIP) and $10,000 in Property Damage Liability (PDL). Bodily injury liability is not required for most drivers but is strongly recommended — and required after certain violations (SR-22/FR-44).' },
@@ -54,7 +54,7 @@ const C: Record<Lang, any> = {
     h1a: 'Seguro de auto en Florida City y Homestead,',
     h1b: 'sin pagar de más.',
     sub: 'Sus vecinos en S Dixie Hwy le encuentran cobertura real de auto a un precio competitivo. Una llamada, tres idiomas, agentes locales de verdad.',
-    cta: 'Cotización gratis de auto',
+    cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de auto cuesta más aquí — y qué hacemos al respecto',
     whyText:
@@ -72,7 +72,7 @@ const C: Record<Lang, any> = {
     localText:
       'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City — junto a Homestead, Leisure City y Naranja. Visítenos, llame o envíe un texto. Comprobante de seguro el mismo día, ayuda con trámites del DHSMV y acompañamiento en reclamos.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Obtener mi cotización gratis de auto',
+    formTitle: 'Hable con un agente licenciado',
     faqTitle: 'Seguro de auto en Florida City — preguntas frecuentes',
     faq: [
       { q: '¿Qué seguro de auto es obligatorio en Florida City, FL?', a: 'La ley de Florida exige $10,000 de Protección por Lesiones Personales (PIP) y $10,000 de Responsabilidad por Daños a la Propiedad (PDL). La cobertura por lesiones corporales no es obligatoria para la mayoría, pero es muy recomendable — y obligatoria tras ciertas infracciones (SR-22/FR-44).' },
@@ -91,7 +91,7 @@ const C: Record<Lang, any> = {
     h1a: 'Автостраховка во Florida City и Homestead —',
     h1b: 'без переплаты.',
     sub: 'Ваши соседи с S Dixie Hwy подберут реальное покрытие по конкурентной цене. Один звонок, три языка, настоящие местные агенты.',
-    cta: 'Бесплатный расчёт автостраховки',
+    cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему автостраховка здесь дороже — и что мы с этим делаем',
     whyText:
@@ -109,7 +109,7 @@ const C: Record<Lang, any> = {
     localText:
       'Мы находимся по адресу 33550 S Dixie Hwy, Suite 102, Florida City — рядом Homestead, Leisure City и Naranja. Заходите, звоните или пишите. Подтверждение страховки в тот же день, помощь с документами DHSMV и сопровождение по клеймам.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Получить бесплатный расчёт автостраховки',
+    formTitle: 'Поговорить с лицензированным агентом',
     faqTitle: 'Автостраховка во Florida City — частые вопросы',
     faq: [
       { q: 'Какая автостраховка обязательна во Florida City, FL?', a: 'Закон Флориды требует $10,000 PIP (Personal Injury Protection) и $10,000 PDL (ответственность за имущество). Bodily injury для большинства не обязательна, но настоятельно рекомендуется — а после некоторых нарушений обязательна (SR-22/FR-44).' },

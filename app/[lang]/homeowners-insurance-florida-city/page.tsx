@@ -17,7 +17,7 @@ const C: Record<Lang, any> = {
     h1a: 'Homeowners insurance in Florida City & Homestead,',
     h1b: 'that holds up when a storm hits.',
     sub: 'South Miami-Dade homeowners face real hurricane and flood risk — and a market where carriers come and go. We compare Citizens, Florida Peninsula, Edison, Heritage and more so your coverage is actually there when you need it.',
-    cta: 'Get my free home quote',
+    cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why Florida homeowners insurance is a mess right now — and what we do about it',
     whyText:
@@ -35,7 +35,7 @@ const C: Record<Lang, any> = {
     localText:
       'We’re at 33550 S Dixie Hwy, Suite 102, Florida City — serving homeowners across Homestead, Leisure City, Naranja and South Miami-Dade. Walk in, call, or text. We’ll help you get a policy in place fast for a purchase closing, or shop your renewal before your current carrier raises your rate.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare home insurance rates now',
+    formTitle: 'Talk to a licensed agent',
     faqTitle: 'Homeowners insurance in Florida City — common questions',
     faq: [
       { q: 'Why did my homeowners insurance premium go up so much?', a: 'Rising reinsurance costs (what carriers pay to insure themselves against catastrophic losses), construction and repair cost inflation, and hurricane risk have driven premiums up across Florida — especially for older homes. Comparing multiple carriers, rather than auto-renewing, is the most effective way to avoid overpaying.' },
@@ -54,7 +54,7 @@ const C: Record<Lang, any> = {
     h1a: 'Seguro de casa en Florida City y Homestead,',
     h1b: 'que aguanta cuando llega la tormenta.',
     sub: 'Los propietarios del sur de Miami-Dade enfrentan un riesgo real de huracanes e inundaciones — y un mercado donde las aseguradoras entran y salen. Comparamos Citizens, Florida Peninsula, Edison, Heritage y más para que su cobertura realmente esté ahí cuando la necesite.',
-    cta: 'Cotización gratis de casa',
+    cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de casa en Florida es un desastre ahora mismo — y qué hacemos al respecto',
     whyText:
@@ -72,7 +72,7 @@ const C: Record<Lang, any> = {
     localText:
       'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City — atendemos a propietarios en Homestead, Leisure City, Naranja y el sur de Miami-Dade. Visítenos, llame o envíe un texto. Le ayudamos a tener una póliza lista rápido para el cierre de una compra, o a comparar antes de que su aseguradora actual le suba la tarifa en la renovación.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare tarifas de seguro de casa ahora',
+    formTitle: 'Hable con un agente licenciado',
     faqTitle: 'Seguro de casa en Florida City — preguntas frecuentes',
     faq: [
       { q: '¿Por qué subió tanto mi prima de seguro de casa?', a: 'El aumento en costos de reaseguro (lo que pagan las aseguradoras para protegerse de pérdidas catastróficas), la inflación en costos de construcción y reparación, y el riesgo de huracanes han elevado las primas en toda Florida — especialmente en casas más antiguas. Comparar varias aseguradoras, en lugar de renovar automáticamente, es la forma más eficaz de no pagar de más.' },
@@ -91,7 +91,7 @@ const C: Record<Lang, any> = {
     h1a: 'Страховка дома во Florida City и Homestead —',
     h1b: 'та, что реально работает при урагане.',
     sub: 'Домовладельцы юга Miami-Dade сталкиваются с реальным риском ураганов и наводнений — и рынком, где страховые компании то появляются, то исчезают. Мы сравним Citizens, Florida Peninsula, Edison, Heritage и других, чтобы ваше покрытие действительно сработало, когда понадобится.',
-    cta: 'Бесплатный расчёт страховки дома',
+    cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему страховка дома во Флориде сейчас в хаосе — и что мы с этим делаем',
     whyText:
@@ -109,7 +109,7 @@ const C: Record<Lang, any> = {
     localText:
       'Мы находимся по адресу 33550 S Dixie Hwy, Suite 102, Florida City — работаем с домовладельцами Homestead, Leisure City, Naranja и юга Miami-Dade. Заходите, звоните или пишите. Поможем быстро оформить полис для closing при покупке, или сравним варианты перед тем, как текущая страховая поднимет тариф на renewal.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Сравнить тарифы на страховку дома сейчас',
+    formTitle: 'Поговорить с лицензированным агентом',
     faqTitle: 'Страховка дома во Florida City — частые вопросы',
     faq: [
       { q: 'Почему моя премия за страховку дома так выросла?', a: 'Рост стоимости перестрахования (то, что страховые платят за защиту от катастрофических убытков), инфляция стоимости стройматериалов и ремонта, а также риск ураганов подняли премии по всей Флориде — особенно для старых домов. Сравнение нескольких страховых, а не автопродление, — самый эффективный способ не переплачивать.' },

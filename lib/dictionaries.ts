@@ -7,7 +7,7 @@ export const locales: Lang[] = ['en', 'es', 'ru'];
 
 const en = {
   tagline: 'In God We Trust · We build our future together',
-  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', team: 'Team', life: 'Life', insurance: 'Insurance', quote: 'Get My Free Quote' },
+  nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', team: 'Team', life: 'Life', insurance: 'Insurance', quote: 'Contact an Agent' },
   call247: 'Call 24/7',
   hero: {
     badge1: '🛡️ Free 5-minute coverage check',
@@ -15,30 +15,30 @@ const en = {
     h1a: "Your family's safety,",
     h1b: 'in good hands.',
     sub: "We'll help you find the right coverage for your home, car, and family — explained simply, in English, Spanish, or Russian. Real people who answer, and who are there when you need us most.",
-    cta: 'Get my free quote',
+    cta: 'Have an agent call me',
     rated: 'Rated 5.0 on Google & Yelp · 334+ reviews',
     strip: "We compare 15+ A-rated Florida home insurance carriers — plus auto, commercial & life coverage, all in one place.",
   },
   homeFaq: {
     title: 'Questions families ask us',
     items: [
-      { q: 'How much does a quote cost?', a: 'Nothing. A quote is always free, with no obligation to buy anything. It usually takes about 5 minutes.' },
+      { q: 'How much does it cost to talk to an agent?', a: 'Nothing. A conversation with a licensed agent is always free, with no obligation to buy anything. It usually takes about 5 minutes.' },
       { q: 'What should I do right after an accident?', a: "Call us first — even before you call the other driver's insurance. We'll walk you through exactly what to do and help file the claim with you, step by step." },
       { q: 'Will you actually help me with my claim, or just sell me the policy and disappear?', a: "We stay with you through the entire claim. That's the whole point of working with a real local agent instead of a call center — if a claim gets stuck, we personally follow up with the carrier for you." },
       { q: "My English isn't very strong — is that a problem?", a: "Not at all. Our team speaks English, Spanish, and Russian, and we're happy to explain everything in whichever language is easiest for you." },
-      { q: 'Do I have to cancel my current policy just to get a quote?', a: "No. For home insurance, we compare your current coverage against 15+ A-rated Florida carriers; for auto and other lines we make sure you have the right coverage at a competitive rate. We only recommend a change if it genuinely helps you." },
-      { q: 'How quickly will someone actually call me back?', a: 'Most quote requests get a callback the same business day, often within the hour during office hours (Mon–Fri 9am–6pm ET).' },
+      { q: 'Do I have to cancel my current policy just to talk to you?', a: "No. For home insurance, we compare your current coverage against 15+ A-rated Florida carriers; for auto and other lines we make sure you have the right coverage at a competitive rate. We only recommend a change if it genuinely helps you." },
+      { q: 'How quickly will someone actually call me back?', a: 'Most requests get a callback the same business day, often within the hour during office hours (Mon–Fri 9am–6pm ET).' },
     ],
   },
   form: {
-    title: 'Get my free quote',
+    title: 'Talk to a licensed agent',
     sub: 'Takes 30 seconds. A real agent calls you back fast.',
     need: 'What do you need?',
     auto: 'Auto insurance', home: 'Home / Condo', commercial: 'Commercial', life: 'Life insurance',
     zip: 'ZIP code', name: 'Full name', phone: 'Phone', email: 'Email',
     message: 'Message (optional)', msgPh: 'Additional details...',
     consent: 'I agree that M&K Agency may contact me by phone, text, or automated/AI calls at the number provided about insurance, even if it is on a Do-Not-Call list. Consent is not a condition of purchase.',
-    submit: 'See my quote →',
+    submit: 'Request my callback →',
     sending: 'Sending...',
     ok: 'Thank you! A licensed agent will contact you shortly.',
     err: 'Something went wrong. Please call us at (305) 247-8877.',
@@ -47,12 +47,12 @@ const en = {
   services: {
     title: 'One trusted agency for everything you protect',
     metaTitle: 'Auto, Home & Commercial Insurance in Florida | M&K Agency',
-    metaDesc: 'Compare home insurance quotes from 15+ A-rated Florida carriers, plus auto, condo, commercial and life insurance. Independent agency in Florida City serving all of Florida. Free quotes: (305) 2478877.',
+    metaDesc: 'Home insurance from 15+ A-rated Florida carriers, plus auto, condo, commercial and life insurance. Independent agency in Florida City serving all of Florida. Call (305) 247-8877.',
     auto: { h: 'Auto Insurance', p: "Florida drivers pay some of the highest auto rates in the country. We'll find you real coverage at a competitive price — liability, full coverage, SR-22, rideshare and more. Same-day proof of insurance available." },
     home: { h: 'Home & Condo Insurance', p: 'Hurricanes, floods, and rising premiums make Florida home insurance complicated. We work with Citizens, Florida Peninsula, Edison, Heritage and other trusted carriers to protect your biggest investment — including wind mitigation and four-point inspection guidance.' },
     commercial: { h: 'Commercial Insurance', p: 'From general liability and workers\u2019 comp to commercial auto and BOP policies — we protect contractors, restaurants, truckers, and small businesses across Florida with carriers like Next, Progressive, and Hiscox.' },
     life: { h: 'Life Insurance', p: 'Protect the people who depend on you. Term and whole life options that fit your budget — because your family\u2019s future should never be left to chance.' },
-    cta: 'Get a free quote for any line — one call does it all.',
+    cta: 'One call does it all — a licensed agent will walk you through your options.',
   },
   about: {
     metaTitle: 'About M&K Agency | Independent Insurance Agency in Florida City, FL',
@@ -64,8 +64,8 @@ const en = {
     visit: 'Visit us',
   },
   contact: {
-    metaTitle: 'Contact M&K Agency | Free Insurance Quotes | (305) 247-8877',
-    metaDesc: 'Call, text, or visit M&K Agency in Florida City, FL. Free auto, home and commercial insurance quotes across Florida. Se habla español. Говорим по-русски.',
+    metaTitle: 'Contact M&K Agency | Talk to a Licensed Agent | (305) 247-8877',
+    metaDesc: 'Call, text, or visit M&K Agency in Florida City, FL. Auto, home and commercial insurance across Florida. Se habla español. Говорим по-русски.',
     h: 'Talk to a real agent',
     sub: 'Call, text, chat, or request a callback — whatever is easiest for you.',
     callUs: 'Call us', textUs: 'Text us', visitUs: 'Visit us', hours: 'Mon–Fri 9am–6pm ET',
@@ -148,13 +148,13 @@ const en = {
   },
   meta: {
     title: 'Florida Insurance Agency | Auto, Home & Commercial Quotes | M&K Agency',
-    desc: 'Independent insurance agency in Florida City serving all of Florida. Compare 15+ A-rated home insurance carriers, plus auto & commercial insurance. Free quotes in 30 seconds — (305) 247-8877.',
+    desc: 'Independent insurance agency in Florida City serving all of Florida. Home insurance from 15+ A-rated carriers, plus auto & commercial. Talk to a licensed agent — (305) 247-8877.',
   },
 };
 
 const es: typeof en = {
   tagline: 'En Dios confiamos · Construimos nuestro futuro juntos',
-  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', team: 'Equipo', life: 'Vida', insurance: 'Seguros', quote: 'Cotización gratis' },
+  nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', team: 'Equipo', life: 'Vida', insurance: 'Seguros', quote: 'Hable con un agente' },
   call247: 'Llame 24/7',
   hero: {
     badge1: '🛡️ Revisión de cobertura gratis en 5 minutos',
@@ -162,30 +162,30 @@ const es: typeof en = {
     h1a: 'La seguridad de su familia,',
     h1b: 'en buenas manos.',
     sub: 'La ayudamos a encontrar la cobertura correcta para su casa, auto y familia — explicado de forma simple, en inglés, español o ruso. Personas reales que contestan, y que están ahí cuando más las necesita.',
-    cta: 'Obtener mi cotización gratis',
+    cta: 'Que me llame un agente',
     rated: 'Calificación 5.0 en Google y Yelp · 334+ reseñas',
     strip: 'Comparamos más de 15 aseguradoras de casa clasificación A en la Florida — además de auto, comercial y vida, todo en un solo lugar.',
   },
   homeFaq: {
     title: 'Preguntas que nos hacen las familias',
     items: [
-      { q: '¿Cuánto cuesta una cotización?', a: 'Nada. Una cotización siempre es gratis, sin obligación de comprar. Normalmente toma unos 5 minutos.' },
+      { q: '¿Cuánto cuesta hablar con un agente?', a: 'Nada. Hablar con un agente licenciado siempre es gratis, sin obligación de comprar. Normalmente toma unos 5 minutos.' },
       { q: '¿Qué debo hacer justo después de un accidente?', a: 'Llámenos primero — incluso antes de llamar al seguro del otro conductor. Le explicamos exactamente qué hacer y le ayudamos a presentar el reclamo, paso a paso.' },
       { q: '¿De verdad me van a ayudar con mi reclamo, o solo me venden la póliza y desaparecen?', a: 'Le acompañamos durante todo el proceso del reclamo. Esa es la ventaja de trabajar con un agente local real y no con un call center — si un reclamo se atasca, nosotros mismos damos seguimiento con la aseguradora.' },
       { q: 'Mi inglés no es muy bueno — ¿es un problema?', a: 'Para nada. Nuestro equipo habla inglés, español y ruso, y con gusto le explicamos todo en el idioma que le resulte más cómodo.' },
-      { q: '¿Tengo que cancelar mi póliza actual solo para pedir una cotización?', a: 'No. Para el seguro de casa, comparamos su cobertura actual con más de 15 aseguradoras clasificación A; para auto y otras líneas nos aseguramos de que tenga la cobertura correcta a un precio competitivo. Solo recomendamos un cambio si realmente le conviene.' },
-      { q: '¿Qué tan rápido me llaman de verdad?', a: 'La mayoría de las solicitudes de cotización reciben una llamada el mismo día hábil, muchas veces en menos de una hora en horario de oficina (Lun–Vie 9am–6pm ET).' },
+      { q: '¿Tengo que cancelar mi póliza actual solo para hablar con ustedes?', a: 'No. Para el seguro de casa, comparamos su cobertura actual con más de 15 aseguradoras clasificación A; para auto y otras líneas nos aseguramos de que tenga la cobertura correcta a un precio competitivo. Solo recomendamos un cambio si realmente le conviene.' },
+      { q: '¿Qué tan rápido me llaman de verdad?', a: 'La mayoría de las solicitudes reciben una llamada el mismo día hábil, muchas veces en menos de una hora en horario de oficina (Lun–Vie 9am–6pm ET).' },
     ],
   },
   form: {
-    title: 'Obtener mi cotización gratis',
+    title: 'Hable con un agente licenciado',
     sub: 'Toma 30 segundos. Un agente real le devuelve la llamada rápido.',
     need: '¿Qué necesita?',
     auto: 'Seguro de auto', home: 'Casa / Condominio', commercial: 'Comercial', life: 'Seguro de vida',
     zip: 'Código postal', name: 'Nombre completo', phone: 'Teléfono', email: 'Correo electrónico',
     message: 'Mensaje (opcional)', msgPh: 'Detalles adicionales...',
     consent: 'Acepto que M&K Agency me contacte por teléfono, mensaje de texto o llamadas automatizadas/IA al número proporcionado sobre seguros, incluso si está en una lista de No Llamar. El consentimiento no es condición de compra.',
-    submit: 'Ver mi cotización →',
+    submit: 'Solicitar mi llamada →',
     sending: 'Enviando...',
     ok: '¡Gracias! Un agente licenciado le contactará pronto.',
     err: 'Algo salió mal. Llámenos al (305) 247-8877.',
@@ -194,12 +194,12 @@ const es: typeof en = {
   services: {
     title: 'Una sola agencia de confianza para todo lo que usted protege',
     metaTitle: 'Seguro de Auto, Casa y Comercial en Florida | M&K Agency',
-    metaDesc: 'Compare cotizaciones de seguro de casa de más de 15 aseguradoras clasificación A en Florida, además de auto, condominio, comercial y vida. Agencia independiente en Florida City. Cotizaciones gratis: (305) 247-8877.',
+    metaDesc: 'Seguro de casa de más de 15 aseguradoras clasificación A en Florida, además de auto, condominio, comercial y vida. Agencia independiente en Florida City. Llame al (305) 247-8877.',
     auto: { h: 'Seguro de Auto', p: 'Los conductores de Florida pagan algunas de las tarifas más altas del país. Le encontramos cobertura real a un precio competitivo — responsabilidad civil, cobertura completa, SR-22, rideshare y más. Prueba de seguro el mismo día.' },
     home: { h: 'Seguro de Casa y Condominio', p: 'Huracanes, inundaciones y primas en aumento hacen complicado el seguro de vivienda en Florida. Trabajamos con Citizens, Florida Peninsula, Edison, Heritage y otras aseguradoras de confianza para proteger su mayor inversión — incluyendo orientación sobre mitigación de viento e inspección de cuatro puntos.' },
     commercial: { h: 'Seguro Comercial', p: 'Desde responsabilidad general y compensación laboral hasta auto comercial y pólizas BOP — protegemos contratistas, restaurantes, camioneros y pequeños negocios en toda la Florida con aseguradoras como Next, Progressive e Hiscox.' },
     life: { h: 'Seguro de Vida', p: 'Proteja a las personas que dependen de usted. Opciones de vida a término y vida entera que se ajustan a su presupuesto — porque el futuro de su familia nunca debe dejarse al azar.' },
-    cta: 'Obtenga una cotización gratis para cualquier línea — una sola llamada lo resuelve todo.',
+    cta: 'Una sola llamada lo resuelve todo — un agente licenciado le explica sus opciones.',
   },
   about: {
     metaTitle: 'Sobre M&K Agency | Agencia de Seguros Independiente en Florida City, FL',
@@ -211,8 +211,8 @@ const es: typeof en = {
     visit: 'Visítenos',
   },
   contact: {
-    metaTitle: 'Contacte a M&K Agency | Cotizaciones Gratis | (305) 247-8877 ',
-    metaDesc: 'Llame, envíe texto o visite M&K Agency en Florida City, FL. Cotizaciones gratis de seguro de auto, casa y comercial en toda la Florida. Se habla español.',
+    metaTitle: 'Contacte a M&K Agency | Hable con un Agente | (305) 247-8877 ',
+    metaDesc: 'Llame, envíe texto o visite M&K Agency en Florida City, FL. Seguro de auto, casa y comercial en toda la Florida. Se habla español.',
     h: 'Hable con un agente real',
     sub: 'Llame, envíe texto, chatee o pida que le devolvamos la llamada — lo que sea más fácil para usted.',
     callUs: 'Llámenos', textUs: 'Envíenos un texto', visitUs: 'Visítenos', hours: 'Lun–Vie 9am–6pm ET',
@@ -295,13 +295,13 @@ const es: typeof en = {
   },
   meta: {
     title: 'Agencia de Seguros en Florida | Auto, Casa y Comercial | M&K Agency',
-    desc: 'Agencia de seguros independiente en Florida City que sirve a toda la Florida. Compare 15+ aseguradoras de casa clasificación A, además de auto y comercial. Cotización gratis en 30 segundos — (305) 247-8877.',
+    desc: 'Agencia de seguros independiente en Florida City que sirve a toda la Florida. Seguro de casa con 15+ aseguradoras clasificación A, además de auto y comercial. Hable con un agente — (305) 247-8877.',
   },
 };
 
 const ru: typeof en = {
   tagline: 'In God We Trust · Мы строим наше будущее вместе',
-  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', team: 'Команда', life: 'Жизнь', insurance: 'Страхование', quote: 'Бесплатная котировка' },
+  nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', team: 'Команда', life: 'Жизнь', insurance: 'Страхование', quote: 'Связаться с агентом' },
   call247: 'Звоните 24/7',
   hero: {
     badge1: '🛡️ Бесплатная проверка полиса за 5 минут',
@@ -309,30 +309,30 @@ const ru: typeof en = {
     h1a: 'Безопасность вашей семьи —',
     h1b: 'в надёжных руках.',
     sub: 'Поможем подобрать правильное покрытие для дома, машины и семьи — простыми словами, на английском, испанском или русском. С вами говорят живые люди, которые всегда на связи, когда это важнее всего.',
-    cta: 'Получить бесплатную котировку',
+    cta: 'Заказать звонок агента',
     rated: 'Рейтинг 5.0 на Google и Yelp · 334+ отзывов',
     strip: 'Сравниваем 15+ страховых компаний Флориды с рейтингом «A» для дома — плюс авто, бизнес и жизнь, всё в одном месте.',
   },
   homeFaq: {
     title: 'Вопросы, которые нам задают семьи',
     items: [
-      { q: 'Сколько стоит расчёт котировки?', a: 'Ничего. Расчёт всегда бесплатный, без обязательства что-либо покупать. Обычно занимает около 5 минут.' },
+      { q: 'Сколько стоит разговор с агентом?', a: 'Ничего. Разговор с лицензированным агентом всегда бесплатный, без обязательства что-либо покупать. Обычно занимает около 5 минут.' },
       { q: 'Что делать сразу после аварии?', a: 'Сначала позвоните нам — ещё до звонка в страховую другого водителя. Мы объясним, что делать, и поможем оформить claim шаг за шагом.' },
       { q: 'Вы правда поможете с claim, или просто продадите полис и исчезнете?', a: 'Мы остаёмся рядом на протяжении всего claim. В этом и разница между живым локальным агентом и колл-центром — если claim застрял, мы сами связываемся со страховой компанией.' },
       { q: 'Я плохо говорю по-английски — это проблема?', a: 'Совсем нет. Наша команда говорит на английском, испанском и русском — с радостью объясним всё на том языке, на котором вам удобнее.' },
-      { q: 'Нужно ли отменять текущий полис, чтобы получить котировку?', a: 'Нет. Для страхования дома мы сравниваем ваше текущее покрытие с 15+ компаниями с рейтингом «A»; для авто и других видов страхования мы просто следим, чтобы у вас было правильное покрытие по конкурентной цене. Менять полис советуем, только если это реально выгодно.' },
+      { q: 'Нужно ли отменять текущий полис, чтобы просто поговорить с вами?', a: 'Нет. Для страхования дома мы сравниваем ваше текущее покрытие с 15+ компаниями с рейтингом «A»; для авто и других видов страхования мы просто следим, чтобы у вас было правильное покрытие по конкурентной цене. Менять полис советуем, только если это реально выгодно.' },
       { q: 'Как быстро мне правда перезвонят?', a: 'Большинство заявок получают обратный звонок в тот же рабочий день, часто в течение часа в рабочее время (Пн–Пт 9:00–18:00 ET).' },
     ],
   },
   form: {
-    title: 'Получить бесплатную котировку',
+    title: 'Поговорить с лицензированным агентом',
     sub: 'Займёт 30 секунд. Лицензированный агент быстро перезвонит.',
     need: 'Что вам нужно?',
     auto: 'Автострахование', home: 'Дом / Кондо', commercial: 'Бизнес', life: 'Страхование жизни',
     zip: 'ZIP-код', name: 'Полное имя', phone: 'Телефон', email: 'Email',
     message: 'Сообщение (необязательно)', msgPh: 'Дополнительные детали...',
     consent: 'Я согласен(на), что M&K Agency может связаться со мной по телефону, SMS или с помощью автоматических/ИИ-звонков по указанному номеру по вопросам страхования, даже если номер находится в списке «Не звонить». Согласие не является условием покупки.',
-    submit: 'Узнать мою котировку →',
+    submit: 'Заказать обратный звонок →',
     sending: 'Отправка...',
     ok: 'Спасибо! Лицензированный агент свяжется с вами в ближайшее время.',
     err: 'Что-то пошло не так. Позвоните нам: (305) 247-8877.',
@@ -341,12 +341,12 @@ const ru: typeof en = {
   services: {
     title: 'Одно надёжное агентство для всего, что вы защищаете',
     metaTitle: 'Страхование авто, дома и бизнеса во Флориде | M&K Agency',
-    metaDesc: 'Сравните котировки страхования дома от 15+ компаний Флориды с рейтингом «A», плюс авто, кондо, бизнес и жизнь. Независимое агентство в Florida City, работаем по всей Флориде. Бесплатные котировки: (305) 247-8877.',
+    metaDesc: 'Страхование дома от 15+ компаний Флориды с рейтингом «A», плюс авто, кондо, бизнес и жизнь. Независимое агентство в Florida City, работаем по всей Флориде. Звоните: (305) 247-8877.',
     auto: { h: 'Автострахование', p: 'Водители Флориды платят одни из самых высоких тарифов в стране. Подберём для вас реальное покрытие по конкурентной цене — liability, полное покрытие, SR-22, rideshare и другое. Подтверждение страховки в тот же день.' },
     home: { h: 'Страхование дома и кондо', p: 'Ураганы, наводнения и растущие тарифы делают страхование жилья во Флориде сложным. Мы работаем с Citizens, Florida Peninsula, Edison, Heritage и другими надёжными компаниями, чтобы защитить вашу главную инвестицию — включая помощь с wind mitigation и four-point inspection.' },
     commercial: { h: 'Страхование бизнеса', p: 'От general liability и workers\u2019 comp до коммерческого авто и полисов BOP — мы защищаем подрядчиков, рестораны, дальнобойщиков и малый бизнес по всей Флориде с компаниями Next, Progressive и Hiscox.' },
     life: { h: 'Страхование жизни', p: 'Защитите тех, кто зависит от вас. Term и whole life программы под ваш бюджет — будущее вашей семьи не должно зависеть от случая.' },
-    cta: 'Бесплатная котировка по любому виду страхования — достаточно одного звонка.',
+    cta: 'Достаточно одного звонка — лицензированный агент объяснит все варианты.',
   },
   about: {
     metaTitle: 'О компании M&K Agency | Независимое страховое агентство во Флориде',
@@ -358,8 +358,8 @@ const ru: typeof en = {
     visit: 'Наш офис',
   },
   contact: {
-    metaTitle: 'Контакты M&K Agency | Бесплатные котировки | (305) 247-8877',
-    metaDesc: 'Позвоните, напишите SMS или приезжайте в офис M&K Agency в Florida City, FL. Бесплатные котировки страхования авто, дома и бизнеса по всей Флориде. Говорим по-русски.',
+    metaTitle: 'Контакты M&K Agency | Поговорите с агентом | (305) 247-8877',
+    metaDesc: 'Позвоните, напишите SMS или приезжайте в офис M&K Agency в Florida City, FL. Страхование авто, дома и бизнеса по всей Флориде. Говорим по-русски.',
     h: 'Поговорите с живым агентом',
     sub: 'Позвоните, напишите, начните чат или закажите обратный звонок — как вам удобнее.',
     callUs: 'Позвонить', textUs: 'Написать SMS', visitUs: 'Наш офис', hours: 'Пн–Пт 9:00–18:00 ET',
@@ -442,7 +442,7 @@ const ru: typeof en = {
   },
   meta: {
     title: 'Страховое агентство во Флориде | Авто, Дом, Бизнес | M&K Agency',
-    desc: 'Независимое страховое агентство в Florida City, работаем по всей Флориде. Сравниваем 15+ компаний с рейтингом «A» для дома, плюс авто и бизнес. Бесплатная котировка за 30 секунд — (305) 247-8877. Говорим по-русски.',
+    desc: 'Независимое страховое агентство в Florida City, работаем по всей Флориде. Страхование дома с 15+ компаниями рейтинга «A», плюс авто и бизнес. Поговорите с агентом — (305) 247-8877. Говорим по-русски.',
   },
 };
 

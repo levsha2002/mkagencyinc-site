@@ -17,7 +17,7 @@ const C: Record<Lang, any> = {
     h1a: 'Classic car insurance in Florida City & Homestead,',
     h1b: 'agreed value, not a depreciated guess.',
     sub: 'Your classic isn’t a daily driver — a standard policy shouldn’t treat it like one. We shop agreed-value carriers built for collector cars, so a total loss pays what your car is actually worth.',
-    cta: 'Get my free classic car quote',
+    cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why a standard auto policy shortchanges a classic — and what we do about it',
     whyText:
@@ -35,7 +35,7 @@ const C: Record<Lang, any> = {
     localText:
       'We’re at 33550 S Dixie Hwy, Suite 102, Florida City — near the cruise-in and car-show circuit across South Miami-Dade. Walk in, call, or text. We’ll help document your car’s condition and value for an accurate agreed-value quote.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare classic car rates now',
+    formTitle: 'Talk to a licensed agent',
     faqTitle: 'Classic car insurance in Florida City — common questions',
     faq: [
       { q: 'What counts as a “classic” or “collector” car for insurance?', a: 'Most carriers consider a car eligible around 20-25+ years old, or any vehicle with appreciating collector value — including some modern limited-production or enthusiast cars. Eligibility also depends on condition, storage, and how the car is used.' },
@@ -54,7 +54,7 @@ const C: Record<Lang, any> = {
     h1a: 'Seguro de auto clásico en Florida City y Homestead,',
     h1b: 'valor acordado, no una estimación depreciada.',
     sub: 'Su clásico no es un auto de uso diario — una póliza estándar no debería tratarlo como tal. Comparamos aseguradoras de valor acordado especializadas en autos de colección, para que una pérdida total pague lo que su auto realmente vale.',
-    cta: 'Cotización gratis de auto clásico',
+    cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué una póliza de auto estándar no le hace justicia a un clásico — y qué hacemos al respecto',
     whyText:
@@ -72,7 +72,7 @@ const C: Record<Lang, any> = {
     localText:
       'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City — cerca del circuito de exhibiciones y cruise-ins del sur de Miami-Dade. Visítenos, llame o envíe un texto. Le ayudamos a documentar la condición y el valor de su auto para una cotización de valor acordado precisa.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Compare tarifas de auto clásico ahora',
+    formTitle: 'Hable con un agente licenciado',
     faqTitle: 'Seguro de auto clásico en Florida City — preguntas frecuentes',
     faq: [
       { q: '¿Qué se considera un auto “clásico” o “de colección” para el seguro?', a: 'La mayoría de las aseguradoras consideran elegible un auto de 20-25+ años, o cualquier vehículo con valor de colección creciente — incluyendo algunos autos modernos de producción limitada. La elegibilidad también depende de la condición, el almacenamiento y el uso del auto.' },
@@ -91,7 +91,7 @@ const C: Record<Lang, any> = {
     h1a: 'Страховка классического авто во Florida City и Homestead —',
     h1b: 'agreed value, а не заниженная оценка.',
     sub: 'Ваша классика — не ежедневный транспорт, и стандартный полис не должен относиться к ней так. Мы сравним страховые agreed-value, специализирующиеся на коллекционных авто, чтобы при полной гибели выплатили реальную стоимость машины.',
-    cta: 'Бесплатный расчёт страховки классики',
+    cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему обычный автополис недооценивает классику — и что мы с этим делаем',
     whyText:
@@ -109,7 +109,7 @@ const C: Record<Lang, any> = {
     localText:
       'Мы находимся по адресу 33550 S Dixie Hwy, Suite 102, Florida City — рядом с маршрутами cruise-in и автовыставок юга Miami-Dade. Заходите, звоните или пишите. Поможем задокументировать состояние и стоимость машины для точного agreed-value расчёта.',
     langLine: 'English · Español · По-русски',
-    formTitle: 'Сравнить тарифы на классику сейчас',
+    formTitle: 'Поговорить с лицензированным агентом',
     faqTitle: 'Страховка классического авто во Florida City — частые вопросы',
     faq: [
       { q: 'Что считается «классическим» или «коллекционным» авто для страховки?', a: 'Большинство страховых считают подходящей машину возрастом от 20-25 лет, либо любое авто с растущей коллекционной ценностью — включая некоторые современные лимитированные модели. Право на программу также зависит от состояния, условий хранения и использования.' },

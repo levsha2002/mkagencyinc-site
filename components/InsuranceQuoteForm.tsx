@@ -59,7 +59,7 @@ export default function InsuranceQuoteForm({
     return (
       <div className="card">
         <p className="status-ok">
-          Thank you! A licensed agent will contact you shortly about your {product.title.toLowerCase()} quote.
+          Thank you! A licensed agent will contact you shortly about {product.title.toLowerCase()}.
         </p>
       </div>
     );
@@ -67,8 +67,8 @@ export default function InsuranceQuoteForm({
 
   return (
     <div className="card">
-      <h2>Get a free {product.title.toLowerCase()} quote</h2>
-      <p className="sub">Takes about a minute. A real agent calls you back fast.</p>
+      <h2>Talk to a licensed agent about {product.title.toLowerCase()}</h2>
+      <p className="sub">Takes about a minute. A real, licensed agent calls you back fast.</p>
       <form onSubmit={submit}>
         <div className="grid2">
           <div className="field">
@@ -133,7 +133,7 @@ export default function InsuranceQuoteForm({
         </div>
 
         <button type="submit" className="submit" disabled={status === 'sending' || !consent}>
-          {status === 'sending' ? 'Sending...' : 'See my quote →'}
+          {status === 'sending' ? 'Sending...' : 'Request my callback →'}
         </button>
         {status === 'err' && (
           <p className="status-err">Something went wrong. Please call us at (305) 247-8877.</p>
