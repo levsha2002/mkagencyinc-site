@@ -3,8 +3,8 @@ import { Resend } from 'resend';
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const AGENCY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
-const PHONE_DISPLAY = process.env.AGENCY_PHONE_DISPLAY || '(305) 247-8877';
-const PHONE_TEL = process.env.AGENCY_PHONE_TEL || '3052478877';
+const PHONE_DISPLAY = process.env.AGENCY_PHONE_DISPLAY || '(305) 859-3953';
+const PHONE_TEL = process.env.AGENCY_PHONE_TEL || '3058593953';
 
 const SYSTEM_PROMPT = `You are "Mike's AI Assistant" for M&K Agency (mkagencyinc.com),
 a licensed independent insurance agency in Florida City, FL, serving all of Florida.

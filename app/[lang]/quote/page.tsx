@@ -73,11 +73,11 @@ const UI: Record<Lang, Record<string, string>> = {
     message: 'Message (optional)', phMessage: 'Anything we should know?',
     consent: 'I agree that M&K Agency may contact me by phone, text, or automated/AI calls at the number provided about insurance, even if it is on a Do-Not-Call list. Consent is not a condition of purchase. Message/data rates may apply.',
     submit: 'Request my callback →', sending: 'Sending…',
-    err: 'Something went wrong — please try again or call (305) 247-8877.',
+    err: 'Something went wrong — please try again or call (305) 859-3953.',
     errConsent: 'Please check the consent box so we can contact you.',
     privacy: '🔒 Your info stays private. No spam, ever.',
     pickFirst: 'Choose an option above to get started.',
-    okH1: "You're all set!", okSub: 'Thanks — our team will call you back shortly. Need us now?', okCall: '📞 Call (305) 247-8877',
+    okH1: "You're all set!", okSub: 'Thanks — our team will call you back shortly. Need us now?', okCall: '📞 Call (305) 859-3953',
   },
   es: {
     tagline: 'Hogar · Auto · Comercial · Florida', call: 'Llamar',
@@ -87,11 +87,11 @@ const UI: Record<Lang, Record<string, string>> = {
     message: 'Mensaje (opcional)', phMessage: '¿Algo que debamos saber?',
     consent: 'Acepto que M&K Agency puede contactarme por teléfono, mensaje de texto o llamadas automatizadas/IA al número proporcionado sobre seguros, incluso si está en una lista de No Llamar. El consentimiento no es una condición de compra. Pueden aplicarse tarifas de mensajes/datos.',
     submit: 'Solicitar mi llamada →', sending: 'Enviando…',
-    err: 'Algo salió mal — inténtalo de nuevo o llama al (305) 247-8877.',
+    err: 'Algo salió mal — inténtalo de nuevo o llama al (305) 859-3953.',
     errConsent: 'Marca la casilla de consentimiento para que podamos contactarte.',
     privacy: '🔒 Tu información es privada. Sin spam, nunca.',
     pickFirst: 'Elige una opción arriba para comenzar.',
-    okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo te llamará en breve. ¿Nos necesitas ahora?', okCall: '📞 Llamar (305) 247-8877',
+    okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo te llamará en breve. ¿Nos necesitas ahora?', okCall: '📞 Llamar (305) 859-3953',
   },
   ru: {
     tagline: 'Дом · Авто · Бизнес · Флорида', call: 'Звонок',
@@ -101,11 +101,11 @@ const UI: Record<Lang, Record<string, string>> = {
     message: 'Сообщение (необязательно)', phMessage: 'Что нам важно знать?',
     consent: 'Я согласен(на), что M&K Agency может связаться со мной по телефону, SMS или с помощью автоматических/ИИ-звонков по указанному номеру по вопросам страхования, даже если номер внесён в список «Не звонить». Согласие не является условием покупки. Может взиматься плата за сообщения/данные.',
     submit: 'Заказать обратный звонок →', sending: 'Отправка…',
-    err: 'Что-то пошло не так — попробуйте ещё раз или позвоните (305) 247-8877.',
+    err: 'Что-то пошло не так — попробуйте ещё раз или позвоните (305) 859-3953.',
     errConsent: 'Отметьте согласие, чтобы мы могли с вами связаться.',
     privacy: '🔒 Ваши данные конфиденциальны. Никакого спама.',
     pickFirst: 'Выберите вариант выше, чтобы начать.',
-    okH1: 'Готово!', okSub: 'Спасибо — наша команда скоро перезвонит. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 247-8877',
+    okH1: 'Готово!', okSub: 'Спасибо — наша команда скоро перезвонит. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 859-3953',
   },
 };
 
@@ -154,7 +154,7 @@ export default function QuotePage() {
           <div className="qh-check">✓</div>
           <h1>{t.okH1}</h1>
           <p>{t.okSub}</p>
-          <a href="tel:3052478877" className="qh-btn qh-btn-white">{t.okCall}</a>
+          <a href="tel:3058593953" className="qh-btn qh-btn-white">{t.okCall}</a>
         </div>
       </main>
     );
@@ -171,7 +171,7 @@ export default function QuotePage() {
             <strong>M&amp;K Agency</strong>
             <span>{t.tagline}</span>
           </div>
-          <a href="tel:3052478877" className="qh-call">📞 {t.call}</a>
+          <a href="tel:3058593953" className="qh-call">📞 {t.call}</a>
         </div>
       </header>
 

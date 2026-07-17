@@ -49,7 +49,7 @@ export async function POST(req: Request) {
           from: fromAddress,
           to: visitorEmail,
           subject: 'Your chat with M&K Agency',
-          html: `<h2>Copy of your chat with M&K Agency</h2>${html}<p>Questions? Call or text us: (305) 247-8877</p>`,
+          html: `<h2>Copy of your chat with M&K Agency</h2>${html}<p>Questions? Call or text us: (305) 859-3953</p>`,
         }).catch((err) => console.error('Visitor copy email error:', err));
       }
     }

@@ -70,7 +70,7 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
 
             <div style={{ lineHeight: 1.9, fontSize: '.98rem' }}>
               <div>
-                📞 <a href="tel:+13052478877" style={{ color: '#082a59', fontWeight: 600 }}>(305) 247-8877</a>
+                📞 <a href="tel:+13058593953" style={{ color: '#082a59', fontWeight: 600 }}>(305) 859-3953</a>
               </div>
               <div>
                 ✉️ <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#082a59', fontWeight: 600 }}>mikhailkozlov@allstate.com</a>

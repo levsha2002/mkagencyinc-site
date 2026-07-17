@@ -65,7 +65,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '9. Contact Us',
         body: [
-          'M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 247-8877',
+          'M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 859-3953',
         ],
       },
       {
@@ -133,7 +133,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '9. Contáctenos',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 859-3953'],
       },
       {
         heading: '10. Cambios a esta Política',
@@ -196,7 +196,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '9. Свяжитесь с нами',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 859-3953'],
       },
       {
         heading: '10. Изменения в этой Политике',
@@ -273,7 +273,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '11. Contact Us',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 859-3953'],
       },
     ],
   },
@@ -327,7 +327,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '11. Contáctenos',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 859-3953'],
       },
     ],
   },
@@ -379,7 +379,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '11. Свяжитесь с нами',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 859-3953'],
       },
     ],
   },
@@ -438,7 +438,7 @@ export const referralRules: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '8. Contact',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 859-3953'],
       },
       {
         heading: '9. Changes to These Rules',
@@ -488,7 +488,7 @@ export const referralRules: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '8. Contacto',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 859-3953'],
       },
       {
         heading: '9. Cambios a Estas Reglas',
@@ -538,7 +538,7 @@ export const referralRules: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: '8. Контакты',
-        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 247-8877'],
+        body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 859-3953'],
       },
       {
         heading: '9. Изменения настоящих правил',
