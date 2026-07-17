@@ -19,6 +19,7 @@ function hasContactInfo(messages: Msg[]) {
 
 export default function ChatWidget({ lang }: { lang: string }) {
   const t = getDict(lang).chat;
+  const tForm = getDict(lang).form;
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<'chat' | 'callback'>('chat');
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -32,6 +33,7 @@ export default function ChatWidget({ lang }: { lang: string }) {
   const bodyRef = useRef<HTMLDivElement>(null);
 
   const [cb, setCb] = useState({ name: '', phone: '' });
+  const [cbConsent, setCbConsent] = useState(false);
   const [cbStatus, setCbStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
 
   useEffect(() => {
@@ -90,10 +92,10 @@ export default function ChatWidget({ lang }: { lang: string }) {
       const res = await fetch('/api/callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...cb, lang }),
+        body: JSON.stringify({ ...cb, lang, consent: true, contact_method: 'call' }),
       });
       setCbStatus(res.ok ? 'ok' : 'err');
-      if (res.ok) setCb({ name: '', phone: '' });
+      if (res.ok) { setCb({ name: '', phone: '' }); setCbConsent(false); }
     } catch { setCbStatus('err'); }
   };
 
@@ -145,7 +147,12 @@ export default function ChatWidget({ lang }: { lang: string }) {
                 onChange={(e) => setCb({ ...cb, name: e.target.value })} />
               <input required type="tel" placeholder={t.yourPhone} value={cb.phone}
                 onChange={(e) => setCb({ ...cb, phone: e.target.value })} />
-              <button type="submit" disabled={cbStatus === 'sending'}>
+              <label className="mk-consent" style={{ fontSize: '.78rem' }}>
+                <input type="checkbox" required checked={cbConsent}
+                  onChange={(e) => setCbConsent(e.target.checked)} />
+                <span>{tForm.consent}</span>
+              </label>
+              <button type="submit" disabled={cbStatus === 'sending' || !cbConsent}>
                 {cbStatus === 'sending' ? t.cbSending : t.cbSubmit}
               </button>
               {cbStatus === 'ok' && <p className="status-ok" style={{ fontSize: '.85rem' }}>{t.cbOk}</p>}
