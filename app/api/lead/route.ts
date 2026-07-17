@@ -2,7 +2,11 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const AGENCY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
+// Hardcoded so email works regardless of Vercel env-var state.
+// mkagencyinc.com is a verified sending domain in Resend, so leads@ sends
+// authenticated (good deliverability). Recipient is the agency's allstate.com box.
+const AGENCY_EMAIL = 'mikhailkozlov@allstate.com';
+const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
 export async function POST(req: Request) {
   try {
@@ -43,7 +47,8 @@ export async function POST(req: Request) {
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const { error: resendError } = await resend.emails.send({
-        from: process.env.RESEND_FROM || 'M&K Website <onboarding@resend.dev>',
+        from: FROM_ADDRESS,
+        reply_to: email,
         to: AGENCY_EMAIL,
         subject: `🔥 New ${insurance_type} lead: ${name} (${zip_code})`,
         html: `

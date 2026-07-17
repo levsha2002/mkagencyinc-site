@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const NOTIFY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
+// Hardcoded so email works regardless of Vercel env-var state (verified domain).
+const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
+const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
 // Called ONLY when the visitor checked the consent box in the chat widget.
 // 1) Saves the transcript to Neon, 2) emails a copy to the agency,
@@ -30,7 +32,7 @@ export async function POST(req: Request) {
 
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      const fromAddress = process.env.RESEND_FROM || 'onboarding@resend.dev';
+      const fromAddress = FROM_ADDRESS;
 
       // Copy to the agency
       await resend.emails.send({
@@ -40,9 +42,9 @@ export async function POST(req: Request) {
         html: `<h2>Chat with Mike — transcript (${lang})</h2>${html}`,
       });
 
-      // Copy to the visitor, only if we have a verified sending domain
-      // (resend.dev cannot send to arbitrary recipients — only to the account owner)
-      if (visitorEmail && process.env.RESEND_FROM) {
+      // Copy to the visitor — we send from a verified domain (mkagencyinc.com),
+      // so Resend can deliver to any recipient.
+      if (visitorEmail) {
         await resend.emails.send({
           from: fromAddress,
           to: visitorEmail,

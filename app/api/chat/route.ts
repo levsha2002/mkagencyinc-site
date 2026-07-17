@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 
-const AGENCY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
+// Hardcoded so email works regardless of Vercel env-var state (verified domain).
+const AGENCY_EMAIL = 'mikhailkozlov@allstate.com';
+const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 const PHONE_DISPLAY = process.env.AGENCY_PHONE_DISPLAY || '(305) 247-8877';
 const PHONE_TEL = process.env.AGENCY_PHONE_TEL || '3052478877';
 
@@ -110,7 +112,7 @@ async function notifyAgent({ transcriptHtml, subject, structuredLead }) {
     tasks.push(
       resend.emails
         .send({
-          from: process.env.RESEND_FROM || 'onboarding@resend.dev',
+          from: FROM_ADDRESS,
           to: AGENCY_EMAIL,
           subject,
           html: transcriptHtml,

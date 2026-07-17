@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 
-const NOTIFY_EMAIL = process.env.AGENCY_EMAIL || 'mikhailkozlov@allstate.com';
+// Hardcoded so email works regardless of Vercel env-var state (verified domain).
+const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
+const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
 export async function POST(req: NextRequest) {
   try {
@@ -44,7 +46,7 @@ export async function POST(req: NextRequest) {
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
-        from: process.env.RESEND_FROM || 'M&K Website <onboarding@resend.dev>',
+        from: FROM_ADDRESS,
         to: NOTIFY_EMAIL,
         subject: `New business referral: ${b.business_name}`,
         html: `<h2>New local business recommendation — needs phone verification</h2>
