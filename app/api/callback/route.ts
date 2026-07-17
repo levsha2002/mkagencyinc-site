@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       const methodLabel = contactMethod === 'text' ? 'TEXT' : 'CALL';
 
       await resend.emails.send({
-        from: 'M&K Website <onboarding@resend.dev>',
+        from: process.env.RESEND_FROM || 'M&K Website <onboarding@resend.dev>',
         to: NOTIFY_EMAIL,
         subject: `${urgentTag}${methodLabel} request — ${b.name} (wants: ${agentName})`,
         html: `<h2>${urgent ? 'Urgent c' : 'C'}allback request (${b.lang})</h2>

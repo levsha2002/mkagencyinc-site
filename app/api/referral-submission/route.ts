@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
-        from: 'M&K Website <onboarding@resend.dev>',
+        from: process.env.RESEND_FROM || 'M&K Website <onboarding@resend.dev>',
         to: NOTIFY_EMAIL,
         subject: `New business referral: ${b.business_name}`,
         html: `<h2>New local business recommendation — needs phone verification</h2>

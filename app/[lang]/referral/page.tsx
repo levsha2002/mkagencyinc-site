@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDict } from '@/lib/dictionaries';
 import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
@@ -26,6 +27,59 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
             <span className="accent">{t.heroAccent}</span>
           </h1>
           <p>{t.heroSub}</p>
+        </div>
+      </section>
+
+      {/* ===== Refer-a-friend card (printable / shareable) ===== */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: 620 }}>
+          <div
+            style={{
+              background: '#fff',
+              border: '2px solid #082a59',
+              borderRadius: 20,
+              padding: '32px 28px',
+              textAlign: 'center',
+              boxShadow: '0 14px 44px rgba(8,42,89,.14)',
+            }}
+          >
+            <h2 style={{ marginTop: 0, color: '#082a59', fontSize: '1.6rem' }}>
+              A Referral is the Best Compliment
+            </h2>
+            <p style={{ color: 'var(--muted)', marginTop: 6, fontSize: '1.05rem' }}>
+              Share the QR code, share the care.
+            </p>
+
+            <Image
+              src="/images/referral-qr.png"
+              alt="Scan to reach M&K Agency — Mikhail Kozlov"
+              width={200}
+              height={200}
+              style={{ width: 200, height: 200, margin: '18px auto 6px', display: 'block' }}
+            />
+            <p style={{ fontSize: '.82rem', color: 'var(--muted)', marginTop: 0 }}>
+              Scan to reach us
+            </p>
+
+            <div style={{ borderTop: '1px solid #e6ecf5', margin: '20px 0 16px' }} />
+
+            <div style={{ fontWeight: 700, color: '#082a59', fontSize: '1.1rem' }}>
+              Mikhail Kozlov
+            </div>
+            <div style={{ color: 'var(--muted)', marginBottom: 10 }}>Agency Owner</div>
+
+            <div style={{ lineHeight: 1.9, fontSize: '.98rem' }}>
+              <div>
+                📞 <a href="tel:+13052478877" style={{ color: '#082a59', fontWeight: 600 }}>(305) 247-8877</a>
+              </div>
+              <div>
+                ✉️ <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#082a59', fontWeight: 600 }}>mikhailkozlov@allstate.com</a>
+              </div>
+              <div style={{ color: 'var(--muted)' }}>
+                📍 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
