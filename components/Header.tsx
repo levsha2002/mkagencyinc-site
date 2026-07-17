@@ -48,11 +48,6 @@ export default function Header({ lang }: { lang: string }) {
           ))}
         </div>
 
-        <a href={`tel:${PHONE_TEL}`} className="call-btn">
-          📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
-        </a>
-        <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">Text us</span></a>
-
         <button
           type="button"
           className="burger"
@@ -62,6 +57,16 @@ export default function Header({ lang }: { lang: string }) {
         >
           {open ? '✕' : '☰'}
         </button>
+      </div>
+
+      {/* Contact actions on their own row, so the EN/ES/RU switcher never gets squeezed out */}
+      <div className="header-cta">
+        <div className="container header-cta-in">
+          <a href={`tel:${PHONE_TEL}`} className="call-btn">
+            📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
+          </a>
+          <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">Text us</span></a>
+        </div>
       </div>
 
       {open && (

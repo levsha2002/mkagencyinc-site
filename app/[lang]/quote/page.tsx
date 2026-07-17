@@ -3,73 +3,54 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import { team } from '@/lib/team-data';
 
 type Lang = 'en' | 'es' | 'ru';
 
-/* ---- Categories, sub-types and plain-language explanations ----
-   Explanations are compliance-safe: no prices, no carrier names, no
-   guarantees of coverage or approval. Sub-type titles double as the
-   insurance_type recorded on the lead. */
-const CATS: {
-  id: string;
-  icon: string;
-  label: Record<Lang, string>;
-  types: { id: string; title: string; desc: string }[];
-}[] = [
+/* Insurance types for the compact dropdown — the full catalog with
+   descriptions lives on the /insurance page; this page stays a clean
+   contact page. Titles double as the insurance_type recorded on the lead. */
+const CATS: { id: string; label: Record<Lang, string>; types: string[] }[] = [
   {
     id: 'auto',
-    icon: '🚗',
     label: { en: 'Auto', es: 'Auto', ru: 'Авто' },
     types: [
-      { id: 'auto-standard', title: 'Standard / Low-Risk Auto', desc: 'Clean driving record? Competitive coverage for your everyday car, truck, or SUV.' },
-      { id: 'auto-sr22', title: 'High-Risk · SR-22 / FR-44', desc: 'Need an SR-22 or FR-44 filing after a ticket, DUI, or lapse? We help high-risk and distressed drivers get back on the road and stay compliant.' },
-      { id: 'auto-classic', title: 'Classic & Collector', desc: 'Antique, collector, and show cars — specialized agreed-value protection built for limited-use vehicles.' },
-      { id: 'auto-ev', title: 'Electric Vehicle (EV)', desc: "We don't sell warranties — just competitive rates for EVs, from Tesla to Rivian to any electric vehicle on the road." },
-      { id: 'auto-commercial', title: 'Commercial Auto', desc: 'Vehicles used for business — from a single work van to a small fleet.' },
-      { id: 'auto-rideshare', title: 'Rideshare · Uber / Lyft', desc: "Drive for Uber or Lyft? Close the gap between your personal policy and the app's coverage." },
+      'Standard / Low-Risk Auto',
+      'High-Risk · SR-22 / FR-44',
+      'Classic & Collector',
+      'Electric Vehicle (EV)',
+      'Commercial Auto',
+      'Rideshare · Uber / Lyft',
     ],
   },
   {
     id: 'home',
-    icon: '🏠',
     label: { en: 'Home', es: 'Hogar', ru: 'Дом' },
-    types: [
-      { id: 'home-single', title: 'Single-Family Home', desc: 'Protect the house you own — structure, belongings, and liability, built for Florida risks.' },
-      { id: 'home-condo', title: 'Condo (HO-6)', desc: "Coverage for what's inside your unit and your personal liability, beyond the HOA's master policy." },
-      { id: 'home-townhouse', title: 'Townhouse', desc: 'Tailored to attached homes — structure and interior depending on your association setup.' },
-      { id: 'home-renters', title: 'Renters', desc: 'Affordable protection for your belongings and personal liability while you rent.' },
-    ],
+    types: ['Single-Family Home', 'Condo (HO-6)', 'Townhouse', 'Renters'],
   },
   {
     id: 'life',
-    icon: '❤️',
     label: { en: 'Life', es: 'Vida', ru: 'Жизнь' },
-    types: [
-      { id: 'life-term', title: 'Term Life', desc: "Straightforward coverage for a set period — protect your family's income during the years it matters most." },
-      { id: 'life-whole', title: 'Whole Life', desc: 'Lifelong coverage that builds cash value over time.' },
-    ],
+    types: ['Term Life', 'Whole Life'],
   },
   {
     id: 'other',
-    icon: '🛡️',
     label: { en: 'Specialty', es: 'Especiales', ru: 'Другое' },
-    types: [
-      { id: 'moto', title: 'Motorcycle', desc: 'Coverage for your bike, your gear, and liability on the road.' },
-      { id: 'boat', title: 'Boat / Watercraft', desc: 'Protect your boat on the water and on the trailer.' },
-      { id: 'jetski', title: 'Jet Ski / PWC', desc: 'Coverage for personal watercraft — liability and physical damage.' },
-      { id: 'offroad', title: 'Off-Road (ATV / UTV)', desc: 'Protection for ATVs, UTVs, and other off-road vehicles.' },
-      { id: 'golfcart', title: 'Golf Cart', desc: 'Coverage for street-legal and community golf carts.' },
-      { id: 'pet', title: 'Pet Insurance', desc: 'Help with vet bills for your dog or cat — accidents, illness, and more.' },
-    ],
+    types: ['Motorcycle', 'Boat / Watercraft', 'Jet Ski / PWC', 'Off-Road (ATV / UTV)', 'Golf Cart', 'Pet Insurance', 'Umbrella'],
   },
 ];
+
+const AGENTS = team.filter((m) => m.slug !== 'mikhail-kozlov');
+const PHONE = '3058593953';
 
 const UI: Record<Lang, Record<string, string>> = {
   en: {
     tagline: 'Home · Auto · Commercial · Florida', call: 'Call',
+    h1: 'Contact us', sub: 'Call, text, or visit — or tell us what you need and a licensed agent calls you back.',
     callUs: 'Call us', textUs: 'Text us', visitUs: 'Visit us',
-    h1: 'Talk to a real, licensed agent', sub: 'Call, text, or visit us — or pick what you need below and a local agent calls you back.',
-    step2: 'Your details', selected: 'Selected', change: 'change',
+    agentsTitle: 'Prefer a specific agent?', agentsSub: 'Reach out to any of us by name — call or text.',
+    formTitle: 'Request a callback',
+    need: 'What do you need?', needPh: 'Choose insurance type…',
     zip: 'ZIP code', name: 'Full name', phName: 'Your name', phone: 'Phone', email: 'Email',
     message: 'Message (optional)', phMessage: 'Anything we should know?',
     consent: 'I agree that M&K Agency may contact me by phone, text, or automated/AI calls at the number provided about insurance, even if it is on a Do-Not-Call list. Consent is not a condition of purchase. Message/data rates may apply.',
@@ -77,15 +58,17 @@ const UI: Record<Lang, Record<string, string>> = {
     err: 'Something went wrong — please try again or call (305) 859-3953.',
     errConsent: 'Please check the consent box so we can contact you.',
     privacy: '🔒 Your info stays private. No spam, ever.',
-    pickFirst: 'Choose an option above to get started.',
     okH1: "You're all set!", okSub: 'Thanks — our team will call you back shortly. Need us now?', okCall: '📞 Call (305) 859-3953',
     scan: 'Scan to open or share this page on your phone',
+    callTitle: 'Call', textTitle: 'Text',
   },
   es: {
     tagline: 'Hogar · Auto · Comercial · Florida', call: 'Llamar',
+    h1: 'Contáctenos', sub: 'Llame, envíe un texto o visítenos — o díganos qué necesita y un agente licenciado le devuelve la llamada.',
     callUs: 'Llámenos', textUs: 'Envíe un texto', visitUs: 'Visítenos',
-    h1: 'Hable con un agente real y licenciado', sub: 'Llámenos, envíe un texto o visítenos — o elija lo que necesita abajo y un agente local le devuelve la llamada.',
-    step2: 'Tus datos', selected: 'Seleccionado', change: 'cambiar',
+    agentsTitle: '¿Prefiere un agente específico?', agentsSub: 'Contacte a cualquiera de nosotros por nombre — llamada o texto.',
+    formTitle: 'Solicitar una llamada',
+    need: '¿Qué necesita?', needPh: 'Elija el tipo de seguro…',
     zip: 'Código postal', name: 'Nombre completo', phName: 'Tu nombre', phone: 'Teléfono', email: 'Correo electrónico',
     message: 'Mensaje (opcional)', phMessage: '¿Algo que debamos saber?',
     consent: 'Acepto que M&K Agency puede contactarme por teléfono, mensaje de texto o llamadas automatizadas/IA al número proporcionado sobre seguros, incluso si está en una lista de No Llamar. El consentimiento no es una condición de compra. Pueden aplicarse tarifas de mensajes/datos.',
@@ -93,15 +76,17 @@ const UI: Record<Lang, Record<string, string>> = {
     err: 'Algo salió mal — inténtalo de nuevo o llama al (305) 859-3953.',
     errConsent: 'Marca la casilla de consentimiento para que podamos contactarte.',
     privacy: '🔒 Tu información es privada. Sin spam, nunca.',
-    pickFirst: 'Elige una opción arriba para comenzar.',
     okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo te llamará en breve. ¿Nos necesitas ahora?', okCall: '📞 Llamar (305) 859-3953',
     scan: 'Escanee para abrir o compartir esta página en su teléfono',
+    callTitle: 'Llamar', textTitle: 'Texto',
   },
   ru: {
     tagline: 'Дом · Авто · Бизнес · Флорида', call: 'Звонок',
+    h1: 'Свяжитесь с нами', sub: 'Позвоните, напишите SMS или приезжайте — или скажите, что нужно, и лицензированный агент перезвонит.',
     callUs: 'Позвонить', textUs: 'Написать SMS', visitUs: 'Приехать',
-    h1: 'Поговорите с живым лицензированным агентом', sub: 'Позвоните, напишите SMS или приезжайте — или выберите, что нужно, ниже, и местный агент перезвонит.',
-    step2: 'Ваши данные', selected: 'Выбрано', change: 'изменить',
+    agentsTitle: 'Хотите конкретного агента?', agentsSub: 'Свяжитесь с любым из нас по имени — звонком или SMS.',
+    formTitle: 'Заказать обратный звонок',
+    need: 'Что вам нужно?', needPh: 'Выберите вид страхования…',
     zip: 'Индекс (ZIP)', name: 'Полное имя', phName: 'Ваше имя', phone: 'Телефон', email: 'Эл. почта',
     message: 'Сообщение (необязательно)', phMessage: 'Что нам важно знать?',
     consent: 'Я согласен(на), что M&K Agency может связаться со мной по телефону, SMS или с помощью автоматических/ИИ-звонков по указанному номеру по вопросам страхования, даже если номер внесён в список «Не звонить». Согласие не является условием покупки. Может взиматься плата за сообщения/данные.',
@@ -109,43 +94,35 @@ const UI: Record<Lang, Record<string, string>> = {
     err: 'Что-то пошло не так — попробуйте ещё раз или позвоните (305) 859-3953.',
     errConsent: 'Отметьте согласие, чтобы мы могли с вами связаться.',
     privacy: '🔒 Ваши данные конфиденциальны. Никакого спама.',
-    pickFirst: 'Выберите вариант выше, чтобы начать.',
     okH1: 'Готово!', okSub: 'Спасибо — наша команда скоро перезвонит. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 859-3953',
     scan: 'Отсканируйте, чтобы открыть или поделиться этой страницей',
+    callTitle: 'Позвонить', textTitle: 'Написать',
   },
 };
 
-export default function QuotePage() {
+export default function ContactUsPage() {
   const params = useParams();
   const raw = Array.isArray(params?.lang) ? params.lang[0] : (params?.lang as string | undefined);
   const lang: Lang = raw === 'es' || raw === 'ru' ? raw : 'en';
   const t = UI[lang];
 
-  const [cat, setCat] = useState('auto');
-  const [picked, setPicked] = useState<{ title: string; catLabel: string } | null>(null);
+  const [ins, setIns] = useState('');
   const [form, setForm] = useState({ zip: '', name: '', phone: '', email: '', message: '', consent: false });
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err' | 'err-consent'>('idle');
-
-  const activeCat = CATS.find((c) => c.id === cat)!;
-
-  function choose(title: string) {
-    setPicked({ title, catLabel: activeCat.label[lang] });
-    setTimeout(() => document.getElementById('q-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
-  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.consent) { setStatus('err-consent'); return; }
     setStatus('sending');
-    let src = 'qr';
+    let src = 'contact-us';
     try { const p = new URLSearchParams(window.location.search).get('src'); if (p) src = p; } catch {}
     try {
       const res = await fetch('/api/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          insurance_type: picked ? picked.title : activeCat.label.en,
+          insurance_type: ins || 'General',
           zip_code: form.zip, name: form.name, phone: form.phone, email: form.email,
-          message: form.message, consent: form.consent, lang, source: `qr-${src}`,
+          message: form.message, consent: form.consent, lang, source: src,
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');
@@ -160,7 +137,7 @@ export default function QuotePage() {
           <div className="qh-check">✓</div>
           <h1>{t.okH1}</h1>
           <p>{t.okSub}</p>
-          <a href="tel:3058593953" className="qh-btn qh-btn-white">{t.okCall}</a>
+          <a href={`tel:${PHONE}`} className="qh-btn qh-btn-white">{t.okCall}</a>
         </div>
       </main>
     );
@@ -177,7 +154,7 @@ export default function QuotePage() {
             <strong>M&amp;K Agency</strong>
             <span>{t.tagline}</span>
           </div>
-          <a href="tel:3058593953" className="qh-call">📞 {t.call}</a>
+          <a href={`tel:${PHONE}`} className="qh-call">📞 {t.call}</a>
         </div>
       </header>
 
@@ -185,55 +162,57 @@ export default function QuotePage() {
         <h1 className="qh-h1">{t.h1}</h1>
         <p className="qh-sub">{t.sub}</p>
 
-        {/* Quick contact: call / text / visit (merged from the old Contact page) */}
-        <div className="qh-contact">
-          <a href="tel:3058593953" className="qh-cbtn">📞 {t.callUs}</a>
-          <a href="sms:3058593953" className="qh-cbtn">💬 {t.textUs}</a>
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=33550+S+Dixie+Hwy+Suite+102+Florida+City+FL+33034"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="qh-cbtn"
-          >
-            📍 {t.visitUs}
-          </a>
-        </div>
+        {/* Left: call / text / visit (vertical). Right: contact an agent by name. */}
+        <div className="qh-two">
+          <div className="qh-contact">
+            <a href={`tel:${PHONE}`} className="qh-cbtn">📞 {t.callUs}</a>
+            <a href={`sms:${PHONE}`} className="qh-cbtn">💬 {t.textUs}</a>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=33550+S+Dixie+Hwy+Suite+102+Florida+City+FL+33034"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="qh-cbtn"
+            >
+              📍 {t.visitUs}
+            </a>
+          </div>
 
-        {/* Category tabs */}
-        <div className="qh-tabs">
-          {CATS.map((c) => (
-            <button key={c.id} type="button"
-              className={`qh-tab ${cat === c.id ? 'on' : ''}`}
-              onClick={() => setCat(c.id)}>
-              <span className="qh-tab-ic">{c.icon}</span>{c.label[lang]}
-            </button>
-          ))}
-        </div>
-
-        {/* Sub-type cards with explanations */}
-        <div className="qh-grid">
-          {activeCat.types.map((ty) => {
-            const on = picked?.title === ty.title;
-            return (
-              <button key={ty.id} type="button"
-                className={`qh-card ${on ? 'on' : ''}`}
-                onClick={() => choose(ty.title)}>
-                <span className="qh-card-t">{ty.title}{on ? ' ✓' : ''}</span>
-                <span className="qh-card-d">{ty.desc}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Adaptive form */}
-        <form id="q-form" onSubmit={submit} className="qh-form">
-          {picked ? (
-            <div className="qh-picked">
-              {t.selected}: <strong>{picked.catLabel} · {picked.title}</strong>
+          <div className="qh-agents">
+            <h2 className="qh-h2">{t.agentsTitle}</h2>
+            <p className="qh-agents-sub">{t.agentsSub}</p>
+            <div className="qh-ag-grid">
+              {AGENTS.map((a) => {
+                const body = encodeURIComponent(`Hi! I'd like to talk to ${a.name} about my insurance.`);
+                return (
+                  <div key={a.slug} className="qh-ag">
+                    <img src={a.photo} alt={a.name} />
+                    <span className="qh-ag-name">{a.name.split(' ')[0]}</span>
+                    <span className="qh-ag-actions">
+                      <a href={`tel:${PHONE}`} title={`${t.callTitle} — ${a.name}`}>📞</a>
+                      <a href={`sms:${PHONE}?body=${body}`} title={`${t.textTitle} — ${a.name}`}>💬</a>
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-          ) : (
-            <div className="qh-hint">{t.pickFirst}</div>
-          )}
+          </div>
+        </div>
+
+        {/* Callback form — compact type picker; the full catalog lives on /insurance */}
+        <form id="q-form" onSubmit={submit} className="qh-form">
+          <h2 className="qh-h2" style={{ marginTop: 0 }}>{t.formTitle}</h2>
+
+          <label>{t.need}</label>
+          <select value={ins} onChange={(e) => setIns(e.target.value)} required>
+            <option value="" disabled>{t.needPh}</option>
+            {CATS.map((c) => (
+              <optgroup key={c.id} label={c.label[lang]}>
+                {c.types.map((ty) => (
+                  <option key={ty} value={ty}>{ty}</option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
 
           <div className="qh-row">
             <div>
@@ -277,7 +256,7 @@ export default function QuotePage() {
         </form>
 
         <div className="qh-qr">
-          <Image src="/images/quote-qr.png" alt="QR code — M&K Agency callback form" width={116} height={116} />
+          <Image src="/images/quote-qr.png" alt="QR code — M&K Agency contact page" width={116} height={116} />
           <span>{t.scan}</span>
         </div>
       </div>
@@ -295,26 +274,27 @@ const CSS = `
 .qh-call{margin-left:auto;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px;border-radius:12px}
 .qh-wrap{max-width:760px;margin:0 auto;padding:22px 18px 60px}
 .qh-h1{font-size:28px;font-weight:800;color:#082a59;margin:0}
+.qh-h2{font-size:18px;font-weight:800;color:#082a59;margin:0 0 4px}
 .qh-sub{color:#475569;margin:6px 0 18px}
-.qh-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.qh-tab{display:inline-flex;align-items:center;gap:6px;border:1.5px solid #d9e2ec;background:#fff;color:#334155;font-weight:600;font-size:15px;padding:9px 14px;border-radius:999px;cursor:pointer;transition:.15s}
-.qh-tab:hover{border-color:#1d6fe0}
-.qh-tab.on{background:#082a59;border-color:#082a59;color:#fff}
-.qh-tab-ic{font-size:16px}
-.qh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-bottom:26px}
-.qh-card{text-align:left;background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:14px 15px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:5px}
-.qh-card:hover{border-color:#1d6fe0;box-shadow:0 6px 18px rgba(8,42,89,.08);transform:translateY(-1px)}
-.qh-card.on{border-color:#082a59;background:#f0f6ff;box-shadow:0 0 0 2px #082a59 inset}
-.qh-card-t{font-weight:700;color:#082a59;font-size:15px}
-.qh-card-d{font-size:13px;color:#5b6b7f;line-height:1.45}
+.qh-two{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-bottom:22px}
+.qh-contact{display:flex;flex-direction:column;gap:10px}
+.qh-cbtn{text-align:center;background:#fff;border:1.5px solid #d9e2ec;border-radius:14px;padding:13px 14px;color:#082a59;font-weight:700;font-size:15px;text-decoration:none;transition:.15s}
+.qh-cbtn:hover{border-color:#1d6fe0;box-shadow:0 6px 18px rgba(8,42,89,.08)}
+.qh-agents{background:#fff;border:1px solid #e6ecf5;border-radius:18px;padding:16px}
+.qh-agents-sub{font-size:13px;color:#5b6b7f;margin:0 0 12px}
+.qh-ag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.qh-ag{display:flex;align-items:center;gap:8px;background:#f8fafd;border:1.5px solid #e2e8f0;border-radius:12px;padding:7px 9px}
+.qh-ag img{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.qh-ag-name{font-weight:700;color:#082a59;font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.qh-ag-actions{display:flex;gap:4px}
+.qh-ag-actions a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#eef5ff;text-decoration:none;font-size:14px;transition:.15s}
+.qh-ag-actions a:hover{background:#dbeafe}
 .qh-form{background:#fff;border-radius:22px;padding:20px 18px;box-shadow:0 8px 30px rgba(8,42,89,.06)}
 .qh-form label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
-.qh-form input,.qh-form textarea,.qh-form select{width:100%;padding:12px 13px;border:1.5px solid #d9e2ec;border-radius:12px;font-size:15px;font-family:inherit;box-sizing:border-box}
-.qh-form input:focus,.qh-form textarea:focus{outline:none;border-color:#1d6fe0}
+.qh-form input,.qh-form textarea,.qh-form select{width:100%;padding:12px 13px;border:1.5px solid #d9e2ec;border-radius:12px;font-size:15px;font-family:inherit;box-sizing:border-box;background:#fff}
+.qh-form input:focus,.qh-form textarea:focus,.qh-form select:focus{outline:none;border-color:#1d6fe0}
 .qh-form textarea{height:70px;resize:vertical}
 .qh-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.qh-picked{background:#eef5ff;border:1px solid #cfe0fb;color:#082a59;font-size:14px;padding:10px 12px;border-radius:12px;margin-bottom:4px}
-.qh-hint{background:#fff8e6;border:1px solid #f3e2b3;color:#7a5b00;font-size:14px;padding:10px 12px;border-radius:12px;margin-bottom:4px}
 .qh-consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:#5b6b7f;font-weight:400;margin-top:14px;cursor:pointer}
 .qh-consent input{width:16px;height:16px;flex:0 0 auto;margin-top:2px}
 .qh-btn{display:inline-block;text-align:center;text-decoration:none;font-weight:700;border:none;border-radius:16px;cursor:pointer;transition:.15s}
@@ -329,10 +309,7 @@ const CSS = `
 .qh-check{width:64px;height:64px;border-radius:50%;background:#1d6fe0;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 22px}
 .qh-ok-box h1{font-size:30px;margin:0 0 10px}
 .qh-ok-box p{color:#c9dcf5;font-size:17px;margin:0}
-.qh-contact{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
-.qh-cbtn{flex:1 1 auto;min-width:120px;text-align:center;background:#fff;border:1.5px solid #d9e2ec;border-radius:14px;padding:12px 14px;color:#082a59;font-weight:700;font-size:15px;text-decoration:none;transition:.15s}
-.qh-cbtn:hover{border-color:#1d6fe0;box-shadow:0 6px 18px rgba(8,42,89,.08)}
 .qh-qr{display:flex;flex-direction:column;align-items:center;gap:8px;margin:26px auto 0;padding:18px;background:#fff;border:1px solid #e6ecf5;border-radius:18px;max-width:220px;text-align:center}
 .qh-qr span{font-size:12px;color:#5b6b7f;line-height:1.4}
-@media(max-width:520px){.qh-grid{grid-template-columns:1fr}.qh-h1{font-size:24px}}
+@media(max-width:560px){.qh-two{grid-template-columns:1fr}.qh-h1{font-size:24px}}
 `;

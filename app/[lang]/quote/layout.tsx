@@ -2,19 +2,19 @@ import { buildAlternates } from '@/lib/seo';
 
 const META: Record<string, { title: string; description: string }> = {
   en: {
-    title: 'Talk to a Licensed Agent | Auto, Home, Commercial | M&K Agency',
+    title: 'Contact Us | Call, Text, Visit, or Request a Callback | M&K Agency',
     description:
-      'A licensed Florida agent calls you back in minutes. Home insurance from 15+ A-rated carriers, plus auto, condo, commercial & life. English · Español · По-русски.',
+      'Call, text, or visit M&K Agency in Florida City — or request a callback and a licensed Florida agent calls you back in minutes. English · Español · По-русски.',
   },
   es: {
-    title: 'Hable con un Agente Licenciado | Auto, Casa, Comercial | M&K Agency',
+    title: 'Contáctenos | Llame, Envíe un Texto o Solicite una Llamada | M&K Agency',
     description:
-      'Un agente licenciado le devuelve la llamada en minutos. Seguro de casa con 15+ aseguradoras A-rated, además de auto, condominio, comercial y vida. Hablamos español.',
+      'Llame, envíe un texto o visite M&K Agency en Florida City — o solicite una llamada y un agente licenciado le devuelve la llamada en minutos. Hablamos español.',
   },
   ru: {
-    title: 'Поговорите с лицензированным агентом | Авто, дом, бизнес | M&K Agency',
+    title: 'Свяжитесь с нами | Звонок, SMS или обратный звонок | M&K Agency',
     description:
-      'Лицензированный агент перезвонит за несколько минут. Страхование дома с 15+ компаниями A-rated, плюс авто, кондо, бизнес, жизнь. Говорим по-русски.',
+      'Позвоните, напишите SMS или приезжайте в M&K Agency (Florida City) — или закажите обратный звонок, и лицензированный агент перезвонит за несколько минут. Говорим по-русски.',
   },
 };
 

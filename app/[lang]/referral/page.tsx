@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getDict } from '@/lib/dictionaries';
 import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
@@ -48,17 +47,6 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
             </h2>
             <p style={{ color: 'var(--muted)', marginTop: 6, fontSize: '1.05rem' }}>
               Share the QR code, share the care.
-            </p>
-
-            <Image
-              src="/images/referral-qr.png"
-              alt="Scan to reach M&K Agency — Mikhail Kozlov"
-              width={200}
-              height={200}
-              style={{ width: 200, height: 200, margin: '18px auto 6px', display: 'block' }}
-            />
-            <p style={{ fontSize: '.82rem', color: 'var(--muted)', marginTop: 0 }}>
-              Scan to reach us
             </p>
 
             <div style={{ borderTop: '1px solid #e6ecf5', margin: '20px 0 16px' }} />

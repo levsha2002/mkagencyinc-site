@@ -34,7 +34,10 @@ img { max-width: 100%; display: block; }
 .lang { display: flex; border: 1px solid #dde5f0; border-radius: 10px; overflow: hidden; font-size: .85rem; font-weight: 700; }
 .lang a { padding: 7px 11px; color: var(--navy); }
 .lang a.active { background: var(--blue); color: #fff; }
-.call-btn { background: var(--blue); color: #fff; font-weight: 700; border-radius: 999px; padding: 11px 20px; white-space: nowrap; }
+.header-cta { background: #f6f9ff; border-top: 1px solid #e9eff8; }
+.header-cta-in { display: flex; justify-content: flex-end; align-items: center; gap: 10px; padding: 7px 0; }
+@media (max-width: 700px) { .header-cta { display: none; } } /* mobile has the sticky call bar */
+.call-btn { background: var(--blue); color: #fff; font-weight: 700; border-radius: 999px; padding: 9px 18px; white-space: nowrap; }
 .call-btn:hover { background: var(--blue-dark); }
 .text-btn {background: var(--gold); color: var(--navy); padding: 11px 18px; border-radius: 99px; font-weight: 700; font-size: 14px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(245, 179, 1, 0.35); transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; flex-shrink: 0; }
 .text-btn:hover {transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 179, 1, 0.45); }
