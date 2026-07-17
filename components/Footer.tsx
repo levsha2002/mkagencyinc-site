@@ -1,11 +1,24 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS } from '@/lib/dictionaries';
+
+const SCAN: Record<string, string> = {
+  en: 'Scan to contact us',
+  es: 'Escanee para contactarnos',
+  ru: 'Отсканируйте, чтобы связаться',
+};
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
   return (
     <footer className="footer">
       <div className="container">
+        <div style={{ marginBottom: 18, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+          <div style={{ background: '#fff', padding: 8, borderRadius: 12, lineHeight: 0 }}>
+            <Image src="/images/quote-qr.png" alt="QR code — contact M&K Agency" width={96} height={96} />
+          </div>
+          <span style={{ fontSize: '.78rem', color: '#bcd0ea' }}>{SCAN[lang] || SCAN.en}</span>
+        </div>
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>
           {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>

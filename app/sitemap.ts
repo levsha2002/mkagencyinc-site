@@ -21,7 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/sr22-insurance-florida-city', priority: 0.9 },
     { path: '/umbrella-insurance-florida-city', priority: 0.9 },
     { path: '/team', priority: 0.7 },
-    { path: '/contact', priority: 0.8 },
     { path: '/life', priority: 0.5 },
     { path: '/referral', priority: 0.6 },
     { path: '/referral/rules', priority: 0.3 },

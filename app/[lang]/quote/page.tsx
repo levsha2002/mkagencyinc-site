@@ -67,7 +67,8 @@ const CATS: {
 const UI: Record<Lang, Record<string, string>> = {
   en: {
     tagline: 'Home · Auto · Commercial · Florida', call: 'Call',
-    h1: 'Talk to a licensed agent', sub: 'Pick what you need — then a real, local agent calls you back.',
+    callUs: 'Call us', textUs: 'Text us', visitUs: 'Visit us',
+    h1: 'Talk to a real, licensed agent', sub: 'Call, text, or visit us — or pick what you need below and a local agent calls you back.',
     step2: 'Your details', selected: 'Selected', change: 'change',
     zip: 'ZIP code', name: 'Full name', phName: 'Your name', phone: 'Phone', email: 'Email',
     message: 'Message (optional)', phMessage: 'Anything we should know?',
@@ -82,7 +83,8 @@ const UI: Record<Lang, Record<string, string>> = {
   },
   es: {
     tagline: 'Hogar · Auto · Comercial · Florida', call: 'Llamar',
-    h1: 'Hable con un agente licenciado', sub: 'Elige lo que necesitas — un agente local te devuelve la llamada.',
+    callUs: 'Llámenos', textUs: 'Envíe un texto', visitUs: 'Visítenos',
+    h1: 'Hable con un agente real y licenciado', sub: 'Llámenos, envíe un texto o visítenos — o elija lo que necesita abajo y un agente local le devuelve la llamada.',
     step2: 'Tus datos', selected: 'Seleccionado', change: 'cambiar',
     zip: 'Código postal', name: 'Nombre completo', phName: 'Tu nombre', phone: 'Teléfono', email: 'Correo electrónico',
     message: 'Mensaje (opcional)', phMessage: '¿Algo que debamos saber?',
@@ -97,7 +99,8 @@ const UI: Record<Lang, Record<string, string>> = {
   },
   ru: {
     tagline: 'Дом · Авто · Бизнес · Флорида', call: 'Звонок',
-    h1: 'Поговорите с лицензированным агентом', sub: 'Выберите, что нужно — местный агент перезвонит вам.',
+    callUs: 'Позвонить', textUs: 'Написать SMS', visitUs: 'Приехать',
+    h1: 'Поговорите с живым лицензированным агентом', sub: 'Позвоните, напишите SMS или приезжайте — или выберите, что нужно, ниже, и местный агент перезвонит.',
     step2: 'Ваши данные', selected: 'Выбрано', change: 'изменить',
     zip: 'Индекс (ZIP)', name: 'Полное имя', phName: 'Ваше имя', phone: 'Телефон', email: 'Эл. почта',
     message: 'Сообщение (необязательно)', phMessage: 'Что нам важно знать?',
@@ -181,6 +184,20 @@ export default function QuotePage() {
       <div className="qh-wrap">
         <h1 className="qh-h1">{t.h1}</h1>
         <p className="qh-sub">{t.sub}</p>
+
+        {/* Quick contact: call / text / visit (merged from the old Contact page) */}
+        <div className="qh-contact">
+          <a href="tel:3058593953" className="qh-cbtn">📞 {t.callUs}</a>
+          <a href="sms:3058593953" className="qh-cbtn">💬 {t.textUs}</a>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=33550+S+Dixie+Hwy+Suite+102+Florida+City+FL+33034"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="qh-cbtn"
+          >
+            📍 {t.visitUs}
+          </a>
+        </div>
 
         {/* Category tabs */}
         <div className="qh-tabs">
@@ -312,6 +329,9 @@ const CSS = `
 .qh-check{width:64px;height:64px;border-radius:50%;background:#1d6fe0;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 22px}
 .qh-ok-box h1{font-size:30px;margin:0 0 10px}
 .qh-ok-box p{color:#c9dcf5;font-size:17px;margin:0}
+.qh-contact{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.qh-cbtn{flex:1 1 auto;min-width:120px;text-align:center;background:#fff;border:1.5px solid #d9e2ec;border-radius:14px;padding:12px 14px;color:#082a59;font-weight:700;font-size:15px;text-decoration:none;transition:.15s}
+.qh-cbtn:hover{border-color:#1d6fe0;box-shadow:0 6px 18px rgba(8,42,89,.08)}
 .qh-qr{display:flex;flex-direction:column;align-items:center;gap:8px;margin:26px auto 0;padding:18px;background:#fff;border:1px solid #e6ecf5;border-radius:18px;max-width:220px;text-align:center}
 .qh-qr span{font-size:12px;color:#5b6b7f;line-height:1.4}
 @media(max-width:520px){.qh-grid{grid-template-columns:1fr}.qh-h1{font-size:24px}}
