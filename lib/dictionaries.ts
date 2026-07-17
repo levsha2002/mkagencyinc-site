@@ -16,7 +16,7 @@ const en = {
     h1b: 'is our top priority.',
     sub: "We'll help you find the right coverage for your home, car, and family — explained simply, in English, Spanish, or Russian. Real people who answer, and who are there when you need us most.",
     cta: 'Have an agent call me',
-    rated: 'Rated 5.0 on Google & Yelp · 334+ reviews',
+    rated: 'Rated 4.53★ · 68 verified reviews',
     strip: "We compare 15+ A-rated Florida home insurance carriers — plus auto, commercial & life coverage, all in one place.",
   },
   homeFaq: {
@@ -56,11 +56,11 @@ const en = {
   },
   about: {
     metaTitle: 'About M&K Agency | Independent Insurance Agency in Florida City, FL',
-    metaDesc: 'M&K Agency Inc. is a bilingual independent insurance agency in Florida City serving all of Florida. Real licensed agents, 15+ home insurance carriers, 334+ five-star reviews. Call (305) 247-8877.',
+    metaDesc: 'M&K Agency Inc. is a bilingual independent insurance agency in Florida City serving all of Florida. Real licensed agents, 15+ home insurance carriers, rated 4.53★ from 68 verified client reviews. Call (305) 247-8877.',
     h: 'Real people. Real protection.',
     p1: 'M&K Agency Inc. is an independent insurance agency headquartered in Florida City and serving families and businesses across the entire state of Florida. We are not a call center — when you call, a licensed agent who knows your name picks up.',
     p2: "Founded by Mikhail Kozlov, our team speaks English, Spanish, and Russian, and we believe insurance should be explained, not sold. For home insurance, we compare 15+ A-rated Florida carriers so you get the right coverage at the right price — and for every line we handle, we stay by your side at claim time, when it matters most.",
-    points: ['15+ A-rated Florida home insurance carriers compared for you', 'English · Español · Русский', '334+ five-star reviews on Google & Yelp', 'Local office — real agents, not a national call center'],
+    points: ['15+ A-rated Florida home insurance carriers compared for you', 'English · Español · Русский', 'Rated 4.53★ from 68 verified client reviews', 'Local office — real agents, not a national call center'],
     visit: 'Visit us',
   },
   contact: {
@@ -163,7 +163,7 @@ const es: typeof en = {
     h1b: 'es nuestra prioridad.',
     sub: 'La ayudamos a encontrar la cobertura correcta para su casa, auto y familia — explicado de forma simple, en inglés, español o ruso. Personas reales que contestan, y que están ahí cuando más las necesita.',
     cta: 'Que me llame un agente',
-    rated: 'Calificación 5.0 en Google y Yelp · 334+ reseñas',
+    rated: 'Calificación 4.53★ · 68 reseñas verificadas',
     strip: 'Comparamos más de 15 aseguradoras de casa clasificación A en la Florida — además de auto, comercial y vida, todo en un solo lugar.',
   },
   homeFaq: {
@@ -203,11 +203,11 @@ const es: typeof en = {
   },
   about: {
     metaTitle: 'Sobre M&K Agency | Agencia de Seguros Independiente en Florida City, FL',
-    metaDesc: 'M&K Agency Inc. es una agencia de seguros independiente y bilingüe en Florida City que sirve a toda la Florida. Agentes licenciados reales, 15+ aseguradoras de casa, 334+ reseñas de cinco estrellas. Llame al (305) 247-8877.',
+    metaDesc: 'M&K Agency Inc. es una agencia de seguros independiente y bilingüe en Florida City que sirve a toda la Florida. Agentes licenciados reales, 15+ aseguradoras de casa, calificación 4.53★ de 68 reseñas verificadas de clientes. Llame al (305) 247-8877.',
     h: 'Personas reales. Protección real.',
     p1: 'M&K Agency Inc. es una agencia de seguros independiente con sede en Florida City que sirve a familias y negocios en todo el estado de Florida. No somos un call center — cuando usted llama, contesta un agente licenciado que conoce su nombre.',
     p2: 'Fundada por Mikhail Kozlov, nuestro equipo habla inglés, español y ruso, y creemos que el seguro debe explicarse, no venderse. Para el seguro de casa, comparamos más de 15 aseguradoras clasificación A para que usted obtenga la cobertura correcta al precio correcto — y en cada línea que manejamos, estamos a su lado al momento del reclamo, cuando más importa.',
-    points: ['Más de 15 aseguradoras de casa clasificación A comparadas por usted', 'English · Español · Русский', '334+ reseñas de cinco estrellas en Google y Yelp', 'Oficina local — agentes reales, no un call center nacional'],
+    points: ['Más de 15 aseguradoras de casa clasificación A comparadas por usted', 'English · Español · Русский', 'Calificación 4.53★ de 68 reseñas verificadas de clientes', 'Oficina local — agentes reales, no un call center nacional'],
     visit: 'Visítenos',
   },
   contact: {
@@ -310,7 +310,7 @@ const ru: typeof en = {
     h1b: 'наш главный приоритет.',
     sub: 'Поможем подобрать правильное покрытие для дома, машины и семьи — простыми словами, на английском, испанском или русском. С вами говорят живые люди, которые всегда на связи, когда это важнее всего.',
     cta: 'Заказать звонок агента',
-    rated: 'Рейтинг 5.0 на Google и Yelp · 334+ отзывов',
+    rated: 'Рейтинг 4.53★ · 68 проверенных отзывов',
     strip: 'Сравниваем 15+ страховых компаний Флориды с рейтингом «A» для дома — плюс авто, бизнес и жизнь, всё в одном месте.',
   },
   homeFaq: {
@@ -350,11 +350,11 @@ const ru: typeof en = {
   },
   about: {
     metaTitle: 'О компании M&K Agency | Независимое страховое агентство во Флориде',
-    metaDesc: 'M&K Agency Inc. — независимое страховое агентство в Florida City, работающее по всей Флориде. Живые лицензированные агенты, 15+ страховых компаний для дома, 334+ пятизвёздочных отзывов. Говорим по-русски: (305) 247-8877.',
+    metaDesc: 'M&K Agency Inc. — независимое страховое агентство в Florida City, работающее по всей Флориде. Живые лицензированные агенты, 15+ страховых компаний для дома, рейтинг 4.53★ по 68 проверенным отзывам клиентов. Говорим по-русски: (305) 247-8877.',
     h: 'Живые люди. Настоящая защита.',
     p1: 'M&K Agency Inc. — независимое страховое агентство со штаб-квартирой в Florida City, обслуживающее семьи и бизнес по всему штату Флорида. Мы не колл-центр: когда вы звоните, трубку берёт лицензированный агент, который знает вас по имени.',
     p2: 'Агентство основал Михаил Козлов. Наша команда говорит на английском, испанском и русском, и мы убеждены: страхование нужно объяснять, а не «продавать». Для страхования дома мы сравниваем 15+ компаний с рейтингом «A», чтобы вы получили правильное покрытие по правильной цене — и по каждому виду страхования, которым занимаемся, остаёмся рядом при страховом случае, когда это важнее всего.',
-    points: ['Сравниваем для вас 15+ компаний Флориды с рейтингом «A» для дома', 'English · Español · Русский', '334+ пятизвёздочных отзывов на Google и Yelp', 'Локальный офис — живые агенты, а не национальный колл-центр'],
+    points: ['Сравниваем для вас 15+ компаний Флориды с рейтингом «A» для дома', 'English · Español · Русский', 'Рейтинг 4.53★ по 68 проверенным отзывам клиентов', 'Локальный офис — живые агенты, а не национальный колл-центр'],
     visit: 'Наш офис',
   },
   contact: {

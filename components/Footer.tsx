@@ -10,6 +10,32 @@ export default function Footer({ lang }: { lang: string }) {
         <p style={{ margin: '8px 0' }}>
           {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>
         </p>
+        <p style={{ margin: '8px 0', fontSize: '.8rem', opacity: 0.85 }}>
+          Florida License #L109526 · NPN #19586268 · Agent in Charge: Mikhail Kozlov ·{' '}
+          <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#bcd0ea' }}>
+            mikhailkozlov@allstate.com
+          </a>
+        </p>
+        <p style={{ margin: '8px 0', fontSize: '.8rem' }}>
+          Reviews:{' '}
+          <a
+            href="https://www.experience.com/reviews/mikhail-7323351"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#bcd0ea' }}
+          >
+            Experience.com
+          </a>
+          {' · '}
+          <a
+            href="https://www.chamberofcommerce.com/business-directory/florida/florida-city/insurance-agency/2012178838-mikhail-kozlov-allstate-insurance"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#bcd0ea' }}
+          >
+            Chamber of Commerce
+          </a>
+        </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
           <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>Community Businesses</Link>
           {' · '}

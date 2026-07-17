@@ -70,8 +70,18 @@ export default function Home({ params }: { params: { lang: string } }) {
             <p className="sub">{t.hero.sub}</p>
             <a href="#quote" className="cta">{t.hero.cta} →</a>
             <div className="rated">
-              <span className="stars">★★★★★</span>
-              <span><strong>Mikhail Kozlov</strong> · {t.hero.rated}</span>
+              <span className="stars">★★★★½</span>
+              <span>
+                <strong>Mikhail Kozlov</strong> ·{' '}
+                <a
+                  href="https://www.experience.com/reviews/mikhail-7323351"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'underline' }}
+                >
+                  {t.hero.rated}
+                </a>
+              </span>
             </div>
           </div>
           <LeadForm lang={lang} />
