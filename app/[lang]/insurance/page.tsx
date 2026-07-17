@@ -75,7 +75,7 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
 
           <div className="center-cta">
             <Link href={`/${params.lang}/quote`} className="cta">
-              Get a free quote →
+              Have an agent call me →
             </Link>
           </div>
         </div>

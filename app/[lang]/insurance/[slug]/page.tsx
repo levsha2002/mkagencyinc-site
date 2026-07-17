@@ -112,7 +112,7 @@ export default function InsuranceProductPage({
             {product.subtypes && product.subtypes.length > 0 && (
               <div style={{ marginTop: 28 }}>
                 <h3 style={{ color: 'var(--navy)', fontSize: '1.1rem', marginBottom: 14 }}>
-                  Types of coverage we can quote
+                  Types of coverage we can help with
                 </h3>
                 <div style={{ display: 'grid', gap: 12 }}>
                   {product.subtypes.map((s) => (
