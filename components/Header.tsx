@@ -10,7 +10,7 @@ export default function Header({ lang }: { lang: string }) {
   const [open, setOpen] = useState(false);
 
   const communityLabel = lang === 'es' ? 'Comunidad' : lang === 'ru' ? 'Сообщество' : 'Community';
-  const contactLabel = lang === 'es' ? 'Contáctenos' : lang === 'ru' ? 'Свяжитесь с нами' : 'Contact Us';
+  const contactLabel = lang === 'es' ? 'Nuestros Agentes' : lang === 'ru' ? 'Наши агенты' : 'Contact Our Agents';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
@@ -38,8 +38,7 @@ export default function Header({ lang }: { lang: string }) {
           ))}
         </nav>
 
-        <div className="spacer" />
-
+        {/* Language switcher sits right next to the nav (by Community), not pushed to the far edge */}
         <div className="lang">
           {locales.map((l) => (
             <Link key={l} href={`/${l}`} className={l === lang ? 'active' : ''}>
@@ -47,6 +46,8 @@ export default function Header({ lang }: { lang: string }) {
             </Link>
           ))}
         </div>
+
+        <div className="spacer" />
 
         <button
           type="button"

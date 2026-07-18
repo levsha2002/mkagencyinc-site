@@ -2,19 +2,19 @@ import { buildAlternates } from '@/lib/seo';
 
 const META: Record<string, { title: string; description: string }> = {
   en: {
-    title: 'Contact Us | Call, Text, Visit, or Request a Callback | M&K Agency',
+    title: 'Contact Our Agents | Call, Text, Visit, or Request a Callback | M&K Agency',
     description:
-      'Call, text, or visit M&K Agency in Florida City — or request a callback and a licensed Florida agent calls you back in minutes. English · Español · По-русски.',
+      'Reach any of our licensed agents by name — call, text, visit, or request a callback and a local Florida agent calls you back in minutes. English · Español · По-русски.',
   },
   es: {
-    title: 'Contáctenos | Llame, Envíe un Texto o Solicite una Llamada | M&K Agency',
+    title: 'Contacte a Nuestros Agentes | Llame, Texto o Solicite una Llamada | M&K Agency',
     description:
-      'Llame, envíe un texto o visite M&K Agency en Florida City — o solicite una llamada y un agente licenciado le devuelve la llamada en minutos. Hablamos español.',
+      'Contacte a cualquiera de nuestros agentes licenciados por nombre — llame, envíe un texto, visítenos o solicite una llamada. Hablamos español.',
   },
   ru: {
-    title: 'Свяжитесь с нами | Звонок, SMS или обратный звонок | M&K Agency',
+    title: 'Наши агенты | Звонок, SMS или обратный звонок | M&K Agency',
     description:
-      'Позвоните, напишите SMS или приезжайте в M&K Agency (Florida City) — или закажите обратный звонок, и лицензированный агент перезвонит за несколько минут. Говорим по-русски.',
+      'Свяжитесь с любым из наших лицензированных агентов по имени — звонок, SMS, визит в офис или обратный звонок. Говорим по-русски.',
   },
 };
 
