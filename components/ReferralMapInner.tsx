@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { referralBusinesses, CATEGORIES } from '@/lib/referral-businesses';
 import 'leaflet/dist/leaflet.css';
@@ -10,6 +11,16 @@ import 'leaflet/dist/leaflet.css';
 // during server-side rendering. Because the imports here are normal static
 // imports (not wrapped in dynamic() individually), TypeScript sees the real
 // react-leaflet prop types with no casting needed.
+
+// Leaflet's default marker icon points at relative image paths that Next.js's
+// bundler doesn't resolve (404s on marker-icon.png / marker-shadow.png in the
+// console). Point the default icon at copies served from /public/leaflet instead.
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: '/leaflet/marker-icon.png',
+  iconRetinaUrl: '/leaflet/marker-icon-2x.png',
+  shadowUrl: '/leaflet/marker-shadow.png',
+});
 export default function ReferralMapInner({ searchPlaceholder }: { searchPlaceholder?: string }) {
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');

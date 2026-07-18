@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDict } from '@/lib/dictionaries';
 import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
@@ -51,20 +52,46 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
 
             <div style={{ borderTop: '1px solid #e6ecf5', margin: '20px 0 16px' }} />
 
-            <div style={{ fontWeight: 700, color: '#082a59', fontSize: '1.1rem' }}>
-              Mikhail Kozlov
-            </div>
-            <div style={{ color: 'var(--muted)', marginBottom: 10 }}>Agency Owner</div>
+            <div
+              style={{
+                display: 'flex',
+                gap: 22,
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                textAlign: 'left',
+              }}
+            >
+              <Image
+                src="/images/referral-qr.png"
+                alt="QR code — share M&K Agency"
+                width={120}
+                height={120}
+                style={{
+                  width: 120,
+                  height: 120,
+                  borderRadius: 12,
+                  border: '1px solid #e6ecf5',
+                  flex: '0 0 auto',
+                }}
+              />
+              <div style={{ flex: '1 1 220px', minWidth: 220 }}>
+                <div style={{ fontWeight: 700, color: '#082a59', fontSize: '1.1rem' }}>
+                  Mikhail Kozlov
+                </div>
+                <div style={{ color: 'var(--muted)', marginBottom: 10 }}>Agency Owner</div>
 
-            <div style={{ lineHeight: 1.9, fontSize: '.98rem' }}>
-              <div>
-                📞 <a href="tel:+13058593953" style={{ color: '#082a59', fontWeight: 600 }}>(305) 859-3953</a>
-              </div>
-              <div>
-                ✉️ <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#082a59', fontWeight: 600 }}>mikhailkozlov@allstate.com</a>
-              </div>
-              <div style={{ color: 'var(--muted)' }}>
-                📍 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034
+                <div style={{ lineHeight: 1.9, fontSize: '.98rem' }}>
+                  <div>
+                    📞 <a href="tel:+13058593953" style={{ color: '#082a59', fontWeight: 600 }}>(305) 859-3953</a>
+                  </div>
+                  <div>
+                    ✉️ <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#082a59', fontWeight: 600 }}>mikhailkozlov@allstate.com</a>
+                  </div>
+                  <div style={{ color: 'var(--muted)' }}>
+                    📍 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034
+                  </div>
+                </div>
               </div>
             </div>
           </div>
