@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import GapAnalysis from '@/components/GapAnalysis';
 import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
@@ -90,6 +91,9 @@ export default function Home({ params }: { params: { lang: string } }) {
       </section>
 
       <div className="strip">✦ {t.hero.strip}</div>
+
+      {/* ===== Gap analysis — where your current policy leaves you exposed ===== */}
+      <GapAnalysis lang={lang} />
 
       {/* ===== Meet Mikhail (real photo) ===== */}
       <section className="section">
