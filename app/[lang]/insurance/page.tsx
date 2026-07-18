@@ -54,9 +54,13 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
             if (products.length === 0) return null;
             return (
               <div key={cat.key} id={cat.key} className="insurance-cat-section">
-                <h2 style={{ textAlign: 'left', fontSize: '1.6rem' }}>
-                  {cat.icon} {cat.title}
-                </h2>
+                {/* Design D: photo banner header per category */}
+                <div className="cat-banner">
+                  <img src={`/images/cat-${cat.key}.jpg`} alt={cat.title} />
+                  <div className="cat-banner-t">
+                    <h2>{cat.icon} {cat.title}</h2>
+                  </div>
+                </div>
                 <div className="cards4">
                   {products.map((p) => (
                     <Link

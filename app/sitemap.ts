@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/new-construction-home-insurance-florida', priority: 0.9 },
     { path: '/sr22-insurance-florida-city', priority: 0.9 },
     { path: '/umbrella-insurance-florida-city', priority: 0.9 },
+    { path: '/agents', priority: 0.8 },
     { path: '/team', priority: 0.7 },
     { path: '/life', priority: 0.5 },
     { path: '/referral', priority: 0.6 },

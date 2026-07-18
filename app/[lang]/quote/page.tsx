@@ -48,8 +48,9 @@ const UI: Record<Lang, Record<string, string>> = {
   en: {
     tagline: 'Home · Auto · Commercial · Florida', call: 'Call',
     callUs: 'Call us', textUs: 'Text us', visitUs: 'Visit us',
-    h1a: 'Contact our', h1b: 'Agents',
+    h1a: 'Contact', h1b: 'us',
     sub: 'Licensed. Local. In English, Español, По-русски.',
+    meetAgents: 'Prefer a specific person? Meet our agents →',
     formTitle: 'Request a callback',
     agentLabel: 'Who would you like to talk to?', agentAny: 'Any available agent',
     need: 'What do you need?', needPh: 'Choose insurance type…',
@@ -69,8 +70,9 @@ const UI: Record<Lang, Record<string, string>> = {
   es: {
     tagline: 'Hogar · Auto · Comercial · Florida', call: 'Llamar',
     callUs: 'Llámenos', textUs: 'Envíe un texto', visitUs: 'Visítenos',
-    h1a: 'Contacte a nuestros', h1b: 'Agentes',
+    h1a: 'Contácte', h1b: 'nos',
     sub: 'Licenciados. Locales. En English, Español, По-русски.',
+    meetAgents: '¿Prefiere a alguien en específico? Conozca a nuestros agentes →',
     formTitle: 'Solicitar una llamada',
     agentLabel: '¿Con quién le gustaría hablar?', agentAny: 'Cualquier agente disponible',
     need: '¿Qué necesita?', needPh: 'Elija el tipo de seguro…',
@@ -90,8 +92,9 @@ const UI: Record<Lang, Record<string, string>> = {
   ru: {
     tagline: 'Дом · Авто · Бизнес · Флорида', call: 'Звонок',
     callUs: 'Позвонить', textUs: 'Написать SMS', visitUs: 'Приехать',
-    h1a: 'Свяжитесь с нашими', h1b: 'агентами',
+    h1a: 'Свяжитесь с', h1b: 'нами',
     sub: 'Лицензированные. Местные. English, Español, По-русски.',
+    meetAgents: 'Хотите конкретного человека? Наши агенты →',
     formTitle: 'Заказать обратный звонок',
     agentLabel: 'С кем хотите поговорить?', agentAny: 'Любой свободный агент',
     need: 'Что вам нужно?', needPh: 'Выберите вид страхования…',
@@ -180,22 +183,11 @@ export default function ContactAgentsPage() {
           <h1>{t.h1a} <span className="qh-gold">{t.h1b}</span></h1>
           <p className="qh-hero-sub">{t.sub}</p>
 
-          <div className="qh-agents">
-            {AGENTS.map((a) => {
-              const first = a.name.split(' ')[0];
-              const body = encodeURIComponent(t.smsBody.replace('{name}', a.name));
-              return (
-                <div key={a.slug} className="qh-agent">
-                  <img src={a.photo} alt={a.name} />
-                  <div className="qh-agent-name">{first}</div>
-                  <div className="qh-agent-actions">
-                    <a href={`tel:${PHONE}`} title={`${t.callTitle} — ${a.name}`}>📞</a>
-                    <a href={`sms:${PHONE}?body=${body}`} title={`${t.textTitle} — ${a.name}`}>💬</a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <p style={{ marginTop: 18 }}>
+            <a href={`/${lang}/agents`} style={{ color: '#0c5bd6', fontWeight: 700, fontSize: 15 }}>
+              {t.meetAgents}
+            </a>
+          </p>
         </div>
       </div>
 

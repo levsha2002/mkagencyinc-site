@@ -1,10 +1,37 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getDict, PHONE_TEL } from '@/lib/dictionaries';
-import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import GapAnalysis from '@/components/GapAnalysis';
+import { pickRotating } from '@/lib/rotation';
 import { buildAlternates } from '@/lib/seo';
+
+// Re-render this page once a day (ISR) so the rotating hero image and
+// rotating sub-headline advance automatically — no deploys needed.
+export const revalidate = 86400;
+
+// Rotating hero images: add hero-4.jpg, hero-5.jpg... to public/images and
+// list them here — the site cycles through them one per day.
+const HERO_IMAGES = ['/images/hero-1.jpg', '/images/hero-2.jpg', '/images/hero-3.jpg'];
+
+// Rotating supporting line under the headline (headline itself stays fixed for SEO).
+const HERO_SUBS: Record<string, string[]> = {
+  en: [
+    "We'll help you find the right coverage for your home, car, and family — explained simply, in English, Spanish, or Russian. Real people who answer, and who are there when you need us most.",
+    'Hurricane season, Miami traffic, a growing family — Florida life is unpredictable. Your coverage shouldn’t be. Real local agents, three languages, one call.',
+    'From the Keys to Kendall, we protect what Florida families work hardest for — home, car, business, and each other. Talk to a real person today.',
+  ],
+  es: [
+    'Le ayudamos a encontrar la cobertura adecuada para su casa, su auto y su familia — explicada con claridad, en inglés, español o ruso. Personas reales que contestan.',
+    'Temporada de huracanes, tráfico de Miami, una familia que crece — la vida en Florida es impredecible. Su cobertura no debería serlo. Agentes locales reales, tres idiomas, una llamada.',
+    'Desde los Cayos hasta Kendall, protegemos lo que más les cuesta a las familias de Florida — casa, auto, negocio y los suyos. Hable hoy con una persona real.',
+  ],
+  ru: [
+    'Поможем подобрать правильную защиту для дома, машины и семьи — объясним просто, на английском, испанском или русском. Живые люди, которые отвечают на звонки и рядом, когда нужнее всего.',
+    'Сезон ураганов, трафик Майами, растущая семья — жизнь во Флориде непредсказуема. Ваша страховка такой быть не должна. Живые местные агенты, три языка, один звонок.',
+    'От Киз до Кендалла мы защищаем то, ради чего семьи Флориды работают больше всего — дом, машину, бизнес и друг друга. Поговорите с живым человеком сегодня.',
+  ],
+};
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
@@ -43,6 +70,8 @@ export default function Home({ params }: { params: { lang: string } }) {
   const lang = params.lang;
   const t = getDict(lang);
   const m = meet[lang] || meet.en;
+  const heroImg = pickRotating(HERO_IMAGES, 'day');
+  const heroSub = pickRotating(HERO_SUBS[lang] || HERO_SUBS.en, 'day');
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -69,8 +98,8 @@ export default function Home({ params }: { params: { lang: string } }) {
               <br />
               <span className="accent">{t.hero.h1b}</span>
             </h1>
-            <p className="sub">{t.hero.sub}</p>
-            <a href="#quote" className="cta">{t.hero.cta} →</a>
+            <p className="sub">{heroSub}</p>
+            <Link href={`/${lang}/quote`} className="cta">{t.hero.cta} →</Link>
             <div className="rated">
               <span className="stars">★★★★½</span>
               <span>
@@ -86,7 +115,10 @@ export default function Home({ params }: { params: { lang: string } }) {
               </span>
             </div>
           </div>
-          <LeadForm lang={lang} />
+          {/* Rotating hero image (changes daily via ISR) */}
+          <div className="hero-photo-wrap">
+            <img src={heroImg} alt="M&K Agency — protecting Florida families" className="hero-photo" />
+          </div>
         </div>
       </section>
 
@@ -177,7 +209,7 @@ export default function Home({ params }: { params: { lang: string } }) {
               </details>
             ))}
             <p style={{ textAlign: 'center', marginTop: 22 }}>
-              <a className="cta" href="#quote">{t.hero.cta} →</a>
+              <Link className="cta" href={`/${lang}/quote`}>{t.hero.cta} →</Link>
             </p>
           </div>
         </div>

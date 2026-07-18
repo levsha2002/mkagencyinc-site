@@ -10,13 +10,14 @@ export default function Header({ lang }: { lang: string }) {
   const [open, setOpen] = useState(false);
 
   const communityLabel = lang === 'es' ? 'Comunidad' : lang === 'ru' ? 'Сообщество' : 'Community';
-  const contactLabel = lang === 'es' ? 'Nuestros Agentes' : lang === 'ru' ? 'Наши агенты' : 'Contact Our Agents';
+  const agentsLabel = lang === 'es' ? 'Nuestros Agentes' : lang === 'ru' ? 'Наши агенты' : 'Our Agents';
+  const contactLabel = lang === 'es' ? 'Contáctenos' : lang === 'ru' ? 'Контакты' : 'Contact Us';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
     { href: `/${lang}/insurance`, label: t.nav.insurance },
+    { href: `/${lang}/agents`, label: agentsLabel },
     { href: `/${lang}/quote`, label: contactLabel },
-    { href: `/${lang}/team`, label: t.nav.team },
     { href: `/${lang}/life`, label: t.nav.life },
     { href: `/${lang}/referral`, label: communityLabel },
   ];
