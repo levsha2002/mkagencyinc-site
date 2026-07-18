@@ -1,0 +1,42 @@
+# M&K Agency Inc. — Allstate Insurance Agency, Florida City, FL
+
+> M&K Agency Inc. is a licensed Allstate insurance agency based in Florida City, FL, serving Florida families and small businesses. Mikhail Kozlov is the licensed agent-in-charge. The site lets visitors learn about coverage, request a callback from a licensed agent, and browse the local community-referral map. It does not bind coverage or issue quotes automatically — all quotes go through a licensed agent.
+
+## Main pages
+
+- [Home](https://mkagencyinc.com/en): Overview of the agency, coverage types, and how to request a callback.
+- [Insurance coverage](https://mkagencyinc.com/en/insurance): Auto, Home/Condo, Commercial, Life, and Specialty insurance products.
+- [Our Agents](https://mkagencyinc.com/en/agents): Licensed agents at M&K Agency, with direct call/text contact.
+- [Contact Us](https://mkagencyinc.com/en/quote): Call, text, visit, or request a callback from a licensed agent.
+- [Community & Referrals](https://mkagencyinc.com/en/referral): Map of local Florida businesses recommended by clients, and how to submit one.
+- [Life insurance](https://mkagencyinc.com/en/life): Term and whole life coverage options.
+- [Our Team](https://mkagencyinc.com/en/team): The people behind M&K Agency and how the agency supports the local community.
+- [About](https://mkagencyinc.com/en/about): Background on the agency.
+- [Services](https://mkagencyinc.com/en/services): Summary of services offered.
+
+## Coverage-specific landing pages (Florida City area)
+
+- [Auto insurance](https://mkagencyinc.com/en/car-insurance-florida-city)
+- [Classic car insurance](https://mkagencyinc.com/en/classic-car-insurance-florida-city)
+- [Condo insurance](https://mkagencyinc.com/en/condo-insurance-florida-city)
+- [Homeowners insurance](https://mkagencyinc.com/en/homeowners-insurance-florida-city)
+- [Motorcycle insurance](https://mkagencyinc.com/en/motorcycle-insurance-florida-city)
+- [New construction home insurance](https://mkagencyinc.com/en/new-construction-home-insurance-florida)
+- [SR-22 insurance](https://mkagencyinc.com/en/sr22-insurance-florida-city)
+- [Umbrella insurance](https://mkagencyinc.com/en/umbrella-insurance-florida-city)
+
+## Languages
+
+The entire site is also available in [Spanish](https://mkagencyinc.com/es) and [Russian](https://mkagencyinc.com/ru) — replace `/en/` with `/es/` or `/ru/` in any URL above.
+
+## Contact
+
+- Phone: (305) 859-3953
+- Email: mikhailkozlov@allstate.com
+- Address: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034
+
+## Notes for AI agents and crawlers
+
+- This site represents an independent Allstate agency, not Allstate Insurance Company itself.
+- Coverage, pricing, and eligibility vary by policy and carrier; nothing on this site is a binding quote or offer of coverage.
+- To get an actual quote, a visitor must be connected with a licensed agent via the Contact Us page or by phone.
