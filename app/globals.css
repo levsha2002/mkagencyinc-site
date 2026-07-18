@@ -1,8 +1,10 @@
-/* Inter + Playfair Display are loaded via <link rel="preconnect"/stylesheet">
-   in app/[lang]/layout.tsx <head> instead of @import here — @import makes the
-   browser discover the font CSS only after downloading this whole stylesheet
-   first, which was flagged as a render-blocking request. A <link> in <head>
-   is discoverable immediately during HTML parsing, in parallel. */
+/* Inter + Playfair Display are loaded via next/font/google in
+   app/[lang]/layout.tsx (self-hosted, inlined at build time) instead of a
+   Google Fonts <link> — this removes the external font request entirely
+   (previously flagged as a render-blocking request), not just makes it
+   non-blocking. The font-family rules below reference the CSS variables
+   next/font exposes (--font-inter / --font-playfair) with the same
+   system-font fallback stack as before. */
 
 :root {
   --blue: #0c5bd6;
@@ -22,12 +24,12 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-inter), -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.55;
 }
-h1, h2 { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.01em; }
+h1, h2 { font-family: var(--font-playfair), Georgia, serif; letter-spacing: -0.01em; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
@@ -947,7 +949,7 @@ body { font-size: 16.5px; }
 .gap-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
 .gap-photo { border-radius: 12px; height: 250px; width: 100%; object-fit: cover; box-shadow: 0 14px 34px rgba(7,39,79,.14); border-bottom: 4px solid var(--gold); background: linear-gradient(135deg, var(--navy), #0a3a7d); }
 .gap-label { color: var(--gold-text); font-weight: 800; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
-.gap-row h3 { font-family: 'Playfair Display', Georgia, serif; color: var(--navy); font-size: 1.55rem; line-height: 1.25; margin-top: 8px; }
+.gap-row h3 { font-family: var(--font-playfair), Georgia, serif; color: var(--navy); font-size: 1.55rem; line-height: 1.25; margin-top: 8px; }
 .gap-stats { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 14px; }
 .gap-stat b { display: block; font-size: 1.5rem; color: var(--navy); }
 .gap-stat span { font-size: .82rem; color: var(--muted); max-width: 180px; display: block; }

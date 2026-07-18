@@ -11,8 +11,15 @@ import { buildAlternates } from '@/lib/seo';
 export const revalidate = 86400;
 
 // Rotating hero images: add hero-4.jpg, hero-5.jpg... to public/images and
-// list them here — the site cycles through them one per day.
-const HERO_IMAGES = ['/images/hero-1.jpg', '/images/hero-2.jpg', '/images/hero-3.jpg'];
+// list them here — the site cycles through them one per day. width/height are
+// each file's real pixel dimensions (next/image needs them to avoid layout
+// shift + to generate a correctly-sized/format-negotiated srcset); the actual
+// on-screen size is still governed by the .hero-photo CSS, same as before.
+const HERO_IMAGES = [
+  { src: '/images/hero-1.jpg', width: 1152, height: 864 },
+  { src: '/images/hero-2.jpg', width: 1280, height: 720 },
+  { src: '/images/hero-3.jpg', width: 1152, height: 864 },
+];
 
 // Rotating supporting line under the headline (headline itself stays fixed for SEO).
 const HERO_SUBS: Record<string, string[]> = {
@@ -117,7 +124,15 @@ export default function Home({ params }: { params: { lang: string } }) {
           </div>
           {/* Rotating hero image (changes daily via ISR) */}
           <div className="hero-photo-wrap">
-            <img src={heroImg} alt="M&K Agency — protecting Florida families" className="hero-photo" />
+            <Image
+              src={heroImg.src}
+              width={heroImg.width}
+              height={heroImg.height}
+              alt="M&K Agency — protecting Florida families"
+              className="hero-photo"
+              sizes="(max-width: 900px) 100vw, 520px"
+              priority
+            />
           </div>
         </div>
       </section>

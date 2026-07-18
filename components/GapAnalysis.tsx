@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 // "Where your current policy leaves you exposed" — gap-analysis section
 // (Design A + C zigzag). Photo/text rows alternate on desktop, stack on
@@ -156,7 +157,7 @@ export default function GapAnalysis({ lang }: { lang: string }) {
         <div className="gap-rows">
           {t.rows.map((r: any, i: number) => (
             <div className="gap-row" key={r.label}>
-              {i % 2 === 0 && <img className="gap-photo" src={r.img} alt={r.alt} />}
+              {i % 2 === 0 && <Image className="gap-photo" src={r.img} alt={r.alt} width={1152} height={864} sizes="(max-width: 780px) 100vw, 560px" />}
               <div>
                 <span className="gap-label">{r.label}</span>
                 <h3>{r.h}</h3>
@@ -170,7 +171,7 @@ export default function GapAnalysis({ lang }: { lang: string }) {
                 </div>
                 <Link className="gap-cta" href={`/${l}${r.href}`}>{r.cta}</Link>
               </div>
-              {i % 2 === 1 && <img className="gap-photo" src={r.img} alt={r.alt} />}
+              {i % 2 === 1 && <Image className="gap-photo" src={r.img} alt={r.alt} width={1152} height={864} sizes="(max-width: 780px) 100vw, 560px" />}
             </div>
           ))}
         </div>

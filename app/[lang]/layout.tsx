@@ -1,5 +1,6 @@
 import '../globals.css';
 import Script from 'next/script';
+import { Inter, Playfair_Display } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getDict, locales, PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import Header from '@/components/Header';
@@ -7,6 +8,22 @@ import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import TalkNowWidget from '@/components/TalkNowWidget';
 import StickyCallBar from '@/components/StickyCallBar';
+
+// Self-hosted via next/font (downloaded + inlined at build time) instead of
+// a Google Fonts <link> — removes the external render-blocking request and
+// the fonts.googleapis.com/fonts.gstatic.com network hop entirely.
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
 
 // Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
 // per-lead "conversion" event fires from LeadForm.tsx once the form is
@@ -64,15 +81,7 @@ export default function RootLayout({
     url: 'https://mkagencyinc.com',
   };
   return (
-    <html lang={params.lang}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
-        />
-      </head>
+    <html lang={params.lang} className={`${inter.variable} ${playfair.variable}`}>
       <body>
         <script
           type="application/ld+json"
