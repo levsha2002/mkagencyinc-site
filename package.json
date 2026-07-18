@@ -25,5 +25,8 @@
     "@types/react": "^18",
     "sharp": "^0.35.3",
     "typescript": "^5.5.4"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

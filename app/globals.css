@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+/* Inter + Playfair Display are loaded via <link rel="preconnect"/stylesheet">
+   in app/[lang]/layout.tsx <head> instead of @import here — @import makes the
+   browser discover the font CSS only after downloading this whole stylesheet
+   first, which was flagged as a render-blocking request. A <link> in <head>
+   is discoverable immediately during HTML parsing, in parallel. */
 
 :root {
   --blue: #0c5bd6;
@@ -6,6 +10,10 @@
   --blue-tint: #e8f1fc;
   --navy: #07274f;
   --gold: #e0a93b;
+  /* Darker gold for small text on light backgrounds — #e0a93b/#b8860b read
+     fine as accents/borders/fills, but fail WCAG 4.5:1 as text on white or
+     off-white. --gold-text keeps the same hue with enough contrast to pass. */
+  --gold-text: #8a6408;
   --bg: #f8fafc;
   --ink: #10233f;
   --muted: #5b6b82;
@@ -58,7 +66,7 @@ img { max-width: 100%; display: block; }
 .cta { display: inline-block; background: var(--navy); color: #fff; font-weight: 700; font-size: 1.02rem; padding: 15px 28px; border-radius: 10px; border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(7,39,79,.22); transition: background .15s, transform .15s; }
 .cta:hover { background: #0a3a6e; transform: translateY(-1px); }
 .rated { margin-top: 26px; background: #fff; color: var(--navy); border: 1px solid #e2e9f4; border-radius: 16px; padding: 12px 18px; display: inline-flex; gap: 10px; align-items: center; font-size: .9rem; font-weight: 600; box-shadow: 0 4px 14px rgba(7,39,79,.06); }
-.stars { color: var(--gold); letter-spacing: 2px; }
+.stars { color: var(--gold-text); letter-spacing: 2px; }
 
 /* Form card */
 .card { background: #fff; color: var(--ink); border: 1px solid #e8edf4; border-radius: 14px; padding: 28px; box-shadow: 0 12px 34px rgba(7,39,79,.10); }
@@ -84,7 +92,7 @@ img { max-width: 100%; display: block; }
 /* Sections */
 .section { padding: 64px 0; }
 .section h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); text-align: center; margin-bottom: 8px; color: var(--navy); }
-.kicker { text-align: center; color: #b8860b; font-weight: 800; letter-spacing: .16em; font-size: .8rem; text-transform: uppercase; margin-bottom: 10px; }
+.kicker { text-align: center; color: var(--gold-text); font-weight: 800; letter-spacing: .16em; font-size: .8rem; text-transform: uppercase; margin-bottom: 10px; }
 .cards4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
 .svc { display: block; background: #fff; border: 1px solid #e8edf4; border-top: 3px solid var(--gold); border-radius: 10px; padding: 26px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.06), 0 4px 6px -4px rgba(0,0,0,.06); transition: transform .15s, box-shadow .15s, border-color .15s; }
 a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,.12); border-color: #cfe0fb; }
@@ -938,14 +946,14 @@ body { font-size: 16.5px; }
 .gap-rows { display: flex; flex-direction: column; gap: 34px; margin-top: 34px; }
 .gap-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
 .gap-photo { border-radius: 12px; height: 250px; width: 100%; object-fit: cover; box-shadow: 0 14px 34px rgba(7,39,79,.14); border-bottom: 4px solid var(--gold); background: linear-gradient(135deg, var(--navy), #0a3a7d); }
-.gap-label { color: #b8860b; font-weight: 800; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
+.gap-label { color: var(--gold-text); font-weight: 800; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
 .gap-row h3 { font-family: 'Playfair Display', Georgia, serif; color: var(--navy); font-size: 1.55rem; line-height: 1.25; margin-top: 8px; }
 .gap-stats { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 14px; }
 .gap-stat b { display: block; font-size: 1.5rem; color: var(--navy); }
 .gap-stat span { font-size: .82rem; color: var(--muted); max-width: 180px; display: block; }
 .gap-cta { display: inline-block; margin-top: 16px; color: var(--blue); font-weight: 700; font-size: .95rem; }
 .gap-cta:hover { text-decoration: underline; }
-.gap-note { text-align: center; font-size: .72rem; color: #94a3b8; margin-top: 26px; }
+.gap-note { text-align: center; font-size: .72rem; color: var(--muted); margin-top: 26px; }
 @media (max-width: 780px) {
   .gap-row { grid-template-columns: 1fr; gap: 16px; }
   .gap-row .gap-photo { order: -1; height: 190px; } /* photo first on mobile, always */
@@ -979,7 +987,7 @@ body { font-size: 16.5px; }
 .agent-row img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--gold); flex: 0 0 auto; }
 .ar-info { flex: 1; min-width: 0; }
 .ar-info b { display: block; color: var(--navy); font-size: 1.05rem; }
-.ar-role { display: block; color: #b8860b; font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
+.ar-role { display: block; color: var(--gold-text); font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
 .ar-info em { display: block; color: var(--muted); font-size: .82rem; margin-top: 3px; font-style: italic; }
 .ar-actions { display: flex; gap: 6px; }
 .ar-actions a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--blue-tint); font-size: 17px; transition: background .15s; }

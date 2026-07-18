@@ -319,7 +319,7 @@ const CSS = `
 .qh-btn-navy:disabled{opacity:.6}
 .qh-btn-white{background:#fff;color:#07274f;border:1.5px solid #e0a93b;border-radius:10px;padding:13px 26px;font-size:16px;margin-top:22px}
 .qh-err{color:#dc2626;font-size:14px;font-weight:600;text-align:center;margin-top:10px}
-.qh-priv{color:#94a3b8;font-size:12px;text-align:center;margin-top:12px}
+.qh-priv{color:#5b6b82;font-size:12px;text-align:center;margin-top:12px}
 .qh-map{margin-top:26px;border-radius:20px;overflow:hidden;border:1px solid #dbe4f0;box-shadow:0 8px 28px rgba(6,28,61,.10)}
 .qh-map-cap{background:#fff;padding:12px 16px;font-size:14px;font-weight:700;color:#082a59}
 .qh-map iframe{width:100%;height:300px;border:0;display:block}
