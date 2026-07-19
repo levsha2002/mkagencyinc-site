@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import type { InsuranceProduct } from '@/lib/insurance-products';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function InsuranceQuoteForm({
   product,
   lang,
@@ -42,6 +48,20 @@ export default function InsuranceQuoteForm({
       });
       setStatus(res.ok ? 'ok' : 'err');
       if (res.ok) {
+        // Fires on every successful callback request from an insurance-type
+        // landing page (/insurance/auto, /insurance/home, etc). Same Google
+        // Ads conversion action as LeadForm.tsx and the /quote page, so all
+        // lead-capture forms roll up into one "Submit lead form" conversion.
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-18321801016/-1BtCL2Fj9EcELj-waBE',
+          });
+          window.gtag('event', 'generate_lead', {
+            currency: 'USD',
+            value: 1,
+            insurance_type: product.title,
+          });
+        }
         setName('');
         setPhone('');
         setAddress('');

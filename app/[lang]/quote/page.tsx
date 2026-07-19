@@ -5,6 +5,12 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 type Lang = 'en' | 'es' | 'ru';
 
 /* Insurance types for the compact dropdown — the full catalog with
@@ -140,7 +146,26 @@ export default function ContactAgentsPage() {
           message: msg, consent: form.consent, lang, source: src,
         }),
       });
-      setStatus(res.ok ? 'ok' : 'err');
+      if (res.ok) {
+        setStatus('ok');
+        // Fires on every successful "Request a callback" submit on /quote —
+        // this is the site's main contact/quote page, so this is likely the
+        // single highest-volume conversion point. Uses the same Google Ads
+        // conversion action as LeadForm.tsx so all lead-capture forms roll
+        // up into one "Submit lead form" conversion in Conversions -> Summary.
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-18321801016/-1BtCL2Fj9EcELj-waBE',
+          });
+          window.gtag('event', 'generate_lead', {
+            currency: 'USD',
+            value: 1,
+            insurance_type: ins || 'General',
+          });
+        }
+      } else {
+        setStatus('err');
+      }
     } catch { setStatus('err'); }
   }
 
