@@ -1,21 +1,13 @@
 import '../globals.css';
 import Script from 'next/script';
-import dynamic from 'next/dynamic';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getDict, locales, PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-// These three are floating widgets that sit on top of every page but aren't
-// part of the initial content the user is reading — loading + hydrating them
-// isn't needed before first paint. ssr:false pulls their JS out of the
-// server-rendered HTML/initial bundle and defers it to right after hydration,
-// freeing the main thread sooner so the actual page content (headline, body
-// text — usually the LCP element on mobile) can paint without waiting on them.
-const ChatWidget = dynamic(() => import('@/components/ChatWidget'), { ssr: false });
-const TalkNowWidget = dynamic(() => import('@/components/TalkNowWidget'), { ssr: false });
-const StickyCallBar = dynamic(() => import('@/components/StickyCallBar'), { ssr: false });
+import ChatWidget from '@/components/ChatWidget';
+import TalkNowWidget from '@/components/TalkNowWidget';
+import StickyCallBar from '@/components/StickyCallBar';
 
 // Self-hosted via next/font (downloaded + inlined at build time) instead of
 // a Google Fonts <link> — removes the external render-blocking request and
