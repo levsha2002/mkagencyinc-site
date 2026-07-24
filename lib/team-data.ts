@@ -5,6 +5,11 @@ export type TeamMember = {
   photo: string;
   // Leave empty until the agent gives you their own words — never invent a quote for them.
   quote?: string;
+  // Optional CSS object-position override for the circular photo crop on the
+  // /agents page. Defaults to "center 20%" (see .agent-row img in globals.css)
+  // when not set — only needed when that default sits a bit too high for a
+  // particular photo.
+  photoPosition?: string;
 };
 
 export const team: TeamMember[] = [
@@ -28,6 +33,7 @@ export const team: TeamMember[] = [
     role: 'Licensed Insurance Agent',
     photo: '/images/team/shane-henry.jpg',
     quote: "Insurance is about trust. I want every client to feel like they have a friend in this business.",
+    photoPosition: 'center 32%',
   },
   {
     slug: 'elena-de-ona',
@@ -35,6 +41,7 @@ export const team: TeamMember[] = [
     role: 'Licensed Insurance Agent',
     photo: '/images/team/elena-de-ona.jpg',
     quote: "I love that I can serve our Florida community in English, Spanish, and with a smile.",
+    photoPosition: 'center 32%',
   },
   {
     slug: 'brenda-quiroz',

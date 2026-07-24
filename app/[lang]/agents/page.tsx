@@ -107,7 +107,11 @@ export default function AgentsPage({ params }: { params: { lang: string } }) {
               const body = encodeURIComponent(t.smsBody.replace('{name}', a.name));
               return (
                 <div className="agent-row" key={a.slug} style={{ animationDelay: `${i * 0.06}s` }}>
-                  <img src={a.photo} alt={a.name} />
+                  <img
+                    src={a.photo}
+                    alt={a.name}
+                    style={a.photoPosition ? { objectPosition: a.photoPosition } : undefined}
+                  />
                   <div className="ar-info">
                     <b>{a.name}</b>
                     <span className="ar-role">{a.role}</span>
