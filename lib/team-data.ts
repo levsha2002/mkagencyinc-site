@@ -33,7 +33,6 @@ export const team: TeamMember[] = [
     role: 'Licensed Insurance Agent',
     photo: '/images/team/shane-henry.jpg',
     quote: "Insurance is about trust. I want every client to feel like they have a friend in this business.",
-    photoPosition: 'center 32%',
   },
   {
     slug: 'elena-de-ona',
@@ -41,7 +40,6 @@ export const team: TeamMember[] = [
     role: 'Licensed Insurance Agent',
     photo: '/images/team/elena-de-ona.jpg',
     quote: "I love that I can serve our Florida community in English, Spanish, and with a smile.",
-    photoPosition: 'center 32%',
   },
   {
     slug: 'brenda-quiroz',
