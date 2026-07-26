@@ -547,3 +547,174 @@ export const referralRules: Record<'en' | 'es' | 'ru', LegalDoc> = {
     ],
   },
 };
+
+export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
+  en: {
+    title: 'Insurance Disclosures',
+    effectiveDateLabel: 'Effective date: July 25, 2026',
+    intro:
+      'This page provides licensing information and required insurance disclosures for M&K Agency Inc. It is provided for transparency and consumer protection. Note: wording regarding carrier relationships is subject to review by the carrier’s advertising compliance program and a licensed attorney.',
+    sections: [
+      {
+        heading: 'Licensing',
+        body: [
+          'M&K Agency Inc is a licensed insurance agency in the State of Florida. Florida Agency License #L109526, Agency NPN #19586268. Agent in Charge: Mikhail Kozlov, Florida License #W639521, NPN #17798891.',
+          'Office: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Phone: (305) 247-8877.',
+          'License status can be verified through the Florida Department of Financial Services licensee search at licenseesearch.fldfs.com.',
+        ],
+      },
+      {
+        heading: 'Carrier Relationships',
+        body: [
+          'Insurance products are offered through insurance carriers with which the agency and its agents hold appointments. All trademarks and brand names belong to their respective owners. This website is operated by M&K Agency Inc and is not the official website of any insurance carrier.',
+        ],
+      },
+      {
+        heading: 'No Coverage Bound',
+        body: [
+          'Nothing on this website binds, changes, or extends insurance coverage. Coverage cannot be bound, amended, or cancelled through this website, by email, by text message, or by voicemail. No coverage is in effect until confirmed in writing by the insurance company.',
+        ],
+      },
+      {
+        heading: 'Quotes Are Estimates',
+        body: [
+          'Premium quotes and rate information are estimates only, based on the information you provide. Final rates and eligibility are determined by the insurance company after underwriting review and are subject to its terms, conditions, and availability. Discounts are subject to eligibility requirements and may vary.',
+        ],
+      },
+      {
+        heading: 'AI Chat Assistant',
+        body: [
+          'The “Chat with Mike” feature is an AI-assisted tool intended to answer general questions and route requests to a licensed agent. Its responses are for general informational purposes only, do not constitute insurance, legal, or financial advice, and do not bind coverage or create an agent-client relationship. Coverage questions must be confirmed with a licensed agent.',
+        ],
+      },
+      {
+        heading: 'Communications, Calls, and Text Messages',
+        body: [
+          'By submitting a form with your consent, you authorize us to contact you by phone, text message (SMS), and email regarding your inquiry, including via automated technology. Consent is not a condition of purchase. Message frequency varies; message and data rates may apply. Reply STOP to cancel text messages or HELP for help. See our Privacy Policy for details.',
+        ],
+      },
+      {
+        heading: 'Translations',
+        body: [
+          'This website is offered in English, Spanish, and Russian. Translations are provided for convenience only. In the event of any conflict or discrepancy, the English-language version controls. Insurance policies and related documents are issued in English.',
+        ],
+      },
+      {
+        heading: 'Contact',
+        body: ['Questions about these disclosures: mikhailkozlov@allstate.com or (305) 247-8877.'],
+      },
+    ],
+  },
+  es: {
+    title: 'Divulgaciones de Seguros',
+    effectiveDateLabel: 'Fecha de vigencia: 25 de julio de 2026',
+    intro:
+      'Esta página proporciona información de licencias y las divulgaciones de seguros requeridas para M&K Agency Inc. Se ofrece por transparencia y protección al consumidor.',
+    sections: [
+      {
+        heading: 'Licencias',
+        body: [
+          'M&K Agency Inc es una agencia de seguros con licencia en el Estado de Florida. Licencia de Agencia de Florida #L109526, NPN de la Agencia #19586268. Agente a Cargo: Mikhail Kozlov, Licencia de Florida #W639521, NPN #17798891.',
+          'Oficina: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Teléfono: (305) 247-8877.',
+          'El estado de la licencia puede verificarse en el buscador del Departamento de Servicios Financieros de Florida: licenseesearch.fldfs.com.',
+        ],
+      },
+      {
+        heading: 'Relaciones con Aseguradoras',
+        body: [
+          'Los productos de seguros se ofrecen a través de aseguradoras con las que la agencia y sus agentes tienen nombramientos. Todas las marcas pertenecen a sus respectivos dueños. Este sitio web es operado por M&K Agency Inc y no es el sitio oficial de ninguna aseguradora.',
+        ],
+      },
+      {
+        heading: 'No Se Vincula Cobertura',
+        body: [
+          'Nada en este sitio web vincula, modifica ni extiende cobertura de seguro. La cobertura no puede vincularse, modificarse ni cancelarse a través de este sitio, por correo electrónico, mensaje de texto o buzón de voz. Ninguna cobertura está vigente hasta que la aseguradora la confirme por escrito.',
+        ],
+      },
+      {
+        heading: 'Las Cotizaciones Son Estimaciones',
+        body: [
+          'Las cotizaciones son solo estimaciones, basadas en la información que usted proporciona. Las tarifas finales y la elegibilidad las determina la aseguradora tras la revisión de suscripción y están sujetas a sus términos, condiciones y disponibilidad. Los descuentos están sujetos a requisitos de elegibilidad.',
+        ],
+      },
+      {
+        heading: 'Asistente de Chat con IA',
+        body: [
+          'La función “Chat with Mike” es una herramienta asistida por IA para responder preguntas generales y dirigir solicitudes a un agente con licencia. Sus respuestas son solo informativas, no constituyen asesoramiento de seguros, legal ni financiero, y no vinculan cobertura. Las decisiones de cobertura deben confirmarse con un agente con licencia.',
+        ],
+      },
+      {
+        heading: 'Comunicaciones, Llamadas y Mensajes de Texto',
+        body: [
+          'Al enviar un formulario con su consentimiento, usted nos autoriza a contactarlo por teléfono, mensaje de texto (SMS) y correo electrónico sobre su consulta, incluso mediante tecnología automatizada. El consentimiento no es una condición de compra. Pueden aplicarse tarifas de mensajes y datos. Responda STOP para cancelar o HELP para ayuda. Consulte nuestra Política de Privacidad.',
+        ],
+      },
+      {
+        heading: 'Traducciones',
+        body: [
+          'Este sitio se ofrece en inglés, español y ruso. Las traducciones son solo por conveniencia. En caso de conflicto o discrepancia, prevalece la versión en inglés. Las pólizas y documentos relacionados se emiten en inglés.',
+        ],
+      },
+      {
+        heading: 'Contacto',
+        body: ['Preguntas sobre estas divulgaciones: mikhailkozlov@allstate.com o (305) 247-8877.'],
+      },
+    ],
+  },
+  ru: {
+    title: 'Раскрытие информации',
+    effectiveDateLabel: 'Дата вступления в силу: 25 июля 2026 г.',
+    intro:
+      'На этой странице приведена информация о лицензиях и обязательные страховые раскрытия M&K Agency Inc.',
+    sections: [
+      {
+        heading: 'Лицензии',
+        body: [
+          'M&K Agency Inc — лицензированное страховое агентство штата Флорида. Лицензия агентства #L109526, NPN агентства #19586268. Главный агент: Mikhail Kozlov, лицензия #W639521, NPN #17798891.',
+          'Офис: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Телефон: (305) 247-8877.',
+          'Статус лицензии можно проверить на сайте Департамента финансовых услуг Флориды: licenseesearch.fldfs.com.',
+        ],
+      },
+      {
+        heading: 'Отношения со страховыми компаниями',
+        body: [
+          'Страховые продукты предлагаются через страховые компании, в которых агентство и его агенты имеют назначения (appointments). Все товарные знаки принадлежат их владельцам. Этот сайт управляется M&K Agency Inc и не является официальным сайтом какой-либо страховой компании.',
+        ],
+      },
+      {
+        heading: 'Покрытие не оформляется через сайт',
+        body: [
+          'Ничто на этом сайте не оформляет, не изменяет и не продлевает страховое покрытие. Покрытие нельзя оформить, изменить или отменить через сайт, по email, SMS или голосовой почте. Покрытие вступает в силу только после письменного подтверждения страховой компании.',
+        ],
+      },
+      {
+        heading: 'Расчёты — только оценка',
+        body: [
+          'Расчёты стоимости — это оценки, основанные на предоставленной вами информации. Окончательные тарифы определяет страховая компания после андеррайтинга. Скидки зависят от условий и могут различаться.',
+        ],
+      },
+      {
+        heading: 'AI-чат',
+        body: [
+          'Функция «Chat with Mike» — инструмент на базе ИИ для ответов на общие вопросы и передачи запросов лицензированному агенту. Его ответы носят информационный характер, не являются консультацией и не оформляют покрытие. Вопросы покрытия подтверждайте у лицензированного агента.',
+        ],
+      },
+      {
+        heading: 'Звонки и сообщения',
+        body: [
+          'Отправляя форму с согласием, вы разрешаете связываться с вами по телефону, SMS и email по вашему запросу, в том числе с использованием автоматизированных технологий. Согласие не является условием покупки. Ответьте STOP, чтобы отказаться от SMS. Подробности — в Политике конфиденциальности.',
+        ],
+      },
+      {
+        heading: 'Переводы',
+        body: [
+          'Сайт доступен на английском, испанском и русском языках. Переводы предоставлены для удобства. При расхождениях преимущественную силу имеет английская версия. Страховые полисы оформляются на английском языке.',
+        ],
+      },
+      {
+        heading: 'Контакт',
+        body: ['Вопросы по раскрытиям: mikhailkozlov@allstate.com или (305) 247-8877.'],
+      },
+    ],
+  },
+};
