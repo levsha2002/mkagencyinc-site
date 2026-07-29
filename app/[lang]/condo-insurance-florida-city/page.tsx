@@ -17,12 +17,12 @@ const C: Record<Lang, any> = {
     kicker: 'Condo Insurance (HO-6) · Florida City & Homestead',
     h1a: 'Condo insurance in Florida City & Homestead,',
     h1b: 'for what your HOA doesn’t cover.',
-    sub: 'Your condo association’s master policy protects the building. An HO-6 policy protects your unit, your belongings, and you. We shop 15+ A-rated carriers so closing isn’t held up by an insurance gap.',
+    sub: 'Your condo association’s master policy protects the building. An HO-6 policy protects your unit, your belongings, and you. We’ll help you get the right HO-6 in place so closing isn’t held up by an insurance gap.',
     cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why condo insurance in Florida has gotten more complicated — and what we do about it',
     whyText:
-      'Since the Surfside collapse, Florida condo associations face mandatory milestone inspections and stronger reserve requirements — and buildings that fall short can see insurance costs jump or coverage tighten. Lenders now scrutinize condo policies more closely before closing, too. As an independent agency, we don’t sell just one carrier’s HO-6 form — we compare several, check your association’s master policy for gaps, and make sure your loss-assessment and liability limits actually match the risk.',
+      'Since the Surfside collapse, Florida condo associations face mandatory milestone inspections and stronger reserve requirements — and buildings that fall short can see insurance costs jump or coverage tighten. Lenders now scrutinize condo policies more closely before closing, too. As a family-owned local agency, we explain exactly what your HO-6 covers, check your association’s master policy for gaps, and make sure your loss-assessment and liability limits actually match the risk.',
     covTitle: 'Coverage we quote every day',
     cov: [
       { h: 'Interior unit coverage (HO-6)', p: 'Flooring, cabinets, built-in fixtures, and any upgrades you’ve made inside your unit — the parts your association’s master policy doesn’t touch.' },
@@ -41,7 +41,7 @@ const C: Record<Lang, any> = {
     faq: [
       { q: 'What does HO-6 condo insurance actually cover?', a: 'HO-6 covers the interior of your unit (flooring, cabinets, fixtures, upgrades), your personal belongings, liability for injuries inside your unit, and loss of use if you can’t live there after a covered claim. It does not cover the building structure itself — that’s the HOA’s master policy.' },
       { q: 'My HOA has a master policy — do I still need my own insurance?', a: 'Almost always, yes. The master policy protects the building structure and common areas, but rarely your flooring, cabinets, personal belongings, or your liability inside the unit. Most mortgage lenders require a separate HO-6 policy before closing.' },
-      { q: 'Why did my condo insurance premium go up so much recently?', a: 'Post-Surfside inspection and reserve requirements, rising reinsurance costs, and hurricane risk have pushed premiums up across Florida, especially in older buildings. Comparing multiple carriers is the most effective way to avoid overpaying for the coverage you actually need.' },
+      { q: 'Why did my condo insurance premium go up so much recently?', a: 'Post-Surfside inspection and reserve requirements, rising reinsurance costs, and hurricane risk have pushed premiums up across Florida, especially in older buildings. Reviewing your policy with a licensed agent is the most effective way to confirm you’re not overpaying for the coverage you actually need.' },
       { q: 'What is loss assessment coverage and do I need it?', a: 'If your HOA has to levy a special assessment on all owners after a covered building-wide loss (a fire in a common area, for example), loss assessment coverage can reimburse your share, up to your policy limit. We recommend it for nearly every condo owner.' },
       { q: 'How fast can I get proof of insurance for closing?', a: 'Usually the same day. Send us your HOA’s master policy declarations page and we can typically quote, bind, and issue a certificate within hours.' },
     ],
@@ -54,12 +54,12 @@ const C: Record<Lang, any> = {
     kicker: 'Seguro de Condominio (HO-6) · Florida City y Homestead',
     h1a: 'Seguro de condominio en Florida City y Homestead,',
     h1b: 'para lo que su HOA no cubre.',
-    sub: 'La póliza maestra de su asociación protege el edificio. Una póliza HO-6 lo protege a usted, su unidad y sus pertenencias. Comparamos 15+ aseguradoras A-rated para que el cierre no se retrase por un vacío de cobertura.',
+    sub: 'La póliza maestra de su asociación protege el edificio. Una póliza HO-6 lo protege a usted, su unidad y sus pertenencias. Le ayudamos a tener la póliza HO-6 correcta para que el cierre no se retrase por un vacío de cobertura.',
     cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de condominio en Florida se ha complicado — y qué hacemos al respecto',
     whyText:
-      'Desde el colapso de Surfside, las asociaciones de condominios en Florida enfrentan inspecciones estructurales obligatorias (“milestone”) y mayores requisitos de reservas — y los edificios que no cumplen pueden ver primas más altas o coberturas más limitadas. Los prestamistas ahora revisan las pólizas de condominio con más detalle antes del cierre. Como agencia independiente, no vendemos la forma HO-6 de una sola aseguradora — comparamos varias, revisamos la póliza maestra de su asociación en busca de vacíos, y verificamos que sus límites de “loss assessment” y responsabilidad civil realmente correspondan al riesgo.',
+      'Desde el colapso de Surfside, las asociaciones de condominios en Florida enfrentan inspecciones estructurales obligatorias (“milestone”) y mayores requisitos de reservas — y los edificios que no cumplen pueden ver primas más altas o coberturas más limitadas. Los prestamistas ahora revisan las pólizas de condominio con más detalle antes del cierre. Como agencia familiar local, le explicamos exactamente qué cubre su HO-6, revisamos la póliza maestra de su asociación en busca de vacíos, y verificamos que sus límites de “loss assessment” y responsabilidad civil realmente correspondan al riesgo.',
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
       { h: 'Cobertura del interior de la unidad (HO-6)', p: 'Pisos, gabinetes, instalaciones fijas y cualquier mejora dentro de su unidad — las partes que la póliza maestra de su asociación no cubre.' },
@@ -78,7 +78,7 @@ const C: Record<Lang, any> = {
     faq: [
       { q: '¿Qué cubre realmente el seguro HO-6 de condominio?', a: 'HO-6 cubre el interior de su unidad (pisos, gabinetes, instalaciones, mejoras), sus pertenencias personales, responsabilidad civil por lesiones dentro de su unidad, y pérdida de uso si no puede vivir ahí tras un siniestro cubierto. No cubre la estructura del edificio — eso corresponde a la póliza maestra de la HOA.' },
       { q: 'Mi HOA tiene póliza maestra — ¿aún necesito mi propio seguro?', a: 'Casi siempre, sí. La póliza maestra protege la estructura del edificio y las áreas comunes, pero rara vez sus pisos, gabinetes, pertenencias o su responsabilidad civil dentro de la unidad. La mayoría de los prestamistas exige una póliza HO-6 separada antes del cierre.' },
-      { q: '¿Por qué subió tanto mi prima de seguro de condominio?', a: 'Los requisitos de inspección y reservas posteriores a Surfside, el aumento en costos de reaseguro y el riesgo de huracanes han elevado las primas en toda Florida, especialmente en edificios más antiguos. Comparar varias aseguradoras es la forma más eficaz de no pagar de más.' },
+      { q: '¿Por qué subió tanto mi prima de seguro de condominio?', a: 'Los requisitos de inspección y reservas posteriores a Surfside, el aumento en costos de reaseguro y el riesgo de huracanes han elevado las primas en toda Florida, especialmente en edificios más antiguos. Revisar su póliza con un agente licenciado es la forma más eficaz de confirmar que no está pagando de más.' },
       { q: '¿Qué es la cobertura de “loss assessment” y la necesito?', a: 'Si su HOA debe imponer una cuota especial a todos los propietarios tras un siniestro cubierto que afecta a todo el edificio (un incendio en un área común, por ejemplo), esta cobertura puede reembolsar su parte, hasta el límite de su póliza. La recomendamos para casi todo propietario de condominio.' },
       { q: '¿Qué tan rápido obtengo el comprobante para el cierre?', a: 'Normalmente el mismo día. Envíenos la página de declaraciones de la póliza maestra de su HOA y generalmente podemos cotizar, emitir y entregar un certificado en cuestión de horas.' },
     ],
@@ -91,12 +91,12 @@ const C: Record<Lang, any> = {
     kicker: 'Страховка кондо (HO-6) · Florida City и Homestead',
     h1a: 'Страховка кондоминиума во Florida City и Homestead —',
     h1b: 'на то, что не покрывает HOA.',
-    sub: 'Master-полис вашей ассоциации защищает здание. Полис HO-6 защищает вашу квартиру, вещи и вас лично. Мы сравним 15+ страховых A-rated, чтобы closing не задержался из-за пробела в покрытии.',
+    sub: 'Master-полис вашей ассоциации защищает здание. Полис HO-6 защищает вашу квартиру, вещи и вас лично. Мы поможем оформить правильный полис HO-6, чтобы closing не задержался из-за пробела в покрытии.',
     cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему страховка кондо во Флориде усложнилась — и что мы с этим делаем',
     whyText:
-      'После обрушения здания в Surfside ассоциации кондоминиумов Флориды обязаны проходить структурные проверки (milestone inspections) и формировать более крупные резервные фонды — а здания, не соответствующие требованиям, сталкиваются с ростом премий или сужением покрытия. Кредиторы теперь тщательнее проверяют полисы кондо перед closing. Как независимое агентство, мы не продаём форму HO-6 одной компании — мы сравниваем несколько страховых, проверяем master-полис вашей ассоциации на пробелы и следим, чтобы лимиты loss assessment и liability реально соответствовали риску.',
+      'После обрушения здания в Surfside ассоциации кондоминиумов Флориды обязаны проходить структурные проверки (milestone inspections) и формировать более крупные резервные фонды — а здания, не соответствующие требованиям, сталкиваются с ростом премий или сужением покрытия. Кредиторы теперь тщательнее проверяют полисы кондо перед closing. Как местное семейное агентство, мы объясняем, что именно покрывает ваш HO-6, проверяем master-полис вашей ассоциации на пробелы и следим, чтобы лимиты loss assessment и liability реально соответствовали риску.',
     covTitle: 'Что мы считаем каждый день',
     cov: [
       { h: 'Покрытие интерьера квартиры (HO-6)', p: 'Полы, шкафы, встроенные элементы и любые улучшения внутри вашей квартиры — то, что не затрагивает master-полис ассоциации.' },
@@ -115,7 +115,7 @@ const C: Record<Lang, any> = {
     faq: [
       { q: 'Что реально покрывает HO-6 страховка кондо?', a: 'HO-6 покрывает интерьер квартиры (полы, шкафы, встроенные элементы, улучшения), личные вещи, liability за травмы внутри квартиры и loss of use, если жить там временно нельзя после покрытого случая. Саму конструкцию здания не покрывает — это зона master-полиса HOA.' },
       { q: 'У моей HOA есть master-полис — нужна ли мне своя страховка?', a: 'Почти всегда да. Master-полис защищает конструкцию здания и общие зоны, но редко покрывает полы, шкафы, личные вещи или вашу liability внутри квартиры. Большинство кредиторов требует отдельный полис HO-6 перед closing.' },
-      { q: 'Почему моя премия за страховку кондо так выросла?', a: 'Требования по проверкам и резервам после Surfside, рост стоимости перестрахования и риск ураганов подняли премии по всей Флориде, особенно в старых зданиях. Сравнение нескольких страховых — самый эффективный способ не переплачивать.' },
+      { q: 'Почему моя премия за страховку кондо так выросла?', a: 'Требования по проверкам и резервам после Surfside, рост стоимости перестрахования и риск ураганов подняли премии по всей Флориде, особенно в старых зданиях. Разбор полиса с лицензированным агентом — самый надёжный способ убедиться, что вы не переплачиваете.' },
       { q: 'Что такое loss assessment coverage и нужно ли оно мне?', a: 'Если HOA вводит специальный взнос для всех владельцев после покрытого случая, затронувшего всё здание (например, пожар в общей зоне), это покрытие может компенсировать вашу долю в пределах лимита полиса. Рекомендуем его практически каждому владельцу кондо.' },
       { q: 'Как быстро получить подтверждение для closing?', a: 'Обычно в тот же день. Пришлите нам страницу деклараций master-полиса вашей HOA — как правило, мы можем рассчитать, оформить и выдать сертификат за несколько часов.' },
     ],

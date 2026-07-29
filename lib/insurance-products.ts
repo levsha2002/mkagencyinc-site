@@ -110,7 +110,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     title: 'Single Family Home Insurance',
     shortIntro: 'Protection for your house, from hurricanes and flooding to everyday accidents.',
     article: [
-      "Florida homeowners face risks most of the country doesn't — hurricanes, flooding, and rising reinsurance costs. We work with Citizens, Florida Peninsula, Edison, Heritage, and other trusted carriers to find coverage that actually holds up when a storm hits.",
+      "Florida homeowners face risks most of the country doesn't — hurricanes, flooding, and rising reinsurance costs. We'll help you put coverage in place that actually holds up when a storm hits — and explain exactly what it does and doesn't include.",
       "Buying a home? We'll help you get a policy in place fast so you can close on time — including guidance on inspections your lender or carrier may require.",
     ],
     coverageHighlights: [
@@ -231,7 +231,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     shortIntro: 'Fleet and business-vehicle coverage for companies that rely on the road to operate.',
     article: [
       "From a single work truck to a small fleet, commercial auto insurance covers vehicles titled to your business or used primarily for business operations — with higher liability limits than a typical personal policy allows.",
-      'We work with carriers like Progressive, Next, and Hiscox to build fleet coverage that fits contractors, trades, and delivery-based businesses.',
+      'We build fleet coverage that fits contractors, trades, and delivery-based businesses.',
     ],
     coverageHighlights: [
       'Liability coverage built for business exposure',
@@ -251,7 +251,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     shortIntro: 'Protect the people who depend on you, with coverage that fits your budget.',
     article: [
       "Life insurance isn't about you — it's about making sure the people who depend on you are financially protected if something happens to you. We help you compare term and whole life options so your family's future is never left to chance.",
-      'We work with multiple A-rated carriers to find coverage that fits your budget and life stage, whether you need simple term coverage or a permanent policy that builds cash value.',
+      'We’ll help you find coverage that fits your budget and life stage, whether you need simple term coverage or a permanent policy that builds cash value.',
     ],
     coverageHighlights: [
       'Term life coverage (10, 20, 30-year options)',

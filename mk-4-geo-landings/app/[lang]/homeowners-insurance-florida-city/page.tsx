@@ -12,7 +12,7 @@ const C: Record<Lang, any> = {
   en: {
     metaTitle: 'Homeowners Insurance in Florida City & Homestead, FL | M&K Agency',
     metaDesc:
-      'Local independent agents compare hurricane-ready homeowners coverage across A-rated Florida carriers. Fast quotes for closing. Free quote — English, Español, по-русски.',
+      'Local agents at a family-owned agency compare hurricane-ready homeowners coverage across A-rated Florida carriers. Fast quotes for closing. Free quote — English, Español, по-русски.',
     kicker: 'Homeowners Insurance · Florida City & Homestead',
     h1a: 'Homeowners insurance in Florida City & Homestead,',
     h1b: 'that holds up when a storm hits.',
@@ -21,7 +21,7 @@ const C: Record<Lang, any> = {
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why Florida homeowners insurance is a mess right now — and what we do about it',
     whyText:
-      'Rising reinsurance costs, hurricane exposure, and several carrier exits and insolvencies have made Florida one of the hardest homeowners insurance markets in the country. A single carrier can only offer you its own appetite and price — and that appetite changes constantly. As an independent agency, we shop your home across multiple A-rated and Citizens-alternative carriers, help you navigate 4-point and wind mitigation inspections, and make sure you’re not paying more than the market actually requires.',
+      'Rising reinsurance costs, hurricane exposure, and several carrier exits and insolvencies have made Florida one of the hardest homeowners insurance markets in the country. A single carrier can only offer you its own appetite and price — and that appetite changes constantly. As a family-owned agency, we shop your home across multiple A-rated and Citizens-alternative carriers, help you navigate 4-point and wind mitigation inspections, and make sure you’re not paying more than the market actually requires.',
     covTitle: 'Coverage we quote every day',
     cov: [
       { h: 'Dwelling & other structures', p: 'Rebuild cost for your home, plus detached structures like a shed, fence, or detached garage.' },
@@ -49,7 +49,7 @@ const C: Record<Lang, any> = {
   es: {
     metaTitle: 'Seguro de Casa en Florida City y Homestead, FL | M&K Agency',
     metaDesc:
-      'Agentes locales independientes comparan cobertura de casa preparada para huracanes entre aseguradoras A-rated de Florida. Cotizaciones rápidas para el cierre. Hablamos español.',
+      'Agentes locales de una agencia familiar comparan cobertura de casa preparada para huracanes entre aseguradoras A-rated de Florida. Cotizaciones rápidas para el cierre. Hablamos español.',
     kicker: 'Seguro de Casa · Florida City y Homestead',
     h1a: 'Seguro de casa en Florida City y Homestead,',
     h1b: 'que aguanta cuando llega la tormenta.',
@@ -58,7 +58,7 @@ const C: Record<Lang, any> = {
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de casa en Florida es un desastre ahora mismo — y qué hacemos al respecto',
     whyText:
-      'El aumento en costos de reaseguro, la exposición a huracanes y varias salidas e insolvencias de aseguradoras han hecho de Florida uno de los mercados de seguro de casa más difíciles del país. Una sola aseguradora solo puede ofrecerle su propio apetito y precio — y ese apetito cambia constantemente. Como agencia independiente, comparamos su casa entre varias aseguradoras A-rated y alternativas a Citizens, le ayudamos con las inspecciones de 4 puntos y mitigación de viento, y verificamos que no esté pagando más de lo que el mercado realmente exige.',
+      'El aumento en costos de reaseguro, la exposición a huracanes y varias salidas e insolvencias de aseguradoras han hecho de Florida uno de los mercados de seguro de casa más difíciles del país. Una sola aseguradora solo puede ofrecerle su propio apetito y precio — y ese apetito cambia constantemente. Como agencia familiar, comparamos su casa entre varias aseguradoras A-rated y alternativas a Citizens, le ayudamos con las inspecciones de 4 puntos y mitigación de viento, y verificamos que no esté pagando más de lo que el mercado realmente exige.',
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
       { h: 'Vivienda y otras estructuras', p: 'Costo de reconstrucción de su casa, más estructuras separadas como cobertizo, cerca o garaje independiente.' },
@@ -86,7 +86,7 @@ const C: Record<Lang, any> = {
   ru: {
     metaTitle: 'Страховка дома во Florida City и Homestead, FL | M&K Agency',
     metaDesc:
-      'Местные независимые агенты сравнят страховку дома, готовую к ураганам, среди A-rated страховых Флориды. Быстрый расчёт для closing. Говорим по-русски.',
+      'Местные агенты семейного агентства сравнят страховку дома, готовую к ураганам, среди A-rated страховых Флориды. Быстрый расчёт для closing. Говорим по-русски.',
     kicker: 'Страховка дома · Florida City и Homestead',
     h1a: 'Страховка дома во Florida City и Homestead —',
     h1b: 'та, что реально работает при урагане.',
@@ -95,7 +95,7 @@ const C: Record<Lang, any> = {
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему страховка дома во Флориде сейчас в хаосе — и что мы с этим делаем',
     whyText:
-      'Рост стоимости перестрахования, риск ураганов и уход/банкротство нескольких страховых компаний сделали Флориду одним из самых сложных рынков страхования жилья в стране. Одна страховая компания может предложить только свой аппетит к риску и свою цену — а этот аппетит постоянно меняется. Как независимое агентство, мы прогоняем ваш дом через несколько страховых A-rated и альтернатив Citizens, помогаем с проверками 4-point и wind mitigation, и следим, чтобы вы не платили больше, чем реально требует рынок.',
+      'Рост стоимости перестрахования, риск ураганов и уход/банкротство нескольких страховых компаний сделали Флориду одним из самых сложных рынков страхования жилья в стране. Одна страховая компания может предложить только свой аппетит к риску и свою цену — а этот аппетит постоянно меняется. Как семейное агентство, мы прогоняем ваш дом через несколько страховых A-rated и альтернатив Citizens, помогаем с проверками 4-point и wind mitigation, и следим, чтобы вы не платили больше, чем реально требует рынок.',
     covTitle: 'Что мы считаем каждый день',
     cov: [
       { h: 'Dwelling и другие строения', p: 'Стоимость восстановления дома, плюс отдельные строения — сарай, забор, отдельный гараж.' },

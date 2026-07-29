@@ -37,7 +37,7 @@
 4. Как только контакт согласился — VA передаёт тебе/агенту для звонка или личной встречи (клубы любят живое присутствие — стенд на встрече "Cars & Coffee" или спонсорство небольшого мероприятия HOG-чаптера работает сильно лучше холодных писем).
 
 **Шаблон письма (адаптируй под нишу):**
-> Здравствуйте! Меня зовут [имя ассистента], я представляю M&K Agency — независимое страховое агентство в Florida City, мы уже [N] лет помогаем местным [владельцам классики/байкерам/риелторам] с страхованием. Хотели предложить вашим [участникам клуба/клиентам] бесплатную памятку по страхованию [ниша] — без всякой продажи, просто полезный материал. Если интересно — с радостью пришлём или созвонимся с [Mikhail], нашим агентом, чтобы обсудить детали.
+> Здравствуйте! Меня зовут [имя ассистента], я представляю M&K Agency — семейное страховое агентство в Florida City, мы уже [N] лет помогаем местным [владельцам классики/байкерам/риелторам] с страхованием. Хотели предложить вашим [участникам клуба/клиентам] бесплатную памятку по страхованию [ниша] — без всякой продажи, просто полезный материал. Если интересно — с радостью пришлём или созвонимся с [Mikhail], нашим агентом, чтобы обсудить детали.
 
 ## Как построить поток через Facebook-группы
 
@@ -80,6 +80,6 @@ Facebook-группы по интересам (не страницы агент�
 ## Пример объявления о найме (можно скопировать на OnlineJobs.ph)
 
 > **Social Media & Community Outreach VA — Insurance Agency (Florida, USA)**
-> Part-time, 20 hrs/week, $4-6/hr depending on experience. We're an independent insurance agency in Florida City, FL, looking for a virtual assistant to help build relationships with local car/motorcycle clubs and manage engagement in relevant Facebook groups. Tasks: outreach emails/messages to clubs and community partners, Facebook group engagement (NOT ads — genuine community participation), lead tracking in Google Sheets, weekly reporting. You will NOT be discussing insurance pricing or coverage details — that's handled by our licensed agents. Looking for someone with social media marketing experience, good written English, and reliability. Please share examples of past community management or social media work.
+> Part-time, 20 hrs/week, $4-6/hr depending on experience. We're an family-owned insurance agency in Florida City, FL, looking for a virtual assistant to help build relationships with local car/motorcycle clubs and manage engagement in relevant Facebook groups. Tasks: outreach emails/messages to clubs and community partners, Facebook group engagement (NOT ads — genuine community participation), lead tracking in Google Sheets, weekly reporting. You will NOT be discussing insurance pricing or coverage details — that's handled by our licensed agents. Looking for someone with social media marketing experience, good written English, and reliability. Please share examples of past community management or social media work.
 
 Если хочешь, я могу подготовить готовые тексты постов и писем для каждой из 4 ниш заранее — так ассистенту останется только адаптировать под конкретную группу/клуб и публиковать, не тратя время на написание с нуля.

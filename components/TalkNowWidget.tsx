@@ -140,8 +140,8 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
                     onChange={(e) => setConsent(e.target.checked)}
                   />
                   <span>
-                    By sharing your number, you agree M&amp;K Agency may call or text you
-                    about insurance, including with automated technology. Consent isn&apos;t
+                    By sharing your number, you agree M&amp;K Agency may call, text, or
+                    email you about insurance. Consent isn&apos;t
                     required to purchase. Reply STOP anytime.
                   </span>
                 </label>

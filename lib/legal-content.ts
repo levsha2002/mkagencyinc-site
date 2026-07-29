@@ -23,13 +23,13 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '2. How We Use Your Information',
         body: [
-          'We use the information we collect to provide insurance quotes and respond to your inquiries; contact you by phone, text message, email, or automated/AI-assisted communications about insurance products and services; operate, maintain, and improve the Site and our services; comply with legal and regulatory obligations; and communicate with insurance carriers on your behalf to obtain quotes or bind coverage, where you have requested that we do so.',
+          'We use the information we collect to provide insurance quotes and respond to your inquiries; contact you by phone, text message, or email about insurance products and services; operate, maintain, and improve the Site and our services; comply with legal and regulatory obligations; and communicate with insurance carriers on your behalf to obtain quotes or bind coverage, where you have requested that we do so.',
         ],
       },
       {
         heading: '3. Consent to Communications (TCPA)',
         body: [
-          'By submitting your phone number through our Site, you agree that M&K Agency may contact you by phone call, text message, or automated/AI-assisted communications at the number provided regarding insurance products and services, even if that number is registered on a state or federal Do-Not-Call list. Consent to receive such communications is not a condition of purchasing any product or service. You may reply "STOP" to any text message at any time to opt out of further text communications, or contact us using the information below.',
+          'By submitting your phone number through our Site, you agree that M&K Agency may contact you by phone call, text message, or email at the number provided regarding insurance products and services, even if that number is registered on a state or federal Do-Not-Call list. Consent to receive such communications is not a condition of purchasing any product or service. You may reply "STOP" to any text message at any time to opt out of further text communications, or contact us using the information below.',
         ],
       },
       {
@@ -98,7 +98,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '3. Consentimiento para Comunicaciones (TCPA)',
         body: [
-          'Al enviar su número de teléfono a través de nuestro Sitio, usted acepta que M&K Agency puede contactarlo por llamada, mensaje de texto o comunicaciones automatizadas/asistidas por IA sobre seguros, incluso si ese número está en una lista de No Llamar. El consentimiento no es una condición de compra. Puede responder "STOP" en cualquier momento para dejar de recibir mensajes de texto.',
+          'Al enviar su número de teléfono a través de nuestro Sitio, usted acepta que M&K Agency puede contactarlo por llamada, mensaje de texto o correo electrónico sobre seguros, incluso si ese número está en una lista de No Llamar. El consentimiento no es una condición de compra. Puede responder "STOP" en cualquier momento para dejar de recibir mensajes de texto.',
         ],
       },
       {
@@ -165,7 +165,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '3. Согласие на коммуникации (TCPA)',
         body: [
-          'Указывая номер телефона на Сайте, вы соглашаетесь, что M&K Agency может связываться с вами по телефону, SMS или автоматизированным/ИИ-звонкам, даже если номер в списке «Не звонить». Согласие не является условием покупки. Ответьте «STOP», чтобы отказаться от SMS.',
+          'Указывая номер телефона на Сайте, вы соглашаетесь, что M&K Agency может связываться с вами по телефону, SMS или электронной почте, даже если номер в списке «Не звонить». Согласие не является условием покупки. Ответьте «STOP», чтобы отказаться от SMS.',
         ],
       },
       {
@@ -216,7 +216,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '1. About Our Services',
         body: [
-          'M&K Agency Inc. is an independent insurance agency licensed in the State of Florida. We help customers compare and obtain insurance quotes from multiple carriers. The Site does not itself provide insurance coverage, and no coverage exists until a policy is formally issued by a carrier.',
+          'M&K Agency Inc. is a family-owned insurance agency licensed in the State of Florida. We help customers review coverage options and obtain insurance quotes through a licensed agent. The Site does not itself provide insurance coverage, and no coverage exists until a policy is formally issued by a carrier.',
         ],
       },
       {
@@ -234,7 +234,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '4. Communications Consent',
         body: [
-          'By submitting your contact information, you consent to be contacted by M&K Agency by phone, text, email, or automated/AI-assisted communications regarding insurance products and services, as described in our Privacy Policy.',
+          'By submitting your contact information, you consent to be contacted by M&K Agency by phone, text, or email regarding insurance products and services, as described in our Privacy Policy.',
         ],
       },
       {
@@ -286,7 +286,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: '1. Sobre Nuestros Servicios',
         body: [
-          'M&K Agency Inc. es una agencia de seguros independiente con licencia en Florida. Ayudamos a comparar cotizaciones de múltiples aseguradoras. El Sitio no proporciona cobertura por sí mismo.',
+          'M&K Agency Inc. es una agencia de seguros familiar con licencia en Florida. Ayudamos a revisar opciones de cobertura y obtener cotizaciones a través de un agente licenciado. El Sitio no proporciona cobertura por sí mismo.',
         ],
       },
       {
@@ -339,7 +339,7 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
     sections: [
       {
         heading: '1. О наших услугах',
-        body: ['M&K Agency Inc. — независимое страховое агентство, лицензированное во Флориде. Сайт сам по себе не предоставляет покрытие.'],
+        body: ['M&K Agency Inc. — семейное страховое агентство, лицензированное во Флориде. Сайт сам по себе не предоставляет покрытие.'],
       },
       {
         heading: '2. Отсутствие гарантии покрытия или цены',

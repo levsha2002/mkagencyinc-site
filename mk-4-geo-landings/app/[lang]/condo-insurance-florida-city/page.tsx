@@ -21,7 +21,7 @@ const C: Record<Lang, any> = {
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why condo insurance in Florida has gotten more complicated — and what we do about it',
     whyText:
-      'Since the Surfside collapse, Florida condo associations face mandatory milestone inspections and stronger reserve requirements — and buildings that fall short can see insurance costs jump or coverage tighten. Lenders now scrutinize condo policies more closely before closing, too. As an independent agency, we don’t sell just one carrier’s HO-6 form — we compare several, check your association’s master policy for gaps, and make sure your loss-assessment and liability limits actually match the risk.',
+      'Since the Surfside collapse, Florida condo associations face mandatory milestone inspections and stronger reserve requirements — and buildings that fall short can see insurance costs jump or coverage tighten. Lenders now scrutinize condo policies more closely before closing, too. As a family-owned agency, we don’t sell just one carrier’s HO-6 form — we compare several, check your association’s master policy for gaps, and make sure your loss-assessment and liability limits actually match the risk.',
     covTitle: 'Coverage we quote every day',
     cov: [
       { h: 'Interior unit coverage (HO-6)', p: 'Flooring, cabinets, built-in fixtures, and any upgrades you’ve made inside your unit — the parts your association’s master policy doesn’t touch.' },
@@ -58,7 +58,7 @@ const C: Record<Lang, any> = {
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de condominio en Florida se ha complicado — y qué hacemos al respecto',
     whyText:
-      'Desde el colapso de Surfside, las asociaciones de condominios en Florida enfrentan inspecciones estructurales obligatorias (“milestone”) y mayores requisitos de reservas — y los edificios que no cumplen pueden ver primas más altas o coberturas más limitadas. Los prestamistas ahora revisan las pólizas de condominio con más detalle antes del cierre. Como agencia independiente, no vendemos la forma HO-6 de una sola aseguradora — comparamos varias, revisamos la póliza maestra de su asociación en busca de vacíos, y verificamos que sus límites de “loss assessment” y responsabilidad civil realmente correspondan al riesgo.',
+      'Desde el colapso de Surfside, las asociaciones de condominios en Florida enfrentan inspecciones estructurales obligatorias (“milestone”) y mayores requisitos de reservas — y los edificios que no cumplen pueden ver primas más altas o coberturas más limitadas. Los prestamistas ahora revisan las pólizas de condominio con más detalle antes del cierre. Como agencia familiar, no vendemos la forma HO-6 de una sola aseguradora — comparamos varias, revisamos la póliza maestra de su asociación en busca de vacíos, y verificamos que sus límites de “loss assessment” y responsabilidad civil realmente correspondan al riesgo.',
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
       { h: 'Cobertura del interior de la unidad (HO-6)', p: 'Pisos, gabinetes, instalaciones fijas y cualquier mejora dentro de su unidad — las partes que la póliza maestra de su asociación no cubre.' },
@@ -95,7 +95,7 @@ const C: Record<Lang, any> = {
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему страховка кондо во Флориде усложнилась — и что мы с этим делаем',
     whyText:
-      'После обрушения здания в Surfside ассоциации кондоминиумов Флориды обязаны проходить структурные проверки (milestone inspections) и формировать более крупные резервные фонды — а здания, не соответствующие требованиям, сталкиваются с ростом премий или сужением покрытия. Кредиторы теперь тщательнее проверяют полисы кондо перед closing. Как независимое агентство, мы не продаём форму HO-6 одной компании — мы сравниваем несколько страховых, проверяем master-полис вашей ассоциации на пробелы и следим, чтобы лимиты loss assessment и liability реально соответствовали риску.',
+      'После обрушения здания в Surfside ассоциации кондоминиумов Флориды обязаны проходить структурные проверки (milestone inspections) и формировать более крупные резервные фонды — а здания, не соответствующие требованиям, сталкиваются с ростом премий или сужением покрытия. Кредиторы теперь тщательнее проверяют полисы кондо перед closing. Как семейное агентство, мы не продаём форму HO-6 одной компании — мы сравниваем несколько страховых, проверяем master-полис вашей ассоциации на пробелы и следим, чтобы лимиты loss assessment и liability реально соответствовали риску.',
     covTitle: 'Что мы считаем каждый день',
     cov: [
       { h: 'Покрытие интерьера квартиры (HO-6)', p: 'Полы, шкафы, встроенные элементы и любые улучшения внутри вашей квартиры — то, что не затрагивает master-полис ассоциации.' },

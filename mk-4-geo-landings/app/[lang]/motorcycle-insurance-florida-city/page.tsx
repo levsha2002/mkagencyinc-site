@@ -12,7 +12,7 @@ const C: Record<Lang, any> = {
   en: {
     metaTitle: 'Motorcycle Insurance in Florida City & Homestead, FL | M&K Agency',
     metaDesc:
-      'Local independent agents compare motorcycle insurance across A-rated carriers for every bike — cruiser, sport, touring, or vintage. Free quote — English, Español, по-русски.',
+      'Local agents at a family-owned agency compare motorcycle insurance across A-rated carriers for every bike — cruiser, sport, touring, or vintage. Free quote — English, Español, по-русски.',
     kicker: 'Motorcycle Insurance · Florida City & Homestead',
     h1a: 'Motorcycle insurance in Florida City & Homestead,',
     h1b: 'priced for how you actually ride.',
@@ -21,7 +21,7 @@ const C: Record<Lang, any> = {
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why one-size-fits-all motorcycle rates cost you money — and what we do about it',
     whyText:
-      'Motorcycle insurance isn’t priced like car insurance. Bike type, engine size, riding experience, and whether it’s your daily ride or a weekend/collector bike all move the price — sometimes dramatically. A single carrier can only price its own book of riders. As an independent agency, we compare your exact bike and profile across multiple A-rated carriers so you’re not overpaying because one company doesn’t specialize in your type of riding.',
+      'Motorcycle insurance isn’t priced like car insurance. Bike type, engine size, riding experience, and whether it’s your daily ride or a weekend/collector bike all move the price — sometimes dramatically. A single carrier can only price its own book of riders. As a family-owned agency, we compare your exact bike and profile across multiple A-rated carriers so you’re not overpaying because one company doesn’t specialize in your type of riding.',
     covTitle: 'Coverage we quote every day',
     cov: [
       { h: 'Liability, collision & comprehensive', p: 'Full protection for your bike and for others if you’re at fault — from a parking-lot tip-over to a total loss.' },
@@ -49,7 +49,7 @@ const C: Record<Lang, any> = {
   es: {
     metaTitle: 'Seguro de Motocicleta en Florida City y Homestead, FL | M&K Agency',
     metaDesc:
-      'Agentes locales independientes comparan seguro de motocicleta entre aseguradoras A-rated para cualquier moto — crucero, deportiva, touring o vintage. Cotización gratis. Hablamos español.',
+      'Agentes locales de una agencia familiar comparan seguro de motocicleta entre aseguradoras A-rated para cualquier moto — crucero, deportiva, touring o vintage. Cotización gratis. Hablamos español.',
     kicker: 'Seguro de Motocicleta · Florida City y Homestead',
     h1a: 'Seguro de motocicleta en Florida City y Homestead,',
     h1b: 'con el precio de cómo usted realmente maneja.',
@@ -58,7 +58,7 @@ const C: Record<Lang, any> = {
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué una tarifa “talla única” le cuesta dinero — y qué hacemos al respecto',
     whyText:
-      'El seguro de motocicleta no se cotiza como el de auto. El tipo de moto, el tamaño del motor, la experiencia del conductor y si es su vehículo diario o una moto de fin de semana o colección mueven el precio — a veces drásticamente. Una sola aseguradora solo puede cotizar según su propia cartera de motociclistas. Como agencia independiente, comparamos su moto y perfil exactos entre varias aseguradoras A-rated para que no pague de más.',
+      'El seguro de motocicleta no se cotiza como el de auto. El tipo de moto, el tamaño del motor, la experiencia del conductor y si es su vehículo diario o una moto de fin de semana o colección mueven el precio — a veces drásticamente. Una sola aseguradora solo puede cotizar según su propia cartera de motociclistas. Como agencia familiar, comparamos su moto y perfil exactos entre varias aseguradoras A-rated para que no pague de más.',
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
       { h: 'Responsabilidad civil, colisión y cobertura amplia', p: 'Protección completa para su moto y para terceros si usted es responsable — desde una caída en el estacionamiento hasta una pérdida total.' },
@@ -86,7 +86,7 @@ const C: Record<Lang, any> = {
   ru: {
     metaTitle: 'Страховка мотоцикла во Florida City и Homestead, FL | M&K Agency',
     metaDesc:
-      'Местные независимые агенты сравнят страховку мотоцикла среди A-rated страховых для любого байка — круизер, спорт, туринг или винтаж. Бесплатный расчёт. Говорим по-русски.',
+      'Местные агенты семейного агентства сравнят страховку мотоцикла среди A-rated страховых для любого байка — круизер, спорт, туринг или винтаж. Бесплатный расчёт. Говорим по-русски.',
     kicker: 'Страховка мотоцикла · Florida City и Homestead',
     h1a: 'Страховка мотоцикла во Florida City и Homestead —',
     h1b: 'по цене, соответствующей тому, как вы ездите.',
@@ -95,7 +95,7 @@ const C: Record<Lang, any> = {
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему единый тариф на мотоциклы невыгоден — и что мы с этим делаем',
     whyText:
-      'Страховка мотоцикла считается не так, как автостраховка. Тип байка, объём двигателя, опыт водителя и то, ежедневный это транспорт или байк выходного дня/коллекционный экземпляр — всё это сильно меняет цену. Одна страховая компания может предложить тариф только для своего портфеля мотоциклистов. Как независимое агентство, мы сравним ваш конкретный байк и профиль среди нескольких страховых A-rated, чтобы вы не переплачивали.',
+      'Страховка мотоцикла считается не так, как автостраховка. Тип байка, объём двигателя, опыт водителя и то, ежедневный это транспорт или байк выходного дня/коллекционный экземпляр — всё это сильно меняет цену. Одна страховая компания может предложить тариф только для своего портфеля мотоциклистов. Как семейное агентство, мы сравним ваш конкретный байк и профиль среди нескольких страховых A-rated, чтобы вы не переплачивали.',
     covTitle: 'Что мы считаем каждый день',
     cov: [
       { h: 'Liability, collision и comprehensive', p: 'Полная защита вашего байка и третьих лиц, если виноваты вы — от падения на парковке до полной гибели транспорта.' },

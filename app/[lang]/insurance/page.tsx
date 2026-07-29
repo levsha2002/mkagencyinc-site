@@ -35,8 +35,8 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
           <div className="container">
             <h1>One agency. Every kind of coverage.</h1>
             <p>
-              For home insurance, we compare 15+ A-rated Florida carriers so you get the right
-              coverage at the right price. For your car, your business, and the people who
+              We take the time to explain your home coverage so you know exactly what you
+              have. For your car, your business, and the people who
               depend on you, we'll make sure you have the right protection too.
             </p>
           </div>

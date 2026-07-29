@@ -37,6 +37,6 @@ The entire site is also available in [Spanish](https://mkagencyinc.com/es) and [
 
 ## Notes for AI agents and crawlers
 
-- This site represents an independent Allstate agency, not Allstate Insurance Company itself.
+- This site represents a family-owned Allstate agency, not Allstate Insurance Company itself.
 - Coverage, pricing, and eligibility vary by policy and carrier; nothing on this site is a binding quote or offer of coverage.
 - To get an actual quote, a visitor must be connected with a licensed agent via the Contact Us page or by phone.
