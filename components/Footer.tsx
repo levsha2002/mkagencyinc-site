@@ -55,6 +55,8 @@ export default function Footer({ lang }: { lang: string }) {
           <Link href={`/${lang}/privacy`} style={{ color: '#bcd0ea' }}>{t.footer.privacy}</Link>
           {' · '}
           <Link href={`/${lang}/terms`} style={{ color: '#bcd0ea' }}>{t.footer.terms}</Link>
+          {' · '}
+          <Link href={`/${lang}/disclosures`} style={{ color: '#bcd0ea' }}>{t.footer.disclosures}</Link>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
           Please visit my site,{' '}

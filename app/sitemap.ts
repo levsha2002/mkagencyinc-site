@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/referral/rules', priority: 0.3 },
     { path: '/privacy', priority: 0.2 },
     { path: '/terms', priority: 0.2 },
+    { path: '/disclosures', priority: 0.2 },
   ];
 
   const productPages = insuranceProducts.map((p) => ({
