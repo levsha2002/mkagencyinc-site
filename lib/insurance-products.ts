@@ -23,7 +23,7 @@ export const insuranceProducts: InsuranceProduct[] = [
     shortIntro: 'Coverage for the vehicle you drive every day — to work, school, and everywhere in between.',
     article: [
       "A car accident doesn't just damage your vehicle — it can put your savings, your income, and your financial future at risk. We focus on coverage that protects what you've built, not just the state minimum.",
-      "For drivers who want more, accident forgiveness may be available depending on eligibility, along with 24/7 online access to your policy — view your ID cards, make payments, and file a claim from your phone.",
+      "For drivers who want more, we offer accident forgiveness so one mistake doesn't spike your rate, plus 24/7 online access to your policy — view your ID cards, make payments, and file a claim from your phone.",
     ],
     coverageHighlights: [
       'Bodily injury & property damage liability',
