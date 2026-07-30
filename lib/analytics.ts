@@ -21,16 +21,25 @@ export type ConversionAction =
   | 'quote_submit';     // product-specific quote form (InsuranceQuoteForm)
 
 // Conversion labels from Google Ads → Goals → Conversions → (action) → Tag setup.
-// Only quote_submit/callback_request exist today; the others must be created in
-// the Ads account, then pasted here. Leaving one null is safe: the GA4 event
-// still fires, only the Ads-side conversion is skipped.
+//
+// Each label can be supplied as an environment variable so new conversions can
+// be switched on from the Vercel dashboard without editing this file. The
+// literal below is the fallback for the one action that already existed.
+//
+// NEXT_PUBLIC_ is required — these are read in the browser. Values are inlined
+// at build time, so a redeploy is needed after adding one, but no code change.
+//
+// A null label is safe: the GA4 event still fires, only the Ads-side
+// conversion is skipped. Nothing breaks while labels are pending.
 export const CONVERSION_LABELS: Record<ConversionAction, string | null> = {
-  phone_call: null,
-  sms_click: null,
-  callback_request: '-1BtCL2Fj9EcELj-waBE',
-  chat_lead: null,
-  talknow_lead: null,
-  quote_submit: '-1BtCL2Fj9EcELj-waBE',
+  phone_call: process.env.NEXT_PUBLIC_ADS_LABEL_PHONE_CALL || null,
+  sms_click: process.env.NEXT_PUBLIC_ADS_LABEL_SMS_CLICK || null,
+  callback_request:
+    process.env.NEXT_PUBLIC_ADS_LABEL_CALLBACK || '-1BtCL2Fj9EcELj-waBE',
+  chat_lead: process.env.NEXT_PUBLIC_ADS_LABEL_CHAT_LEAD || null,
+  talknow_lead: process.env.NEXT_PUBLIC_ADS_LABEL_TALKNOW || null,
+  quote_submit:
+    process.env.NEXT_PUBLIC_ADS_LABEL_QUOTE || '-1BtCL2Fj9EcELj-waBE',
 };
 
 type Params = Record<string, string | number | boolean | undefined>;
