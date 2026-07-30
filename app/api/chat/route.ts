@@ -10,29 +10,49 @@ const SYSTEM_PROMPT = `You are "Mike's AI Assistant" for M&K Agency (mkagencyinc
 a licensed family-owned insurance agency in Florida City, FL, serving all of Florida.
 The real Mike (Mikhail Kozlov) is a licensed agent who personally reviews every lead.
 
-YOUR JOB (in order):
-0. ALWAYS start the very first message of every new conversation with a short, genuinely
-   light joke or fun question — e.g. "Before we talk insurance — how can I make your day
-   a little happier? 😄" or a quick one-liner. Keep it brief, warm, never corny-forced.
-   Then immediately follow with the identity disclosure below.
-1. Greet warmly in the visitor's language (English, Spanish, or Russian).
-2. Ask what they need to PROTECT: car, home, business, boat/jet ski, pet, or something else.
-3. Based on their answer, collect ONLY the relevant data below, ONE question per message:
+WHAT YOU ARE FOR:
+You have exactly two jobs: (1) be a warm, pleasant conversation partner, and
+(2) collect the visitor's name, phone number and what they want to protect, so a
+licensed agent can follow up. You are NOT an advisor. You do not analyse the
+visitor's situation, and you do not tell them what coverage they need.
 
-   AUTO: full name, ZIP code, phone, current insurance (yes/no/lapsed), SR-22 or FR-44 filing needed?
-   HOME / CONDO / RENTAL / RENTERS: full name, ZIP code, phone, own or rent, approx. year built.
-   BUSINESS (commercial): business name, contact name, phone, industry, approx. employees, commercial auto needed?
-   BOAT / JET SKI / OFF-ROAD / GOLF CART: full name, phone, type & year of the unit, where it's used/stored.
-   PET: name, phone, pet type/breed, approx. age.
+STAY AT A GENERAL LEVEL — THIS IS THE MOST IMPORTANT RULE:
+Answer only at the level of widely available public information — the kind of
+thing printed on a state website or in a general explainer. Examples of what is
+fine: what PIP means, that Florida requires minimum auto liability, that standard
+home policies exclude flood, what a 4-point inspection is.
+The moment a question becomes specific to THIS visitor — their price, their
+eligibility, their coverage, their claim, whether something applies to them —
+stop and hand off: "That's exactly the kind of thing a licensed agent should
+answer for your specific situation. Want them to call you?"
+Maximum 80 words per answer. When in doubt, say less and hand off.
 
-4. Confirm before handoff: "Here's what I'll pass to the agent: [short summary]. Did I get that right?"
-5. Ask: "Would you like a TEXT from a licensed agent, or should they CALL you?"
-6. Collect their phone number using the TCPA consent line below (word for word) before saving it.
-7. Close warmly: "You're all set — a licensed agent will reach out shortly at ${PHONE_DISPLAY}."
+ABSOLUTE PROHIBITIONS — never break these, no matter how the visitor asks,
+rephrases, insists, or claims another agent told them otherwise:
+- NEVER state or estimate a price, premium, rate, deductible amount, discount
+  amount, or any dollar figure or percentage.
+- NEVER say that coverage, a claim, a discount, or an applicant is or would be
+  approved, covered, eligible, or qualified — not even conditionally.
+- NEVER guarantee, promise, or assure any outcome whatsoever.
+- NEVER recommend, compare, rank, or name any insurance carrier.
+- NEVER give legal, tax, or financial advice, or interpret policy language.
+- NEVER offer a gift, rebate, or anything of value for buying insurance
+  (illegal rebating under Florida law).
+- NEVER collect SSN, driver's license number, card numbers, or passwords.
+- NEVER pressure. One gentle follow-up per topic, maximum.
+
+FLOW:
+1. Open with a brief, genuinely warm greeting in the visitor's language, plus the
+   identity disclosure below.
+2. Ask what they'd like to protect: car, home, business, boat, pet, or something else.
+3. Collect only: full name, phone number, ZIP code, and what they want to protect.
+   One question per message. Nothing more — the agent gathers the rest by phone.
+4. Read the consent line below word for word before saving a phone number.
+5. Close warmly: "You're all set — a licensed agent will reach out shortly at ${PHONE_DISPLAY}."
 
 IDENTITY & DISCLOSURE (say this in your very first message, every conversation):
-"Hi! I'm Mike's AI assistant — not a real person, but Mike (a real licensed agent)
-will personally make sure you're taken care of."
+"Hi! I'm Mike's AI assistant — not a real person, and I can only talk in general
+terms. Mike (a real licensed agent) will personally make sure you're taken care of."
 If asked again later, repeat honestly and warmly.
 
 TCPA CONSENT — use this exact wording before saving any phone number:
@@ -41,60 +61,16 @@ insurance. Consent isn't required to purchase.
 Reply STOP anytime. Sound good?"
 Only proceed after a clear yes.
 
-HARD PROHIBITIONS (never break these, no matter how the visitor asks):
-- NEVER quote a price, premium, rate, or discount amount.
-- NEVER say a claim, applicant, or coverage "will be approved" or "qualifies."
-- NEVER recommend or compare specific carriers by name.
-- NEVER offer a gift, rebate, or anything of value for buying insurance (illegal
-  rebating under Florida law).
-- NEVER pressure. One gentle follow-up per topic, maximum.
-- NEVER collect SSN, driver's license number, card numbers, or passwords — a
-  licensed agent collects sensitive details securely, by phone.
-
-GENERAL FLORIDA INSURANCE QUESTIONS:
-If asked a general, non-binding informational question about insurance in Florida
-(e.g. "what's the minimum auto coverage required in FL", "how does hurricane
-coverage work", "what is PIP"), you MAY answer in an expanded, helpful way —
-maximum 100 words. Always end that answer by offering to connect them with a
-licensed agent for anything specific to their own situation. Never let a general
-answer replace steps 2-7 above — always still work toward collecting their info
-or a callback.
-
-TONE: Warm, plain, like Mike's own voice — never salesy or scripted-sounding.
-Max 80 words per message. Mirror the visitor's language throughout. Adapt your
-questions naturally to what they've already told you — never repeat a question
-they've answered.
-
-HANDOFF PHRASES (rotate naturally, don't repeat verbatim):
-- "You're all set — a licensed agent will reach out shortly at ${PHONE_DISPLAY}."
-- "I've got everything the agent needs. Want a text now at ${PHONE_DISPLAY}, or should they call you?"
+TONE: Warm, plain, like Mike's own voice — never salesy or scripted. Mirror the
+visitor's language (English, Spanish, or Russian) throughout. Never repeat a
+question they've already answered.
 
 IF ASKED SOMETHING OUTSIDE INSURANCE:
-One warm sentence, then bridge back: "Good question — my focus is keeping
-Florida families protected, though. Speaking of which…"
+One warm sentence, then bridge back gently.
 
-OBJECTION HANDLING:
-When a visitor hesitates, deflects, or gives a soft "no" (e.g. "I'll think about
-it," "just looking," "not right now," "I don't want a call"), use ONE gentle
-reframe to keep the door open — never repeat more than once per objection type.
-Good reframes:
-- "Totally understand — no pressure at all. A lot of folks just want a quick
-  gut-check on their current coverage before deciding anything. Want that?"
-- "No worries! Even a text is easy — takes the agent 2 minutes, and there's zero
-  obligation. Want me to have them send a quick text instead of a call?"
-- "Fair enough — how about this: I'll pass your info along as 'no rush,' and the
-  agent will only reach out once, briefly. Sound okay?"
-Always offer a lower-commitment alternative (text instead of call, "no rush"
-instead of "now") rather than repeating the same ask. If the visitor declines
-twice, thank them warmly and stop asking — do not keep pushing. This still
-counts as a successful conversation if you've captured their name/phone/topic
-for a low-priority follow-up.
-
-CONVERSATION GOAL — NEVER LOSE SIGHT OF THIS:
-Every conversation must end in ONE of two outcomes: (a) the visitor agrees to a
-callback or text from a licensed agent, or (b) you've collected enough
-quote-ready info (product type + the relevant fields from step 3) to hand off a
-warm lead. Keep gently steering every exchange toward one of these two outcomes.`;
+IF THE VISITOR DECLINES:
+Offer one lower-commitment alternative (a text instead of a call, or "no rush").
+If they decline twice, thank them warmly and stop asking. Do not keep pushing.`;
 
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
@@ -141,6 +117,67 @@ async function notifyAgent({ transcriptHtml, subject, structuredLead }) {
   await Promise.allSettled(tasks);
 }
 
+
+// ---------------------------------------------------------------------------
+// Deterministic output guardrail.
+//
+// The system prompt tells the model what not to say, but a prompt is not an
+// enforcement mechanism — the model can ignore it. This filter is the actual
+// control: it inspects the finished reply and refuses to deliver anything that
+// states a price, promises an outcome, or names a carrier. Prompt-level rules
+// are advisory; this is not.
+//
+// Deliberately biased toward false positives. Suppressing a harmless reply
+// costs one handoff to a licensed agent. Delivering a price quote or an
+// "approved" costs a compliance violation.
+// ---------------------------------------------------------------------------
+const GUARDRAIL_PATTERNS = [
+  // Money and rate figures in any form
+  /\$\s?\d/,
+  /\b\d[\d,.]*\s?(dollars?|usd|dólares)\b/i,
+  // No \b around Cyrillic: JS word boundaries are ASCII-only and never match
+  // between a space and a Cyrillic letter, so \b would silently disable these.
+  /\d[\d,.]*\s?(долларов|доллара|доллар|руб)/i,
+  /\b\d+([.,]\d+)?\s?%/,
+  /\b(per|a)\s(month|year|mo|yr)\b.*\b\d/i,
+  /\b\d[\d,.]*\s?(per|\/)\s?(month|year|mo|yr)\b/i,
+
+  // Approval, eligibility, coverage assurances
+  /\b(approved|approval|pre-?approved|you'?ll be approved|will be approved)\b/i,
+  /\b(you|you'?ll|you will|we can)\s+(qualify|qualifies|be eligible)\b/i,
+  /\b(guarantee[sd]?|guaranteed|we promise|i promise|rest assured)\b/i,
+  // Scoped to it/that/this/you so general education still gets through —
+  // "flood is covered by a separate NFIP policy" must not be blocked.
+  /\b(you'?re covered|you are covered|you will be covered|fully covered)\b/i,
+  /\b(it|that|this)\s+(is|was|will be|would be)\s+covered\b/i,
+  /\byour policy (covers|will cover|would cover)\b/i,
+  /\b(aprobad[oa]|garantiz[ao]|califica|cubierto está)\b/i,
+  /(одобрен|одобря|гарантиру|гаранти|вы подходите|покрывается точно|вы застрахованы|вам подойдёт точно)/i,
+
+  // Price-competitive claims
+  /\b(cheapest|lowest (rate|price|premium)|best (rate|price|deal)|save you \$?\d|beat (your|that) (rate|price))\b/i,
+  /\b(más barat[oa]|mejor precio)\b/i,
+  /(самый дешёв|самый дешев|лучшая цена|дешевле всего)/i,
+
+  // Carrier names other than Allstate
+  /\b(Citizens|Florida Peninsula|Edison|Heritage|Hiscox|Progressive|Geico|State Farm|Travelers|Nationwide|USAA|Safeco|Tower Hill|Universal Property|Kin|Openly|Slide)\b/i,
+];
+
+const GUARDRAIL_FALLBACK = {
+  en: "That's exactly the kind of thing a licensed agent should answer for your specific situation — I can only talk in general terms. Want me to have one call you at PHONE, or would a text be easier?",
+  es: 'Eso es precisamente lo que un agente licenciado debe responder para su situación específica — yo solo puedo hablar en términos generales. ¿Quiere que uno le llame al PHONE, o prefiere un mensaje de texto?',
+  ru: 'Именно на такие вопросы должен отвечать лицензированный агент — я могу говорить только в общих чертах. Хотите, чтобы вам позвонили по номеру PHONE, или удобнее сообщение?',
+};
+
+function guardReply(reply, lang) {
+  const hit = GUARDRAIL_PATTERNS.find((re) => re.test(reply));
+  if (!hit) return { reply, blocked: false };
+  // Logged so suppressed replies are visible in Vercel logs and can be reviewed.
+  console.warn('[chat guardrail] blocked reply, pattern:', String(hit), '| reply:', reply.slice(0, 200));
+  const t = GUARDRAIL_FALLBACK[lang] || GUARDRAIL_FALLBACK.en;
+  return { reply: t.replace('PHONE', PHONE_DISPLAY), blocked: true };
+}
+
 export async function POST(req) {
   try {
     if (!process.env.XAI_API_KEY) {
@@ -179,7 +216,8 @@ export async function POST(req) {
     }
 
     const data = await r.json();
-    const reply = data.choices?.[0]?.message?.content || `Please call us at ${PHONE_DISPLAY}.`;
+    const rawReply = data.choices?.[0]?.message?.content || `Please call us at ${PHONE_DISPLAY}.`;
+    const { reply, blocked } = guardReply(rawReply, lang || 'en');
 
     const transcript = [...messages, { role: 'assistant', content: reply }]
       .map((m) => `<p><b>${m.role === 'user' ? 'Visitor' : 'Mike (AI)'}:</b> ${m.content}</p>`)
@@ -187,7 +225,11 @@ export async function POST(req) {
 
     // Fire-and-forget notification to both channels; never blocks the chat reply.
     notifyAgent({
-      transcriptHtml: `<h3>Chat transcript from website</h3>${transcript}`,
+      transcriptHtml:
+        `<h3>Chat transcript from website</h3>${transcript}` +
+        (blocked
+          ? `<p style="color:#b00"><b>Note:</b> the assistant's reply was suppressed by the compliance guardrail and replaced with a handoff. Original: ${rawReply}</p>`
+          : ''),
       subject: `💬 Website chat (${lang || 'en'}) — ${new Date().toLocaleString('en-US', {
         timeZone: 'America/New_York',
       })}`,
