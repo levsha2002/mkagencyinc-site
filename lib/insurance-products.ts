@@ -1,3 +1,5 @@
+import { localizeProduct } from './insurance-products-i18n';
+
 export type InsuranceProduct = {
   slug: string;
   category: 'auto' | 'home' | 'commercial' | 'life' | 'specialty';
@@ -429,10 +431,16 @@ export const insuranceProducts: InsuranceProduct[] = [
   },
 ];
 
-export function getProductsByCategory(category: InsuranceProduct['category']) {
-  return insuranceProducts.filter((p) => p.category === category);
+// `lang` is optional so existing English-only callers (e.g. sitemap) keep
+// working unchanged; passing 'es' or 'ru' overlays the translated copy from
+// insurance-products-i18n.ts.
+export function getProductsByCategory(category: InsuranceProduct['category'], lang?: string) {
+  return insuranceProducts
+    .filter((p) => p.category === category)
+    .map((p) => localizeProduct(p, lang));
 }
 
-export function getProductBySlug(slug: string) {
-  return insuranceProducts.find((p) => p.slug === slug);
+export function getProductBySlug(slug: string, lang?: string) {
+  const product = insuranceProducts.find((p) => p.slug === slug);
+  return product ? localizeProduct(product, lang) : undefined;
 }

@@ -50,7 +50,7 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
       <section className="team-body">
         <div className="container">
           {CATEGORIES.map((cat) => {
-            const products = getProductsByCategory(cat.key);
+            const products = getProductsByCategory(cat.key, params.lang);
             if (products.length === 0) return null;
             return (
               <div key={cat.key} id={cat.key} className="insurance-cat-section">

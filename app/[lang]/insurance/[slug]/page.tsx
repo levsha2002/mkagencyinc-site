@@ -5,13 +5,14 @@ import { insuranceProducts, getProductBySlug } from '@/lib/insurance-products';
 import InsuranceQuoteForm from '@/components/InsuranceQuoteForm';
 import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
 import { buildAlternates } from '@/lib/seo';
+import { getProductUI } from '@/lib/insurance-products-i18n';
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: { lang: string; slug: string } }) {
-  const product = getProductBySlug(params.slug);
+  const product = getProductBySlug(params.slug, params.lang);
   if (!product) return {};
   return {
     title: `${product.title} | M&K Agency, Florida`,
@@ -44,8 +45,9 @@ export default function InsuranceProductPage({
 }: {
   params: { lang: string; slug: string };
 }) {
-  const product = getProductBySlug(params.slug);
+  const product = getProductBySlug(params.slug, params.lang);
   if (!product) return notFound();
+  const ui = getProductUI(params.lang);
 
   const folderPhotos = getProductPhotos(product.slug);
   const photos =
@@ -58,7 +60,7 @@ export default function InsuranceProductPage({
       <section className="section">
         <div className="container about-grid">
           <div>
-            <p className="kicker">Coverage</p>
+            <p className="kicker">{ui.kicker}</p>
             <h2 style={{ textAlign: 'left' }}>{product.title}</h2>
             <p style={{ margin: '14px 0', color: 'var(--muted)' }}>{product.shortIntro}</p>
 
@@ -93,7 +95,7 @@ export default function InsuranceProductPage({
             {product.liabilityExamples && product.liabilityExamples.length > 0 && (
               <div style={{ marginTop: 20 }}>
                 <h3 style={{ color: 'var(--navy)', fontSize: '1.1rem', marginBottom: 10 }}>
-                  What do liability claims actually look like?
+                  {ui.liabilityHeading}
                 </h3>
                 <ul>
                   {product.liabilityExamples.map((ex, i) => (
@@ -112,7 +114,7 @@ export default function InsuranceProductPage({
             {product.subtypes && product.subtypes.length > 0 && (
               <div style={{ marginTop: 28 }}>
                 <h3 style={{ color: 'var(--navy)', fontSize: '1.1rem', marginBottom: 14 }}>
-                  Types of coverage we can help with
+                  {ui.subtypesHeading}
                 </h3>
                 <div style={{ display: 'grid', gap: 12 }}>
                   {product.subtypes.map((s) => (
