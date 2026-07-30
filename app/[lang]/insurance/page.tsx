@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getProductsByCategory } from '@/lib/insurance-products';
 import InsuranceCategoryNav from '@/components/InsuranceCategoryNav';
 import { buildAlternates } from '@/lib/seo';
+import Image from 'next/image';
 
 const CATEGORIES: {
   key: 'auto' | 'home' | 'commercial' | 'life' | 'specialty';
@@ -56,7 +57,12 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
               <div key={cat.key} id={cat.key} className="insurance-cat-section">
                 {/* Design D: photo banner header per category */}
                 <div className="cat-banner">
-                  <img src={`/images/cat-${cat.key}.jpg`} alt={cat.title} />
+                  <Image
+                    src={`/images/cat-${cat.key}.jpg`}
+                    alt={cat.title}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 900px"
+                  />
                   <div className="cat-banner-t">
                     <h2>{cat.icon} {cat.title}</h2>
                   </div>

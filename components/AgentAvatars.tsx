@@ -2,6 +2,7 @@
 
 import { team } from '@/lib/team-data';
 import { PHONE_TEL } from '@/lib/dictionaries';
+import Image from 'next/image';
 
 // Exclude the owner from this row — this is meant for "pick an agent to text",
 // and Mikhail is already featured elsewhere on the site.
@@ -21,7 +22,7 @@ export default function AgentAvatars() {
             className="agent-avatar"
             title={`Text ${agent.name}`}
           >
-            <img src={agent.photo} alt={agent.name} />
+            <Image src={agent.photo} alt={agent.name} width={60} height={60} />
             <span>{agent.name.split(' ')[0]}</span>
           </a>
         );

@@ -1,6 +1,7 @@
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
 import { buildAlternates } from '@/lib/seo';
+import Image from 'next/image';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
@@ -83,7 +84,14 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
             <p>{t.intro1}</p>
             <p>{t.intro2}</p>
           </div>
-          <img src="/images/Professional_Agent.jpg" alt="" className="team-intro-img" />
+          <Image
+            src="/images/Professional_Agent.jpg"
+            alt=""
+            width={1152}
+            height={864}
+            className="team-intro-img"
+            sizes="(max-width: 900px) 100vw, 560px"
+          />
         </div>
       </section>
 

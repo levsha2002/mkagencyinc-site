@@ -6,6 +6,7 @@ import InsuranceQuoteForm from '@/components/InsuranceQuoteForm';
 import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
 import { buildAlternates } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));
@@ -141,7 +142,14 @@ export default function InsuranceProductPage({
             {photos.length > 0 && (
               <div className="insurance-photo-grid" style={{ marginTop: 24 }}>
                 {photos.map((src) => (
-                  <img key={src} src={src} alt={product.title} />
+                  <Image
+                    key={src}
+                    src={src}
+                    alt={product.title}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 600px) 50vw, 200px"
+                  />
                 ))}
               </div>
             )}
