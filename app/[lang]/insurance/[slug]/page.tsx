@@ -146,7 +146,7 @@ export default function InsuranceProductPage({
           </div>
 
           <InsuranceQuoteForm product={product} lang={params.lang} />
-          {product.slug === 'life-insurance' && <HumanLifeValueCalculator />}
+          {product.slug === 'life-insurance' && <HumanLifeValueCalculator lang={params.lang} />}
         </div>
       </section>
     </main>

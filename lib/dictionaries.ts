@@ -8,7 +8,7 @@ export const locales: Lang[] = ['en', 'es', 'ru'];
 const en = {
   tagline: 'In God We Trust · We build our future together',
   nav: { home: 'Home', services: 'Services', about: 'About Us', contact: 'Contact', team: 'Team', life: 'Life', insurance: 'Insurance', quote: 'Contact an Agent' },
-  call247: 'Call 24/7',
+  call247: 'Call us',
   hero: {
     badge1: '🛡️ Free 5-minute coverage check',
     badge2: 'Home · Auto · Commercial — Serving all of Florida',
@@ -156,7 +156,7 @@ const en = {
 const es: typeof en = {
   tagline: 'En Dios confiamos · Construimos nuestro futuro juntos',
   nav: { home: 'Inicio', services: 'Servicios', about: 'Nosotros', contact: 'Contacto', team: 'Equipo', life: 'Vida', insurance: 'Seguros', quote: 'Hable con un agente' },
-  call247: 'Llame 24/7',
+  call247: 'Llámenos',
   hero: {
     badge1: '🛡️ Revisión de cobertura gratis en 5 minutos',
     badge2: 'Hogar · Auto · Comercial — Servimos toda la Florida',
@@ -304,7 +304,7 @@ const es: typeof en = {
 const ru: typeof en = {
   tagline: 'In God We Trust · Мы строим наше будущее вместе',
   nav: { home: 'Главная', services: 'Услуги', about: 'О нас', contact: 'Контакты', team: 'Команда', life: 'Жизнь', insurance: 'Страхование', quote: 'Связаться с агентом' },
-  call247: 'Звоните 24/7',
+  call247: 'Позвонить',
   hero: {
     badge1: '🛡️ Бесплатная проверка полиса за 5 минут',
     badge2: 'Дом · Авто · Бизнес — работаем по всей Флориде',
