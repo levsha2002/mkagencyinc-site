@@ -559,7 +559,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: 'Licensing',
         body: [
           'M&K Agency Inc is a licensed insurance agency in the State of Florida. Florida Agency License #L109526, Agency NPN #19586268. Agent in Charge: Mikhail Kozlov, Florida License #W639521, NPN #17798891.',
-          'Office: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Phone: (305) 247-8877.',
+          'Office: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Phone: (305) 859-3953.',
           'License status can be verified through the Florida Department of Financial Services licensee search at licenseesearch.fldfs.com.',
         ],
       },
@@ -601,7 +601,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: 'Contact',
-        body: ['Questions about these disclosures: mikhailkozlov@allstate.com or (305) 247-8877.'],
+        body: ['Questions about these disclosures: mikhailkozlov@allstate.com or (305) 859-3953.'],
       },
     ],
   },
@@ -615,7 +615,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: 'Licencias',
         body: [
           'M&K Agency Inc es una agencia de seguros con licencia en el Estado de Florida. Licencia de Agencia de Florida #L109526, NPN de la Agencia #19586268. Agente a Cargo: Mikhail Kozlov, Licencia de Florida #W639521, NPN #17798891.',
-          'Oficina: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Teléfono: (305) 247-8877.',
+          'Oficina: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Teléfono: (305) 859-3953.',
           'El estado de la licencia puede verificarse en el buscador del Departamento de Servicios Financieros de Florida: licenseesearch.fldfs.com.',
         ],
       },
@@ -657,7 +657,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: 'Contacto',
-        body: ['Preguntas sobre estas divulgaciones: mikhailkozlov@allstate.com o (305) 247-8877.'],
+        body: ['Preguntas sobre estas divulgaciones: mikhailkozlov@allstate.com o (305) 859-3953.'],
       },
     ],
   },
@@ -671,7 +671,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: 'Лицензии',
         body: [
           'M&K Agency Inc — лицензированное страховое агентство штата Флорида. Лицензия агентства #L109526, NPN агентства #19586268. Главный агент: Mikhail Kozlov, лицензия #W639521, NPN #17798891.',
-          'Офис: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Телефон: (305) 247-8877.',
+          'Офис: 33550 South Dixie Highway, Ste 102, Florida City, FL 33034. Телефон: (305) 859-3953.',
           'Статус лицензии можно проверить на сайте Департамента финансовых услуг Флориды: licenseesearch.fldfs.com.',
         ],
       },
@@ -713,7 +713,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
       },
       {
         heading: 'Контакт',
-        body: ['Вопросы по раскрытиям: mikhailkozlov@allstate.com или (305) 247-8877.'],
+        body: ['Вопросы по раскрытиям: mikhailkozlov@allstate.com или (305) 859-3953.'],
       },
     ],
   },
