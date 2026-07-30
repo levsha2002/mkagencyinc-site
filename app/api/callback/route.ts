@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
+import { guardSubmission } from '@/lib/form-guard';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -9,6 +10,14 @@ const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 export async function POST(req: Request) {
   try {
     const b = await req.json();
+
+    const guard = guardSubmission(req, b);
+    if (!guard.ok) {
+      // Honeypot returns a success shape so bots learn nothing; nothing is stored.
+      return guard.reason === 'honeypot'
+        ? NextResponse.json({ ok: true })
+        : NextResponse.json({ error: 'Too many requests' }, { status: guard.status });
+    }
 
     if (!b.name || !b.phone) {
       return NextResponse.json({ error: 'missing fields' }, { status: 400 });

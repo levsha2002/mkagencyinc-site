@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import type { InsuranceProduct } from '@/lib/insurance-products';
+import { trackConversion } from '@/lib/analytics';
+import Honeypot from '@/components/Honeypot';
 
 declare global {
   interface Window {
@@ -27,6 +29,8 @@ export default function InsuranceQuoteForm({
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const hpEl = (e.currentTarget as HTMLFormElement).elements.namedItem('company') as HTMLInputElement;
+    const company = hpEl ? hpEl.value : '';
     if (!consent) return;
     setStatus('sending');
     try {
@@ -34,6 +38,7 @@ export default function InsuranceQuoteForm({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          company,
           name,
           phone,
           address,
@@ -53,8 +58,10 @@ export default function InsuranceQuoteForm({
         // Ads conversion action as LeadForm.tsx and the /quote page, so all
         // lead-capture forms roll up into one "Submit lead form" conversion.
         if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'conversion', {
-            send_to: 'AW-18321801016/-1BtCL2Fj9EcELj-waBE',
+          trackConversion('quote_submit', {
+            insurance_type: product.title,
+            product_slug: product.slug,
+            lang,
           });
           window.gtag('event', 'generate_lead', {
             currency: 'USD',
@@ -90,6 +97,7 @@ export default function InsuranceQuoteForm({
       <h2>Talk to a licensed agent about {product.title.toLowerCase()}</h2>
       <p className="sub">Takes about a minute. A real, licensed agent calls you back fast.</p>
       <form onSubmit={submit}>
+        <Honeypot />
         <div className="grid2">
           <div className="field">
             <label>Full name</label>

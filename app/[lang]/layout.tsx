@@ -28,7 +28,7 @@ const playfair = Playfair_Display({
 // Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
 // per-lead "conversion" event fires from LeadForm.tsx once the form is
 // successfully submitted. See components/LeadForm.tsx for the event call.
-const GOOGLE_ADS_ID = 'AW-18321801016';
+import { GOOGLE_ADS_ID, phoneClickTrackingScript } from '@/lib/analytics';
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -101,6 +101,9 @@ export default function RootLayout({
               src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
               strategy="afterInteractive"
             />
+            <Script id="phone-click-tracking" strategy="afterInteractive">
+              {phoneClickTrackingScript()}
+            </Script>
             <Script id="gtag-init" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];

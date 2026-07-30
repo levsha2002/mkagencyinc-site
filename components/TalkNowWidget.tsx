@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { team } from '@/lib/team-data';
+import { trackConversion } from '@/lib/analytics';
+import Honeypot from '@/components/Honeypot';
 
 const AGENT_OPTIONS = team.filter((m) => m.slug !== 'mikhail-kozlov');
 
@@ -26,6 +28,8 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const hpEl = (e.currentTarget as HTMLFormElement).elements.namedItem('company') as HTMLInputElement;
+    const company = hpEl ? hpEl.value : '';
     if (!consent) return;
     setStatus('sending');
     try {
@@ -33,6 +37,7 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          company,
           name,
           phone,
           lang,
@@ -44,6 +49,7 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
       });
       setStatus(res.ok ? 'ok' : 'err');
       if (res.ok) {
+        trackConversion('talknow_lead', { contact_method: method, lang });
         setName('');
         setPhone('');
         setAgentName('');
@@ -101,6 +107,7 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
               </p>
             ) : (
               <form onSubmit={submit}>
+        <Honeypot />
                 <label>
                   Your name
                   <input

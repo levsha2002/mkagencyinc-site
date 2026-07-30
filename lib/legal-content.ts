@@ -45,6 +45,20 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
         ],
       },
       {
+        heading: 'AI Chat Assistant and Third-Party Processing',
+        body: [
+          'Our Site offers an AI chat assistant. When you use it, the content of your conversation — including any name, phone number, or other details you choose to type into it — is transmitted to a third-party artificial-intelligence provider that generates the assistant\u2019s replies on our behalf. That provider processes the conversation solely to produce a response for us and is not permitted to use it to contact you.',
+          'A copy of each conversation is also sent to our agency by email so a licensed agent can follow up. If we enable a customer-communications platform to receive leads, conversation summaries may be transmitted to that platform as well.',
+          'The assistant is not a licensed agent and cannot quote prices, confirm coverage, or bind a policy. If you would prefer not to have a conversation processed this way, please call us at (305) 859-3953 or use the callback form instead.',
+        ],
+      },
+      {
+        heading: 'How Long We Keep Your Information',
+        body: [
+          'We retain quote requests, callback requests, and chat transcripts for up to twenty-four (24) months from your last interaction with us, after which they are deleted or anonymized. Records we are required to keep for insurance regulatory, tax, or legal purposes — including records of your consent to be contacted — are retained for the period required by Florida law, which is generally five (5) years. You may ask us to delete your information sooner by contacting us using the details below, subject to those obligations.',
+        ],
+      },
+      {
         heading: '6. Data Security',
         body: [
           'We use reasonable administrative, technical, and physical safeguards designed to protect your information. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.',
@@ -114,6 +128,20 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
         ],
       },
       {
+        heading: 'Asistente de Chat con IA y Procesamiento por Terceros',
+        body: [
+          'Nuestro Sitio ofrece un asistente de chat con inteligencia artificial. Cuando usted lo usa, el contenido de su conversación — incluido cualquier nombre, número de teléfono u otros datos que decida escribir — se transmite a un proveedor externo de inteligencia artificial que genera las respuestas del asistente en nuestro nombre. Ese proveedor procesa la conversación únicamente para producir una respuesta para nosotros y no está autorizado a usarla para contactarlo.',
+          'Una copia de cada conversación también se envía por correo electrónico a nuestra agencia para que un agente licenciado pueda dar seguimiento. Si habilitamos una plataforma de comunicaciones con clientes para recibir prospectos, los resúmenes de conversación también pueden transmitirse a esa plataforma.',
+          'El asistente no es un agente licenciado y no puede cotizar precios, confirmar cobertura ni emitir una póliza. Si prefiere que su conversación no se procese de esta manera, llámenos al (305) 859-3953 o use el formulario de devolución de llamada.',
+        ],
+      },
+      {
+        heading: 'Cuánto Tiempo Conservamos su Información',
+        body: [
+          'Conservamos las solicitudes de cotización, las solicitudes de llamada y las transcripciones de chat hasta veinticuatro (24) meses desde su última interacción con nosotros, tras lo cual se eliminan o se anonimizan. Los registros que debemos conservar por motivos regulatorios de seguros, fiscales o legales — incluidos los registros de su consentimiento para ser contactado — se conservan durante el período exigido por la ley de Florida, que generalmente es de cinco (5) años. Puede pedirnos que eliminemos su información antes, sujeto a esas obligaciones.',
+        ],
+      },
+      {
         heading: '6. Seguridad de los Datos',
         body: [
           'Utilizamos medidas de seguridad razonables para proteger su información, aunque ningún método de transmisión por internet es completamente seguro.',
@@ -178,6 +206,20 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: '5. Как мы делимся вашей информацией',
         body: [
           'Мы не продаём личную информацию. Мы можем передавать её страховым компаниям для получения расчётов, поставщикам услуг, регуляторам по требованию закона, а также правопреемнику при продаже бизнеса.',
+        ],
+      },
+      {
+        heading: 'ИИ-ассистент и обработка третьими сторонами',
+        body: [
+          'На Сайте работает чат-ассистент с искусственным интеллектом. Когда вы им пользуетесь, содержание вашей переписки — включая имя, номер телефона и любые другие данные, которые вы решите написать, — передаётся стороннему поставщику услуг искусственного интеллекта, который формирует ответы ассистента от нашего имени. Этот поставщик обрабатывает переписку исключительно для подготовки ответа для нас и не вправе использовать её, чтобы связаться с вами.',
+          'Копия каждой переписки также отправляется в агентство по электронной почте, чтобы лицензированный агент мог связаться с вами. Если мы подключим платформу для работы с обращениями клиентов, краткие сводки переписки могут передаваться и в неё.',
+          'Ассистент не является лицензированным агентом и не может назвать цену, подтвердить покрытие или оформить полис. Если вы предпочитаете, чтобы ваш разговор не обрабатывался таким образом, позвоните нам по номеру (305) 859-3953 или воспользуйтесь формой обратного звонка.',
+        ],
+      },
+      {
+        heading: 'Сколько мы храним вашу информацию',
+        body: [
+          'Заявки на расчёт, заявки на обратный звонок и транскрипты чата мы храним до двадцати четырёх (24) месяцев с момента вашего последнего обращения, после чего удаляем или обезличиваем. Записи, которые мы обязаны хранить по требованиям страхового регулирования, налогового или иного законодательства — включая записи о вашем согласии на связь, — хранятся в течение срока, установленного законом Флориды, как правило пять (5) лет. Вы можете попросить нас удалить информацию раньше, с учётом этих обязательств.',
         ],
       },
       {

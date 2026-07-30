@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { getDict } from '@/lib/dictionaries';
+import { trackConversion } from '@/lib/analytics';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
@@ -95,7 +96,11 @@ export default function ChatWidget({ lang }: { lang: string }) {
         body: JSON.stringify({ ...cb, lang, consent: true, contact_method: 'call' }),
       });
       setCbStatus(res.ok ? 'ok' : 'err');
-      if (res.ok) { setCb({ name: '', phone: '' }); setCbConsent(false); }
+      if (res.ok) {
+        trackConversion('chat_lead', { contact_method: 'call', lang });
+        setCb({ name: '', phone: '' });
+        setCbConsent(false);
+      }
     } catch { setCbStatus('err'); }
   };
 

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
+import { trackConversion } from '@/lib/analytics';
+import Honeypot from '@/components/Honeypot';
 
 declare global {
   interface Window {
@@ -132,6 +134,8 @@ export default function ContactAgentsPage() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    const hpEl = (e.currentTarget as HTMLFormElement).elements.namedItem('company') as HTMLInputElement;
+    const company = hpEl ? hpEl.value : '';
     if (!form.consent) { setStatus('err-consent'); return; }
     setStatus('sending');
     let src = 'contact-agents';
@@ -141,6 +145,7 @@ export default function ContactAgentsPage() {
       const res = await fetch('/api/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          company,
           insurance_type: ins || 'General',
           zip_code: form.zip, name: form.name, phone: form.phone, email: form.email,
           message: msg, consent: form.consent, lang, source: src,
@@ -154,8 +159,9 @@ export default function ContactAgentsPage() {
         // conversion action as LeadForm.tsx so all lead-capture forms roll
         // up into one "Submit lead form" conversion in Conversions -> Summary.
         if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'conversion', {
-            send_to: 'AW-18321801016/-1BtCL2Fj9EcELj-waBE',
+          trackConversion('callback_request', {
+            insurance_type: ins || 'General',
+            lang,
           });
           window.gtag('event', 'generate_lead', {
             currency: 'USD',
@@ -219,6 +225,7 @@ export default function ContactAgentsPage() {
       {/* ===== White content: callback form, map, QR ===== */}
       <div className="qh-wrap">
         <form onSubmit={submit} className="qh-form">
+        <Honeypot />
           <h2>{t.formTitle}</h2>
 
           <div className="qh-row">

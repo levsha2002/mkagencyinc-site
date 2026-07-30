@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { getDict } from '@/lib/dictionaries';
+import { trackConversion } from '@/lib/analytics';
+import Honeypot from '@/components/Honeypot';
 
 declare global {
   interface Window {
@@ -19,12 +21,14 @@ export default function LeadForm({ lang }: { lang: string }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const hpEl = (e.currentTarget as HTMLFormElement).elements.namedItem('company') as HTMLInputElement;
+    const company = hpEl ? hpEl.value : '';
     setStatus('sending');
     try {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, consent_text: t.consent, lang }),
+        body: JSON.stringify({ ...formData, consent_text: t.consent, lang, company }),
       });
       if (res.ok) {
         setStatus('ok');
@@ -34,8 +38,9 @@ export default function LeadForm({ lang }: { lang: string }) {
           // count as a "Conversion" (with cost-per-lead reporting) in
           // Google Ads, tied to the "Submit lead form" action created in
           // Conversions -> Summary.
-          window.gtag('event', 'conversion', {
-            send_to: 'AW-18321801016/-1BtCL2Fj9EcELj-waBE',
+          trackConversion('callback_request', {
+            insurance_type: formData.insurance_type,
+            lang,
           });
           // 2) Generic GA4-style signal, kept for broader analytics/event
           // history (not required for Google Ads conversion counting).
@@ -56,6 +61,7 @@ export default function LeadForm({ lang }: { lang: string }) {
       <h2>{t.title}</h2>
       <p className="sub">{t.sub}</p>
       <form onSubmit={handleSubmit}>
+        <Honeypot />
         <div className="field">
           <label htmlFor="lead-insurance-type">{t.need}</label>
           <select id="lead-insurance-type" value={formData.insurance_type}
