@@ -38,7 +38,10 @@ export const CONVERSION_LABELS: Record<ConversionAction, string | null> = {
   sms_click: process.env.NEXT_PUBLIC_ADS_LABEL_SMS_CLICK || '-6r1CLjQuNkcELj-waBE',
   callback_request:
     process.env.NEXT_PUBLIC_ADS_LABEL_CALLBACK || '-1BtCL2Fj9EcELj-waBE',
-  chat_lead: process.env.NEXT_PUBLIC_ADS_LABEL_CHAT_LEAD || null,
+  chat_lead: process.env.NEXT_PUBLIC_ADS_LABEL_CHAT_LEAD || 'LgDxCKDLotkcELj-waBE',
+  // Not yet created in the Ads account. The GA4 event still fires, so the
+  // action is observable in Analytics — it simply does not feed Ads bidding
+  // until a conversion action exists and its label is added here.
   talknow_lead: process.env.NEXT_PUBLIC_ADS_LABEL_TALKNOW || null,
   quote_submit:
     process.env.NEXT_PUBLIC_ADS_LABEL_QUOTE || '-1BtCL2Fj9EcELj-waBE',
