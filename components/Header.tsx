@@ -14,7 +14,7 @@ export default function Header({ lang }: { lang: string }) {
   const contactLabel = lang === 'es' ? 'Contáctenos' : lang === 'ru' ? 'Контакты' : 'Contact Us';
 
   const checkLabel =
-    lang === 'es' ? 'Revisión gratis' : lang === 'ru' ? 'Проверка защиты' : 'Free Check';
+    lang === 'es' ? 'Protección' : lang === 'ru' ? 'Финансовая защита' : 'Financial Protection';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
