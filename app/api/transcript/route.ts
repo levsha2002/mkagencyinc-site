@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         from: fromAddress,
         to: NOTIFY_EMAIL,
         subject: `💬 Chat transcript${visitorEmail ? ` — ${visitorEmail}` : ''}`,
-        html: `<h2>Chat with Mike — transcript (${lang})</h2>${html}`,
+        html: `<h2>Chat with Nick — transcript (${lang})</h2>${html}`,
       });
 
       // Copy to the visitor — we send from a verified domain (mkagencyinc.com),

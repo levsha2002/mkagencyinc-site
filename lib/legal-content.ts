@@ -626,7 +626,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: 'AI Chat Assistant',
         body: [
-          'The “Chat with Mike” feature is an AI-assisted tool intended to answer general questions and route requests to a licensed agent. Its responses are for general informational purposes only, do not constitute insurance, legal, or financial advice, and do not bind coverage or create an agent-client relationship. Coverage questions must be confirmed with a licensed agent.',
+          'The “Chat with Nick” feature is an AI-assisted tool intended to answer general questions and route requests to a licensed agent. Its responses are for general informational purposes only, do not constitute insurance, legal, or financial advice, and do not bind coverage or create an agent-client relationship. Coverage questions must be confirmed with a licensed agent.',
         ],
       },
       {
@@ -682,7 +682,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: 'Asistente de Chat con IA',
         body: [
-          'La función “Chat with Mike” es una herramienta asistida por IA para responder preguntas generales y dirigir solicitudes a un agente con licencia. Sus respuestas son solo informativas, no constituyen asesoramiento de seguros, legal ni financiero, y no vinculan cobertura. Las decisiones de cobertura deben confirmarse con un agente con licencia.',
+          'La función “Chat with Nick” es una herramienta asistida por IA para responder preguntas generales y dirigir solicitudes a un agente con licencia. Sus respuestas son solo informativas, no constituyen asesoramiento de seguros, legal ni financiero, y no vinculan cobertura. Las decisiones de cobertura deben confirmarse con un agente con licencia.',
         ],
       },
       {
@@ -738,7 +738,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
       {
         heading: 'AI-чат',
         body: [
-          'Функция «Chat with Mike» — инструмент на базе ИИ для ответов на общие вопросы и передачи запросов лицензированному агенту. Его ответы носят информационный характер, не являются консультацией и не оформляют покрытие. Вопросы покрытия подтверждайте у лицензированного агента.',
+          'Функция «Chat with Nick» — инструмент на базе ИИ для ответов на общие вопросы и передачи запросов лицензированному агенту. Его ответы носят информационный характер, не являются консультацией и не оформляют покрытие. Вопросы покрытия подтверждайте у лицензированного агента.',
         ],
       },
       {

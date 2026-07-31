@@ -102,8 +102,8 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
             {status === 'ok' ? (
               <p className="talk-now-ok" aria-live="polite">
                 {method === 'call'
-                  ? 'Got it! An agent will call you in a few minutes.'
-                  : "Got it! We'll text you shortly."}
+                  ? 'Got it! An agent will call you back during office hours — Mon–Fri, 9am–6pm ET.'
+                  : "Got it! We'll text you back during office hours — Mon–Fri, 9am–6pm ET."}
               </p>
             ) : (
               <form onSubmit={submit}>
