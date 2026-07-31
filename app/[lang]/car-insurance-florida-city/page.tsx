@@ -11,9 +11,9 @@ type Lang = 'en' | 'es' | 'ru';
 
 const C: Record<Lang, any> = {
   en: {
-    metaTitle: 'Car Insurance in Florida City & Homestead, FL | M&K Agency',
+    metaTitle: 'Car Insurance in Florida City, FL | M&K Agency',
     metaDesc:
-      'Local licensed agents in Florida City & Homestead help you find real auto insurance coverage at a competitive rate. Free quote in minutes — English, Español, по-русски.',
+      'Local licensed agents in Florida City and Homestead explain exactly what your auto policy covers. English, Español, по-русски.',
     kicker: 'Auto Insurance · Florida City & Homestead',
     h1a: 'Car insurance in Florida City & Homestead,',
     h1b: 'without overpaying.',
@@ -48,9 +48,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Coverage descriptions are general information, not policy language. Requirements and eligibility vary by carrier and driver profile.',
   },
   es: {
-    metaTitle: 'Seguro de Auto en Florida City y Homestead, FL | M&K Agency',
+    metaTitle: 'Seguro de Auto en Florida City, FL | M&K Agency',
     metaDesc:
-      'Agentes locales licenciados en Florida City y Homestead le ayudan a encontrar cobertura real de auto a un precio competitivo. Cotización gratis en minutos. Hablamos español.',
+      'Agentes locales licenciados en Florida City y Homestead le explican qué cubre su póliza de auto. Hablamos español.',
     kicker: 'Seguro de Auto · Florida City y Homestead',
     h1a: 'Seguro de auto en Florida City y Homestead,',
     h1b: 'sin pagar de más.',
@@ -85,9 +85,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Las descripciones de cobertura son información general, no lenguaje de póliza. Los requisitos y la elegibilidad varían según la aseguradora y el perfil del conductor.',
   },
   ru: {
-    metaTitle: 'Автостраховка во Florida City и Homestead, FL | M&K Agency',
+    metaTitle: 'Автостраховка во Флорида-Сити, FL | M&K Agency',
     metaDesc:
-      'Местные лицензированные агенты во Florida City и Homestead помогут найти реальное покрытие для автостраховки по конкурентной цене. Бесплатный расчёт за минуты. Говорим по-русски.',
+      'Местные лицензированные агенты во Флорида-Сити и Хомстеде объяснят, что покрывает ваш полис. Говорим по-русски.',
     kicker: 'Автостраховка · Florida City и Homestead',
     h1a: 'Автостраховка во Florida City и Homestead —',
     h1b: 'без переплаты.',

@@ -35,9 +35,15 @@ const CHECKS = [
   ['24/7 availability',  /24\s*[\/\-]\s*7|24 hours a day|круглосуточн/i],
   ['carrier comparison', /compare\s+(quotes|rates|carriers|\d+\+?\s*a-rated)|shop the market|multiple carriers|15\+/i],
   ['competitor names',   /\b(Geico|Progressive|State Farm|USAA|Liberty Mutual|Citizens Property|Tower Hill|Universal Property|Ocean Harbor|Infinity Insurance)\b/i],
-  ['price claims',       /\b(cheapest|lowest rates?|best rates?|guaranteed savings|save up to)\b/i],
+  ['price claims',       /\b(cheapest|lowest rates?|best rates?|guaranteed savings|save up to|competitive rates?|competitive pricing|affordable rates?)\b|precio competitivo|tarifas competitivas|конкурентн\w*\s+цен/i],
 ];
 ```
+
+**"Competitive rate" is a price claim.** The singular form was missing from this
+pattern for a long time and three landing-page meta descriptions carried it in
+all three languages — "at a competitive rate", "a un precio competitivo",
+"по конкурентной цене" — while the sweep reported the site clean. When adding a
+term here, add every language and both singular and plural.
 
 **Known false positive:** `/en/classic-car-insurance-florida-city` contains
 "not the cheapest aftermarket substitute" — that is about repair parts, not

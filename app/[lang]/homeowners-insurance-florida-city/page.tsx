@@ -11,9 +11,9 @@ type Lang = 'en' | 'es' | 'ru';
 
 const C: Record<Lang, any> = {
   en: {
-    metaTitle: 'Homeowners Insurance in Florida City & Homestead, FL | M&K Agency',
+    metaTitle: 'Home Insurance in Florida City, FL | M&K Agency',
     metaDesc:
-      'Local agents at a family-owned agency help South Miami-Dade homeowners get hurricane-ready coverage in place. Fast quotes for closing. Free quote — English, Español, по-русски.',
+      'A family-owned agency helping South Miami-Dade homeowners get hurricane-ready coverage in place. English, Español, по-русски.',
     kicker: 'Homeowners Insurance · Florida City & Homestead',
     h1a: 'Homeowners insurance in Florida City & Homestead,',
     h1b: 'that holds up when a storm hits.',
@@ -48,9 +48,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Coverage descriptions are general information, not policy language. Requirements and eligibility vary by carrier, home age, and location.',
   },
   es: {
-    metaTitle: 'Seguro de Casa en Florida City y Homestead, FL | M&K Agency',
+    metaTitle: 'Seguro de Casa en Florida City, FL | M&K Agency',
     metaDesc:
-      'Agentes locales de una agencia familiar ayudan a los propietarios del sur de Miami-Dade a tener cobertura lista para huracanes. Cotizaciones rápidas para el cierre. Hablamos español.',
+      'Agencia familiar que ayuda a propietarios del sur de Miami-Dade con cobertura lista para huracanes. Hablamos español.',
     kicker: 'Seguro de Casa · Florida City y Homestead',
     h1a: 'Seguro de casa en Florida City y Homestead,',
     h1b: 'que aguanta cuando llega la tormenta.',
@@ -85,9 +85,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Las descripciones de cobertura son información general, no lenguaje de póliza. Los requisitos y la elegibilidad varían según la aseguradora, la antigüedad y la ubicación de la casa.',
   },
   ru: {
-    metaTitle: 'Страховка дома во Florida City и Homestead, FL | M&K Agency',
+    metaTitle: 'Страховка дома во Флорида-Сити, FL | M&K Agency',
     metaDesc:
-      'Местные агенты семейного агентства помогут домовладельцам юга Miami-Dade оформить страховку дома, готовую к ураганам. Быстрый расчёт для closing. Говорим по-русски.',
+      'Семейное агентство помогает домовладельцам юга Майами-Дейд оформить страховку, готовую к ураганам. Говорим по-русски.',
     kicker: 'Страховка дома · Florida City и Homestead',
     h1a: 'Страховка дома во Florida City и Homestead —',
     h1b: 'та, что реально работает при урагане.',
