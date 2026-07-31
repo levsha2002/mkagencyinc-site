@@ -32,8 +32,10 @@ export type ConversionAction =
 // A null label is safe: the GA4 event still fires, only the Ads-side
 // conversion is skipped. Nothing breaks while labels are pending.
 export const CONVERSION_LABELS: Record<ConversionAction, string | null> = {
-  phone_call: process.env.NEXT_PUBLIC_ADS_LABEL_PHONE_CALL || null,
-  sms_click: process.env.NEXT_PUBLIC_ADS_LABEL_SMS_CLICK || null,
+  // Created in Google Ads on 2026-07-30 under the "Contact" goal, source
+  // mkagencyinc.com, manual event, primary, count = one.
+  phone_call: process.env.NEXT_PUBLIC_ADS_LABEL_PHONE_CALL || 'vxzLCLXQuNkcELj-waBE',
+  sms_click: process.env.NEXT_PUBLIC_ADS_LABEL_SMS_CLICK || '-6r1CLjQuNkcELj-waBE',
   callback_request:
     process.env.NEXT_PUBLIC_ADS_LABEL_CALLBACK || '-1BtCL2Fj9EcELj-waBE',
   chat_lead: process.env.NEXT_PUBLIC_ADS_LABEL_CHAT_LEAD || null,
