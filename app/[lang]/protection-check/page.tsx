@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ProtectionPlanner from '@/components/ProtectionPlanner';
 import MortgageCalculator from '@/components/MortgageCalculator';
 import { buildAlternates } from '@/lib/seo';
@@ -39,6 +40,24 @@ export default function ProtectionCheckPage({ params }: { params: { lang: string
     <main>
       <section className="section" style={{ paddingBottom: 0 }}>
         <div className="container" style={{ maxWidth: 760 }}>
+          <Image
+            src="/images/Family_at_home.jpg"
+            alt=""
+            width={1152}
+            height={864}
+            priority
+            sizes="(max-width: 800px) 100vw, 760px"
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxHeight: 280,
+              objectFit: 'cover',
+              objectPosition: 'center 40%',
+              borderRadius: 18,
+              marginBottom: 22,
+              display: 'block',
+            }}
+          />
           <h1 style={{ marginBottom: 10 }}>{m.h1}</h1>
           <p style={{ color: 'var(--muted)', lineHeight: 1.6, maxWidth: 640 }}>{m.sub}</p>
         </div>
