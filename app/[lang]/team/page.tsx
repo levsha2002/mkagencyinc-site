@@ -56,9 +56,15 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <img
+              {/* Sized from the CSS 4/3 aspect ratio; the class still controls
+                  the actual layout, these dimensions only tell next/image what
+                  to generate. */}
+              <Image
                 src="/images/key-west.jpg"
                 alt="Key West coastline"
+                width={640}
+                height={480}
+                sizes="(max-width: 560px) 50vw, 320px"
                 className="key-west-side-img"
               />
             </div>

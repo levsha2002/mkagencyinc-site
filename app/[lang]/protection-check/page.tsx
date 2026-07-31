@@ -6,19 +6,19 @@ import { buildAlternates } from '@/lib/seo';
 const META: Record<string, { title: string; desc: string; h1: string; sub: string }> = {
   en: {
     title: 'Financial Protection Tools | M&K Agency, Florida',
-    desc: 'Free tools: work out a mortgage payment, and see in six questions which parts of your family and property are already protected and which are worth a conversation with a licensed agent.',
+    desc: 'Free tools: estimate a mortgage payment, and see in six questions what your family already has protected and what is worth discussing with a licensed agent.',
     h1: 'Financial protection',
     sub: 'Two free tools, no sign-up and no prices. Work out what a mortgage actually costs each month, then see which parts of your household are already protected and which are still open.',
   },
   es: {
     title: 'Herramientas de Protección Financiera | M&K Agency, Florida',
-    desc: 'Herramientas gratuitas: calcule el pago de una hipoteca y vea en seis preguntas qué partes de su familia y su propiedad ya están protegidas y cuáles vale la pena conversar con un agente licenciado.',
+    desc: 'Herramientas gratuitas: calcule el pago de una hipoteca y vea en seis preguntas qué está protegido y qué conviene conversar con un agente licenciado.',
     h1: 'Protección financiera',
     sub: 'Dos herramientas gratuitas, sin registro y sin precios. Calcule cuánto cuesta realmente una hipoteca al mes y luego vea qué partes de su hogar ya están protegidas y cuáles siguen abiertas.',
   },
   ru: {
     title: 'Инструменты финансовой защиты | M&K Agency, Флорида',
-    desc: 'Бесплатные инструменты: рассчитайте ипотечный платёж и за шесть вопросов посмотрите, что у вашей семьи и имущества уже защищено, а что стоит обсудить с лицензированным агентом.',
+    desc: 'Бесплатные инструменты: рассчитайте ипотечный платёж и за шесть вопросов узнайте, что уже защищено, а что стоит обсудить с агентом.',
     h1: 'Финансовая защита',
     sub: 'Два бесплатных инструмента, без регистрации и без цен. Посчитайте, сколько на самом деле стоит ипотека в месяц, а затем посмотрите, что в вашей семье уже защищено, а что остаётся открытым.',
   },

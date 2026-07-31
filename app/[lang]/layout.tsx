@@ -79,6 +79,37 @@ export default function RootLayout({
     },
     areaServed: 'Florida',
     url: 'https://mkagencyinc.com',
+    email: 'mikhailkozlov@allstate.com',
+    // og.jpg is the existing share image; there is no separate logo file, so
+    // no `logo` property rather than a link to a 404.
+    image: 'https://mkagencyinc.com/og.jpg',
+    // Coordinates match the office map embed on the team page.
+    geo: { '@type': 'GeoCoordinates', latitude: 25.4567, longitude: -80.4746 },
+    // Stated hours, so Google can show open/closed instead of guessing. These
+    // must stay in step with the Business Profile and the site footer — if the
+    // office hours change, all three change together.
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+    // The three languages are the agency's main differentiator and were not
+    // machine-readable anywhere until now.
+    knowsLanguage: ['en', 'es', 'ru'],
+    // Profiles already linked in the footer; sameAs lets Google tie them to
+    // this business rather than treating them as unrelated pages.
+    sameAs: [
+      'https://agents.allstate.com/mikhail-kozlov-florida-city-fl.html',
+      'https://www.experience.com/reviews/mikhail-7323351',
+      'https://www.chamberofcommerce.com/business-directory/florida/florida-city/insurance-agency/2012178838-mikhail-kozlov-allstate-insurance',
+    ],
+    // Deliberately no aggregateRating. Self-declared review markup without the
+    // reviews themselves on the page breaks Google's guidelines, and whether we
+    // may display customer reviews at all is still an open question with
+    // Allstate compliance.
   };
   return (
     <html lang={params.lang} className={`${inter.variable} ${playfair.variable}`}>

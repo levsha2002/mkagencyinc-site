@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { team } from '@/lib/team-data';
 import { buildAlternates } from '@/lib/seo';
 
@@ -78,9 +79,12 @@ export default function AgentsPage({ params }: { params: { lang: string } }) {
       <section className="section" style={{ paddingBottom: 24 }}>
         <div className="container">
           <p className="kicker">{t.kicker}</p>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}>
+          {/* This is the page's main heading, so it has to be an h1. It was an
+              h2, which left the page with no h1 at all — and this is the page
+              carrying every agent's call and text link. */}
+          <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}>
             {t.h1a} <span style={{ borderBottom: '4px solid var(--gold)' }}>{t.h1b}</span>
-          </h2>
+          </h1>
           <p style={{ textAlign: 'center', color: 'var(--muted)', marginTop: 10 }}>{t.sub}</p>
         </div>
       </section>
@@ -107,9 +111,15 @@ export default function AgentsPage({ params }: { params: { lang: string } }) {
               const body = encodeURIComponent(t.smsBody.replace('{name}', a.name));
               return (
                 <div className="agent-row" key={a.slug} style={{ animationDelay: `${i * 0.06}s` }}>
-                  <img
+                  {/* 120x120 is the rendered size in .agent-row img; giving
+                      next/image the real dimensions lets it serve WebP at the
+                      right resolution instead of the full-size original. */}
+                  <Image
                     src={a.photo}
                     alt={a.name}
+                    width={120}
+                    height={120}
+                    sizes="120px"
                     style={a.photoPosition ? { objectPosition: a.photoPosition } : undefined}
                   />
                   <div className="ar-info">

@@ -148,7 +148,9 @@ const en = {
     disclosures: 'Disclosures',
   },
   meta: {
-    title: 'Florida Insurance Agency | Auto, Home & Commercial Quotes | M&K Agency',
+    // Kept under ~58 characters: Google truncates page titles around 60, and
+    // anything past the cut is invisible in search results.
+    title: 'Auto & Home Insurance in Florida City | M&K Agency',
     desc: 'Family-owned insurance agency in Florida City serving all of Florida. Home, auto & commercial coverage. Talk to a licensed agent — (305) 859-3953.',
   },
 };
@@ -296,7 +298,7 @@ const es: typeof en = {
     disclosures: 'Divulgaciones',
   },
   meta: {
-    title: 'Agencia de Seguros en Florida | Auto, Casa y Comercial | M&K Agency',
+    title: 'Seguro de Auto y Casa en Florida City | M&K Agency',
     desc: 'Agencia de seguros familiar en Florida City que sirve a toda la Florida. Cobertura de casa, auto y comercial. Hable con un agente — (305) 859-3953.',
   },
 };
@@ -444,8 +446,8 @@ const ru: typeof en = {
     disclosures: 'Раскрытие информации',
   },
   meta: {
-    title: 'Страховое агентство во Флориде | Авто, Дом, Бизнес | M&K Agency',
-    desc: 'Семейное страховое агентство в Florida City, работаем по всей Флориде. Страхование дома, авто и бизнеса. Поговорите с агентом — (305) 859-3953. Говорим по-русски.',
+    title: 'Страхование авто и дома, Флорида-Сити | M&K Agency',
+    desc: 'Семейное страховое агентство в Флорида-Сити, работаем по всей Флориде. Дом, авто, бизнес. Говорим по-русски — (305) 859-3953.',
   },
 };
 

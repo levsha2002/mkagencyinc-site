@@ -6,11 +6,21 @@ import ReferralForm from '@/components/ReferralForm';
 import BusinessDirectory from '@/components/BusinessDirectory';
 import { buildAlternates } from '@/lib/seo';
 
+// The hero subtitle used to double as the meta description. It reads well on
+// the page but runs past 200 characters, so Google cut it off mid-sentence.
+// These are written for the search result instead: short, and leading with
+// what someone searching would actually want to know.
+const META_DESC: Record<string, string> = {
+  en: 'A free directory of local Florida small businesses our neighbours already trust — contractors, restaurants, realtors and more. Listing is free.',
+  es: 'Directorio gratuito de pequeños negocios locales de Florida en los que confían nuestros vecinos — contratistas, restaurantes, agentes inmobiliarios y más.',
+  ru: 'Бесплатный каталог местных компаний Флориды, которым доверяют наши соседи — подрядчики, рестораны, риелторы и другие. Размещение бесплатное.',
+};
+
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).referral;
   return {
     title: `${t.heroTitle} | M&K Agency, Florida`,
-    description: t.heroSub,
+    description: META_DESC[params.lang] || META_DESC.en,
     alternates: buildAlternates(params.lang, '/referral'),
   };
 }
