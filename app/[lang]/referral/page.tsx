@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getDict } from '@/lib/dictionaries';
 import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
+import BusinessDirectory from '@/components/BusinessDirectory';
 import { buildAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
@@ -27,6 +28,13 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
             <span className="accent">{t.heroAccent}</span>
           </h1>
           <p>{t.heroSub}</p>
+        </div>
+      </section>
+
+      {/* ===== Community business directory ===== */}
+      <section className="section">
+        <div className="container">
+          <BusinessDirectory lang={params.lang} />
         </div>
       </section>
 

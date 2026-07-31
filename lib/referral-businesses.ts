@@ -11,6 +11,7 @@ export type ReferralBusiness = {
   description: string;
   website?: string; // link shown on the map card, only for verified local businesses
   cardImage?: string; // path under /images/referral/<slug>.jpg — add after phone verification
+  languages?: ('en' | 'es' | 'ru')[]; // languages the business actually serves in — the single most useful filter for our audience
 };
 
 // Manually maintained — same pattern as team-data.ts. An agent adds an entry
@@ -46,11 +47,29 @@ export const referralBusinesses: ReferralBusiness[] = [
 
 export const CATEGORIES = [
   'All',
-  'Realtor',
-  'Contractor',
+  'Plumber',
+  'Roofer',
   'Home Inspection',
+  'Contractor / Builder',
+  'Electrician',
+  'HVAC',
+  'Handyman',
+  'Auto Repair',
+  'Towing',
+  'Realtor',
+  'Loan Officer',
+  'Title / Closing',
+  'Cleaning',
+  'Landscaping',
+  'Pool Service',
+  'Moving',
+  'Food Store',
   'Restaurant',
   'Retail',
-  'Home Services',
+  'Auto Dealer',
+  'Legal',
+  'Medical / Dental',
+  'Childcare',
+  'Beauty',
   'Other',
 ];

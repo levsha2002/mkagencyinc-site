@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/agents', priority: 0.8 },
     { path: '/team', priority: 0.7 },
     { path: '/life', priority: 0.5 },
+    { path: '/protection-check', priority: 0.8 },
     { path: '/referral', priority: 0.6 },
     { path: '/referral/rules', priority: 0.3 },
     { path: '/privacy', priority: 0.2 },

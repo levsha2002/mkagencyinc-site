@@ -13,9 +13,13 @@ export default function Header({ lang }: { lang: string }) {
   const agentsLabel = lang === 'es' ? 'Nuestros Agentes' : lang === 'ru' ? 'Наши агенты' : 'Our Agents';
   const contactLabel = lang === 'es' ? 'Contáctenos' : lang === 'ru' ? 'Контакты' : 'Contact Us';
 
+  const checkLabel =
+    lang === 'es' ? 'Revisión gratis' : lang === 'ru' ? 'Проверка защиты' : 'Free Check';
+
   const links = [
     { href: `/${lang}`, label: t.nav.home },
     { href: `/${lang}/insurance`, label: t.nav.insurance },
+    { href: `/${lang}/protection-check`, label: checkLabel },
     { href: `/${lang}/agents`, label: agentsLabel },
     { href: `/${lang}/quote`, label: contactLabel },
     { href: `/${lang}/life`, label: t.nav.life },
