@@ -2,12 +2,15 @@ import { buildAlternates } from '@/lib/seo';
 
 const META: Record<string, { title: string; description: string }> = {
   en: {
-    title: 'Contact Us | Call, Text, Visit, or Request a Callback | M&K Agency',
+    // "calls you back in minutes" was a speed claim the office cannot meet —
+    // callbacks go out Mon-Fri 9am-6pm ET. Same class as the "quote in 30
+    // seconds" wording removed from the ads.
+    title: 'Contact M&K Agency | Call, Text or Request a Callback',
     description:
-      'Reach any of our licensed agents by name — call, text, visit, or request a callback and a local Florida agent calls you back in minutes. English · Español · По-русски.',
+      'Reach any of our licensed agents by name — call, text, visit, or request a callback. English · Español · По-русски.',
   },
   es: {
-    title: 'Contáctenos | Llame, Texto o Solicite una Llamada | M&K Agency',
+    title: 'Contáctenos | Llame o Solicite una Llamada | M&K Agency',
     description:
       'Contacte a cualquiera de nuestros agentes licenciados por nombre — llame, envíe un texto, visítenos o solicite una llamada. Hablamos español.',
   },

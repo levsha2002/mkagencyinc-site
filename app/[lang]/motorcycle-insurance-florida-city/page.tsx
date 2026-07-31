@@ -22,7 +22,7 @@ const C: Record<Lang, any> = {
     call: `Call ${PHONE_DISPLAY}`,
     whyTitle: 'Why one-size-fits-all motorcycle rates cost you money — and what we do about it',
     whyText:
-      'Motorcycle insurance isn’t priced like car insurance. Bike type, engine size, riding experience, and whether it’s your daily ride or a weekend/collector bike all move the price — sometimes dramatically. We review your exact bike and profile in detail and apply every discount you qualify for, so you get a fair, competitive rate for your type of riding.',
+      'Motorcycle insurance isn’t priced like car insurance. Bike type, engine size, riding experience, and whether it’s your daily ride or a weekend/collector bike all move the price — sometimes dramatically. We review your exact bike and profile in detail and apply every discount you qualify for, and explain what your policy covers for your type of riding.',
     covTitle: 'Coverage we quote every day',
     cov: [
       { h: 'Liability, collision & comprehensive', p: 'Full protection for your bike and for others if you’re at fault — from a parking-lot tip-over to a total loss.' },

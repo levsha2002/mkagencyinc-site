@@ -71,9 +71,9 @@ const es: Record<string, ProductI18n> = {
   },
   'auto-electric-vehicle': {
     title: 'Seguro para Vehículos Eléctricos',
-    shortIntro: 'Tarifas competitivas de seguro de auto para vehículos eléctricos.',
+    shortIntro: 'Seguro de auto para vehículos eléctricos, explicado con claridad.',
     article: [
-      'No vendemos garantías de vehículos — eso no es algo que ofrezcamos. Lo que sí ofrecemos son tarifas competitivas de seguro de auto para vehículos eléctricos, desde Tesla hasta Rivian y cualquier EV en la carretera.',
+      'No vendemos garantías de vehículos — eso no es algo que ofrezcamos. Lo que sí ofrecemos es seguro de auto para vehículos eléctricos, desde Tesla hasta Rivian y cualquier EV en la carretera.',
       'Obtenga una cotización rápida y sin presión de un agente local real.',
     ],
     coverageHighlights: [],
@@ -356,9 +356,9 @@ const ru: Record<string, ProductI18n> = {
   },
   'auto-electric-vehicle': {
     title: 'Страхование электромобилей',
-    shortIntro: 'Конкурентные тарифы автострахования для электромобилей.',
+    shortIntro: 'Автострахование для электромобилей — понятно и по делу.',
     article: [
-      'Мы не продаём гарантии на автомобили — этого мы не предлагаем. Что мы предлагаем — конкурентные тарифы автострахования для электромобилей, от Tesla и Rivian до любого EV на дороге.',
+      'Мы не продаём гарантии на автомобили — этого мы не предлагаем. Что мы предлагаем — автострахование для электромобилей, от Tesla и Rivian до любого EV на дороге.',
       'Быстрый расчёт без давления от живого местного агента.',
     ],
     coverageHighlights: [],

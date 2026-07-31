@@ -21,7 +21,7 @@ const C: Record<Lang, any> = {
     cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
     bannerAlt: 'A Florida family protected by umbrella insurance',
-    bannerText: 'For a few hundred dollars a year, most families can add $1 million of extra protection.',
+    bannerText: 'An umbrella policy sits on top of the coverage you already have and pays beyond its limits.',
     whyTitle: 'Why your home and auto limits may not be enough',
     whyText:
       'Your auto and home policies each cap how much they’ll pay if you’re found responsible for someone else’s injuries or damage. One at-fault highway accident, a guest hurt at your home, or a teen driver mistake can produce a claim far larger than those limits — and in a lawsuit, your savings, home equity, and future wages can be exposed for the difference. An umbrella policy sits on top of your existing coverage and pays beyond it, plus covers legal defense costs. It’s one of the least expensive ways to protect everything you’ve worked for.',
@@ -43,7 +43,7 @@ const C: Record<Lang, any> = {
     faq: [
       { q: 'What is umbrella insurance?', a: 'A personal umbrella policy provides extra liability coverage above the limits of your auto, home, or other underlying policies. If you’re responsible for injuries or damage that exceed those limits, the umbrella pays the difference up to its own limit, and also covers related legal defense costs.' },
       { q: 'Do I need it if I already have home and auto insurance?', a: 'Umbrella coverage is a layer on top of them, not a replacement. Home and auto liability limits are often lower than the cost of a serious accident or lawsuit. If you have savings, a home, rental property, a teen driver, or public exposure, an umbrella protects what those base limits don’t.' },
-      { q: 'How much does umbrella insurance cost?', a: 'It’s one of the most affordable coverages relative to what it protects — many households add $1 million of coverage for a few hundred dollars a year. Your exact price depends on your household, drivers, properties, and the limit you choose. We’ll go over real numbers with you.' },
+      { q: 'How much does umbrella insurance cost?', a: 'Your price depends on your household, the drivers in it, the properties you own, and the limit you choose. There is no single answer we could give honestly on a web page — a licensed agent will go over real numbers with you for your situation.' },
       { q: 'How much coverage should I have?', a: 'A common guideline is to carry at least enough umbrella coverage to protect your net worth — and ideally your future income too. We’ll help you land on a limit that fits your situation without over-buying.' },
       { q: 'What does umbrella insurance NOT cover?', a: 'It doesn’t cover your own injuries or property (that’s what your health, auto, and home policies are for), intentional or criminal acts, or most business activities. It’s specifically for third-party liability claims against you.' },
     ],
@@ -60,10 +60,10 @@ const C: Record<Lang, any> = {
     cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     bannerAlt: 'Una familia de Florida protegida por el seguro paraguas',
-    bannerText: 'Por unos cientos de dólares al año, la mayoría de las familias pueden agregar $1 millón de protección extra.',
+    bannerText: 'Una póliza paraguas se coloca sobre la cobertura que ya tiene y paga más allá de sus límites.',
     whyTitle: 'Por qué los límites de su casa y auto pueden no ser suficientes',
     whyText:
-      'Sus pólizas de auto y casa limitan cuánto pagarán si usted es responsable de las lesiones o daños de otra persona. Un accidente por su culpa en la autopista, un invitado lesionado en su casa o un error de un conductor adolescente pueden generar un reclamo mucho mayor que esos límites — y en una demanda, sus ahorros, el valor de su casa y sus ingresos futuros pueden quedar expuestos por la diferencia. Una póliza paraguas se coloca sobre su cobertura existente y paga más allá de ella, además de cubrir los costos de defensa legal. Es una de las formas más económicas de proteger todo lo que ha trabajado.',
+      'Sus pólizas de auto y casa limitan cuánto pagarán si usted es responsable de las lesiones o daños de otra persona. Un accidente por su culpa en la autopista, un invitado lesionado en su casa o un error de un conductor adolescente pueden generar un reclamo mucho mayor que esos límites — y en una demanda, sus ahorros, el valor de su casa y sus ingresos futuros pueden quedar expuestos por la diferencia. Una póliza paraguas se coloca sobre su cobertura existente y paga más allá de ella, además de cubrir los costos de defensa legal. Es una manera directa de proteger todo lo que ha trabajado.',
     covTitle: 'Qué cubre una póliza paraguas personal',
     cov: [
       { h: '$1M a $5M+ de responsabilidad extra', p: 'Elija un límite acorde a sus bienes e ingresos. La cobertura entra por encima de sus límites de responsabilidad de auto y casa.' },
@@ -82,7 +82,7 @@ const C: Record<Lang, any> = {
     faq: [
       { q: '¿Qué es el seguro paraguas?', a: 'Una póliza paraguas personal ofrece cobertura de responsabilidad extra por encima de los límites de sus pólizas de auto, casa u otras subyacentes. Si usted es responsable de lesiones o daños que superan esos límites, el paraguas paga la diferencia hasta su propio límite, y también cubre los costos de defensa legal relacionados.' },
       { q: '¿La necesito si ya tengo seguro de casa y auto?', a: 'La cobertura paraguas es una capa sobre ellas, no un reemplazo. Los límites de responsabilidad de casa y auto suelen ser menores que el costo de un accidente o demanda serios. Si tiene ahorros, casa, propiedad de alquiler, un conductor adolescente o exposición pública, un paraguas protege lo que esos límites base no cubren.' },
-      { q: '¿Cuánto cuesta el seguro paraguas?', a: 'Es una de las coberturas más económicas en relación con lo que protege — muchos hogares agregan $1 millón de cobertura por unos cientos de dólares al año. Su precio exacto depende de su hogar, conductores, propiedades y el límite que elija. Revisaremos números reales con usted.' },
+      { q: '¿Cuánto cuesta el seguro paraguas?', a: 'Su precio depende de su hogar, los conductores, las propiedades que posee y el límite que elija. No hay una sola respuesta que podamos dar con honestidad en una página web — un agente licenciado revisará números reales con usted.' },
       { q: '¿Cuánta cobertura debo tener?', a: 'Una guía común es tener al menos suficiente cobertura paraguas para proteger su patrimonio neto — e idealmente también sus ingresos futuros. Le ayudamos a definir un límite acorde a su situación sin comprar de más.' },
       { q: '¿Qué NO cubre el seguro paraguas?', a: 'No cubre sus propias lesiones o bienes (para eso están sus pólizas de salud, auto y casa), actos intencionales o delictivos, ni la mayoría de las actividades comerciales. Es específicamente para reclamos de responsabilidad de terceros contra usted.' },
     ],
@@ -99,7 +99,7 @@ const C: Record<Lang, any> = {
     cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     bannerAlt: 'Семья во Флориде под защитой зонтичной страховки',
-    bannerText: 'За несколько сотен долларов в год большинство семей могут добавить $1 миллион дополнительной защиты.',
+    bannerText: 'Зонтичный полис надстраивается над уже имеющимся покрытием и платит сверх его лимитов.',
     whyTitle: 'Почему лимитов дома и авто может не хватить',
     whyText:
       'Ваши авто- и домовой полисы ограничивают, сколько они заплатят, если вы виновны в травмах или ущербе другому человеку. Одна авария по вашей вине на трассе, травма гостя у вас дома или ошибка водителя-подростка могут привести к иску, намного превышающему эти лимиты — и в суде ваши сбережения, стоимость дома и будущая зарплата могут оказаться под ударом на разницу. Зонтичный полис стоит поверх существующего покрытия и платит сверх него, а также покрывает расходы на юридическую защиту. Это один из самых недорогих способов защитить всё, что вы заработали.',
@@ -121,7 +121,7 @@ const C: Record<Lang, any> = {
     faq: [
       { q: 'Что такое зонтичная страховка?', a: 'Личный зонтичный полис даёт дополнительное покрытие ответственности сверх лимитов ваших авто-, домового и других базовых полисов. Если вы виновны в травмах или ущербе, превышающих эти лимиты, зонтик платит разницу до своего лимита, а также покрывает связанные расходы на юридическую защиту.' },
       { q: 'Нужна ли она, если у меня уже есть страховка дома и авто?', a: 'Зонтичное покрытие — это слой поверх них, а не замена. Лимиты ответственности по дому и авто часто ниже стоимости серьёзной аварии или иска. Если у вас есть сбережения, дом, арендная недвижимость, водитель-подросток или публичность, зонтик защищает то, что базовые лимиты не покрывают.' },
-      { q: 'Сколько стоит зонтичная страховка?', a: 'Это одно из самых доступных покрытий относительно того, что оно защищает — многие семьи добавляют $1 миллион покрытия за несколько сотен долларов в год. Точная цена зависит от вашей семьи, водителей, недвижимости и выбранного лимита. Разберём реальные цифры вместе.' },
+      { q: 'Сколько стоит зонтичная страховка?', a: 'Цена зависит от состава семьи, водителей, недвижимости и выбранного лимита. Честного единого ответа на веб-странице быть не может — лицензированный агент разберёт реальные цифры вместе с вами.' },
       { q: 'Сколько покрытия мне нужно?', a: 'Частое правило — иметь как минимум столько зонтичного покрытия, чтобы защитить чистую стоимость активов, а в идеале и будущий доход. Поможем подобрать лимит под вашу ситуацию без переплаты.' },
       { q: 'Что зонтичная страховка НЕ покрывает?', a: 'Она не покрывает ваши собственные травмы или имущество (для этого есть медицинская, авто- и домовая страховки), умышленные или преступные действия и большинство бизнес-деятельности. Она именно для исков третьих лиц против вас.' },
     ],
