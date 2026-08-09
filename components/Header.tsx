@@ -71,7 +71,7 @@ export default function Header({ lang }: { lang: string }) {
           <a href={`tel:${PHONE_TEL}`} className="call-btn">
             📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
           </a>
-          <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">Text us</span></a>
+          <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">{t.contact.textUs}</span></a>
         </div>
       </div>
 

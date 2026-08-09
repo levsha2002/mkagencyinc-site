@@ -154,9 +154,9 @@ export default function InsuranceQuoteForm({
             onChange={(e) => setConsent(e.target.checked)}
           />
           <span>
-            I agree that M&amp;K Agency may contact me by phone, text, or email at
+            I agree that M&amp;K Agency may contact me by phone, text or email at
             the number provided about insurance, even if it is on a Do-Not-Call list. Consent is
-            not a condition of purchase.
+            not a condition of purchase. Message and data rates may apply.
           </span>
         </div>
 
