@@ -11,7 +11,7 @@ type Lang = 'en' | 'es' | 'ru';
 
 const C: Record<Lang, any> = {
   en: {
-    metaTitle: 'SR-22 & FR-44 Insurance in Florida City, FL | Same-Day Filing | M&K Agency',
+    metaTitle: 'SR-22 & FR-44 Insurance in Florida City, FL | M&K Agency',
     metaDesc:
       'Need an SR-22 or FR-44 in Florida? Local licensed agents file fast so you can reinstate your license. Help in English, Español, по-русски. Call (305) 859-3953.',
     kicker: 'SR-22 & FR-44 Filings · Florida City & Homestead',
@@ -50,7 +50,7 @@ const C: Record<Lang, any> = {
     disclaimer: 'This is general information, not legal advice or policy language. SR-22/FR-44 requirements, limits, and timeframes are set by the state and your specific case — confirm your exact requirement with the FLHSMV or your reinstatement letter.',
   },
   es: {
-    metaTitle: 'Seguro SR-22 y FR-44 en Florida City, FL | Presentación el Mismo Día | M&K Agency',
+    metaTitle: 'Seguro SR-22 y FR-44 en Florida City, FL | M&K Agency',
     metaDesc:
       '¿Necesita un SR-22 o FR-44 en Florida? Agentes locales licenciados lo presentan rápido para reinstalar su licencia. Ayuda en español. Llame al (305) 859-3953.',
     kicker: 'Presentaciones SR-22 y FR-44 · Florida City y Homestead',
@@ -89,7 +89,7 @@ const C: Record<Lang, any> = {
     disclaimer: 'Esto es información general, no asesoría legal ni lenguaje de póliza. Los requisitos, límites y plazos del SR-22/FR-44 los define el estado y su caso — confirme su requisito exacto con el FLHSMV o su carta de reinstalación.',
   },
   ru: {
-    metaTitle: 'Страховка SR-22 и FR-44 во Florida City, FL | Оформление в тот же день | M&K Agency',
+    metaTitle: 'Страховка SR-22 и FR-44 во Florida City, FL | M&K Agency',
     metaDesc:
       'Нужен SR-22 или FR-44 во Флориде? Местные лицензированные агенты оформят быстро, чтобы восстановить права. Помощь по-русски. Звоните (305) 859-3953.',
     kicker: 'Оформление SR-22 и FR-44 · Florida City и Homestead',

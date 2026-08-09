@@ -2,15 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const CATEGORIES: { key: string; label: string }[] = [
-  { key: 'auto', label: 'Auto' },
-  { key: 'home', label: 'Home' },
-  { key: 'commercial', label: 'Commercial' },
-  { key: 'life', label: 'Life' },
-  { key: 'specialty', label: 'Other' },
-];
+const LABELS: Record<string, Record<string, string>> = {
+  auto: { en: 'Auto', es: 'Auto', ru: 'Авто' },
+  home: { en: 'Home', es: 'Hogar', ru: 'Дом' },
+  commercial: { en: 'Commercial', es: 'Comercial', ru: 'Бизнес' },
+  life: { en: 'Life', es: 'Vida', ru: 'Жизнь' },
+  specialty: { en: 'Other', es: 'Otros', ru: 'Другое' },
+};
 
-export default function InsuranceCategoryNav() {
+const KEYS = ['auto', 'home', 'commercial', 'life', 'specialty'];
+
+export default function InsuranceCategoryNav({ lang }: { lang: string }) {
+  const CATEGORIES = KEYS.map((key) => ({ key, label: LABELS[key][lang] || LABELS[key].en }));
   const [active, setActive] = useState(CATEGORIES[0].key);
   const observerRef = useRef<IntersectionObserver | null>(null);
 

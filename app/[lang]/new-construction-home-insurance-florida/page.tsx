@@ -49,7 +49,7 @@ const C: Record<Lang, any> = {
     disclaimer: 'Coverage descriptions are general information, not policy language. Requirements, credits, and eligibility vary by carrier, home features, and location.',
   },
   es: {
-    metaTitle: 'Seguro para Casas y Condominios de Nueva Construcción en Florida | M&K Agency',
+    metaTitle: 'Seguro para Casa Nueva en Florida | M&K Agency',
     metaDesc:
       '¿Acaba de comprar una casa o condominio de nueva construcción en Florida? Hable con un agente licenciado antes de aceptar el seguro del constructor. Cotizaciones rápidas para el cierre.',
     kicker: 'Seguro de Nueva Construcción · Toda Florida',

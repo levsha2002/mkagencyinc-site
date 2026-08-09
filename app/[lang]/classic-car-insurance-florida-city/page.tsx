@@ -11,9 +11,9 @@ type Lang = 'en' | 'es' | 'ru';
 
 const C: Record<Lang, any> = {
   en: {
-    metaTitle: 'Classic & Collector Car Insurance in Florida City & Homestead, FL | M&K Agency',
+    metaTitle: 'Classic Car Insurance in Florida City, FL | M&K Agency',
     metaDesc:
-      'Agreed-value coverage for classic, collector and antique cars in South Miami-Dade. Low-mileage rates, OEM parts coverage. Free quote — English, Español, по-русски.',
+      'Agreed-value coverage for classic, collector and antique cars in South Florida. Low-mileage rates, OEM parts. Free quote — English, Español, по-русски.',
     kicker: 'Classic & Collector Car Insurance · Florida City & Homestead',
     h1a: 'Classic car insurance in Florida City & Homestead,',
     h1b: 'agreed value, not a depreciated guess.',
@@ -48,9 +48,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Coverage descriptions are general information, not policy language. Requirements and eligibility vary by carrier, vehicle age, condition, and usage.',
   },
   es: {
-    metaTitle: 'Seguro de Autos Clásicos y de Colección en Florida City y Homestead, FL | M&K Agency',
+    metaTitle: 'Seguro de Autos Clásicos en Florida City, FL | M&K Agency',
     metaDesc:
-      'Cobertura de valor acordado para autos clásicos, de colección y antiguos en el sur de Miami-Dade. Tarifas por bajo kilometraje, piezas OEM. Cotización gratis. Hablamos español.',
+      'Cobertura de valor acordado para autos clásicos y antiguos en Florida. Tarifas por bajo kilometraje, piezas OEM. Cotización gratis. Hablamos español.',
     kicker: 'Seguro de Autos Clásicos · Florida City y Homestead',
     h1a: 'Seguro de auto clásico en Florida City y Homestead,',
     h1b: 'valor acordado, no una estimación depreciada.',
@@ -85,9 +85,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Las descripciones de cobertura son información general, no lenguaje de póliza. Los requisitos y la elegibilidad varían según la aseguradora, la antigüedad, condición y uso del vehículo.',
   },
   ru: {
-    metaTitle: 'Страховка классических и коллекционных авто во Florida City и Homestead, FL | M&K Agency',
+    metaTitle: 'Страховка классических авто во Florida City, FL | M&K Agency',
     metaDesc:
-      'Agreed-value покрытие для классических, коллекционных и антикварных авто на юге Miami-Dade. Тарифы за низкий пробег, OEM-запчасти. Бесплатный расчёт. Говорим по-русски.',
+      'Agreed-value покрытие для классических и антикварных авто во Флориде. Тарифы за низкий пробег, OEM-запчасти. Бесплатный расчёт. Говорим по-русски.',
     kicker: 'Страховка классических авто · Florida City и Homestead',
     h1a: 'Страховка классического авто во Florida City и Homestead —',
     h1b: 'agreed value, а не заниженная оценка.',

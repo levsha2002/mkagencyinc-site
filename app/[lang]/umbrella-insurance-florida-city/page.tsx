@@ -11,9 +11,9 @@ type Lang = 'en' | 'es' | 'ru';
 
 const C: Record<Lang, any> = {
   en: {
-    metaTitle: 'Umbrella Insurance in Florida City, FL | Extra Liability Protection | M&K Agency',
+    metaTitle: 'Umbrella Insurance in Florida City, FL | M&K Agency',
     metaDesc:
-      'A personal umbrella policy adds $1M+ of liability protection on top of your auto and home coverage. Local licensed agents, English, Español, по-русски. Call (305) 859-3953.',
+      'A personal umbrella policy adds $1M+ liability protection over your auto and home coverage. Local licensed agents — English, Español, по-русски.',
     kicker: 'Personal Umbrella Insurance · Florida City & Homestead',
     h1a: 'One lawsuit shouldn’t undo everything you’ve built.',
     h1b: 'That’s what umbrella insurance is for.',
@@ -50,9 +50,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'This is general information, not policy language. Coverage, eligibility, required underlying limits, and pricing vary by carrier and your specific situation.',
   },
   es: {
-    metaTitle: 'Seguro Paraguas (Umbrella) en Florida City, FL | Protección de Responsabilidad Extra | M&K Agency',
+    metaTitle: 'Seguro Paraguas en Florida City, FL | M&K Agency',
     metaDesc:
-      'Una póliza paraguas agrega $1M+ de protección de responsabilidad sobre su seguro de auto y casa. Agentes locales licenciados. Hablamos español. Llame al (305) 859-3953.',
+      'Una póliza paraguas agrega $1M+ de protección de responsabilidad sobre su seguro de auto y casa. Agentes locales licenciados. Hablamos español.',
     kicker: 'Seguro Paraguas (Umbrella) · Florida City y Homestead',
     h1a: 'Una demanda no debería deshacer todo lo que ha construido.',
     h1b: 'Para eso existe el seguro paraguas.',
@@ -89,7 +89,7 @@ const C: Record<Lang, any> = {
     disclaimer: 'Esto es información general, no lenguaje de póliza. La cobertura, elegibilidad, límites subyacentes requeridos y precios varían según la aseguradora y su situación específica.',
   },
   ru: {
-    metaTitle: 'Зонтичная страховка (Umbrella) во Florida City, FL | Дополнительная защита ответственности | M&K Agency',
+    metaTitle: 'Зонтичная страховка во Florida City, FL | M&K Agency',
     metaDesc:
       'Личный зонтичный полис добавляет $1M+ защиты ответственности поверх авто- и домовой страховки. Местные агенты. Говорим по-русски. Звоните (305) 859-3953.',
     kicker: 'Зонтичная страховка (Umbrella) · Florida City и Homestead',
