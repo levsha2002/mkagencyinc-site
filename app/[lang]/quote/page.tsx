@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { team } from '@/lib/team-data';
 import { trackConversion } from '@/lib/analytics';
 import Honeypot from '@/components/Honeypot';
+import { LEAD_MANAGER_URL } from '@/lib/dictionaries';
 
 declare global {
   interface Window {
@@ -51,8 +52,6 @@ const AGENTS = team.filter((m) => m.slug !== 'mikhail-kozlov');
 const PHONE = '3058593953';
 const MAP_EMBED =
   'https://www.google.com/maps?q=33550+S+Dixie+Hwy+Suite+102,+Florida+City,+FL+33034&output=embed';
-// Official Allstate Lead Manager webform — captures texting consent at submission.
-const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
 
 const UI: Record<Lang, Record<string, string>> = {
   en: {

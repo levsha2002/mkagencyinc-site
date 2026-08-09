@@ -1,11 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS } from '@/lib/dictionaries';
-
-// Official Allstate Lead Manager webform — scanning or clicking submits
-// directly into Lead Manager, which captures texting consent at submission
-// (see LEAD_MANAGER_URL usage below for the desktop click-through).
-const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL } from '@/lib/dictionaries';
 
 const SCAN: Record<string, string> = {
   en: 'Fill Out Request for a Quote',

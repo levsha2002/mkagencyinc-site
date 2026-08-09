@@ -55,6 +55,14 @@ img { max-width: 100%; display: block; }
 .call-btn:hover { background: #eebb54; }
 .text-btn { background: transparent; color: #fff; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; border: 1.5px solid rgba(255,255,255,.45); cursor: pointer; transition: border-color .2s, background .2s; white-space: nowrap; flex-shrink: 0; }
 .text-btn:hover { border-color: var(--gold); background: rgba(255,255,255,.06); }
+.header-qr { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-left: 6px; }
+.header-qr img { background: #fff; padding: 3px; border-radius: 6px; display: block; }
+.header-qr-text { color: #fff; font-weight: 700; font-size: 12px; line-height: 1.25; max-width: 90px; }
+/* Below 900px the header-cta row (call + text + QR) gets tight — drop the QR
+   caption first, then the whole QR block, before the call/text buttons ever
+   have to wrap. The footer QR (present on every page) covers these widths. */
+@media (max-width: 900px) { .header-qr-text { display: none; } }
+@media (max-width: 780px) { .header-qr { display: none; } }
 
 /* Hero — light, modern, serif headline */
 .hero { background: linear-gradient(180deg, #eef4fd 0%, #f8fafc 100%); color: var(--navy); padding: 60px 0 70px; }

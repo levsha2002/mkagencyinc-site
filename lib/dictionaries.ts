@@ -1,6 +1,9 @@
 export const PHONE_DISPLAY = '(305) 859-3953';
 export const PHONE_TEL = '+13058593953';
 export const ADDRESS = '33550 S Dixie Hwy, Suite 102, Florida City, FL 33034';
+// Official Allstate Lead Manager webform — captures texting consent at submission.
+// Single source of truth so the Header, Footer, and /quote QR codes never drift.
+export const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
 
 export type Lang = 'en' | 'es' | 'ru';
 export const locales: Lang[] = ['en', 'es', 'ru'];

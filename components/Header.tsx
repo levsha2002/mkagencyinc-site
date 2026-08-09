@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, locales } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, locales, LEAD_MANAGER_URL } from '@/lib/dictionaries';
 
 export default function Header({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -15,6 +15,9 @@ export default function Header({ lang }: { lang: string }) {
 
   const checkLabel =
     lang === 'es' ? 'Protección' : lang === 'ru' ? 'Финансовая защита' : 'Financial Protection';
+
+  const qrCaption =
+    lang === 'es' ? 'Llene la solicitud de cotización' : lang === 'ru' ? 'Заполните заявку на расчёт' : 'Fill Out Request for a Quote';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
@@ -72,6 +75,16 @@ export default function Header({ lang }: { lang: string }) {
             📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
           </a>
           <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">{t.contact.textUs}</span></a>
+          <a
+            href={LEAD_MANAGER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-qr"
+            title={qrCaption}
+          >
+            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={48} height={48} />
+            <span className="header-qr-text">{qrCaption}</span>
+          </a>
         </div>
       </div>
 
