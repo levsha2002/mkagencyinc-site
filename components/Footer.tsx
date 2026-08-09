@@ -2,10 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS } from '@/lib/dictionaries';
 
+// Official Allstate Lead Manager webform — scanning or clicking submits
+// directly into Lead Manager, which captures texting consent at submission
+// (see LEAD_MANAGER_URL usage below for the desktop click-through).
+const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
+
 const SCAN: Record<string, string> = {
-  en: 'Scan to contact us',
-  es: 'Escanee para contactarnos',
-  ru: 'Отсканируйте, чтобы связаться',
+  en: 'Fill Out Request for a Quote',
+  es: 'Llene la solicitud de cotización',
+  ru: 'Заполните заявку на расчёт',
 };
 
 export default function Footer({ lang }: { lang: string }) {
@@ -14,10 +19,15 @@ export default function Footer({ lang }: { lang: string }) {
     <footer className="footer">
       <div className="container">
         <div style={{ marginBottom: 18, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-          <div style={{ background: '#fff', padding: 8, borderRadius: 12, lineHeight: 0 }}>
-            <Image src="/images/quote-qr.png" alt="QR code — contact M&K Agency" width={96} height={96} />
-          </div>
-          <span style={{ fontSize: '.78rem', color: '#bcd0ea' }}>{SCAN[lang] || SCAN.en}</span>
+          <a
+            href={LEAD_MANAGER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ background: '#fff', padding: 10, borderRadius: 12, lineHeight: 0 }}
+          >
+            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={112} height={112} />
+          </a>
+          <span style={{ fontSize: '.78rem', color: '#bcd0ea', fontWeight: 600 }}>{SCAN[lang] || SCAN.en}</span>
         </div>
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>

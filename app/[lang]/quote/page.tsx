@@ -51,6 +51,8 @@ const AGENTS = team.filter((m) => m.slug !== 'mikhail-kozlov');
 const PHONE = '3058593953';
 const MAP_EMBED =
   'https://www.google.com/maps?q=33550+S+Dixie+Hwy+Suite+102,+Florida+City,+FL+33034&output=embed';
+// Official Allstate Lead Manager webform — captures texting consent at submission.
+const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
 
 const UI: Record<Lang, Record<string, string>> = {
   en: {
@@ -71,7 +73,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Your info stays private. No spam, ever.',
     okH1: "You're all set!", okSub: 'Thanks — our team will call you back during office hours, Mon–Fri 9am–6pm ET. Need us right now?', okCall: '📞 Call (305) 859-3953',
     mapTitle: '📍 Visit us — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
-    scan: 'Scan to open or share this page on your phone',
+    scan: 'Fill Out Request for a Quote',
     callTitle: 'Call', textTitle: 'Text', smsBody: "Hi! I'd like to talk to {name} about my insurance.",
     prefAgent: 'Preferred agent',
   },
@@ -93,7 +95,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Tu información es privada. Sin spam, nunca.',
     okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo te llamará en horario de oficina, lun–vie 9am–6pm ET. ¿Nos necesitas ahora?', okCall: '📞 Llamar (305) 859-3953',
     mapTitle: '📍 Visítenos — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
-    scan: 'Escanee para abrir o compartir esta página en su teléfono',
+    scan: 'Llene la solicitud de cotización',
     callTitle: 'Llamar', textTitle: 'Texto', smsBody: 'Hola! Me gustaría hablar con {name} sobre mi seguro.',
     prefAgent: 'Agente preferido',
   },
@@ -115,7 +117,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Ваши данные конфиденциальны. Никакого спама.',
     okH1: 'Готово!', okSub: 'Спасибо — перезвоним в рабочие часы, Пн–Пт 9:00–18:00 ET. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 859-3953',
     mapTitle: '📍 Наш офис — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
-    scan: 'Отсканируйте, чтобы открыть или поделиться этой страницей',
+    scan: 'Заполните заявку на расчёт',
     callTitle: 'Позвонить', textTitle: 'Написать', smsBody: 'Здравствуйте! Хочу поговорить с {name} о страховке.',
     prefAgent: 'Предпочитаемый агент',
   },
@@ -305,7 +307,9 @@ export default function ContactAgentsPage() {
         </div>
 
         <div className="qh-qr">
-          <Image src="/images/quote-qr.png" alt="QR code — M&K Agency contact page" width={116} height={116} />
+          <a href={LEAD_MANAGER_URL} target="_blank" rel="noopener noreferrer">
+            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={116} height={116} />
+          </a>
           <span>{t.scan}</span>
         </div>
       </div>
