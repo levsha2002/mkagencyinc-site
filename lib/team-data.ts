@@ -42,13 +42,6 @@ export const team: TeamMember[] = [
     quote: "I love that I can serve our Florida community in English, Spanish, and with a smile.",
   },
   {
-    slug: 'brenda-quiroz',
-    name: 'Brenda Quiroz',
-    role: 'Licensed Insurance Agent',
-    photo: '/images/team/brenda-quiroz.jpg',
-    quote: "Every policy is a promise. I take that seriously for every single client.",
-  },
-  {
     slug: 'jose-egues-chalela',
     name: 'Jose Egues Chalela',
     role: 'Licensed Insurance Agent',
