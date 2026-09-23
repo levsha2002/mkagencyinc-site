@@ -60,7 +60,7 @@
   .cta-repeat a:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
   .cta-repeat .fine{margin-top:10px; font-size:11px; color:#8A94A3;}
 
-  footer{text-align:center; font-size:11px; color:#8A94A3; padding:16px; background:var(--cream);}
+  footer{text-align:center; font-size:11px; color:#8A94A3; padding:16px 20px; background:var(--cream); line-height:1.6;}
 
   .modal-bg{display:none; position:fixed; inset:0; background:rgba(11,42,74,.55); align-items:center; justify-content:center; z-index:100; padding:20px; overflow-y:auto;}
   .modal-bg.open{display:flex;}
@@ -116,7 +116,10 @@
     <div class="fine">Or use the form above — same 2-minute quote either way.</div>
   </div>
 
-  <footer>M&K Agency Inc. · Licensed FL Agent · Florida City, FL</footer>
+  <footer>
+    M&K Agency Inc. · Florida City, FL<br>
+    M&K Agency License #L109526 · Mikhail Kozlov License #W639521
+  </footer>
 
   <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal" id="modalCard">
@@ -131,7 +134,8 @@
           <input type="checkbox" id="f-consent" required>
           <span>I agree that M&amp;K Agency may contact me by phone, text or email at
 the number provided about insurance, even if it is on a Do-Not-Call list. Consent is
-not a condition of purchase. Message and data rates may apply.</span>
+not a condition of purchase. Message and data rates may apply. Reply STOP to opt out
+of text messages at any time.</span>
         </label>
         <p class="status-err" id="formErr" style="display:none;">Something went wrong. Please call us at (305) 859-3953.</p>
         <button type="submit" class="submit" id="submitBtn">Send My Info</button>
@@ -142,6 +146,7 @@ not a condition of purchase. Message and data rates may apply.</span>
 
 <script>
 var currentVehicle = 'Car';
+var CONSENT_TEXT_VERSION = 'v2-2026-09-23';
 
 function openModal(kind){
   currentVehicle = kind;
@@ -185,7 +190,9 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
         product_slug: 'auto',
         product_title: 'Auto Insurance',
         lang: 'en',
-        consent: true
+        consent: true,
+        consent_user_agent: navigator.userAgent,
+        consent_text_version: CONSENT_TEXT_VERSION
       })
     });
 
