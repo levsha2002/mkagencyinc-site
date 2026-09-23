@@ -6,6 +6,15 @@ import { guardSubmission } from '@/lib/form-guard';
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
+// Same header-based lookup as lib/form-guard.ts clientIp(), duplicated locally
+// so this route has no new cross-file dependency for a single call site.
+function clientIp(req: NextRequest): string {
+  const h = req.headers;
+  const fwd = h.get('x-forwarded-for');
+  if (fwd) return fwd.split(',')[0].trim();
+  return h.get('x-real-ip') || h.get('x-vercel-forwarded-for') || 'unknown';
+}
+
 async function notifyAgent(b) {
   const tasks = [];
   let emailOk = true;
@@ -25,7 +34,7 @@ async function notifyAgent(b) {
 ${b.vin ? `<p><b>VIN:</b> ${b.vin}</p>` : ''}
 ${b.drivers ? `<p><b>Number of drivers:</b> ${b.drivers}</p>` : ''}
 ${b.comments ? `<p><b>Additional comments / coverages:</b> ${b.comments}</p>` : ''}
-<p><b>TCPA consent given:</b> Yes</p>`,
+<p><b>TCPA consent given:</b> Yes (v${b.consent_text_version || 'unknown'})</p>`,
         })
         .catch((err) => {
           emailOk = false;
@@ -84,6 +93,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
+    // TCPA evidence: capture IP, user agent and the exact consent copy version
+    // shown to the visitor at submission time, in addition to the boolean flag.
+    // This is what you would produce if a consent dispute or TCPA claim came in.
+    const consentIp = clientIp(req);
+    const consentUserAgent = typeof b.consent_user_agent === 'string' ? b.consent_user_agent.slice(0, 500) : '';
+    const consentTextVersion = typeof b.consent_text_version === 'string' ? b.consent_text_version : 'unknown';
+
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
       await sql`CREATE TABLE IF NOT EXISTS insurance_quotes (
@@ -101,13 +117,22 @@ export async function POST(req: NextRequest) {
         created_at TIMESTAMPTZ DEFAULT now()
       )`;
 
+      // Migration-safe: adds the new TCPA evidence columns if this table
+      // already existed from before this change (it does — the very first
+      // test submission ran against the old schema).
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_ip TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_user_agent TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_text_version TEXT`;
+
       await sql`INSERT INTO insurance_quotes
-        (name, phone, address, vin, drivers, comments, product_slug, product_title, lang, consent)
+        (name, phone, address, vin, drivers, comments, product_slug, product_title, lang, consent,
+         consent_ip, consent_user_agent, consent_text_version)
         VALUES (${b.name}, ${b.phone}, ${b.address}, ${b.vin || ''}, ${b.drivers || ''},
-        ${b.comments || ''}, ${b.product_slug}, ${b.product_title}, ${b.lang}, ${b.consent})`;
+        ${b.comments || ''}, ${b.product_slug}, ${b.product_title}, ${b.lang}, ${b.consent},
+        ${consentIp}, ${consentUserAgent}, ${consentTextVersion})`;
     }
 
-    const emailOk = await notifyAgent(b);
+    const emailOk = await notifyAgent({ ...b, consent_text_version: consentTextVersion });
 
     return NextResponse.json({ ok: true, emailOk });
   } catch (err) {
