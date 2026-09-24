@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { getDict } from '@/lib/dictionaries';
 import { trackConversion } from '@/lib/analytics';
+import { getAttribution } from '@/lib/attribution';
 import Honeypot from '@/components/Honeypot';
 
 declare global {
@@ -28,7 +29,7 @@ export default function LeadForm({ lang }: { lang: string }) {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, consent_text: t.consent, lang, company }),
+        body: JSON.stringify({ ...formData, consent_text: t.consent, lang, company, attribution: getAttribution() }),
       });
       if (res.ok) {
         setStatus('ok');

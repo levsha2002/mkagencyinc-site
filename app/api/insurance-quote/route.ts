@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
+import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
 
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
@@ -34,7 +35,8 @@ async function notifyAgent(b) {
 ${b.vin ? `<p><b>VIN:</b> ${b.vin}</p>` : ''}
 ${b.drivers ? `<p><b>Number of drivers:</b> ${b.drivers}</p>` : ''}
 ${b.comments ? `<p><b>Additional comments / coverages:</b> ${b.comments}</p>` : ''}
-<p><b>TCPA consent given:</b> Yes (v${b.consent_text_version || 'unknown'})</p>`,
+<p><b>TCPA consent given:</b> Yes (v${b.consent_text_version || 'unknown'})</p>
+${attributionEmailRow(cleanAttribution(b.attribution))}`,
         })
         .catch((err) => {
           emailOk = false;
@@ -99,6 +101,7 @@ export async function POST(req: NextRequest) {
     const consentIp = clientIp(req);
     const consentUserAgent = typeof b.consent_user_agent === 'string' ? b.consent_user_agent.slice(0, 500) : '';
     const consentTextVersion = typeof b.consent_text_version === 'string' ? b.consent_text_version : 'unknown';
+    const attr = cleanAttribution(b.attribution);
 
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
@@ -123,13 +126,15 @@ export async function POST(req: NextRequest) {
       await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_ip TEXT`;
       await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_user_agent TEXT`;
       await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_text_version TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS gclid TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS utm TEXT`;
 
       await sql`INSERT INTO insurance_quotes
         (name, phone, address, vin, drivers, comments, product_slug, product_title, lang, consent,
-         consent_ip, consent_user_agent, consent_text_version)
+         consent_ip, consent_user_agent, consent_text_version, gclid, utm)
         VALUES (${b.name}, ${b.phone}, ${b.address}, ${b.vin || ''}, ${b.drivers || ''},
         ${b.comments || ''}, ${b.product_slug}, ${b.product_title}, ${b.lang}, ${b.consent},
-        ${consentIp}, ${consentUserAgent}, ${consentTextVersion})`;
+        ${consentIp}, ${consentUserAgent}, ${consentTextVersion}, ${attr.gclid}, ${attr.utm})`;
     }
 
     const emailOk = await notifyAgent({ ...b, consent_text_version: consentTextVersion });
