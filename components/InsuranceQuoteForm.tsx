@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { InsuranceProduct } from '@/lib/insurance-products';
 import { trackConversion } from '@/lib/analytics';
+import { getAttribution } from '@/lib/attribution';
 import Honeypot from '@/components/Honeypot';
 
 declare global {
@@ -49,6 +50,7 @@ export default function InsuranceQuoteForm({
           product_title: product.title,
           lang,
           consent: true,
+          attribution: getAttribution(),
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');
@@ -86,7 +88,11 @@ export default function InsuranceQuoteForm({
     return (
       <div className="card">
         <p className="status-ok">
-          Thank you! A licensed agent will contact you shortly about {product.title.toLowerCase()}.
+          {({
+            es: 'Gracias. Un agente licenciado le llamará en horario de oficina — lun–vie, 9am–6pm ET.',
+            ru: 'Спасибо! Лицензированный агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
+          } as Record<string, string>)[lang] ??
+            'Thank you! A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.'}
         </p>
       </div>
     );

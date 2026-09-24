@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { trackConversion } from '@/lib/analytics';
+import { getAttribution } from '@/lib/attribution';
 import Honeypot from '@/components/Honeypot';
 
 // Guided protection conversation.
@@ -96,7 +97,7 @@ const T: Record<Lang, {
     consent: 'I agree that M&K Agency may contact me by phone, text or email at the number provided about insurance, even if it is on a Do-Not-Call list. Consent is not a condition of purchase. Message and data rates may apply.',
     submit: 'Have an agent call me →',
     sending: 'Sending…',
-    ok: 'Got it — a licensed agent will call you shortly.',
+    ok: 'Got it — a licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.',
     err: 'Something went wrong. Please call us at (305) 859-3953.',
     restart: 'Start over',
     questions: [
@@ -234,7 +235,7 @@ const T: Record<Lang, {
     consent: 'Acepto que M&K Agency pueda contactarme por teléfono, mensaje de texto o correo electrónico al número proporcionado sobre seguros, incluso si está en una lista de No Llamar. El consentimiento no es una condición de compra. Pueden aplicarse tarifas de mensajes y datos.',
     submit: 'Que me llame un agente →',
     sending: 'Enviando…',
-    ok: 'Listo — un agente licenciado le llamará en breve.',
+    ok: 'Listo — un agente licenciado le llamará en horario de oficina — lun–vie, 9am–6pm ET.',
     err: 'Algo salió mal. Llámenos al (305) 859-3953.',
     restart: 'Empezar de nuevo',
     questions: [
@@ -372,7 +373,7 @@ const T: Record<Lang, {
     consent: 'Я согласен(на), что M&K Agency может связаться со мной по телефону, SMS или электронной почте по указанному номеру по вопросам страхования, даже если номер находится в списке «Не звонить». Согласие не является условием покупки. Могут применяться тарифы за сообщения и передачу данных.',
     submit: 'Пусть агент перезвонит →',
     sending: 'Отправка…',
-    ok: 'Готово — лицензированный агент скоро позвонит.',
+    ok: 'Готово — лицензированный агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
     err: 'Что-то пошло не так. Позвоните нам: (305) 859-3953.',
     restart: 'Начать заново',
     questions: [
@@ -531,6 +532,7 @@ export default function ProtectionPlanner({ lang = 'en' }: { lang?: string }) {
           consent: true,
           contact_method: 'call',
           agent_name: 'agent',
+          attribution: getAttribution(),
           // Gives the agent the visitor's own answers so the call starts informed.
           message: `Protection check — areas to discuss: ${summary}. Answers: ${JSON.stringify(answers)}`,
         }),

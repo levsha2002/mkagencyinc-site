@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fast Auto Insurance Quote — M&K Agency | Florida City, FL</title>
-<meta name="description" content="Real people answer the phone. Get your Florida auto insurance quote in 2 minutes. Call (305) 859-3953.">
+<title>Auto Insurance Quote — M&K Agency | Florida City, FL</title>
+<meta name="description" content="Real people answer the phone. Talk to a licensed local agent, Mon–Fri 9am–6pm ET. Call (305) 859-3953.">
 <style>
   :root{
     --navy:#0B2A4A; --navy2:#123A63; --gold:#D9A441; --cream:#F6F3EB; --ink:#1E2530; --line:#E7E2D4;
@@ -78,6 +78,44 @@
   .status-ok{color:#1E7A44; font-size:14px; font-weight:600;}
   .status-err{color:#B23A2E; font-size:12px; margin-top:-4px; margin-bottom:10px;}
 </style>
+<!-- Google Ads tag. This page is static HTML served from public/, so it does
+     NOT get the tag from app/[lang]/layout.tsx. Without this block, leads and
+     phone taps from this Ads landing page were invisible to Smart Bidding.
+     IDs and labels mirror lib/analytics.ts; keep the two in step. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18321801016"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18321801016');
+  var MK_ADS = 'AW-18321801016';
+  var MK_LABELS = { phone_call: 'vxzLCLXQuNkcELj-waBE', sms_click: '-6r1CLjQuNkcELj-waBE', quote_submit: '-1BtCL2Fj9EcELj-waBE' };
+  function mkConversion(action, params){
+    params = params || {};
+    gtag('event', action, Object.assign({ send_to: MK_ADS }, params));
+    if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action] }, params));
+  }
+  // tel:/sms: taps, same delegation as phoneClickTrackingScript() in lib/analytics.ts.
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href^="sms:"]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    mkConversion(href.slice(0,4) === 'tel:' ? 'phone_call' : 'sms_click', { link_url: href });
+  }, true);
+  // Ad-click attribution, same as attributionCaptureScript() in lib/attribution.ts.
+  (function(){
+    try {
+      var q=new URLSearchParams(location.search), F=['gclid','gbraid','wbraid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'], a={}, hit=false;
+      for(var i=0;i<F.length;i++){ var v=q.get(F[i]); if(v){ a[F[i]]=v.slice(0,200); hit=true; } }
+      if(!hit) return;
+      a.landing_page=location.pathname.slice(0,200); a.ts=Date.now();
+      localStorage.setItem('mk_attr', JSON.stringify(a));
+    } catch(e){}
+  })();
+  function mkAttribution(){
+    try { var a = JSON.parse(localStorage.getItem('mk_attr') || '{}'); return (a.ts && Date.now() - a.ts < 7776000000) ? a : {}; } catch(e){ return {}; }
+  }
+</script>
 </head>
 <body>
 
@@ -89,7 +127,7 @@
   <section class="hero">
     <div class="eyebrow">Florida Auto Insurance · Licensed Agent</div>
     <h1>Protect What Moves You — Before the Next Storm.</h1>
-    <p class="sub">Real people answer the phone. Get your Florida auto insurance quote in about 2 minutes.</p>
+    <p class="sub">Real people answer the phone. A licensed local agent in Florida City explains what your policy covers.</p>
     <button class="cta-main" onclick="openModal('Car')">Get My Free Auto Quote</button>
     <div class="microtrust">Licensed FL Agent · Real People Answer the Phone · No spam, ever</div>
   </section>
@@ -113,7 +151,7 @@
 
   <div class="cta-repeat">
     <a href="tel:3058593953">📞 Call (305) 859-3953</a>
-    <div class="fine">Or use the form above — same 2-minute quote either way.</div>
+    <div class="fine">Or use the form above. Office hours: Mon–Fri, 9am–6pm ET.</div>
   </div>
 
   <footer>
@@ -124,7 +162,7 @@
   <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal" id="modalCard">
       <h3 id="modalTitle">Get your quote</h3>
-      <p id="modalSub">Takes about 2 minutes. Our office will call you right back.</p>
+      <p id="modalSub">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</p>
       <form id="quoteForm">
         <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="text" id="f-name" placeholder="Your name" required>
@@ -192,12 +230,14 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
         lang: 'en',
         consent: true,
         consent_user_agent: navigator.userAgent,
-        consent_text_version: CONSENT_TEXT_VERSION
+        consent_text_version: CONSENT_TEXT_VERSION,
+        attribution: mkAttribution()
       })
     });
 
     if (res.ok) {
       if (typeof window.gtag === 'function') {
+        mkConversion('quote_submit', { insurance_type: 'Auto Insurance', lang: 'en' });
         window.gtag('event', 'generate_lead', {
           currency: 'USD',
           value: 1,
@@ -205,7 +245,7 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
         });
       }
       document.getElementById('modalTitle').textContent = 'Thank you!';
-      document.getElementById('modalSub').innerHTML = '<span class="status-ok">A licensed agent will contact you shortly about auto insurance.</span>';
+      document.getElementById('modalSub').innerHTML = '<span class="status-ok">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</span>';
       document.getElementById('quoteForm').style.display = 'none';
     } else {
       errEl.style.display = 'block';

@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
 import { trackConversion } from '@/lib/analytics';
+import { getAttribution } from '@/lib/attribution';
 import Honeypot from '@/components/Honeypot';
 import { LEAD_MANAGER_URL } from '@/lib/dictionaries';
 
@@ -149,7 +150,7 @@ export default function ContactAgentsPage() {
           company,
           insurance_type: ins || 'General',
           zip_code: form.zip, name: form.name, phone: form.phone, email: form.email,
-          message: msg, consent: form.consent, lang, source: src,
+          message: msg, consent: form.consent, lang, source: src, attribution: getAttribution(),
         }),
       });
       if (res.ok) {
