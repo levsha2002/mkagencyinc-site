@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { getProductsByCategory } from '@/lib/insurance-products';
+import { getProductsByCategory, HIDDEN_FROM_HUB } from '@/lib/insurance-products';
 import InsuranceCategoryNav from '@/components/InsuranceCategoryNav';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { getDict } from '@/lib/dictionaries';
 import Image from 'next/image';
 
@@ -23,11 +23,12 @@ const CATEGORY_KEYS: ('auto' | 'home' | 'commercial' | 'life' | 'specialty')[] =
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).services;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/insurance',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/insurance'),
-  };
+  });
 }
 
 export default function InsuranceHub({ params }: { params: { lang: string } }) {
@@ -36,11 +37,18 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
 
   return (
     <main>
-      <section
-        className="team-hero"
-        style={{ backgroundImage: "url('/images/Professional_Agent.jpg')" }}
-      >
-        <div className="team-hero-overlay">
+      {/* Hero photo via next/image (responsive, modern formats, preloaded as
+          the LCP element) instead of a 308 KB CSS background-image. */}
+      <section className="team-hero">
+        <Image
+          src="/images/Professional_Agent.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'top center' }}
+        />
+        <div className="team-hero-overlay" style={{ position: 'relative' }}>
           <div className="container">
             <h1>{t.title}</h1>
             <p>{t.intro}</p>
@@ -55,7 +63,7 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
       <section className="team-body">
         <div className="container">
           {CATEGORY_KEYS.map((key) => {
-            const products = getProductsByCategory(key, params.lang);
+            const products = getProductsByCategory(key, params.lang).filter((p) => !HIDDEN_FROM_HUB.has(p.slug));
             if (products.length === 0) return null;
             const cat = t[key];
             return (

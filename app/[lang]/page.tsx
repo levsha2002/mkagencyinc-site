@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getDict, PHONE_TEL } from '@/lib/dictionaries';
+import { getDict, PHONE_TEL, REVIEWS_URL } from '@/lib/dictionaries';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import GapAnalysis from '@/components/GapAnalysis';
 import { pickRotating } from '@/lib/rotation';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 // Re-render this page once a day (ISR) so the rotating hero image and
 // rotating sub-headline advance automatically — no deploys needed.
@@ -42,11 +42,12 @@ const HERO_SUBS: Record<string, string[]> = {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '',
     title: t.meta.title,
     description: t.meta.desc,
-    alternates: buildAlternates(params.lang, ''),
-  };
+  });
 }
 
 const meet: Record<string, Record<string, string>> = {
@@ -58,10 +59,10 @@ const meet: Record<string, Record<string, string>> = {
     quote: 'Request a callback →',
   },
   es: {
-    kicker: 'Conoce a tu agente',
+    kicker: 'Conozca a su agente',
     h: 'Hola, soy Mikhail Kozlov.',
-    bio: 'Durante años, mi familia y yo hemos protegido a familias y negocios en Florida. El seguro se trata de personas, no de pólizas — cuando llamas, hablas conmigo y mi equipo, en inglés, español o ruso.',
-    talk: 'Habla con Mikhail',
+    bio: 'Durante años, mi familia y yo hemos protegido a familias y negocios en Florida. El seguro se trata de personas, no de pólizas — cuando usted llama, habla conmigo y con mi equipo, en inglés, español o ruso.',
+    talk: 'Hable con Mikhail',
     quote: 'Solicitar una llamada →',
   },
   ru: {
@@ -101,18 +102,17 @@ export default function Home({ params }: { params: { lang: string } }) {
             <br />
             <span className="badge white">● {t.hero.badge2}</span>
             <h1>
-              {t.hero.h1a}
+              {t.hero.h1a}{' '}
               <br />
               <span className="accent">{t.hero.h1b}</span>
             </h1>
             <p className="sub">{heroSub}</p>
             <Link href={`/${lang}/quote`} className="cta">{t.hero.cta} →</Link>
             <div className="rated">
-              <span className="stars">★★★★½</span>
               <span>
                 <strong>Mikhail Kozlov</strong> ·{' '}
                 <a
-                  href="https://www.experience.com/reviews/mikhail-7323351"
+                  href={REVIEWS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'underline' }}

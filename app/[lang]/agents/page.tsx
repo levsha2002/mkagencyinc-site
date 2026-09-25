@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
+import { REVIEWS_URL } from '@/lib/dictionaries';
 
 // "Our Agents" — Design G: sticky action panel + agent rows with photos.
 // Contact-by-name: every agent has call + text (SMS pre-fills their name).
 
 type Lang = 'en' | 'es' | 'ru';
-const PHONE = '3058593953';
+const PHONE = '+13058593953';
 
 const T: Record<Lang, any> = {
   en: {
@@ -20,7 +21,7 @@ const T: Record<Lang, any> = {
     panelSub: 'Call, text, visit — or request a callback and we call you.',
     callUs: 'Call us', textUs: 'Text us', visitUs: 'Visit us',
     callback: 'Request a callback →',
-    rated: '4.53★ · 68 verified reviews',
+    rated: 'Read our client reviews',
     community: 'See how our team gives back →',
     callT: 'Call', textT: 'Text',
     smsBody: "Hi! I'd like to talk to {name} about my insurance.",
@@ -35,7 +36,7 @@ const T: Record<Lang, any> = {
     panelSub: 'Llame, envíe un texto, visítenos — o solicite una llamada.',
     callUs: 'Llámenos', textUs: 'Texto', visitUs: 'Visítenos',
     callback: 'Solicitar una llamada →',
-    rated: '4.53★ · 68 reseñas verificadas',
+    rated: 'Lea las reseñas de nuestros clientes',
     community: 'Vea cómo nuestro equipo ayuda a la comunidad →',
     callT: 'Llamar', textT: 'Texto',
     smsBody: 'Hola! Me gustaría hablar con {name} sobre mi seguro.',
@@ -50,7 +51,7 @@ const T: Record<Lang, any> = {
     panelSub: 'Позвоните, напишите SMS, приезжайте — или закажите обратный звонок.',
     callUs: 'Позвонить', textUs: 'SMS', visitUs: 'Приехать',
     callback: 'Заказать обратный звонок →',
-    rated: '4.53★ · 68 проверенных отзывов',
+    rated: 'Читать отзывы клиентов',
     community: 'Как наша команда помогает сообществу →',
     callT: 'Позвонить', textT: 'Написать',
     smsBody: 'Здравствуйте! Хочу поговорить с {name} о страховке.',
@@ -64,11 +65,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/agents',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/agents'),
-  };
+  });
 }
 
 export default function AgentsPage({ params }: { params: { lang: string } }) {
@@ -102,7 +104,7 @@ export default function AgentsPage({ params }: { params: { lang: string } }) {
               target="_blank" rel="noopener noreferrer" className="ap-btn"
             >📍 {t.visitUs}</a>
             <Link href={`/${l}/quote`} className="ap-cta">{t.callback}</Link>
-            <span className="ap-rated">★ {t.rated}</span>
+            <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="ap-rated" style={{ textDecoration: 'underline' }}>{t.rated}</a>
           </aside>
 
           {/* Agent rows */}
