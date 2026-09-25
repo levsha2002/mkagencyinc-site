@@ -8,6 +8,19 @@ import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
+// Minimal HTML escaping for visitor-supplied values placed in lead emails.
+function esc(v: unknown): string {
+  return String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+}
+const str = (v: unknown, max = 500) => (typeof v === 'string' ? v.slice(0, max) : '');
+
+function clientIp(req: Request): string {
+  const h = req.headers;
+  const fwd = h.get('x-forwarded-for');
+  if (fwd) return fwd.split(',')[0].trim();
+  return h.get('x-real-ip') || h.get('x-vercel-forwarded-for') || 'unknown';
+}
+
 export async function POST(req: Request) {
   try {
     const b = await req.json();
@@ -33,6 +46,13 @@ export async function POST(req: Request) {
       b.contact_method === 'text' ? 'text' : 'call';
     const agentName: string = (b.agent_name || 'agent').trim() || 'agent';
     const attr = cleanAttribution(b.attribution);
+    // TCPA / FTSA evidence (optional fields, sent by forms since Sep 2026).
+    const consentText = str(b.consent_text, 2000);
+    const consentTextVersion = str(b.consent_text_version, 50) || 'unknown';
+    const consentUserAgent = str(b.consent_user_agent, 500);
+    const consentIp = clientIp(req);
+    const pageUrl = str(b.page_url, 500);
+    const clientTxnId = str(b.transaction_id, 100);
 
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
@@ -54,9 +74,17 @@ export async function POST(req: Request) {
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS agent_name TEXT DEFAULT 'agent'`;
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS gclid TEXT`;
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS utm TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS consent_text TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS consent_text_version TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS consent_ip TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS consent_user_agent TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS page_url TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS client_txn_id TEXT`;
 
-      await sql`INSERT INTO callbacks (name, phone, lang, urgent, contact_method, consent, agent_name, gclid, utm)
-        VALUES (${b.name}, ${b.phone}, ${b.lang}, ${urgent}, ${contactMethod}, ${b.consent}, ${agentName}, ${attr.gclid}, ${attr.utm})`;
+      await sql`INSERT INTO callbacks (name, phone, lang, urgent, contact_method, consent, agent_name, gclid, utm,
+        consent_text, consent_text_version, consent_ip, consent_user_agent, page_url, client_txn_id)
+        VALUES (${b.name}, ${b.phone}, ${b.lang}, ${urgent}, ${contactMethod}, ${b.consent}, ${agentName}, ${attr.gclid}, ${attr.utm},
+        ${consentText}, ${consentTextVersion}, ${consentIp}, ${consentUserAgent}, ${pageUrl}, ${clientTxnId})`;
     }
 
     if (process.env.RESEND_API_KEY) {
@@ -73,7 +101,8 @@ export async function POST(req: Request) {
           <p><b>Phone:</b> ${b.phone}</p>
           <p><b>Preferred contact method:</b> ${methodLabel}</p>
           <p><b>Requested agent:</b> ${agentName}</p>
-          <p><b>TCPA consent given:</b> Yes</p>
+          <p><b>TCPA consent given:</b> Yes (v${esc(consentTextVersion)})</p>
+          ${pageUrl ? `<p style="font-size:12px;color:#555"><b>Page:</b> ${esc(pageUrl)}</p>` : ''}
           ${attributionEmailRow(attr)}`,
       });
     }

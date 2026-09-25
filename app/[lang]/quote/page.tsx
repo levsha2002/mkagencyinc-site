@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
-import { trackConversion } from '@/lib/analytics';
+import { trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
+import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
-import { LEAD_MANAGER_URL } from '@/lib/dictionaries';
+import ConsentCheckbox from '@/components/ConsentCheckbox';
+import { LEAD_MANAGER_URL, getDict } from '@/lib/dictionaries';
 
 declare global {
   interface Window {
@@ -18,39 +20,58 @@ declare global {
 type Lang = 'en' | 'es' | 'ru';
 
 /* Insurance types for the compact dropdown — the full catalog with
-   descriptions lives on the /insurance page. */
-const CATS: { id: string; label: Record<Lang, string>; types: string[] }[] = [
+   descriptions lives on the /insurance page. `v` is the value sent with the
+   lead (kept in English for the agency inbox); the label is localized so
+   /es/quote no longer shows 19 English options. */
+type Opt = { v: string; es: string; ru: string };
+const CATS: { id: string; label: Record<Lang, string>; types: Opt[] }[] = [
   {
     id: 'auto',
     label: { en: 'Auto', es: 'Auto', ru: 'Авто' },
     types: [
-      'Standard / Low-Risk Auto',
-      'High-Risk · SR-22 / FR-44',
-      'Classic & Collector',
-      'Electric Vehicle (EV)',
-      'Commercial Auto',
-      'Rideshare · Uber / Lyft',
+      { v: 'Standard / Low-Risk Auto', es: 'Auto estándar / bajo riesgo', ru: 'Стандартное авто / низкий риск' },
+      { v: 'High-Risk · SR-22 / FR-44', es: 'Alto riesgo · SR-22 / FR-44', ru: 'Высокий риск · SR-22 / FR-44' },
+      { v: 'Classic & Collector', es: 'Clásicos y de colección', ru: 'Классические и коллекционные' },
+      { v: 'Electric Vehicle (EV)', es: 'Vehículo eléctrico (EV)', ru: 'Электромобиль (EV)' },
+      { v: 'Commercial Auto', es: 'Auto comercial', ru: 'Коммерческое авто' },
+      { v: 'Rideshare · Uber / Lyft', es: 'Rideshare · Uber / Lyft', ru: 'Rideshare · Uber / Lyft' },
     ],
   },
   {
     id: 'home',
     label: { en: 'Home', es: 'Hogar', ru: 'Дом' },
-    types: ['Single-Family Home', 'Condo (HO-6)', 'Townhouse', 'Renters'],
+    types: [
+      { v: 'Single-Family Home', es: 'Casa unifamiliar', ru: 'Частный дом' },
+      { v: 'Condo (HO-6)', es: 'Condominio (HO-6)', ru: 'Кондо (HO-6)' },
+      { v: 'Townhouse', es: 'Townhouse', ru: 'Таунхаус' },
+      { v: 'Renters', es: 'Inquilinos (renters)', ru: 'Арендаторы (renters)' },
+    ],
   },
   {
     id: 'life',
     label: { en: 'Life', es: 'Vida', ru: 'Жизнь' },
-    types: ['Term Life', 'Whole Life'],
+    types: [
+      { v: 'Term Life', es: 'Vida a término', ru: 'Срочное страхование жизни (term)' },
+      { v: 'Whole Life', es: 'Vida entera', ru: 'Пожизненное страхование (whole life)' },
+    ],
   },
   {
     id: 'other',
     label: { en: 'Specialty', es: 'Especiales', ru: 'Другое' },
-    types: ['Motorcycle', 'Boat / Watercraft', 'Jet Ski / PWC', 'Off-Road (ATV / UTV)', 'Golf Cart', 'Pet Insurance', 'Umbrella'],
+    types: [
+      { v: 'Motorcycle', es: 'Motocicleta', ru: 'Мотоцикл' },
+      { v: 'Boat / Watercraft', es: 'Bote / embarcación', ru: 'Лодка / катер' },
+      { v: 'Jet Ski / PWC', es: 'Jet ski / moto acuática', ru: 'Гидроцикл' },
+      { v: 'Off-Road (ATV / UTV)', es: 'Todoterreno (ATV / UTV)', ru: 'Внедорожная техника (ATV / UTV)' },
+      { v: 'Golf Cart', es: 'Carrito de golf', ru: 'Гольф-кар' },
+      { v: 'Pet Insurance', es: 'Seguro de mascotas', ru: 'Страхование питомцев' },
+      { v: 'Umbrella', es: 'Póliza paraguas (umbrella)', ru: 'Зонтичный полис (umbrella)' },
+    ],
   },
 ];
 
 const AGENTS = team.filter((m) => m.slug !== 'mikhail-kozlov');
-const PHONE = '3058593953';
+const PHONE = '+13058593953';
 const MAP_EMBED =
   'https://www.google.com/maps?q=33550+S+Dixie+Hwy+Suite+102,+Florida+City,+FL+33034&output=embed';
 
@@ -64,9 +85,8 @@ const UI: Record<Lang, Record<string, string>> = {
     formTitle: 'Request a callback',
     agentLabel: 'Who would you like to talk to?', agentAny: 'Any available agent',
     need: 'What do you need?', needPh: 'Choose insurance type…',
-    zip: 'ZIP code', name: 'Full name', phName: 'Your name', phone: 'Phone', email: 'Email',
+    zip: 'ZIP code', name: 'Full name', phName: 'Your name', phone: 'Phone', email: 'Email (optional)',
     message: 'Message (optional)', phMessage: 'Anything we should know?',
-    consent: 'I agree that M&K Agency may contact me by phone, text or email at the number provided about insurance, even if it is on a Do-Not-Call list. Consent is not a condition of purchase. Message and data rates may apply.',
     submit: 'Request my callback →', sending: 'Sending…',
     err: 'Something went wrong — please try again or call (305) 859-3953.',
     errConsent: 'Please check the consent box so we can contact you.',
@@ -80,23 +100,22 @@ const UI: Record<Lang, Record<string, string>> = {
   es: {
     tagline: 'Hogar · Auto · Comercial · Florida', call: 'Llamar',
     callUs: 'Llámenos', textUs: 'Envíe un texto', visitUs: 'Visítenos',
-    h1a: 'Contácte', h1b: 'nos',
+    h1a: '', h1b: 'Contáctenos',
     sub: 'Licenciados. Locales. En English, Español, По-русски.',
     meetAgents: '¿Prefiere a alguien en específico? Conozca a nuestros agentes →',
     formTitle: 'Solicitar una llamada',
     agentLabel: '¿Con quién le gustaría hablar?', agentAny: 'Cualquier agente disponible',
     need: '¿Qué necesita?', needPh: 'Elija el tipo de seguro…',
-    zip: 'Código postal', name: 'Nombre completo', phName: 'Tu nombre', phone: 'Teléfono', email: 'Correo electrónico',
+    zip: 'Código postal', name: 'Nombre completo', phName: 'Su nombre', phone: 'Teléfono', email: 'Correo electrónico (opcional)',
     message: 'Mensaje (opcional)', phMessage: '¿Algo que debamos saber?',
-    consent: 'Acepto que M&K Agency pueda contactarme por teléfono, mensaje de texto o correo electrónico al número proporcionado sobre seguros, incluso si está en una lista de No Llamar. El consentimiento no es una condición de compra. Pueden aplicarse tarifas de mensajes y datos.',
     submit: 'Solicitar mi llamada →', sending: 'Enviando…',
-    err: 'Algo salió mal — inténtalo de nuevo o llama al (305) 859-3953.',
-    errConsent: 'Marca la casilla de consentimiento para que podamos contactarte.',
-    privacy: '🔒 Tu información es privada. Sin spam, nunca.',
-    okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo te llamará en horario de oficina, lun–vie 9am–6pm ET. ¿Nos necesitas ahora?', okCall: '📞 Llamar (305) 859-3953',
+    err: 'Algo salió mal — inténtelo de nuevo o llame al (305) 859-3953.',
+    errConsent: 'Marque la casilla de consentimiento para que podamos contactarle.',
+    privacy: '🔒 Su información es privada. Nunca le enviaremos spam.',
+    okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo le llamará en horario de oficina, lun–vie 9am–6pm ET. ¿Nos necesita ahora mismo?', okCall: '📞 Llamar (305) 859-3953',
     mapTitle: '📍 Visítenos — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
     scan: 'Llene la solicitud de cotización',
-    callTitle: 'Llamar', textTitle: 'Texto', smsBody: 'Hola! Me gustaría hablar con {name} sobre mi seguro.',
+    callTitle: 'Llamar', textTitle: 'Texto', smsBody: '¡Hola! Me gustaría hablar con {name} sobre mi seguro.',
     prefAgent: 'Agente preferido',
   },
   ru: {
@@ -108,9 +127,8 @@ const UI: Record<Lang, Record<string, string>> = {
     formTitle: 'Заказать обратный звонок',
     agentLabel: 'С кем хотите поговорить?', agentAny: 'Любой свободный агент',
     need: 'Что вам нужно?', needPh: 'Выберите вид страхования…',
-    zip: 'Индекс (ZIP)', name: 'Полное имя', phName: 'Ваше имя', phone: 'Телефон', email: 'Эл. почта',
+    zip: 'Индекс (ZIP)', name: 'Полное имя', phName: 'Ваше имя', phone: 'Телефон', email: 'Эл. почта (необязательно)',
     message: 'Сообщение (необязательно)', phMessage: 'Что нам важно знать?',
-    consent: 'Я согласен(на), что M&K Agency может связаться со мной по телефону, SMS или электронной почте по указанному номеру по вопросам страхования, даже если номер внесён в список «Не звонить». Согласие не является условием покупки. Могут применяться тарифы за сообщения и передачу данных.',
     submit: 'Заказать обратный звонок →', sending: 'Отправка…',
     err: 'Что-то пошло не так — попробуйте ещё раз или позвоните (305) 859-3953.',
     errConsent: 'Отметьте согласие, чтобы мы могли с вами связаться.',
@@ -140,6 +158,7 @@ export default function ContactAgentsPage() {
     const company = hpEl ? hpEl.value : '';
     if (!form.consent) { setStatus('err-consent'); return; }
     setStatus('sending');
+    const transactionId = newTransactionId('lead');
     let src = 'contact-agents';
     try { const p = new URLSearchParams(window.location.search).get('src'); if (p) src = p; } catch {}
     const msg = (agent ? `${t.prefAgent}: ${agent}. ` : '') + form.message;
@@ -150,7 +169,9 @@ export default function ContactAgentsPage() {
           company,
           insurance_type: ins || 'General',
           zip_code: form.zip, name: form.name, phone: form.phone, email: form.email,
-          message: msg, consent: form.consent, lang, source: src, attribution: getAttribution(),
+          message: msg, lang, source: src, transaction_id: transactionId,
+          ...consentPayload(lang),
+          attribution: getAttribution(),
         }),
       });
       if (res.ok) {
@@ -161,14 +182,16 @@ export default function ContactAgentsPage() {
         // conversion action as LeadForm.tsx so all lead-capture forms roll
         // up into one "Submit lead form" conversion in Conversions -> Summary.
         if (typeof window !== 'undefined' && window.gtag) {
-          trackConversion('callback_request', {
-            insurance_type: ins || 'General',
-            lang,
-          });
+          trackConversion(
+            'callback_request',
+            { insurance_type: ins || 'General', lang },
+            { transactionId, email: form.email, phone: form.phone },
+          );
           window.gtag('event', 'generate_lead', {
             currency: 'USD',
             value: 1,
             insurance_type: ins || 'General',
+            transaction_id: transactionId,
           });
         }
       } else {
@@ -213,7 +236,7 @@ export default function ContactAgentsPage() {
         </div>
 
         <div className="qh-hero">
-          <h1>{t.h1a} <span className="qh-gold">{t.h1b}</span></h1>
+          <h1>{t.h1a ? `${t.h1a} ` : ''}<span className="qh-gold">{t.h1b}</span></h1>
           <p className="qh-hero-sub">{t.sub}</p>
 
           <p style={{ marginTop: 18 }}>
@@ -226,14 +249,14 @@ export default function ContactAgentsPage() {
 
       {/* ===== White content: callback form, map, QR ===== */}
       <div className="qh-wrap">
-        <form onSubmit={submit} className="qh-form">
+        <form onSubmit={submit} className="qh-form" id="quote" data-lead-form>
         <Honeypot />
           <h2>{t.formTitle}</h2>
 
           <div className="qh-row">
             <div>
-              <label>{t.agentLabel}</label>
-              <select value={agent} onChange={(e) => setAgent(e.target.value)}>
+              <label htmlFor="qh-agent">{t.agentLabel}</label>
+              <select id="qh-agent" name="agent" value={agent} onChange={(e) => setAgent(e.target.value)}>
                 <option value="">{t.agentAny}</option>
                 {AGENTS.map((a) => (
                   <option key={a.slug} value={a.name}>{a.name.split(' ')[0]}</option>
@@ -241,13 +264,13 @@ export default function ContactAgentsPage() {
               </select>
             </div>
             <div>
-              <label>{t.need}</label>
-              <select value={ins} onChange={(e) => setIns(e.target.value)} required>
+              <label htmlFor="qh-need">{t.need}</label>
+              <select id="qh-need" name="insurance_type" value={ins} onChange={(e) => setIns(e.target.value)} required>
                 <option value="" disabled>{t.needPh}</option>
                 {CATS.map((c) => (
                   <optgroup key={c.id} label={c.label[lang]}>
                     {c.types.map((ty) => (
-                      <option key={ty} value={ty}>{ty}</option>
+                      <option key={ty.v} value={ty.v}>{lang === 'en' ? ty.v : ty[lang]}</option>
                     ))}
                   </optgroup>
                 ))}
@@ -257,39 +280,36 @@ export default function ContactAgentsPage() {
 
           <div className="qh-row">
             <div>
-              <label>{t.zip}</label>
-              <input inputMode="numeric" maxLength={5} value={form.zip}
+              <label htmlFor="qh-zip">{t.zip}</label>
+              <input id="qh-zip" name="zip" autoComplete="postal-code" inputMode="numeric" maxLength={5} value={form.zip}
                 onChange={(e) => setForm({ ...form, zip: e.target.value })} placeholder="33034" required />
             </div>
             <div>
-              <label>{t.name}</label>
-              <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
+              <label htmlFor="qh-name">{t.name}</label>
+              <input id="qh-name" name="name" autoComplete="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder={t.phName} required />
             </div>
           </div>
 
           <div className="qh-row">
             <div>
-              <label>{t.phone}</label>
-              <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              <label htmlFor="qh-phone">{t.phone}</label>
+              <input id="qh-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder="(305) 555-0123" required />
             </div>
             <div>
-              <label>{t.email}</label>
-              <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="you@email.com" required />
+              <label htmlFor="qh-email">{t.email}</label>
+              <input id="qh-email" name="email" type="email" inputMode="email" autoComplete="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="you@email.com" />
             </div>
           </div>
 
-          <label>{t.message}</label>
-          <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
+          <label htmlFor="qh-message">{t.message}</label>
+          <textarea id="qh-message" name="message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
             placeholder={t.phMessage} />
 
-          <label className="qh-consent">
-            <input type="checkbox" checked={form.consent}
-              onChange={(e) => setForm({ ...form, consent: e.target.checked })} required />
-            <span>{t.consent}</span>
-          </label>
+          <ConsentCheckbox id="qh-consent" lang={lang} className="qh-consent" checked={form.consent}
+            onChange={(v) => setForm({ ...form, consent: v })} />
 
           <button type="submit" className="qh-btn qh-btn-navy" disabled={status === 'sending'}>
             {status === 'sending' ? t.sending : t.submit}
@@ -308,7 +328,7 @@ export default function ContactAgentsPage() {
 
         <div className="qh-qr">
           <a href={LEAD_MANAGER_URL} target="_blank" rel="noopener noreferrer">
-            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={116} height={116} />
+            <Image src="/images/lead-manager-qr.png" alt={getDict(lang).footerExtra.qrAlt} width={116} height={116} />
           </a>
           <span>{t.scan}</span>
         </div>

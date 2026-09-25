@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import type { InsuranceProduct } from '@/lib/insurance-products';
-import { trackConversion } from '@/lib/analytics';
+import { type InsuranceProduct, isBusinessProduct, VEHICLE_BUSINESS_SLUGS } from '@/lib/insurance-products';
+import { trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
+import { getDict } from '@/lib/dictionaries';
+import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
+import ConsentCheckbox from '@/components/ConsentCheckbox';
 
 declare global {
   interface Window {
@@ -19,21 +22,35 @@ export default function InsuranceQuoteForm({
   product: InsuranceProduct;
   lang: string;
 }) {
+  const t = getDict(lang).quoteForm;
+  const business = isBusinessProduct(product);
+  const askVehicles = VEHICLE_BUSINESS_SLUGS.has(product.slug);
+  const askVin = product.requiresVIN && !business;
+  const askDrivers = product.requiresDrivers && !business;
+
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
+  const [businessName, setBusinessName] = useState('');
+  const [businessType, setBusinessType] = useState('');
+  const [vehicles, setVehicles] = useState('');
   const [vin, setVin] = useState('');
   const [drivers, setDrivers] = useState('');
   const [comments, setComments] = useState('');
   const [consent, setConsent] = useState(false);
-  const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
+  const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err' | 'consent'>('');
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const hpEl = (e.currentTarget as HTMLFormElement).elements.namedItem('company') as HTMLInputElement;
     const company = hpEl ? hpEl.value : '';
-    if (!consent) return;
+    if (!consent) {
+      setStatus('consent');
+      return;
+    }
     setStatus('sending');
+    const transactionId = newTransactionId('quote');
     try {
       const res = await fetch('/api/insurance-quote', {
         method: 'POST',
@@ -42,42 +59,39 @@ export default function InsuranceQuoteForm({
           company,
           name,
           phone,
+          email,
           address,
-          vin: product.requiresVIN ? vin : '',
-          drivers: product.requiresDrivers ? drivers : '',
+          business_name: business ? businessName : '',
+          business_type: business ? businessType : '',
+          vehicles: askVehicles ? vehicles : '',
+          vin: askVin ? vin : '',
+          drivers: askDrivers ? drivers : '',
           comments,
           product_slug: product.slug,
           product_title: product.title,
           lang,
-          consent: true,
+          transaction_id: transactionId,
+          ...consentPayload(lang),
           attribution: getAttribution(),
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');
       if (res.ok) {
-        // Fires on every successful callback request from an insurance-type
-        // landing page (/insurance/auto, /insurance/home, etc). Same Google
-        // Ads conversion action as LeadForm.tsx and the /quote page, so all
-        // lead-capture forms roll up into one "Submit lead form" conversion.
+        // Success-only: same "Submit lead form" conversion action as
+        // LeadForm.tsx and /quote.
         if (typeof window !== 'undefined' && window.gtag) {
-          trackConversion('quote_submit', {
-            insurance_type: product.title,
-            product_slug: product.slug,
-            lang,
-          });
+          trackConversion(
+            'quote_submit',
+            { insurance_type: product.title, product_slug: product.slug, lang },
+            { transactionId, email, phone },
+          );
           window.gtag('event', 'generate_lead', {
             currency: 'USD',
             value: 1,
             insurance_type: product.title,
+            transaction_id: transactionId,
           });
         }
-        setName('');
-        setPhone('');
-        setAddress('');
-        setVin('');
-        setDrivers('');
-        setComments('');
-        setConsent(false);
       }
     } catch {
       setStatus('err');
@@ -86,93 +100,118 @@ export default function InsuranceQuoteForm({
 
   if (status === 'ok') {
     return (
-      <div className="card">
-        <p className="status-ok">
-          {({
-            es: 'Gracias. Un agente licenciado le llamará en horario de oficina — lun–vie, 9am–6pm ET.',
-            ru: 'Спасибо! Лицензированный агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
-          } as Record<string, string>)[lang] ??
-            'Thank you! A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.'}
-        </p>
+      <div className="card" id="quote" data-lead-form>
+        <p className="status-ok" aria-live="polite">{t.ok}</p>
       </div>
     );
   }
 
+  const id = (s: string) => `iq-${s}`;
+
   return (
-    <div className="card">
-      <h2>Talk to a licensed agent about {product.title.toLowerCase()}</h2>
-      <p className="sub">Takes about a minute. A real, licensed agent calls you back fast.</p>
+    <div className="card" id="quote" data-lead-form>
+      <h2>{t.title.replace('{product}', product.title.toLowerCase())}</h2>
+      <p className="sub">{t.sub}</p>
       <form onSubmit={submit}>
         <Honeypot />
         <div className="grid2">
           <div className="field">
-            <label>Full name</label>
-            <input required value={name} onChange={(e) => setName(e.target.value)} />
+            <label htmlFor={id('name')}>{t.name}</label>
+            <input id={id('name')} name="name" required autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="field">
-            <label>Phone</label>
-            <input required type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <label htmlFor={id('phone')}>{t.phone}</label>
+            <input
+              id={id('phone')}
+              name="phone"
+              required
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
         </div>
 
-        <div className="field">
-          <label>Address</label>
-          <input required value={address} onChange={(e) => setAddress(e.target.value)} />
+        {business && (
+          <div className="grid2">
+            <div className="field">
+              <label htmlFor={id('bname')}>{t.businessName}</label>
+              <input id={id('bname')} name="business_name" autoComplete="organization" value={businessName} onChange={(e) => setBusinessName(e.target.value)} />
+            </div>
+            <div className="field">
+              <label htmlFor={id('btype')}>{t.businessType}</label>
+              <input id={id('btype')} name="business_type" placeholder={t.businessTypePh} value={businessType} onChange={(e) => setBusinessType(e.target.value)} />
+            </div>
+          </div>
+        )}
+
+        <div className={askVehicles ? 'grid2' : undefined}>
+          <div className="field">
+            <label htmlFor={id('email')}>{t.email}</label>
+            <input id={id('email')} name="email" type="email" inputMode="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          {askVehicles && (
+            <div className="field">
+              <label htmlFor={id('vehicles')}>{t.vehicles}</label>
+              <input id={id('vehicles')} name="vehicles" type="number" inputMode="numeric" min={1} value={vehicles} onChange={(e) => setVehicles(e.target.value)} />
+            </div>
+          )}
         </div>
 
-        {(product.requiresVIN || product.requiresDrivers) && (
+        {!business && (
+          <div className="field">
+            <label htmlFor={id('address')}>{t.address}</label>
+            <input id={id('address')} name="address" autoComplete="street-address" value={address} onChange={(e) => setAddress(e.target.value)} />
+          </div>
+        )}
+
+        {(askVin || askDrivers) && (
           <div className="grid2">
-            {product.requiresVIN && (
+            {askVin && (
               <div className="field">
-                <label>VIN number (optional)</label>
-                <input value={vin} onChange={(e) => setVin(e.target.value)} placeholder="17-character VIN" />
+                <label htmlFor={id('vin')}>{t.vin}</label>
+                <input id={id('vin')} name="vin" autoCapitalize="characters" maxLength={17} value={vin} onChange={(e) => setVin(e.target.value)} placeholder={t.vinPh} />
               </div>
             )}
-            {product.requiresDrivers && (
+            {askDrivers && (
               <div className="field">
-                <label>Number of drivers</label>
-                <input
-                  type="number"
-                  min={1}
-                  value={drivers}
-                  onChange={(e) => setDrivers(e.target.value)}
-                />
+                <label htmlFor={id('drivers')}>{t.drivers}</label>
+                <input id={id('drivers')} name="drivers" type="number" inputMode="numeric" min={1} value={drivers} onChange={(e) => setDrivers(e.target.value)} />
               </div>
             )}
           </div>
         )}
 
         <div className="field">
-          <label>Coverages you're interested in (additional comments)</label>
+          <label htmlFor={id('comments')}>{t.comments}</label>
           <textarea
-            rows={3}
+            id={id('comments')}
+            name="comments"
+            rows={2}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
-            placeholder="e.g. full coverage, specific limits, current carrier, anything else we should know"
+            placeholder={business ? t.commentsPhCommercial : t.commentsPh}
           />
         </div>
 
-        <div className="consent">
-          <input
-            type="checkbox"
-            required
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-          />
-          <span>
-            I agree that M&amp;K Agency may contact me by phone, text or email at
-            the number provided about insurance, even if it is on a Do-Not-Call list. Consent is
-            not a condition of purchase. Message and data rates may apply.
-          </span>
-        </div>
+        <ConsentCheckbox
+          id={id('consent')}
+          lang={lang}
+          checked={consent}
+          onChange={(v) => {
+            setConsent(v);
+            if (v && status === 'consent') setStatus('');
+          }}
+        />
 
-        <button type="submit" className="submit" disabled={status === 'sending' || !consent}>
-          {status === 'sending' ? 'Sending...' : 'Request my callback →'}
+        <button type="submit" className="submit" disabled={status === 'sending'}>
+          {status === 'sending' ? t.sending : t.submit}
         </button>
-        {status === 'err' && (
-          <p className="status-err">Something went wrong. Please call us at (305) 859-3953.</p>
-        )}
-        <p className="privacy">Your info stays private. No spam, ever.</p>
+        {status === 'consent' && <p className="status-err" aria-live="polite">{t.consentNeeded}</p>}
+        {status === 'err' && <p className="status-err" aria-live="polite">{t.err}</p>}
+        <p className="privacy">{t.privacy}</p>
       </form>
     </div>
   );
