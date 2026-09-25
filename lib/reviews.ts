@@ -1,12 +1,18 @@
-// Server-only: reads the public Allstate agent page and extracts the
-// aggregate rating that page publishes in its schema.org microdata.
-// - Cached with ISR-style revalidation (weekly), so at most one request per
-//   week per deployment; pages that render the badge stay static + ISR.
-// - Never throws. Any network error, block, markup change or implausible value
-//   returns the checked-in fallback from data/reviews.json.
-// - We only DISPLAY the number (with a link to the source). We deliberately do
-//   not emit AggregateRating/Review structured data on our own site
-//   (Google treats that as self-serving review markup).
+// Server-only source for the rating shown by components/RatingBadge.
+//
+// DEFAULT: reads data/reviews.json (bundled at build time). Allstate's CDN
+// returns HTTP 403 to Vercel, so the weekly refresh runs OUTSIDE Vercel:
+//   node scripts/update-reviews.mjs <rating> <count>
+// updates data/reviews.json + public/auto-quote.html, then commit to main
+// (which redeploys).
+//
+// OPTIONAL: set RATING_LIVE_FETCH=1 to try the public Allstate agent page at
+// build/ISR time (weekly fetch cache, 5s timeout). It never throws; any error,
+// block, markup change or implausible value falls back to data/reviews.json.
+//
+// We only DISPLAY the number (with a link to the source). We deliberately do
+// not emit AggregateRating/Review structured data on our own site
+// (Google treats that as self-serving review markup).
 import 'server-only';
 import fallbackData from '@/data/reviews.json';
 
@@ -16,7 +22,7 @@ export type Rating = {
   source: string;
   url: string;
   checked: string; // YYYY-MM-DD of the fallback, or ISO time of the live fetch
-  live: boolean; // true = parsed from the Allstate page, false = fallback
+  live: boolean; // true = parsed from the Allstate page, false = data/reviews.json
   note?: string; // short reason when the fallback was used (rendered as a data attribute)
 };
 
@@ -76,7 +82,11 @@ function fail(msg: string): Rating {
   return { ...RATING_FALLBACK, note: lastReason };
 }
 
+export const LIVE_FETCH_ENABLED = process.env.RATING_LIVE_FETCH === '1';
+
 export async function getRating(): Promise<Rating> {
+  // Default: no network request, just the checked-in numbers.
+  if (!LIVE_FETCH_ENABLED) return RATING_FALLBACK;
   if (lastFailure && Date.now() - lastFailure < FAILURE_BACKOFF_MS) return { ...RATING_FALLBACK, note: `backoff: ${lastReason}` };
   try {
     const res = await fetch(RATING_FALLBACK.url, {

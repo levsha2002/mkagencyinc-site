@@ -10,8 +10,8 @@ import { pageMetadata } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
 import Image from 'next/image';
 
-// ISR: re-render daily; the Allstate rating fetch itself is cached for a week
-// (explicit, so it holds even when the rating fetch is skipped/fails).
+// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
+// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
 export const revalidate = 86400;
 
 export async function generateStaticParams() {

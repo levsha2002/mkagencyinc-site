@@ -5,8 +5,8 @@ import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import { pageMetadata } from '@/lib/seo';
 
-// ISR: re-render daily; the Allstate rating fetch itself is cached for a week
-// (explicit, so it holds even when the rating fetch is skipped/fails).
+// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
+// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
 export const revalidate = 86400;
 
 // Гео-лендинг: Classic & Collector Car Insurance — Florida City / Homestead.
