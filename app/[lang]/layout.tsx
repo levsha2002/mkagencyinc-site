@@ -26,8 +26,8 @@ const playfair = Playfair_Display({
 });
 
 // Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
-// per-lead "conversion" event fires from LeadForm.tsx once the form is
-// successfully submitted. See components/LeadForm.tsx for the event call.
+// per-lead "conversion" events fire from lib/analytics.ts trackConversion()
+// only after a lead API answers OK (forms, Talk-to-Agent, chat).
 import { GOOGLE_ADS_ID, phoneClickTrackingScript } from '@/lib/analytics';
 import { attributionCaptureScript } from '@/lib/attribution';
 
@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       title: t.meta.title,
       description: t.meta.desc,
       type: 'website',
+      url: `/${params.lang}`,
       siteName: 'M&K Agency Inc.',
       locale: ({ en: 'en_US', es: 'es_US', ru: 'ru_RU' } as Record<string, string>)[params.lang] ?? 'en_US',
       images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'M&K Agency — Florida Insurance: Auto, Home, Commercial' }],
@@ -144,7 +145,7 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${GOOGLE_ADS_ID}');
+                gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
               `}
             </Script>
           </>
