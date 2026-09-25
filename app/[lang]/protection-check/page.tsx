@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import ProtectionPlanner from '@/components/ProtectionPlanner';
 import MortgageCalculator from '@/components/MortgageCalculator';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 const META: Record<string, { title: string; desc: string; h1: string; sub: string }> = {
   en: {
@@ -26,11 +26,12 @@ const META: Record<string, { title: string; desc: string; h1: string; sub: strin
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const m = META[params.lang] || META.en;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/protection-check',
     title: m.title,
     description: m.desc,
-    alternates: buildAlternates(params.lang, '/protection-check'),
-  };
+  });
 }
 
 export default function ProtectionCheckPage({ params }: { params: { lang: string } }) {

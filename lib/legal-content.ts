@@ -9,7 +9,7 @@ export type LegalDoc = {
 export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
   en: {
     title: 'Privacy Policy',
-    effectiveDateLabel: 'Effective Date: July 2026',
+    effectiveDateLabel: 'Effective Date: July 2026 · Last updated: September 2026',
     intro:
       'M&K Agency Inc. ("M&K Agency," "we," "us," or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit mkagencyinc.com (the "Site") or otherwise interact with us, including by phone, text message, or in person at our office.',
     sections: [
@@ -36,6 +36,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: '4. Cookies and Tracking Technologies',
         body: [
           'We may use cookies, web beacons, and similar technologies to recognize your browser, remember your preferences, and understand how visitors use the Site. You can typically set your browser to refuse cookies or alert you when cookies are being sent, though some parts of the Site may not function properly without them.',
+          'Advertising and measurement (Google Ads). We advertise with Google Ads and use the Google tag on the Site to measure which ads lead to calls, texts and form requests (conversion tracking) and to show our ads to people who have visited the Site (remarketing). When you submit a form, the email address and phone number you entered may be shared with Google in hashed (one-way encoded) form to match the request to an ad click ("enhanced conversions"). We also store the ad-click identifier from the page address (such as gclid) with your request. Google\u2019s use of this data is described at https://policies.google.com/technologies/partner-sites. You can turn off personalized ads at https://adssettings.google.com, or block cookies in your browser.',
         ],
       },
       {
@@ -92,7 +93,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
   },
   es: {
     title: 'Política de Privacidad',
-    effectiveDateLabel: 'Fecha de vigencia: julio de 2026',
+    effectiveDateLabel: 'Fecha de vigencia: julio de 2026 · Última actualización: septiembre de 2026',
     intro:
       'M&K Agency Inc. ("M&K Agency", "nosotros" o "nuestro") respeta su privacidad. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando visita mkagencyinc.com (el "Sitio") o interactúa con nosotros de otra manera, incluso por teléfono, mensaje de texto o en persona en nuestra oficina.',
     sections: [
@@ -119,6 +120,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: '4. Cookies y Tecnologías de Seguimiento',
         body: [
           'Podemos usar cookies y tecnologías similares para reconocer su navegador y entender cómo se usa el Sitio. Puede configurar su navegador para rechazar cookies, aunque algunas partes del Sitio pueden no funcionar correctamente.',
+          'Publicidad y medición (Google Ads). Anunciamos con Google Ads y usamos la etiqueta de Google en el Sitio para medir qué anuncios generan llamadas, textos y solicitudes por formulario (seguimiento de conversiones) y para mostrar nuestros anuncios a personas que han visitado el Sitio (remarketing). Cuando usted envía un formulario, el correo electrónico y el número de teléfono que escribió pueden compartirse con Google en forma cifrada (hash, codificación de una sola vía) para relacionar la solicitud con un clic en un anuncio ("conversiones mejoradas"). También guardamos con su solicitud el identificador del clic en el anuncio que aparece en la dirección de la página (como gclid). El uso que Google hace de estos datos se describe en https://policies.google.com/technologies/partner-sites. Puede desactivar los anuncios personalizados en https://adssettings.google.com o bloquear las cookies en su navegador.',
         ],
       },
       {
@@ -200,6 +202,7 @@ export const privacyPolicy: Record<'en' | 'es' | 'ru', LegalDoc> = {
         heading: '4. Файлы cookie',
         body: [
           'Мы можем использовать cookie-файлы, чтобы понимать, как посетители используют Сайт. Вы можете настроить браузер на отклонение cookie.',
+          'Реклама и аналитика (Google Ads). Мы размещаем рекламу в Google Ads и используем тег Google на Сайте, чтобы измерять, какие объявления приводят к звонкам, SMS и заявкам через формы (отслеживание конверсий), и показывать нашу рекламу людям, которые уже посещали Сайт (ремаркетинг). Когда вы отправляете форму, указанные вами email и номер телефона могут передаваться Google в захешированном (необратимо закодированном) виде, чтобы сопоставить заявку с кликом по объявлению («расширенные конверсии»). Мы также сохраняем вместе с заявкой идентификатор клика по объявлению из адреса страницы (например, gclid). Как Google использует эти данные, описано на https://policies.google.com/technologies/partner-sites. Отключить персонализированную рекламу можно на https://adssettings.google.com или заблокировав cookie в браузере.',
         ],
       },
       {
@@ -595,7 +598,7 @@ export const disclosures: Record<'en' | 'es' | 'ru', LegalDoc> = {
     title: 'Insurance Disclosures',
     effectiveDateLabel: 'Effective date: July 25, 2026',
     intro:
-      'This page provides licensing information and required insurance disclosures for M&K Agency Inc. It is provided for transparency and consumer protection. Note: wording regarding carrier relationships is subject to review by the carrier’s advertising compliance program and a licensed attorney.',
+      'This page provides licensing information and required insurance disclosures for M&K Agency Inc. It is provided for transparency and consumer protection.',
     sections: [
       {
         heading: 'Licensing',
