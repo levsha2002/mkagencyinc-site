@@ -2,14 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL } from '@/lib/dictionaries';
 
-const SCAN: Record<string, string> = {
-  en: 'Fill Out Request for a Quote',
-  es: 'Llene la solicitud de cotización',
-  ru: 'Заполните заявку на расчёт',
-};
-
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
+  const fx = t.footerExtra;
   return (
     <footer className="footer">
       <div className="container">
@@ -20,22 +15,22 @@ export default function Footer({ lang }: { lang: string }) {
             rel="noopener noreferrer"
             style={{ background: '#fff', padding: 10, borderRadius: 12, lineHeight: 0 }}
           >
-            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={112} height={112} />
+            <Image src="/images/lead-manager-qr.png" alt={fx.qrAlt} width={112} height={112} />
           </a>
-          <span style={{ fontSize: '.78rem', color: '#bcd0ea', fontWeight: 600 }}>{SCAN[lang] || SCAN.en}</span>
+          <span style={{ fontSize: '.78rem', color: '#bcd0ea', fontWeight: 600 }}>{fx.scan}</span>
         </div>
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>
           {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem', opacity: 0.85 }}>
-          Florida License #L109526 · NPN #19586268 · Agent in Charge: Mikhail Kozlov ·{' '}
+          {fx.licenseLine} ·{' '}
           <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#bcd0ea' }}>
             mikhailkozlov@allstate.com
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem' }}>
-          Reviews:{' '}
+          {fx.reviews}:{' '}
           <a
             href="https://www.experience.com/reviews/mikhail-7323351"
             target="_blank"
@@ -55,7 +50,7 @@ export default function Footer({ lang }: { lang: string }) {
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
-          <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>Community Businesses</Link>
+          <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>{fx.community}</Link>
           {' · '}
           <Link href={`/${lang}/privacy`} style={{ color: '#bcd0ea' }}>{t.footer.privacy}</Link>
           {' · '}
@@ -64,16 +59,16 @@ export default function Footer({ lang }: { lang: string }) {
           <Link href={`/${lang}/disclosures`} style={{ color: '#bcd0ea' }}>{t.footer.disclosures}</Link>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
-          Please visit my site,{' '}
+          {fx.allstateBefore}
           <a
             href="https://agents.allstate.com/mikhail-kozlov-florida-city-fl.html"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#bcd0ea', textDecoration: 'underline' }}
           >
-            Allstate Agency - Mikhail Kozlov
+            {fx.allstateLink}
           </a>
-          , to get more information on the Allstate products and services I can offer.
+          {fx.allstateAfter}
         </p>
         <p suppressHydrationWarning>© {new Date().getFullYear()} M&K Agency Inc. {t.footer.rights}</p>
       </div>

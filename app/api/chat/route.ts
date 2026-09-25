@@ -243,7 +243,19 @@ export async function POST(req) {
       },
     }).catch((err) => console.error('notifyAgent error:', err));
 
-    return json({ reply });
+    // Tells the widget the conversation (with any phone/email the visitor
+    // typed) was forwarded to the agency, so it can record a chat_lead
+    // conversion. Only set on this success path; error paths above return
+    // without notifying the agency.
+    const visitorText = (Array.isArray(messages) ? messages : [])
+      .filter((m) => m && m.role === 'user')
+      .map((m) => String(m.content || ''))
+      .join(' \n ');
+    const lead_captured =
+      /(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/.test(visitorText) ||
+      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(visitorText);
+
+    return json({ reply, lead_captured });
   } catch (e) {
     console.error('Chat route error:', e);
     return json({ reply: `Something went wrong — please call us at ${PHONE_DISPLAY}.` }, 200);

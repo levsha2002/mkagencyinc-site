@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, locales, LEAD_MANAGER_URL } from '@/lib/dictionaries';
 
 export default function Header({ lang }: { lang: string }) {
@@ -18,6 +19,14 @@ export default function Header({ lang }: { lang: string }) {
 
   const qrCaption =
     lang === 'es' ? 'Llene la solicitud de cotización' : lang === 'ru' ? 'Заполните заявку на расчёт' : 'Fill Out Request for a Quote';
+
+  // Pages that already carry an on-site lead form: the header's quote CTA
+  // jumps to that form (tracked conversion) instead of sending the visitor
+  // to the off-site Allstate Lead Manager page, which has no Google tag.
+  const pathname = usePathname() || '';
+  const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
+  const onSiteQuoteLabel =
+    lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
@@ -75,16 +84,20 @@ export default function Header({ lang }: { lang: string }) {
             📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
           </a>
           <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">{t.contact.textUs}</span></a>
-          <a
-            href={LEAD_MANAGER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="header-qr"
-            title={qrCaption}
-          >
-            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={48} height={48} />
-            <span className="header-qr-text">{qrCaption}</span>
-          </a>
+          {hasOnSiteForm ? (
+            <a href="#quote" className="text-btn header-quote-btn">📝 <span className="text-btn-text">{onSiteQuoteLabel}</span></a>
+          ) : (
+            <a
+              href={LEAD_MANAGER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-qr"
+              title={qrCaption}
+            >
+              <Image src="/images/lead-manager-qr.png" alt={t.footerExtra.qrAlt} width={48} height={48} />
+              <span className="header-qr-text">{qrCaption}</span>
+            </a>
+          )}
         </div>
       </div>
 

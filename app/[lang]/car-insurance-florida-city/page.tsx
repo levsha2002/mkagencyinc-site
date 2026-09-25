@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict, REVIEWS_URL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 // Гео-лендинг: Car Insurance — Florida City / Homestead.
 // Контент самодостаточный (не в dictionaries.ts), по образцу quote/layout.tsx.
@@ -16,7 +16,7 @@ const C: Record<Lang, any> = {
       'Local licensed agents in Florida City and Homestead explain exactly what your auto policy covers. English, Español, по-русски.',
     kicker: 'Auto Insurance · Florida City & Homestead',
     h1a: 'Car insurance in Florida City & Homestead,',
-    h1b: 'without overpaying.',
+    h1b: 'explained in plain language.',
     sub: 'Your neighbors on S Dixie Hwy will explain exactly what your auto policy covers. One call, three languages, real local agents.',
     cta: 'Have an agent call me',
     call: `Call ${PHONE_DISPLAY}`,
@@ -53,13 +53,13 @@ const C: Record<Lang, any> = {
       'Agentes locales licenciados en Florida City y Homestead le explican qué cubre su póliza de auto. Hablamos español.',
     kicker: 'Seguro de Auto · Florida City y Homestead',
     h1a: 'Seguro de auto en Florida City y Homestead,',
-    h1b: 'sin pagar de más.',
+    h1b: 'explicado con claridad.',
     sub: 'Sus vecinos en S Dixie Hwy le explican exactamente qué cubre su póliza de auto. Una llamada, tres idiomas, agentes locales de verdad.',
     cta: 'Que me llame un agente',
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué el seguro de auto cuesta más aquí — y qué hacemos al respecto',
     whyText:
-      'Los conductores de Miami-Dade pagan algunas de las primas más altas de Florida: tráfico denso en la US-1 y el Turnpike, alto porcentaje de conductores sin seguro y exposición a tormentas. Como agencia local en Florida City, revisamos su perfil exacto de manejo y aplicamos cada descuento que le corresponde — para que obtenga una tarifa justa y competitiva, explicada en lenguaje sencillo.',
+      'Los conductores de Miami-Dade pagan algunas de las primas más altas de Florida: tráfico denso en la US-1 y el Turnpike, alto porcentaje de conductores sin seguro y exposición a tormentas. Como agencia local en Florida City, revisamos su perfil exacto de manejo y aplicamos cada descuento que le corresponde — y le explicamos su cobertura en lenguaje sencillo.',
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
       { h: 'Mínimo estatal: PIP y PDL', p: 'Florida exige $10,000 de PIP y $10,000 de responsabilidad por daños a la propiedad. Cumplimos la ley — y le explicamos dónde el mínimo lo deja expuesto.' },
@@ -90,13 +90,13 @@ const C: Record<Lang, any> = {
       'Местные лицензированные агенты во Флорида-Сити и Хомстеде объяснят, что покрывает ваш полис. Говорим по-русски.',
     kicker: 'Автостраховка · Florida City и Homestead',
     h1a: 'Автостраховка во Florida City и Homestead —',
-    h1b: 'без переплаты.',
+    h1b: 'объясним простыми словами.',
     sub: 'Ваши соседи с S Dixie Hwy объяснят, что именно покрывает ваш полис. Один звонок, три языка, настоящие местные агенты.',
     cta: 'Заказать звонок агента',
     call: `Звоните ${PHONE_DISPLAY}`,
     whyTitle: 'Почему автостраховка здесь дороже — и что мы с этим делаем',
     whyText:
-      'Водители Miami-Dade платят одни из самых высоких премий во Флориде: плотный трафик на US-1 и Turnpike, высокая доля незастрахованных водителей и ураганы поднимают цены. Как местное агентство во Florida City, мы разбираем ваш профиль вождения и применяем каждую положенную скидку — чтобы вы получили честный, конкурентный тариф, объяснённый простыми словами.',
+      'Водители Miami-Dade платят одни из самых высоких премий во Флориде: плотный трафик на US-1 и Turnpike, высокая доля незастрахованных водителей и ураганы поднимают цены. Как местное агентство во Florida City, мы разбираем ваш профиль вождения и применяем каждую положенную скидку — и объясняем ваше покрытие простыми словами.',
     covTitle: 'Что мы считаем каждый день',
     cov: [
       { h: 'Минимум штата: PIP и PDL', p: 'Флорида требует $10,000 PIP и $10,000 ответственности за имущество. Мы обеспечим соответствие закону — и объясним, где минимальное покрытие оставляет вас без защиты.' },
@@ -130,11 +130,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/car-insurance-florida-city',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/car-insurance-florida-city'),
-  };
+  });
 }
 
 export default function CarInsuranceFloridaCity({ params }: { params: { lang: string } }) {
@@ -164,8 +165,12 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
             <div className="rated" style={{ marginLeft: 12 }}>
-              <span className="stars">★★★★★</span>
-              <span>{t.langLine}</span>
+              <span>
+                {t.langLine} ·{' '}
+                <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  {getDict(l).hero.rated}
+                </a>
+              </span>
             </div>
           </div>
           <LeadForm lang={l} />
@@ -212,7 +217,7 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
         </div>
       </section>
 
-      <section className="section" style={{ background: '#f2f7ff' }} id="quote">
+      <section className="section" style={{ background: '#f2f7ff' }} id="faq">
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>

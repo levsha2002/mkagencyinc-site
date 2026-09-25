@@ -1,15 +1,16 @@
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/team',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/team'),
-  };
+  });
 }
 
 export default function TeamPage({ params }: { params: { lang: string } }) {

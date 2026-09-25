@@ -39,27 +39,83 @@ export const CONVERSION_LABELS: Record<ConversionAction, string | null> = {
   callback_request:
     process.env.NEXT_PUBLIC_ADS_LABEL_CALLBACK || '-1BtCL2Fj9EcELj-waBE',
   chat_lead: process.env.NEXT_PUBLIC_ADS_LABEL_CHAT_LEAD || 'LgDxCKDLotkcELj-waBE',
-  // Not yet created in the Ads account. The GA4 event still fires, so the
-  // action is observable in Analytics — it simply does not feed Ads bidding
-  // until a conversion action exists and its label is added here.
-  talknow_lead: process.env.NEXT_PUBLIC_ADS_LABEL_TALKNOW || null,
+  // The "Talk to Agent Now" modal is a lead form like any other, so until a
+  // dedicated conversion action exists it reports into the same "Submit lead
+  // form" action as the other forms (label below). Set
+  // NEXT_PUBLIC_ADS_LABEL_TALKNOW to split it out later; the env var wins.
+  talknow_lead: process.env.NEXT_PUBLIC_ADS_LABEL_TALKNOW || '-1BtCL2Fj9EcELj-waBE',
   quote_submit:
     process.env.NEXT_PUBLIC_ADS_LABEL_QUOTE || '-1BtCL2Fj9EcELj-waBE',
 };
 
 type Params = Record<string, string | number | boolean | undefined>;
 
-/** Fires a named GA4 event plus, when a label is configured, the Ads conversion. */
-export function trackConversion(action: ConversionAction, params: Params = {}) {
+/** Optional per-submission data for the Ads conversion. */
+export type ConversionOptions = {
+  /** Unique per submission — Google Ads de-duplicates conversions on it. */
+  transactionId?: string;
+  /** Raw visitor input; normalised before being handed to gtag user_data. */
+  email?: string;
+  phone?: string;
+};
+
+/** A fresh id for one form submission. */
+export function newTransactionId(prefix = 'mk'): string {
+  try {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return `${prefix}-${crypto.randomUUID()}`;
+    }
+  } catch {}
+  return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+/** US numbers to E.164 (+1XXXXXXXXXX). Returns '' when it can't be sure. */
+export function toE164(raw?: string): string {
+  if (!raw) return '';
+  const trimmed = raw.trim();
+  const digits = trimmed.replace(/\D/g, '');
+  if (trimmed.startsWith('+') && digits.length >= 10 && digits.length <= 15) return `+${digits}`;
+  if (digits.length === 10) return `+1${digits}`;
+  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
+  return '';
+}
+
+function normEmail(raw?: string): string {
+  const e = (raw || '').trim().toLowerCase();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) ? e : '';
+}
+
+/** Enhanced conversions: hand gtag the visitor's email / phone right before
+ *  the conversion fires (gtag hashes them before sending). Forms reset right
+ *  after a submit, so automatic page scraping could not find them. */
+export function setUserData(opts: { email?: string; phone?: string } = {}) {
+  if (typeof window === 'undefined') return;
+  const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
+  if (typeof gtag !== 'function') return;
+  const email = normEmail(opts.email);
+  const phone_number = toE164(opts.phone);
+  if (!email && !phone_number) return;
+  const data: Record<string, string> = {};
+  if (email) data.email = email;
+  if (phone_number) data.phone_number = phone_number;
+  gtag('set', 'user_data', data);
+}
+
+/** Fires a named GA4 event plus, when a label is configured, the Ads conversion.
+ *  Call only after the lead API has answered OK. */
+export function trackConversion(action: ConversionAction, params: Params = {}, opts: ConversionOptions = {}) {
   if (typeof window === 'undefined') return;
   const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
   if (typeof gtag !== 'function') return;
 
-  gtag('event', action, { ...params, send_to: GOOGLE_ADS_ID });
+  setUserData({ email: opts.email, phone: opts.phone });
+  const transaction_id = opts.transactionId || newTransactionId(action);
+
+  gtag('event', action, { ...params, transaction_id, send_to: GOOGLE_ADS_ID });
 
   const label = CONVERSION_LABELS[action];
   if (label) {
-    gtag('event', 'conversion', { send_to: `${GOOGLE_ADS_ID}/${label}`, ...params });
+    gtag('event', 'conversion', { send_to: `${GOOGLE_ADS_ID}/${label}`, ...params, transaction_id });
   }
 }
 
@@ -79,6 +135,13 @@ export function phoneClickTrackingScript() {
   document.addEventListener('click', function(e){
     var t=e.target;
     if(!t || !t.closest) return;
+    // Off-site Allstate Lead Manager form: observable event only, NOT a
+    // conversion (the lead itself happens on a page we can't tag).
+    var o=t.closest('a[href*="leadmanagementlab.com"]');
+    if(o){
+      if(typeof window.gtag==='function') window.gtag('event','outbound_quote_click',{ send_to: ADS, link_url: o.getAttribute('href')||'', link_location: location.pathname });
+      return;
+    }
     var a=t.closest('a[href^="tel:"], a[href^="sms:"]');
     if(!a) return;
     var href=a.getAttribute('href')||'';

@@ -1010,8 +1010,8 @@ body { font-size: 16.5px; }
 
 /* ===== Motion: gentle entrance + lively hovers (dynamic feel) ===== */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.hero-grid > * { animation: fadeUp .6s ease both; }
-.hero-grid > *:nth-child(2) { animation-delay: .15s; }
+/* No entrance animation on .hero-grid children: they hold the LCP element
+   (headline / hero photo / form) and a fade from opacity 0 delayed LCP. */
 .gap-row { animation: fadeUp .6s ease both; }
 .svc { animation: fadeUp .5s ease both; }
 .cat-banner { transition: transform .2s; }
@@ -1019,3 +1019,45 @@ body { font-size: 16.5px; }
 @media (prefers-reduced-motion: reduce) {
   .hero-grid > *, .gap-row, .svc, .agent-row { animation: none; }
 }
+
+/* ===== Product landing pages (/[lang]/insurance/[slug]) ===== */
+.product-top { padding: 40px 0 28px; background: linear-gradient(180deg, #eef4fd 0%, #fff 100%); }
+.product-top-grid { align-items: start; }
+.product-h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.15; color: var(--navy); margin: 4px 0 12px; font-weight: 800; }
+.product-intro { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; max-width: 36rem; }
+.product-cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.product-call { background: var(--gold); color: var(--navy); }
+.product-call:hover { background: #eebb54; color: var(--navy); }
+.product-text { background: #fff; color: var(--navy); border: 2px solid var(--navy); box-shadow: none; }
+.product-text:hover { background: #f2f7ff; }
+.product-hours { color: var(--muted); font-size: .85rem; margin-top: 8px; }
+.product-trust { margin-top: 26px; background: #f2f7ff; border: 1px solid #dfe8f6; border-radius: 12px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .9rem; color: var(--navy); }
+.product-trust strong { flex-basis: 100%; }
+.product-trust a { text-decoration: underline; }
+.product-body { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 900px; }
+.product-body ul { list-style: none; margin-top: 18px; }
+.product-body li { padding-left: 28px; position: relative; margin-bottom: 10px; font-weight: 600; color: var(--navy); }
+.product-body li:before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 900; }
+.consent a { color: inherit; }
+@media (max-width: 640px) {
+  .product-top { padding: 18px 0 18px; }
+  .product-h1 { font-size: 1.6rem; margin-bottom: 8px; }
+  .product-intro { font-size: .98rem; margin-bottom: 12px; }
+  .product-cta-row .cta { flex: 1 1 auto; text-align: center; padding: 12px 14px; font-size: .98rem; }
+  .product-top-grid { gap: 18px; }
+  .card { padding: 20px 16px; }
+}
+
+/* ===== Floating UI on phones: one sticky Call/Text bar, nothing else on
+   top of forms. The Talk-to-Agent button is desktop-only; the chat keeps a
+   single compact bubble that hides while a lead form is on screen or a form
+   field is focused (see components/useLeadFormInView.ts). ===== */
+@media (max-width: 640px) {
+  .talk-now { display: none; }
+  .mk-fab.secondary { display: none; }
+  .mk-fab { padding: 11px 16px; font-size: .9rem; }
+  .mk-widget.form-in-view { display: none; }
+  .scb-btn { font-size: .95rem; white-space: nowrap; }
+}
+.header-quote-btn { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.header-quote-btn .text-btn-text { display: inline !important; }

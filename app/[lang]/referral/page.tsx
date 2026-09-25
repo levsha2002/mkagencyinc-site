@@ -4,7 +4,7 @@ import { getDict } from '@/lib/dictionaries';
 import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
 import BusinessDirectory from '@/components/BusinessDirectory';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 // The hero subtitle used to double as the meta description. It reads well on
 // the page but runs past 200 characters, so Google cut it off mid-sentence.
@@ -18,11 +18,12 @@ const META_DESC: Record<string, string> = {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).referral;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/referral',
     title: `${t.heroTitle} | M&K Agency, Florida`,
     description: META_DESC[params.lang] || META_DESC.en,
-    alternates: buildAlternates(params.lang, '/referral'),
-  };
+  });
 }
 
 export default function ReferralPage({ params }: { params: { lang: string } }) {
@@ -33,7 +34,7 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
       <section className="life-hero">
         <div className="container">
           <h1>
-            {t.heroTitle}
+            {t.heroTitle}{' '}
             <br />
             <span className="accent">{t.heroAccent}</span>
           </h1>

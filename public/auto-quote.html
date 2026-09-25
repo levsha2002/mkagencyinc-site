@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Auto Insurance Quote — M&K Agency | Florida City, FL</title>
 <meta name="description" content="Real people answer the phone. Talk to a licensed local agent, Mon–Fri 9am–6pm ET. Call (305) 859-3953.">
+<link rel="canonical" href="https://mkagencyinc.com/auto-quote.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M&amp;K Agency Inc.">
+<meta property="og:title" content="Auto Insurance Quote — M&amp;K Agency | Florida City, FL">
+<meta property="og:description" content="Talk to a licensed local agent in Florida City, Mon–Fri 9am–6pm ET. Call (305) 859-3953.">
+<meta property="og:url" content="https://mkagencyinc.com/auto-quote.html">
+<meta property="og:image" content="https://mkagencyinc.com/og.jpg">
 <style>
   :root{
     --navy:#0B2A4A; --navy2:#123A63; --gold:#D9A441; --cream:#F6F3EB; --ink:#1E2530; --line:#E7E2D4;
@@ -87,13 +94,28 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'AW-18321801016');
+  gtag('config', 'AW-18321801016', { allow_enhanced_conversions: true });
   var MK_ADS = 'AW-18321801016';
   var MK_LABELS = { phone_call: 'vxzLCLXQuNkcELj-waBE', sms_click: '-6r1CLjQuNkcELj-waBE', quote_submit: '-1BtCL2Fj9EcELj-waBE' };
-  function mkConversion(action, params){
-    params = params || {};
-    gtag('event', action, Object.assign({ send_to: MK_ADS }, params));
-    if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action] }, params));
+  function mkTxnId(prefix){
+    try { if (window.crypto && crypto.randomUUID) return prefix + '-' + crypto.randomUUID(); } catch(e){}
+    return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);
+  }
+  // US phone to E.164 for enhanced conversions; '' if unsure.
+  function mkE164(raw){
+    var d = String(raw || '').replace(/\D/g, '');
+    if (d.length === 10) return '+1' + d;
+    if (d.length === 11 && d.charAt(0) === '1') return '+' + d;
+    return '';
+  }
+  // Same contract as lib/analytics.ts trackConversion(): per-submission
+  // transaction_id, optional user_data set right before the conversion.
+  function mkConversion(action, params, opts){
+    params = params || {}; opts = opts || {};
+    var tx = opts.transactionId || mkTxnId(action);
+    if (opts.phone) { var p = mkE164(opts.phone); if (p) gtag('set', 'user_data', { phone_number: p }); }
+    gtag('event', action, Object.assign({ send_to: MK_ADS, transaction_id: tx }, params));
+    if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action] }, params, { transaction_id: tx }));
   }
   // tel:/sms: taps, same delegation as phoneClickTrackingScript() in lib/analytics.ts.
   document.addEventListener('click', function(e){
@@ -121,7 +143,7 @@
 
   <div class="callbar">
     <span class="brand">M&K Agency</span>
-    <a class="cta" href="tel:3058593953">📞 Call Now</a>
+    <a class="cta" href="tel:+13058593953">📞 Call Now</a>
   </div>
 
   <section class="hero">
@@ -145,12 +167,12 @@
     <div class="avatar">MK</div>
     <div class="txt">
       <b>Mikhail Kozlov</b>, your local licensed Florida agent.
-      <div class="stars">★★★★★ Trusted by Florida City &amp; Homestead drivers</div>
+      <div class="stars"><a href="https://www.experience.com/reviews/mikhail-7323351" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline">Read our client reviews</a></div>
     </div>
   </section>
 
   <div class="cta-repeat">
-    <a href="tel:3058593953">📞 Call (305) 859-3953</a>
+    <a href="tel:+13058593953">📞 Call (305) 859-3953</a>
     <div class="fine">Or use the form above. Office hours: Mon–Fri, 9am–6pm ET.</div>
   </div>
 
@@ -165,15 +187,12 @@
       <p id="modalSub">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</p>
       <form id="quoteForm">
         <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="text" id="f-name" placeholder="Your name" required>
-        <input type="tel" id="f-phone" placeholder="Phone number" required>
-        <textarea id="f-comments" placeholder="Anything we should know? (optional)"></textarea>
+        <input type="text" id="f-name" placeholder="Your name" aria-label="Your name" autocomplete="name" required>
+        <input type="tel" id="f-phone" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" inputmode="tel" required>
+        <textarea id="f-comments" placeholder="Anything we should know? (optional)" aria-label="Anything we should know? (optional)"></textarea>
         <label class="consent">
           <input type="checkbox" id="f-consent" required>
-          <span>I agree that M&amp;K Agency may contact me by phone, text or email at
-the number provided about insurance, even if it is on a Do-Not-Call list. Consent is
-not a condition of purchase. Message and data rates may apply. Reply STOP to opt out
-of text messages at any time.</span>
+          <span id="f-consent-text">By checking this box, I agree that M&amp;K Agency Inc. may contact me about insurance by phone call, text message or email at the phone number and email I provide, even if my number is on a Do-Not-Call list. Consent is not a condition of purchase. Message frequency varies; message and data rates may apply. Reply STOP to opt out of texts at any time. See our <a href="/en/privacy" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Privacy Policy</a>.</span>
         </label>
         <p class="status-err" id="formErr" style="display:none;">Something went wrong. Please call us at (305) 859-3953.</p>
         <button type="submit" class="submit" id="submitBtn">Send My Info</button>
@@ -184,7 +203,9 @@ of text messages at any time.</span>
 
 <script>
 var currentVehicle = 'Car';
-var CONSENT_TEXT_VERSION = 'v2-2026-09-23';
+// Keep in step with lib/consent.ts (same text + version as the Next.js forms).
+var CONSENT_TEXT_VERSION = 'v3-2026-09-25';
+var CONSENT_TEXT = 'By checking this box, I agree that M&K Agency Inc. may contact me about insurance by phone call, text message or email at the phone number and email I provide, even if my number is on a Do-Not-Call list. Consent is not a condition of purchase. Message frequency varies; message and data rates may apply. Reply STOP to opt out of texts at any time. See our Privacy Policy (https://mkagencyinc.com/en/privacy).';
 
 function openModal(kind){
   currentVehicle = kind;
@@ -212,6 +233,7 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
 
   btn.disabled = true;
   btn.textContent = 'Sending...';
+  var txId = mkTxnId('quote');
 
   try {
     var res = await fetch('/api/insurance-quote', {
@@ -231,17 +253,21 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
         consent: true,
         consent_user_agent: navigator.userAgent,
         consent_text_version: CONSENT_TEXT_VERSION,
+        consent_text: CONSENT_TEXT,
+        page_url: location.href.slice(0, 500),
+        transaction_id: txId,
         attribution: mkAttribution()
       })
     });
 
     if (res.ok) {
       if (typeof window.gtag === 'function') {
-        mkConversion('quote_submit', { insurance_type: 'Auto Insurance', lang: 'en' });
+        mkConversion('quote_submit', { insurance_type: 'Auto Insurance', lang: 'en' }, { transactionId: txId, phone: phone });
         window.gtag('event', 'generate_lead', {
           currency: 'USD',
           value: 1,
-          insurance_type: 'Auto Insurance'
+          insurance_type: 'Auto Insurance',
+          transaction_id: txId
         });
       }
       document.getElementById('modalTitle').textContent = 'Thank you!';

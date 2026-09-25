@@ -2,8 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { getDict } from '@/lib/dictionaries';
-import { trackConversion } from '@/lib/analytics';
+import { trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
+import { consentPayload } from '@/lib/consent';
+import ConsentCheckbox from '@/components/ConsentCheckbox';
+import { useLeadFormInView } from '@/components/useLeadFormInView';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
@@ -11,17 +14,27 @@ type Msg = { role: 'user' | 'assistant'; content: string };
 const PHONE_REGEX = /(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
 const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-function hasContactInfo(messages: Msg[]) {
-  const visitorText = messages
+function visitorText(messages: Msg[]) {
+  return messages
     .filter((m) => m.role === 'user')
     .map((m) => m.content)
     .join(' \n ');
-  return PHONE_REGEX.test(visitorText) || EMAIL_REGEX.test(visitorText);
+}
+
+function hasContactInfo(messages: Msg[]) {
+  const text = visitorText(messages);
+  return PHONE_REGEX.test(text) || EMAIL_REGEX.test(text);
+}
+
+function extractContact(messages: Msg[], extraEmail = '') {
+  const text = visitorText(messages);
+  const phone = text.match(PHONE_REGEX)?.[0] || '';
+  const email = text.match(EMAIL_REGEX)?.[0] || (/@/.test(extraEmail) ? extraEmail : '');
+  return { phone, email };
 }
 
 export default function ChatWidget({ lang }: { lang: string }) {
   const t = getDict(lang).chat;
-  const tForm = getDict(lang).form;
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<'chat' | 'callback'>('chat');
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -33,6 +46,17 @@ export default function ChatWidget({ lang }: { lang: string }) {
   // so the transcript email fires at most ONCE per chat session.
   const sentRef = useRef(false);
   const bodyRef = useRef<HTMLDivElement>(null);
+  // At most ONE chat_lead conversion per page session, whichever capture
+  // path gets there first (AI chat with contact details, transcript copy, or
+  // the callback tab), so one visitor is never counted twice.
+  const leadFiredRef = useRef(false);
+  const hideForForm = useLeadFormInView();
+
+  const fireChatLead = (method: string, contact: { phone?: string; email?: string }) => {
+    if (leadFiredRef.current) return;
+    leadFiredRef.current = true;
+    trackConversion('chat_lead', { contact_method: method, lang }, { transactionId: newTransactionId('chat'), ...contact });
+  };
 
   const [cb, setCb] = useState({ name: '', phone: '' });
   const [cbConsent, setCbConsent] = useState(false);
@@ -56,10 +80,20 @@ export default function ChatWidget({ lang }: { lang: string }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages, visitorEmail, lang }),
-      }).catch(() => {
-        // If the send fails, allow one retry attempt on the next message.
-        sentRef.current = false;
-      });
+      })
+        .then((res) => {
+          if (res.ok) {
+            // Lead captured: the agency received the transcript with a phone
+            // number or email in it.
+            fireChatLead('chat_transcript', extractContact(messages, visitorEmail));
+          } else {
+            sentRef.current = false;
+          }
+        })
+        .catch(() => {
+          // If the send fails, allow one retry attempt on the next message.
+          sentRef.current = false;
+        });
     }, 2000);
     return () => clearTimeout(timer);
   }, [consent, messages, visitorEmail, lang]);
@@ -81,6 +115,12 @@ export default function ChatWidget({ lang }: { lang: string }) {
       });
       const data = await res.json();
       setMessages([...next, { role: 'assistant', content: data.reply || t.errMsg }]);
+      // /api/chat forwards the conversation to the agency on its success path
+      // and says so with lead_captured. Count it once the visitor has shared a
+      // phone number or email in the chat.
+      if (res.ok && data.lead_captured === true && hasContactInfo(next)) {
+        fireChatLead('chat_ai', extractContact(next));
+      }
     } catch {
       setMessages([...next, { role: 'assistant', content: t.errMsg }]);
     }
@@ -90,15 +130,26 @@ export default function ChatWidget({ lang }: { lang: string }) {
   const submitCb = async (e: React.FormEvent) => {
     e.preventDefault();
     setCbStatus('sending');
+    const transactionId = newTransactionId('chatcb');
     try {
       const res = await fetch('/api/callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...cb, lang, consent: true, contact_method: 'call', attribution: getAttribution() }),
+        body: JSON.stringify({
+          ...cb,
+          lang,
+          contact_method: 'call',
+          transaction_id: transactionId,
+          ...consentPayload(lang),
+          attribution: getAttribution(),
+        }),
       });
       setCbStatus(res.ok ? 'ok' : 'err');
       if (res.ok) {
-        trackConversion('chat_lead', { contact_method: 'call', lang });
+        if (!leadFiredRef.current) {
+          leadFiredRef.current = true;
+          trackConversion('chat_lead', { contact_method: 'call', lang }, { transactionId, phone: cb.phone });
+        }
         setCb({ name: '', phone: '' });
         setCbConsent(false);
       }
@@ -106,12 +157,12 @@ export default function ChatWidget({ lang }: { lang: string }) {
   };
 
   return (
-    <div className="mk-widget">
+    <div className={`mk-widget${hideForForm && !open ? ' form-in-view' : ''}`}>
       {open && (
         <div className="mk-panel">
           <div className="mk-head">
             <span>💬 {t.title}</span>
-            <button onClick={() => setOpen(false)}>✕</button>
+            <button onClick={() => setOpen(false)} aria-label="Close">✕</button>
           </div>
           <div className="mk-tabs">
             <button className={tab === 'chat' ? 'on' : ''} onClick={() => setTab('chat')}>💬 {t.fab}</button>
@@ -128,7 +179,7 @@ export default function ChatWidget({ lang }: { lang: string }) {
                 {busy && <div className="msg bot">…</div>}
               </div>
               <div className="mk-input">
-                <input value={input} placeholder={t.placeholder}
+                <input value={input} placeholder={t.placeholder} aria-label={t.placeholder}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && send()} />
                 <button onClick={send}>{t.send}</button>
@@ -139,7 +190,7 @@ export default function ChatWidget({ lang }: { lang: string }) {
               </label>
               {consent && (
                 <div className="mk-consent" style={{ paddingTop: 0 }}>
-                  <input type="email" placeholder={t.yourEmail} value={visitorEmail}
+                  <input type="email" inputMode="email" autoComplete="email" aria-label={t.yourEmail} placeholder={t.yourEmail} value={visitorEmail}
                     style={{ flex: 1, padding: '9px 10px', border: '1px solid #d8e0ec', borderRadius: 8 }}
                     onChange={(e) => setVisitorEmail(e.target.value)} />
                 </div>
@@ -149,16 +200,13 @@ export default function ChatWidget({ lang }: { lang: string }) {
 
           {tab === 'callback' && (
             <form className="mk-cb" onSubmit={submitCb}>
-              <input required placeholder={t.cbName} value={cb.name}
+              <input required aria-label={t.cbName} placeholder={t.cbName} autoComplete="name" value={cb.name}
                 onChange={(e) => setCb({ ...cb, name: e.target.value })} />
-              <input required type="tel" placeholder={t.yourPhone} value={cb.phone}
+              <input required type="tel" inputMode="tel" autoComplete="tel" aria-label={t.yourPhone} placeholder={t.yourPhone} value={cb.phone}
                 onChange={(e) => setCb({ ...cb, phone: e.target.value })} />
-              <label className="mk-consent" style={{ fontSize: '.78rem' }}>
-                <input type="checkbox" required checked={cbConsent}
-                  onChange={(e) => setCbConsent(e.target.checked)} />
-                <span>{tForm.consent}</span>
-              </label>
-              <button type="submit" disabled={cbStatus === 'sending' || !cbConsent}>
+              <ConsentCheckbox id="mk-cb-consent" lang={lang} className="mk-consent" style={{ fontSize: '.74rem' }}
+                checked={cbConsent} onChange={setCbConsent} />
+              <button type="submit" disabled={cbStatus === 'sending'}>
                 {cbStatus === 'sending' ? t.cbSending : t.cbSubmit}
               </button>
               {cbStatus === 'ok' && <p className="status-ok" style={{ fontSize: '.85rem' }}>{t.cbOk}</p>}

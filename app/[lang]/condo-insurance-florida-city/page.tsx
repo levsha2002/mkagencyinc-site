@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict, REVIEWS_URL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 // Гео-лендинг: Condo Insurance (HO-6) — Florida City / Homestead.
 // Контент самодостаточный (не в dictionaries.ts), по образцу car-insurance-florida-city/page.tsx.
@@ -130,11 +130,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/condo-insurance-florida-city',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/condo-insurance-florida-city'),
-  };
+  });
 }
 
 export default function CondoInsuranceFloridaCity({ params }: { params: { lang: string } }) {
@@ -164,11 +165,15 @@ export default function CondoInsuranceFloridaCity({ params }: { params: { lang: 
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
             <div className="rated" style={{ marginLeft: 12 }}>
-              <span className="stars">★★★★★</span>
-              <span>{t.langLine}</span>
+              <span>
+                {t.langLine} ·{' '}
+                <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  {getDict(l).hero.rated}
+                </a>
+              </span>
             </div>
           </div>
-          <LeadForm lang={l} />
+          <LeadForm lang={l} defaultType="Home" />
         </div>
       </section>
 
@@ -212,7 +217,7 @@ export default function CondoInsuranceFloridaCity({ params }: { params: { lang: 
         </div>
       </section>
 
-      <section className="section" style={{ background: '#f2f7ff' }} id="quote">
+      <section className="section" style={{ background: '#f2f7ff' }} id="faq">
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>

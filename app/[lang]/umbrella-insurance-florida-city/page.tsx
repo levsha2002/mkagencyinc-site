@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict, REVIEWS_URL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 // Geo-landing: Personal Umbrella Insurance — Florida City / Homestead.
 // Self-contained content (not in dictionaries.ts), same pattern as the other geo pages.
@@ -136,11 +136,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/umbrella-insurance-florida-city',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/umbrella-insurance-florida-city'),
-  };
+  });
 }
 
 export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lang: string } }) {
@@ -170,8 +171,12 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
             <div className="rated" style={{ marginLeft: 12 }}>
-              <span className="stars">★★★★½</span>
-              <span>{t.langLine}</span>
+              <span>
+                {t.langLine} ·{' '}
+                <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  {getDict(l).hero.rated}
+                </a>
+              </span>
             </div>
           </div>
           <LeadForm lang={l} />
@@ -235,7 +240,7 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
         </div>
       </section>
 
-      <section className="section" style={{ background: '#f2f7ff' }} id="quote">
+      <section className="section" style={{ background: '#f2f7ff' }} id="faq">
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>

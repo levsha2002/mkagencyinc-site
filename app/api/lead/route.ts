@@ -10,6 +10,19 @@ import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
 const AGENCY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
+// Minimal HTML escaping for visitor-supplied values placed in lead emails.
+function esc(v: unknown): string {
+  return String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+}
+const str = (v: unknown, max = 500) => (typeof v === 'string' ? v.slice(0, max) : '');
+
+function clientIp(req: Request): string {
+  const h = req.headers;
+  const fwd = h.get('x-forwarded-for');
+  if (fwd) return fwd.split(',')[0].trim();
+  return h.get('x-real-ip') || h.get('x-vercel-forwarded-for') || 'unknown';
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -23,9 +36,17 @@ export async function POST(req: Request) {
     const { insurance_type, zip_code, name, phone, email, message, consent, lang, source } = body;
     const attr = cleanAttribution(body.attribution);
 
-    if (!name || !phone || !email || !zip_code) {
+    // Email is optional since Sep 2026 (phone is how the agency follows up).
+    if (!name || !phone || !zip_code) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
+
+    const consentText = str(body.consent_text, 2000);
+    const consentTextVersion = str(body.consent_text_version, 50) || (consentText ? 'legacy' : 'unknown');
+    const consentUserAgent = str(body.consent_user_agent, 500);
+    const consentIp = clientIp(req);
+    const pageUrl = str(body.page_url, 500);
+    const clientTxnId = str(body.transaction_id, 100);
 
     // 1) Save to Neon (TCPA compliance backup: consent + timestamp + source)
     if (process.env.DATABASE_URL) {
@@ -48,10 +69,18 @@ export async function POST(req: Request) {
       await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS source TEXT`;
       await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS gclid TEXT`;
       await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS utm TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS consent_text TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS consent_text_version TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS consent_ip TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS consent_user_agent TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS page_url TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS client_txn_id TEXT`;
 
       await sql`
-        INSERT INTO leads (insurance_type, zip_code, name, phone, email, message, consent, lang, source, gclid, utm)
-        VALUES (${insurance_type}, ${zip_code}, ${name}, ${phone}, ${email}, ${message || ''}, ${!!consent}, ${lang || 'en'}, ${source || 'website'}, ${attr.gclid}, ${attr.utm})`;
+        INSERT INTO leads (insurance_type, zip_code, name, phone, email, message, consent, lang, source, gclid, utm,
+          consent_text, consent_text_version, consent_ip, consent_user_agent, page_url, client_txn_id)
+        VALUES (${insurance_type}, ${zip_code}, ${name}, ${phone}, ${email || ''}, ${message || ''}, ${!!consent}, ${lang || 'en'}, ${source || 'website'}, ${attr.gclid}, ${attr.utm},
+          ${consentText}, ${consentTextVersion}, ${consentIp}, ${consentUserAgent}, ${pageUrl}, ${clientTxnId})`;
     }
 
     // 2) Email the agency
@@ -60,7 +89,7 @@ export async function POST(req: Request) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const { error: resendError } = await resend.emails.send({
         from: FROM_ADDRESS,
-        reply_to: email,
+        ...(email ? { reply_to: email } : {}),
         to: AGENCY_EMAIL,
         subject: `🔥 New ${insurance_type} lead: ${name} (${zip_code})`,
         html: `
@@ -69,12 +98,13 @@ export async function POST(req: Request) {
             <tr><td><b>Type</b></td><td>${insurance_type}</td></tr>
             <tr><td><b>Name</b></td><td>${name}</td></tr>
             <tr><td><b>Phone</b></td><td><a href="tel:${phone}">${phone}</a></td></tr>
-            <tr><td><b>Email</b></td><td>${email}</td></tr>
+            <tr><td><b>Email</b></td><td>${email ? esc(email) : '—'}</td></tr>
             <tr><td><b>ZIP</b></td><td>${zip_code}</td></tr>
             <tr><td><b>Message</b></td><td>${message || '—'}</td></tr>
             <tr><td><b>Language</b></td><td>${lang || 'en'}</td></tr>
             <tr><td><b>Source</b></td><td>${source || 'website'}</td></tr>
-            <tr><td><b>TCPA consent</b></td><td>${consent ? 'YES ✅' : 'NO'}</td></tr>
+            <tr><td><b>TCPA consent</b></td><td>${consent ? `YES ✅ (v${esc(consentTextVersion)})` : 'NO'}</td></tr>
+            ${pageUrl ? `<tr><td><b>Page</b></td><td>${esc(pageUrl)}</td></tr>` : ''}
             <tr><td><b>Time</b></td><td>${new Date().toISOString()}</td></tr>
           </table>
           ${attributionEmailRow(attr)}`,

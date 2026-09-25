@@ -1,10 +1,10 @@
 import { disclosures } from '@/lib/legal-content';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata, clipDescription } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const lang = (params.lang as 'en' | 'es' | 'ru') in disclosures ? (params.lang as 'en' | 'es' | 'ru') : 'en';
   const doc = disclosures[lang];
-  return { title: `${doc.title} | M&K Agency`, alternates: buildAlternates(params.lang, '/disclosures') };
+  return pageMetadata({ lang: params.lang, path: '/disclosures', title: `${doc.title} | M&K Agency`, description: clipDescription(doc.intro) });
 }
 
 export default function DisclosuresPage({ params }: { params: { lang: string } }) {
@@ -15,7 +15,7 @@ export default function DisclosuresPage({ params }: { params: { lang: string } }
     <main>
       <section className="section" style={{ maxWidth: 780, margin: '0 auto' }}>
         <div className="container">
-          <h2 style={{ textAlign: 'left' }}>{doc.title}</h2>
+          <h1 style={{ textAlign: 'left', fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', color: 'var(--navy)', marginBottom: 8 }}>{doc.title}</h1>
           <p style={{ color: 'var(--muted)', fontStyle: 'italic', marginBottom: 20 }}>
             {doc.effectiveDateLabel}
           </p>
