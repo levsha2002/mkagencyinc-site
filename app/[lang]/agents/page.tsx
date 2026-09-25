@@ -4,8 +4,8 @@ import { team } from '@/lib/team-data';
 import { pageMetadata } from '@/lib/seo';
 import RatingBadge from '@/components/RatingBadge';
 
-// ISR: re-render daily; the Allstate rating fetch itself is cached for a week
-// (explicit, so it holds even when the rating fetch is skipped/fails).
+// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
+// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
 export const revalidate = 86400;
 
 // "Our Agents" — Design G: sticky action panel + agent rows with photos.

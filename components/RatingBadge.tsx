@@ -1,6 +1,6 @@
 // Server component (no client JS): "4.5 ★ · 627 reviews on Allstate.com",
 // stars drawn proportionally to the real value, linking to the source page.
-// Numbers come from lib/reviews.ts (live Allstate page, weekly; fallback file).
+// Numbers come from lib/reviews.ts (data/reviews.json by default; optional live fetch).
 // Intentionally NO AggregateRating/Review structured data here.
 import { getRating } from '@/lib/reviews';
 import { getDict } from '@/lib/dictionaries';
@@ -38,7 +38,7 @@ export default async function RatingBadge({
       rel="noopener"
       className={`rating-badge rating-badge--${variant} ${className}`.trim()}
       aria-label={aria}
-      data-rating-source={r.live ? 'live' : 'fallback'}
+      data-rating-source={r.live ? 'live' : r.note ? 'fallback' : 'file'}
       data-rating-checked={r.checked}
       data-rating-note={r.note || undefined}
     >
