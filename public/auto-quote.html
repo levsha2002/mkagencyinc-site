@@ -61,6 +61,11 @@
   .trust .txt{max-width:340px; font-size:14px; color:#3A4756;}
   .trust .txt b{color:var(--navy);}
   .stars{color:var(--gold); font-size:13px; margin-top:4px; font-weight:700;}
+  .rb{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .rb-txt{text-decoration:underline;text-underline-offset:2px}
+  .rb-stars{position:relative;display:inline-block;line-height:1;letter-spacing:0;white-space:nowrap;font-family:Arial,Helvetica,sans-serif}
+  .rb-bg{color:rgba(148,163,184,.55)}
+  .rb-fg{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--gold)}
 
   .cta-repeat{text-align:center; padding:28px 20px 46px; background:#fff;}
   .cta-repeat a{display:inline-block; background:var(--navy); color:#fff; padding:15px 32px; border-radius:26px; font-weight:700; font-size:15px;}
@@ -167,7 +172,9 @@
     <div class="avatar">MK</div>
     <div class="txt">
       <b>Mikhail Kozlov</b>, your local licensed Florida agent.
-      <div class="stars"><a href="https://www.experience.com/reviews/mikhail-7323351" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline">Read our client reviews</a></div>
+      <!-- STATIC rating (this page is plain HTML, not rendered by Next.js): numbers are the
+           fallback from data/reviews.json (checked 2026-09-25). Update both together. -->
+      <div class="stars"><a class="rb" href="https://agents.allstate.com/mikhail-kozlov-florida-city-fl.html" target="_blank" rel="noopener" aria-label="Rated 4.5 out of 5 from 627 reviews on Allstate.com (opens in a new tab)"><span class="rb-num">4.5</span> <span class="rb-stars" aria-hidden="true"><span class="rb-bg">★★★★★</span><span class="rb-fg" style="width:90%">★★★★★</span></span> <span class="rb-txt">· 627 reviews on Allstate.com</span></a></div>
     </div>
   </section>
 

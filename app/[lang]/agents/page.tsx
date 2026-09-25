@@ -2,7 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
 import { pageMetadata } from '@/lib/seo';
-import { REVIEWS_URL } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
+
+// ISR: re-render weekly so the Allstate rating in RatingBadge stays current
+// (explicit, so it holds even when the rating fetch is skipped/fails).
+export const revalidate = 604800;
 
 // "Our Agents" — Design G: sticky action panel + agent rows with photos.
 // Contact-by-name: every agent has call + text (SMS pre-fills their name).
@@ -104,7 +108,7 @@ export default function AgentsPage({ params }: { params: { lang: string } }) {
               target="_blank" rel="noopener noreferrer" className="ap-btn"
             >📍 {t.visitUs}</a>
             <Link href={`/${l}/quote`} className="ap-cta">{t.callback}</Link>
-            <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="ap-rated" style={{ textDecoration: 'underline' }}>{t.rated}</a>
+            <div className="ap-rated"><RatingBadge lang={l} /></div>
           </aside>
 
           {/* Agent rows */}

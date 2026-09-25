@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getDict, PHONE_TEL, REVIEWS_URL } from '@/lib/dictionaries';
+import { getDict, PHONE_TEL } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import GapAnalysis from '@/components/GapAnalysis';
 import { pickRotating } from '@/lib/rotation';
@@ -108,18 +109,9 @@ export default function Home({ params }: { params: { lang: string } }) {
             </h1>
             <p className="sub">{heroSub}</p>
             <Link href={`/${lang}/quote`} className="cta">{t.hero.cta} →</Link>
-            <div className="rated">
-              <span>
-                <strong>Mikhail Kozlov</strong> ·{' '}
-                <a
-                  href={REVIEWS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: 'inherit', textDecoration: 'underline' }}
-                >
-                  {t.hero.rated}
-                </a>
-              </span>
+            <div className="rated rated-stack">
+              <strong>Mikhail Kozlov</strong>
+              <RatingBadge lang={lang} variant="hero" />
             </div>
           </div>
           {/* Rotating hero image (changes daily via ISR) */}

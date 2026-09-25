@@ -2,12 +2,17 @@ import fs from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import { insuranceProducts, getProductBySlug } from '@/lib/insurance-products';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL, LICENSE_LINE } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LICENSE_LINE } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
 import InsuranceQuoteForm from '@/components/InsuranceQuoteForm';
 import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
 import { pageMetadata } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
 import Image from 'next/image';
+
+// ISR: re-render weekly so the Allstate rating in RatingBadge stays current
+// (explicit, so it holds even when the rating fetch is skipped/fails).
+export const revalidate = 604800;
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));
@@ -98,10 +103,7 @@ export default function InsuranceProductPage({
             </span>
             <span>🪪 {LICENSE_LINE}</span>
             <span>
-              ⭐{' '}
-              <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer">
-                {pp.reviews}
-              </a>
+              <RatingBadge lang={params.lang} />
             </span>
           </div>
         </div>

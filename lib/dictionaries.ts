@@ -1,12 +1,13 @@
 export const PHONE_DISPLAY = '(305) 859-3953';
 export const PHONE_TEL = '+13058593953';
 export const ADDRESS = '33550 S Dixie Hwy, Suite 102, Florida City, FL 33034';
+// Public reviews page (Allstate agent page, 600+ reviews). The rating itself is
+// never hard-coded in copy: components/RatingBadge reads it from that page via
+// lib/reviews.ts (weekly, with a checked-in fallback in data/reviews.json).
+export const REVIEWS_URL = 'https://agents.allstate.com/mikhail-kozlov-florida-city-fl.html';
+export const LICENSE_LINE = 'FL License #L109526';
 // Official Allstate Lead Manager webform — captures texting consent at submission.
 // Single source of truth so the Header, Footer, and /quote QR codes never drift.
-// Public reviews page. Linked instead of hard-coding a star rating / review
-// count that goes stale (the site said 4.53★ · 68 long after it changed).
-export const REVIEWS_URL = 'https://www.experience.com/reviews/mikhail-7323351';
-export const LICENSE_LINE = 'FL License #L109526';
 export const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
 
 export type Lang = 'en' | 'es' | 'ru';
@@ -70,7 +71,7 @@ const en = {
     h: 'Real people. Real protection.',
     p1: 'M&K Agency Inc. is a family-owned insurance agency headquartered in Florida City and serving families and businesses across the entire state of Florida. We are not a call center — when you call, a licensed agent who knows your name picks up.',
     p2: "Founded by Mikhail Kozlov, our team speaks English, Spanish, and Russian, and we believe insurance should be explained, not sold. We take the time to walk you through your coverage so you know exactly what you have — and for every line we handle, we stay by your side at claim time, when it matters most.",
-    points: ['Home, auto, commercial & life coverage in one place', 'English · Español · Русский', 'Client reviews on Experience.com', 'Local office — real agents, not a national call center'],
+    points: ['Home, auto, commercial & life coverage in one place', 'English · Español · Русский', 'Client reviews on Allstate.com', 'Local office — real agents, not a national call center'],
     visit: 'Visit us',
   },
   contact: {
@@ -206,6 +207,13 @@ const en = {
     okText: "Got it! We'll text you back during office hours — Mon–Fri, 9am–6pm ET.",
     err: 'Something went wrong. Please try again or call us at (305) 859-3953.',
   },
+  ratingBadge: {
+    one: 'review',
+    many: 'reviews',
+    few: 'reviews',
+    on: 'on',
+    aria: 'Rated {r} out of 5 from {n} {reviews} on Allstate.com (opens in a new tab)',
+  },
   footerExtra: {
     scan: 'Fill Out Request for a Quote',
     qrAlt: 'QR code — request a quote via Allstate Lead Manager',
@@ -288,7 +296,7 @@ const es: typeof en = {
     h: 'Personas reales. Protección real.',
     p1: 'M&K Agency Inc. es una agencia de seguros familiar con sede en Florida City que sirve a familias y negocios en todo el estado de Florida. No somos un call center — cuando usted llama, contesta un agente licenciado que conoce su nombre.',
     p2: 'Fundada por Mikhail Kozlov, nuestro equipo habla inglés, español y ruso, y creemos que el seguro debe explicarse, no venderse. Nos tomamos el tiempo de explicarle su cobertura para que sepa exactamente qué tiene — y en cada línea que manejamos, estamos a su lado al momento del reclamo, cuando más importa.',
-    points: ['Cobertura de casa, auto, comercial y vida en un solo lugar', 'English · Español · Русский', 'Reseñas de clientes en Experience.com', 'Oficina local — agentes reales, no un call center nacional'],
+    points: ['Cobertura de casa, auto, comercial y vida en un solo lugar', 'English · Español · Русский', 'Reseñas de clientes en Allstate.com', 'Oficina local — agentes reales, no un call center nacional'],
     visit: 'Visítenos',
   },
   contact: {
@@ -421,6 +429,13 @@ const es: typeof en = {
     okText: '¡Listo! Le enviaremos un texto en horario de oficina — lun–vie, 9am–6pm ET.',
     err: 'Algo salió mal. Inténtelo de nuevo o llámenos al (305) 859-3953.',
   },
+  ratingBadge: {
+    one: 'reseña',
+    many: 'reseñas',
+    few: 'reseñas',
+    on: 'en',
+    aria: 'Calificación de {r} de 5 en {n} {reviews} en Allstate.com (se abre en una pestaña nueva)',
+  },
   footerExtra: {
     scan: 'Llene la solicitud de cotización',
     qrAlt: 'Código QR — solicite una cotización a través de Allstate Lead Manager',
@@ -501,7 +516,7 @@ const ru: typeof en = {
     h: 'Живые люди. Настоящая защита.',
     p1: 'M&K Agency Inc. — семейное страховое агентство со штаб-квартирой в Florida City, обслуживающее семьи и бизнес по всему штату Флорида. Мы не колл-центр: когда вы звоните, трубку берёт лицензированный агент, который знает вас по имени.',
     p2: 'Агентство основал Михаил Козлов. Наша команда говорит на английском, испанском и русском, и мы убеждены: страхование нужно объяснять, а не «продавать». Мы находим время объяснить ваше покрытие, чтобы вы точно знали, что у вас есть — и по каждому виду страхования, которым занимаемся, остаёмся рядом при страховом случае, когда это важнее всего.',
-    points: ['Страхование дома, авто, бизнеса и жизни в одном месте', 'English · Español · Русский', 'Отзывы клиентов на Experience.com', 'Локальный офис — живые агенты, а не национальный колл-центр'],
+    points: ['Страхование дома, авто, бизнеса и жизни в одном месте', 'English · Español · Русский', 'Отзывы клиентов на Allstate.com', 'Локальный офис — живые агенты, а не национальный колл-центр'],
     visit: 'Наш офис',
   },
   contact: {
@@ -633,6 +648,13 @@ const ru: typeof en = {
     okCall: 'Принято! Агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
     okText: 'Принято! Мы напишем вам в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
     err: 'Что-то пошло не так. Попробуйте ещё раз или позвоните нам: (305) 859-3953.',
+  },
+  ratingBadge: {
+    one: 'отзыв',
+    many: 'отзывов',
+    few: 'отзыва',
+    on: 'на',
+    aria: 'Рейтинг {r} из 5, {n} {reviews} на Allstate.com (откроется в новой вкладке)',
   },
   footerExtra: {
     scan: 'Заполните заявку на расчёт',
