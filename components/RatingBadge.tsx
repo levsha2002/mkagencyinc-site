@@ -40,6 +40,7 @@ export default async function RatingBadge({
       aria-label={aria}
       data-rating-source={r.live ? 'live' : 'fallback'}
       data-rating-checked={r.checked}
+      data-rating-note={r.note || undefined}
     >
       <span className="rating-badge-num">{ratingText}</span>
       <span className="rating-stars" aria-hidden="true">

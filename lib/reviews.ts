@@ -17,6 +17,7 @@ export type Rating = {
   url: string;
   checked: string; // YYYY-MM-DD of the fallback, or ISO time of the live fetch
   live: boolean; // true = parsed from the Allstate page, false = fallback
+  note?: string; // short reason when the fallback was used (rendered as a data attribute)
 };
 
 export const RATING_FALLBACK: Rating = {
@@ -28,7 +29,7 @@ export const RATING_FALLBACK: Rating = {
   live: false,
 };
 
-const REVALIDATE_SECONDS = 604800; // 7 days
+const REVALIDATE_SECONDS = 604800; // 7 days (data cache). Pages re-render daily, so a failed fetch is retried within a day.
 const TIMEOUT_MS = 5000;
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
@@ -66,15 +67,17 @@ export function isPlausible(r: { rating: number; count: number } | null): boolea
 // If the source just failed in this process (e.g. during a build that renders
 // dozens of pages), don't hit it again for a few minutes; serve the fallback.
 let lastFailure = 0;
+let lastReason = '';
 const FAILURE_BACKOFF_MS = 10 * 60 * 1000;
 function fail(msg: string): Rating {
   lastFailure = Date.now();
+  lastReason = msg.slice(0, 120);
   console.warn(`[reviews] ${msg}; using fallback`);
-  return RATING_FALLBACK;
+  return { ...RATING_FALLBACK, note: lastReason };
 }
 
 export async function getRating(): Promise<Rating> {
-  if (lastFailure && Date.now() - lastFailure < FAILURE_BACKOFF_MS) return RATING_FALLBACK;
+  if (lastFailure && Date.now() - lastFailure < FAILURE_BACKOFF_MS) return { ...RATING_FALLBACK, note: `backoff: ${lastReason}` };
   try {
     const res = await fetch(RATING_FALLBACK.url, {
       next: { revalidate: REVALIDATE_SECONDS, tags: ['allstate-rating'] },
@@ -93,6 +96,8 @@ export async function getRating(): Promise<Rating> {
       live: true,
     };
   } catch (e) {
-    return fail(`fetch failed: ${(e as Error)?.message || e}`);
+    const err = e as { message?: string; name?: string; cause?: { code?: string; message?: string } };
+    const cause = err?.cause ? ` (${err.cause.code || err.cause.message || ''})` : '';
+    return fail(`fetch failed: ${err?.name || ''} ${err?.message || String(e)}${cause}`);
   }
 }

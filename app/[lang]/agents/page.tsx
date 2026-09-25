@@ -4,9 +4,9 @@ import { team } from '@/lib/team-data';
 import { pageMetadata } from '@/lib/seo';
 import RatingBadge from '@/components/RatingBadge';
 
-// ISR: re-render weekly so the Allstate rating in RatingBadge stays current
+// ISR: re-render daily; the Allstate rating fetch itself is cached for a week
 // (explicit, so it holds even when the rating fetch is skipped/fails).
-export const revalidate = 604800;
+export const revalidate = 86400;
 
 // "Our Agents" — Design G: sticky action panel + agent rows with photos.
 // Contact-by-name: every agent has call + text (SMS pre-fills their name).
