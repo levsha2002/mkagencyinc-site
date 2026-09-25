@@ -52,7 +52,7 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
               <div className="office-map-embed">
                 <iframe
                   title="M&K Agency office location"
-                  src="https://www.google.com/maps?q=25.4567,-80.4746&z=17&output=embed"
+                  src="https://www.google.com/maps?q=33550+S+Dixie+Hwy+Suite+102,+Florida+City,+FL+33034&z=17&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />

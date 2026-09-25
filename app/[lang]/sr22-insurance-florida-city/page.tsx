@@ -188,7 +188,7 @@ export default function Sr22InsuranceFloridaCity({ params }: { params: { lang: s
       <section
         aria-label={t.bannerAlt}
         style={{
-          backgroundImage: "linear-gradient(rgba(8,42,89,.62), rgba(8,42,89,.62)), url('/images/sr22-hero.jpg')",
+          backgroundImage: "linear-gradient(rgba(8,42,89,.62), rgba(8,42,89,.62)), url('/images/cat-auto.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: '#fff',
@@ -213,7 +213,7 @@ export default function Sr22InsuranceFloridaCity({ params }: { params: { lang: s
       <section className="section" style={{ background: '#f2f7ff' }}>
         <div className="container">
           <h2>{t.covTitle}</h2>
-          <div className="cards4" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="cards4 cards3">
             {t.cov.map((c: { h: string; p: string }) => (
               <div className="svc" key={c.h}>
                 <h3>{c.h}</h3>

@@ -104,6 +104,10 @@ img { max-width: 100%; display: block; }
 .section h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); text-align: center; margin-bottom: 8px; color: var(--navy); }
 .kicker { text-align: center; color: var(--gold-text); font-weight: 800; letter-spacing: .16em; font-size: .8rem; text-transform: uppercase; margin-bottom: 10px; }
 .cards4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+/* 3-column variant (landing-page coverage cards). Was an inline style, which
+   beat the media queries below and forced 3 columns on phones: the page grew
+   wider than the screen and pushed the sticky "Text us" button off-screen. */
+.cards4.cards3 { grid-template-columns: repeat(3, 1fr); }
 .svc { display: block; background: #fff; border: 1px solid #e8edf4; border-top: 3px solid var(--gold); border-radius: 10px; padding: 26px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.06), 0 4px 6px -4px rgba(0,0,0,.06); transition: transform .15s, box-shadow .15s, border-color .15s; }
 a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,.12); border-color: #cfe0fb; }
 .svc .ico { font-size: 1.8rem; margin-bottom: 10px; }
@@ -155,11 +159,11 @@ a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,
 }
 @media (max-width: 900px) {
   .hero-grid, .about-grid { grid-template-columns: 1fr; }
-  .cards4 { grid-template-columns: 1fr 1fr; }
+  .cards4, .cards4.cards3 { grid-template-columns: 1fr 1fr; }
   .contact-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .cards4, .grid2 { grid-template-columns: 1fr; }
+  .cards4, .cards4.cards3, .grid2 { grid-template-columns: 1fr; }
 }
 
 /* ===== Talk Now widget ===== */
