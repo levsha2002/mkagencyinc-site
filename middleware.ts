@@ -12,6 +12,9 @@ function pickLocale(req: NextRequest) {
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  // /studio is a real top-level route (app/studio: internal image generator,
+  // not localized). Without this it was redirected to /en/studio, a 404.
+  if (pathname === '/studio' || pathname.startsWith('/studio/')) return;
   const hasLocale = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
   );

@@ -12,6 +12,10 @@ const nextConfig = {
   // Declaring them here instead emits a real 308 with a Location header,
   // resolved at the edge before routing, and tells search engines the move is
   // permanent so the old URLs' ranking transfers to the merged pages.
+  // Internal image tool: keep it out of search even if a URL leaks.
+  async headers() {
+    return [{ source: '/studio', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }];
+  },
   async redirects() {
     return [
       { source: '/:lang(en|es|ru)/contact', destination: '/:lang/quote', permanent: true },

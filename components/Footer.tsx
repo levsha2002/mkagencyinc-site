@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL, REVIEWS_URL } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL } from '@/lib/dictionaries';
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -8,16 +7,15 @@ export default function Footer({ lang }: { lang: string }) {
   return (
     <footer className="footer">
       <div className="container">
-        <div style={{ marginBottom: 18, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-          <a
-            href={LEAD_MANAGER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ background: '#fff', padding: 10, borderRadius: 12, lineHeight: 0 }}
+        {/* On-site quote page (tracked Google Ads conversion) instead of the
+            off-site Allstate Lead Manager QR code, which has no Google tag. */}
+        <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'center' }}>
+          <Link
+            href={`/${lang}/quote`}
+            style={{ background: 'var(--gold)', color: 'var(--navy)', fontWeight: 800, padding: '11px 22px', borderRadius: 999, textDecoration: 'none' }}
           >
-            <Image src="/images/lead-manager-qr.png" alt={fx.qrAlt} width={112} height={112} />
-          </a>
-          <span style={{ fontSize: '.78rem', color: '#bcd0ea', fontWeight: 600 }}>{fx.scan}</span>
+            📝 {lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote'}
+          </Link>
         </div>
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>

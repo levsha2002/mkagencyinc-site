@@ -1,5 +1,6 @@
 import { privacyPolicy } from '@/lib/legal-content';
 import { pageMetadata, clipDescription } from '@/lib/seo';
+import LinkifiedText from '@/components/LinkifiedText';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const lang = (params.lang as 'en' | 'es' | 'ru') in privacyPolicy ? (params.lang as 'en' | 'es' | 'ru') : 'en';
@@ -27,8 +28,8 @@ export default function PrivacyPage({ params }: { params: { lang: string } }) {
                 {s.heading}
               </h3>
               {s.body.map((p, i) => (
-                <p key={i} style={{ color: '#444', lineHeight: 1.6, marginBottom: 10 }}>
-                  {p}
+                <p key={i} style={{ color: '#444', lineHeight: 1.6, marginBottom: 10, overflowWrap: 'anywhere' }}>
+                  <LinkifiedText text={p} />
                 </p>
               ))}
             </div>

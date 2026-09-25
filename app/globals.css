@@ -783,6 +783,7 @@ a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,
 }
 .insurance-photo-grid img {
   width: 100%;
+  height: auto; /* without this the height="600" attribute won and thumbnails rendered as 164x600 strips */
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
