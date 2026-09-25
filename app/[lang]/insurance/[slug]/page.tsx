@@ -10,9 +10,9 @@ import { pageMetadata } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
 import Image from 'next/image';
 
-// ISR: re-render weekly so the Allstate rating in RatingBadge stays current
+// ISR: re-render daily; the Allstate rating fetch itself is cached for a week
 // (explicit, so it holds even when the rating fetch is skipped/fails).
-export const revalidate = 604800;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));

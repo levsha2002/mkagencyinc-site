@@ -5,9 +5,9 @@ import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import { pageMetadata } from '@/lib/seo';
 
-// ISR: re-render weekly so the Allstate rating in RatingBadge stays current
+// ISR: re-render daily; the Allstate rating fetch itself is cached for a week
 // (explicit, so it holds even when the rating fetch is skipped/fails).
-export const revalidate = 604800;
+export const revalidate = 86400;
 
 // Geo-landing: SR-22 / FR-44 filings — Florida City / Homestead.
 // Self-contained content (not in dictionaries.ts), same pattern as the other geo pages.
