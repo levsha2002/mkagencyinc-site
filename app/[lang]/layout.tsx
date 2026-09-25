@@ -35,6 +35,12 @@ export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+// Only en/es/ru are real locales. Without this, any single-segment URL that
+// the middleware skips (anything containing a dot, e.g. /foo.html or
+// /wp-login.php) was rendered as the home page with <html lang="foo.html">
+// and HTTP 200 — a soft 404 that search engines index as duplicate content.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
   const base = 'https://mkagencyinc.com';
