@@ -34,6 +34,19 @@ via `element.click()` on a text match instead.
 Do not assume fields are empty. Check before reporting a gap — an earlier review
 claimed missing photos, services and reviews, and all three were wrong.
 
+Review count drifts fast (67 in July, 72 by September) — re-read it rather than
+quoting this table. The same applies to the rest of this section; treat it as
+"last confirmed", not current truth, same as the account-shape table in
+`ads-audit`.
+
+**"Reviews from the web" shows a separate, bad number next to the good one.**
+The Search card has a block below the main 4.5-star Google rating that
+aggregates third-party review sources — it was showing **Facebook: 1/5 (1
+vote)** right next to the Google 4.5/5, on the same card a searcher sees before
+calling. This isn't editable from the GBP dashboard (it's pulled from Facebook
+itself), but it's a real, visible reason the profile might convert worse than
+the primary rating suggests — check it, don't only check the primary rating.
+
 ## Known issues
 
 **Most photos are marketing flyers, not photographs.** The gallery is full of
@@ -50,6 +63,25 @@ directly — only via "Suggest an edit".
 file picker with no `input[type=file]` anywhere in the DOM, shadow roots or
 iframes. Prepare and hand off the files; do not attempt to click through it,
 because a native dialog blocks the whole browser session.
+
+**"Complete your Business Profile" is a Google upsell funnel, not a gap
+checklist.** Clicking it walks through cards for a Google Ads "Smart campaign"
+built from the profile (a second, uncoordinated ad account outside
+`ads-audit`'s campaign — don't let it create one) and a Google Workspace trial,
+not a list of missing profile fields. Skip it; check the actual tabs (`About`,
+`Contact`, `Location`, `Hours`, `More`) directly for real gaps instead.
+
+**Don't source Google Ads image assets from this gallery.** Two separate
+reasons, not one: most photos here are Allstate-branded (storefront signage,
+office graphics with the Allstate logo) which violates the same "no Allstate
+branding in ads" rule as everything else in `compliance-sweep`; and the
+non-branded ones are candid photos of identifiable staff taken for the profile,
+not posed for advertising — using someone's likeness in paid ads without their
+knowledge is a separate problem from compliance. The one exception is a clean,
+non-text, non-branded headshot of the owner/agent themself, who obviously
+consents to being used in their own agency's marketing. Real, brand-safe images
+for ads have instead been pulled from the website's own `/public/images`
+(hero and category photos) — see `ads-audit`.
 
 ## Preparing photos
 
