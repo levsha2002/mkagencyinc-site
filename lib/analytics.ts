@@ -18,7 +18,12 @@ export type ConversionAction =
   | 'callback_request'  // "have an agent call me" form (LeadForm / quote page)
   | 'chat_lead'         // callback requested from inside the chat widget
   | 'talknow_lead'      // callback requested from the mobile Talk Now widget
-  | 'quote_submit';     // product-specific quote form (InsuranceQuoteForm)
+  | 'quote_submit'      // product-specific quote form (InsuranceQuoteForm)
+  | 'lead_manager_click'; // outbound click to the Allstate Lead Manager quote form
+
+// The Lead Manager form lives on leadmanagementlab.com, so its submissions are
+// invisible to our tag. The outbound click is the last thing we can observe.
+export const LEAD_MANAGER_HOST = 'leadmanagementlab.com';
 
 // Conversion labels from Google Ads → Goals → Conversions → (action) → Tag setup.
 //
@@ -45,6 +50,9 @@ export const CONVERSION_LABELS: Record<ConversionAction, string | null> = {
   talknow_lead: process.env.NEXT_PUBLIC_ADS_LABEL_TALKNOW || null,
   quote_submit:
     process.env.NEXT_PUBLIC_ADS_LABEL_QUOTE || '-1BtCL2Fj9EcELj-waBE',
+  // Needs its own conversion action in Ads (lower intent than a submitted
+  // form, so it must not share the callback label). Null until created.
+  lead_manager_click: process.env.NEXT_PUBLIC_ADS_LABEL_LEAD_MANAGER || null,
 };
 
 type Params = Record<string, string | number | boolean | undefined>;
@@ -79,9 +87,10 @@ export function phoneClickTrackingScript() {
   document.addEventListener('click', function(e){
     var t=e.target;
     if(!t || !t.closest) return;
-    var a=t.closest('a[href^="tel:"], a[href^="sms:"]');
+    var a=t.closest('a[href^="tel:"], a[href^="sms:"], a[href*="${LEAD_MANAGER_HOST}"]');
     if(!a) return;
     var href=a.getAttribute('href')||'';
+    if(href.indexOf('${LEAD_MANAGER_HOST}')!==-1){ fire('lead_manager_click', href); return; }
     fire(href.slice(0,4)==='tel:' ? 'phone_call' : 'sms_click', href);
   }, true);
 })();`.trim();
