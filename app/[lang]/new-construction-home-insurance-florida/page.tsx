@@ -1,8 +1,13 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL, getDict, REVIEWS_URL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import { pageMetadata } from '@/lib/seo';
+
+// ISR: re-render weekly so the Allstate rating in RatingBadge stays current
+// (explicit, so it holds even when the rating fetch is skipped/fails).
+export const revalidate = 604800;
 
 // Гео-лендинг: New Construction Home & Condo Insurance — вся Флорида
 // (не привязан к одному городу, как car-insurance-florida-city — таргетируется
@@ -165,13 +170,9 @@ export default function NewConstructionHomeInsuranceFlorida({ params }: { params
             </h1>
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
-            <div className="rated" style={{ marginLeft: 12 }}>
-              <span>
-                {t.langLine} ·{' '}
-                <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
-                  {getDict(l).hero.rated}
-                </a>
-              </span>
+            <div className="rated rated-stack" style={{ marginLeft: 12 }}>
+              <span>{t.langLine}</span>
+              <RatingBadge lang={l} />
             </div>
           </div>
           <LeadForm lang={l} defaultType="Home" />

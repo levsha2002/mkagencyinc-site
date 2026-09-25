@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL, REVIEWS_URL } from '@/lib/dictionaries';
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -31,6 +31,10 @@ export default function Footer({ lang }: { lang: string }) {
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem' }}>
           {fx.reviews}:{' '}
+          <a href={REVIEWS_URL} target="_blank" rel="noopener" style={{ color: '#bcd0ea' }}>
+            Allstate.com
+          </a>
+          {' · '}
           <a
             href="https://www.experience.com/reviews/mikhail-7323351"
             target="_blank"
