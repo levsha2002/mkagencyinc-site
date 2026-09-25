@@ -7,7 +7,12 @@ description: Approved ad copy library for M&K Agency in English, Spanish and Rus
 
 Everything here has been checked against Allstate Agency Standards
 (rev. July 15 2026, No. 43). Reuse rather than reinvent: new copy needs a new
-compliance judgement, existing copy does not.
+compliance judgement, existing copy does not — **for Allstate compliance.**
+Allstate-clean and Google-Ads-policy-clean are two different checks; see the
+"not currently usable" note on the Spanish housing headline below for a case
+where copy passed the first and failed the second. When you save new copy,
+confirm it actually gets approved (not just "Pending") before trusting it as
+reusable.
 
 ## Hard rules
 
@@ -35,6 +40,10 @@ Home · Auto · Commercial          24
 Florida City Insurance Agency     29
 Local Agents Who Answer           23
 Same-Day Callback                 17
+Florida Home Insurance            22
+Homeowners Insurance Agent        26
+House Insurance Near You          24
+Fast Free Home Insurance Quote    30
 ```
 
 ## English — descriptions (≤90 characters)
@@ -61,10 +70,20 @@ Seguro Comercial y de Vida        26
 Seguros para su Familia           23
 Atendemos Toda la Florida         25
 Agencia Familiar Local            22
-Seguro de Casa y Condominio       27
 Español, Inglés y Ruso            22
 Agente de Seguros Cercano         25
+Cobertura Auto y Comercial        26
+Cotización Gratis Hoy             21
 ```
+
+`Seguro de Casa y Condominio` (27) is Allstate-compliant but **not currently
+usable**: Google disapproved it under "Housing in personalized advertising"
+because this campaign's geo-targeting includes ZIP-code-level entries, which
+that policy restricts for housing-related copy. It was replaced live with
+`Cobertura Auto y Comercial`. Don't reintroduce it while ZIP-level targeting is
+still part of Locations — see `compliance-sweep` for the current targeting
+state. If targeting ever drops to city/state level only, it may become usable
+again, but re-test rather than assuming.
 
 ## Spanish — descriptions (≤90)
 
@@ -89,7 +108,17 @@ Llame y hable con una persona. Horario: lunes a viernes, 9am a 6pm ET.
 Работаем по всей Флориде          24
 Три языка обслуживания            22
 Страхование дома и квартир        26
+Страховка Авто и Квартиры         25
+Звоните Сегодня                   15
+Местный Страховой Агент           23
+Бесплатная Котировка              20
 ```
+
+`Страхование дома и квартир` and `Страховка Авто и Квартиры` mention housing the
+same way the disapproved Spanish headline did (see below) — they haven't been
+rejected, but ZIP-level targeting is active on this ad group too. Watch these
+specifically after any save; don't assume Russian and Spanish get the same
+policy treatment just because the English equivalents are fine.
 
 ## Russian — descriptions (≤90)
 
