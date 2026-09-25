@@ -94,7 +94,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Your info stays private. No spam, ever.',
     okH1: "You're all set!", okSub: 'Thanks — our team will call you back during office hours, Mon–Fri 9am–6pm ET. Need us right now?', okCall: '📞 Call (305) 859-3953',
     mapTitle: '📍 Visit us — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
-    scan: 'Fill Out Request for a Quote',
+    scan: 'Prefer Allstate\u2019s online quote form? Scan or tap the code.',
     callTitle: 'Call', textTitle: 'Text', smsBody: "Hi! I'd like to talk to {name} about my insurance.",
     prefAgent: 'Preferred agent',
   },
@@ -115,7 +115,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Su información es privada. Nunca le enviaremos spam.',
     okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo le llamará en horario de oficina, lun–vie 9am–6pm ET. ¿Nos necesita ahora mismo?', okCall: '📞 Llamar (305) 859-3953',
     mapTitle: '📍 Visítenos — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
-    scan: 'Llene la solicitud de cotización',
+    scan: '¿Prefiere el formulario en línea de Allstate? Escanee o toque el código.',
     callTitle: 'Llamar', textTitle: 'Texto', smsBody: '¡Hola! Me gustaría hablar con {name} sobre mi seguro.',
     prefAgent: 'Agente preferido',
   },
@@ -136,7 +136,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Ваши данные конфиденциальны. Никакого спама.',
     okH1: 'Готово!', okSub: 'Спасибо — перезвоним в рабочие часы, Пн–Пт 9:00–18:00 ET. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 859-3953',
     mapTitle: '📍 Наш офис — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
-    scan: 'Заполните заявку на расчёт',
+    scan: 'Удобнее онлайн-форма Allstate? Отсканируйте или нажмите на код.',
     callTitle: 'Позвонить', textTitle: 'Написать', smsBody: 'Здравствуйте! Хочу поговорить с {name} о страховке.',
     prefAgent: 'Предпочитаемый агент',
   },
@@ -206,7 +206,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
   if (status === 'ok') {
     return (
       <main className="qh-ok">
-        <style>{CSS}</style>
+        <style dangerouslySetInnerHTML={{ __html: CSS }} />
         <div className="qh-ok-box">
           <div className="qh-check">✓</div>
           <h1>{t.okH1}</h1>
@@ -219,7 +219,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
 
   return (
     <main className="qh">
-      <style>{CSS}</style>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       {/* ===== Navy premium hero: brand, quick actions, agents ===== */}
       <div className="qh-navy">
@@ -332,7 +332,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
 
         <div className="qh-qr">
           <a href={LEAD_MANAGER_URL} target="_blank" rel="noopener noreferrer">
-            <Image src="/images/lead-manager-qr.png" alt={getDict(lang).footerExtra.qrAlt} width={116} height={116} />
+            <Image src="/images/lead-manager-qr.png" alt={getDict(lang).footerExtra.qrAlt} width={80} height={80} />
           </a>
           <span>{t.scan}</span>
         </div>
@@ -341,6 +341,10 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
   );
 }
 
+// Injected with dangerouslySetInnerHTML, not as a text child: React escapes
+// quotes in text children on the server (&#x27; / &quot;) but a <style>
+// element's content is raw text in the browser, so hydration saw different
+// text and threw React errors #418/#423/#425, re-rendering the whole page.
 const CSS = `
 .qh{background:#f8fafc;min-height:100vh;color:#10233f;font-family:inherit}
 .qh-navy{background:linear-gradient(180deg,#eef4fd 0%,#f8fafc 100%);color:#07274f;padding-bottom:44px}

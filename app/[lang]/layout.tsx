@@ -13,13 +13,13 @@ import StickyCallBar from '@/components/StickyCallBar';
 // a Google Fonts <link> — removes the external render-blocking request and
 // the fonts.googleapis.com/fonts.gstatic.com network hop entirely.
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-inter',
   display: 'swap',
 });
 const playfair = Playfair_Display({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   weight: ['700', '800'],
   variable: '--font-playfair',
   display: 'swap',

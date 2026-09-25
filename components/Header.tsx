@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, locales, LEAD_MANAGER_URL } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, locales } from '@/lib/dictionaries';
 
 export default function Header({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -17,12 +17,11 @@ export default function Header({ lang }: { lang: string }) {
   const checkLabel =
     lang === 'es' ? 'Protección' : lang === 'ru' ? 'Финансовая защита' : 'Financial Protection';
 
-  const qrCaption =
-    lang === 'es' ? 'Llene la solicitud de cotización' : lang === 'ru' ? 'Заполните заявку на расчёт' : 'Fill Out Request for a Quote';
-
-  // Pages that already carry an on-site lead form: the header's quote CTA
-  // jumps to that form (tracked conversion) instead of sending the visitor
-  // to the off-site Allstate Lead Manager page, which has no Google tag.
+  // The header's quote CTA always stays on-site so the request counts as a
+  // Google Ads conversion: on pages that already carry a lead form it jumps to
+  // that form; everywhere else it opens /[lang]/quote in the current language.
+  // (It used to open the off-site Allstate Lead Manager, which has no Google
+  // tag; that form is now only a small secondary link on /quote.)
   const pathname = usePathname() || '';
   const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
   // Language switcher keeps the visitor on the same page in the other
@@ -89,20 +88,7 @@ export default function Header({ lang }: { lang: string }) {
             📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
           </a>
           <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">{t.contact.textUs}</span></a>
-          {hasOnSiteForm ? (
-            <a href="#quote" className="text-btn header-quote-btn">📝 <span className="text-btn-text">{onSiteQuoteLabel}</span></a>
-          ) : (
-            <a
-              href={LEAD_MANAGER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header-qr"
-              title={qrCaption}
-            >
-              <Image src="/images/lead-manager-qr.png" alt={t.footerExtra.qrAlt} width={48} height={48} />
-              <span className="header-qr-text">{qrCaption}</span>
-            </a>
-          )}
+          <a href={hasOnSiteForm ? '#quote' : `/${lang}/quote`} className="text-btn header-quote-btn">📝 <span className="text-btn-text">{onSiteQuoteLabel}</span></a>
         </div>
       </div>
 
