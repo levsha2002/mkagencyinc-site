@@ -25,6 +25,11 @@ export default function Header({ lang }: { lang: string }) {
   // to the off-site Allstate Lead Manager page, which has no Google tag.
   const pathname = usePathname() || '';
   const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
+  // Language switcher keeps the visitor on the same page in the other
+  // language (every route under app/[lang] exists for en, es and ru) instead
+  // of dropping them on the home page.
+  const langHref = (l: string) => `/${l}${pathname.replace(/^\/(en|es|ru)(?=\/|$)/, '')}`;
+
   const onSiteQuoteLabel =
     lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote';
 
@@ -58,7 +63,7 @@ export default function Header({ lang }: { lang: string }) {
         {/* Language switcher sits right next to the nav (by Community), not pushed to the far edge */}
         <div className="lang">
           {locales.map((l) => (
-            <Link key={l} href={`/${l}`} className={l === lang ? 'active' : ''}>
+            <Link key={l} href={langHref(l)} className={l === lang ? 'active' : ''}>
               {l.toUpperCase()}
             </Link>
           ))}
@@ -112,7 +117,7 @@ export default function Header({ lang }: { lang: string }) {
             {locales.map((l) => (
               <Link
                 key={l}
-                href={`/${l}`}
+                href={langHref(l)}
                 className={l === lang ? 'active' : ''}
                 onClick={() => setOpen(false)}
               >
