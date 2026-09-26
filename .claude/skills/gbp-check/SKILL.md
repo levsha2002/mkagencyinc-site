@@ -115,3 +115,8 @@ high cost") was left alone as borderline. Also watch for unfilled template
 placeholders — one live reply read "I'll make sure [Agent] hears this"; the
 replies are managed through Yext (`yext.com/s/501290/reviews/response`),
 so a broken variable there repeats until the template is fixed.
+
+Full sweep on 2026-09-26: 73 reviews total. Everything from 2025 onward has
+a reply; **all 43 reviews dated Jan 2024 and earlier have none** (the list
+shows a "Reply" button instead of "(owner)"). Reading the list means paging
+to "71–73 of 73", not stopping at the first screen.
