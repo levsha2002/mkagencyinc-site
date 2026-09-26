@@ -12,10 +12,12 @@ export const LIMITED_LANG_PAGES: Record<string, { langs: Lang[]; fallback: strin
 /** Target of the language switcher for `pathname` in language `l`.
  *  Blog articles can exist in any subset of languages, and the header cannot
  *  know which without shipping post data to the browser, so the switcher goes
- *  to the blog index; each article links its own translations in the page. */
+ *  to the blog index; each article links its own translations in the page.
+ *  News editions work the same way (to /[lang]/news). */
 export function switchLangHref(pathname: string, l: string): string {
   const rest = pathname.replace(/^\/(en|es|ru)(?=\/|$)/, '');
   if (/^\/blog\/[^/]+\/?$/.test(rest)) return `/${l}/blog`;
+  if (/^\/news\/[^/]+\/?$/.test(rest)) return `/${l}/news`;
   const limited = LIMITED_LANG_PAGES[rest.replace(/\/$/, '')];
   if (limited && !limited.langs.includes(l as Lang)) return `/${l}${limited.fallback}`;
   return `/${l}${rest}`;

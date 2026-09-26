@@ -58,6 +58,8 @@ export default function Footer({ lang }: { lang: string }) {
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
           <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>{fx.community}</Link>
           {' · '}
+          <Link href={`/${lang}/news`} style={{ color: '#bcd0ea' }}>{lang === 'es' ? 'Noticias' : lang === 'ru' ? 'Новости' : 'News'}</Link>
+          {' · '}
           {blogHasLang(lang) && (
             <>
               <Link href={`/${lang}/blog`} style={{ color: '#bcd0ea' }}>{lang === 'ru' ? 'Блог' : 'Blog'}</Link>
