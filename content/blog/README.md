@@ -49,11 +49,59 @@ Then run `npm run build`. The build fails on a bad or duplicate slug or a bad da
   languages return a real 404.
 - hreflang and `x-default` list only the existing languages (`buildAlternates(..., langs)` in `lib/seo.ts`).
 - Sitemap entries for each post/language, plus `/[lang]/blog` once a language has a post.
-- Article + BreadcrumbList JSON-LD (+ FAQPage if `faq` is set). The author and publisher are "M&K Agency".
+- A visible byline under the H1, next to the date (see "Author byline" below).
+- Article + BreadcrumbList JSON-LD (+ FAQPage if `faq` is set). Article `author` (and `reviewedBy` on the
+  page) is the byline author as a `Person` with `worksFor` M&K Agency; the `publisher` is "M&K Agency".
 - A CTA box linking to `/[lang]/quote` and the office phone, a disclaimer, the source list, "also available in"
   links to the translations, and related posts.
 - The header language switcher sends blog-article visitors to `/[lang]/blog`
   (the article links its own translations). The footer shows a Blog link for languages that have posts.
+
+## Author byline (default)
+
+Every post gets this byline automatically. You don't add anything to the post file:
+
+- EN: "Written and reviewed by Mikhail Kozlov, licensed insurance agent, M&K Agency"
+- ES: "Escrito y revisado por Mikhail Kozlov, agente de seguros con licencia, M&K Agency"
+- RU: "Автор и проверка: Михаил Козлов, лицензированный страховой агент, M&K Agency"
+
+The name links to `/[lang]/team#mikhail-kozlov` (Mikhail's card on the team page; the anchor is his
+`slug` in `lib/team-data.ts`). The same URL is the `Person.url` in the JSON-LD:
+
+```json
+"author": { "@type": "Person", "name": "Mikhail Kozlov", "jobTitle": "Licensed Insurance Agent",
+            "url": "https://mkagencyinc.com/en/team#mikhail-kozlov",
+            "worksFor": { "@type": "InsuranceAgency", "name": "M&K Agency", "url": "https://mkagencyinc.com" } }
+```
+
+The default lives in one place, `DEFAULT_AUTHOR` in `content/authors.ts`, and is also used by the flood
+service page (`/[lang]/flood-insurance-homestead-fl`, WebPage `author` + `reviewedBy`). Change it there and
+every page follows.
+
+Per-post override (only if someone else really wrote and reviewed the post): set `author` on the post.
+
+```ts
+import type { BlogPost } from '../types';
+
+export const post: BlogPost = {
+  slug: '…',
+  datePublished: '2026-10-21',
+  author: {
+    name: 'Jane Doe',                  // schema.org Person name
+    jobTitle: 'Licensed Insurance Agent',
+    teamSlug: 'jane-doe',              // optional: her slug in lib/team-data.ts (links the name); omit if not on /team
+    byline: {                          // all three languages are required by the type
+      en: { prefix: 'Written and reviewed by ', name: 'Jane Doe', suffix: ', licensed insurance agent, M&K Agency' },
+      es: { prefix: 'Escrito y revisado por ', name: 'Jane Doe', suffix: ', agente de seguros con licencia, M&K Agency' },
+      ru: { prefix: 'Автор и проверка: ', name: 'Джейн Доу', suffix: ', лицензированный страховой агент, M&K Agency' },
+    },
+  },
+  translations: { … },
+};
+```
+
+Byline rules: credentials are only "licensed insurance agent". No license numbers, no designations,
+and no insurance company names in the byline.
 
 ## Content rules (from the owner)
 

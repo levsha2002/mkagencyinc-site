@@ -6,7 +6,10 @@ import RelatedCoverage from '@/components/RelatedCoverage';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
 import { FLOOD_PAGE, FLOOD_PAGE_DATE } from '@/content/pages/flood-insurance-homestead-fl';
-import { ArticleBody, FaqList, SourceList, Disclaimer, articleStyles as s } from '@/components/article/ArticleParts';
+import { ArticleBody, Byline, FaqList, SourceList, Disclaimer, articleStyles as s } from '@/components/article/ArticleParts';
+import { DEFAULT_AUTHOR } from '@/content/authors';
+import { personLd } from '@/lib/author';
+import { formatDate } from '@/lib/blog';
 import { stripInline } from '@/components/article/RichText';
 
 // Service page: flood insurance for Florida City & Homestead. Content lives in
@@ -36,10 +39,30 @@ export default function FloodInsurancePage({ params }: { params: { lang: string 
   const home = l === 'es' ? 'Inicio' : 'Home';
   const checked = l === 'es' ? 'Datos verificados con estas fuentes oficiales el 26 de septiembre de 2026.' : 'Facts checked against these official sources on September 26, 2026.';
 
+  const updated = l === 'es' ? 'Actualizado el' : 'Updated';
+  const person = personLd(DEFAULT_AUTHOR, l);
+
   const ld = [
     {
       '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': url,
+      url,
+      name: t.metaTitle,
+      description: t.metaDesc,
+      inLanguage: l,
+      datePublished: FLOOD_PAGE_DATE.published,
+      dateModified: FLOOD_PAGE_DATE.modified,
+      lastReviewed: FLOOD_PAGE_DATE.modified,
+      author: person,
+      reviewedBy: person,
+      publisher: { '@type': 'Organization', name: 'M&K Agency', url: SITE_URL },
+      mainEntity: { '@id': `${url}#service` },
+    },
+    {
+      '@context': 'https://schema.org',
       '@type': 'Service',
+      '@id': `${url}#service`,
       name: stripInline(`${t.h1a} ${t.h1b}`).replace(/,\s*/, ' – '),
       serviceType: l === 'es' ? 'Seguro de inundación' : 'Flood insurance',
       description: t.metaDesc,
@@ -95,6 +118,10 @@ export default function FloodInsurancePage({ params }: { params: { lang: string 
             <h1>
               {t.h1a} <span className="accent">{t.h1b}</span>
             </h1>
+            <p className={s.meta} style={{ margin: '0 0 16px' }}>
+              <Byline lang={l} />
+              <span>{updated} <time dateTime={FLOOD_PAGE_DATE.modified}>{formatDate(FLOOD_PAGE_DATE.modified, l)}</time></span>
+            </p>
             <p className="sub">{t.sub}</p>
             <a className="cta" href={`tel:${PHONE_TEL}`}>{t.call} {PHONE_DISPLAY}</a>
             {/* No third-party rating badge here: the article area must not name any insurer. */}
