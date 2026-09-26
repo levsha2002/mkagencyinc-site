@@ -11,6 +11,7 @@ import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
 import { LEAD_MANAGER_URL, getDict } from '@/lib/dictionaries';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 declare global {
   interface Window {
@@ -235,6 +236,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
         <div className="qh-actions">
           <a href={`tel:${PHONE}`}>📞 {t.callUs}</a>
           <a href={`sms:${PHONE}`}>💬 {t.textUs}</a>
+          <WhatsAppLink lang={lang} placement="quote_actions" className="wa-link" />
           <a href="#map">📍 {t.visitUs}</a>
         </div>
 

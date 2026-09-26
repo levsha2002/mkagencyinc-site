@@ -7,6 +7,7 @@ import { getAttribution } from '@/lib/attribution';
 import { consentPayload } from '@/lib/consent';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
 import { useLeadFormInView } from '@/components/useLeadFormInView';
+import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
 
 // `links` is only set on server refusals (rate limit / too long): tap-to-call
 // and on-site quote links rendered under the bot bubble. Never sent back to
@@ -237,6 +238,11 @@ export default function ChatWidget({ lang }: { lang: string }) {
 
       {!open && (
         <>
+          {/* WhatsApp sits at the top of the launcher column so it always
+              stacks above the chat buttons and shares their hide rules. */}
+          <WhatsAppLink lang={lang} placement="floating" className="wa-fab">
+            <WhatsAppIcon size={30} />
+          </WhatsAppLink>
           <button className="mk-fab" onClick={() => { setOpen(true); setTab('chat'); }}>💬 {t.fab}</button>
           <button className="mk-fab secondary" onClick={() => { setOpen(true); setTab('callback'); }}>📞 {t.cbFab}</button>
         </>

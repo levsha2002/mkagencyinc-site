@@ -1080,3 +1080,17 @@ body { font-size: 16.5px; }
 .rated.rated-stack{flex-direction:column;align-items:flex-start;gap:4px}
 .rated-stack .rating-badge{font-size:.84rem}
 .rating-badge-text{white-space:nowrap}
+
+/* ===== WhatsApp (components/WhatsAppLink.tsx) =====
+   Floating button: rendered as the first child of the chat widget column
+   (.mk-widget), so it always stacks directly above the chat launcher, moves
+   up with it above the mobile sticky Call/Text bar, and hides with it while
+   the chat is open or a lead form is on screen. */
+.wa-fab { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 10px 26px rgba(7,39,79,.35); transition: transform .15s; }
+.wa-fab:hover { transform: scale(1.06); }
+.wa-fab:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+.wa-link { display: inline-flex; align-items: center; justify-content: center; gap: 5px; vertical-align: middle; }
+.wa-link svg { color: #25D366; }
+@media (max-width: 640px) {
+  .wa-fab { width: 50px; height: 50px; }
+}

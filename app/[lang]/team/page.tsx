@@ -2,6 +2,7 @@ import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
 import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
@@ -78,6 +79,8 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
                 <a href={`tel:${PHONE_TEL}`} style={{ color: 'var(--blue)', fontWeight: 800 }}>
                   {PHONE_DISPLAY}
                 </a>
+                {' · '}
+                <WhatsAppLink lang={params.lang} placement="team_office" className="wa-link" style={{ color: 'var(--blue)', fontWeight: 800 }} />
               </p>
             </div>
           </div>
