@@ -73,6 +73,14 @@ Check, in order:
 Description, categories, services, hours, phone. Verify the trilingual claim is
 accurate and no carrier-comparison language has returned.
 
+**Owner replies to reviews too** — read them at `business.google.com/reviews`
+(this domain has been reachable when `ads.google.com` and `www.google.com`
+were not). They are public marketing text and get the same six classes. Two
+real violations were found there in Sept 2026 (a competitor named back to a
+customer, and a "costs about half" claim), plus an unfilled `[Agent]`
+placeholder. Page through past the first 10 — the list says "of many". See
+`gbp-check` for the reply workflow.
+
 ## Reporting
 
 State what was checked, what was found, and what was **not** verifiable. If a

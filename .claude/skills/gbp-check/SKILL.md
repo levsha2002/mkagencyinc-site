@@ -96,6 +96,22 @@ parking. No customer screens, documents or faces without permission.
 ## Compliance
 
 Profile text is subject to the same six violation classes as the website — see
-`compliance-sweep`. Whether the agency may solicit or display customer reviews
-is an open question with Allstate compliance; do not set up review requests
-until that is answered in writing.
+`compliance-sweep`.
+
+**Reviews: requesting them is allowed** (confirmed by the owner, Sept 2026 —
+this used to be an open question with Allstate compliance). A "leave a review"
+link may be added to the site and to post-lead confirmations; the link comes
+from Business Profile → "Ask for reviews" (a `g.page/r/…/review` short URL),
+not from Yext.
+
+**Review replies: the owner writes them, weekly, and checks them with Claude
+before or after posting.** Do not draft-and-post replies unasked. When
+reviewing a batch, the two failures actually found live (Sept 2026) were:
+a reply naming a competitor the customer had mentioned ("after switching
+from Geico" — class 3, even though the customer said it first), and a
+quantified price claim ("Milewise often costs about half of a standard
+policy" — class 5). Softer price framing ("at a good price", "without the
+high cost") was left alone as borderline. Also watch for unfilled template
+placeholders — one live reply read "I'll make sure [Agent] hears this"; the
+replies are managed through Yext (`yext.com/s/501290/reviews/response`),
+so a broken variable there repeats until the template is fixed.
