@@ -28,12 +28,7 @@ const playfair = Playfair_Display({
 // Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
 // per-lead "conversion" events fire from lib/analytics.ts trackConversion()
 // only after a lead API answers OK (forms, Talk-to-Agent, chat).
-import {
-  GOOGLE_ADS_ID,
-  CALL_CONVERSION_SEND_TO,
-  CALL_CONVERSION_PHONE,
-  phoneClickTrackingScript,
-} from '@/lib/analytics';
+import { GOOGLE_ADS_ID, gtagInitScript, phoneClickTrackingScript } from '@/lib/analytics';
 import { attributionCaptureScript } from '@/lib/attribution';
 
 export async function generateStaticParams() {
@@ -152,13 +147,7 @@ export default function RootLayout({
               {phoneClickTrackingScript()}
             </Script>
             <Script id="gtag-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
-                gtag('config', '${CALL_CONVERSION_SEND_TO}', { 'phone_conversion_number': '${CALL_CONVERSION_PHONE}' });
-              `}
+              {gtagInitScript()}
             </Script>
           </>
         )}
