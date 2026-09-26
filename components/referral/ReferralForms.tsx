@@ -207,6 +207,9 @@ export function ReferFriendForm({ lang: rawLang, t }: { lang: string; t: any }) 
           {status === 'sending' ? t.sending : t.submit}
         </button>
         {status === 'err' && <p className="status-err" role="alert">{t.err}</p>}
+        <p className="privacy">
+          <a href={`/${lang}/referral/rules`} style={{ textDecoration: 'underline' }}>{t.rules}</a>
+        </p>
       </form>
     </div>
   );
@@ -326,6 +329,9 @@ export function PartnerForm({ lang: rawLang, t }: { lang: string; t: any }) {
           {status === 'sending' ? t.sending : t.submit}
         </button>
         {status === 'err' && <p className="status-err" role="alert">{t.err}</p>}
+        <p className="privacy">
+          <a href={`/${lang}/referral/rules`} style={{ textDecoration: 'underline' }}>{t.rules}</a>
+        </p>
       </form>
     </div>
   );

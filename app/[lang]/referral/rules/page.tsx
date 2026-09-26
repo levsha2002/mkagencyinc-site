@@ -1,4 +1,11 @@
+import Link from 'next/link';
 import { referralRules } from '@/lib/legal-content';
+
+const BACK: Record<'en' | 'es' | 'ru', string> = {
+  en: '← Back to Referrals & partners',
+  es: '← Volver a Recomendaciones y socios',
+  ru: '← Назад к странице «Рекомендации и партнёры»',
+};
 import { pageMetadata, clipDescription } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
@@ -32,6 +39,12 @@ export default function ReferralRulesPage({ params }: { params: { lang: string }
               ))}
             </div>
           ))}
+
+          <p style={{ marginTop: 28 }}>
+            <Link href={`/${lang}/referral`} style={{ color: 'var(--blue)', fontWeight: 700 }}>
+              {BACK[lang]}
+            </Link>
+          </p>
         </div>
       </section>
     </main>
