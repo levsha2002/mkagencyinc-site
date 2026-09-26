@@ -5,15 +5,16 @@ import ReferralMap from '@/components/ReferralMap';
 import ReferralForm from '@/components/ReferralForm';
 import BusinessDirectory from '@/components/BusinessDirectory';
 import { pageMetadata } from '@/lib/seo';
+import { referralBusinesses } from '@/lib/referral-businesses';
 
 // The hero subtitle used to double as the meta description. It reads well on
 // the page but runs past 200 characters, so Google cut it off mid-sentence.
 // These are written for the search result instead: short, and leading with
 // what someone searching would actually want to know.
 const META_DESC: Record<string, string> = {
-  en: 'A free directory of local Florida small businesses our neighbours already trust — contractors, restaurants, realtors and more. Listing is free.',
-  es: 'Directorio gratuito de pequeños negocios locales de Florida en los que confían nuestros vecinos — contratistas, restaurantes, agentes inmobiliarios y más.',
-  ru: 'Бесплатный каталог местных компаний Флориды, которым доверяют наши соседи — подрядчики, рестораны, риелторы и другие. Размещение бесплатное.',
+  en: 'Refer a friend to M&K Agency in Florida City, or suggest a local Florida small business for our free community directory. Call (305) 859-3953.',
+  es: 'Recomiende a un amigo a M&K Agency en Florida City, o sugiera un pequeño negocio local de Florida para nuestro directorio comunitario gratuito. (305) 859-3953.',
+  ru: 'Порекомендуйте M&K Agency (Florida City) другу или предложите местную компанию Флориды для нашего бесплатного каталога. Телефон (305) 859-3953.',
 };
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
@@ -28,6 +29,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 
 export default function ReferralPage({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).referral;
+  // While nothing is listed, the listing disclaimer and the (empty) map are
+  // hidden: both describe businesses that do not exist yet.
+  const hasListings = referralBusinesses.length > 0;
 
   return (
     <main>
@@ -124,30 +128,40 @@ export default function ReferralPage({ params }: { params: { lang: string } }) {
             {t.purposeBody}
           </p>
 
-          <div
-            style={{
-              background: '#fff8e6',
-              border: '1px solid #f0dca0',
-              borderRadius: 14,
-              padding: '14px 18px',
-              marginBottom: 20,
-              color: '#7a5c00',
-              fontSize: '.88rem',
-              lineHeight: 1.5,
-            }}
-          >
-            ⚠️ {t.disclaimer}{' '}
-            <Link href={`/${params.lang}/referral/rules`} style={{ color: '#7a5c00', textDecoration: 'underline' }}>
-              {t.rulesLink}
-            </Link>
-          </div>
+          {hasListings ? (
+            <>
+              <div
+                style={{
+                  background: '#fff8e6',
+                  border: '1px solid #f0dca0',
+                  borderRadius: 14,
+                  padding: '14px 18px',
+                  marginBottom: 20,
+                  color: '#7a5c00',
+                  fontSize: '.88rem',
+                  lineHeight: 1.5,
+                }}
+              >
+                ⚠️ {t.disclaimer}{' '}
+                <Link href={`/${params.lang}/referral/rules`} style={{ color: '#7a5c00', textDecoration: 'underline' }}>
+                  {t.rulesLink}
+                </Link>
+              </div>
 
-          <ReferralMap searchPlaceholder={t.searchPlaceholder} />
-          <p style={{ textAlign: 'center', marginTop: 16, fontSize: '.85rem' }}>
-            <Link href={`/${params.lang}/referral/rules`} style={{ color: 'var(--blue)' }}>
-              {t.rulesLink}
-            </Link>
-          </p>
+              <ReferralMap searchPlaceholder={t.searchPlaceholder} />
+              <p style={{ textAlign: 'center', marginTop: 16, fontSize: '.85rem' }}>
+                <Link href={`/${params.lang}/referral/rules`} style={{ color: 'var(--blue)' }}>
+                  {t.rulesLink}
+                </Link>
+              </p>
+            </>
+          ) : (
+            <p style={{ textAlign: 'center', fontSize: '.85rem' }}>
+              <Link href={`/${params.lang}/referral/rules`} style={{ color: 'var(--blue)' }}>
+                {t.rulesLink}
+              </Link>
+            </p>
+          )}
         </div>
       </section>
 
