@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, locales } from '@/lib/dictionaries';
+import { switchLangHref } from '@/lib/page-langs';
 
 export default function Header({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -25,9 +26,10 @@ export default function Header({ lang }: { lang: string }) {
   const pathname = usePathname() || '';
   const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
   // Language switcher keeps the visitor on the same page in the other
-  // language (every route under app/[lang] exists for en, es and ru) instead
-  // of dropping them on the home page.
-  const langHref = (l: string) => `/${l}${pathname.replace(/^\/(en|es|ru)(?=\/|$)/, '')}`;
+  // language instead of dropping them on the home page.
+  // Pages that exist in fewer languages (blog posts, EN/ES-only pages) are
+  // mapped in lib/page-langs.ts so the switcher never points at a 404.
+  const langHref = (l: string) => switchLangHref(pathname, l);
 
   const onSiteQuoteLabel =
     lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote';

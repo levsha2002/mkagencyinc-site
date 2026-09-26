@@ -6,9 +6,11 @@ import Link from 'next/link';
 
 type Lang = 'en' | 'es' | 'ru';
 
-const LINKS: { path: string; label: Record<Lang, string>; icon: string }[] = [
+const LINKS: { path: string; label: Record<Lang, string>; icon: string; langs?: Lang[] }[] = [
   { path: '/car-insurance-florida-city', icon: '🚗', label: { en: 'Auto Insurance', es: 'Seguro de Auto', ru: 'Автострахование' } },
   { path: '/homeowners-insurance-florida-city', icon: '🏠', label: { en: 'Home Insurance', es: 'Seguro de Casa', ru: 'Страховка дома' } },
+  // EN/ES only (no RU page yet), so it is skipped on Russian pages.
+  { path: '/flood-insurance-homestead-fl', icon: '🌊', label: { en: 'Flood Insurance', es: 'Seguro de Inundación', ru: 'Страхование от наводнения' }, langs: ['en', 'es'] },
   { path: '/condo-insurance-florida-city', icon: '🏢', label: { en: 'Condo Insurance', es: 'Seguro de Condominio', ru: 'Страховка кондо' } },
   { path: '/new-construction-home-insurance-florida', icon: '🏗️', label: { en: 'New-Construction Home', es: 'Casa de Nueva Construcción', ru: 'Новостройка' } },
   { path: '/motorcycle-insurance-florida-city', icon: '🏍️', label: { en: 'Motorcycle Insurance', es: 'Seguro de Motocicleta', ru: 'Страховка мотоцикла' } },
@@ -26,7 +28,7 @@ const HEADING: Record<Lang, string> = {
 
 export default function RelatedCoverage({ lang, current }: { lang: string; current?: string }) {
   const l: Lang = lang === 'es' || lang === 'ru' ? (lang as Lang) : 'en';
-  const items = LINKS.filter((x) => x.path !== current);
+  const items = LINKS.filter((x) => x.path !== current && (!x.langs || x.langs.includes(l)));
 
   return (
     <section className="section">
