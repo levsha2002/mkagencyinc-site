@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 
 const SCAN: Record<string, string> = {
   en: 'Fill Out Request for a Quote',
@@ -32,6 +32,16 @@ export default function Footer({ lang }: { lang: string }) {
           Florida License #L109526 · NPN #19586268 · Agent in Charge: Mikhail Kozlov ·{' '}
           <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#bcd0ea' }}>
             mikhailkozlov@allstate.com
+          </a>
+        </p>
+        <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#fff', fontWeight: 700, textDecoration: 'underline' }}
+          >
+            {REVIEW_CTA[lang] || REVIEW_CTA.en}
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem' }}>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { InsuranceProduct } from '@/lib/insurance-products';
 import { trackConversion } from '@/lib/analytics';
+import { GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import Honeypot from '@/components/Honeypot';
 
 declare global {
@@ -87,6 +88,11 @@ export default function InsuranceQuoteForm({
       <div className="card">
         <p className="status-ok">
           Thank you! A licensed agent will contact you shortly about {product.title.toLowerCase()}.
+        </p>
+        <p className="sub" style={{ marginTop: 10 }}>
+          <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
+            {REVIEW_CTA[lang] || REVIEW_CTA.en}
+          </a>
         </p>
       </div>
     );
