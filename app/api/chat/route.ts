@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { clientIp, sharedLimiter, HOUR_MS } from '@/lib/rate-limit';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const AGENCY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -179,15 +180,112 @@ function guardReply(reply, lang) {
   return { reply: t.replace('PHONE', PHONE_DISPLAY), blocked: true };
 }
 
+// ---------------------------------------------------------------------------
+// Abuse / cost guard. Every message costs a paid grok-4 call, so:
+//   - at most CHAT_MAX_PER_HOUR messages per client IP per rolling hour
+//     (in-memory, per instance — see lib/rate-limit.ts for the trade-off);
+//   - the newest visitor message is capped at MAX_MESSAGE_CHARS (the widget's
+//     input has the same maxLength, so real visitors never hit this);
+//   - older history entries are trimmed to MAX_MESSAGE_CHARS and only the last
+//     10 are sent to xAI;
+//   - the raw request body is capped at MAX_BODY_BYTES.
+// Refused requests never reach xAI.
+// ---------------------------------------------------------------------------
+const CHAT_MAX_PER_HOUR = 20;
+const MAX_MESSAGE_CHARS = 1000;
+const MAX_BODY_BYTES = 200_000; // whole conversation JSON (widget sends full history)
+const MAX_HISTORY_ENTRIES = 100; // kept for the agency transcript; xAI only sees the last 10
+
+const chatLimiter = sharedLimiter('chat', { windowMs: HOUR_MS, max: CHAT_MAX_PER_HOUR });
+
+const LIMIT_REPLY = {
+  en: `Thanks for all your questions! To keep this chat fair for everyone, I've reached my message limit for now. For a faster answer, call us at PHONE or request a quote at QUOTE — a licensed agent will take it from there.`,
+  es: `¡Gracias por todas sus preguntas! Para que este chat sea justo para todos, he llegado al límite de mensajes por ahora. Para una respuesta más rápida, llámenos al PHONE o solicite una cotización en QUOTE — un agente licenciado le atenderá.`,
+  ru: `Спасибо за ваши вопросы! Чтобы чат оставался доступным для всех, я пока достиг лимита сообщений. Чтобы получить ответ быстрее, позвоните нам по номеру PHONE или оставьте заявку на расчёт: QUOTE — лицензированный агент свяжется с вами.`,
+};
+
+const TOO_LONG_REPLY = {
+  en: `Sorry, that message is too long for me — please keep it under ${MAX_MESSAGE_CHARS.toLocaleString('en-US')} characters. You can also call us at PHONE or use the quote form at QUOTE.`,
+  es: `Lo siento, ese mensaje es demasiado largo — por favor, manténgalo por debajo de ${MAX_MESSAGE_CHARS} caracteres. También puede llamarnos al PHONE o usar el formulario de cotización en QUOTE.`,
+  ru: `Извините, сообщение слишком длинное — пожалуйста, уложитесь в ${MAX_MESSAGE_CHARS} символов. Также можно позвонить нам по номеру PHONE или заполнить форму на странице QUOTE.`,
+};
+
+const BAD_REQUEST_REPLY = {
+  en: `Sorry, I couldn't read that message — please try again or call us at PHONE.`,
+  es: `Lo siento, no pude leer ese mensaje — inténtelo de nuevo o llámenos al PHONE.`,
+  ru: `Извините, не удалось прочитать сообщение — попробуйте ещё раз или позвоните нам по номеру PHONE.`,
+};
+
+type Lang = 'en' | 'es' | 'ru';
+const normLang = (l: unknown): Lang => (l === 'es' || l === 'ru' ? l : 'en');
+const quotePath = (lang: Lang) => `/${lang}/quote`;
+function localized(table: Record<Lang, string>, lang: Lang) {
+  return table[lang].replace('PHONE', PHONE_DISPLAY).replace('QUOTE', `mkagencyinc.com${quotePath(lang)}`);
+}
+
+// Fields the widget uses to render tap-to-call / quote links under a refusal.
+function refusal(table: Record<Lang, string>, lang: Lang, status: number, extra: Record<string, unknown> = {}, headers: Record<string, string> = {}) {
+  return new Response(
+    JSON.stringify({ reply: localized(table, lang), limited: true, quote_url: quotePath(lang), phone_tel: PHONE_TEL, ...extra }),
+    { status, headers: { 'Content-Type': 'application/json', ...headers } }
+  );
+}
+
+type ChatMsg = { role: 'user' | 'assistant'; content: string };
+function cleanHistory(raw: unknown): ChatMsg[] | null {
+  if (!Array.isArray(raw)) return null;
+  return raw
+    .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
+    .slice(-MAX_HISTORY_ENTRIES)
+    .map((m) => ({ role: m.role, content: m.content }));
+}
+
 export async function POST(req) {
   try {
     if (!process.env.XAI_API_KEY) {
       return json({ reply: `Chat is not configured yet — please call us at ${PHONE_DISPLAY}.` }, 200);
     }
 
-    const { messages, lang, lead } = await req.json();
+    // 1) Body size cap (before parsing). Language is unknown until parsed, so
+    //    oversize bodies fall back to the page language hinted by the Referer.
+    const refLang = normLang((/\/(en|es|ru)(\/|$|\?)/.exec(req.headers.get('referer') || '') || [])[1]);
+    const declared = Number(req.headers.get('content-length') || 0);
+    if (declared > MAX_BODY_BYTES) return refusal(TOO_LONG_REPLY, refLang, 413, { reason: 'body_too_large' });
+    const rawBody = await req.text();
+    if (Buffer.byteLength(rawBody, 'utf8') > MAX_BODY_BYTES) {
+      return refusal(TOO_LONG_REPLY, refLang, 413, { reason: 'body_too_large' });
+    }
+    let body;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return refusal(BAD_REQUEST_REPLY, refLang, 400, { reason: 'bad_json' });
+    }
+    const lang = normLang(body?.lang);
+    const lead = body?.lead;
     // `lead` (optional): structured fields the frontend has already parsed out of
     // the conversation, e.g. { name, phone, zip, product, consent: true }
+
+    // 2) Per-IP rolling-hour limit. Every attempt that gets this far counts
+    //    (including over-length ones below); refused attempts do not.
+    const ip = clientIp(req);
+    const rl = chatLimiter.consume(ip);
+    if (rl.limited) {
+      const retryAfter = Math.max(1, Math.ceil(rl.retryAfterMs / 1000));
+      console.warn('[chat rate limit] 429 for ip', ip, '| retry after', retryAfter, 's');
+      return refusal(LIMIT_REPLY, lang, 429, { reason: 'rate_limited' }, { 'Retry-After': String(retryAfter) });
+    }
+
+    // 3) Message validation / length cap.
+    const history = cleanHistory(body?.messages);
+    if (!history || !history.length || history[history.length - 1].role !== 'user' || !history[history.length - 1].content.trim()) {
+      return refusal(BAD_REQUEST_REPLY, lang, 400, { reason: 'bad_messages' });
+    }
+    if (history[history.length - 1].content.length > MAX_MESSAGE_CHARS) {
+      return refusal(TOO_LONG_REPLY, lang, 413, { reason: 'message_too_long' });
+    }
+    // Older entries come from the client too, so trim rather than trust them.
+    const messages = history.map((m) => ({ role: m.role, content: m.content.slice(0, MAX_MESSAGE_CHARS) }));
 
     const xaiMessages = [
       { role: 'system', content: SYSTEM_PROMPT },
@@ -218,7 +316,7 @@ export async function POST(req) {
 
     const data = await r.json();
     const rawReply = data.choices?.[0]?.message?.content || `Please call us at ${PHONE_DISPLAY}.`;
-    const { reply, blocked } = guardReply(rawReply, lang || 'en');
+    const { reply, blocked } = guardReply(rawReply, lang);
 
     const transcript = [...messages, { role: 'assistant', content: reply }]
       .map((m) => `<p><b>${m.role === 'user' ? 'Visitor' : 'Mike (AI)'}:</b> ${m.content}</p>`)
