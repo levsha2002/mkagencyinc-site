@@ -49,13 +49,6 @@ export const team: TeamMember[] = [
     quote: "Florida families deserve an agent who actually picks up the phone. That's me.",
   },
   {
-    slug: 'emily-senise',
-    name: 'Emily Senise',
-    role: 'Licensed Insurance Agent',
-    photo: '/images/team/emily-senise.jpg',
-    quote: "I love the moment a client realizes they're finally covered the right way.",
-  },
-  {
     slug: 'carolina-silva',
     name: 'Carolina Silva',
     role: 'Licensed Insurance Agent — Homeowner Policies & Team Lead',
