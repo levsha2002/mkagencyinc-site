@@ -3,6 +3,7 @@ import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
 import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
+import { sendTelegramLeadAlert } from '@/lib/telegram';
 
 // Hardcoded so email works regardless of Vercel env-var state.
 // mkagencyinc.com is a verified sending domain in Resend, so leads@ sends
@@ -83,7 +84,22 @@ export async function POST(req: Request) {
           ${consentText}, ${consentTextVersion}, ${consentIp}, ${consentUserAgent}, ${pageUrl}, ${clientTxnId})`;
     }
 
-    // 2) Email the agency
+    // 2) Telegram alert, started together with the email below (never before
+    //    it) and awaited after it. Never throws; 5s cap; skipped if unset.
+    const telegramAlert = sendTelegramLeadAlert({
+      type: /\/quote(\/|\?|#|$)/.test(pageUrl) ? 'Quote form' : 'Contact form',
+      lang: lang || 'en',
+      name: str(name, 200),
+      phone: str(phone, 50),
+      email: str(email, 200),
+      zip: str(zip_code, 20),
+      coverage: str(insurance_type, 200),
+      message: str(message, 1500),
+      pageUrl,
+      extra: [['Source', str(source, 100) || 'website']],
+    });
+
+    // 3) Email the agency
     let emailOk = true;
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
@@ -121,6 +137,8 @@ export async function POST(req: Request) {
       emailOk = false;
       console.error('Lead API: RESEND_API_KEY is not set — email notification skipped');
     }
+
+    await telegramAlert;
 
     return NextResponse.json({ ok: true, emailOk });
   } catch (err) {

@@ -3,6 +3,7 @@ import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
 import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
+import { sendTelegramLeadAlert } from '@/lib/telegram';
 
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
@@ -59,6 +60,28 @@ ${attributionEmailRow(cleanAttribution(b.attribution))}`,
     emailOk = false;
     console.error('Insurance-quote API: RESEND_API_KEY is not set — email notification skipped');
   }
+
+  // Telegram alert runs in parallel with the email (never throws, 5s cap,
+  // skipped silently when TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID are unset).
+  tasks.push(
+    sendTelegramLeadAlert({
+      type: 'Insurance quote form',
+      lang: str(b.lang, 10),
+      name: str(b.name, 200),
+      phone: str(b.phone, 50),
+      email: str(b.email, 200),
+      coverage: str(b.product_title, 200),
+      message: str(b.comments, 1500),
+      pageUrl: str(b.page_url, 500),
+      extra: [
+        ['Address', str(b.address, 300)],
+        ['Business name', str(b.business_name, 200)],
+        ['Type of business', str(b.business_type, 200)],
+        ['Vehicles', str(b.vehicles, 20)],
+        ['Drivers', str(b.drivers, 20)],
+      ],
+    })
+  );
 
   if (process.env.HEARSAY_WEBHOOK_URL && process.env.HEARSAY_API_KEY) {
     tasks.push(

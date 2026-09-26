@@ -1,5 +1,7 @@
 import { Resend } from 'resend';
 import { clientIp, sharedLimiter, HOUR_MS } from '@/lib/rate-limit';
+import { waitUntil } from '@vercel/functions';
+import { sendTelegramLeadAlert, type TelegramLead } from '@/lib/telegram';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const AGENCY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -196,6 +198,10 @@ const MAX_MESSAGE_CHARS = 1000;
 const MAX_BODY_BYTES = 200_000; // whole conversation JSON (widget sends full history)
 const MAX_HISTORY_ENTRIES = 100; // kept for the agency transcript; xAI only sees the last 10
 
+// Same patterns as the lead_captured check at the end of POST.
+const CHAT_PHONE_RE = /(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
+const CHAT_EMAIL_RE = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
+
 const chatLimiter = sharedLimiter('chat', { windowMs: HOUR_MS, max: CHAT_MAX_PER_HOUR });
 
 const LIMIT_REPLY = {
@@ -321,6 +327,38 @@ export async function POST(req) {
     const transcript = [...messages, { role: 'assistant', content: reply }]
       .map((m) => `<p><b>${m.role === 'user' ? 'Visitor' : 'Mike (AI)'}:</b> ${m.content}</p>`)
       .join('');
+
+    // Telegram: alert once per chat lead — only on the message where the
+    // visitor FIRST shares a phone number or email (every earlier visitor
+    // message had none). Later messages in the same chat don't re-alert.
+    // This point is only reached after the rate limit, size caps and message
+    // validation above, so refused/abusive requests never alert.
+    const userTexts = messages.filter((m) => m.role === 'user').map((m) => m.content);
+    const latestText = userTexts[userTexts.length - 1] || '';
+    const earlierText = userTexts.slice(0, -1).join(' \n ');
+    const firstContact =
+      (CHAT_PHONE_RE.test(latestText) || CHAT_EMAIL_RE.test(latestText)) &&
+      !CHAT_PHONE_RE.test(earlierText) &&
+      !CHAT_EMAIL_RE.test(earlierText);
+    const leadObj = lead && typeof lead === 'object' ? lead : {};
+    const leadStr = (k: string, max: number) => (typeof leadObj[k] === 'string' ? leadObj[k].slice(0, max) : '');
+    const referer = req.headers.get('referer') || '';
+    if (firstContact) {
+      const telegramLead: TelegramLead = {
+        type: 'Chat',
+        lang,
+        name: leadStr('name', 200),
+        phone: leadStr('phone', 50) || (CHAT_PHONE_RE.exec(latestText) || [])[0] || '',
+        email: leadStr('email', 200) || (CHAT_EMAIL_RE.exec(latestText) || [])[0] || '',
+        zip: leadStr('zip', 20),
+        coverage: leadStr('product', 200),
+        message: userTexts.join('\n').slice(-1000),
+        pageUrl: /^https:\/\/(www\.)?mkagencyinc\.com\//.test(referer) ? referer.slice(0, 500) : '',
+      };
+      // Not awaited, so the chat reply is never delayed; waitUntil keeps the
+      // Vercel function alive until the send finishes (never throws, 5s cap).
+      waitUntil(sendTelegramLeadAlert(telegramLead));
+    }
 
     // Fire-and-forget notification to both channels; never blocks the chat reply.
     notifyAgent({
