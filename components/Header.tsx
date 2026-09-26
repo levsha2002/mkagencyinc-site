@@ -13,6 +13,7 @@ export default function Header({ lang }: { lang: string }) {
 
   const communityLabel = lang === 'es' ? 'Comunidad' : lang === 'ru' ? 'Сообщество' : 'Community';
   const agentsLabel = lang === 'es' ? 'Nuestros Agentes' : lang === 'ru' ? 'Наши агенты' : 'Our Agents';
+  const newsLabel = lang === 'es' ? 'Noticias' : lang === 'ru' ? 'Новости' : 'News';
   const contactLabel = lang === 'es' ? 'Contáctenos' : lang === 'ru' ? 'Контакты' : 'Contact Us';
 
   const checkLabel =
@@ -41,6 +42,7 @@ export default function Header({ lang }: { lang: string }) {
     { href: `/${lang}/agents`, label: agentsLabel },
     { href: `/${lang}/quote`, label: contactLabel },
     { href: `/${lang}/life`, label: t.nav.life },
+    { href: `/${lang}/news`, label: newsLabel },
     { href: `/${lang}/referral`, label: communityLabel },
   ];
 
