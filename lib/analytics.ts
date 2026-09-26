@@ -19,6 +19,92 @@ export const GOOGLE_ADS_ID = 'AW-18321801016';
 export const CALL_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/P8qXCI3yzIYdELj-waBE`;
 export const CALL_CONVERSION_PHONE = '(305) 859-3953';
 
+/** Inline script: gtag bootstrap + base Ads config + the website call
+ *  conversion config with a `phone_conversion_callback`.
+ *
+ *  Google docs (support.google.com/google-ads/answer/6095883): the callback is
+ *  invoked with (formatted_number, mobile_number) only when a Google forwarding
+ *  number was issued (visitor came from an ad). formatted_number uses the same
+ *  format as phone_conversion_number, i.e. "(305) XXX-XXXX"; mobile_number is
+ *  the tel:-URI number (docs show both "18001234567" and "+18001234567", so
+ *  only its digits are used). Without a callback Google only swaps text, so
+ *  tel: links (the main path on mobile) would still dial the real number and
+ *  the 60s+ call conversion would never see those calls.
+ *
+ *  The swap edits text nodes / href attributes in place (never replaces DOM
+ *  nodes React owns), skips <script>/JSON-LD, inputs and sms: links (SMS stays
+ *  on the real number), and a MutationObserver re-applies it to anything
+ *  rendered later (client-side navigation, chat replies, modals). It only
+ *  starts once Google hands us a number, so ordinary visitors pay nothing. */
+export function gtagInitScript() {
+  return String.raw`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
+(function(){
+  var NUM_RE=/\(?\b305\)?[\s.\-]*859[\s.\-]*3953\b/g;
+  var REAL='3058593953';
+  var SKIP={SCRIPT:1,STYLE:1,NOSCRIPT:1,TEXTAREA:1,INPUT:1,SELECT:1,OPTION:1,TEMPLATE:1};
+  var S=null;
+  function isReal(href){
+    if(!href || href.slice(0,4).toLowerCase()!=='tel:') return false;
+    var d=href.slice(4).split(/[;?]/)[0].replace(/\D/g,'');
+    if(d.length===11 && d.charAt(0)==='1') d=d.slice(1);
+    return d===REAL;
+  }
+  function fixAnchor(a){
+    var h=a.getAttribute('href');
+    if(isReal(h) && h!==S.tel) a.setAttribute('href', S.tel);
+  }
+  function fixText(n){
+    var v=n.nodeValue;
+    if(!v || v.indexOf('3953')<0) return;
+    var p=n.parentNode;
+    if(!p || p.nodeType!==1) return;
+    if(SKIP[p.nodeName] || p.isContentEditable) return;
+    if(p.closest && p.closest('a[href^="sms:"],script,style,noscript,textarea')) return;
+    NUM_RE.lastIndex=0;
+    if(NUM_RE.test(v)){ NUM_RE.lastIndex=0; n.nodeValue=v.replace(NUM_RE, S.formatted); }
+  }
+  function scan(root){
+    if(!root) return;
+    if(root.nodeType===3){ fixText(root); return; }
+    if(root.nodeType!==1 && root.nodeType!==9 && root.nodeType!==11) return;
+    if(root.nodeType===1){ if(SKIP[root.nodeName]) return; if(root.nodeName==='A') fixAnchor(root); }
+    if(root.querySelectorAll){ var as=root.querySelectorAll('a[href^="tel:"],a[href^="TEL:"]'); for(var i=0;i<as.length;i++) fixAnchor(as[i]); }
+    var w=document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), t;
+    while((t=w.nextNode())) fixText(t);
+  }
+  function start(){
+    scan(document.body);
+    if(S.obs || !window.MutationObserver) return;
+    S.obs=new MutationObserver(function(ms){
+      for(var i=0;i<ms.length;i++){
+        var m=ms[i];
+        if(m.type==='childList'){ for(var j=0;j<m.addedNodes.length;j++) scan(m.addedNodes[j]); }
+        else if(m.type==='characterData'){ fixText(m.target); }
+        else if(m.type==='attributes' && m.target.nodeName==='A'){ fixAnchor(m.target); }
+      }
+    });
+    S.obs.observe(document.body, {childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:['href']});
+  }
+  window.mkCallSwap=function(formatted_number, mobile_number){
+    var d=String(mobile_number||formatted_number||'').replace(/\D/g,'');
+    if(d.length===10) d='1'+d;
+    if(d.length!==11 || d.slice(1)===REAL || !formatted_number) return;
+    S=S||{};
+    S.formatted=String(formatted_number); S.tel='tel:+'+d;
+    if(document.body) start(); else document.addEventListener('DOMContentLoaded', start);
+  };
+})();
+gtag('config', '${CALL_CONVERSION_SEND_TO}', {
+  'phone_conversion_number': '${CALL_CONVERSION_PHONE}',
+  'phone_conversion_callback': window.mkCallSwap
+});
+`.trim();
+}
+
 export type ConversionAction =
   | 'phone_call'        // tap/click on a tel: link — the highest-intent signal we have
   | 'sms_click'         // tap/click on an sms: link
