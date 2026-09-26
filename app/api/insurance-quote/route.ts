@@ -3,9 +3,16 @@ import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
 import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
+import { sendTelegramLeadAlert } from '@/lib/telegram';
 
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
 const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
+
+// Minimal HTML escaping for visitor-supplied values placed in lead emails.
+function esc(v: unknown): string {
+  return String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+}
+const str = (v: unknown, max = 500) => (typeof v === 'string' ? v.slice(0, max) : '');
 
 // Same header-based lookup as lib/form-guard.ts clientIp(), duplicated locally
 // so this route has no new cross-file dependency for a single call site.
@@ -31,11 +38,17 @@ async function notifyAgent(b) {
           html: `<h2>${b.product_title} quote request (${b.lang})</h2>
 <p><b>Name:</b> ${b.name}</p>
 <p><b>Phone:</b> ${b.phone}</p>
-<p><b>Address:</b> ${b.address}</p>
+${b.email ? `<p><b>Email:</b> ${esc(b.email)}</p>` : ''}
+${b.business_name ? `<p><b>Business name:</b> ${esc(b.business_name)}</p>` : ''}
+${b.business_type ? `<p><b>Type of business:</b> ${esc(b.business_type)}</p>` : ''}
+${b.vehicles ? `<p><b>Number of vehicles:</b> ${esc(b.vehicles)}</p>` : ''}
+${b.address ? `<p><b>Address:</b> ${b.address}</p>` : ''}
 ${b.vin ? `<p><b>VIN:</b> ${b.vin}</p>` : ''}
 ${b.drivers ? `<p><b>Number of drivers:</b> ${b.drivers}</p>` : ''}
 ${b.comments ? `<p><b>Additional comments / coverages:</b> ${b.comments}</p>` : ''}
 <p><b>TCPA consent given:</b> Yes (v${b.consent_text_version || 'unknown'})</p>
+${b.consent_text ? `<p style="font-size:12px;color:#555"><b>Consent text shown:</b> ${esc(b.consent_text)}</p>` : ''}
+${b.page_url ? `<p style="font-size:12px;color:#555"><b>Page:</b> ${esc(b.page_url)}</p>` : ''}
 ${attributionEmailRow(cleanAttribution(b.attribution))}`,
         })
         .catch((err) => {
@@ -47,6 +60,28 @@ ${attributionEmailRow(cleanAttribution(b.attribution))}`,
     emailOk = false;
     console.error('Insurance-quote API: RESEND_API_KEY is not set — email notification skipped');
   }
+
+  // Telegram alert runs in parallel with the email (never throws, 5s cap,
+  // skipped silently when TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID are unset).
+  tasks.push(
+    sendTelegramLeadAlert({
+      type: 'Insurance quote form',
+      lang: str(b.lang, 10),
+      name: str(b.name, 200),
+      phone: str(b.phone, 50),
+      email: str(b.email, 200),
+      coverage: str(b.product_title, 200),
+      message: str(b.comments, 1500),
+      pageUrl: str(b.page_url, 500),
+      extra: [
+        ['Address', str(b.address, 300)],
+        ['Business name', str(b.business_name, 200)],
+        ['Type of business', str(b.business_type, 200)],
+        ['Vehicles', str(b.vehicles, 20)],
+        ['Drivers', str(b.drivers, 20)],
+      ],
+    })
+  );
 
   if (process.env.HEARSAY_WEBHOOK_URL && process.env.HEARSAY_API_KEY) {
     tasks.push(
@@ -102,6 +137,15 @@ export async function POST(req: NextRequest) {
     const consentUserAgent = typeof b.consent_user_agent === 'string' ? b.consent_user_agent.slice(0, 500) : '';
     const consentTextVersion = typeof b.consent_text_version === 'string' ? b.consent_text_version : 'unknown';
     const attr = cleanAttribution(b.attribution);
+    // Added with the Sep 2026 form update; all optional, older clients
+    // (e.g. a cached auto-quote.html) simply don't send them.
+    const email = str(b.email, 200);
+    const businessName = str(b.business_name, 200);
+    const businessType = str(b.business_type, 200);
+    const vehicles = str(b.vehicles, 20);
+    const consentText = str(b.consent_text, 2000);
+    const pageUrl = str(b.page_url, 500);
+    const clientTxnId = str(b.transaction_id, 100);
 
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
@@ -128,13 +172,22 @@ export async function POST(req: NextRequest) {
       await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_text_version TEXT`;
       await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS gclid TEXT`;
       await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS utm TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS email TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS business_name TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS business_type TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS vehicles TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS consent_text TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS page_url TEXT`;
+      await sql`ALTER TABLE insurance_quotes ADD COLUMN IF NOT EXISTS client_txn_id TEXT`;
 
       await sql`INSERT INTO insurance_quotes
         (name, phone, address, vin, drivers, comments, product_slug, product_title, lang, consent,
-         consent_ip, consent_user_agent, consent_text_version, gclid, utm)
-        VALUES (${b.name}, ${b.phone}, ${b.address}, ${b.vin || ''}, ${b.drivers || ''},
+         consent_ip, consent_user_agent, consent_text_version, gclid, utm,
+         email, business_name, business_type, vehicles, consent_text, page_url, client_txn_id)
+        VALUES (${b.name}, ${b.phone}, ${b.address || ''}, ${b.vin || ''}, ${b.drivers || ''},
         ${b.comments || ''}, ${b.product_slug}, ${b.product_title}, ${b.lang}, ${b.consent},
-        ${consentIp}, ${consentUserAgent}, ${consentTextVersion}, ${attr.gclid}, ${attr.utm})`;
+        ${consentIp}, ${consentUserAgent}, ${consentTextVersion}, ${attr.gclid}, ${attr.utm},
+        ${email}, ${businessName}, ${businessType}, ${vehicles}, ${consentText}, ${pageUrl}, ${clientTxnId})`;
     }
 
     const emailOk = await notifyAgent({ ...b, consent_text_version: consentTextVersion });

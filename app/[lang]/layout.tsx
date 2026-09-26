@@ -13,27 +13,33 @@ import StickyCallBar from '@/components/StickyCallBar';
 // a Google Fonts <link> — removes the external render-blocking request and
 // the fonts.googleapis.com/fonts.gstatic.com network hop entirely.
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-inter',
   display: 'swap',
 });
 const playfair = Playfair_Display({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   weight: ['700', '800'],
   variable: '--font-playfair',
   display: 'swap',
 });
 
 // Google Ads conversion tracking (gtag.js). Base site-wide tag — the specific
-// per-lead "conversion" event fires from LeadForm.tsx once the form is
-// successfully submitted. See components/LeadForm.tsx for the event call.
-import { GOOGLE_ADS_ID, phoneClickTrackingScript } from '@/lib/analytics';
+// per-lead "conversion" events fire from lib/analytics.ts trackConversion()
+// only after a lead API answers OK (forms, Talk-to-Agent, chat).
+import { GOOGLE_ADS_ID, gtagInitScript, phoneClickTrackingScript } from '@/lib/analytics';
 import { attributionCaptureScript } from '@/lib/attribution';
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
+
+// Only en/es/ru are real locales. Without this, any single-segment URL that
+// the middleware skips (anything containing a dot, e.g. /foo.html or
+// /wp-login.php) was rendered as the home page with <html lang="foo.html">
+// and HTTP 200 — a soft 404 that search engines index as duplicate content.
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
@@ -49,6 +55,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       title: t.meta.title,
       description: t.meta.desc,
       type: 'website',
+      url: `/${params.lang}`,
       siteName: 'M&K Agency Inc.',
       locale: ({ en: 'en_US', es: 'es_US', ru: 'ru_RU' } as Record<string, string>)[params.lang] ?? 'en_US',
       images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'M&K Agency — Florida Insurance: Auto, Home, Commercial' }],
@@ -140,12 +147,7 @@ export default function RootLayout({
               {phoneClickTrackingScript()}
             </Script>
             <Script id="gtag-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GOOGLE_ADS_ID}');
-              `}
+              {gtagInitScript()}
             </Script>
           </>
         )}

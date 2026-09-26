@@ -1,35 +1,32 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LEAD_MANAGER_URL, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
-
-const SCAN: Record<string, string> = {
-  en: 'Fill Out Request for a Quote',
-  es: 'Llene la solicitud de cotización',
-  ru: 'Заполните заявку на расчёт',
-};
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
+import { blogHasLang } from '@/lib/blog';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
+  const fx = t.footerExtra;
   return (
     <footer className="footer">
       <div className="container">
-        <div style={{ marginBottom: 18, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-          <a
-            href={LEAD_MANAGER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ background: '#fff', padding: 10, borderRadius: 12, lineHeight: 0 }}
+        {/* On-site quote page (tracked Google Ads conversion) instead of the
+            off-site Allstate Lead Manager QR code, which has no Google tag. */}
+        <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'center' }}>
+          <Link
+            href={`/${lang}/quote`}
+            style={{ background: 'var(--gold)', color: 'var(--navy)', fontWeight: 800, padding: '11px 22px', borderRadius: 999, textDecoration: 'none' }}
           >
-            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={112} height={112} />
-          </a>
-          <span style={{ fontSize: '.78rem', color: '#bcd0ea', fontWeight: 600 }}>{SCAN[lang] || SCAN.en}</span>
+            📝 {lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote'}
+          </Link>
         </div>
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>
           {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>
+          {' · '}
+          <WhatsAppLink lang={lang} placement="footer" className="wa-link" style={{ color: '#fff', fontWeight: 700 }} />
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem', opacity: 0.85 }}>
-          Florida License #L109526 · NPN #19586268 · Agent in Charge: Mikhail Kozlov ·{' '}
+          {fx.licenseLine} ·{' '}
           <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#bcd0ea' }}>
             mikhailkozlov@allstate.com
           </a>
@@ -45,7 +42,11 @@ export default function Footer({ lang }: { lang: string }) {
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem' }}>
-          Reviews:{' '}
+          {fx.reviews}:{' '}
+          <a href={REVIEWS_URL} target="_blank" rel="noopener" style={{ color: '#bcd0ea' }}>
+            Allstate.com
+          </a>
+          {' · '}
           <a
             href="https://www.experience.com/reviews/mikhail-7323351"
             target="_blank"
@@ -65,8 +66,16 @@ export default function Footer({ lang }: { lang: string }) {
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
-          <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>Community Businesses</Link>
+          <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>{fx.community}</Link>
           {' · '}
+          <Link href={`/${lang}/news`} style={{ color: '#bcd0ea' }}>{lang === 'es' ? 'Noticias' : lang === 'ru' ? 'Новости' : 'News'}</Link>
+          {' · '}
+          {blogHasLang(lang) && (
+            <>
+              <Link href={`/${lang}/blog`} style={{ color: '#bcd0ea' }}>{lang === 'ru' ? 'Блог' : 'Blog'}</Link>
+              {' · '}
+            </>
+          )}
           <Link href={`/${lang}/privacy`} style={{ color: '#bcd0ea' }}>{t.footer.privacy}</Link>
           {' · '}
           <Link href={`/${lang}/terms`} style={{ color: '#bcd0ea' }}>{t.footer.terms}</Link>
@@ -74,16 +83,16 @@ export default function Footer({ lang }: { lang: string }) {
           <Link href={`/${lang}/disclosures`} style={{ color: '#bcd0ea' }}>{t.footer.disclosures}</Link>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
-          Please visit my site,{' '}
+          {fx.allstateBefore}
           <a
             href="https://agents.allstate.com/mikhail-kozlov-florida-city-fl.html"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#bcd0ea', textDecoration: 'underline' }}
           >
-            Allstate Agency - Mikhail Kozlov
+            {fx.allstateLink}
           </a>
-          , to get more information on the Allstate products and services I can offer.
+          {fx.allstateAfter}
         </p>
         <p suppressHydrationWarning>© {new Date().getFullYear()} M&K Agency Inc. {t.footer.rights}</p>
       </div>

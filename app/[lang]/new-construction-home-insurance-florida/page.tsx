@@ -1,8 +1,13 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
+
+// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
+// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
+export const revalidate = 86400;
 
 // Гео-лендинг: New Construction Home & Condo Insurance — вся Флорида
 // (не привязан к одному городу, как car-insurance-florida-city — таргетируется
@@ -131,11 +136,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/new-construction-home-insurance-florida',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/new-construction-home-insurance-florida'),
-  };
+  });
 }
 
 export default function NewConstructionHomeInsuranceFlorida({ params }: { params: { lang: string } }) {
@@ -164,12 +170,12 @@ export default function NewConstructionHomeInsuranceFlorida({ params }: { params
             </h1>
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
-            <div className="rated" style={{ marginLeft: 12 }}>
-              <span className="stars">★★★★★</span>
+            <div className="rated rated-stack" style={{ marginLeft: 12 }}>
               <span>{t.langLine}</span>
+              <RatingBadge lang={l} />
             </div>
           </div>
-          <LeadForm lang={l} />
+          <LeadForm lang={l} defaultType="Home" />
         </div>
       </section>
 
@@ -185,7 +191,7 @@ export default function NewConstructionHomeInsuranceFlorida({ params }: { params
       <section className="section" style={{ background: '#f2f7ff' }}>
         <div className="container">
           <h2>{t.covTitle}</h2>
-          <div className="cards4" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="cards4 cards3">
             {t.cov.map((c: { h: string; p: string }) => (
               <div className="svc" key={c.h}>
                 <h3>{c.h}</h3>
@@ -213,7 +219,7 @@ export default function NewConstructionHomeInsuranceFlorida({ params }: { params
         </div>
       </section>
 
-      <section className="section" style={{ background: '#f2f7ff' }} id="quote">
+      <section className="section" style={{ background: '#f2f7ff' }} id="faq">
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>

@@ -104,6 +104,10 @@ img { max-width: 100%; display: block; }
 .section h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); text-align: center; margin-bottom: 8px; color: var(--navy); }
 .kicker { text-align: center; color: var(--gold-text); font-weight: 800; letter-spacing: .16em; font-size: .8rem; text-transform: uppercase; margin-bottom: 10px; }
 .cards4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+/* 3-column variant (landing-page coverage cards). Was an inline style, which
+   beat the media queries below and forced 3 columns on phones: the page grew
+   wider than the screen and pushed the sticky "Text us" button off-screen. */
+.cards4.cards3 { grid-template-columns: repeat(3, 1fr); }
 .svc { display: block; background: #fff; border: 1px solid #e8edf4; border-top: 3px solid var(--gold); border-radius: 10px; padding: 26px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.06), 0 4px 6px -4px rgba(0,0,0,.06); transition: transform .15s, box-shadow .15s, border-color .15s; }
 a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,.12); border-color: #cfe0fb; }
 .svc .ico { font-size: 1.8rem; margin-bottom: 10px; }
@@ -155,11 +159,11 @@ a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,
 }
 @media (max-width: 900px) {
   .hero-grid, .about-grid { grid-template-columns: 1fr; }
-  .cards4 { grid-template-columns: 1fr 1fr; }
+  .cards4, .cards4.cards3 { grid-template-columns: 1fr 1fr; }
   .contact-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .cards4, .grid2 { grid-template-columns: 1fr; }
+  .cards4, .cards4.cards3, .grid2 { grid-template-columns: 1fr; }
 }
 
 /* ===== Talk Now widget ===== */
@@ -779,6 +783,7 @@ a.svc:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(7,39,79,
 }
 .insurance-photo-grid img {
   width: 100%;
+  height: auto; /* without this the height="600" attribute won and thumbnails rendered as 164x600 strips */
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
@@ -1010,12 +1015,180 @@ body { font-size: 16.5px; }
 
 /* ===== Motion: gentle entrance + lively hovers (dynamic feel) ===== */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.hero-grid > * { animation: fadeUp .6s ease both; }
-.hero-grid > *:nth-child(2) { animation-delay: .15s; }
+/* No entrance animation on .hero-grid children: they hold the LCP element
+   (headline / hero photo / form) and a fade from opacity 0 delayed LCP. */
 .gap-row { animation: fadeUp .6s ease both; }
 .svc { animation: fadeUp .5s ease both; }
 .cat-banner { transition: transform .2s; }
 .cat-banner:hover { transform: translateY(-2px); }
 @media (prefers-reduced-motion: reduce) {
   .hero-grid > *, .gap-row, .svc, .agent-row { animation: none; }
+}
+
+/* ===== Product landing pages (/[lang]/insurance/[slug]) ===== */
+.product-top { padding: 40px 0 28px; background: linear-gradient(180deg, #eef4fd 0%, #fff 100%); }
+.product-top-grid { align-items: start; }
+.product-h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.15; color: var(--navy); margin: 4px 0 12px; font-weight: 800; }
+.product-intro { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; max-width: 36rem; }
+.product-cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.product-call { background: var(--gold); color: var(--navy); }
+.product-call:hover { background: #eebb54; color: var(--navy); }
+.product-text { background: #fff; color: var(--navy); border: 2px solid var(--navy); box-shadow: none; }
+.product-text:hover { background: #f2f7ff; }
+.product-hours { color: var(--muted); font-size: .85rem; margin-top: 8px; }
+.product-trust { margin-top: 26px; background: #f2f7ff; border: 1px solid #dfe8f6; border-radius: 12px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .9rem; color: var(--navy); }
+.product-trust strong { flex-basis: 100%; }
+.product-trust a { text-decoration: underline; }
+.product-body { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 900px; }
+.product-body ul { list-style: none; margin-top: 18px; }
+.product-body li { padding-left: 28px; position: relative; margin-bottom: 10px; font-weight: 600; color: var(--navy); }
+.product-body li:before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 900; }
+.consent a { color: inherit; }
+@media (max-width: 640px) {
+  .product-top { padding: 18px 0 18px; }
+  .product-h1 { font-size: 1.6rem; margin-bottom: 8px; }
+  .product-intro { font-size: .98rem; margin-bottom: 12px; }
+  .product-cta-row .cta { flex: 1 1 auto; text-align: center; padding: 12px 14px; font-size: .98rem; }
+  .product-top-grid { gap: 18px; }
+  .card { padding: 20px 16px; }
+}
+
+/* ===== Floating UI on phones: one sticky Call/Text bar, nothing else on
+   top of forms. The Talk-to-Agent button is desktop-only; the chat keeps a
+   single compact bubble that hides while a lead form is on screen or a form
+   field is focused (see components/useLeadFormInView.ts). ===== */
+@media (max-width: 640px) {
+  .talk-now { display: none; }
+  .mk-fab.secondary { display: none; }
+  .mk-fab { padding: 11px 16px; font-size: .9rem; }
+  .mk-widget.form-in-view { display: none; }
+  .scb-btn { font-size: .95rem; white-space: nowrap; }
+}
+.header-quote-btn { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.header-quote-btn .text-btn-text { display: inline !important; }
+
+/* ===== Rating badge (components/RatingBadge.tsx) ===== */
+.rating-badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 6px;color:inherit;text-decoration:none;font-size:.92rem;line-height:1.3;font-weight:600}
+.rating-badge:hover .rating-badge-text,.rating-badge:focus-visible .rating-badge-text{text-decoration:underline}
+.rating-badge-num{font-weight:800}
+.rating-badge-text{font-weight:500;text-decoration:underline;text-decoration-color:rgba(127,127,127,.5);text-underline-offset:2px}
+.rating-stars{position:relative;display:inline-block;line-height:1;letter-spacing:0;font-size:1.02em;white-space:nowrap;font-family:Arial,Helvetica,sans-serif}
+.rating-stars-bg{color:rgba(148,163,184,.55)}
+.rating-stars-fg{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:#f5b301}
+.rating-badge--card{background:#fff;border:1px solid rgba(15,23,42,.1);border-radius:999px;padding:6px 12px;color:#0f2744;font-size:.86rem}
+.qh-rating{margin-top:12px}
+.rated.rated-stack{flex-direction:column;align-items:flex-start;gap:4px}
+.rated-stack .rating-badge{font-size:.84rem}
+.rating-badge-text{white-space:nowrap}
+
+/* ===== WhatsApp (components/WhatsAppLink.tsx) =====
+   Floating button: rendered as the first child of the chat widget column
+   (.mk-widget), so it always stacks directly above the chat launcher, moves
+   up with it above the mobile sticky Call/Text bar, and hides with it while
+   the chat is open or a lead form is on screen. */
+.wa-fab { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 10px 26px rgba(7,39,79,.35); transition: transform .15s; }
+.wa-fab:hover { transform: scale(1.06); }
+.wa-fab:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+.wa-link { display: inline-flex; align-items: center; justify-content: center; gap: 5px; vertical-align: middle; }
+.wa-link svg { color: #25D366; }
+@media (max-width: 640px) {
+  .wa-fab { width: 50px; height: 50px; }
+}
+
+/* ===== Referral page, "Two Doors" (app/[lang]/referral/page.tsx, components/referral/*) ===== */
+.ref-hero { background: linear-gradient(180deg, #eef4fd 0%, var(--bg) 100%); padding: 56px 0 64px; }
+.ref-hero-top { display: grid; grid-template-columns: 1.25fr .75fr; gap: 40px; align-items: end; margin-bottom: 34px; }
+.ref-hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); line-height: 1.1; color: var(--navy); font-weight: 800; margin: 4px 0 14px; }
+.ref-u { border-bottom: 4px solid var(--gold); }
+.ref-sub { color: var(--muted); font-size: 1.07rem; max-width: 36rem; }
+.ref-aside { justify-self: end; background: #fff; border: 1px solid #e2e9f4; border-radius: 16px; padding: 18px 22px; box-shadow: 0 10px 28px rgba(7,39,79,.08); font-size: .9rem; color: var(--muted); max-width: 300px; }
+.ref-aside-title { font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.ref-aside-phone { display: block; font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+.ref-doors { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.ref-door { border-radius: 20px; overflow: hidden; background: #fff; border: 1px solid #e2e9f4; box-shadow: 0 18px 44px rgba(7,39,79,.12); display: grid; grid-template-columns: .9fr 1.1fr; }
+.ref-door img { height: 100%; width: 100%; object-fit: cover; min-height: 280px; }
+.ref-door .b { padding: 26px 26px 24px; display: flex; flex-direction: column; }
+.ref-door .who { font-size: .75rem; font-weight: 800; letter-spacing: .14em; color: var(--gold-text); text-transform: uppercase; }
+.ref-door h2 { font-size: 1.55rem; color: var(--navy); line-height: 1.15; margin: 6px 0 8px; text-align: left; }
+.ref-door p { color: var(--muted); font-size: .93rem; margin-bottom: 16px; }
+.ref-door .cta { margin-top: auto; align-self: flex-start; padding: 13px 22px; }
+.ref-door.navy { background: var(--navy); border-color: var(--navy); }
+.ref-door.navy h2 { color: #fff; }
+.ref-door.navy p { color: #cfe0f5; }
+.ref-door.navy .who { color: var(--gold); }
+.cta.ref-cta-gold { background: var(--gold); color: var(--navy); }
+.cta.ref-cta-gold:hover { background: #eab54d; }
+.ref-how { padding-top: 34px; text-align: center; }
+.ref-tabs { display: inline-flex; background: #e9eff8; border-radius: 12px; padding: 5px; margin: 18px auto 0; }
+.ref-tabs button { padding: 10px 20px; border-radius: 9px; font-weight: 700; color: var(--navy); font-size: .95rem; background: none; border: none; cursor: pointer; font-family: inherit; }
+.ref-tabs button.on { background: #fff; box-shadow: 0 2px 8px rgba(7,39,79,.12); }
+.ref-tabs button:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.ref-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; text-align: left; }
+.ref-steps[hidden] { display: none; }
+.ref-step { background: #fff; border: 1px solid #e8edf4; border-top: 3px solid var(--gold); border-radius: 12px; padding: 26px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.06); }
+.ref-step .n { width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 1.1rem; }
+.ref-step h3 { color: var(--navy); font-size: 1.12rem; margin-bottom: 6px; }
+.ref-step p { color: var(--muted); font-size: .93rem; }
+.ref-sharebar { background: var(--navy); color: #fff; border-radius: 18px; padding: 22px 26px; display: flex; align-items: center; gap: 24px; }
+.ref-qr { background: #fff; border-radius: 12px; padding: 6px; flex: 0 0 auto; }
+.ref-qr img { width: 100px; height: 100px; }
+.ref-share-text { flex: 1; }
+.ref-share-text h2 { font-size: 1.4rem; color: #fff; margin-bottom: 4px; text-align: left; }
+.ref-share-text p { color: #cfe0f5; font-size: .9rem; }
+.ref-share { display: flex; gap: 10px; flex-wrap: wrap; }
+.ref-sbtn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; font-weight: 700; font-size: .92rem; color: #fff; border: none; cursor: pointer; font-family: inherit; }
+.ref-sbtn svg { width: 18px; height: 18px; fill: currentColor; }
+.ref-sbtn.fb { background: #1877f2; }
+.ref-sbtn.wa { background: #1a8f47; }
+.ref-sbtn.sms { background: #3a4a60; }
+.ref-sbtn.copy { background: #fff; color: var(--navy); }
+.ref-center-muted { text-align: center; color: var(--muted); }
+.ref-team { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 28px; }
+.ref-tm { text-align: center; }
+.ref-tm img { width: 108px; height: 108px; border-radius: 50%; object-fit: cover; object-position: center 20%; margin: 0 auto 8px; border: 3px solid #fff; box-shadow: 0 6px 16px rgba(7,39,79,.15); }
+.ref-tm b { display: block; color: var(--navy); font-size: .9rem; }
+.ref-tm span { color: var(--muted); font-size: .78rem; }
+.ref-forms-section { background: #f2f7ff; }
+.ref-forms { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+.ref-form h2 { color: var(--navy); text-align: left; }
+.kicker.ref-kicker-left { text-align: left; margin-bottom: 4px; }
+.ref-nofees { font-weight: 700; color: var(--navy); font-size: .9rem; margin: -8px 0 16px; }
+.ref-fieldset { border: none; padding: 0; min-width: 0; }
+.ref-fieldset legend { display: block; font-size: .82rem; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+.ref-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.ref-pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 8px 16px; font-size: .88rem; font-weight: 700; background: #fff; color: var(--navy); border: 1px solid #dbe4f2; cursor: pointer; }
+.ref-pill.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+.ref-pill input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ref-pill:focus-within { outline: 3px solid var(--blue); outline-offset: 2px; }
+.ref-err { color: #c0392b; font-size: .8rem; font-weight: 600; margin-top: 4px; }
+.submit.ref-submit-gold { background: var(--gold); color: var(--navy); }
+.submit.ref-submit-gold:hover { background: #eab54d; }
+.ref-link-btn { background: none; border: none; color: var(--blue); font-weight: 700; cursor: pointer; margin-top: 12px; font-family: inherit; font-size: .95rem; }
+.ref-rules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 22px; }
+.ref-rule { background: #fff; border: 1px solid #e6ecf5; border-radius: 12px; padding: 16px; font-size: .88rem; color: var(--muted); }
+.ref-rule b { display: block; color: var(--navy); margin-bottom: 4px; font-size: .95rem; }
+.ref-rules-link { text-align: center; margin-top: 14px; font-size: .9rem; }
+.ref-rules-link a { color: var(--blue); font-weight: 700; }
+.ref-dir { margin-top: 44px; }
+.ref-dir > h2 { font-size: 1.5rem; }
+.ref-empty { border: 2px dashed #c9d6e8; border-radius: 14px; padding: 22px; text-align: center; color: var(--muted); background: #fbfdff; margin-top: 14px; }
+.ref-suggest { margin: 18px auto 0; max-width: 640px; }
+.ref-suggest summary { cursor: pointer; text-align: center; color: var(--blue); font-weight: 700; font-size: .95rem; }
+@media (max-width: 900px) {
+  .ref-team { grid-template-columns: repeat(3, 1fr); }
+  .ref-rules { grid-template-columns: 1fr 1fr; }
+  .ref-sharebar { flex-wrap: wrap; }
+}
+@media (max-width: 700px) {
+  .ref-hero { padding: 34px 0 44px; }
+  .ref-hero-top, .ref-doors, .ref-forms, .ref-rules, .ref-steps { grid-template-columns: 1fr; }
+  .ref-hero-top { gap: 20px; margin-bottom: 24px; }
+  .ref-aside { justify-self: stretch; max-width: none; }
+  .ref-door { grid-template-columns: 1fr; }
+  .ref-door img { min-height: 0; height: 170px; }
+  .ref-tm img { width: 84px; height: 84px; }
+  .ref-sharebar { flex-direction: column; text-align: center; }
+  .ref-share-text h2 { text-align: center; }
+  .ref-share { justify-content: center; }
+  .ref-tabs button { padding: 9px 12px; font-size: .85rem; }
 }

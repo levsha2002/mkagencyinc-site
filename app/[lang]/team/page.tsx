@@ -1,15 +1,17 @@
 import { getDict, ADDRESS, PHONE_TEL, PHONE_DISPLAY } from '@/lib/dictionaries';
 import TeamSection from '@/components/TeamSection';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/team',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/team'),
-  };
+  });
 }
 
 export default function TeamPage({ params }: { params: { lang: string } }) {
@@ -51,7 +53,7 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
               <div className="office-map-embed">
                 <iframe
                   title="M&K Agency office location"
-                  src="https://www.google.com/maps?q=25.4567,-80.4746&z=17&output=embed"
+                  src="https://www.google.com/maps?q=33550+S+Dixie+Hwy+Suite+102,+Florida+City,+FL+33034&z=17&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
@@ -77,6 +79,8 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
                 <a href={`tel:${PHONE_TEL}`} style={{ color: 'var(--blue)', fontWeight: 800 }}>
                   {PHONE_DISPLAY}
                 </a>
+                {' · '}
+                <WhatsAppLink lang={params.lang} placement="team_office" className="wa-link" style={{ color: 'var(--blue)', fontWeight: 800 }} />
               </p>
             </div>
           </div>

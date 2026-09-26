@@ -1,8 +1,13 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
+
+// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
+// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
+export const revalidate = 86400;
 
 // Geo-landing: Personal Umbrella Insurance — Florida City / Homestead.
 // Self-contained content (not in dictionaries.ts), same pattern as the other geo pages.
@@ -136,11 +141,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/umbrella-insurance-florida-city',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/umbrella-insurance-florida-city'),
-  };
+  });
 }
 
 export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lang: string } }) {
@@ -169,9 +175,9 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
             </h1>
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
-            <div className="rated" style={{ marginLeft: 12 }}>
-              <span className="stars">★★★★½</span>
+            <div className="rated rated-stack" style={{ marginLeft: 12 }}>
               <span>{t.langLine}</span>
+              <RatingBadge lang={l} />
             </div>
           </div>
           <LeadForm lang={l} />
@@ -182,7 +188,7 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
       <section
         aria-label={t.bannerAlt}
         style={{
-          backgroundImage: "linear-gradient(rgba(8,42,89,.62), rgba(8,42,89,.62)), url('/images/umbrella-hero.jpg')",
+          backgroundImage: "linear-gradient(rgba(8,42,89,.62), rgba(8,42,89,.62)), url('/images/Family_at_home.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: '#fff',
@@ -207,7 +213,7 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
       <section className="section" style={{ background: '#f2f7ff' }}>
         <div className="container">
           <h2>{t.covTitle}</h2>
-          <div className="cards4" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="cards4 cards3">
             {t.cov.map((c: { h: string; p: string }) => (
               <div className="svc" key={c.h}>
                 <h3>{c.h}</h3>
@@ -235,7 +241,7 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
         </div>
       </section>
 
-      <section className="section" style={{ background: '#f2f7ff' }} id="quote">
+      <section className="section" style={{ background: '#f2f7ff' }} id="faq">
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>

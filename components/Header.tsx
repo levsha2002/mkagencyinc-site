@@ -3,7 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, locales, LEAD_MANAGER_URL } from '@/lib/dictionaries';
+import { usePathname } from 'next/navigation';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, locales } from '@/lib/dictionaries';
+import { switchLangHref } from '@/lib/page-langs';
 
 export default function Header({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -11,13 +13,27 @@ export default function Header({ lang }: { lang: string }) {
 
   const communityLabel = lang === 'es' ? 'Comunidad' : lang === 'ru' ? 'Сообщество' : 'Community';
   const agentsLabel = lang === 'es' ? 'Nuestros Agentes' : lang === 'ru' ? 'Наши агенты' : 'Our Agents';
+  const newsLabel = lang === 'es' ? 'Noticias' : lang === 'ru' ? 'Новости' : 'News';
   const contactLabel = lang === 'es' ? 'Contáctenos' : lang === 'ru' ? 'Контакты' : 'Contact Us';
 
   const checkLabel =
     lang === 'es' ? 'Protección' : lang === 'ru' ? 'Финансовая защита' : 'Financial Protection';
 
-  const qrCaption =
-    lang === 'es' ? 'Llene la solicitud de cotización' : lang === 'ru' ? 'Заполните заявку на расчёт' : 'Fill Out Request for a Quote';
+  // The header's quote CTA always stays on-site so the request counts as a
+  // Google Ads conversion: on pages that already carry a lead form it jumps to
+  // that form; everywhere else it opens /[lang]/quote in the current language.
+  // (It used to open the off-site Allstate Lead Manager, which has no Google
+  // tag; that form is now only a small secondary link on /quote.)
+  const pathname = usePathname() || '';
+  const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
+  // Language switcher keeps the visitor on the same page in the other
+  // language instead of dropping them on the home page.
+  // Pages that exist in fewer languages (blog posts, EN/ES-only pages) are
+  // mapped in lib/page-langs.ts so the switcher never points at a 404.
+  const langHref = (l: string) => switchLangHref(pathname, l);
+
+  const onSiteQuoteLabel =
+    lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote';
 
   const links = [
     { href: `/${lang}`, label: t.nav.home },
@@ -26,6 +42,7 @@ export default function Header({ lang }: { lang: string }) {
     { href: `/${lang}/agents`, label: agentsLabel },
     { href: `/${lang}/quote`, label: contactLabel },
     { href: `/${lang}/life`, label: t.nav.life },
+    { href: `/${lang}/news`, label: newsLabel },
     { href: `/${lang}/referral`, label: communityLabel },
   ];
 
@@ -49,7 +66,7 @@ export default function Header({ lang }: { lang: string }) {
         {/* Language switcher sits right next to the nav (by Community), not pushed to the far edge */}
         <div className="lang">
           {locales.map((l) => (
-            <Link key={l} href={`/${l}`} className={l === lang ? 'active' : ''}>
+            <Link key={l} href={langHref(l)} className={l === lang ? 'active' : ''}>
               {l.toUpperCase()}
             </Link>
           ))}
@@ -75,16 +92,7 @@ export default function Header({ lang }: { lang: string }) {
             📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
           </a>
           <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">{t.contact.textUs}</span></a>
-          <a
-            href={LEAD_MANAGER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="header-qr"
-            title={qrCaption}
-          >
-            <Image src="/images/lead-manager-qr.png" alt="QR code — request a quote via Allstate Lead Manager" width={48} height={48} />
-            <span className="header-qr-text">{qrCaption}</span>
-          </a>
+          <a href={hasOnSiteForm ? '#quote' : `/${lang}/quote`} className="text-btn header-quote-btn">📝 <span className="text-btn-text">{onSiteQuoteLabel}</span></a>
         </div>
       </div>
 
@@ -99,7 +107,7 @@ export default function Header({ lang }: { lang: string }) {
             {locales.map((l) => (
               <Link
                 key={l}
-                href={`/${l}`}
+                href={langHref(l)}
                 className={l === lang ? 'active' : ''}
                 onClick={() => setOpen(false)}
               >

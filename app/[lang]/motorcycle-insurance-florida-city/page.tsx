@@ -1,8 +1,13 @@
 import Link from 'next/link';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
+import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
+import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
+
+// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
+// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
+export const revalidate = 86400;
 
 // Гео-лендинг: Motorcycle Insurance — Florida City / Homestead.
 // Контент самодостаточный (не в dictionaries.ts), по образцу car-insurance-florida-city/page.tsx.
@@ -59,7 +64,7 @@ const C: Record<Lang, any> = {
     call: `Llame ${PHONE_DISPLAY}`,
     whyTitle: 'Por qué una tarifa “talla única” le cuesta dinero — y qué hacemos al respecto',
     whyText:
-      'El seguro de motocicleta no se cotiza como el de auto. El tipo de moto, el tamaño del motor, la experiencia del conductor y si es su vehículo diario o una moto de fin de semana o colección mueven el precio — a veces drásticamente. Revisamos su moto y perfil exactos en detalle y aplicamos cada descuento que le corresponde, para que obtenga una tarifa justa y competitiva para su tipo de manejo.',
+      'El seguro de motocicleta no se cotiza como el de auto. El tipo de moto, el tamaño del motor, la experiencia del conductor y si es su vehículo diario o una moto de fin de semana o colección mueven el precio — a veces drásticamente. Revisamos su moto y perfil exactos en detalle y verificamos que se aplique cada descuento que le corresponda según su tipo de manejo.',
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
       { h: 'Responsabilidad civil, colisión y cobertura amplia', p: 'Protección completa para su moto y para terceros si usted es responsable — desde una caída en el estacionamiento hasta una pérdida total.' },
@@ -130,11 +135,12 @@ function pick(lang: string): { l: Lang; t: any } {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const { t } = pick(params.lang);
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/motorcycle-insurance-florida-city',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/motorcycle-insurance-florida-city'),
-  };
+  });
 }
 
 export default function MotorcycleInsuranceFloridaCity({ params }: { params: { lang: string } }) {
@@ -163,9 +169,9 @@ export default function MotorcycleInsuranceFloridaCity({ params }: { params: { l
             </h1>
             <p className="sub">{t.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
-            <div className="rated" style={{ marginLeft: 12 }}>
-              <span className="stars">★★★★★</span>
+            <div className="rated rated-stack" style={{ marginLeft: 12 }}>
               <span>{t.langLine}</span>
+              <RatingBadge lang={l} />
             </div>
           </div>
           <LeadForm lang={l} />
@@ -184,7 +190,7 @@ export default function MotorcycleInsuranceFloridaCity({ params }: { params: { l
       <section className="section" style={{ background: '#f2f7ff' }}>
         <div className="container">
           <h2>{t.covTitle}</h2>
-          <div className="cards4" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="cards4 cards3">
             {t.cov.map((c: { h: string; p: string }) => (
               <div className="svc" key={c.h}>
                 <h3>{c.h}</h3>
@@ -212,7 +218,7 @@ export default function MotorcycleInsuranceFloridaCity({ params }: { params: { l
         </div>
       </section>
 
-      <section className="section" style={{ background: '#f2f7ff' }} id="quote">
+      <section className="section" style={{ background: '#f2f7ff' }} id="faq">
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>

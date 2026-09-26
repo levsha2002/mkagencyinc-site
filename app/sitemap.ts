@@ -1,5 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { insuranceProducts } from '@/lib/insurance-products';
+import { allPosts, postLangs, blogHasLang } from '@/lib/blog';
+import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
+import { allEditions, editionLangs, newsHasLang } from '@/lib/news';
 
 // Полная карта сайта: реальные страницы (без /services и /about — это редиректы)
 // + все страницы страховых продуктов. Обновляется автоматически при
@@ -36,11 +39,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return langs.flatMap((l) =>
+  const everyLang = langs.flatMap((l) =>
     [...staticPages, ...productPages].map(({ path, priority }) => ({
       url: `${base}/${l}${path}`,
       changeFrequency: 'weekly' as const,
       priority,
     }))
   );
+
+  // Pages that exist only in some languages (see lib/page-langs.ts).
+  const limitedPages = Object.entries(LIMITED_LANG_PAGES).flatMap(([path, { langs: ls }]) =>
+    ls.map((l) => ({ url: `${base}/${l}${path}`, changeFrequency: 'weekly' as const, priority: 0.9 }))
+  );
+
+  // Blog: the index only for languages that have posts, and each post only in
+  // the languages it was published in. New posts appear here automatically.
+  const blogIndex = langs
+    .filter((l) => blogHasLang(l))
+    .map((l) => ({ url: `${base}/${l}/blog`, changeFrequency: 'daily' as const, priority: 0.7 }));
+  const blogPosts = allPosts().flatMap((p) =>
+    postLangs(p).map((l) => ({
+      url: `${base}/${l}/blog/${p.slug}`,
+      lastModified: p.dateModified ?? p.datePublished,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+  );
+
+  // News: same rules as the blog. The index only for languages that have at
+  // least one edition, and each edition only in the languages it exists in.
+  const newsIndex = langs
+    .filter((l) => newsHasLang(l))
+    .map((l) => ({ url: `${base}/${l}/news`, changeFrequency: 'daily' as const, priority: 0.7 }));
+  const newsEditions = allEditions().flatMap((e) =>
+    editionLangs(e).map((l) => ({
+      url: `${base}/${l}/news/${e.slug}`,
+      lastModified: e.dateModified ?? e.datePublished,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+  );
+
+  return [...everyLang, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
 }

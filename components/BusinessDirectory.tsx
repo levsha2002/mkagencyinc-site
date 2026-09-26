@@ -1,7 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { referralBusinesses, CATEGORIES, type ReferralBusiness } from '@/lib/referral-businesses';
+import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 
 // Community business directory.
 //
@@ -46,6 +48,14 @@ const T: Record<Lang, Record<string, string>> = {
     call: 'Call',
     site: 'Website',
     verified: 'Verified by M&K Agency',
+    comingTitle: 'Local partner directory coming soon',
+    comingBody:
+      'We are putting together a free list of local South Florida businesses our clients recommend. Nothing is listed yet. A person on our team calls every business before it is added, so the list will only include businesses we have actually confirmed.',
+    referTitle: 'Know someone who could use help with insurance?',
+    referBody:
+      'Refer a friend or family member: give us a call, or send them to our quote page. A licensed agent will talk with them in English, Spanish or Russian, with no obligation.',
+    referCall: `Call ${PHONE_DISPLAY}`,
+    referQuote: 'Go to the quote page',
     empty: 'The directory is being built. If you run a local business, or want to suggest one you trust, use the form below — listing is free and always will be.',
   },
   es: {
@@ -66,6 +76,14 @@ const T: Record<Lang, Record<string, string>> = {
     call: 'Llamar',
     site: 'Sitio web',
     verified: 'Verificado por M&K Agency',
+    comingTitle: 'Directorio de negocios locales: próximamente',
+    comingBody:
+      'Estamos preparando una lista gratuita de negocios locales del sur de Florida que nuestros clientes recomiendan. Todavía no hay ninguno publicado. Una persona de nuestro equipo llama a cada negocio antes de agregarlo, así que la lista solo incluirá negocios que hayamos confirmado.',
+    referTitle: '¿Conoce a alguien que necesite ayuda con su seguro?',
+    referBody:
+      'Recomiende a un amigo o familiar: llámenos o envíelo a nuestra página de cotización. Un agente licenciado hablará con esa persona en inglés, español o ruso, sin compromiso.',
+    referCall: `Llamar al ${PHONE_DISPLAY}`,
+    referQuote: 'Ir a la página de cotización',
     empty: 'El directorio se está construyendo. Si tiene un negocio local, o quiere sugerir uno de confianza, use el formulario de abajo — aparecer es gratis y siempre lo será.',
   },
   ru: {
@@ -86,6 +104,14 @@ const T: Record<Lang, Record<string, string>> = {
     call: 'Позвонить',
     site: 'Сайт',
     verified: 'Проверено M&K Agency',
+    comingTitle: 'Каталог местных партнёров скоро появится',
+    comingBody:
+      'Мы составляем бесплатный список местных компаний Южной Флориды, которые рекомендуют наши клиенты. Пока в нём никого нет. Прежде чем добавить компанию, человек из нашей команды звонит в неё, поэтому в списке будут только компании, которые мы действительно подтвердили.',
+    referTitle: 'Знаете, кому нужна помощь со страховкой?',
+    referBody:
+      'Порекомендуйте нас другу или родственнику: позвоните нам или отправьте его на страницу запроса котировки. Лицензированный агент поговорит с ним на английском, испанском или русском — без обязательств.',
+    referCall: `Позвонить ${PHONE_DISPLAY}`,
+    referQuote: 'Запросить котировку',
     empty: 'Справочник наполняется. Если у вас местный бизнес или вы хотите предложить того, кому доверяете, — форма ниже. Размещение бесплатное и таким останется.',
   },
 };
@@ -138,6 +164,41 @@ export default function BusinessDirectory({ lang = 'en' }: { lang?: string }) {
     background: '#fff',
     width: '100%',
   };
+
+  // Empty directory: an honest "coming soon" state plus a refer-a-friend call
+  // to action. No "Verified by M&K Agency" copy is shown when there is nothing
+  // listed that it could refer to.
+  if (isEmpty) {
+    return (
+      <div style={{ maxWidth: 760 }}>
+        <h2 style={{ textAlign: 'left', marginBottom: 8 }}>{t.comingTitle}</h2>
+        <p style={{ color: 'var(--muted)', lineHeight: 1.6, marginBottom: 24 }}>{t.comingBody}</p>
+        <div className="card" id="refer-a-friend">
+          <h2>{t.referTitle}</h2>
+          <p className="sub" style={{ fontSize: '1rem', lineHeight: 1.6 }}>{t.referBody}</p>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <a className="cta" href={`tel:${PHONE_TEL}`}>
+              📞 {t.referCall}
+            </a>
+            <Link
+              href={`/${L}/quote`}
+              style={{
+                display: 'inline-block',
+                padding: '15px 24px',
+                borderRadius: 10,
+                border: '1px solid #dfe6f0',
+                color: 'var(--navy)',
+                fontWeight: 700,
+                textDecoration: 'none',
+              }}
+            >
+              {t.referQuote} →
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

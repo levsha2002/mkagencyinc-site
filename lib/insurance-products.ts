@@ -77,9 +77,9 @@ export const insuranceProducts: InsuranceProduct[] = [
     slug: 'auto-electric-vehicle',
     category: 'auto',
     title: 'Electric Vehicle Insurance',
-    shortIntro: 'Competitive auto insurance rates for electric vehicles.',
+    shortIntro: 'Auto insurance for electric vehicles, explained clearly.',
     article: [
-      "We don't sell vehicle warranties — that's not something we offer. What we do offer is competitive auto insurance rates for electric vehicles, from Tesla to Rivian to any EV on the road.",
+      "We don't sell vehicle warranties — that's not something we offer. What we do offer is auto insurance for electric vehicles, from Tesla to Rivian to any EV on the road.",
       'Get a fast, no-pressure quote from a real local agent.',
     ],
     coverageHighlights: [],
@@ -179,13 +179,13 @@ export const insuranceProducts: InsuranceProduct[] = [
     shortIntro: 'The foundational policy that protects your business from third-party injury and property damage claims.',
     article: [
       "Whether a customer slips at your storefront or your work damages a client's property, general liability insurance covers the legal and medical costs that follow — and many landlords, contracts, and licensing boards require it before you can even operate.",
-      'We help contractors, retailers, restaurants, and service businesses across Florida find the right limits at the right price.',
+      'We help contractors, retailers, restaurants, and service businesses across Florida review their landlord and contract requirements and choose limits that fit their operations.',
     ],
     coverageHighlights: [
       'Bodily injury & property damage liability',
       'Products & completed operations coverage',
       'Personal & advertising injury coverage',
-      'Meets most landlord & contract requirements',
+      'Help reviewing landlord & contract insurance requirements',
     ],
     requiresVIN: false,
     requiresDrivers: false,
@@ -194,16 +194,16 @@ export const insuranceProducts: InsuranceProduct[] = [
     slug: 'business-owners-policy',
     category: 'commercial',
     title: 'Business Owners Policy (BOP)',
-    shortIntro: 'A bundled policy combining property and liability coverage at a better price than buying separately.',
+    shortIntro: 'A package policy that can combine property and liability coverage for eligible small businesses, subject to underwriting and eligibility.',
     article: [
-      "A Business Owners Policy packages general liability with commercial property coverage — protecting your building, equipment, and inventory alongside your liability exposure — usually at a lower combined cost than two separate policies.",
-      "It's a strong fit for small to mid-sized businesses: retail shops, offices, and restaurants that own or lease a physical space.",
+      "A Business Owners Policy packages general liability with commercial property coverage — protecting your building, equipment, and inventory alongside your liability exposure — in a single policy.",
+      "It is typically designed for small to mid-sized businesses such as retail shops, offices, and restaurants that own or lease a physical space. Whether a BOP is available for your business is subject to underwriting and eligibility — a licensed agent can review your options with you.",
     ],
     coverageHighlights: [
       'Commercial property coverage',
       'General liability coverage',
       'Business interruption coverage',
-      'Optional add-ons: equipment breakdown, cyber, more',
+      'Optional coverages may be available, subject to eligibility',
     ],
     requiresVIN: false,
     requiresDrivers: false,
@@ -230,16 +230,16 @@ export const insuranceProducts: InsuranceProduct[] = [
     slug: 'commercial-auto',
     category: 'commercial',
     title: 'Commercial Auto Insurance',
-    shortIntro: 'Fleet and business-vehicle coverage for companies that rely on the road to operate.',
+    shortIntro: 'Coverage for the trucks, vans and cars your business owns or uses for work.',
     article: [
-      "From a single work truck to a small fleet, commercial auto insurance covers vehicles titled to your business or used primarily for business operations — with higher liability limits than a typical personal policy allows.",
-      'We build fleet coverage that fits contractors, trades, and delivery-based businesses.',
+      "From a single work truck to several business vehicles, commercial auto insurance covers vehicles titled to your business or used primarily for business operations — typically with higher liability limits than a personal auto policy allows.",
+      'We help contractors, trades, and delivery-based businesses in Florida review the coverage options available for how they use their vehicles.',
     ],
     coverageHighlights: [
       'Liability coverage built for business exposure',
       'Physical damage coverage for owned vehicles',
       'Hired & non-owned auto coverage',
-      'Fleet discounts for multiple vehicles',
+      'Coverage for one vehicle or several',
     ],
     requiresVIN: true,
     requiresDrivers: true,
@@ -439,6 +439,17 @@ export function getProductsByCategory(category: InsuranceProduct['category'], la
     .filter((p) => p.category === category)
     .map((p) => localizeProduct(p, lang));
 }
+
+// Business lines get business questions (name, type, vehicles) on the quote
+// form instead of a required home address and a VIN.
+export const VEHICLE_BUSINESS_SLUGS = new Set(['commercial-auto', 'auto-commercial-use']);
+export function isBusinessProduct(p: Pick<InsuranceProduct, 'category' | 'slug'>) {
+  return p.category === 'commercial' || VEHICLE_BUSINESS_SLUGS.has(p.slug);
+}
+
+// Products hidden from the /insurance catalogue but still reachable by URL.
+// BOP: no confirmed Florida BOP carrier yet — card removed from the hub.
+export const HIDDEN_FROM_HUB = new Set(['business-owners-policy']);
 
 export function getProductBySlug(slug: string, lang?: string) {
   const product = insuranceProducts.find((p) => p.slug === slug);

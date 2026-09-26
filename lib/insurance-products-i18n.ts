@@ -149,27 +149,27 @@ const es: Record<string, ProductI18n> = {
     shortIntro: 'La póliza fundamental que protege su negocio de reclamos de terceros por lesiones y daños a la propiedad.',
     article: [
       'Ya sea que un cliente se resbale en su local o que su trabajo dañe la propiedad de un cliente, el seguro de responsabilidad civil general cubre los costos legales y médicos que siguen — y muchos arrendadores, contratos y juntas de licencias lo exigen antes de que usted pueda incluso operar.',
-      'Ayudamos a contratistas, comercios, restaurantes y negocios de servicios en toda Florida a encontrar los límites correctos al precio correcto.',
+      'Ayudamos a contratistas, comercios, restaurantes y negocios de servicios en toda Florida a revisar los requisitos de sus arrendadores y contratos, y a elegir límites acordes con su operación.',
     ],
     coverageHighlights: [
       'Responsabilidad por lesiones corporales y daños a la propiedad',
       'Cobertura de productos y operaciones terminadas',
       'Cobertura de lesión personal y publicitaria',
-      'Cumple con la mayoría de los requisitos de arrendadores y contratos',
+      'Ayuda para revisar los requisitos de seguro de arrendadores y contratos',
     ],
   },
   'business-owners-policy': {
     title: 'Póliza de Dueño de Negocio (BOP)',
-    shortIntro: 'Una póliza combinada que une cobertura de propiedad y responsabilidad civil a mejor precio que comprarlas por separado.',
+    shortIntro: 'Una póliza combinada que puede unir cobertura de propiedad y de responsabilidad civil para pequeños negocios elegibles, sujeta a suscripción (underwriting) y elegibilidad.',
     article: [
-      'Una Business Owners Policy empaqueta la responsabilidad civil general con la cobertura de propiedad comercial — protegiendo su edificio, equipo e inventario junto con su exposición de responsabilidad — normalmente a un costo combinado menor que dos pólizas separadas.',
-      'Es una buena opción para negocios pequeños y medianos: tiendas, oficinas y restaurantes que poseen o arriendan un espacio físico.',
+      'Una Business Owners Policy empaqueta la responsabilidad civil general con la cobertura de propiedad comercial — protegiendo su edificio, equipo e inventario junto con su exposición de responsabilidad — en una sola póliza.',
+      'Normalmente está pensada para negocios pequeños y medianos, como tiendas, oficinas y restaurantes que son dueños de su local o lo arriendan. Si una BOP está disponible para su negocio depende de la suscripción y la elegibilidad — un agente licenciado puede revisar sus opciones con usted.',
     ],
     coverageHighlights: [
       'Cobertura de propiedad comercial',
       'Cobertura de responsabilidad civil general',
       'Cobertura de interrupción del negocio',
-      'Complementos opcionales: rotura de equipo, cyber y más',
+      'Coberturas opcionales que pueden estar disponibles, sujetas a elegibilidad',
     ],
   },
   'errors-omissions': {
@@ -188,16 +188,16 @@ const es: Record<string, ProductI18n> = {
   },
   'commercial-auto': {
     title: 'Seguro de Auto Comercial',
-    shortIntro: 'Cobertura de flota y vehículos de negocio para empresas que dependen de la carretera para operar.',
+    shortIntro: 'Cobertura para los camiones, vans y autos que su negocio posee o usa para trabajar.',
     article: [
-      'Desde un solo camión de trabajo hasta una flota pequeña, el seguro de auto comercial cubre vehículos registrados a nombre de su negocio o usados principalmente para operaciones comerciales — con límites de responsabilidad más altos que los que permite una póliza personal típica.',
-      'Armamos cobertura de flota que se ajusta a contratistas, oficios y negocios basados en entregas.',
+      'Desde un solo camión de trabajo hasta varios vehículos del negocio, el seguro de auto comercial cubre vehículos registrados a nombre de su negocio o usados principalmente para operaciones comerciales — normalmente con límites de responsabilidad más altos que los que permite una póliza de auto personal.',
+      'Ayudamos a contratistas, oficios y negocios de entregas en Florida a revisar las opciones de cobertura disponibles según cómo usan sus vehículos.',
     ],
     coverageHighlights: [
-      'Responsabilidad civil construida para la exposición del negocio',
+      'Responsabilidad civil pensada para los riesgos del negocio',
       'Cobertura de daño físico para vehículos propios',
       'Cobertura de autos alquilados y no propios',
-      'Descuentos de flota para varios vehículos',
+      'Cobertura para uno o varios vehículos',
     ],
   },
   'life-insurance': {
@@ -434,27 +434,27 @@ const ru: Record<string, ProductI18n> = {
     shortIntro: 'Базовый полис, который защищает бизнес от претензий третьих лиц за травмы и ущерб имуществу.',
     article: [
       'Клиент поскользнулся в вашем помещении или ваша работа повредила имущество заказчика — general liability покрывает юридические и медицинские расходы, которые за этим следуют. А многие арендодатели, контракты и лицензирующие органы требуют этот полис ещё до начала работы.',
-      'Помогаем подрядчикам, магазинам, ресторанам и сервисным компаниям по всей Флориде подобрать нужные лимиты по адекватной цене.',
+      'Помогаем подрядчикам, магазинам, ресторанам и сервисным компаниям по всей Флориде разобраться в требованиях арендодателей и контрактов и подобрать подходящие лимиты.',
     ],
     coverageHighlights: [
       'Liability за вред здоровью и ущерб имуществу',
       'Покрытие продукции и завершённых работ',
       'Покрытие personal и advertising injury',
-      'Соответствует требованиям большинства арендодателей и контрактов',
+      'Помощь с проверкой страховых требований арендодателей и контрактов',
     ],
   },
   'business-owners-policy': {
     title: 'Полис владельца бизнеса (BOP)',
-    shortIntro: 'Комбинированный полис: имущество и ответственность вместе дешевле, чем по отдельности.',
+    shortIntro: 'Комбинированный полис, который может объединять покрытие имущества и ответственности для малого бизнеса — при условии андеррайтинга и соответствия требованиям.',
     article: [
-      'Business Owners Policy объединяет general liability с покрытием коммерческого имущества — защищает здание, оборудование и товарные запасы вместе с вашей ответственностью — и обычно суммарно дешевле, чем два отдельных полиса.',
-      'Хорошо подходит малому и среднему бизнесу: магазинам, офисам и ресторанам, которые владеют помещением или арендуют его.',
+      'Business Owners Policy объединяет general liability с покрытием коммерческого имущества — защищает здание, оборудование и товарные запасы вместе с вашей ответственностью — в одном полисе.',
+      'Обычно рассчитан на малый и средний бизнес: магазины, офисы и рестораны, которые владеют помещением или арендуют его. Доступен ли BOP для вашего бизнеса, зависит от андеррайтинга и соответствия требованиям — лицензированный агент разберёт варианты вместе с вами.',
     ],
     coverageHighlights: [
       'Покрытие коммерческого имущества',
       'Покрытие general liability',
       'Покрытие перерыва в работе бизнеса',
-      'Опции: поломка оборудования, cyber и другое',
+      'Дополнительные покрытия — при наличии и соответствии требованиям',
     ],
   },
   'errors-omissions': {
@@ -473,16 +473,16 @@ const ru: Record<string, ProductI18n> = {
   },
   'commercial-auto': {
     title: 'Страхование коммерческого транспорта',
-    shortIntro: 'Покрытие парка и рабочих машин для компаний, чья работа держится на дороге.',
+    shortIntro: 'Покрытие для грузовиков, фургонов и машин, которыми владеет или пользуется ваш бизнес.',
     article: [
-      'От одного рабочего пикапа до небольшого парка: commercial auto покрывает машины, оформленные на бизнес или используемые преимущественно в рабочих целях — с более высокими лимитами liability, чем допускает обычный личный полис.',
-      'Собираем покрытие парка под подрядчиков, ремонтные бригады и доставку.',
+      'От одного рабочего пикапа до нескольких машин: commercial auto покрывает машины, оформленные на бизнес или используемые преимущественно в рабочих целях — обычно с более высокими лимитами liability, чем допускает личный полис.',
+      'Помогаем подрядчикам, ремонтным бригадам и службам доставки во Флориде разобраться в доступных вариантах покрытия под то, как они используют машины.',
     ],
     coverageHighlights: [
       'Liability, рассчитанный на риски бизнеса',
       'Покрытие физического ущерба для собственных машин',
       'Покрытие арендованных и не принадлежащих вам авто',
-      'Скидки за парк при нескольких машинах',
+      'Покрытие для одной или нескольких машин',
     ],
   },
   'life-insurance': {

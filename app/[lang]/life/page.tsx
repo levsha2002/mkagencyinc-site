@@ -1,14 +1,15 @@
 import { getDict } from '@/lib/dictionaries';
 import LifeGallery from '@/components/LifeGallery';
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).life;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/life',
     title: t.metaTitle,
     description: t.metaDesc,
-    alternates: buildAlternates(params.lang, '/life'),
-  };
+  });
 }
 
 export default function LifePage({ params }: { params: { lang: string } }) {
@@ -19,7 +20,7 @@ export default function LifePage({ params }: { params: { lang: string } }) {
       <section className="life-hero">
         <div className="container">
           <h1>
-            {t.h1}
+            {t.h1}{' '}
             <br />
             <span className="accent">{t.tagline}</span>
           </h1>

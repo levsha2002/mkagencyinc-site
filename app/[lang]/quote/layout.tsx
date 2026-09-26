@@ -1,4 +1,4 @@
-import { buildAlternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
 const META: Record<string, { title: string; description: string }> = {
   en: {
@@ -23,11 +23,12 @@ const META: Record<string, { title: string; description: string }> = {
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const m = META[params.lang] ?? META.en;
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/quote',
     title: m.title,
     description: m.description,
-    alternates: buildAlternates(params.lang, '/quote'),
-  };
+  });
 }
 
 export default function QuoteLayout({ children }: { children: React.ReactNode }) {
