@@ -29,6 +29,7 @@ const playfair = Playfair_Display({
 // per-lead "conversion" event fires from LeadForm.tsx once the form is
 // successfully submitted. See components/LeadForm.tsx for the event call.
 import { GOOGLE_ADS_ID, phoneClickTrackingScript } from '@/lib/analytics';
+import { attributionCaptureScript } from '@/lib/attribution';
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -132,6 +133,9 @@ export default function RootLayout({
               src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
               strategy="afterInteractive"
             />
+            <Script id="ad-attribution" strategy="afterInteractive">
+              {attributionCaptureScript()}
+            </Script>
             <Script id="phone-click-tracking" strategy="afterInteractive">
               {phoneClickTrackingScript()}
             </Script>

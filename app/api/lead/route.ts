@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
+import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
 
 // Hardcoded so email works regardless of Vercel env-var state.
 // mkagencyinc.com is a verified sending domain in Resend, so leads@ sends
@@ -20,6 +21,7 @@ export async function POST(req: Request) {
         : NextResponse.json({ error: 'Too many requests' }, { status: guard.status });
     }
     const { insurance_type, zip_code, name, phone, email, message, consent, lang, source } = body;
+    const attr = cleanAttribution(body.attribution);
 
     if (!name || !phone || !email || !zip_code) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -44,10 +46,12 @@ export async function POST(req: Request) {
       await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS consent BOOLEAN`;
       await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS lang TEXT`;
       await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS source TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS gclid TEXT`;
+      await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS utm TEXT`;
 
       await sql`
-        INSERT INTO leads (insurance_type, zip_code, name, phone, email, message, consent, lang, source)
-        VALUES (${insurance_type}, ${zip_code}, ${name}, ${phone}, ${email}, ${message || ''}, ${!!consent}, ${lang || 'en'}, ${source || 'website'})`;
+        INSERT INTO leads (insurance_type, zip_code, name, phone, email, message, consent, lang, source, gclid, utm)
+        VALUES (${insurance_type}, ${zip_code}, ${name}, ${phone}, ${email}, ${message || ''}, ${!!consent}, ${lang || 'en'}, ${source || 'website'}, ${attr.gclid}, ${attr.utm})`;
     }
 
     // 2) Email the agency
@@ -72,7 +76,8 @@ export async function POST(req: Request) {
             <tr><td><b>Source</b></td><td>${source || 'website'}</td></tr>
             <tr><td><b>TCPA consent</b></td><td>${consent ? 'YES ✅' : 'NO'}</td></tr>
             <tr><td><b>Time</b></td><td>${new Date().toISOString()}</td></tr>
-          </table>`,
+          </table>
+          ${attributionEmailRow(attr)}`,
       });
       if (resendError) {
         emailOk = false;

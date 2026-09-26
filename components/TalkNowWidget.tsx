@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { team } from '@/lib/team-data';
 import { trackConversion } from '@/lib/analytics';
+import { getAttribution } from '@/lib/attribution';
 import Honeypot from '@/components/Honeypot';
 
 const AGENT_OPTIONS = team.filter((m) => m.slug !== 'mikhail-kozlov');
@@ -45,6 +46,7 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
           contact_method: method,
           consent: true,
           agent_name: agentName || 'agent',
+          attribution: getAttribution(),
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');

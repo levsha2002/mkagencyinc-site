@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
+import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -31,6 +32,7 @@ export async function POST(req: Request) {
     const contactMethod: 'call' | 'text' =
       b.contact_method === 'text' ? 'text' : 'call';
     const agentName: string = (b.agent_name || 'agent').trim() || 'agent';
+    const attr = cleanAttribution(b.attribution);
 
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
@@ -50,9 +52,11 @@ export async function POST(req: Request) {
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS contact_method TEXT DEFAULT 'call'`;
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS consent BOOLEAN DEFAULT false`;
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS agent_name TEXT DEFAULT 'agent'`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS gclid TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS utm TEXT`;
 
-      await sql`INSERT INTO callbacks (name, phone, lang, urgent, contact_method, consent, agent_name)
-        VALUES (${b.name}, ${b.phone}, ${b.lang}, ${urgent}, ${contactMethod}, ${b.consent}, ${agentName})`;
+      await sql`INSERT INTO callbacks (name, phone, lang, urgent, contact_method, consent, agent_name, gclid, utm)
+        VALUES (${b.name}, ${b.phone}, ${b.lang}, ${urgent}, ${contactMethod}, ${b.consent}, ${agentName}, ${attr.gclid}, ${attr.utm})`;
     }
 
     if (process.env.RESEND_API_KEY) {
@@ -69,7 +73,8 @@ export async function POST(req: Request) {
           <p><b>Phone:</b> ${b.phone}</p>
           <p><b>Preferred contact method:</b> ${methodLabel}</p>
           <p><b>Requested agent:</b> ${agentName}</p>
-          <p><b>TCPA consent given:</b> Yes</p>`,
+          <p><b>TCPA consent given:</b> Yes</p>
+          ${attributionEmailRow(attr)}`,
       });
     }
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { getDict } from '@/lib/dictionaries';
 import { trackConversion } from '@/lib/analytics';
+import { getAttribution } from '@/lib/attribution';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
@@ -93,7 +94,7 @@ export default function ChatWidget({ lang }: { lang: string }) {
       const res = await fetch('/api/callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...cb, lang, consent: true, contact_method: 'call' }),
+        body: JSON.stringify({ ...cb, lang, consent: true, contact_method: 'call', attribution: getAttribution() }),
       });
       setCbStatus(res.ok ? 'ok' : 'err');
       if (res.ok) {
