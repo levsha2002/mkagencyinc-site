@@ -26,7 +26,8 @@ via `element.click()` on a text match instead.
 | Reviews | 67, rating 4.5 |
 | Description | Correct — family-owned, trilingual, no carrier comparison |
 | Categories | 6 — Insurance agency (primary), Commercial, Auto, Home, Life, Motorcycle |
-| Services | Populated — Auto, Boat & watercraft, Commercial, Employee, General liability, Life, Motorcycle, Pet |
+| Services | Re-read 2026-09-26: primary "Insurance agency" has Auto, Boat & watercraft, Commercial, Employee, General liability, Life, Motorcycle, Pet, Property, Renter's; "Home insurance agency" category has **Homeowners insurance** (the July "no Home" gap is closed); Auto insurance agency has Auto, Auto renters, Full coverage auto, RV. Umbrella and Condo were added 2026-09-26 as custom services (pending Google review). |
+| Website link | **Points to `agents.allstate.com/mikhail-kozlov-florida-city-fl.html?utm_source=GMB&utm_medium=Website`, not mkagencyinc.com.** The corporate UTM suggests Allstate manages this field (likely via Yext). Do not repoint it to the agency site without the owner confirming Allstate allows it. |
 | Hours / phone | Mon–Fri 9am–6pm, (305) 859-3953 |
 | Photos | Present, but see below |
 | Activity | ~685 views/month, 474 interactions |
