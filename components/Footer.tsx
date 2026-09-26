@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL } from '@/lib/dictionaries';
+import { blogHasLang } from '@/lib/blog';
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -54,6 +55,12 @@ export default function Footer({ lang }: { lang: string }) {
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
           <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>{fx.community}</Link>
           {' · '}
+          {blogHasLang(lang) && (
+            <>
+              <Link href={`/${lang}/blog`} style={{ color: '#bcd0ea' }}>{lang === 'ru' ? 'Блог' : 'Blog'}</Link>
+              {' · '}
+            </>
+          )}
           <Link href={`/${lang}/privacy`} style={{ color: '#bcd0ea' }}>{t.footer.privacy}</Link>
           {' · '}
           <Link href={`/${lang}/terms`} style={{ color: '#bcd0ea' }}>{t.footer.terms}</Link>
