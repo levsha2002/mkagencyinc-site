@@ -76,6 +76,18 @@ only as fresh as the screenshot it came from.
 **Typed input only.** Setting `input.value` programmatically does not register
 with Google's framework. Focus the element, then type with the keyboard.
 
+**Auto-apply checkboxes (Recommendations → Auto-apply settings) do not
+persist from the built-in browser.** Real clicks and JS clicks both flip the
+box visually, no Save control appears, and a reload restores the old value —
+the network shows only a `CustomerUserAppDataService/Mutate` (UI prefs), never
+a settings mutation. Six attempts, Sept 2026. Hand this one to the owner; it
+is two clicks in their own browser. Keyword adds, negatives and ad edits on
+the same browser saved fine.
+
+**The built-in browser pane is 800px wide by default.** Ads pages reflow into
+a cramped mobile-ish layout and coordinate clicks miss; `resize_window` to
+1400×900 first, then reset to `desktop` when done.
+
 **`Ctrl+A` in an empty field emits a literal "a".** Use
 `setSelectionRange(0, value.length)` instead when the field may be empty.
 
