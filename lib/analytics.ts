@@ -12,6 +12,13 @@
 
 export const GOOGLE_ADS_ID = 'AW-18321801016';
 
+// Website call conversion ("Website calls 60s+": Google forwarding number,
+// calls of 60s+ count). gtag swaps visible occurrences of this number for a
+// Google forwarding number for ad visitors and counts qualifying calls.
+// Format must match the number as it appears in page text.
+export const CALL_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/P8qXCI3yzIYdELj-waBE`;
+export const CALL_CONVERSION_PHONE = '(305) 859-3953';
+
 export type ConversionAction =
   | 'phone_call'        // tap/click on a tel: link — the highest-intent signal we have
   | 'sms_click'         // tap/click on an sms: link
