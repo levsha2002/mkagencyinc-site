@@ -107,7 +107,7 @@ const en = {
   referral: {
     heroTitle: 'We Care About Our Community',
     heroAccent: 'Our Clients Recommend',
-    heroSub: "We are happy to support our community. This is a map of Florida small businesses our neighbors already trust — realtors, contractors, restaurants, and more. Every listing is personally verified by our team.",
+    heroSub: "We are happy to support our community. We are building a free directory of local Florida small businesses our clients recommend — realtors, contractors, restaurants, and more. A person on our team calls every business before it is listed.",
     purposeTitle: 'What can you share?',
     purposeBody: "We try to support local, reliable small businesses that our clients trust. Visitors can recommend any local Florida business, along with a few words on how that business has helped you or your community — a great contractor, an honest mechanic, a restaurant your family loves. We personally verify every business before it goes on the map.",
     disclaimer: "Disclaimer: Businesses listed here are recommended by M&K Agency and our clients. Being listed is not an endorsement, guarantee, or warranty of any business's quality, pricing, licensing, or services, and M&K Agency is not responsible for your experience with a listed business. Anyone who chooses to do business with a listed company does so at their own discretion and risk. See the full Program Rules for details.",
@@ -332,7 +332,7 @@ const es: typeof en = {
   referral: {
     heroTitle: 'Nos Importa Nuestra Comunidad',
     heroAccent: 'Nuestros Clientes Recomiendan',
-    heroSub: 'Nos complace apoyar a nuestra comunidad. Este es un mapa de pequeños negocios de Florida en los que nuestros vecinos ya confían — agentes inmobiliarios, contratistas, restaurantes y más. Cada listado es verificado personalmente por nuestro equipo.',
+    heroSub: 'Nos complace apoyar a nuestra comunidad. Estamos creando un directorio gratuito de pequeños negocios locales de Florida que nuestros clientes recomiendan — agentes inmobiliarios, contratistas, restaurantes y más. Una persona de nuestro equipo llama a cada negocio antes de publicarlo.',
     purposeTitle: '¿Qué puede compartir?',
     purposeBody: 'Intentamos apoyar a negocios locales confiables en los que nuestros clientes confían. Los visitantes pueden recomendar cualquier negocio local de Florida, junto con unas palabras sobre cómo ese negocio le ha ayudado a usted o a su comunidad — un buen contratista, un mecánico honesto, un restaurante que su familia adora. Verificamos personalmente cada negocio antes de agregarlo al mapa.',
     disclaimer: 'Aviso: Los negocios listados aquí son recomendados por M&K Agency y nuestros clientes. Estar listado no es un respaldo, garantía o aval de la calidad, precios, licencias o servicios de ningún negocio, y M&K Agency no es responsable de su experiencia con un negocio listado. Cualquier persona que decida hacer negocios con una empresa listada lo hace bajo su propio criterio y riesgo. Consulte las Reglas Oficiales del Programa para más detalles.',
@@ -552,7 +552,7 @@ const ru: typeof en = {
   referral: {
     heroTitle: 'Мы заботимся о нашем сообществе',
     heroAccent: 'Наши клиенты рекомендуют',
-    heroSub: 'Мы рады поддерживать наше сообщество. Это карта небольших флоридских компаний, которым уже доверяют наши соседи — риелторы, подрядчики, рестораны и другие. Каждый листинг лично проверяется нашей командой.',
+    heroSub: 'Мы рады поддерживать наше сообщество. Мы создаём бесплатный каталог местных компаний Флориды, которые рекомендуют наши клиенты, — риелторы, подрядчики, рестораны и другие. Прежде чем добавить компанию, человек из нашей команды звонит в неё.',
     purposeTitle: 'Что вы можете предложить?',
     purposeBody: 'Мы стремимся поддерживать надёжный местный малый бизнес, которому доверяют наши клиенты. Посетители могут порекомендовать любую местную флоридскую компанию, добавив несколько слов о том, чем этот бизнес помог вам или вашему сообществу — хороший подрядчик, честный автомеханик, ресторан, который любит ваша семья. Мы лично проверяем каждую компанию, прежде чем добавить её на карту.',
     disclaimer: 'Отказ от ответственности: компании, перечисленные здесь, рекомендованы M&K Agency и нашими клиентами. Размещение в списке не является одобрением, гарантией или подтверждением качества, цен, лицензирования или услуг какой-либо компании, и M&K Agency не несёт ответственности за ваш опыт взаимодействия с компанией из списка. Любой, кто решает вести дела с компанией из списка, делает это на свой страх и риск. Подробности см. в официальных правилах программы.',

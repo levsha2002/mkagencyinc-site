@@ -18,32 +18,13 @@ export type ReferralBusiness = {
 // here ONLY after personally calling the business owner to verify the
 // business is real and still operating. This is what "Verified by M&K
 // Agency" means: a human on our team actually confirmed it by phone.
-export const referralBusinesses: ReferralBusiness[] = [
-  {
-    slug: 'example-realty',
-    name: 'Example Realty Group',
-    category: 'Realtor',
-    address: '100 Main St',
-    city: 'Florida City, FL',
-    zip: '33034',
-    lat: 25.4567,
-    lng: -80.4746,
-    phone: '(305) 555-0134',
-    description: 'Residential real estate serving South Miami-Dade families.',
-  },
-  {
-    slug: 'example-home-inspection',
-    name: 'Example Home Inspection',
-    category: 'Home Inspection',
-    address: '200 W Mowry Dr',
-    city: 'Homestead, FL',
-    zip: '33030',
-    lat: 25.4687,
-    lng: -80.4776,
-    phone: '(305) 555-0178',
-    description: 'Thorough, honest 4-point and wind mitigation inspections.',
-  },
-];
+// Intentionally empty. The two placeholder entries that used to live here
+// (a sample realty office and a sample home inspector, with 555 phone numbers)
+// were invented and were rendered on the live site with a "Verified by M&K Agency" badge. Never add
+// placeholder, sample or test businesses to this list: everything in it is
+// published in all three languages. While the list is empty the referral page
+// shows an honest "coming soon" state instead of the directory and map.
+export const referralBusinesses: ReferralBusiness[] = [];
 
 export const CATEGORIES = [
   'All',
