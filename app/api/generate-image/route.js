@@ -1,3 +1,6 @@
+import { createHash, timingSafeEqual } from "crypto";
+import { clientIp, sharedLimiter, HOUR_MS } from "@/lib/rate-limit";
+
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
@@ -8,10 +11,37 @@ function json(obj, status = 200) {
   });
 }
 
+// Brute-force guard for the Studio key: after STUDIO_MAX_FAILS wrong keys from
+// one IP within a rolling hour, that IP gets 429 (even with the right key)
+// until the oldest failure is an hour old. In-memory, per serverless instance
+// (see lib/rate-limit.ts).
+const STUDIO_MAX_FAILS = 10;
+const studioFails = sharedLimiter("studio-key-fail", { windowMs: HOUR_MS, max: STUDIO_MAX_FAILS });
+
+// Constant-time comparison. Hashing both sides first gives equal-length
+// buffers (timingSafeEqual requires that) and hides the real key's length.
+function keyMatches(given, expected) {
+  if (!expected || typeof given !== "string" || !given) return false;
+  const a = createHash("sha256").update(given, "utf8").digest();
+  const b = createHash("sha256").update(expected, "utf8").digest();
+  return timingSafeEqual(a, b);
+}
+
 export async function POST(req) {
   // Simple gate so random visitors can't spend your xAI credits.
-  const key = req.headers.get("x-studio-key");
-  if (!process.env.STUDIO_KEY || key !== process.env.STUDIO_KEY) {
+  const ip = clientIp(req);
+  const blocked = studioFails.peek(ip);
+  if (blocked.limited) {
+    const retryAfter = Math.max(1, Math.ceil(blocked.retryAfterMs / 1000));
+    const mins = Math.max(1, Math.ceil(retryAfter / 60));
+    return new Response(
+      JSON.stringify({ error: `Too many wrong Studio key attempts. Try again in about ${mins} minute${mins === 1 ? "" : "s"}.` }),
+      { status: 429, headers: { "Content-Type": "application/json", "Retry-After": String(retryAfter) } }
+    );
+  }
+  if (!keyMatches(req.headers.get("x-studio-key"), process.env.STUDIO_KEY)) {
+    const after = studioFails.record(ip);
+    console.warn("[studio] wrong key from ip", ip, "| failures this hour:", after.count);
     return json({ error: "Unauthorized. Enter the correct Studio key." }, 401);
   }
   if (!process.env.XAI_API_KEY) {
@@ -47,12 +77,22 @@ export async function POST(req) {
       }),
     });
   } catch (e) {
-    return json({ error: "Could not reach xAI: " + e.message }, 502);
+    console.error("[studio] could not reach xAI:", e);
+    return json({ error: "Could not reach the image service. Please try again in a minute." }, 502);
   }
 
   if (!r.ok) {
-    const t = await r.text();
-    return json({ error: "xAI error (" + r.status + "): " + t }, r.status);
+    // Raw xAI error text stays in the server log (Vercel -> Logs); the client
+    // only gets a generic message.
+    const t = await r.text().catch(() => "");
+    console.error("[studio] xAI image error:", r.status, t.slice(0, 2000));
+    const msg =
+      r.status === 400 || r.status === 422
+        ? "The image service rejected this request. Try rephrasing the prompt."
+        : r.status === 429
+          ? "The image service is busy. Please try again in a minute."
+          : "Image generation failed. Please try again later.";
+    return json({ error: msg }, r.status === 400 || r.status === 422 || r.status === 429 ? r.status : 502);
   }
 
   const data = await r.json();

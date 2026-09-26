@@ -1,14 +1,22 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { getDict } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY } from '@/lib/dictionaries';
 import { trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
 import { consentPayload } from '@/lib/consent';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
 import { useLeadFormInView } from '@/components/useLeadFormInView';
 
-type Msg = { role: 'user' | 'assistant'; content: string };
+// `links` is only set on server refusals (rate limit / too long): tap-to-call
+// and on-site quote links rendered under the bot bubble. Never sent back to
+// the API (see apiMessages).
+type Msg = { role: 'user' | 'assistant'; content: string; links?: { tel: string; quote: string } };
+
+// Same cap as /api/chat (MAX_MESSAGE_CHARS) so real visitors never hit the
+// server-side rejection.
+const MAX_MESSAGE_CHARS = 1000;
+const apiMessages = (list: Msg[]) => list.map(({ role, content }) => ({ role, content }));
 
 // Detects a phone number or email address anywhere in the visitor's messages.
 const PHONE_REGEX = /(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
@@ -79,7 +87,7 @@ export default function ChatWidget({ lang }: { lang: string }) {
       fetch('/api/transcript', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages, visitorEmail, lang }),
+        body: JSON.stringify({ messages: apiMessages(messages), visitorEmail, lang }),
       })
         .then((res) => {
           if (res.ok) {
@@ -111,10 +119,13 @@ export default function ChatWidget({ lang }: { lang: string }) {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: next, lang }),
+        body: JSON.stringify({ messages: apiMessages(next), lang }),
       });
       const data = await res.json();
-      setMessages([...next, { role: 'assistant', content: data.reply || t.errMsg }]);
+      const links = data.limited && /^\d{10,11}$/.test(String(data.phone_tel)) && /^\/(en|es|ru)\/quote$/.test(String(data.quote_url))
+        ? { tel: String(data.phone_tel), quote: String(data.quote_url) }
+        : undefined;
+      setMessages([...next, { role: 'assistant', content: data.reply || t.errMsg, ...(links ? { links } : {}) }]);
       // /api/chat forwards the conversation to the agency on its success path
       // and says so with lead_captured. Count it once the visitor has shared a
       // phone number or email in the chat.
@@ -174,12 +185,20 @@ export default function ChatWidget({ lang }: { lang: string }) {
               <div className="mk-body" ref={bodyRef}>
                 <div className="msg bot">{t.greeting}</div>
                 {messages.map((m, i) => (
-                  <div key={i} className={`msg ${m.role === 'user' ? 'user' : 'bot'}`}>{m.content}</div>
+                  <div key={i} className={`msg ${m.role === 'user' ? 'user' : 'bot'}`}>
+                    {m.content}
+                    {m.links && (
+                      <span style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 6 }}>
+                        <a href={`tel:${m.links.tel}`} style={{ fontWeight: 700 }}>📞 {PHONE_DISPLAY}</a>
+                        <a href={m.links.quote} style={{ fontWeight: 700 }}>{getDict(lang).nav.quote} →</a>
+                      </span>
+                    )}
+                  </div>
                 ))}
                 {busy && <div className="msg bot">…</div>}
               </div>
               <div className="mk-input">
-                <input value={input} placeholder={t.placeholder} aria-label={t.placeholder}
+                <input value={input} placeholder={t.placeholder} aria-label={t.placeholder} maxLength={MAX_MESSAGE_CHARS}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && send()} />
                 <button onClick={send}>{t.send}</button>
