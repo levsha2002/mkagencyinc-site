@@ -430,164 +430,246 @@ export const termsOfService: Record<'en' | 'es' | 'ru', LegalDoc> = {
   },
 };
 
+// Rules for the /[lang]/referral page: Refer a Friend, Referral Partners and the
+// community directory (coming soon). Plain words on purpose.
+// COMPLIANCE: no reward/thank-you is offered or promised (Florida anti-rebating);
+// partners: no fees, gifts or payments in either direction (RESPA). Never name a
+// carrier brand or former staff here; no prices, stats or reviews.
 export const referralRules: Record<'en' | 'es' | 'ru', LegalDoc> = {
   en: {
-    title: 'Referral Program — Official Rules',
-    effectiveDateLabel: 'Effective Date: July 2026',
+    title: 'Referrals & Partners: Program Rules',
+    effectiveDateLabel: 'Effective Date: July 2026 · Last updated: September 2026',
     intro:
-      'The "We Care About Our Community" Referral Program is a free directory of local Florida businesses recommended by M&K Agency Inc. and the community. It is a goodwill and community-visibility feature of our website. It is not a contest, sweepstakes, lottery, or promotion, and no money, prize, or thing of value is awarded to any participant, referrer, or business.',
+      'These rules cover the three parts of our Referrals & Partners page: Refer a Friend, for anyone who wants to introduce a friend or family member to M&K Agency Inc.; Referral Partners, for local businesses; and our community business directory, which is coming soon. None of these is a contest, sweepstakes or promotion, and no money, prize, gift or other thing of value is offered to anyone.',
     sections: [
       {
-        heading: '1. How a Business Gets Listed',
+        heading: '1. Anyone Can Refer',
         body: [
-          'Anyone may submit a local business for consideration using the "Recommend a local business" form. Submission requires: business name, address, category, owner first and last name, phone number, email address, and a short description.',
-          'No business is added to the public map automatically. Before any listing goes live, a member of the M&K Agency team personally contacts the business owner by phone to confirm the business is real, currently operating, and that the owner consents to being listed. We call this step "Verified by M&K Agency."',
+          'Anyone can refer a friend or family member to us. You do not need to be our client, and you do not need to buy anything.',
         ],
       },
       {
-        heading: '2. What "Verified by M&K Agency" Means — and What It Does Not Mean',
+        heading: '2. No Purchase Needed, Nothing for Buying a Policy',
         body: [
-          'The badge means only that a member of our team spoke with the business owner and confirmed the business exists and is operating. It is not an endorsement, guarantee, or warranty of quality, safety, pricing, licensing, or legality; not a statement that the business is a client of M&K Agency or any insurance carrier; and not a representation that we verified the business\u2019s insurance coverage or professional credentials.',
-          'Anyone who chooses to do business with a listed company does so at their own discretion and risk. M&K Agency is not a party to, and accepts no liability for, any transaction, dispute, injury, or loss arising from dealings with a listed business.',
+          'No purchase is required, for you or for the person you refer. Nothing is offered or given to anyone for buying a policy, and a referral never changes the price or terms of any policy.',
         ],
       },
       {
-        heading: '3. No Payment, No Kickback, No Rebate',
+        heading: '3. No Reward or Thank-You',
         body: [
-          'Being listed is free. M&K Agency does not charge businesses to be listed and does not accept payment or any other thing of value in exchange for a listing. Listing is never conditioned on purchasing insurance from M&K Agency, and requesting or purchasing a quote is never required to submit or view a business recommendation.',
+          'We do not offer a reward, gift, gift card, credit, donation or thank-you of any kind for a referral. Please refer people only because you think we can help them.',
         ],
       },
       {
-        heading: '4. No Prize, No Voting, No Purchase Necessary',
+        heading: '4. Get Your Friend\u2019s Permission First',
         body: [
-          'There is currently no prize, drawing, sweepstakes, cash award, or donation tied to this program. If M&K Agency introduces any prize or donation component in the future, separate official rules will be published before that component launches, and no purchase or insurance quote will ever be required to participate.',
+          'Only refer someone who has told you it is OK to share their name and phone number with us and for us to contact them. By sending a referral, you confirm that you have that permission.',
+          'Our first contact with a referred person is a call made by a person on our team, not an automated call or text. On that call we explain how we got their number and confirm they agree to hear from us. If they say no, we will not contact them again about that referral.',
         ],
       },
       {
-        heading: '5. What Cannot Be Listed',
+        heading: '5. How We Use Referral Information',
         body: [
-          'To avoid any appearance of endorsement, referral fee arrangements, or conflict of interest, M&K Agency does not list insurance agencies, insurance agents, insurance carriers, or other financial/insurance-adjacent businesses in this directory.',
+          'We use the details in a referral only to contact that person about insurance and to follow up with you about the referral. We never sell referral contacts, and we do not give them to other businesses for their marketing. Our Privacy Policy applies to everything you send us.',
         ],
       },
       {
-        heading: '6. Removal of a Listing',
+        heading: '6. Referral Partners: Who Can Join',
         body: [
-          'M&K Agency may remove any listing at any time, for any reason. A business owner may request removal of their own listing at any time by contacting us.',
+          'Local businesses such as realtors, car dealers, contractors, accountants and property managers can ask to become a referral partner. Partners do not need to be our clients or buy anything from us. A person on our team calls every business before a partnership starts.',
         ],
       },
       {
-        heading: '7. No Guarantee of Placement or Timing',
+        heading: '7. Partners: No Fees, Gifts or Payments in Either Direction',
         body: [
-          'Submitting a recommendation does not guarantee a business will be listed, or establish any review timeline. We review submissions as staff time allows.',
+          'No referral fees, gifts or payments of any kind are offered, paid, requested or accepted, in either direction. We do not pay partners for sending us clients, and partners do not pay us or give us anything of value. No one is required to refer anyone. This applies to every partner, including realtors, lenders, title companies and other real estate professionals.',
+          'Being a partner does not earn a directory listing, a better position in the directory, or any other benefit.',
         ],
       },
       {
-        heading: '8. Contact',
+        heading: '8. We May Decline or End a Partnership',
+        body: [
+          'We may decline a partnership request, or end a partnership at any time, for any reason. A partner can end the partnership at any time by telling us.',
+        ],
+      },
+      {
+        heading: '9. Community Directory (Coming Soon)',
+        body: [
+          'The directory of local businesses is not live yet. Anyone can recommend a business using the form on the Referrals & Partners page. When the directory opens, a business will be listed free of charge, and only after a person on our team calls the owner to confirm that the business is real, currently operating, and agrees to be listed.',
+          'That phone check is not an endorsement or a guarantee of quality, pricing, licensing or insurance. Anyone who hires a listed business does so at their own discretion. Listings are never paid for, never tied to buying insurance, and never ranked by who sends us clients. We do not list insurance agencies, insurance agents or insurance companies. We may decline or remove any listing, and an owner can ask us to remove theirs at any time.',
+        ],
+      },
+      {
+        heading: '10. Removing Your Information',
+        body: [
+          'Whether you are a referrer, a referred friend, a partner or a recommended business, you can ask us to remove your information by calling (305) 859-3953 or visiting our office. You can also reply STOP to any text from us to stop texts. We will delete your information, except records the law requires us to keep, such as records of consent to be contacted, as described in our Privacy Policy.',
+        ],
+      },
+      {
+        heading: '11. Contact',
         body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Phone: (305) 859-3953'],
       },
       {
-        heading: '9. Changes to These Rules',
+        heading: '12. Changes to These Rules',
         body: ['We may update these rules at any time. The most current version will always be available on this page.'],
       },
     ],
   },
   es: {
-    title: 'Programa de Referidos — Reglas Oficiales',
-    effectiveDateLabel: 'Fecha de vigencia: julio de 2026',
+    title: 'Recomendaciones y socios: reglas del programa',
+    effectiveDateLabel: 'Fecha de vigencia: julio de 2026 · Última actualización: septiembre de 2026',
     intro:
-      'El Programa de Referidos "We Care About Our Community" es un directorio gratuito de negocios locales de Florida recomendados por M&K Agency Inc. y la comunidad. No es un concurso, sorteo o lotería, y no se otorga dinero ni premios a ningún participante o negocio.',
+      'Estas reglas cubren las tres partes de nuestra página de Recomendaciones y socios: Recomiende a un amigo, para cualquier persona que quiera presentarnos a un amigo o familiar; Socios de referidos, para negocios locales; y nuestro directorio comunitario de negocios, que estará disponible próximamente. Nada de esto es un concurso, sorteo o promoción, y no se ofrece dinero, premios, regalos ni ninguna otra cosa de valor a nadie.',
     sections: [
       {
-        heading: '1. Cómo un Negocio Aparece Listado',
+        heading: '1. Cualquier persona puede recomendar',
         body: [
-          'Cualquier persona puede enviar un negocio local usando el formulario "Recomendar un negocio local". Se requiere: nombre, dirección, categoría, nombre del propietario, teléfono, correo electrónico y una breve descripción.',
-          'Ningún negocio se agrega automáticamente. Antes de publicar un listado, nuestro equipo contacta personalmente al propietario por teléfono para confirmar que el negocio es real y consiente ser listado ("Verificado por M&K Agency").',
+          'Cualquier persona puede recomendarnos a un amigo o familiar. No necesita ser nuestro cliente ni comprar nada.',
         ],
       },
       {
-        heading: '2. Qué Significa "Verificado por M&K Agency" — y Qué No Significa',
+        heading: '2. No se requiere compra y no se da nada por comprar una póliza',
         body: [
-          'Significa solo que hablamos con el propietario y confirmamos que el negocio existe. No es un respaldo de calidad, precios o legalidad; no significa que sea cliente de M&K Agency; no confirma su cobertura de seguro o licencias.',
-          'Cualquier persona que haga negocios con una empresa listada lo hace bajo su propio riesgo. M&K Agency no acepta responsabilidad por transacciones con negocios listados.',
+          'No se requiere ninguna compra, ni de usted ni de la persona que recomienda. No se ofrece ni se da nada a nadie por comprar una póliza, y una recomendación nunca cambia el precio ni las condiciones de ninguna póliza.',
         ],
       },
       {
-        heading: '3. Sin Pago, Sin Comisión, Sin Descuento',
-        body: ['Ser listado es gratis. Nunca se requiere comprar un seguro para ser listado o para enviar/ver una recomendación.'],
+        heading: '3. Sin recompensa ni agradecimiento material',
+        body: [
+          'No ofrecemos recompensas, regalos, tarjetas de regalo, créditos, donaciones ni agradecimientos de ningún tipo por una recomendación. Por favor, recomiende a alguien solo porque cree que podemos ayudarle.',
+        ],
       },
       {
-        heading: '4. Sin Premio, Sin Votación, Sin Compra Necesaria',
-        body: ['Actualmente no hay premio ni sorteo vinculado a este programa. Si eso cambia, se publicarán reglas oficiales separadas antes del lanzamiento.'],
+        heading: '4. Primero, el permiso de su amigo',
+        body: [
+          'Recomiende solo a alguien que le haya dicho que puede compartir su nombre y teléfono con nosotros y que podemos contactarle. Al enviar una recomendación, usted confirma que tiene ese permiso.',
+          'Nuestro primer contacto con la persona recomendada es una llamada hecha por una persona de nuestro equipo, no una llamada o texto automatizado. En esa llamada explicamos cómo obtuvimos su número y confirmamos que acepta que le contactemos. Si dice que no, no volveremos a contactarle por esa recomendación.',
+        ],
       },
       {
-        heading: '5. Qué No Puede Ser Listado',
-        body: ['Para evitar conflictos de interés, no incluimos agencias de seguros, agentes o aseguradoras en este directorio.'],
+        heading: '5. Cómo usamos la información de una recomendación',
+        body: [
+          'Usamos los datos de una recomendación solo para contactar a esa persona sobre seguros y para darle seguimiento a usted sobre la recomendación. Nunca vendemos los contactos recomendados ni los entregamos a otros negocios para su publicidad. Nuestra Política de Privacidad se aplica a todo lo que nos envía.',
+        ],
       },
       {
-        heading: '6. Eliminación de un Listado',
-        body: ['Podemos eliminar cualquier listado en cualquier momento. Un propietario puede solicitar la eliminación de su propio listado.'],
+        heading: '6. Socios de referidos: quién puede participar',
+        body: [
+          'Negocios locales como agentes inmobiliarios, concesionarios de autos, contratistas, contadores y administradores de propiedades pueden solicitar ser socios de referidos. Los socios no necesitan ser nuestros clientes ni comprarnos nada. Una persona de nuestro equipo llama a cada negocio antes de iniciar una alianza.',
+        ],
       },
       {
-        heading: '7. Sin Garantía de Publicación o Tiempo',
-        body: ['Enviar una recomendación no garantiza que será listada ni establece un plazo de revisión.'],
+        heading: '7. Socios: sin comisiones, regalos ni pagos en ninguna dirección',
+        body: [
+          'No se ofrecen, pagan, piden ni aceptan comisiones por recomendación, regalos ni pagos de ningún tipo, en ninguna dirección. No pagamos a los socios por enviarnos clientes, y los socios no nos pagan ni nos dan nada de valor. Nadie está obligado a recomendar a nadie. Esto aplica a todos los socios, incluidos agentes inmobiliarios, prestamistas, compañías de títulos y otros profesionales de bienes raíces.',
+          'Ser socio no da derecho a aparecer en el directorio, a una mejor posición en él ni a ningún otro beneficio.',
+        ],
       },
       {
-        heading: '8. Contacto',
+        heading: '8. Podemos rechazar o terminar una alianza',
+        body: [
+          'Podemos rechazar una solicitud de alianza, o terminar una alianza en cualquier momento, por cualquier motivo. Un socio puede terminar la alianza en cualquier momento avisándonos.',
+        ],
+      },
+      {
+        heading: '9. Directorio comunitario (próximamente)',
+        body: [
+          'El directorio de negocios locales todavía no está disponible. Cualquier persona puede recomendar un negocio con el formulario de la página de Recomendaciones y socios. Cuando el directorio se abra, un negocio aparecerá gratis y solo después de que una persona de nuestro equipo llame al propietario para confirmar que el negocio es real, que está operando y que acepta aparecer.',
+          'Esa verificación telefónica no es un respaldo ni una garantía de calidad, precios, licencias o seguros. Quien contrate a un negocio del directorio lo hace bajo su propio criterio. Los listados nunca se pagan, nunca dependen de comprar un seguro y nunca se ordenan según quién nos envía clientes. No incluimos agencias de seguros, agentes de seguros ni compañías de seguros. Podemos rechazar o eliminar cualquier listado, y un propietario puede pedirnos que eliminemos el suyo en cualquier momento.',
+        ],
+      },
+      {
+        heading: '10. Cómo eliminar su información',
+        body: [
+          'Ya sea que usted haya recomendado a alguien, haya sido recomendado, sea socio o un negocio recomendado, puede pedirnos que eliminemos su información llamando al (305) 859-3953 o visitando nuestra oficina. También puede responder STOP a cualquier texto nuestro para dejar de recibir textos. Eliminaremos su información, excepto los registros que la ley nos exige conservar, como los registros de consentimiento para ser contactado, según se describe en nuestra Política de Privacidad.',
+        ],
+      },
+      {
+        heading: '11. Contacto',
         body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Teléfono: (305) 859-3953'],
       },
       {
-        heading: '9. Cambios a Estas Reglas',
-        body: ['La versión más actual siempre estará disponible en esta página.'],
+        heading: '12. Cambios a estas reglas',
+        body: ['Podemos actualizar estas reglas en cualquier momento. La versión más actual siempre estará disponible en esta página.'],
       },
     ],
   },
   ru: {
-    title: 'Программа рекомендаций — официальные правила',
-    effectiveDateLabel: 'Дата вступления в силу: июль 2026',
+    title: 'Рекомендации и партнёры: правила программы',
+    effectiveDateLabel: 'Дата вступления в силу: июль 2026 · Последнее обновление: сентябрь 2026',
     intro:
-      'Программа рекомендаций «We Care About Our Community» — бесплатный каталог местных флоридских компаний, рекомендованных M&K Agency Inc. и сообществом. Это не конкурс и не лотерея — участникам не выплачиваются деньги или призы.',
+      'Эти правила относятся к трём частям нашей страницы «Рекомендации и партнёры»: «Порекомендуйте друга» — для всех, кто хочет познакомить с M&K Agency Inc. друга или родственника; «Партнёры» — для местного бизнеса; и каталог местных компаний, который скоро появится. Ничто из этого не является конкурсом, розыгрышем или рекламной акцией, и никому не предлагаются деньги, призы, подарки или что-либо иное, имеющее ценность.',
     sections: [
       {
-        heading: '1. Как компания попадает в список',
+        heading: '1. Рекомендовать может любой',
         body: [
-          'Любой может предложить местную компанию через форму «Рекомендовать местную компанию»: название, адрес, категория, имя владельца, телефон, email и краткое описание.',
-          'Ни одна компания не добавляется автоматически. Перед публикацией сотрудник M&K Agency лично звонит владельцу, чтобы подтвердить бизнес и получить согласие («Проверено M&K Agency»).',
+          'Порекомендовать нам друга или родственника может любой человек. Для этого не нужно быть нашим клиентом и ничего не нужно покупать.',
         ],
       },
       {
-        heading: '2. Что означает «Проверено M&K Agency» — и чего не означает',
+        heading: '2. Покупка не требуется, за покупку полиса ничего не даётся',
         body: [
-          'Означает только, что мы поговорили с владельцем и подтвердили существование бизнеса. Не является гарантией качества, цен или законности; не означает, что бизнес — клиент M&K Agency; не подтверждает страхование или лицензии бизнеса.',
-          'Любой, кто ведёт дела с компанией из списка, делает это на свой риск. M&K Agency не несёт ответственности за такие сделки.',
+          'Покупка не требуется ни от вас, ни от человека, которого вы рекомендуете. Никому ничего не предлагается и не даётся за покупку полиса, и рекомендация никогда не меняет цену или условия какого-либо полиса.',
         ],
       },
       {
-        heading: '3. Без оплаты, без откатов, без скидок',
-        body: ['Размещение бесплатно. Покупка страховки никогда не требуется для листинга или отправки рекомендации.'],
+        heading: '3. Без вознаграждений и подарков',
+        body: [
+          'Мы не предлагаем за рекомендацию никаких вознаграждений, подарков, подарочных карт, бонусов, пожертвований или иной благодарности. Пожалуйста, рекомендуйте нас только потому, что считаете, что мы можем помочь.',
+        ],
       },
       {
-        heading: '4. Без призов, без голосования, покупка не требуется',
-        body: ['В настоящее время призов или розыгрышей нет. Если это изменится, будут опубликованы отдельные официальные правила до запуска.'],
+        heading: '4. Сначала получите согласие друга',
+        body: [
+          'Рекомендуйте только тех, кто разрешил вам передать нам своё имя и номер телефона и согласился, чтобы мы с ним связались. Отправляя рекомендацию, вы подтверждаете, что такое разрешение у вас есть.',
+          'Первый контакт с рекомендованным человеком — это звонок сотрудника нашей команды, а не автоматический звонок или SMS. Во время этого звонка мы объясняем, откуда у нас его номер, и уточняем, согласен ли он на общение с нами. Если он откажется, мы больше не будем связываться с ним по этой рекомендации.',
+        ],
       },
       {
-        heading: '5. Что не может быть добавлено в список',
-        body: ['Во избежание конфликта интересов мы не размещаем страховые агентства, агентов или страховые компании в этом каталоге.'],
+        heading: '5. Как мы используем данные из рекомендаций',
+        body: [
+          'Мы используем данные из рекомендации только для того, чтобы связаться с этим человеком по вопросам страхования и сообщить вам о ходе рекомендации. Мы никогда не продаём контакты из рекомендаций и не передаём их другим компаниям для рекламы. На всё, что вы нам отправляете, распространяется наша Политика конфиденциальности.',
+        ],
       },
       {
-        heading: '6. Удаление листинга',
-        body: ['Мы можем удалить любой листинг в любое время. Владелец может запросить удаление своего листинга.'],
+        heading: '6. Партнёры: кто может участвовать',
+        body: [
+          'Стать партнёром могут местные компании: риелторы, автодилеры, подрядчики, бухгалтеры, управляющие недвижимостью и другие. Партнёрам не нужно быть нашими клиентами или что-либо у нас покупать. Прежде чем начать партнёрство, сотрудник нашей команды звонит в каждую компанию.',
+        ],
       },
       {
-        heading: '7. Отсутствие гарантии размещения или сроков',
-        body: ['Отправка рекомендации не гарантирует размещение и не устанавливает сроков рассмотрения.'],
+        heading: '7. Партнёры: никаких вознаграждений, подарков или выплат ни в одну сторону',
+        body: [
+          'Никакие вознаграждения за рекомендации, подарки или выплаты любого рода не предлагаются, не выплачиваются, не запрашиваются и не принимаются — ни в одну, ни в другую сторону. Мы не платим партнёрам за клиентов, а партнёры не платят нам и не дают нам ничего ценного. Никто не обязан никого рекомендовать. Это относится ко всем партнёрам, включая риелторов, кредиторов, титульные компании и других специалистов по недвижимости.',
+          'Статус партнёра не даёт права на размещение в каталоге, более высокое место в нём или какие-либо иные преимущества.',
+        ],
       },
       {
-        heading: '8. Контакты',
+        heading: '8. Мы можем отказать в партнёрстве или прекратить его',
+        body: [
+          'Мы можем отклонить заявку на партнёрство или прекратить партнёрство в любое время по любой причине. Партнёр может прекратить партнёрство в любое время, сообщив нам об этом.',
+        ],
+      },
+      {
+        heading: '9. Каталог местных компаний (скоро)',
+        body: [
+          'Каталог местных компаний пока не запущен. Предложить компанию может любой через форму на странице «Рекомендации и партнёры». Когда каталог откроется, компания будет размещаться бесплатно и только после того, как сотрудник нашей команды позвонит владельцу и подтвердит, что компания существует, работает и согласна на размещение.',
+          'Такая проверка по телефону не является одобрением или гарантией качества, цен, лицензий или страховки. Тот, кто обращается к компании из каталога, делает это на своё усмотрение. Размещение никогда не оплачивается, никогда не зависит от покупки страховки и никогда не упорядочивается по тому, кто присылает нам клиентов. Мы не размещаем страховые агентства, страховых агентов и страховые компании. Мы можем отказать в размещении или удалить любую запись, а владелец может в любое время попросить удалить свою.',
+        ],
+      },
+      {
+        heading: '10. Как удалить ваши данные',
+        body: [
+          'Кем бы вы ни были — тем, кто рекомендовал, тем, кого рекомендовали, партнёром или предложенной компанией, — вы можете попросить удалить ваши данные, позвонив по номеру (305) 859-3953 или посетив наш офис. Также можно ответить STOP на любое наше SMS, чтобы больше не получать сообщения. Мы удалим ваши данные, за исключением записей, которые закон обязывает нас хранить, например записей о согласии на связь, как описано в нашей Политике конфиденциальности.',
+        ],
+      },
+      {
+        heading: '11. Контакты',
         body: ['M&K Agency Inc. — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034 — Телефон: (305) 859-3953'],
       },
       {
-        heading: '9. Изменения настоящих правил',
-        body: ['Актуальная версия всегда доступна на этой странице.'],
+        heading: '12. Изменения правил',
+        body: ['Мы можем обновлять эти правила в любое время. Актуальная версия всегда доступна на этой странице.'],
       },
     ],
   },
