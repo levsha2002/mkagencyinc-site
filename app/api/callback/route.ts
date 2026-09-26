@@ -3,6 +3,7 @@ import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
 import { guardSubmission } from '@/lib/form-guard';
 import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
+import { sendTelegramLeadAlert } from '@/lib/telegram';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -87,6 +88,24 @@ export async function POST(req: Request) {
         ${consentText}, ${consentTextVersion}, ${consentIp}, ${consentUserAgent}, ${pageUrl}, ${clientTxnId})`;
     }
 
+    // Telegram alert, started together with the email below and awaited after
+    // it. Never throws; 5s cap; skipped silently when not configured.
+    // Callers: "Talk to Agent Now" modal (urgent), chat widget callback tab,
+    // and the /protection-check planner (sends a `message` summary).
+    const cbMessage = str(b.message, 1500);
+    const telegramAlert = sendTelegramLeadAlert({
+      type: urgent ? 'Talk to Agent Now' : /^Protection check/.test(cbMessage) ? 'Protection check' : 'Chat callback',
+      lang: str(b.lang, 10),
+      name: str(b.name, 200),
+      phone: str(b.phone, 50),
+      message: cbMessage,
+      pageUrl,
+      extra: [
+        ['Preferred contact', contactMethod === 'text' ? 'TEXT' : 'CALL'],
+        ['Requested agent', agentName !== 'agent' ? agentName : ''],
+      ],
+    });
+
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const urgentTag = urgent ? '🔴 URGENT — ' : '';
@@ -106,6 +125,8 @@ export async function POST(req: Request) {
           ${attributionEmailRow(attr)}`,
       });
     }
+
+    await telegramAlert;
 
     return NextResponse.json({ ok: true });
   } catch (e) {
