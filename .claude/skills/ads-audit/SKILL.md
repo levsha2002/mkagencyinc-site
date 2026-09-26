@@ -26,9 +26,31 @@ every row above as "last confirmed", not current truth; re-read the live account
 before relying on any of it, especially before hard-coding a number (like a
 budget) into a "do not change" rule.
 
+## Which browser to use — read this first
+
+**Use the app's built-in browser (`mcp__Claude_Browser__*`), not the Chrome
+extension (`mcp__claude-in-chrome__*`).** `ads.google.com` is on the built-in
+browser's allow-list (`launchPreviewAllowedOrigins` in
+`%APPDATA%\Claude\claude_desktop_config.json`) and that browser is signed in
+as the owner. The Chrome extension refused `ads.google.com` with "Navigation
+to this domain is not allowed" in Chrome *and* Edge, across ~10 attempts, and
+the refusal never prompts — it cost most of a working day (Sept 2026) before
+the config file revealed the split. Typing and saving in the built-in browser
+also did not trip the "External System Writes" classifier that blocked
+extension-driven edits. `business.google.com` works in both; `www.google.com`
+(where the Business Profile *editor* lives) and `yext.com` were refused by the
+extension. If a domain is refused, check that config file before retrying.
+
 ## Interface behaviour that will waste your time
 
 These are all confirmed by failure, not guesswork.
+
+**Table rows are virtualised.** A list that says "1 – 448 of 448" still only
+has ~13 `[role="row"]` elements in the DOM. To read a whole list, set rows per
+page to 500 (the "Show rows" control at the bottom of the table) and then
+scroll the table's container in steps, collecting rows into a Set until the
+count stops growing. The scroll container is the `awsm-nav-bar-and-content`
+div, not `window`.
 
 **Tables do not appear in page text.** `document.body.innerText` returns
 navigation only. Read `[role="row"]` elements. A check that returns zero rows
