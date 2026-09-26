@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import type { Block, Faq, Source } from '@/content/types';
+import { DEFAULT_AUTHOR, type Author } from '@/content/authors';
+import { authorPath } from '@/lib/author';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import { RichText } from './RichText';
 import s from './Article.module.css';
@@ -119,6 +121,20 @@ export function SourceList({ lang, sources, updatedLine }: { lang: Lang; sources
 
 export function Disclaimer({ lang }: { lang: Lang }) {
   return <p className={s.disclaimer}>{DISCLAIMER[lang]}</p>;
+}
+
+/** Visible author byline ("Written and reviewed by …"). Defaults to
+ *  DEFAULT_AUTHOR (content/authors.ts); the name links to the team page. */
+export function Byline({ lang, author = DEFAULT_AUTHOR }: { lang: Lang; author?: Author }) {
+  const b = author.byline[lang];
+  const href = authorPath(author, lang);
+  return (
+    <span className={s.byline}>
+      {b.prefix}
+      {href ? <Link href={href} rel="author">{b.name}</Link> : b.name}
+      {b.suffix}
+    </span>
+  );
 }
 
 export const articleStyles = s;

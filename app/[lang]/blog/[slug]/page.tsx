@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { asLang, formatDate, getPost, postLangs, postsForLang, readingMinutes } from '@/lib/blog';
-import { ArticleBody, ArticleCta, Disclaimer, FaqList, SourceList, articleStyles as s } from '@/components/article/ArticleParts';
+import { ArticleBody, ArticleCta, Byline, Disclaimer, FaqList, SourceList, articleStyles as s } from '@/components/article/ArticleParts';
+import { DEFAULT_AUTHOR } from '@/content/authors';
+import { personLd } from '@/lib/author';
 import { stripInline } from '@/components/article/RichText';
 import type { Lang } from '@/content/types';
 
@@ -15,10 +17,10 @@ export async function generateStaticParams({ params }: { params: { lang: string 
 }
 
 const LANG_NAME: Record<Lang, string> = { en: 'English', es: 'Español', ru: 'Русский' };
-const UI: Record<Lang, { home: string; by: string; min: string; alsoIn: string; updated: string; published: string; more: string; checked: string }> = {
-  en: { home: 'Home', by: 'By M&K Agency', min: 'min read', alsoIn: 'Also available in:', updated: 'Updated', published: 'Published', more: 'More articles', checked: 'Facts checked against these official sources on' },
-  es: { home: 'Inicio', by: 'Por M&K Agency', min: 'min de lectura', alsoIn: 'También disponible en:', updated: 'Actualizado', published: 'Publicado', more: 'Más artículos', checked: 'Datos verificados con estas fuentes oficiales el' },
-  ru: { home: 'Главная', by: 'M&K Agency', min: 'мин чтения', alsoIn: 'Также на:', updated: 'Обновлено', published: 'Опубликовано', more: 'Другие статьи', checked: 'Факты проверены по официальным источникам' },
+const UI: Record<Lang, { home: string; min: string; alsoIn: string; updated: string; published: string; more: string; checked: string }> = {
+  en: { home: 'Home', min: 'min read', alsoIn: 'Also available in:', updated: 'Updated', published: 'Published', more: 'More articles', checked: 'Facts checked against these official sources on' },
+  es: { home: 'Inicio', min: 'min de lectura', alsoIn: 'También disponible en:', updated: 'Actualizado', published: 'Publicado', more: 'Más artículos', checked: 'Datos verificados con estas fuentes oficiales el' },
+  ru: { home: 'Главная', min: 'мин чтения', alsoIn: 'Также на:', updated: 'Обновлено', published: 'Опубликовано', more: 'Другие статьи', checked: 'Факты проверены по официальным источникам' },
 };
 
 function load(params: { lang: string; slug: string }) {
@@ -51,6 +53,8 @@ export default function BlogArticle({ params }: { params: { lang: string; slug: 
   const modified = post.dateModified ?? post.datePublished;
   const related = postsForLang(l).filter((x) => x.post.slug !== post.slug).slice(0, 3);
 
+  const author = post.author ?? DEFAULT_AUTHOR;
+  const person = personLd(author, l);
   const org = { '@type': 'Organization', name: 'M&K Agency', url: SITE_URL };
   const ld: Record<string, unknown>[] = [
     {
@@ -61,10 +65,10 @@ export default function BlogArticle({ params }: { params: { lang: string; slug: 
       inLanguage: l,
       datePublished: post.datePublished,
       dateModified: modified,
-      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url, reviewedBy: person },
       url,
       image: `${SITE_URL}/og.jpg`,
-      author: org,
+      author: person,
       publisher: org,
       isAccessibleForFree: true,
       citation: t.sources.map((x) => x.url),
@@ -100,7 +104,7 @@ export default function BlogArticle({ params }: { params: { lang: string; slug: 
             {t.category && <span className={s.kicker}>{t.category}</span>}
             <h1 className={s.h1}>{t.title}</h1>
             <p className={s.meta}>
-              <span>{ui.by}</span>
+              <Byline lang={l} author={author} />
               <span>{ui.published} <time dateTime={post.datePublished}>{formatDate(post.datePublished, l)}</time></span>
               {post.dateModified && post.dateModified !== post.datePublished && (
                 <span>{ui.updated} <time dateTime={post.dateModified}>{formatDate(post.dateModified, l)}</time></span>
