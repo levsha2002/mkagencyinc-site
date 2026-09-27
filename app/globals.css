@@ -1275,12 +1275,21 @@ body { font-size: 16.5px; }
   .cc-hero { padding: 48px 0 60px; }
   .cc-cta-row { flex-direction: row; flex-wrap: wrap; }
   .cc-gap-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+  /* Odd card count (5): the last card spans the row as a wide, image-left card. */
+  .cc-gap:last-child:nth-child(odd) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .cc-gap:last-child:nth-child(odd) .cc-gap-img { height: 100%; min-height: 200px; }
   .cc-steps { grid-template-columns: repeat(3, 1fr); }
   .cc-team { grid-template-columns: repeat(6, 1fr); }
 }
 @media (min-width: 900px) {
   .cc-hero-grid { grid-template-columns: 1.1fr .9fr; gap: 44px; }
   .cc-hero-photo-wrap { display: block; }
+  /* 5 gap cards: 2 on the first row, 3 on the second. */
+  .cc-gap-grid { grid-template-columns: repeat(6, 1fr); }
+  .cc-gap { grid-column: span 3; }
+  .cc-gap:nth-child(n+3) { grid-column: span 2; }
+  .cc-gap:last-child:nth-child(odd) { grid-column: span 2; display: block; }
+  .cc-gap:last-child:nth-child(odd) .cc-gap-img { height: 170px; min-height: 0; }
   .cc-trust-grid { grid-template-columns: 1.2fr .8fr; gap: 40px; }
   .cc-team { grid-template-columns: repeat(3, 1fr); }
   .cc-form-grid { grid-template-columns: .9fr 1.1fr; gap: 40px; }
