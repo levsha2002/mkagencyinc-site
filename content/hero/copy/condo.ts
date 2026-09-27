@@ -1,0 +1,55 @@
+// Condo landing page (/[lang]/condo-insurance-florida-city). `h` completes
+// "Condo insurance in Florida City & Homestead," / "Seguro de condominio en Florida
+// City y Homestead," / "Страховка кондоминиума во Florida City и Homestead —".
+import { V, type HeroCopyPool } from './types';
+
+export const condo: HeroCopyPool = {
+  en: [
+    V('for what your HOA doesn’t cover.', 'Your condo association’s master policy protects the building. An HO-6 policy protects your unit, your belongings, and you. We’ll help you get the right HO-6 in place so closing isn’t held up by an insurance gap.'),
+    V('from the walls in.', 'The association’s master policy stops at the building. HO-6 covers your floors, cabinets, upgrades and belongings. We’ll make sure the line between them is clear.'),
+    V('for your unit, your things and your liability.', 'If a guest is hurt in your unit or your water heater leaks into the neighbor’s, your HO-6 is what responds. We check that it’s built for that.'),
+    V('with loss assessment explained.', 'When a storm damages common areas, owners can be assessed for their share. Loss assessment coverage can help. We’ll show you how much you have.'),
+    V('so a leak upstairs doesn’t drain your savings.', 'Water damage is one of the most common condo claims. We review your coverage so you know what’s protected and who pays for what.'),
+    V('with an agent on your side at claim time.', 'Condo claims can involve you, the association and your neighbors. Your local agent helps you sort it out and keep your claim moving.'),
+    V('checked against your HOA’s master policy.', 'Send us your policy and your association’s coverage summary and we’ll check your coverage for the gaps between the two.'),
+    V('reviewed line by line, in your language.', 'Dwelling, personal property, loss of use, liability, loss assessment — we go through your HO-6 with you in English, Spanish or Russian.'),
+    V('for owners who live there and owners who rent.', 'Renting out your unit changes what you need. We make sure your policy fits how the condo is actually used.'),
+    V('from a family-owned agency that answers.', 'More than 5,000 Florida clients trust us. Contact us during business hours and an agent calls you back within one hour.'),
+    V('that protects the upgrades you paid for.', 'New floors, a remodeled kitchen, a new bathroom. Improvements inside your unit are usually your responsibility — make sure your coverage keeps up.'),
+    V('ready before closing day.', 'Buying a condo? Lenders need proof of HO-6 coverage. We’ll help you get the right policy in place so there’s no last-minute delay.'),
+    V('with a callback within one hour.', 'Questions about your HO-6 or a claim? Reach us during business hours and a licensed agent calls you back within one hour.'),
+    V('for high-rise and garden-style living.', 'Tower or two-story building, oceanfront or inland — every association is different. We tailor your HO-6 to your building and your bylaws.'),
+  ],
+  es: [
+    V('para lo que su HOA no cubre.', 'La póliza maestra de su asociación protege el edificio. Una póliza HO-6 lo protege a usted, su unidad y sus pertenencias. Le ayudamos a tener la póliza HO-6 correcta para que el cierre no se retrase por un vacío de cobertura.'),
+    V('de las paredes hacia adentro.', 'La póliza maestra de la asociación llega hasta el edificio. La HO-6 cubre sus pisos, gabinetes, mejoras y pertenencias. Le dejamos clara la línea entre una y otra.'),
+    V('para su unidad, sus cosas y su responsabilidad.', 'Si un invitado se lastima en su unidad o su calentador de agua inunda al vecino, es su HO-6 la que responde. Revisamos que esté preparada para eso.'),
+    V('sin sorpresas cuando la asociación cobre una cuota especial.', 'Cuando una tormenta daña las áreas comunes, la asociación puede cobrar a cada dueño su parte. La cobertura de loss assessment puede ayudarle con esa cuota. Le mostramos cuánto tiene.'),
+    V('para que una filtración de arriba no vacíe sus ahorros.', 'Los daños por agua están entre los reclamos más comunes en condominios. Revisamos su cobertura para que sepa qué está protegido y quién paga qué.'),
+    V('con un agente de su lado a la hora del reclamo.', 'Un reclamo en un condominio puede involucrarlo a usted, a la asociación y a los vecinos. Su agente local le ayuda a aclararlo y a mantener el reclamo en marcha.'),
+    V('comparado con la póliza maestra de su HOA.', 'Envíenos su póliza y el resumen de cobertura de su asociación, y revisamos los huecos que quedan entre las dos.'),
+    V('revisado línea por línea, en su idioma.', 'Mejoras y acabados, pertenencias, gastos adicionales de vivienda, responsabilidad civil, loss assessment: repasamos su HO-6 con usted en español, inglés o ruso.'),
+    V('tanto si vive en él como si lo alquila.', 'Alquilar su unidad cambia lo que necesita. Nos aseguramos de que su póliza se ajuste al uso real del condominio.'),
+    V('de una agencia familiar que sí contesta.', 'Más de 5,000 clientes en Florida confían en nosotros. Contáctenos en horario de oficina y un agente le devuelve la llamada en menos de una hora.'),
+    V('que protege las mejoras que usted pagó.', 'Pisos nuevos, una cocina remodelada, un baño nuevo. Las mejoras dentro de su unidad suelen ser su responsabilidad; asegúrese de que su cobertura esté al día.'),
+    V('listo antes del día del cierre.', '¿Va a comprar un condominio? El banco pide prueba de una póliza HO-6. Le ayudamos a tener la póliza correcta a tiempo para evitar retrasos de última hora.'),
+    V('con respuesta en menos de una hora.', '¿Preguntas sobre su HO-6 o un reclamo? Contáctenos en horario de oficina y un agente licenciado le devuelve la llamada en menos de una hora.'),
+    V('para torres y edificios de pocos pisos.', 'Torre o edificio de dos plantas, frente al mar o tierra adentro: cada asociación es distinta. Ajustamos su HO-6 a su edificio y a sus reglamentos.'),
+  ],
+  ru: [
+    V('на то, что не покрывает HOA.', 'Master-полис вашей ассоциации защищает здание. Полис HO-6 защищает вашу квартиру, вещи и вас лично. Мы поможем оформить правильный полис HO-6, чтобы closing не задержался из-за пробела в покрытии.'),
+    V('всё, что от стен и внутрь.', 'Master-полис ассоциации заканчивается на самом здании. HO-6 покрывает ваши полы, шкафы, улучшения и вещи. Поможем чётко понять, где проходит граница.'),
+    V('для квартиры, вещей и вашей ответственности.', 'Если гость травмируется у вас дома или ваш бойлер протечёт к соседям, отвечать будет именно HO-6. Проверим, что полис к этому готов.'),
+    V('без сюрпризов, когда ассоциация выставит спецвзнос.', 'Если шторм повредит общие зоны, ассоциация может разделить расходы между владельцами. Покрытие loss assessment может помочь оплатить вашу долю. Покажем, сколько у вас есть.'),
+    V('чтобы протечка сверху не съела ваши сбережения.', 'Ущерб от воды — одна из самых частых претензий в кондо. Проверим покрытие, чтобы вы знали, что защищено и кто за что платит.'),
+    V('с агентом на вашей стороне при страховом случае.', 'В страховом случае в кондо участвуете вы, ассоциация и соседи. Местный агент поможет разобраться и проследит, чтобы дело двигалось.'),
+    V('сверенная с master-полисом вашей HOA.', 'Пришлите свой полис и сводку покрытия ассоциации — проверим, какие пробелы остаются между ними.'),
+    V('разберём полис по строчкам на вашем языке.', 'Отделка и улучшения, имущество, временное жильё, ответственность, loss assessment — пройдём ваш HO-6 вместе на русском, английском или испанском.'),
+    V('и для тех, кто живёт, и для тех, кто сдаёт.', 'Если вы сдаёте квартиру, нужная защита меняется. Проследим, чтобы полис соответствовал тому, как кондо используется на самом деле.'),
+    V('от семейного агентства, где берут трубку.', 'Более 5 000 клиентов во Флориде доверяют нам. Свяжитесь с нами в рабочее время — агент перезвонит в течение часа.'),
+    V('защита для ремонта, за который вы заплатили.', 'Новые полы, обновлённая кухня, новая ванная. Улучшения внутри квартиры обычно на вас — убедитесь, что покрытие за ними успевает.'),
+    V('готовая ко дню closing.', 'Покупаете кондо? Банк потребует подтверждение полиса HO-6. Поможем вовремя оформить правильный полис, чтобы не было задержек в последний момент.'),
+    V('с обратным звонком в течение часа.', 'Вопросы по HO-6 или страховому случаю? Свяжитесь с нами в рабочее время — лицензированный агент перезвонит в течение часа.'),
+    V('для высоток и малоэтажных комплексов.', 'Башня или двухэтажный дом, у океана или вдали от побережья — каждая ассоциация своя. Подберём HO-6 под ваше здание и его правила.'),
+  ],
+};

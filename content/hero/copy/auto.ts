@@ -1,0 +1,55 @@
+// Car insurance landing page (/[lang]/car-insurance-florida-city). `h` completes
+// the fixed SEO prefix: "Car insurance in Florida City & Homestead," /
+// "Seguro de auto en Florida City y Homestead," / "Автостраховка во Florida City и Homestead —".
+import { V, type HeroCopyPool } from './types';
+
+export const auto: HeroCopyPool = {
+  en: [
+    V('explained in plain language.', 'Your neighbors on S Dixie Hwy will explain exactly what your auto policy covers. One call, three languages, real local agents.'),
+    V('with an agent who answers after the crash.', 'After an accident you need someone who knows your policy and your name. Call your agent directly — we help you report the claim and see it through.'),
+    V('built around the people who ride with you.', 'Your kids, your parents, your carpool. We check that your liability and injury coverage actually protects the people in your car.'),
+    V('even when the other driver has no insurance.', 'Too many Florida drivers carry little or no coverage. Uninsured motorist coverage protects your family when the other driver can’t pay — we’ll show you if you have it.'),
+    V('with a local agent in your corner.', 'Not an app, not a hotline. A licensed agent on S Dixie Hwy who knows you, answers your questions and helps when you file a claim.'),
+    V('reviewed line by line, in your language.', 'Liability limits, collision, comprehensive, rental, towing — we go through your auto policy with you in English, Spanish or Russian.'),
+    V('so one crash doesn’t become a financial crisis.', 'Florida’s minimum coverage can leave you personally on the hook after a serious accident. We’ll show you what your limits really protect.'),
+    V('from a family-owned agency that picks up.', 'More than 5,000 Florida clients trust our family. Call during business hours and an agent calls you back within one hour.'),
+    V('ready for your new teen driver.', 'Adding a teenager is a big step. We make sure the right limits are in place before they take the keys, and explain everything to both of you.'),
+    V('without the gaps you find out about later.', 'Send us your policy and we’ll check your coverage: rental car, towing, glass, uninsured motorist. Better to know now than at the body shop.'),
+    V('for every mile between Homestead and Miami.', 'Turnpike traffic, US-1, school runs in the rain. Your car goes everywhere with you — your coverage should too.'),
+    V('with a callback within one hour.', 'Questions about your policy or a claim? Contact us during business hours and a licensed agent calls you back within one hour.'),
+    V('checked before you need it.', 'The worst time to learn what your policy covers is the day after an accident. Let a local agent review it with you today — it takes five minutes.'),
+    V('from 12 people who speak your language.', 'Our team of 12 speaks English, Spanish and Russian. Your whole family can understand the policy and call us when something happens.'),
+  ],
+  es: [
+    V('explicado con claridad.', 'Sus vecinos en S Dixie Hwy le explican exactamente qué cubre su póliza de auto. Una llamada, tres idiomas, agentes locales de verdad.'),
+    V('con un agente que contesta después del choque.', 'Después de un accidente necesita a alguien que conozca su póliza y su nombre. Llame directamente a su agente: le ayudamos a reportar el reclamo y le damos seguimiento hasta el final.'),
+    V('pensado para quienes viajan con usted.', 'Sus hijos, sus padres, los compañeros del carpool. Revisamos que su responsabilidad civil y su cobertura de lesiones protejan de verdad a quienes van en su auto.'),
+    V('aunque el otro conductor no tenga seguro.', 'Demasiados conductores en Florida manejan con poca o ninguna cobertura. La cobertura de motorista no asegurado protege a su familia cuando el otro no puede pagar. Le mostramos si la tiene.'),
+    V('con un agente local de su lado.', 'Ni una app ni una línea de atención: un agente licenciado en S Dixie Hwy que lo conoce, contesta sus preguntas y le ayuda cuando presenta un reclamo.'),
+    V('revisado línea por línea, en su idioma.', 'Límites de responsabilidad, choque, cobertura amplia, auto de alquiler, grúa: repasamos su póliza con usted en español, inglés o ruso.'),
+    V('para que un choque no se convierta en una crisis.', 'La cobertura mínima de Florida puede dejarlo pagando de su propio bolsillo después de un accidente grave. Le mostramos qué protegen de verdad sus límites.'),
+    V('de una agencia familiar que sí contesta.', 'Más de 5,000 clientes en Florida confían en nuestra familia. Llame en horario de oficina y un agente le devuelve la llamada en menos de una hora.'),
+    V('listo para su nuevo conductor adolescente.', 'Agregar a un adolescente es un gran paso. Nos aseguramos de que tenga los límites correctos antes de que tome las llaves, y se lo explicamos a los dos.'),
+    V('sin huecos que descubre cuando ya es tarde.', 'Envíenos su póliza y revisamos su cobertura: auto de alquiler, grúa, cristales, motorista no asegurado. Mejor saberlo hoy que en el taller.'),
+    V('para cada milla entre Homestead y Miami.', 'Tráfico en el Turnpike, la US-1, llevar a los niños a la escuela bajo la lluvia. Su auto va con usted a todas partes; su cobertura también debería.'),
+    V('con respuesta en menos de una hora.', '¿Preguntas sobre su póliza o un reclamo? Contáctenos en horario de oficina y un agente licenciado le devuelve la llamada en menos de una hora.'),
+    V('revisado antes de que lo necesite.', 'El peor momento para descubrir qué cubre su póliza es el día después de un accidente. Deje que un agente local la revise con usted hoy: toma cinco minutos.'),
+    V('de un equipo de 12 que habla su idioma.', 'Nuestro equipo de 12 personas habla español, inglés y ruso. Toda su familia puede entender la póliza y llamarnos cuando pase algo.'),
+  ],
+  ru: [
+    V('объясним простыми словами.', 'Ваши соседи с S Dixie Hwy объяснят, что именно покрывает ваш полис. Один звонок, три языка, настоящие местные агенты.'),
+    V('агент, который ответит после аварии.', 'После ДТП нужен человек, который знает ваш полис и ваше имя. Звоните напрямую своему агенту — поможем заявить страховой случай и доведём его до конца.'),
+    V('для всех, кто ездит с вами.', 'Дети, родители, коллеги, которых вы подвозите. Проверим, что ваша ответственность и покрытие травм действительно защищают всех в машине.'),
+    V('даже если у виновника нет страховки.', 'Слишком многие водители во Флориде ездят с минимальной страховкой или вовсе без неё. Покрытие uninsured motorist защитит семью, если виновник не может заплатить. Покажем, есть ли оно у вас.'),
+    V('с местным агентом на вашей стороне.', 'Не приложение и не горячая линия, а лицензированный агент на S Dixie Hwy, который вас знает, отвечает на вопросы и помогает при страховом случае.'),
+    V('разберём полис по строчкам на вашем языке.', 'Лимиты ответственности, collision, comprehensive, аренда авто, эвакуатор — пройдём ваш полис вместе на русском, английском или испанском.'),
+    V('чтобы одна авария не стала финансовой катастрофой.', 'Минимальная страховка во Флориде может оставить вас платить из своего кармана после серьёзного ДТП. Покажем, что на самом деле защищают ваши лимиты.'),
+    V('от семейного агентства, где берут трубку.', 'Более 5 000 клиентов во Флориде доверяют нашей семье. Позвоните в рабочее время — агент перезвонит в течение часа.'),
+    V('с правильной защитой для водителя-подростка.', 'Вписать подростка в полис — серьёзный шаг. Настроим правильные лимиты до того, как он возьмёт ключи, и всё объясним вам обоим.'),
+    V('без пробелов, о которых узнают слишком поздно.', 'Пришлите полис — проверим покрытие: аренда авто, эвакуатор, стёкла, uninsured motorist. Лучше узнать сейчас, чем в автосервисе.'),
+    V('на каждую милю от Homestead до Майами.', 'Пробки на Turnpike, US-1, дорога в школу под ливнем. Машина везде с вами — и страховка должна быть тоже.'),
+    V('с обратным звонком в течение часа.', 'Вопросы по полису или страховому случаю? Свяжитесь с нами в рабочее время — лицензированный агент перезвонит в течение часа.'),
+    V('проверенная заранее, а не после ДТП.', 'Хуже всего узнавать, что покрывает полис, на следующий день после аварии. Пусть местный агент проверит его вместе с вами сегодня — это пять минут.'),
+    V('от команды из 12 человек, говорящих на вашем языке.', 'Наша команда из 12 человек говорит на русском, английском и испанском. Вся семья поймёт полис и сможет позвонить нам, если что-то случится.'),
+  ],
+};

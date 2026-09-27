@@ -14,10 +14,24 @@ import { pageMetadata } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
 import Image from 'next/image';
 import BusinessTypeLinks from '@/components/business/BusinessTypeLinks';
+import HeroBackdrop from '@/components/hero/HeroBackdrop';
+import { dailyHero, type HeroType } from '@/content/hero';
 
-// ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
-// an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
-export const revalidate = 86400;
+// ISR: re-render hourly (was daily) so the business + life pages pick up the
+// daily hero rotation shortly after midnight ET. The rating comes from
+// data/reviews.json (see lib/reviews.ts); an optional live fetch
+// (RATING_LIVE_FETCH=1) is cached for a week.
+export const revalidate = 3600;
+
+// Product pages that get the daily hero (photo backdrop + rotating headline/sub,
+// America/New_York date). Pools: content/hero/copy/<type>.ts + HERO_IMAGE_POOLS.
+const HERO_BY_SLUG: Record<string, HeroType> = {
+  'general-liability': 'commercial',
+  'business-owners-policy': 'commercial',
+  'commercial-auto': 'commercial',
+  'errors-omissions': 'commercial',
+  'life-insurance': 'life',
+};
 
 export async function generateStaticParams() {
   return insuranceProducts.map((p) => ({ slug: p.slug }));
@@ -69,20 +83,24 @@ export default function InsuranceProductPage({
       : (product.images || []).map((img) => img.src);
 
   const pp = getDict(params.lang).productPage;
+  const heroType = HERO_BY_SLUG[product.slug];
+  const hero = heroType ? dailyHero(heroType, params.lang) : null;
 
   return (
     <main>
       {/* Above the fold: real H1, phone digits + call/text CTAs, then the form.
           On phones the grid stacks, so the form now starts right after the
           intro instead of ~1,000px down below the article. */}
-      <section className="section product-top">
+      <section className={`section product-top${hero ? ' hero--photo product-top--photo' : ''}`}>
+        {hero && <HeroBackdrop image={hero.image} alt={hero.alt} />}
         <div className="container about-grid product-top-grid">
           <div>
             <p className="kicker" style={{ textAlign: 'left' }}>{ui.kicker}</p>
             <h1 className="product-h1">
               {product.title} {pp.h1Suffix}
             </h1>
-            <p className="product-intro">{product.shortIntro}</p>
+            {hero && <p className="rot-headline"><span>{hero.copy.h}</span></p>}
+            <p className="product-intro">{hero ? hero.copy.sub : product.shortIntro}</p>
             <div className="product-cta-row">
               <a href={`tel:${PHONE_TEL}`} className="cta product-call">
                 📞 {pp.callCta} {PHONE_DISPLAY}
@@ -117,6 +135,10 @@ export default function InsuranceProductPage({
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="container product-body">
           <div>
+            {/* With the daily hero on top, the product summary opens the body instead. */}
+            {hero && (
+              <p style={{ color: 'var(--navy)', fontWeight: 600, lineHeight: 1.6, marginBottom: 14 }}>{product.shortIntro}</p>
+            )}
             {product.article.map((para, i) => (
               <p key={i} style={{ color: '#444', lineHeight: 1.6, marginBottom: 14 }}>
                 {para}

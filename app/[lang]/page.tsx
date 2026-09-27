@@ -4,42 +4,16 @@ import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import GapAnalysis from '@/components/GapAnalysis';
-import { pickRotating } from '@/lib/rotation';
+import TodaysArticle from '@/components/TodaysArticle';
+import { dailyHero } from '@/content/hero';
 import { pageMetadata } from '@/lib/seo';
 
-// Re-render this page once a day (ISR) so the rotating hero image and
-// rotating sub-headline advance automatically — no deploys needed.
-export const revalidate = 86400;
-
-// Rotating hero images: add hero-4.jpg, hero-5.jpg... to public/images and
-// list them here — the site cycles through them one per day. width/height are
-// each file's real pixel dimensions (next/image needs them to avoid layout
-// shift + to generate a correctly-sized/format-negotiated srcset); the actual
-// on-screen size is still governed by the .hero-photo CSS, same as before.
-const HERO_IMAGES = [
-  { src: '/images/hero-1.jpg', width: 1152, height: 864 },
-  { src: '/images/hero-2.jpg', width: 1280, height: 720 },
-  { src: '/images/hero-3.jpg', width: 1152, height: 864 },
-];
-
-// Rotating supporting line under the headline (headline itself stays fixed for SEO).
-const HERO_SUBS: Record<string, string[]> = {
-  en: [
-    "We'll help you find the right coverage for your home, car, and family — explained simply, in English, Spanish, or Russian. Real people who answer, and who are there when you need us most.",
-    'Hurricane season, Miami traffic, a growing family — Florida life is unpredictable. Your coverage shouldn’t be. Real local agents, three languages, one call.',
-    'From the Keys to Kendall, we protect what Florida families work hardest for — home, car, business, and each other. Talk to a real person today.',
-  ],
-  es: [
-    'Le ayudamos a encontrar la cobertura adecuada para su casa, su auto y su familia — explicada con claridad, en inglés, español o ruso. Personas reales que contestan.',
-    'Temporada de huracanes, tráfico de Miami, una familia que crece — la vida en Florida es impredecible. Su cobertura no debería serlo. Agentes locales reales, tres idiomas, una llamada.',
-    'Desde los Cayos hasta Kendall, protegemos lo que más les cuesta a las familias de Florida — casa, auto, negocio y los suyos. Hable hoy con una persona real.',
-  ],
-  ru: [
-    'Поможем подобрать правильную защиту для дома, машины и семьи — объясним просто, на английском, испанском или русском. Живые люди, которые отвечают на звонки и рядом, когда нужнее всего.',
-    'Сезон ураганов, трафик Майами, растущая семья — жизнь во Флориде непредсказуема. Ваша страховка такой быть не должна. Живые местные агенты, три языка, один звонок.',
-    'От Киз до Кендалла мы защищаем то, ради чего семьи Флориды работают больше всего — дом, машину, бизнес и друг друга. Поговорите с живым человеком сегодня.',
-  ],
-};
+// Daily rotation: hero photo + headline + subheadline change every day
+// (America/New_York date). Pools live in content/hero/ (copy/home.ts and the
+// `home` list in content/hero/index.ts). ISR re-renders at most hourly, so the
+// new day's variant is live shortly after midnight ET, and the "Today's article"
+// block picks up new news editions/blog posts.
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang);
@@ -79,8 +53,8 @@ export default function Home({ params }: { params: { lang: string } }) {
   const lang = params.lang;
   const t = getDict(lang);
   const m = meet[lang] || meet.en;
-  const heroImg = pickRotating(HERO_IMAGES, 'day');
-  const heroSub = pickRotating(HERO_SUBS[lang] || HERO_SUBS.en, 'day');
+  const hero = dailyHero('home', lang);
+  const heroImg = hero.image;
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -104,24 +78,24 @@ export default function Home({ params }: { params: { lang: string } }) {
             <br />
             <span className="badge white">● {t.hero.badge2}</span>
             <h1>
-              {t.hero.h1a}{' '}
+              {hero.copy.lead}{' '}
               <br />
-              <span className="accent">{t.hero.h1b}</span>
+              <span className="accent">{hero.copy.h}</span>
             </h1>
-            <p className="sub">{heroSub}</p>
+            <p className="sub">{hero.copy.sub}</p>
             <Link href={`/${lang}/quote`} className="cta">{t.hero.cta} →</Link>
             <div className="rated rated-stack">
               <strong>Mikhail Kozlov</strong>
               <RatingBadge lang={lang} variant="hero" />
             </div>
           </div>
-          {/* Rotating hero image (changes daily via ISR) */}
+          {/* Daily hero image (picked server-side during the ISR render) */}
           <div className="hero-photo-wrap">
             <Image
               src={heroImg.src}
               width={heroImg.width}
               height={heroImg.height}
-              alt="M&K Agency — protecting Florida families"
+              alt={hero.alt}
               className="hero-photo"
               sizes="(max-width: 900px) 100vw, 520px"
               priority
@@ -134,6 +108,9 @@ export default function Home({ params }: { params: { lang: string } }) {
 
       {/* ===== Gap analysis — where your current policy leaves you exposed ===== */}
       <GapAnalysis lang={lang} />
+
+      {/* ===== Today's article: newest news edition / blog post in this language ===== */}
+      <TodaysArticle lang={lang} />
 
       {/* ===== Meet Mikhail (real photo) ===== */}
       <section className="section">
