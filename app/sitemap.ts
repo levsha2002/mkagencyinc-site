@@ -3,6 +3,7 @@ import { insuranceProducts } from '@/lib/insurance-products';
 import { allPosts, postLangs, blogHasLang } from '@/lib/blog';
 import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
 import { allEditions, editionLangs, newsHasLang } from '@/lib/news';
+import { BUSINESS_PAGES } from '@/content/pages/business';
 
 // Полная карта сайта: реальные страницы (без /services и /about — это редиректы)
 // + все страницы страховых продуктов. Обновляется автоматически при
@@ -40,8 +41,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Business-type service pages (content/pages/business), all three languages.
+  const businessPages = BUSINESS_PAGES.map((p) => ({ path: p.path, priority: 0.9 }));
+
   const everyLang = langs.flatMap((l) =>
-    [...staticPages, ...productPages].map(({ path, priority }) => ({
+    [...staticPages, ...businessPages, ...productPages].map(({ path, priority }) => ({
       url: `${base}/${l}${path}`,
       changeFrequency: 'weekly' as const,
       priority,

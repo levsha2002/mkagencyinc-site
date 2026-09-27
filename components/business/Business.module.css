@@ -1,0 +1,18 @@
+/* Business-type service pages (components/business/BusinessServicePage.tsx). */
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 46rem; margin: 18px auto 0; }
+.person { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; color: var(--navy); text-decoration: none; }
+.person img { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; object-position: center 15%; border: 3px solid var(--gold); background: #eef4fd; }
+.person strong { font-size: 1rem; }
+.person span { font-size: .85rem; color: var(--muted); }
+.teamText { max-width: 40rem; margin: 0 auto; text-align: center; color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 52rem; margin: 10px auto 0; }
+.pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid #d9e2ec; border-radius: 999px; padding: 9px 16px; color: #082a59; font-weight: 600; font-size: .95rem; text-decoration: none; }
+.pill:hover { border-color: #9fb9dc; }
+.ctaRow { margin: 8px 0 26px; display: flex; flex-wrap: wrap; gap: 10px; }
+.ctaAlt { background: #fff !important; color: var(--navy) !important; border: 1.5px solid #d9e2ec; box-shadow: none !important; }
+@media (max-width: 560px) {
+  .team { gap: 10px; }
+  .person img { width: 92px; height: 92px; }
+  .person strong { font-size: .88rem; }
+  .person span { font-size: .75rem; }
+}
