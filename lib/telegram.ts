@@ -27,6 +27,7 @@ export type TelegramLeadType =
   | 'Talk to Agent Now'
   | 'Chat callback'
   | 'Protection check'
+  | 'Coverage check'
   | 'Chat'
   | 'Referral'
   | 'Referral partner';
