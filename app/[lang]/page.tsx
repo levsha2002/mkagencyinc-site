@@ -99,7 +99,8 @@ export default function Home({ params }: { params: { lang: string } }) {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="badge gold">📉 {t.hero.badge1}</span>
+            {/* Links to the Free Coverage Check landing page (same offer, same words). */}
+            <Link href={`/${lang}/coverage-check`} className="badge gold badge-link">📉 {t.hero.badge1} →</Link>
             <br />
             <span className="badge white">● {t.hero.badge2}</span>
             <h1>

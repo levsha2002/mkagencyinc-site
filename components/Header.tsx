@@ -25,7 +25,7 @@ export default function Header({ lang }: { lang: string }) {
   // (It used to open the off-site Allstate Lead Manager, which has no Google
   // tag; that form is now only a small secondary link on /quote.)
   const pathname = usePathname() || '';
-  const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
+  const hasOnSiteForm = /^\/(en|es|ru)\/(insurance\/[^/]+|quote|coverage-check|[a-z0-9-]+-insurance-florida(-city)?)\/?$/.test(pathname);
   // Language switcher keeps the visitor on the same page in the other
   // language instead of dropping them on the home page.
   // Pages that exist in fewer languages (blog posts, EN/ES-only pages) are
