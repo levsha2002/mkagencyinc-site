@@ -6,7 +6,7 @@ import { ArticleCta, articleStyles as s } from '@/components/article/ArticlePart
 // Blog index: /[lang]/blog. Fully data-driven from content/blog/index.ts.
 type Lang = 'en' | 'es' | 'ru';
 
-const T: Record<Lang, { title: string; metaTitle: string; desc: string; h1: string; intro: string; read: string; home: string; empty: string; other: string }> = {
+const T: Record<Lang, { title: string; metaTitle: string; desc: string; h1: string; intro: string; read: string; home: string; blog: string; empty: string; other: string }> = {
   en: {
     title: 'Insurance Guides for Florida City & Homestead',
     metaTitle: 'Insurance Guides & News for South Miami-Dade | M&K Agency Blog',
@@ -15,6 +15,7 @@ const T: Record<Lang, { title: string; metaTitle: string; desc: string; h1: stri
     intro: 'Practical, source-checked explanations of the Florida insurance rules that affect South Miami-Dade households: flood zones, Citizens requirements, hurricane season and more.',
     read: 'Read article →',
     home: 'Home',
+    blog: 'Blog',
     empty: 'No articles in this language yet.',
     other: 'Articles in other languages',
   },
@@ -26,6 +27,7 @@ const T: Record<Lang, { title: string; metaTitle: string; desc: string; h1: stri
     intro: 'Explicaciones prácticas y verificadas con fuentes oficiales sobre las reglas de seguros de Florida que afectan a las familias del sur de Miami-Dade: zonas de inundación, requisitos de Citizens, temporada de huracanes y más.',
     read: 'Leer artículo →',
     home: 'Inicio',
+    blog: 'Blog',
     empty: 'Todavía no hay artículos en este idioma.',
     other: 'Artículos en otros idiomas',
   },
@@ -37,6 +39,7 @@ const T: Record<Lang, { title: string; metaTitle: string; desc: string; h1: stri
     intro: 'Практичные объяснения правил страхования во Флориде, проверенные по официальным источникам.',
     read: 'Читать статью →',
     home: 'Главная',
+    blog: 'Блог',
     empty: 'Статей на русском пока нет — они скоро появятся. Ниже — статьи на других языках.',
     other: 'Статьи на других языках',
   },
@@ -73,7 +76,7 @@ export default function BlogIndex({ params }: { params: { lang: string } }) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: t.home, item: `https://mkagencyinc.com/${l}` },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://mkagencyinc.com/${l}/blog` },
+      { '@type': 'ListItem', position: 2, name: t.blog, item: `https://mkagencyinc.com/${l}/blog` },
     ],
   };
 
@@ -83,7 +86,7 @@ export default function BlogIndex({ params }: { params: { lang: string } }) {
       <section style={{ padding: '40px 0 60px' }}>
         <div className="container">
           <nav className={s.crumbs} aria-label="Breadcrumb">
-            <Link href={`/${l}`}>{t.home}</Link><span aria-hidden>›</span>Blog
+            <Link href={`/${l}`}>{t.home}</Link><span aria-hidden>›</span>{t.blog}
           </nav>
           <h1 className={s.h1}>{t.h1}</h1>
           <p className={s.intro}>{t.intro}</p>

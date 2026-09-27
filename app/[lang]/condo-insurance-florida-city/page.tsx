@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import HeroBackdrop from '@/components/hero/HeroBackdrop';
+import { dailyHero } from '@/content/hero';
 import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
@@ -7,7 +9,10 @@ import { pageMetadata } from '@/lib/seo';
 
 // ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
 // an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
-export const revalidate = 86400;
+// Daily hero rotation (photo + H1 accent + sub, America/New_York date):
+// pools in content/hero/copy/condo.ts and HERO_IMAGE_POOLS.condo in content/hero/index.ts.
+// The H1 keyword prefix (t.h1a) stays fixed for SEO. Hourly ISR picks up the new day.
+export const revalidate = 3600;
 
 // Гео-лендинг: Condo Insurance (HO-6) — Florida City / Homestead.
 // Контент самодостаточный (не в dictionaries.ts), по образцу car-insurance-florida-city/page.tsx.
@@ -156,18 +161,21 @@ export default function CondoInsuranceFloridaCity({ params }: { params: { lang: 
     })),
   };
 
+  const hero = dailyHero('condo', l);
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <section className="hero">
+      <section className="hero hero--photo">
+        <HeroBackdrop image={hero.image} alt={hero.alt} />
         <div className="container hero-grid">
           <div>
             <span className="badge gold">{t.kicker}</span>
             <h1>
-              {t.h1a} <span className="accent">{t.h1b}</span>
+              {t.h1a} <span className="accent">{hero.copy.h}</span>
             </h1>
-            <p className="sub">{t.sub}</p>
+            <p className="sub">{hero.copy.sub}</p>
             <a className="cta" href="#quote">{t.cta}</a>
             <div className="rated rated-stack" style={{ marginLeft: 12 }}>
               <span>{t.langLine}</span>

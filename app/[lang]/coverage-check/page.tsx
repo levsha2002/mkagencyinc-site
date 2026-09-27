@@ -5,6 +5,7 @@ import { team } from '@/lib/team-data';
 import { CC, CC_PATH, pickLang } from '@/lib/coverage-check';
 import CoverageCheckForm from '@/components/CoverageCheckForm';
 import SendPolicyCta from '@/components/SendPolicyCta';
+import { dailyHero } from '@/content/hero';
 
 // /[lang]/coverage-check: "Free Coverage Check" landing page (EN/ES/RU).
 // One screen = one idea: hero → gaps → how it works → trust → FAQ → form →
@@ -13,6 +14,11 @@ import SendPolicyCta from '@/components/SendPolicyCta';
 // Phone numbers use PHONE_DISPLAY / PHONE_TEL so the site-wide Google call
 // tracking (number swap + phone_call click event) applies here too.
 // Copy lives in lib/coverage-check.ts. No carrier rating badge on this page.
+
+// Daily hero rotation (H1 + sub + photo, America/New_York date): pools in
+// content/hero/copy/coverage.ts (variant 0 = the original copy from
+// lib/coverage-check.ts) and HERO_IMAGE_POOLS.coverage. Hourly ISR.
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const c = CC[pickLang(params.lang)];
@@ -30,6 +36,7 @@ function CtaButton({ label, className = '' }: { label: string; className?: strin
 export default function CoverageCheckPage({ params }: { params: { lang: string } }) {
   const lang = pickLang(params.lang);
   const c = CC[lang];
+  const hero = dailyHero('coverage', lang);
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -46,8 +53,8 @@ export default function CoverageCheckPage({ params }: { params: { lang: string }
         <div className="container cc-hero-grid">
           <div>
             <span className="badge gold">{c.badge}</span>
-            <h1>{c.h1}</h1>
-            <p className="cc-sub">{c.sub}</p>
+            <h1>{hero.copy.h}</h1>
+            <p className="cc-sub">{hero.copy.sub}</p>
             <div className="cc-cta-row">
               <CtaButton label={c.cta} />
               <a href={`tel:${PHONE_TEL}`} className="cta cc-call">
@@ -59,10 +66,10 @@ export default function CoverageCheckPage({ params }: { params: { lang: string }
           </div>
           <div className="cc-hero-photo-wrap">
             <Image
-              src="/images/Family_at_home.jpg"
-              alt={c.heroAlt}
-              width={1152}
-              height={864}
+              src={hero.image.src}
+              alt={hero.alt}
+              width={hero.image.width}
+              height={hero.image.height}
               priority
               sizes="(max-width: 900px) 100vw, 500px"
               className="cc-hero-photo"

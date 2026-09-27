@@ -1363,3 +1363,46 @@ body { font-size: 16.5px; }
   .gap-who-card { grid-column: span 2; }
   .gap-who-card:nth-child(4) { grid-column: 2 / span 2; }
 }
+
+/* ===== Daily hero rotation (content/hero) ===== */
+/* Photo backdrop behind a hero (landing pages, business/life product pages).
+   Absolutely positioned, so it never changes the layout height (no CLS). */
+.hero--photo { position: relative; overflow: hidden; isolation: isolate; }
+.hero-backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hero-backdrop-img { object-fit: cover; object-position: center 40%; }
+.hero-backdrop::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(238,244,253,.97) 0%, rgba(238,244,253,.93) 44%, rgba(238,244,253,.5) 72%, rgba(238,244,253,.28) 100%);
+}
+@media (max-width: 900px) {
+  /* Stacked layout: show the photo behind the headline only, fading into the page before the form. */
+  .hero-backdrop { bottom: auto; height: 460px; }
+  .hero-backdrop::after {
+    background: linear-gradient(180deg, rgba(238,244,253,.72) 0%, rgba(238,244,253,.86) 45%, rgba(238,244,253,.97) 80%, #eef4fd 100%);
+  }
+}
+/* Keep every daily photo the same shape so the hero height is identical day to day. */
+.hero-photo { aspect-ratio: 4 / 3; height: auto; }
+.cc-hero-photo { aspect-ratio: 4 / 3; }
+/* Rotating headline line under a product H1 (business + life pages). */
+.rot-headline { font-size: clamp(1.08rem, 2.2vw, 1.32rem); line-height: 1.3; font-weight: 800; color: var(--navy); margin: 0 0 10px; max-width: 36rem; }
+.rot-headline span { box-shadow: inset 0 -.32em 0 rgba(212,160,23,.35); }
+/* ?day= preview banner (hero-preview route only, noindex). */
+.rot-preview-flag { position: sticky; top: 0; z-index: 60; background: #1b1b1b; color: #ffd76a; font: 600 .8rem/1.2 var(--font-inter, system-ui), sans-serif; padding: 6px 12px; text-align: center; }
+
+/* ===== Today's article (home page) ===== */
+.todays-article { padding-top: 8px; padding-bottom: 8px; }
+.ta-card { max-width: 52rem; margin: 0 auto; background: #fff; border: 1px solid #e6ecf5; border-left: 5px solid var(--gold); border-radius: 16px; padding: 22px 26px; box-shadow: 0 10px 30px rgba(8,42,89,.07); }
+.ta-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); margin: 0 0 8px; }
+.ta-dot { width: 8px; height: 8px; border-radius: 50%; background: #e0453a; display: inline-block; }
+.ta-sep { color: #9aa7b8; }
+.ta-kind { color: var(--muted); letter-spacing: .06em; }
+.ta-title { font-size: clamp(1.2rem, 2.6vw, 1.55rem); line-height: 1.25; margin: 0 0 6px; text-align: left; }
+.ta-title a { color: var(--navy); text-decoration: none; }
+.ta-title a:hover { text-decoration: underline; }
+.ta-meta { color: var(--muted); font-size: .88rem; margin: 0 0 10px; }
+.ta-excerpt { color: #3d4a5c; margin: 0 0 16px; line-height: 1.55; }
+.ta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.ta-read { margin: 0; }
+.ta-all { color: var(--navy); font-weight: 600; }
+@media (max-width: 600px) { .ta-card { padding: 18px 18px; } }

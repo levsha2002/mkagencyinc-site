@@ -1,0 +1,55 @@
+// Homeowners landing page (/[lang]/homeowners-insurance-florida-city). `h` completes
+// "Homeowners insurance in Florida City & Homestead," / "Seguro de casa en Florida
+// City y Homestead," / "Страховка дома во Florida City и Homestead —".
+import { V, type HeroCopyPool } from './types';
+
+export const homeowners: HeroCopyPool = {
+  en: [
+    V('that holds up when a storm hits.', 'South Miami-Dade homeowners face real hurricane and flood risk — and a market where carriers come and go. We make sure your coverage is actually there when you need it — and that you understand exactly what it includes.'),
+    V('with an agent beside you at claim time.', 'After a hurricane you shouldn’t be alone on hold. Your local agent helps you document the damage, file the claim and keep it moving.'),
+    V('checked for gaps before hurricane season.', 'Send us your policy and we’ll check your coverage: hurricane deductible, roof, water damage, flood. You’ll know exactly where you stand before June.'),
+    V('so you know your deductible before the storm.', 'Many Florida homeowners don’t know their hurricane deductible until they file. We’ll show you yours in dollars, not percentages, and what your options are.'),
+    V('that protects the roof over your family.', 'Your home is where your family’s life happens. We make sure the dwelling, your belongings and your liability are covered the way you’d expect.'),
+    V('with the flood question answered.', 'Standard homeowners policies don’t cover flood. We explain whether you need flood coverage, what it covers and how to add it.'),
+    V('from a family-owned agency that answers.', 'More than 5,000 Florida clients trust us with their homes. Contact us during business hours and an agent calls you back within one hour.'),
+    V('reviewed line by line, in your language.', 'Dwelling, other structures, personal property, loss of use, liability — we walk through your policy with you in English, Spanish or Russian.'),
+    V('built for Florida weather, not just the closing.', 'A policy that satisfies the lender isn’t always one that protects you. We look at what you’d actually need to rebuild and replace.'),
+    V('with real help when you file a claim.', 'Photos, estimates, adjuster visits, deadlines — we guide you through each step so your claim doesn’t stall.'),
+    V('for your home and everything inside it.', 'Furniture, electronics, clothes, the kids’ things. We make sure your personal property limits match what you’d really need to replace.'),
+    V('with a callback within one hour.', 'Questions about your policy or a storm claim? Reach us during business hours and a licensed agent calls you back within one hour.'),
+    V('from neighbors who know South Dade.', 'We live and work here too. We know the storms, the flood zones and the questions South Miami-Dade homeowners ask — and we answer them plainly.'),
+    V('so a bad day doesn’t become a bad year.', 'One claim can mean months of repairs. The right coverage — and an agent who helps you use it — keeps your family on its feet.'),
+  ],
+  es: [
+    V('que aguanta cuando llega la tormenta.', 'Los propietarios del sur de Miami-Dade enfrentan un riesgo real de huracanes e inundaciones — y un mercado donde las aseguradoras entran y salen. Nos aseguramos de que su cobertura realmente esté ahí cuando la necesite — y de que usted entienda exactamente qué incluye.'),
+    V('con un agente a su lado a la hora del reclamo.', 'Después de un huracán no debería quedarse solo esperando al teléfono. Su agente local le ayuda a documentar los daños, presentar el reclamo y darle seguimiento.'),
+    V('revisado antes de la temporada de huracanes.', 'Envíenos su póliza y revisamos su cobertura: deducible de huracán, techo, daños por agua, inundación. Sabrá exactamente en qué situación está antes de junio.'),
+    V('para que conozca su deducible antes de la tormenta.', 'Muchos propietarios en Florida no conocen su deducible de huracán hasta que presentan un reclamo. Le mostramos el suyo en dólares, no en porcentajes, y qué opciones tiene.'),
+    V('que protege el techo de su familia.', 'Su casa es donde transcurre la vida de su familia. Nos aseguramos de que la vivienda, sus pertenencias y su responsabilidad civil estén cubiertas como usted espera.'),
+    V('con la duda de la inundación resuelta.', 'Las pólizas de casa normales no cubren inundación. Le explicamos si necesita un seguro de inundación, qué cubre y cómo agregarlo.'),
+    V('de una agencia familiar que sí contesta.', 'Más de 5,000 clientes en Florida nos confían sus casas. Contáctenos en horario de oficina y un agente le devuelve la llamada en menos de una hora.'),
+    V('revisado línea por línea, en su idioma.', 'Vivienda, otras estructuras, pertenencias, gastos adicionales de vivienda, responsabilidad civil: repasamos su póliza con usted en español, inglés o ruso.'),
+    V('pensado para el clima de Florida, no solo para el cierre.', 'Una póliza que satisface al banco no siempre es la que lo protege a usted. Miramos lo que realmente necesitaría para reconstruir y reponer.'),
+    V('con ayuda real cuando presente un reclamo.', 'Fotos, presupuestos, visitas del ajustador, plazos: lo guiamos en cada paso para que su reclamo no se estanque.'),
+    V('para su casa y todo lo que hay dentro.', 'Muebles, electrónicos, ropa, las cosas de los niños. Nos aseguramos de que el límite de sus pertenencias alcance para reponer lo que de verdad tiene.'),
+    V('con respuesta en menos de una hora.', '¿Preguntas sobre su póliza o un reclamo por tormenta? Contáctenos en horario de oficina y un agente licenciado le devuelve la llamada en menos de una hora.'),
+    V('de vecinos que conocen el sur de Miami-Dade.', 'Nosotros también vivimos y trabajamos aquí. Conocemos las tormentas, las zonas inundables y las preguntas de los propietarios de la zona, y las respondemos con claridad.'),
+    V('para que un mal día no se convierta en un mal año.', 'Un reclamo puede significar meses de reparaciones. La cobertura correcta, y un agente que le ayude a usarla, mantiene a su familia en pie.'),
+  ],
+  ru: [
+    V('та, что реально работает при урагане.', 'Домовладельцы юга Miami-Dade сталкиваются с реальным риском ураганов и наводнений — и рынком, где страховые компании то появляются, то исчезают. Мы проследим, чтобы ваше покрытие действительно сработало, когда понадобится — и чтобы вы точно понимали, что в него входит.'),
+    V('с агентом рядом при страховом случае.', 'После урагана вы не должны часами ждать на линии. Местный агент поможет зафиксировать ущерб, подать заявление и проследит, чтобы дело не застряло.'),
+    V('проверенная до сезона ураганов.', 'Пришлите полис — проверим покрытие: ураганная франшиза, крыша, ущерб от воды, наводнение. До июня вы будете точно знать, на что рассчитывать.'),
+    V('чтобы знать свою франшизу до урагана.', 'Многие домовладельцы во Флориде узнают о своей ураганной франшизе, только когда подают заявление. Покажем вашу в долларах, а не в процентах, и какие есть варианты.'),
+    V('защита для крыши над головой вашей семьи.', 'Дом — это место, где проходит жизнь вашей семьи. Проследим, чтобы само строение, вещи и ваша ответственность были покрыты так, как вы ожидаете.'),
+    V('с ясным ответом про наводнение.', 'Стандартная страховка дома не покрывает наводнение. Объясним, нужна ли вам отдельная страховка от наводнения, что она покрывает и как её оформить.'),
+    V('от семейного агентства, где берут трубку.', 'Более 5 000 клиентов во Флориде доверяют нам свои дома. Свяжитесь с нами в рабочее время — агент перезвонит в течение часа.'),
+    V('разберём полис по строчкам на вашем языке.', 'Строение, другие постройки, имущество, расходы на временное жильё, ответственность — пройдём ваш полис вместе на русском, английском или испанском.'),
+    V('рассчитанная на флоридскую погоду, а не только на closing.', 'Полис, который устраивает банк, не всегда защищает вас. Посмотрим, сколько на самом деле понадобится, чтобы восстановить дом и заменить вещи.'),
+    V('с реальной помощью при страховом случае.', 'Фото, сметы, визит оценщика, сроки — проведём вас через каждый шаг, чтобы выплата не застряла.'),
+    V('для дома и всего, что в нём.', 'Мебель, техника, одежда, детские вещи. Проверим, что лимита на имущество хватит, чтобы заменить то, что у вас действительно есть.'),
+    V('с обратным звонком в течение часа.', 'Вопросы по полису или ущербу после шторма? Свяжитесь с нами в рабочее время — лицензированный агент перезвонит в течение часа.'),
+    V('от соседей, которые знают юг Miami-Dade.', 'Мы сами здесь живём и работаем. Знаем местные штормы, зоны затопления и вопросы домовладельцев — и отвечаем на них просто и честно.'),
+    V('чтобы один плохой день не испортил весь год.', 'Один страховой случай может означать месяцы ремонта. Правильное покрытие и агент, который поможет им воспользоваться, удержат вашу семью на ногах.'),
+  ],
+};

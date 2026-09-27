@@ -17,10 +17,10 @@ export async function generateStaticParams({ params }: { params: { lang: string 
 }
 
 const LANG_NAME: Record<Lang, string> = { en: 'English', es: 'Español', ru: 'Русский' };
-const UI: Record<Lang, { home: string; min: string; alsoIn: string; updated: string; published: string; more: string; checked: string }> = {
-  en: { home: 'Home', min: 'min read', alsoIn: 'Also available in:', updated: 'Updated', published: 'Published', more: 'More articles', checked: 'Facts checked against these official sources on' },
-  es: { home: 'Inicio', min: 'min de lectura', alsoIn: 'También disponible en:', updated: 'Actualizado', published: 'Publicado', more: 'Más artículos', checked: 'Datos verificados con estas fuentes oficiales el' },
-  ru: { home: 'Главная', min: 'мин чтения', alsoIn: 'Также на:', updated: 'Обновлено', published: 'Опубликовано', more: 'Другие статьи', checked: 'Факты проверены по официальным источникам' },
+const UI: Record<Lang, { home: string; blog: string; min: string; alsoIn: string; updated: string; published: string; more: string; checked: string }> = {
+  en: { home: 'Home', blog: 'Blog', min: 'min read', alsoIn: 'Also available in:', updated: 'Updated', published: 'Published', more: 'More articles', checked: 'Facts checked against these official sources on' },
+  es: { home: 'Inicio', blog: 'Blog', min: 'min de lectura', alsoIn: 'También disponible en:', updated: 'Actualizado', published: 'Publicado', more: 'Más artículos', checked: 'Datos verificados con estas fuentes oficiales el' },
+  ru: { home: 'Главная', blog: 'Блог', min: 'мин чтения', alsoIn: 'Также на:', updated: 'Обновлено', published: 'Опубликовано', more: 'Другие статьи', checked: 'Факты проверены по официальным источникам' },
 };
 
 function load(params: { lang: string; slug: string }) {
@@ -78,7 +78,7 @@ export default function BlogArticle({ params }: { params: { lang: string; slug: 
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: ui.home, item: `${SITE_URL}/${l}` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/${l}/blog` },
+        { '@type': 'ListItem', position: 2, name: ui.blog, item: `${SITE_URL}/${l}/blog` },
         { '@type': 'ListItem', position: 3, name: t.title, item: url },
       ],
     },
@@ -99,7 +99,7 @@ export default function BlogArticle({ params }: { params: { lang: string; slug: 
           <article className={s.wrap}>
             <nav className={s.crumbs} aria-label="Breadcrumb">
               <Link href={`/${l}`}>{ui.home}</Link><span aria-hidden>›</span>
-              <Link href={`/${l}/blog`}>Blog</Link>
+              <Link href={`/${l}/blog`}>{ui.blog}</Link>
             </nav>
             {t.category && <span className={s.kicker}>{t.category}</span>}
             <h1 className={s.h1}>{t.title}</h1>
