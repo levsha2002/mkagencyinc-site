@@ -6,6 +6,10 @@ import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LICENSE_LINE } from '@/lib/
 import RatingBadge from '@/components/RatingBadge';
 import InsuranceQuoteForm from '@/components/InsuranceQuoteForm';
 import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
+import GapCallout from '@/components/GapCallout';
+
+// Personal-auto products that link to the gap insurance page.
+const GAP_LINK_SLUGS = ['auto-personal', 'auto-electric-vehicle', 'auto-rideshare'];
 import { pageMetadata } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
 import Image from 'next/image';
@@ -140,6 +144,8 @@ export default function InsuranceProductPage({
                 <li key={i}>{h}</li>
               ))}
             </ul>
+
+            {GAP_LINK_SLUGS.includes(product.slug) && <GapCallout lang={params.lang} />}
 
             {product.liabilityExamples && product.liabilityExamples.length > 0 && (
               <div style={{ marginTop: 20 }}>

@@ -3,6 +3,7 @@ import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import GapCallout from '@/components/GapCallout';
 import { pageMetadata } from '@/lib/seo';
 
 // ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
@@ -198,6 +199,7 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
               </div>
             ))}
           </div>
+          <GapCallout lang={l} />
         </div>
       </section>
 

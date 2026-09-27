@@ -14,6 +14,7 @@ import {
   CC_SOURCE,
   LANG_SELF,
   pickLang,
+  type CcFormCopy,
   type CcPolicy,
   type Lang,
 } from '@/lib/coverage-check';
@@ -31,6 +32,10 @@ import {
 // `callback_request` + Google Ads "Submit lead form" conversion, plus the
 // `generate_lead` event, plus `coverage_check_lead` for reporting this page
 // on its own. tel: clicks are tracked site-wide by phoneClickTrackingScript.
+//
+// Shared by the landing pages: /coverage-check (defaults) and /gap-insurance
+// (copy, source 'gap-insurance', event 'gap_insurance_lead', Auto preselected,
+// note 'Gap insurance'). See the props below.
 
 declare global {
   interface Window {
@@ -39,15 +44,36 @@ declare global {
 }
 
 const LANGS: Lang[] = ['en', 'es', 'ru'];
-const HASH_POLICY: Record<string, CcPolicy> = { '#condo': 'Condo (HO-6)', '#home': 'Home' };
+const CC_HASH_POLICY: Record<string, CcPolicy> = { '#condo': 'Condo (HO-6)', '#home': 'Home' };
 
-export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
+export default function CoverageCheckForm({
+  lang: rawLang,
+  copy,
+  source = CC_SOURCE,
+  leadEvent = 'coverage_check_lead',
+  defaultPolicy = '',
+  hashPolicy = CC_HASH_POLICY,
+  note,
+}: {
+  lang: string;
+  /** Form strings; default: the coverage-check copy for this language. */
+  copy?: CcFormCopy;
+  /** `source` sent to /api/callback (email subject / Telegram type). */
+  source?: string;
+  /** Page-specific reporting event fired after a successful submit. */
+  leadEvent?: string;
+  defaultPolicy?: CcPolicy | '';
+  /** URL hash → policy preselected on arrival. */
+  hashPolicy?: Record<string, CcPolicy>;
+  /** Fixed request label shown on the form and sent with the lead (whitelisted server-side). */
+  note?: string;
+}) {
   const lang = pickLang(rawLang);
-  const t = CC[lang].form;
+  const t = copy || CC[lang].form;
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [prefLang, setPrefLang] = useState<Lang>(lang);
-  const [policy, setPolicy] = useState<CcPolicy | ''>('');
+  const [policy, setPolicy] = useState<CcPolicy | ''>(defaultPolicy);
   const [consent, setConsent] = useState(false);
   const [phoneErr, setPhoneErr] = useState('');
   const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
@@ -57,9 +83,9 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
   // (#condo from the Condo / HO-6 ads, #home for the hurricane-deductible card).
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const preset = HASH_POLICY[window.location.hash];
+    const preset = hashPolicy[window.location.hash];
     if (preset) setPolicy(preset);
-  }, []);
+  }, [hashPolicy]);
 
   useEffect(() => {
     if (status === 'ok' && okRef.current) okRef.current.focus();
@@ -89,10 +115,11 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
           lang,
           preferred_lang: prefLang,
           policy_type: policyValue,
-          source: CC_SOURCE,
+          source,
+          ...(note ? { note } : {}),
           contact_method: 'call',
           agent_name: 'agent',
-          message: `Coverage check: ${policyValue}. Call in ${LANG_SELF[prefLang]}.`,
+          message: `${note || 'Coverage check'}: ${policyValue}. Call in ${LANG_SELF[prefLang]}.`,
           transaction_id: transactionId,
           ...consentPayload(lang),
           attribution: getAttribution(),
@@ -104,7 +131,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
       }
       setStatus('ok');
       if (window.gtag) {
-        const params = { insurance_type: policyValue, lang, preferred_lang: prefLang, source: CC_SOURCE };
+        const params = { insurance_type: policyValue, lang, preferred_lang: prefLang, source };
         // 1) Same Google Ads conversion + GA event as the other lead forms.
         trackConversion('callback_request', params, { transactionId, phone });
         // 2) Same generic lead event as LeadForm / quote page.
@@ -115,7 +142,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
           transaction_id: transactionId,
         });
         // 3) Page-specific event for reporting (not an Ads conversion action).
-        window.gtag('event', 'coverage_check_lead', { ...params, transaction_id: transactionId, send_to: GOOGLE_ADS_ID });
+        window.gtag('event', leadEvent, { ...params, transaction_id: transactionId, send_to: GOOGLE_ADS_ID });
       }
       setName('');
       setPhone('');
@@ -139,6 +166,9 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
   return (
     <form className="card cc-form" onSubmit={submit} data-lead-form>
       <Honeypot />
+      {note && t.noteLabel && (
+        <p className="cc-note"><span aria-hidden="true">🚗</span> {t.noteLabel}</p>
+      )}
       <div className="field">
         <label htmlFor="cc-name">{t.name}</label>
         <input id="cc-name" name="name" type="text" autoComplete="name" required maxLength={120}
@@ -184,7 +214,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
         {t.talkBefore}
         <a href={`tel:${PHONE_TEL}`} className="cc-talk-phone">{PHONE_DISPLAY}</a>
         {t.talkMid}
-        <WhatsAppLink lang={lang} placement="coverage-check" text={t.waText} className="wa-link cc-talk-wa" iconSize={15}>
+        <WhatsAppLink lang={lang} placement={source} text={t.waText} className="wa-link cc-talk-wa" iconSize={15}>
           <WhatsAppIcon size={15} />
           {t.talkWa}
         </WhatsAppLink>

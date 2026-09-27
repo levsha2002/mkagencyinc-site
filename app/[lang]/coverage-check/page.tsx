@@ -4,6 +4,7 @@ import { pageMetadata } from '@/lib/seo';
 import { team } from '@/lib/team-data';
 import { CC, CC_PATH, pickLang } from '@/lib/coverage-check';
 import CoverageCheckForm from '@/components/CoverageCheckForm';
+import SendPolicyCta from '@/components/SendPolicyCta';
 
 // /[lang]/coverage-check: "Free Coverage Check" landing page (EN/ES/RU).
 // One screen = one idea: hero → gaps → how it works → trust → FAQ → form →
@@ -54,6 +55,7 @@ export default function CoverageCheckPage({ params }: { params: { lang: string }
               </a>
             </div>
             <p className="cc-micro">{c.micro}</p>
+            <SendPolicyCta lang={lang} placement="hero" />
           </div>
           <div className="cc-hero-photo-wrap">
             <Image
@@ -160,6 +162,7 @@ export default function CoverageCheckPage({ params }: { params: { lang: string }
             <h2>{c.formH2}</h2>
             <p className="cc-sub">{c.formSub}</p>
             <a href={`tel:${PHONE_TEL}`} className="cc-big-phone">📞 {PHONE_DISPLAY}</a>
+            <SendPolicyCta lang={lang} placement="final" />
           </div>
           <CoverageCheckForm lang={lang} />
         </div>
