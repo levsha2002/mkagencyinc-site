@@ -5,9 +5,11 @@ import type { BlogPost } from './types';
 import { post as citizensFlood2027 } from './posts/citizens-flood-insurance-requirement-2027';
 import { post as citizensTakeoutOffer } from './posts/citizens-takeout-offer';
 import { post as uninsuredMotoristFlorida } from './posts/uninsured-motorist-coverage-florida';
+import { post as sr22FloridaGuia } from './posts/sr22-florida-guia';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
   citizensTakeoutOffer,
   uninsuredMotoristFlorida,
+  sr22FloridaGuia,
 ];
