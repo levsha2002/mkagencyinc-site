@@ -9,6 +9,7 @@ import HumanLifeValueCalculator from '@/components/HumanLifeValueCalculator';
 import { pageMetadata } from '@/lib/seo';
 import { getProductUI } from '@/lib/insurance-products-i18n';
 import Image from 'next/image';
+import BusinessTypeLinks from '@/components/business/BusinessTypeLinks';
 
 // ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
 // an optional live fetch (RATING_LIVE_FETCH=1) is cached for a week.
@@ -205,6 +206,9 @@ export default function InsuranceProductPage({
           {product.slug === 'life-insurance' && <HumanLifeValueCalculator lang={params.lang} />}
         </div>
       </section>
+      {(product.slug === 'general-liability' || product.slug === 'commercial-auto') && (
+        <BusinessTypeLinks lang={params.lang} />
+      )}
     </main>
   );
 }
