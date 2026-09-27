@@ -1,7 +1,17 @@
 'use client';
 
 import type React from 'react';
+import { usePathname } from 'next/navigation';
 import { whatsappUrl, whatsappLabel, trackWhatsAppClick } from '@/lib/whatsapp';
+import { CC, CC_PATH, pickLang } from '@/lib/coverage-check';
+
+// Pages whose WhatsApp links (form, floating button, footer) carry an
+// offer-specific prefilled message instead of the default quote request.
+function pageText(pathname: string, lang: string): string | undefined {
+  const rest = pathname.replace(/^\/(en|es|ru)(?=\/|$)/, '').replace(/\/$/, '');
+  if (rest === CC_PATH) return CC[pickLang(lang)].form.waText;
+  return undefined;
+}
 
 // Official WhatsApp glyph (Simple Icons, CC0).
 export function WhatsAppIcon({ size = 18, color = 'currentColor' }: { size?: number; color?: string }) {
@@ -13,7 +23,9 @@ export function WhatsAppIcon({ size = 18, color = 'currentColor' }: { size?: num
 }
 
 /** A wa.me link with the page-language prefilled message and click tracking.
- *  Children default to the icon + "WhatsApp". */
+ *  Children default to the icon + "WhatsApp". `text` overrides the prefilled
+ *  message; without it, pages listed in pageText() (e.g. /coverage-check) get
+ *  their own message automatically. */
 export default function WhatsAppLink({
   lang,
   placement,
@@ -21,6 +33,7 @@ export default function WhatsAppLink({
   style,
   children,
   iconSize = 16,
+  text,
 }: {
   lang: string;
   placement: string;
@@ -28,11 +41,14 @@ export default function WhatsAppLink({
   style?: React.CSSProperties;
   children?: React.ReactNode;
   iconSize?: number;
+  text?: string;
 }) {
   const label = whatsappLabel(lang);
+  const pathname = usePathname() || '';
+  const prefilled = text || pageText(pathname, lang);
   return (
     <a
-      href={whatsappUrl(lang)}
+      href={whatsappUrl(lang, prefilled)}
       target="_blank"
       rel="noopener"
       className={className}
