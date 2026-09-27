@@ -42,7 +42,7 @@ export type CcCopy = {
   micro: string;
   heroAlt: string;
   gapsH2: string;
-  gaps: Gap[];
+  gaps: Gap[]; // ids double as page anchors (#auto, #home, #condo, #business, #life)
   gapsCta: string;
   howH2: string;
   steps: Step[];
@@ -98,6 +98,14 @@ export const CC: Record<Lang, CcCopy> = {
         alt: 'Two cars after a collision on a Florida street',
         h: "Auto: the other driver's minimum policy won't cover you",
         p: "Florida doesn't require most drivers to carry bodily injury liability. Your required PIP pays 80% of your medical bills, up to $10,000. If an uninsured or underinsured driver hits you and your bills go past that, Uninsured Motorist (UM/UIM) coverage is what pays the rest. Many people declined it when they bought their policy and don't know it.",
+      },
+      {
+        id: 'home',
+        label: 'Home',
+        img: '/images/Hero-hurricane.jpg',
+        alt: 'Florida homes with tarped roofs after a hurricane',
+        h: 'Home: your hurricane deductible may be bigger than you think',
+        p: "In Florida, hurricane deductibles are often a percentage of your home's insured value, commonly 2%, 5% or 10%, not a flat amount. On a home insured for $300,000, a 5% deductible means you pay the first $15,000 of hurricane damage yourself. We'll show you what yours is and what your options are before the next storm.",
       },
       {
         id: 'condo',
@@ -204,6 +212,14 @@ export const CC: Record<Lang, CcCopy> = {
         p: 'Florida no exige a la mayoría de los conductores tener seguro de responsabilidad por lesiones corporales. Su PIP obligatorio paga el 80% de sus gastos médicos, hasta $10,000. Si lo choca un conductor sin seguro o con seguro insuficiente y sus gastos pasan de esa cantidad, la cobertura de Motorista sin Seguro (UM/UIM) es la que paga el resto. Muchas personas la rechazaron cuando compraron su póliza y ni lo saben.',
       },
       {
+        id: 'home',
+        label: 'Casa',
+        img: '/images/Hero-hurricane.jpg',
+        alt: 'Casas de Florida con techos cubiertos con lonas después de un huracán',
+        h: 'Casa: su deducible de huracán puede ser más alto de lo que cree',
+        p: 'En Florida, el deducible de huracán suele ser un porcentaje del valor asegurado de su casa, comúnmente 2%, 5% o 10%, y no una cantidad fija. En una casa asegurada por $300,000, un deducible del 5% significa que usted paga de su bolsillo los primeros $15,000 de daños por huracán. Le mostramos cuál es el suyo y qué opciones tiene antes de la próxima tormenta.',
+      },
+      {
         id: 'condo',
         label: 'Condominio',
         img: '/images/gap-home.jpg',
@@ -306,6 +322,14 @@ export const CC: Record<Lang, CcCopy> = {
         alt: 'Две машины после аварии на улице во Флориде',
         h: 'Авто: минимальный полис другого водителя вас не защитит',
         p: 'Во Флориде большинство водителей не обязаны страховать ответственность за травмы других людей (bodily injury liability). Ваш обязательный PIP оплачивает 80% медицинских счетов, но не больше $10,000. Если в вас врезался водитель без страховки или с недостаточной страховкой, а ваши счета превысили эту сумму, остальное оплачивает страховка от незастрахованных водителей (UM/UIM). Многие отказались от неё при покупке полиса и даже не знают об этом.',
+      },
+      {
+        id: 'home',
+        label: 'Дом',
+        img: '/images/Hero-hurricane.jpg',
+        alt: 'Дома во Флориде с крышами под брезентом после урагана',
+        h: 'Дом: франшиза на ураган может оказаться больше, чем вы думаете',
+        p: 'Во Флориде франшиза на ураган часто считается в процентах от страховой стоимости дома, обычно 2%, 5% или 10%, а не фиксированной суммой. Если дом застрахован на $300,000, франшиза 5% означает, что первые $15,000 ущерба от урагана вы оплачиваете сами. Мы покажем, какая франшиза у вас и какие есть варианты, до следующего шторма.',
       },
       {
         id: 'condo',

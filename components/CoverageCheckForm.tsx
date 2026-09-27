@@ -39,6 +39,7 @@ declare global {
 }
 
 const LANGS: Lang[] = ['en', 'es', 'ru'];
+const HASH_POLICY: Record<string, CcPolicy> = { '#condo': 'Condo (HO-6)', '#home': 'Home' };
 
 export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
   const lang = pickLang(rawLang);
@@ -52,9 +53,12 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
   const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
   const okRef = useRef<HTMLDivElement>(null);
 
-  // Visitors from the Condo / HO-6 ads land on #condo: preselect that policy.
+  // Visitors landing on a gap card anchor get that policy preselected
+  // (#condo from the Condo / HO-6 ads, #home for the hurricane-deductible card).
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.hash === '#condo') setPolicy('Condo (HO-6)');
+    if (typeof window === 'undefined') return;
+    const preset = HASH_POLICY[window.location.hash];
+    if (preset) setPolicy(preset);
   }, []);
 
   useEffect(() => {

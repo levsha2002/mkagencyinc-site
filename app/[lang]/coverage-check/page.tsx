@@ -114,7 +114,7 @@ export default function CoverageCheckPage({ params }: { params: { lang: string }
       </section>
 
       {/* ===== Screen 4: trust ===== */}
-      <section className="section cc-trust">
+      <section className="section cc-trust" id="claims">
         <div className="container cc-trust-grid">
           <div>
             <h2>{c.trustH2}</h2>
