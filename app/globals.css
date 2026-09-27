@@ -1303,3 +1303,63 @@ body { font-size: 16.5px; }
 /* Home hero badge that links to /[lang]/coverage-check */
 .badge.badge-link { transition: background .15s, box-shadow .15s; }
 .badge.badge-link:hover { background: #bff5dc; box-shadow: 0 4px 12px rgba(4,120,87,.18); }
+
+/* "Send us your policy" CTA (components/SendPolicyCta.tsx) */
+.cc-send { margin-top: 18px; background: #fff; border: 1px solid #dfe8f6; border-left: 4px solid var(--gold); border-radius: 12px; padding: 14px 16px; max-width: 34rem; box-shadow: 0 6px 18px rgba(7,39,79,.06); }
+.cc-send-title { font-weight: 800; color: var(--navy); font-size: 1.02rem; margin-bottom: 10px; }
+.cc-send-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.cc-send-btn { flex: 1 1 130px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 10px; border-radius: 10px; font-weight: 800; font-size: .96rem; white-space: nowrap; }
+.cc-send-wa { background: #1a8f47; color: #fff; }
+.cc-send-wa:hover { background: #157a3c; }
+.cc-send-text { background: #fff; color: var(--navy); border: 2px solid var(--navy); }
+.cc-send-text:hover { background: #f2f7ff; }
+.cc-send-line { margin-top: 8px; color: var(--muted); font-size: .86rem; }
+.cc-send-final { margin-top: 20px; }
+/* Visible request label on the gap-insurance form */
+.cc-note { display: inline-block; background: var(--blue-tint); color: var(--navy); border: 1px solid #d3e4fb; border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: .88rem; margin-bottom: 14px; }
+/* Gap-insurance callout on the auto pages */
+.gap-callout { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: #fff; border: 1px solid #dfe8f6; border-left: 4px solid var(--gold); border-radius: 12px; padding: 16px 18px; margin: 22px auto 0; max-width: 46rem; box-shadow: 0 6px 18px rgba(7,39,79,.06); }
+.gap-callout p { color: var(--navy); font-weight: 600; margin: 0; flex: 1 1 260px; }
+.gap-callout a { color: var(--blue); font-weight: 800; white-space: nowrap; }
+.gap-callout a:hover { text-decoration: underline; }
+
+/* ===== Gap insurance landing (app/[lang]/gap-insurance) — reuses the cc-* system ===== */
+.gap-wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #157a3c; font-weight: 800; }
+.gap-wa:hover { text-decoration: underline; }
+.gap-what { background: #fff; border-top: 1px solid #eef2f7; border-bottom: 1px solid #eef2f7; }
+.gap-what-grid { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: start; }
+.gap-what h2, .gap-no h2 { text-align: left; }
+.gap-p { color: var(--ink); font-size: 1.02rem; margin-top: 14px; max-width: 40rem; }
+.gap-example { margin: 0; background: #fbfcfe; border: 1px solid #e3eaf4; border-top: 4px solid var(--gold); border-radius: 14px; padding: 20px 18px; box-shadow: 0 10px 24px rgba(7,39,79,.07); }
+.gap-ex-label { display: inline-block; background: var(--navy); color: var(--gold); font-weight: 800; font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; border-radius: 999px; padding: 4px 12px; }
+.gap-example h3 { font-family: var(--font-playfair), Georgia, serif; color: var(--navy); font-size: 1.3rem; margin: 10px 0 12px; }
+.gap-ex-rows { margin: 0 0 14px; }
+.gap-ex-row { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px dashed #d8e0ec; }
+.gap-ex-row dt { color: var(--ink); font-size: .96rem; }
+.gap-ex-row dd { margin: 0; color: var(--navy); font-weight: 800; font-size: 1.1rem; white-space: nowrap; }
+.gap-ex-total { border-bottom: none; background: #fff7e6; border-radius: 10px; padding: 12px; margin-top: 8px; }
+.gap-ex-total dt { color: var(--navy); font-weight: 700; }
+.gap-ex-total dd { color: #b3261e; font-size: 1.3rem; }
+.gap-example p { color: var(--ink); font-size: .96rem; }
+.gap-ex-note { margin-top: 10px; color: var(--muted); font-size: .84rem; font-style: italic; }
+.gap-what .center-cta { padding: 0 16px; }
+.gap-who-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 26px; }
+.gap-who-card { background: #fff; border: 1px solid #e8edf4; border-top: 3px solid var(--gold); border-radius: 12px; padding: 18px; box-shadow: 0 6px 18px rgba(7,39,79,.05); }
+.gap-who-ico { font-size: 1.6rem; line-height: 1; }
+.gap-who-card h3 { color: var(--navy); font-size: 1.1rem; margin: 10px 0 6px; }
+.gap-who-card p { color: var(--ink); font-size: .95rem; }
+.gap-no { background: #fff; border-top: 1px solid #eef2f7; }
+.gap-narrow { max-width: 46rem; }
+.gap-no-list { list-style: none; margin-top: 14px; }
+.gap-no-list li { position: relative; padding: 10px 0 10px 34px; border-bottom: 1px solid #eef2f7; color: var(--ink); }
+.gap-no-list li:before { content: '✕'; position: absolute; left: 4px; top: 10px; color: #b3261e; font-weight: 900; }
+.gap-no .cc-tip { margin-left: 0; }
+@media (min-width: 701px) {
+  .gap-who-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 901px) {
+  .gap-what-grid { grid-template-columns: 1.1fr 1fr; gap: 40px; }
+  .gap-who-grid { grid-template-columns: repeat(6, 1fr); }
+  .gap-who-card { grid-column: span 2; }
+  .gap-who-card:nth-child(4) { grid-column: 2 / span 2; }
+}

@@ -19,6 +19,14 @@ const str = (v: unknown, max = 500) => (typeof v === 'string' ? v.slice(0, max) 
 // visitor input never reaches the email/alert as free text.
 const POLICY_TYPES = ['Auto', 'Home', 'Condo (HO-6)', 'Business', 'Life', 'Other'];
 const LANG_NAMES: Record<string, string> = { en: 'English', es: 'Español', ru: 'Русский' };
+// Landing pages that post here with a `source`; each gets its own email
+// subject / heading and Telegram type. `note` (e.g. "Gap insurance") is a
+// fixed label per page, so it is whitelisted the same way.
+const LANDINGS: Record<string, { type: 'Coverage check' | 'Gap insurance'; icon: string; heading: string }> = {
+  'coverage-check': { type: 'Coverage check', icon: '🛡️', heading: 'Free coverage check request' },
+  'gap-insurance': { type: 'Gap insurance', icon: '🚗', heading: 'Gap insurance request' },
+};
+const NOTES = ['Gap insurance'];
 
 function clientIp(req: Request): string {
   const h = req.headers;
@@ -62,7 +70,8 @@ export async function POST(req: Request) {
     const source = str(b.source, 50).replace(/[^a-z0-9_-]/gi, '');
     const policyType = POLICY_TYPES.includes(b.policy_type) ? (b.policy_type as string) : '';
     const preferredLang = LANG_NAMES[b.preferred_lang] ? (b.preferred_lang as string) : '';
-    const isCoverageCheck = source === 'coverage-check';
+    const landing = LANDINGS[source];
+    const note = NOTES.includes(b.note) ? (b.note as string) : '';
 
     if (process.env.DATABASE_URL) {
       const sql = neon(process.env.DATABASE_URL);
@@ -93,34 +102,37 @@ export async function POST(req: Request) {
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS source TEXT`;
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS policy_type TEXT`;
       await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS preferred_lang TEXT`;
+      await sql`ALTER TABLE callbacks ADD COLUMN IF NOT EXISTS note TEXT`;
 
       await sql`INSERT INTO callbacks (name, phone, lang, urgent, contact_method, consent, agent_name, gclid, utm,
         consent_text, consent_text_version, consent_ip, consent_user_agent, page_url, client_txn_id,
-        source, policy_type, preferred_lang)
+        source, policy_type, preferred_lang, note)
         VALUES (${b.name}, ${b.phone}, ${b.lang}, ${urgent}, ${contactMethod}, ${b.consent}, ${agentName}, ${attr.gclid}, ${attr.utm},
         ${consentText}, ${consentTextVersion}, ${consentIp}, ${consentUserAgent}, ${pageUrl}, ${clientTxnId},
-        ${source || null}, ${policyType || null}, ${preferredLang || null})`;
+        ${source || null}, ${policyType || null}, ${preferredLang || null}, ${note || null})`;
     }
 
     // Telegram alert, started together with the email below and awaited after
     // it. Never throws; 5s cap; skipped silently when not configured.
     // Callers: "Talk to Agent Now" modal (urgent), chat widget callback tab,
     // the /protection-check planner (sends a `message` summary) and the
-    // /coverage-check form (source 'coverage-check' + policy + call language).
+    // landing-page forms (/coverage-check, /gap-insurance: source + policy +
+    // call language, see LANDINGS).
     const cbMessage = str(b.message, 1500);
     const telegramAlert = sendTelegramLeadAlert({
       type: urgent
         ? 'Talk to Agent Now'
-        : isCoverageCheck
-          ? 'Coverage check'
+        : landing
+          ? landing.type
           : /^Protection check/.test(cbMessage) ? 'Protection check' : 'Chat callback',
       lang: str(b.lang, 10),
       name: str(b.name, 200),
       phone: str(b.phone, 50),
       coverage: policyType,
-      message: isCoverageCheck ? '' : cbMessage,
+      message: landing ? '' : cbMessage,
       pageUrl,
       extra: [
+        ['Note', note],
         ['Call in', preferredLang ? LANG_NAMES[preferredLang] : ''],
         ['Preferred contact', contactMethod === 'text' ? 'TEXT' : 'CALL'],
         ['Requested agent', agentName !== 'agent' ? agentName : ''],
@@ -136,13 +148,14 @@ export async function POST(req: Request) {
       await resend.emails.send({
         from: FROM_ADDRESS,
         to: NOTIFY_EMAIL,
-        subject: isCoverageCheck
-          ? `🛡️ Coverage check — ${str(b.name, 200)} (${policyType || 'policy not chosen'}${preferredLang ? `, call in ${LANG_NAMES[preferredLang]}` : ''})`
+        subject: landing
+          ? `${landing.icon} ${landing.type} — ${str(b.name, 200)} (${policyType || 'policy not chosen'}${preferredLang ? `, call in ${LANG_NAMES[preferredLang]}` : ''})`
           : `${urgentTag}${methodLabel} request — ${b.name} (wants: ${agentName})`,
-        html: `<h2>${isCoverageCheck ? 'Free coverage check request' : `${urgent ? 'Urgent c' : 'C'}allback request`} (${esc(b.lang)})</h2>
+        html: `<h2>${landing ? landing.heading : `${urgent ? 'Urgent c' : 'C'}allback request`} (${esc(b.lang)})</h2>
           <p><b>Name:</b> ${esc(b.name)}</p>
           <p><b>Phone:</b> ${esc(b.phone)}</p>
-          ${policyType ? `<p><b>Policy to check:</b> ${esc(policyType)}</p>` : ''}
+          ${note ? `<p><b>Note:</b> ${esc(note)}</p>` : ''}
+          ${policyType ? `<p><b>Policy:</b> ${esc(policyType)}</p>` : ''}
           ${preferredLang ? `<p><b>Call in (preferred language):</b> ${esc(LANG_NAMES[preferredLang])}</p>` : ''}
           ${source ? `<p><b>Source:</b> ${esc(source)}</p>` : ''}
           <p><b>Preferred contact method:</b> ${methodLabel}</p>

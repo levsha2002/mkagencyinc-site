@@ -67,6 +67,7 @@ export type CcCopy = {
     talkWa: string; // "message us on WhatsApp"
     talkAfter: string; // "."
     waText: string; // prefilled WhatsApp message on this page
+    noteLabel?: string; // visible request label (gap-insurance form)
     badPhone: string;
     err: string;
     okH: string;
@@ -74,6 +75,7 @@ export type CcCopy = {
   };
   reviewsH2: string;
   reviewsSoon: string;
+  sendPolicy: { title: string; line: string; waText: string; waBtn: string; textBtn: string };
 };
 
 export const CC: Record<Lang, CcCopy> = {
@@ -187,6 +189,13 @@ export const CC: Record<Lang, CcCopy> = {
     },
     reviewsH2: 'What our clients say',
     reviewsSoon: 'Google reviews from our clients will appear here soon.',
+    sendPolicy: {
+      title: "Send us your policy – we'll check your coverage",
+      line: 'A photo of the first page (declarations page) is enough.',
+      waText: "Here's my policy for a free coverage check",
+      waBtn: 'WhatsApp',
+      textBtn: 'Text',
+    },
   },
 
   es: {
@@ -299,6 +308,13 @@ export const CC: Record<Lang, CcCopy> = {
     },
     reviewsH2: 'Lo que dicen nuestros clientes',
     reviewsSoon: 'Muy pronto verá aquí las reseñas de Google de nuestros clientes.',
+    sendPolicy: {
+      title: 'Envíenos su póliza y la revisamos',
+      line: 'Basta con una foto de la primera página (la página de declaraciones).',
+      waText: 'Aquí está mi póliza para una revisión gratis de cobertura',
+      waBtn: 'WhatsApp',
+      textBtn: 'Enviar texto',
+    },
   },
 
   ru: {
@@ -411,5 +427,14 @@ export const CC: Record<Lang, CcCopy> = {
     },
     reviewsH2: 'Что говорят наши клиенты',
     reviewsSoon: 'Скоро здесь появятся отзывы наших клиентов из Google.',
+    sendPolicy: {
+      title: 'Пришлите полис – проверим покрытие',
+      line: 'Достаточно фото первой страницы полиса (declarations page).',
+      waText: 'Вот мой полис для бесплатной проверки покрытия',
+      waBtn: 'WhatsApp',
+      textBtn: 'SMS',
+    },
   },
 };
+
+export type CcFormCopy = CcCopy['form'];

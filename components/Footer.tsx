@@ -60,6 +60,10 @@ export default function Footer({ lang }: { lang: string }) {
             {lang === 'es' ? 'Revisión de cobertura gratis' : lang === 'ru' ? 'Бесплатная проверка страховки' : 'Free Coverage Check'}
           </Link>
           {' · '}
+          <Link href={`/${lang}/gap-insurance`} style={{ color: '#bcd0ea' }}>
+            {lang === 'es' ? 'Seguro GAP' : lang === 'ru' ? 'GAP-страховка' : 'Gap Insurance'}
+          </Link>
+          {' · '}
           <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>{fx.community}</Link>
           {' · '}
           <Link href={`/${lang}/news`} style={{ color: '#bcd0ea' }}>{lang === 'es' ? 'Noticias' : lang === 'ru' ? 'Новости' : 'News'}</Link>

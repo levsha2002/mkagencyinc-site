@@ -4,12 +4,14 @@ import type React from 'react';
 import { usePathname } from 'next/navigation';
 import { whatsappUrl, whatsappLabel, trackWhatsAppClick } from '@/lib/whatsapp';
 import { CC, CC_PATH, pickLang } from '@/lib/coverage-check';
+import { GAP_PATH, GAP_WA_TEXT } from '@/lib/gap-insurance-shared';
 
 // Pages whose WhatsApp links (form, floating button, footer) carry an
 // offer-specific prefilled message instead of the default quote request.
 function pageText(pathname: string, lang: string): string | undefined {
   const rest = pathname.replace(/^\/(en|es|ru)(?=\/|$)/, '').replace(/\/$/, '');
   if (rest === CC_PATH) return CC[pickLang(lang)].form.waText;
+  if (rest === GAP_PATH) return GAP_WA_TEXT[pickLang(lang)];
   return undefined;
 }
 
@@ -34,6 +36,7 @@ export default function WhatsAppLink({
   children,
   iconSize = 16,
   text,
+  onClick,
 }: {
   lang: string;
   placement: string;
@@ -42,6 +45,8 @@ export default function WhatsAppLink({
   children?: React.ReactNode;
   iconSize?: number;
   text?: string;
+  /** Extra click handler (runs after the standard whatsapp_click event). */
+  onClick?: () => void;
 }) {
   const label = whatsappLabel(lang);
   const pathname = usePathname() || '';
@@ -56,7 +61,10 @@ export default function WhatsAppLink({
       aria-label={label}
       title={label}
       data-wa-link={placement}
-      onClick={() => trackWhatsAppClick(lang, placement)}
+      onClick={() => {
+        trackWhatsAppClick(lang, placement);
+        if (onClick) onClick();
+      }}
     >
       {children ?? (
         <>

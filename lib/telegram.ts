@@ -28,6 +28,7 @@ export type TelegramLeadType =
   | 'Chat callback'
   | 'Protection check'
   | 'Coverage check'
+  | 'Gap insurance'
   | 'Chat'
   | 'Referral'
   | 'Referral partner';
