@@ -2,7 +2,7 @@ import type { BusinessPage } from './types';
 import { SRC_URL as U, sources } from './sources';
 
 // General-information page. Do not name any market or state specific policy
-// terms as universal; DFS guidance is attributed to DFS.
+// terms, perils or exclusions as universal: policy forms differ.
 export const BUILDERS_RISK: BusinessPage = {
   path: '/builders-risk-insurance-florida',
   icon: '🏠',
@@ -42,8 +42,8 @@ export const BUILDERS_RISK: BusinessPage = {
       ],
       body: [
         { type: 'h2', text: 'Florida points to know' },
-        { type: 'h3', text: 'Wind, rain and the stage of construction' },
-        { type: 'p', text: `In its [commercial insurance FAQs](${U.dfsBr}), the Florida Department of Financial Services notes that builder’s risk policies are named-peril policies and that rain is not a named peril in the contract, although there could be limited coverage for materials at the job site damaged by rain if included by endorsement. DFS adds that wind damage should be covered, subject to other contractual provisions, and that some policies require construction to reach a certain stage, such as 50% or 75% of completion, before coverage applies for wind. Every policy is different, so we go through these points with you on the actual quote.` },
+        { type: 'h3', text: 'Hurricane season, rain and theft: read the policy' },
+        { type: 'p', text: 'Builders risk policies are not all written the same way. They differ in which causes of loss they cover, how windstorm and hurricane losses are handled and which deductible applies, whether materials stored on site or in transit are included, whether theft and vandalism are covered, and when coverage starts and ends. A Florida project can run through hurricane season, so ask how the quoted policy treats wind before you buy it. We go through these points with you on the actual quote.' },
         { type: 'h3', text: 'Building as an owner-builder?' },
         { type: 'p', text: `Florida’s owner-builder disclosure statement, set out in [§ 489.103](${U.fs489_103}), says the owner-builder is the responsible party of record on the permit. It also warns that an owner-builder may be held liable for injuries to unlicensed workers on the property and that homeowner’s insurance may not cover those injuries. If you’re building this way, talk to us about liability coverage as well as builders risk.` },
         { type: 'h3', text: 'Check your loan and your contract' },
@@ -65,11 +65,11 @@ export const BUILDERS_RISK: BusinessPage = {
       faq: [
         { q: 'Will my homeowners policy cover a house that’s still being built?', a: 'Don’t assume it will. A house under construction is commonly insured under a builders risk policy until it’s finished and a permanent policy takes over. Talk to us before work starts so there’s no gap.' },
         { q: 'Who buys builders risk, the owner or the contractor?', a: 'Either can, depending on the construction contract and the lender. Those documents usually say who is responsible. Send them to us and we’ll help you find that section.' },
-        { q: 'Does builders risk cover hurricane damage?', a: 'It depends on the policy. Florida DFS notes that wind damage should be covered subject to the policy’s other provisions, and that some policies require a certain stage of completion before wind coverage applies. We’ll show you how the quoted policy handles wind and which deductible applies.' },
+        { q: 'Does builders risk cover hurricane damage?', a: 'It depends on the policy. Wind and hurricane coverage, the deductible that applies and any conditions tied to the stage of construction vary from one policy to another. We’ll show you how the quoted policy handles wind before you decide.' },
         { q: 'How long does a builders risk policy last?', a: 'Policies are written for a set term that should match your construction schedule. Ask us what your options are if the project runs longer than planned.' },
         { q: 'Do you only work with projects near Florida City?', a: 'No. Our office is in Florida City, but we work with owners and contractors building across Florida by phone, text and email, in English, Spanish and Russian.' },
       ],
-      sources: sources('en', ['naic', 'dfsBr', 'fs489_103', 'bps2025']),
+      sources: sources('en', ['naic', 'fs489_103', 'bps2025']),
     },
     es: {
       metaTitle: 'Seguro Builders Risk en Florida | M&K Agency',
@@ -103,8 +103,8 @@ export const BUILDERS_RISK: BusinessPage = {
       ],
       body: [
         { type: 'h2', text: 'Lo que debe saber en Florida' },
-        { type: 'h3', text: 'Viento, lluvia y etapa de la construcción' },
-        { type: 'p', text: `En sus [preguntas frecuentes sobre seguros comerciales](${U.dfsBr}), el Departamento de Servicios Financieros de Florida señala que las pólizas builder’s risk son de riesgos nombrados y que la lluvia no es un riesgo nombrado en el contrato, aunque podría haber cobertura limitada para materiales en la obra dañados por lluvia si se incluye por endoso. El DFS agrega que los daños por viento deberían estar cubiertos, sujeto a otras disposiciones del contrato, y que algunas pólizas exigen que la construcción alcance cierta etapa, como el 50% o el 75% de avance, antes de que aplique la cobertura de viento. Cada póliza es distinta, así que revisamos estos puntos con usted en la cotización real.` },
+        { type: 'h3', text: 'Temporada de huracanes, lluvia y robo: lea la póliza' },
+        { type: 'p', text: 'No todas las pólizas builders risk están redactadas igual. Varían en los riesgos que cubren, en cómo manejan las pérdidas por viento y huracán y qué deducible aplica, en si incluyen los materiales guardados en la obra o en tránsito, en si cubren robo y vandalismo, y en cuándo empieza y termina la cobertura. Una obra en Florida puede atravesar la temporada de huracanes, así que pregunte cómo trata el viento la póliza cotizada antes de contratarla. Revisamos estos puntos con usted en la cotización real.' },
         { type: 'h3', text: '¿Construye como dueño-constructor?' },
         { type: 'p', text: `La declaración de divulgación para dueños-constructores de Florida, incluida en el [§ 489.103](${U.fs489_103}), dice que el dueño-constructor es la parte responsable que figura en el permiso. También advierte que puede ser responsable por lesiones de trabajadores sin licencia en la propiedad y que el seguro de vivienda puede no cubrir esas lesiones. Si construye así, hable con nosotros sobre responsabilidad civil además del builders risk.` },
         { type: 'h3', text: 'Revise su préstamo y su contrato' },
@@ -126,11 +126,11 @@ export const BUILDERS_RISK: BusinessPage = {
       faq: [
         { q: '¿Mi póliza de vivienda cubre una casa que todavía se está construyendo?', a: 'No lo dé por hecho. Una casa en construcción se asegura comúnmente con una póliza builders risk hasta que se termina y entra una póliza permanente. Hable con nosotros antes de empezar la obra para que no queden huecos.' },
         { q: '¿Quién compra el builders risk, el dueño o el contratista?', a: 'Cualquiera de los dos, según el contrato de construcción y el prestamista. Esos documentos normalmente indican quién es responsable. Envíenoslos y le ayudamos a encontrar esa sección.' },
-        { q: '¿El builders risk cubre daños por huracán?', a: 'Depende de la póliza. El DFS de Florida señala que los daños por viento deberían estar cubiertos sujeto a las demás disposiciones de la póliza, y que algunas pólizas exigen cierta etapa de avance antes de que aplique la cobertura de viento. Le mostramos cómo maneja el viento la póliza cotizada y qué deducible aplica.' },
+        { q: '¿El builders risk cubre daños por huracán?', a: 'Depende de la póliza. La cobertura de viento y huracán, el deducible que aplica y cualquier condición ligada a la etapa de la construcción varían de una póliza a otra. Le mostramos cómo maneja el viento la póliza cotizada antes de que decida.' },
         { q: '¿Cuánto dura una póliza builders risk?', a: 'Las pólizas se emiten por un plazo fijo que debe coincidir con su calendario de construcción. Pregúntenos qué opciones tiene si la obra se alarga más de lo previsto.' },
         { q: '¿Solo trabajan con proyectos cerca de Florida City?', a: 'No. Nuestra oficina está en Florida City, pero atendemos a dueños y contratistas que construyen en toda Florida por teléfono, mensaje de texto y correo, en español, inglés y ruso.' },
       ],
-      sources: sources('es', ['naic', 'dfsBr', 'fs489_103', 'bps2025']),
+      sources: sources('es', ['naic', 'fs489_103', 'bps2025']),
     },
     ru: {
       metaTitle: 'Страховка builders risk во Флориде | M&K Agency',
@@ -164,8 +164,8 @@ export const BUILDERS_RISK: BusinessPage = {
       ],
       body: [
         { type: 'h2', text: 'Что важно знать во Флориде' },
-        { type: 'h3', text: 'Ветер, дождь и стадия строительства' },
-        { type: 'p', text: `В своих [ответах на вопросы о коммерческом страховании](${U.dfsBr}) Департамент финансовых услуг Флориды отмечает, что полисы builder’s risk покрывают поименованные риски и что дождь не является поименованным риском в договоре, хотя возможно ограниченное покрытие материалов на объекте, повреждённых дождём, если оно включено эндорсментом. DFS добавляет, что ущерб от ветра должен покрываться с учётом других условий договора и что некоторые полисы требуют, чтобы строительство достигло определённой стадии — например, 50% или 75% готовности, — прежде чем начнёт действовать покрытие от ветра. Все полисы разные, поэтому мы разбираем эти пункты с вами на конкретном расчёте.` },
+        { type: 'h3', text: 'Сезон ураганов, дождь и кражи: читайте полис' },
+        { type: 'p', text: 'Полисы builders risk написаны по-разному. Они отличаются тем, какие риски покрывают, как решают вопрос ущерба от ветра и урагана и какая франшиза при этом применяется, включены ли материалы, которые хранятся на объекте или находятся в пути, покрываются ли кража и вандализм, а также тем, когда покрытие начинается и заканчивается. Стройка во Флориде может прийтись на сезон ураганов, поэтому до оформления уточните, как рассчитанный полис относится к ветру. Мы разбираем эти пункты с вами на конкретном расчёте.' },
         { type: 'h3', text: 'Строите как owner-builder?' },
         { type: 'p', text: `Заявление owner-builder, текст которого приведён в [§ 489.103](${U.fs489_103}), говорит, что owner-builder — ответственное лицо, указанное в разрешении на строительство. Там же предупреждается, что владелец может отвечать за травмы нелицензированных работников на участке и что страховка дома может эти травмы не покрывать. Если вы строите так, поговорите с нами не только о builders risk, но и о страховке ответственности.` },
         { type: 'h3', text: 'Проверьте кредит и договор' },
@@ -187,11 +187,11 @@ export const BUILDERS_RISK: BusinessPage = {
       faq: [
         { q: 'Покроет ли мой полис на дом строящийся дом?', a: 'Не стоит на это рассчитывать. Строящийся дом обычно страхуют полисом builders risk, пока он не будет закончен и не начнёт действовать постоянный полис. Поговорите с нами до начала работ, чтобы не было пробела.' },
         { q: 'Кто покупает builders risk — владелец или подрядчик?', a: 'Любой из них, в зависимости от договора подряда и кредитора. Обычно в этих документах указано, кто отвечает за страховку. Пришлите их нам — поможем найти нужный раздел.' },
-        { q: 'Покрывает ли builders risk ущерб от урагана?', a: 'Зависит от полиса. DFS Флориды отмечает, что ущерб от ветра должен покрываться с учётом прочих условий полиса и что некоторые полисы требуют определённой стадии готовности, прежде чем начнёт действовать покрытие от ветра. Мы покажем, как рассчитанный полис решает вопрос ветра и какая франшиза применяется.' },
+        { q: 'Покрывает ли builders risk ущерб от урагана?', a: 'Зависит от полиса. Покрытие от ветра и урагана, франшиза и возможные условия, связанные со стадией строительства, отличаются от полиса к полису. Мы покажем, как рассчитанный полис решает вопрос ветра, до того как вы примете решение.' },
         { q: 'На какой срок оформляется builders risk?', a: 'Полис оформляется на фиксированный срок, который должен совпадать с графиком строительства. Спросите нас, какие есть варианты, если стройка затянется.' },
         { q: 'Вы работаете только с объектами рядом с Florida City?', a: 'Нет. Наш офис во Florida City, но мы работаем с владельцами и подрядчиками, которые строят по всей Флориде, по телефону, SMS и email — по-русски, по-английски и по-испански.' },
       ],
-      sources: sources('ru', ['naic', 'dfsBr', 'fs489_103', 'bps2025']),
+      sources: sources('ru', ['naic', 'fs489_103', 'bps2025']),
     },
   },
 };
