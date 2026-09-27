@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import { GOOGLE_ADS_ID, newTransactionId, trackConversion } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
+import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
+import ConsentCheckbox from '@/components/ConsentCheckbox';
 import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
 import {
   CC,
-  CC_CONSENT_VERSION,
   CC_POLICIES,
   CC_SOURCE,
   LANG_SELF,
-  ccConsentFullText,
   pickLang,
   type CcPolicy,
   type Lang,
@@ -22,7 +22,9 @@ import {
 // /api/callback, the endpoint behind the site's other short callback forms
 // (Talk to Agent Now, chat callback, protection check), so the lead lands in
 // the `callbacks` table and triggers the usual email + Telegram alert. The
-// honeypot and the per-IP rate limit are enforced by that route.
+// honeypot and the per-IP rate limit are enforced by that route. Consent is
+// the site's standard required checkbox (lib/consent.ts text + version),
+// checked here and again server-side.
 //
 // Tracking on a successful submit, same as the site's other lead forms
 // (LeadForm / quote page): trackConversion('callback_request') → GA event
@@ -45,6 +47,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
   const [phone, setPhone] = useState('');
   const [prefLang, setPrefLang] = useState<Lang>(lang);
   const [policy, setPolicy] = useState<CcPolicy | ''>('');
+  const [consent, setConsent] = useState(false);
   const [phoneErr, setPhoneErr] = useState('');
   const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
   const okRef = useRef<HTMLDivElement>(null);
@@ -60,6 +63,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!consent) return;
     const digits = phone.replace(/\D/g, '');
     if (!(digits.length === 10 || (digits.length === 11 && digits.startsWith('1')))) {
       setPhoneErr(t.badPhone);
@@ -86,11 +90,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
           agent_name: 'agent',
           message: `Coverage check: ${policyValue}. Call in ${LANG_SELF[prefLang]}.`,
           transaction_id: transactionId,
-          consent: true,
-          consent_text: ccConsentFullText(lang),
-          consent_text_version: CC_CONSENT_VERSION,
-          consent_user_agent: navigator.userAgent.slice(0, 500),
-          page_url: window.location.href.slice(0, 500),
+          ...consentPayload(lang),
           attribution: getAttribution(),
         }),
       });
@@ -115,6 +115,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
       }
       setName('');
       setPhone('');
+      setConsent(false);
     } catch {
       setStatus('err');
     }
@@ -166,6 +167,7 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
           ))}
         </select>
       </div>
+      <ConsentCheckbox id="cc-consent" lang={lang} checked={consent} onChange={setConsent} />
       <button type="submit" className="submit" disabled={status === 'sending'}>
         {status === 'sending' ? t.sending : t.submit}
       </button>
@@ -178,15 +180,11 @@ export default function CoverageCheckForm({ lang: rawLang }: { lang: string }) {
         {t.talkBefore}
         <a href={`tel:${PHONE_TEL}`} className="cc-talk-phone">{PHONE_DISPLAY}</a>
         {t.talkMid}
-        <WhatsAppLink lang={lang} placement="coverage-check" className="wa-link cc-talk-wa" iconSize={15}>
+        <WhatsAppLink lang={lang} placement="coverage-check" text={t.waText} className="wa-link cc-talk-wa" iconSize={15}>
           <WhatsAppIcon size={15} />
           {t.talkWa}
         </WhatsAppLink>
         {t.talkAfter}
-      </p>
-      <p className="cc-consent">
-        {t.consent}{' '}
-        <a href={`/${lang}/privacy`} target="_blank" rel="noopener">{t.privacy}</a>
       </p>
     </form>
   );

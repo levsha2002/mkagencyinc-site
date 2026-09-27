@@ -22,10 +22,9 @@ export type CcPolicy = (typeof CC_POLICIES)[number];
 
 export const LANG_SELF: Record<Lang, string> = { en: 'English', es: 'Español', ru: 'Русский' };
 
-// Consent shown under the submit button (owner-provided wording, EN verbatim).
-// Stored with the lead as consent_text + consent_text_version, like every
-// other form (see lib/consent.ts). Bump the version if the wording changes.
-export const CC_CONSENT_VERSION = 'cc-v1-2026-09-26';
+// Consent: the form uses the site's standard required TCPA / FTSA checkbox
+// (components/ConsentCheckbox + lib/consent.ts), same text and stored version
+// as every other lead form.
 
 type Gap = { id: string; label: string; img: string; alt: string; h: string; p: string };
 type Step = { n: string; h: string; p: string };
@@ -67,8 +66,7 @@ export type CcCopy = {
     talkMid: string; // " or "
     talkWa: string; // "message us on WhatsApp"
     talkAfter: string; // "."
-    consent: string;
-    privacy: string;
+    waText: string; // prefilled WhatsApp message on this page
     badPhone: string;
     err: string;
     okH: string;
@@ -173,9 +171,7 @@ export const CC: Record<Lang, CcCopy> = {
       talkMid: ' or ',
       talkWa: 'message us on WhatsApp',
       talkAfter: '.',
-      consent:
-        'By submitting, you agree that M&K Agency may call or text you at this number about your coverage review. Consent is not a condition of purchase.',
-      privacy: 'Privacy Policy',
+      waText: "Hi, I'd like a free coverage check.",
       badPhone: 'Please enter a 10-digit phone number.',
       err: 'Something went wrong and your request was not sent. Please try again or call us.',
       okH: 'Thank you! We got your request.',
@@ -279,9 +275,7 @@ export const CC: Record<Lang, CcCopy> = {
       talkMid: ' o ',
       talkWa: 'escríbanos por WhatsApp',
       talkAfter: '.',
-      consent:
-        'Al enviar este formulario, usted acepta que M&K Agency le llame o le envíe mensajes de texto a este número sobre la revisión de su cobertura. El consentimiento no es una condición de compra.',
-      privacy: 'Política de Privacidad',
+      waText: 'Hola, quisiera una revisión gratis de mi cobertura.',
       badPhone: 'Escriba un número de teléfono de 10 dígitos.',
       err: 'No pudimos enviar su solicitud. Intente de nuevo o llámenos.',
       okH: '¡Gracias! Recibimos su solicitud.',
@@ -385,9 +379,7 @@ export const CC: Record<Lang, CcCopy> = {
       talkMid: ' или ',
       talkWa: 'напишите нам в WhatsApp',
       talkAfter: '.',
-      consent:
-        'Отправляя форму, вы соглашаетесь, что M&K Agency может позвонить вам или отправить SMS на этот номер по поводу проверки вашей страховки. Согласие не является условием покупки.',
-      privacy: 'Политика конфиденциальности',
+      waText: 'Здравствуйте, хочу бесплатную проверку покрытия.',
       badPhone: 'Введите номер телефона из 10 цифр.',
       err: 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.',
       okH: 'Спасибо! Заявка получена.',
@@ -397,10 +389,3 @@ export const CC: Record<Lang, CcCopy> = {
     reviewsSoon: 'Скоро здесь появятся отзывы наших клиентов из Google.',
   },
 };
-
-/** Exact consent string stored with the lead (visible text + privacy reference). */
-export function ccConsentFullText(lang: string): string {
-  const l = pickLang(lang);
-  const t = CC[l].form;
-  return `${t.consent} ${t.privacy} (https://mkagencyinc.com/${l}/privacy).`;
-}

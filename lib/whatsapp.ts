@@ -22,11 +22,12 @@ const LABEL: Record<Lang, string> = {
 
 const pick = (lang: string): Lang => (lang === 'es' || lang === 'ru' ? lang : 'en');
 
-/** https://wa.me/19719987313?text=<prefilled message in the page language> */
-export function whatsappUrl(lang: string): string {
+/** https://wa.me/19719987313?text=<prefilled message in the page language>.
+ *  `text` overrides the default message (e.g. the coverage-check pages). */
+export function whatsappUrl(lang: string, text?: string): string {
   // encodeURIComponent leaves the apostrophe in "I'd" as-is; %27 keeps the
   // href identical in raw HTML and in the DOM.
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(TEXT[pick(lang)]).replace(/'/g, '%27')}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text || TEXT[pick(lang)]).replace(/'/g, '%27')}`;
 }
 
 export function whatsappLabel(lang: string): string {

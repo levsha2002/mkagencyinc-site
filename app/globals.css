@@ -1263,8 +1263,6 @@ body { font-size: 16.5px; }
 .cc-talk { text-align: center; font-size: .92rem; color: var(--ink); margin-top: 14px; }
 .cc-talk-phone { font-weight: 800; color: var(--navy); white-space: nowrap; text-decoration: underline; }
 .cc-talk-wa { font-weight: 700; color: var(--navy); text-decoration: underline; gap: 4px; }
-.cc-consent { font-size: .76rem; color: var(--muted); margin-top: 12px; line-height: 1.45; }
-.cc-consent a { text-decoration: underline; }
 .cc-ok { text-align: center; outline: none; }
 .cc-ok h3 { color: var(--navy); font-size: 1.35rem; margin: 10px 0 8px; }
 .cc-ok p { color: var(--muted); margin-bottom: 16px; }
