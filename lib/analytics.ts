@@ -146,7 +146,11 @@ export const CONVERSION_LABELS: Record<ConversionAction, string | null> = {
     process.env.NEXT_PUBLIC_ADS_LABEL_QUOTE || '-1BtCL2Fj9EcELj-waBE',
   // Needs its own conversion action in Ads (lower intent than a submitted
   // form, so it must not share the callback label). Null until created.
-  lead_manager_click: process.env.NEXT_PUBLIC_ADS_LABEL_LEAD_MANAGER || null,
+  // Created in Google Ads on 2026-09-28 under the "Outbound click" goal, manual
+  // event, count = one. Kept apart from the callback label on purpose: a click
+  // to the off-site form is lower intent than a submitted form.
+  lead_manager_click:
+    process.env.NEXT_PUBLIC_ADS_LABEL_LEAD_MANAGER || 'bFB2COWQw4kdELj-waBE',
 };
 
 type Params = Record<string, string | number | boolean | undefined>;
@@ -236,10 +240,8 @@ export function phoneClickTrackingScript() {
   document.addEventListener('click', function(e){
     var t=e.target;
     if(!t || !t.closest) return;
-    // Off-site Allstate Lead Manager form. A conversion only once the
-    // NEXT_PUBLIC_ADS_LABEL_LEAD_MANAGER label exists; until then it is an
-    // observable event only, because the lead itself happens on a page we
-    // can't tag.
+    // Off-site Allstate Lead Manager form: the click is the last thing we can
+    // observe, because the form itself lives on a page we can't tag.
     var o=t.closest('a[href*="${LEAD_MANAGER_HOST}"]');
     if(o){ fire('lead_manager_click', o.getAttribute('href')||''); return; }
     var a=t.closest('a[href^="tel:"], a[href^="sms:"]');
