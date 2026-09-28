@@ -1,6 +1,7 @@
 import '../globals.css';
 import Script from 'next/script';
 import { Inter, Playfair_Display } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getDict, locales, PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import Header from '@/components/Header';
@@ -133,7 +134,12 @@ export default function RootLayout({
         <ChatWidget lang={params.lang} />
         <TalkNowWidget lang={params.lang} />
         <StickyCallBar lang={params.lang} />
-        {process.env.NODE_ENV === 'production' && <SpeedInsights />}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
         {process.env.NODE_ENV === 'production' && (
           <>
             <Script
