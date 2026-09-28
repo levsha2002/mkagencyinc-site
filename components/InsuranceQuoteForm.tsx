@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { type InsuranceProduct, isBusinessProduct, VEHICLE_BUSINESS_SLUGS } from '@/lib/insurance-products';
 import { trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
-import { getDict } from '@/lib/dictionaries';
+import { getDict, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
@@ -102,6 +102,11 @@ export default function InsuranceQuoteForm({
     return (
       <div className="card" id="quote" data-lead-form>
         <p className="status-ok" aria-live="polite">{t.ok}</p>
+        <p className="sub" style={{ marginTop: 10 }}>
+          <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
+            {REVIEW_CTA[lang] || REVIEW_CTA.en}
+          </a>
+        </p>
       </div>
     );
   }

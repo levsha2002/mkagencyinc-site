@@ -26,13 +26,27 @@ via `element.click()` on a text match instead.
 | Reviews | 67, rating 4.5 |
 | Description | Correct — family-owned, trilingual, no carrier comparison |
 | Categories | 6 — Insurance agency (primary), Commercial, Auto, Home, Life, Motorcycle |
-| Services | Populated — Auto, Boat & watercraft, Commercial, Employee, General liability, Life, Motorcycle, Pet |
+| Services | Re-read 2026-09-26: primary "Insurance agency" has Auto, Boat & watercraft, Commercial, Employee, General liability, Life, Motorcycle, Pet, Property, Renter's; "Home insurance agency" category has **Homeowners insurance** (the July "no Home" gap is closed); Auto insurance agency has Auto, Auto renters, Full coverage auto, RV. Umbrella and Condo were added 2026-09-26 as custom services (pending Google review). |
+| Website link | **Points to `agents.allstate.com/mikhail-kozlov-florida-city-fl.html?utm_source=GMB&utm_medium=Website`, not mkagencyinc.com.** The corporate UTM suggests Allstate manages this field (likely via Yext). Do not repoint it to the agency site without the owner confirming Allstate allows it. |
 | Hours / phone | Mon–Fri 9am–6pm, (305) 859-3953 |
 | Photos | Present, but see below |
 | Activity | ~685 views/month, 474 interactions |
 
 Do not assume fields are empty. Check before reporting a gap — an earlier review
 claimed missing photos, services and reviews, and all three were wrong.
+
+Review count drifts fast (67 in July, 72 by September) — re-read it rather than
+quoting this table. The same applies to the rest of this section; treat it as
+"last confirmed", not current truth, same as the account-shape table in
+`ads-audit`.
+
+**"Reviews from the web" shows a separate, bad number next to the good one.**
+The Search card has a block below the main 4.5-star Google rating that
+aggregates third-party review sources — it was showing **Facebook: 1/5 (1
+vote)** right next to the Google 4.5/5, on the same card a searcher sees before
+calling. This isn't editable from the GBP dashboard (it's pulled from Facebook
+itself), but it's a real, visible reason the profile might convert worse than
+the primary rating suggests — check it, don't only check the primary rating.
 
 ## Known issues
 
@@ -51,6 +65,25 @@ file picker with no `input[type=file]` anywhere in the DOM, shadow roots or
 iframes. Prepare and hand off the files; do not attempt to click through it,
 because a native dialog blocks the whole browser session.
 
+**"Complete your Business Profile" is a Google upsell funnel, not a gap
+checklist.** Clicking it walks through cards for a Google Ads "Smart campaign"
+built from the profile (a second, uncoordinated ad account outside
+`ads-audit`'s campaign — don't let it create one) and a Google Workspace trial,
+not a list of missing profile fields. Skip it; check the actual tabs (`About`,
+`Contact`, `Location`, `Hours`, `More`) directly for real gaps instead.
+
+**Don't source Google Ads image assets from this gallery.** Two separate
+reasons, not one: most photos here are Allstate-branded (storefront signage,
+office graphics with the Allstate logo) which violates the same "no Allstate
+branding in ads" rule as everything else in `compliance-sweep`; and the
+non-branded ones are candid photos of identifiable staff taken for the profile,
+not posed for advertising — using someone's likeness in paid ads without their
+knowledge is a separate problem from compliance. The one exception is a clean,
+non-text, non-branded headshot of the owner/agent themself, who obviously
+consents to being used in their own agency's marketing. Real, brand-safe images
+for ads have instead been pulled from the website's own `/public/images`
+(hero and category photos) — see `ads-audit`.
+
 ## Preparing photos
 
 Google accepts JPG and PNG only, 10 KB – 5 MB, 720×720 recommended, 250×250
@@ -64,6 +97,27 @@ parking. No customer screens, documents or faces without permission.
 ## Compliance
 
 Profile text is subject to the same six violation classes as the website — see
-`compliance-sweep`. Whether the agency may solicit or display customer reviews
-is an open question with Allstate compliance; do not set up review requests
-until that is answered in writing.
+`compliance-sweep`.
+
+**Reviews: requesting them is allowed** (confirmed by the owner, Sept 2026 —
+this used to be an open question with Allstate compliance). A "leave a review"
+link may be added to the site and to post-lead confirmations; the link comes
+from Business Profile → "Ask for reviews" (a `g.page/r/…/review` short URL),
+not from Yext.
+
+**Review replies: the owner writes them, weekly, and checks them with Claude
+before or after posting.** Do not draft-and-post replies unasked. When
+reviewing a batch, the two failures actually found live (Sept 2026) were:
+a reply naming a competitor the customer had mentioned ("after switching
+from Geico" — class 3, even though the customer said it first), and a
+quantified price claim ("Milewise often costs about half of a standard
+policy" — class 5). Softer price framing ("at a good price", "without the
+high cost") was left alone as borderline. Also watch for unfilled template
+placeholders — one live reply read "I'll make sure [Agent] hears this"; the
+replies are managed through Yext (`yext.com/s/501290/reviews/response`),
+so a broken variable there repeats until the template is fixed.
+
+Full sweep on 2026-09-26: 73 reviews total. Everything from 2025 onward has
+a reply; **all 43 reviews dated Jan 2024 and earlier have none** (the list
+shows a "Reply" button instead of "(owner)"). Reading the list means paging
+to "71–73 of 73", not stopping at the first screen.

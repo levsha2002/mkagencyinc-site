@@ -25,6 +25,14 @@ const nextConfig = {
       { source: '/contact', destination: '/en/quote', permanent: true },
       { source: '/about', destination: '/en/team', permanent: true },
       { source: '/services', destination: '/en/insurance', permanent: true },
+      // Google Business Profile rejects booking links that carry a query string,
+      // so the profile points here and the UTM is attached on the way through.
+      // Temporary on purpose: a cached 308 would pin the UTM forever.
+      {
+        source: '/book',
+        destination: '/en/quote?utm_source=google&utm_medium=gbp&utm_campaign=booking',
+        permanent: false,
+      },
     ];
   },
 };

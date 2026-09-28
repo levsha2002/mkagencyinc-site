@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getDict } from '@/lib/dictionaries';
+import { getDict, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import { trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
 import { consentPayload } from '@/lib/consent';
@@ -121,7 +121,16 @@ export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string;
         <button type="submit" className="submit" disabled={status === 'sending'}>
           {status === 'sending' ? t.sending : t.submit}
         </button>
-        {status === 'ok' && <p className="status-ok">{t.ok}</p>}
+        {status === 'ok' && (
+          <>
+            <p className="status-ok">{t.ok}</p>
+            <p className="sub">
+              <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
+                {REVIEW_CTA[lang] || REVIEW_CTA.en}
+              </a>
+            </p>
+          </>
+        )}
         {status === 'err' && <p className="status-err">{t.err}</p>}
         <p className="privacy">🔒 {t.privacy}</p>
       </form>

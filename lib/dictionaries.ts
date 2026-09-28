@@ -9,6 +9,14 @@ export const LICENSE_LINE = 'FL License #L109526';
 // Official Allstate Lead Manager webform — captures texting consent at submission.
 // Single source of truth so the Header, Footer, and /quote QR codes never drift.
 export const LEAD_MANAGER_URL = 'https://www.leadmanagementlab.com/Form.aspx?id=cb4a2fa2-a2bc-494d-9510-7445b2080b65';
+// From Business Profile → "Ask for reviews". The id contains a capital I, not
+// a lowercase l — the other spelling redirects to google.com and nothing else.
+export const GOOGLE_REVIEW_URL = 'https://g.page/r/CWF74cqupIm6EBM/review';
+export const REVIEW_CTA: Record<string, string> = {
+  en: 'Already a customer? Leave us a Google review',
+  es: '¿Ya es cliente? Déjenos una reseña en Google',
+  ru: 'Уже наш клиент? Оставьте отзыв в Google',
+};
 
 export type Lang = 'en' | 'es' | 'ru';
 export const locales: Lang[] = ['en', 'es', 'ru'];

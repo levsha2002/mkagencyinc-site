@@ -280,7 +280,8 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
         });
       }
       document.getElementById('modalTitle').textContent = 'Thank you!';
-      document.getElementById('modalSub').innerHTML = '<span class="status-ok">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</span>';
+      document.getElementById('modalSub').innerHTML = '<span class="status-ok">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</span>'
+        + '<br><a href="https://g.page/r/CWF74cqupIm6EBM/review" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:10px;font-size:.9rem">Already a customer? Leave us a Google review</a>';
       document.getElementById('quoteForm').style.display = 'none';
     } else {
       errEl.style.display = 'block';

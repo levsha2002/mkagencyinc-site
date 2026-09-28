@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL } from '@/lib/dictionaries';
+import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import { blogHasLang } from '@/lib/blog';
 import WhatsAppLink from '@/components/WhatsAppLink';
 
@@ -29,6 +29,16 @@ export default function Footer({ lang }: { lang: string }) {
           {fx.licenseLine} ·{' '}
           <a href="mailto:mikhailkozlov@allstate.com" style={{ color: '#bcd0ea' }}>
             mikhailkozlov@allstate.com
+          </a>
+        </p>
+        <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#fff', fontWeight: 700, textDecoration: 'underline' }}
+          >
+            {REVIEW_CTA[lang] || REVIEW_CTA.en}
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.8rem' }}>
