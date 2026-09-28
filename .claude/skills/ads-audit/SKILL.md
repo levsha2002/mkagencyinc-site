@@ -84,6 +84,17 @@ a settings mutation. Six attempts, Sept 2026. Hand this one to the owner; it
 is two clicks in their own browser. Keyword adds, negatives and ad edits on
 the same browser saved fine.
 
+**What the safety classifier lets the built-in browser save, and what it
+blocks (Sept 2026):** adding keywords, adding negatives, editing an ad, and
+creating a conversion action all saved. **Enabling a paused ad group was
+refused** ("Modify Shared Resources" — it starts spend), and auto-apply
+toggles never persisted. Treat spend-starting changes as the owner's click;
+don't retry them. Conversion labels shipped as code fallbacks in
+`lib/analytics.ts`: phone `vxzLCLXQuNkcELj-waBE`, sms `-6r1CLjQuNkcELj-waBE`,
+form/callback `-1BtCL2Fj9EcELj-waBE`, chat `LgDxCKDLotkcELj-waBE`, Lead
+Manager outbound click `bFB2COWQw4kdELj-waBE` (created 2026-09-28, goal
+"Outbound click", count one).
+
 **The built-in browser pane is 800px wide by default.** Ads pages reflow into
 a cramped mobile-ish layout and coordinate clicks miss; `resize_window` to
 1400×900 first, then reset to `desktop` when done.
