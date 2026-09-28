@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home Insurance Quote — M&K Agency | Florida City, FL</title>
+<meta name="description" content="Real people answer the phone. Talk to a licensed local agent about home, condo or renters insurance, Mon–Fri 9am–6pm ET. Call (305) 859-3953.">
+<link rel="canonical" href="https://mkagencyinc.com/home-quote.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M&amp;K Agency Inc.">
+<meta property="og:title" content="Home Insurance Quote — M&amp;K Agency | Florida City, FL">
+<meta property="og:description" content="Talk to a licensed local agent in Florida City, Mon–Fri 9am–6pm ET. Call (305) 859-3953.">
+<meta property="og:url" content="https://mkagencyinc.com/home-quote.html">
+<meta property="og:image" content="https://mkagencyinc.com/og.jpg">
+<style>
+  :root{
+    --navy:#0B2A4A; --navy2:#123A63; --gold:#D9A441; --cream:#F6F3EB; --ink:#1E2530; --line:#E7E2D4;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Segoe UI', system-ui, sans-serif; background:var(--cream); color:var(--ink); line-height:1.5;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2{font-family:Georgia,'Iowan Old Style',serif;}
+  a{text-decoration:none;}
+
+  .callbar{
+    position:sticky; top:0; z-index:50; background:var(--navy); color:#fff;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:calc(10px + env(safe-area-inset-top,0px)) 20px 10px;
+  }
+  .callbar .brand{font-size:14px; font-weight:700; letter-spacing:.3px;}
+  .callbar .cta{background:var(--gold); color:var(--navy); padding:9px 16px; border-radius:22px; font-weight:700; font-size:13px; white-space:nowrap;}
+  .callbar .cta:focus-visible{outline:2px solid #fff; outline-offset:2px;}
+
+  .hero{position:relative; overflow:hidden; padding:44px 20px 34px; text-align:center;
+    background:linear-gradient(135deg,var(--navy),var(--navy2)); color:#fff; border-bottom:3px solid var(--gold);}
+  .hero .eyebrow{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:12px;}
+  .hero h1{font-size:clamp(24px,6vw,36px); max-width:560px; margin:0 auto 12px; line-height:1.2;}
+  .hero p.sub{max-width:440px; margin:0 auto 24px; font-size:15px; color:#C9D3E4;}
+  .hero .cta-main{display:inline-block; background:var(--gold); color:var(--navy); padding:15px 32px; border-radius:28px;
+    font-weight:700; font-size:16px; box-shadow:0 8px 20px rgba(0,0,0,.25); border:none; cursor:pointer;}
+  .hero .cta-main:focus-visible{outline:3px solid #fff; outline-offset:3px;}
+  .hero .microtrust{margin-top:14px; font-size:12px; color:#9FB0C9;}
+
+  .quiz{padding:34px 20px; text-align:center; background:#fff;}
+  .quiz h2{font-size:19px; margin-bottom:18px;}
+  .chips{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; max-width:520px; margin:0 auto;}
+  .chip{background:var(--cream); border:2px solid var(--line); border-radius:16px; padding:18px 16px; width:140px;
+    cursor:pointer; font-size:14px; font-weight:600; color:var(--navy); transition:.15s;}
+  .chip:hover, .chip:focus-visible{border-color:var(--gold); transform:translateY(-3px); outline:none;}
+  .chip .emoji{display:block; font-size:26px; margin-bottom:6px;}
+  @media (prefers-reduced-motion: reduce){ .chip{transition:none;} }
+
+  .trust{padding:30px 20px; background:var(--cream); display:flex; gap:16px; align-items:center;
+    max-width:480px; margin:0 auto; flex-wrap:wrap; justify-content:center; text-align:left;}
+  .avatar{width:58px; height:58px; border-radius:50%; background:var(--navy); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; flex-shrink:0;}
+  .trust .txt{max-width:340px; font-size:14px; color:#3A4756;}
+  .trust .txt b{color:var(--navy);}
+  .stars{color:var(--gold); font-size:13px; margin-top:4px; font-weight:700;}
+  .rb{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .rb-txt{text-decoration:underline;text-underline-offset:2px}
+  .rb-stars{position:relative;display:inline-block;line-height:1;letter-spacing:0;white-space:nowrap;font-family:Arial,Helvetica,sans-serif}
+  .rb-bg{color:rgba(148,163,184,.55)}
+  .rb-fg{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--gold)}
+
+  .cta-repeat{text-align:center; padding:28px 20px 46px; background:#fff;}
+  .cta-repeat a{display:inline-block; background:var(--navy); color:#fff; padding:15px 32px; border-radius:26px; font-weight:700; font-size:15px;}
+  .cta-repeat a:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+  .cta-repeat .fine{margin-top:10px; font-size:11px; color:#8A94A3;}
+
+  footer{text-align:center; font-size:11px; color:#8A94A3; padding:16px 20px; background:var(--cream); line-height:1.6;}
+
+  .modal-bg{display:none; position:fixed; inset:0; background:rgba(11,42,74,.55); align-items:center; justify-content:center; z-index:100; padding:20px; overflow-y:auto;}
+  .modal-bg.open{display:flex;}
+  .modal{background:#fff; border-radius:16px; padding:26px; max-width:380px; width:100%; text-align:center; margin:auto;}
+  .modal h3{font-family:Georgia,serif; font-size:19px; margin-bottom:6px; color:var(--navy);}
+  .modal p{font-size:13px; color:#5A6472; margin-bottom:16px;}
+  .modal input, .modal textarea{width:100%; padding:12px; margin-bottom:10px; border:1px solid var(--line); border-radius:10px; font-size:15px; font-family:inherit;}
+  .modal textarea{resize:vertical; min-height:60px;}
+  .consent{display:flex; gap:8px; align-items:flex-start; text-align:left; margin:6px 0 14px; font-size:11px; color:#5A6472;}
+  .consent input{width:auto; margin:2px 0 0; flex-shrink:0;}
+  .hp-field{position:absolute; left:-5000px; width:1px; height:1px; overflow:hidden;}
+  .modal .submit{width:100%; background:var(--gold); color:var(--navy); border:none; padding:13px; border-radius:10px; font-weight:700; font-size:15px; cursor:pointer;}
+  .modal .submit:disabled{opacity:.6; cursor:default;}
+  .modal .close{margin-top:12px; font-size:13px; color:#8A94A3; background:none; border:none; cursor:pointer;}
+  .status-ok{color:#1E7A44; font-size:14px; font-weight:600;}
+  .status-err{color:#B23A2E; font-size:12px; margin-top:-4px; margin-bottom:10px;}
+</style>
+<!-- Google Ads tag. Static HTML served from public/, so it does NOT get the
+     tag from app/[lang]/layout.tsx. IDs and labels mirror lib/analytics.ts;
+     keep the two in step. Same block as auto-quote.html. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18321801016"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18321801016', { allow_enhanced_conversions: true });
+  var MK_ADS = 'AW-18321801016';
+  var MK_LABELS = { phone_call: 'vxzLCLXQuNkcELj-waBE', sms_click: '-6r1CLjQuNkcELj-waBE', quote_submit: '-1BtCL2Fj9EcELj-waBE' };
+  function mkTxnId(prefix){
+    try { if (window.crypto && crypto.randomUUID) return prefix + '-' + crypto.randomUUID(); } catch(e){}
+    return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);
+  }
+  function mkE164(raw){
+    var d = String(raw || '').replace(/\D/g, '');
+    if (d.length === 10) return '+1' + d;
+    if (d.length === 11 && d.charAt(0) === '1') return '+' + d;
+    return '';
+  }
+  function mkConversion(action, params, opts){
+    params = params || {}; opts = opts || {};
+    var tx = opts.transactionId || mkTxnId(action);
+    if (opts.phone) { var p = mkE164(opts.phone); if (p) gtag('set', 'user_data', { phone_number: p }); }
+    gtag('event', action, Object.assign({ send_to: MK_ADS, transaction_id: tx }, params));
+    if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action] }, params, { transaction_id: tx }));
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href^="sms:"]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    mkConversion(href.slice(0,4) === 'tel:' ? 'phone_call' : 'sms_click', { link_url: href });
+  }, true);
+  (function(){
+    try {
+      var q=new URLSearchParams(location.search), F=['gclid','gbraid','wbraid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'], a={}, hit=false;
+      for(var i=0;i<F.length;i++){ var v=q.get(F[i]); if(v){ a[F[i]]=v.slice(0,200); hit=true; } }
+      if(!hit) return;
+      a.landing_page=location.pathname.slice(0,200); a.ts=Date.now();
+      localStorage.setItem('mk_attr', JSON.stringify(a));
+    } catch(e){}
+  })();
+  function mkAttribution(){
+    try { var a = JSON.parse(localStorage.getItem('mk_attr') || '{}'); return (a.ts && Date.now() - a.ts < 7776000000) ? a : {}; } catch(e){ return {}; }
+  }
+</script>
+</head>
+<body>
+
+  <div class="callbar">
+    <span class="brand">M&K Agency</span>
+    <a class="cta" href="tel:+13058593953">📞 Call Now</a>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">Florida Home Insurance · Licensed Agent</div>
+    <h1>Home Insurance, Explained by a Real Person.</h1>
+    <p class="sub">A licensed local agent in Florida City walks you through exactly what your policy covers — house, condo or rental.</p>
+    <button class="cta-main" onclick="openModal('House')">Get My Free Home Quote</button>
+    <div class="microtrust">Licensed FL Agent · Real People Answer the Phone · No spam, ever</div>
+  </section>
+
+  <section class="quiz" id="quote">
+    <h2>What are you insuring?</h2>
+    <div class="chips">
+      <div class="chip" tabindex="0" role="button" onclick="openModal('House')"><span class="emoji">🏠</span>House</div>
+      <div class="chip" tabindex="0" role="button" onclick="openModal('Condo / HO-6')"><span class="emoji">🏢</span>Condo / HO-6</div>
+      <div class="chip" tabindex="0" role="button" onclick="openModal('Renters')"><span class="emoji">🔑</span>Renters</div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="avatar">MK</div>
+    <div class="txt">
+      <b>Mikhail Kozlov</b>, your local licensed Florida agent.
+      <!-- RATING (static). Do not edit the numbers by hand: run
+             node scripts/update-reviews.mjs <rating> <count>
+           which rewrites data/reviews.json AND the data-rating-* spots below. -->
+      <div class="stars"><a class="rb" href="https://agents.allstate.com/mikhail-kozlov-florida-city-fl.html" target="_blank" rel="noopener" data-rating-aria aria-label="Rated 4.5 out of 5 from 627 reviews on Allstate.com (opens in a new tab)"><span class="rb-num" data-rating-value>4.5</span> <span class="rb-stars" aria-hidden="true"><span class="rb-bg">★★★★★</span><span class="rb-fg" data-rating-width style="width:90%">★★★★★</span></span> <span class="rb-txt">· <span data-rating-count>627</span> reviews on Allstate.com</span></a></div>
+    </div>
+  </section>
+
+  <div class="cta-repeat">
+    <a href="tel:+13058593953">📞 Call (305) 859-3953</a>
+    <div class="fine">Or use the form above. Office hours: Mon–Fri, 9am–6pm ET.</div>
+  </div>
+
+  <footer>
+    M&K Agency Inc. · Florida City, FL<br>
+    M&K Agency License #L109526 · Mikhail Kozlov License #W639521
+  </footer>
+
+  <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" id="modalCard">
+      <h3 id="modalTitle">Get your quote</h3>
+      <p id="modalSub">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</p>
+      <form id="quoteForm">
+        <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="text" id="f-name" placeholder="Your name" aria-label="Your name" autocomplete="name" required>
+        <input type="tel" id="f-phone" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" inputmode="tel" required>
+        <input type="text" id="f-address" placeholder="Property address (optional)" aria-label="Property address (optional)" autocomplete="street-address">
+        <textarea id="f-comments" placeholder="Anything we should know? (optional)" aria-label="Anything we should know? (optional)"></textarea>
+        <label class="consent">
+          <input type="checkbox" id="f-consent" required>
+          <span id="f-consent-text">By checking this box, I agree that M&amp;K Agency Inc. may contact me about insurance by phone call, text message or email at the phone number and email I provide, even if my number is on a Do-Not-Call list. Consent is not a condition of purchase. Message frequency varies; message and data rates may apply. Reply STOP to opt out of texts at any time. See our <a href="/en/privacy" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Privacy Policy</a>.</span>
+        </label>
+        <p class="status-err" id="formErr" style="display:none;">Something went wrong. Please call us at (305) 859-3953.</p>
+        <button type="submit" class="submit" id="submitBtn">Send My Info</button>
+      </form>
+      <button class="close" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+<script>
+var currentProperty = 'House';
+// Keep in step with lib/consent.ts (same text + version as the Next.js forms).
+var CONSENT_TEXT_VERSION = 'v3-2026-09-25';
+var CONSENT_TEXT = 'By checking this box, I agree that M&K Agency Inc. may contact me about insurance by phone call, text message or email at the phone number and email I provide, even if my number is on a Do-Not-Call list. Consent is not a condition of purchase. Message frequency varies; message and data rates may apply. Reply STOP to opt out of texts at any time. See our Privacy Policy (https://mkagencyinc.com/en/privacy).';
+
+function openModal(kind){
+  currentProperty = kind;
+  document.getElementById('modalTitle').textContent = 'Quote for your ' + kind;
+  document.getElementById('modalBg').classList.add('open');
+}
+function closeModal(){ document.getElementById('modalBg').classList.remove('open'); }
+document.querySelectorAll('.chip').forEach(function(c){
+  c.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } });
+});
+document.getElementById('modalBg').addEventListener('click', function(e){ if(e.target.id==='modalBg') closeModal(); });
+
+document.getElementById('quoteForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var errEl = document.getElementById('formErr');
+  var btn = document.getElementById('submitBtn');
+  errEl.style.display = 'none';
+
+  var company = e.target.elements.company.value; // honeypot, must stay empty
+  var name = document.getElementById('f-name').value;
+  var phone = document.getElementById('f-phone').value;
+  var address = document.getElementById('f-address').value;
+  var comments = document.getElementById('f-comments').value;
+  var consent = document.getElementById('f-consent').checked;
+  if(!consent) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var txId = mkTxnId('quote');
+
+  try {
+    var res = await fetch('/api/insurance-quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        company: company,
+        name: name,
+        phone: phone,
+        address: address,
+        vin: '',
+        drivers: '',
+        comments: (comments ? comments + ' ' : '') + '[Property: ' + currentProperty + '] [Source: Google Ads home-quote landing page]',
+        product_slug: 'home',
+        product_title: 'Home Insurance',
+        lang: 'en',
+        consent: true,
+        consent_user_agent: navigator.userAgent,
+        consent_text_version: CONSENT_TEXT_VERSION,
+        consent_text: CONSENT_TEXT,
+        page_url: location.href.slice(0, 500),
+        transaction_id: txId,
+        attribution: mkAttribution()
+      })
+    });
+
+    if (res.ok) {
+      if (typeof window.gtag === 'function') {
+        mkConversion('quote_submit', { insurance_type: 'Home Insurance', lang: 'en' }, { transactionId: txId, phone: phone });
+        window.gtag('event', 'generate_lead', {
+          currency: 'USD',
+          value: 1,
+          insurance_type: 'Home Insurance',
+          transaction_id: txId
+        });
+      }
+      document.getElementById('modalTitle').textContent = 'Thank you!';
+      document.getElementById('modalSub').innerHTML = '<span class="status-ok">A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.</span>'
+        + '<br><a href="https://g.page/r/CWF74cqupIm6EBM/review" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:10px;font-size:.9rem">Already a customer? Leave us a Google review</a>';
+      document.getElementById('quoteForm').style.display = 'none';
+    } else {
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send My Info';
+    }
+  } catch (err) {
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send My Info';
+  }
+});
+</script>
+</body>
+</html>
