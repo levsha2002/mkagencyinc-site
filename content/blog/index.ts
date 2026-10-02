@@ -6,10 +6,12 @@ import { post as citizensFlood2027 } from './posts/citizens-flood-insurance-requ
 import { post as citizensTakeoutOffer } from './posts/citizens-takeout-offer';
 import { post as uninsuredMotoristFlorida } from './posts/uninsured-motorist-coverage-florida';
 import { post as sr22FloridaGuia } from './posts/sr22-florida-guia';
+import { post as nonOwnerSr22Florida } from './posts/non-owner-sr22-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
   citizensTakeoutOffer,
   uninsuredMotoristFlorida,
   sr22FloridaGuia,
+  nonOwnerSr22Florida,
 ];
