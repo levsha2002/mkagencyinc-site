@@ -19,6 +19,20 @@ export const GOOGLE_ADS_ID = 'AW-18321801016';
 export const CALL_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/P8qXCI3yzIYdELj-waBE`;
 export const CALL_CONVERSION_PHONE = '(305) 859-3953';
 
+// "WhatsApp click" (secondary conversion, created 2026-10-03). Fired once per
+// click on any wa.me link to our WhatsApp number, next to the whatsapp_click
+// GA4 event: by trackWhatsAppClick() (lib/whatsapp.ts) for <WhatsAppLink>, and
+// by the delegated fallback in phoneClickTrackingScript() for any raw wa.me
+// link that is not a <WhatsAppLink> (no data-wa-link attribute). The static ad
+// pages (public/*.html) carry the same call inline. Never on tel:/sms: clicks.
+// Same as WHATSAPP_NUMBER in lib/whatsapp.ts (not imported: whatsapp.ts imports this file).
+const WHATSAPP_TRACK_NUMBER = '19719987313';
+export const WHATSAPP_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/BpOFCLO7348dELj-waBE`;
+/** The exact conversion payload: gtag('event', 'conversion', whatsappConversionParams()). */
+export function whatsappConversionParams() {
+  return { send_to: WHATSAPP_CONVERSION_SEND_TO, value: 1.0, currency: 'USD' };
+}
+
 /** Inline script: gtag bootstrap + base Ads config + the website call
  *  conversion config with a `phone_conversion_callback`.
  *
@@ -252,6 +266,19 @@ export function phoneClickTrackingScript() {
     // observe, because the form itself lives on a page we can't tag.
     var o=t.closest('a[href*="${LEAD_MANAGER_HOST}"]');
     if(o){ fire('lead_manager_click', o.getAttribute('href')||''); return; }
+    // WhatsApp links that are NOT <WhatsAppLink> (which tracks itself and is
+    // marked data-wa-link), so each click fires exactly once. Our number only;
+    // share links (wa.me/?text=..., referral ShareBar) are not a contact.
+    var w=t.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com/"]');
+    if(w){
+      if(w.hasAttribute('data-wa-link')) return;
+      var wh=w.getAttribute('href')||'';
+      if(wh.indexOf('${WHATSAPP_TRACK_NUMBER}')<0) return;
+      if(typeof window.gtag!=='function') return;
+      window.gtag('event','whatsapp_click',{ send_to: ADS, page_path: location.pathname, link_location: 'raw_link', link_url: wh });
+      window.gtag('event','conversion',{ send_to: '${WHATSAPP_CONVERSION_SEND_TO}', value: 1.0, currency: 'USD' });
+      return;
+    }
     var a=t.closest('a[href^="tel:"], a[href^="sms:"]');
     if(!a) return;
     var href=a.getAttribute('href')||'';

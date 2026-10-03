@@ -1,4 +1,4 @@
-import { GOOGLE_ADS_ID } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, whatsappConversionParams } from '@/lib/analytics';
 
 // WhatsApp contact: Mikhail Kozlov's mobile, (971) 998-7313. Deliberately a
 // different number from the office/call-tracking line (305) 859-3953, so the
@@ -34,7 +34,9 @@ export function whatsappLabel(lang: string): string {
   return LABEL[pick(lang)];
 }
 
-/** Plain GA/Ads event (not a Google Ads conversion action). */
+/** whatsapp_click GA/Ads event plus the "WhatsApp click" secondary Ads
+ *  conversion, once per click. Called from <WhatsAppLink>'s onClick; it never
+ *  calls preventDefault, so the link opens normally (gtag sends with beacon). */
 export function trackWhatsAppClick(lang: string, placement: string) {
   if (typeof window === 'undefined') return;
   const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
@@ -45,4 +47,5 @@ export function trackWhatsAppClick(lang: string, placement: string) {
     page_path: window.location.pathname,
     link_location: placement,
   });
+  gtag('event', 'conversion', whatsappConversionParams());
 }
