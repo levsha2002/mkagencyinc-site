@@ -38,6 +38,7 @@ const UI: Record<Lang, {
   home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string; checked: string;
   servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward', string>; hub: string;
   related: string; flood: string; quoteTitle: string; quoteText: string;
+  agent: Record<'homestead' | 'kendall', string>; windGuide: string; accidentGuide: string;
 }> = {
   en: {
     home: 'Home', updated: 'Updated', call: 'Call', cta: 'Have an agent call me', whatsapp: 'WhatsApp us', langLine: 'English · Español · По-русски',
@@ -49,6 +50,9 @@ const UI: Record<Lang, {
     },
     hub: 'Miami-Dade County', related: 'More for this area',
     flood: 'Flood insurance in Homestead',
+    agent: { homestead: 'Insurance agent for Homestead', kendall: 'Insurance agent for Kendall' },
+    windGuide: 'Florida hurricane deductible, explained',
+    accidentGuide: 'Car accident in Miami-Dade: what to do next',
     quoteTitle: 'Ready for a second opinion on your coverage?',
     quoteText: 'Leave your number and a licensed agent will call you back, within an hour during business hours.',
   },
@@ -62,6 +66,9 @@ const UI: Record<Lang, {
     },
     hub: 'Condado Miami-Dade', related: 'Más para esta zona',
     flood: 'Seguro de inundación en Homestead',
+    agent: { homestead: 'Agente de seguros para Homestead', kendall: 'Agente de seguros para Kendall' },
+    windGuide: 'El deducible de huracán en Florida, explicado',
+    accidentGuide: 'Accidente de carro en Miami-Dade: qué hacer después',
     quoteTitle: '¿Quiere una segunda opinión sobre su cobertura?',
     quoteText: 'Déjenos su número y un agente licenciado le llama, en menos de una hora en horario de oficina.',
   },
@@ -75,6 +82,9 @@ const UI: Record<Lang, {
     },
     hub: 'Округ Miami-Dade', related: 'Ещё по этому району',
     flood: 'Страховка от наводнения в Homestead',
+    agent: { homestead: 'Страховой агент для Homestead', kendall: 'Страховой агент для Kendall' },
+    windGuide: 'Ураганная франшиза во Флориде: как она работает',
+    accidentGuide: 'ДТП в Miami-Dade: что делать дальше',
     quoteTitle: 'Нужен второй взгляд на ваше покрытие?',
     quoteText: 'Оставьте номер — лицензированный агент перезвонит, в рабочее время в течение часа.',
   },
@@ -113,6 +123,10 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
     ? { href: `/${l}/protect/car-insurance`, label: GUIDE_LABEL[l].auto }
     : { href: `/${l}/protect/home-insurance`, label: GUIDE_LABEL[l].home });
   if (page.area === 'homestead' && page.line === 'home' && l !== 'ru') extraLinks.push({ href: `/${l}/flood-insurance-homestead-fl`, label: ui.flood });
+  // Local agent hubs and guides (content/pages/guides).
+  if (page.area === 'homestead' || page.area === 'kendall') extraLinks.push({ href: `/${l}/insurance-agent-${page.area}`, label: ui.agent[page.area] });
+  if (page.line === 'home') extraLinks.push({ href: `/${l}/florida-home-insurance-wind-deductible`, label: ui.windGuide });
+  if (page.line === 'auto' && page.area !== 'broward') extraLinks.push({ href: `/${l}/auto-insurance-after-accident-miami-dade`, label: ui.accidentGuide });
 
   const crumbs = [
     { name: ui.home, item: `${SITE_URL}/${l}` },

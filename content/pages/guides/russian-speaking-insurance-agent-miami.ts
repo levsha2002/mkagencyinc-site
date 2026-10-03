@@ -1,0 +1,183 @@
+import type { GuidePage } from './types';
+import { sources } from './sources';
+
+const SRC = ['newResident', 'flhsmv', 'floodsmart'] as const;
+
+export const RUSSIAN_AGENT: GuidePage = {
+  path: '/russian-speaking-insurance-agent-miami',
+  leadType: 'Auto',
+  heroImage: 'legacy-agent-office',
+  published: '2026-10-03',
+  modified: '2026-10-03',
+  areaServed: [{ '@type': 'AdministrativeArea', name: 'Miami-Dade County, FL' }, { '@type': 'State', name: 'Florida' }],
+  copy: {
+    en: {
+      metaTitle: 'Russian-Speaking Insurance Agent, Miami-Dade | M&K Agency',
+      metaDesc: 'Talk to a licensed insurance agent in Russian about home, condo, auto, life and small-business liability. A family-owned Florida City agency serving Miami-Dade.',
+      breadcrumb: 'Russian-speaking insurance agent',
+      kicker: 'Russian-speaking agent · Miami-Dade',
+      h1a: 'Russian-speaking insurance agent for Miami-Dade,',
+      h1b: 'from our Florida City office.',
+      answer: 'M&K Agency is a family-owned agency in Florida City where you can discuss home, condo, auto and life insurance, and general liability for small businesses, in Russian with Mikhail (Mike) Kozlov, a licensed agent. We serve Miami-Dade and the rest of Florida by phone, WhatsApp and in person at 33550 S Dixie Hwy, Suite 102. Call (305) 859-3953, or leave your number and we’ll contact you within an hour during business hours.',
+      serviceType: 'Insurance agency',
+      intro: [
+        { type: 'h2', text: 'Who this page is for' },
+        { type: 'ul', items: [
+          '**Russian speakers who are new to Florida** and need insurance to register a car, rent or close on a home.',
+          '**Families who prefer to go over the terms in Russian**, even if they speak English well.',
+          '**Business owners** who want their general liability and certificate questions answered clearly.',
+          '**Relatives, real-estate agents and employers** looking for a Russian-speaking agent for someone else.',
+        ] },
+      ],
+      checklistTitle: 'Four questions we will ask you',
+      checklist: [
+        '**When did you become a Florida resident, and do you have a Florida driver license yet?** Florida requires new residents to get a Florida license within 30 days of establishing residency. You also need Florida insurance to title and register your car.',
+        '**Who will drive, and what is each driver’s history?** We will ask about licenses, past insurance and any accidents. How insurers treat driving history from another country varies by insurer.',
+        '**What are you insuring?** It could be a house, a condo, a rental unit, a car, a business or your family’s income. Each needs a different policy.',
+        '**What coverage did you have before?** Bring your declarations pages, or any policy from another state. Continuous prior insurance can matter to insurers.',
+      ],
+      body: [
+        { type: 'h2', text: 'What is not covered (honest limits)' },
+        { type: 'ul', items: [
+          '**Policy documents are issued in English; we explain them in your language.** The written policy, including its exclusions, is what counts.',
+          '**State-minimum auto coverage is thin.** For most drivers, Florida requires $10,000 of PIP and $10,000 of property damage liability. Neither pays for injuries you cause to others.',
+          '**Flood** is excluded from standard home and condo policies and needs a separate policy.',
+          '**Eligibility depends on underwriting.** A foreign license, a short US driving record or an older roof can limit options. We’ll tell you honestly what we can and can’t do.',
+        ] },
+      ],
+      officeTitle: 'Talk to a licensed agent',
+      office: [
+        { type: 'p', text: 'Call **(305) 859-3953** and ask for Mikhail (Mike) Kozlov or say you would like to speak Russian. Or leave your number, write “Russian” in the message, and we’ll contact you within an hour during business hours. WhatsApp: (971) 998-7313.' },
+        { type: 'p', text: 'Our office is at **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**, open Monday to Friday 9 to 6, with Saturdays by appointment.' },
+      ],
+      faqTitle: 'Russian-speaking insurance agent: FAQ',
+      faq: [
+        { q: 'Can I get car insurance with a foreign or international license?', a: 'That depends on the insurer and on underwriting. Keep in mind that Florida requires new residents to get a Florida driver license within 30 days of establishing residency. Call us with your situation and we’ll tell you what may be possible.' },
+        { q: 'Will my policy documents be in Russian?', a: 'No. Policy documents are issued in English; we explain them in your language. We go through the declarations page, limits, deductibles and exclusions with you in Russian, so you know what you are signing.' },
+        { q: 'Can you help with a claim in Russian?', a: 'Yes. We help you report the claim, explain what the insurer is asking for and follow up. The insurer adjusts the claim and decides coverage under your policy.' },
+        { q: 'Do you serve Sunny Isles Beach, Aventura and other parts of Miami-Dade?', a: 'Yes. We serve clients across Miami-Dade and the rest of Florida by phone, WhatsApp and email. Our only office is in Florida City.' },
+        { q: 'Do you only work with Russian speakers?', a: 'No. We work in English, Spanish and Russian, and many families use more than one. Mikhail (Mike) Kozlov helps in Russian; Jose Chalela, Carolina Silva and Elena De Oña (home insurance) help in Spanish.' },
+      ],
+      related: [
+        { path: '/team', label: 'Our team' },
+        { path: '/car-insurance-florida-city', label: 'Auto insurance in Florida City' },
+        { path: '/homeowners-insurance-florida-city', label: 'Home insurance in Florida City' },
+        { path: '/insurance-agent-homestead', label: 'Insurance agent for Homestead' },
+        { path: '/insurance-agent-kendall', label: 'Insurance agent for Kendall' },
+      ],
+      sources: sources('en', [...SRC]),
+    },
+    es: {
+      metaTitle: 'Agente de seguros que habla ruso, Miami-Dade | M&K Agency',
+      metaDesc: 'Hable en ruso con un agente licenciado sobre seguros de casa, condominio, auto, vida y responsabilidad para pequeños negocios. Agencia familiar en Florida City.',
+      breadcrumb: 'Agente de seguros que habla ruso',
+      kicker: 'Agente que habla ruso · Miami-Dade',
+      h1a: 'Agente de seguros que habla ruso en Miami-Dade,',
+      h1b: 'desde nuestra oficina de Florida City.',
+      answer: 'M&K Agency es una agencia familiar en Florida City donde puede hablar en ruso con Mikhail (Mike) Kozlov, agente licenciado, sobre seguros de casa, condominio, auto y vida, y sobre responsabilidad civil general para pequeños negocios. Atendemos Miami-Dade y el resto de Florida por teléfono, WhatsApp y en persona en 33550 S Dixie Hwy, Suite 102. Llámenos al (305) 859-3953, o déjenos su número y lo contactamos en menos de una hora en horario de oficina.',
+      serviceType: 'Agencia de seguros',
+      intro: [
+        { type: 'h2', text: 'Para quién es esta página' },
+        { type: 'ul', items: [
+          '**Personas de habla rusa recién llegadas a Florida** que necesitan seguro para registrar un carro, alquilar o cerrar la compra de una casa.',
+          '**Familias que prefieren repasar las condiciones en ruso**, aunque hablen bien inglés.',
+          '**Dueños de negocios** que quieren respuestas claras sobre responsabilidad civil general y certificados.',
+          '**Familiares, agentes de bienes raíces y empleadores** que buscan un agente que hable ruso para otra persona.',
+        ] },
+      ],
+      checklistTitle: 'Cuatro preguntas que le haremos',
+      checklist: [
+        '**¿Cuándo se hizo residente de Florida y ya tiene licencia de conducir de Florida?** Florida exige que los nuevos residentes saquen la licencia de Florida dentro de los 30 días de establecer su residencia. También necesita seguro de Florida para titular y registrar su carro.',
+        '**¿Quién va a manejar y qué historial tiene cada conductor?** Le preguntaremos por licencias, seguros anteriores y accidentes. Cómo tratan las aseguradoras el historial de manejo de otro país varía según la aseguradora.',
+        '**¿Qué quiere asegurar?** Puede ser una casa, un condominio, una unidad que alquila, un carro, un negocio o los ingresos de su familia. Cada cosa necesita una póliza distinta.',
+        '**¿Qué cobertura tenía antes?** Traiga sus páginas de declaraciones o cualquier póliza de otro estado. Tener seguro continuo antes puede importarles a las aseguradoras.',
+      ],
+      body: [
+        { type: 'h2', text: 'Lo que no está cubierto (límites claros)' },
+        { type: 'ul', items: [
+          '**Las pólizas se emiten en inglés; se las explicamos en su idioma.** Lo que cuenta es la póliza escrita, incluidas sus exclusiones.',
+          '**El seguro de auto mínimo del estado es limitado.** Para la mayoría de los conductores, Florida exige $10,000 de PIP y $10,000 de daños a la propiedad (PDL). Ninguno de los dos paga las lesiones que usted cause a otros.',
+          '**La inundación** está excluida de las pólizas estándar de casa y de condominio, y necesita una póliza aparte.',
+          '**La elegibilidad depende de la suscripción (underwriting).** Una licencia extranjera, poco historial de manejo en EE. UU. o un techo viejo pueden limitar las opciones. Le diremos con honestidad qué podemos hacer y qué no.',
+        ] },
+      ],
+      officeTitle: 'Hable con un agente licenciado',
+      office: [
+        { type: 'p', text: 'Llame al **(305) 859-3953** y pregunte por Mikhail (Mike) Kozlov o diga que quiere hablar en ruso. O déjenos su número, escriba “ruso” en el mensaje, y lo contactamos en menos de una hora en horario de oficina. WhatsApp: (971) 998-7313.' },
+        { type: 'p', text: 'Nuestra oficina está en **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**, abierta de lunes a viernes de 9 a 6, y los sábados con cita.' },
+      ],
+      faqTitle: 'Agente de seguros que habla ruso: preguntas frecuentes',
+      faq: [
+        { q: '¿Puedo sacar seguro de auto con una licencia extranjera o internacional?', a: 'Depende de la aseguradora y de la suscripción. Tenga en cuenta que Florida exige que los nuevos residentes saquen la licencia de conducir de Florida dentro de los 30 días de establecer su residencia. Llámenos, cuéntenos su caso y le diremos qué puede ser posible.' },
+        { q: '¿Mis documentos de póliza estarán en ruso?', a: 'No. Las pólizas se emiten en inglés; se las explicamos en su idioma. Repasamos con usted en ruso la página de declaraciones, los límites, los deducibles y las exclusiones, para que sepa lo que firma.' },
+        { q: '¿Me pueden ayudar con un reclamo en ruso?', a: 'Sí. Le ayudamos a reportar el reclamo, le explicamos lo que pide la aseguradora y damos seguimiento. La aseguradora ajusta el reclamo y decide la cobertura según su póliza.' },
+        { q: '¿Atienden Sunny Isles Beach, Aventura y otras partes de Miami-Dade?', a: 'Sí. Atendemos clientes en todo Miami-Dade y el resto de Florida por teléfono, WhatsApp y correo. Nuestra única oficina está en Florida City.' },
+        { q: '¿Solo trabajan con personas de habla rusa?', a: 'No. Trabajamos en inglés, español y ruso, y muchas familias usan más de un idioma. Mikhail (Mike) Kozlov le atiende en ruso; Jose Chalela, Carolina Silva y Elena De Oña (seguros de casa), en español.' },
+      ],
+      related: [
+        { path: '/team', label: 'Nuestro equipo' },
+        { path: '/car-insurance-florida-city', label: 'Seguro de auto en Florida City' },
+        { path: '/homeowners-insurance-florida-city', label: 'Seguro de casa en Florida City' },
+        { path: '/insurance-agent-homestead', label: 'Agente de seguros para Homestead' },
+        { path: '/insurance-agent-kendall', label: 'Agente de seguros para Kendall' },
+      ],
+      sources: sources('es', [...SRC]),
+    },
+    ru: {
+      metaTitle: 'Русскоязычный страховой агент в Miami-Dade | M&K Agency',
+      metaDesc: 'Поговорите по-русски с лицензированным агентом о страховке дома, кондо, машины, жизни и ответственности бизнеса. Семейное агентство во Florida City.',
+      breadcrumb: 'Русскоязычный страховой агент',
+      kicker: 'Русскоязычный агент · Miami-Dade',
+      h1a: 'Русскоязычный страховой агент для Miami-Dade —',
+      h1b: 'в нашем офисе во Florida City.',
+      answer: 'M&K Agency — семейное агентство во Florida City, где о страховке дома, кондо, машины и жизни, а также о страховании общей ответственности (general liability) для малого бизнеса можно поговорить по-русски с лицензированным агентом Михаилом (Майком) Козловым. Мы обслуживаем Miami-Dade и всю Флориду по телефону, в WhatsApp и лично по адресу 33550 S Dixie Hwy, Suite 102. Позвоните нам по номеру (305) 859-3953 или оставьте номер — мы свяжемся с вами в течение часа в рабочее время.',
+      serviceType: 'Страховое агентство',
+      intro: [
+        { type: 'h2', text: 'Для кого эта страница' },
+        { type: 'ul', items: [
+          '**Русскоязычные, которые недавно переехали во Флориду** и которым нужна страховка, чтобы зарегистрировать машину, снять жильё или закрыть сделку по дому.',
+          '**Семьи, которым удобнее обсуждать условия по-русски**, даже если они хорошо говорят по-английски.',
+          '**Владельцы бизнеса**, которым нужны понятные ответы о general liability и сертификатах страховки.',
+          '**Родственники, риелторы и работодатели**, которые ищут русскоязычного агента для кого-то другого.',
+        ] },
+      ],
+      checklistTitle: 'Четыре вопроса, которые мы вам зададим',
+      checklist: [
+        '**Когда вы стали жителем Флориды и есть ли у вас уже флоридские права?** Флорида требует, чтобы новые жители получили права Флориды в течение 30 дней с момента, когда они стали резидентами штата. Чтобы оформить титул и зарегистрировать машину, нужна также страховка Флориды.',
+        '**Кто будет водить и какая история у каждого водителя?** Мы спросим о правах, прежней страховке и авариях. Как страховые учитывают водительский стаж из другой страны, зависит от страховой.',
+        '**Что вы страхуете?** Это может быть дом, кондо, сдаваемая квартира, машина, бизнес или доход семьи. Для каждого нужен свой полис.',
+        '**Какое покрытие у вас было раньше?** Принесите декларационные страницы или любой полис из другого штата. Для страховых может иметь значение непрерывная страховка в прошлом.',
+      ],
+      body: [
+        { type: 'h2', text: 'Что не покрывается (честно о границах)' },
+        { type: 'ul', items: [
+          '**Полисы выдаются на английском языке; мы объясняем их на вашем языке.** Значение имеет письменный текст полиса, включая исключения.',
+          '**Минимальная автостраховка штата — это немного.** Для большинства водителей Флорида требует $10,000 PIP и $10,000 PDL (ответственность за ущерб имуществу). Ни то, ни другое не платит за травмы, которые вы причините другим.',
+          '**Наводнение** исключено из обычных полисов на дом и кондо, для него нужен отдельный полис.',
+          '**Возможность оформления зависит от андеррайтинга.** Иностранные права, короткий водительский стаж в США или старая крыша могут ограничить варианты. Мы честно скажем, что можем сделать, а что нет.',
+        ] },
+      ],
+      officeTitle: 'Поговорите с лицензированным агентом',
+      office: [
+        { type: 'p', text: 'Звоните **(305) 859-3953** и попросите Михаила (Майка) Козлова или скажите, что хотите говорить по-русски. Или оставьте номер в форме — мы свяжемся с вами в течение часа в рабочее время. WhatsApp: (971) 998-7313.' },
+        { type: 'p', text: 'Наш офис: **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**, с понедельника по пятницу с 9 до 6, в субботу — по записи.' },
+      ],
+      faqTitle: 'Русскоязычный страховой агент: частые вопросы',
+      faq: [
+        { q: 'Можно ли застраховать машину с иностранными или международными правами?', a: 'Это зависит от страховой и от андеррайтинга. Учтите, что Флорида требует от новых жителей получить флоридские права в течение 30 дней с момента, когда они стали резидентами штата. Позвоните, расскажите о своей ситуации, и мы скажем, что может быть возможно.' },
+        { q: 'Документы по полису будут на русском?', a: 'Нет. Полисы выдаются на английском языке; мы объясняем их на вашем языке. Мы разберём с вами по-русски декларационную страницу, лимиты, франшизы и исключения, чтобы вы знали, что подписываете.' },
+        { q: 'Поможете с клеймом на русском?', a: 'Да. Мы поможем заявить клейм, объясним, что просит страховая, и будем следить за ходом дела. Клейм урегулирует страховая, и она же решает вопрос о покрытии по вашему полису.' },
+        { q: 'Вы обслуживаете Sunny Isles Beach, Aventura и другие районы Miami-Dade?', a: 'Да. Мы работаем с клиентами по всему Miami-Dade и Флориде по телефону, в WhatsApp и по почте. Наш единственный офис — во Florida City.' },
+        { q: 'Вы работаете только с русскоязычными?', a: 'Нет. Мы работаем на английском, испанском и русском, и во многих семьях говорят на нескольких языках. По-русски помогает Михаил (Майк) Козлов, по-испански — Jose Chalela, Carolina Silva и Elena De Oña (страховка дома).' },
+      ],
+      related: [
+        { path: '/team', label: 'Наша команда' },
+        { path: '/car-insurance-florida-city', label: 'Автостраховка во Florida City' },
+        { path: '/homeowners-insurance-florida-city', label: 'Страховка дома во Florida City' },
+        { path: '/insurance-agent-homestead', label: 'Страховой агент для Homestead' },
+        { path: '/insurance-agent-kendall', label: 'Страховой агент для Kendall' },
+      ],
+      sources: sources('ru', [...SRC]),
+    },
+  },
+};

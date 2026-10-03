@@ -5,6 +5,7 @@ import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
 import { allEditions, editionLangs, newsHasLang } from '@/lib/news';
 import { BUSINESS_PAGES } from '@/content/pages/business';
 import { CITY_PAGES } from '@/content/pages/city';
+import { GUIDE_PAGES } from '@/content/pages/guides';
 import { TOPICS, PROTECT_PATH, topicPath } from '@/content/pages/protect';
 
 // Полная карта сайта: реальные страницы (без /services и /about — это редиректы)
@@ -54,6 +55,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: p.modified,
       changeFrequency: 'monthly' as const,
       priority: p.kind === 'county' ? 0.9 : 0.8,
+    }))
+  );
+
+  // Local agent hubs and guides (content/pages/guides), all three languages.
+  const guidePages = langs.flatMap((l) =>
+    GUIDE_PAGES.map((p) => ({
+      url: `${base}/${l}${p.path}`,
+      lastModified: p.modified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     }))
   );
 
@@ -109,5 +120,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...everyLang, ...cityPages, ...protectPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
+  return [...everyLang, ...cityPages, ...guidePages, ...protectPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
 }
