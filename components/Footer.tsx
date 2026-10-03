@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import { blogHasLang } from '@/lib/blog';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import AreasWeServe from '@/components/city/AreasWeServe';
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -19,6 +20,7 @@ export default function Footer({ lang }: { lang: string }) {
             📝 {lang === 'es' ? 'Solicite una cotización' : lang === 'ru' ? 'Запросить расчёт' : 'Request a Quote'}
           </Link>
         </div>
+        <AreasWeServe lang={lang} variant="footer" />
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>
           {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>
