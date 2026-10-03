@@ -6,7 +6,8 @@ const SRC = ['hurricaneDef', 'deductibles', 'mitigation', 'oirTropical', 'dfsHur
 export const WIND_DEDUCTIBLE: GuidePage = {
   path: '/florida-home-insurance-wind-deductible',
   leadType: 'Home',
-  heroImage: 'home-11',
+  heroImage: 'guide-wind-deductible',
+  ogImage: { src: '/og/wind-deductible.webp', alt: { en: 'Florida hurricane wind deductible explained — M&K Agency', es: 'Deducible por huracán en Florida explicado — M&K Agency', ru: 'Франшиза при урагане во Флориде — M&K Agency' } },
   published: '2026-10-03',
   modified: '2026-10-03',
   areaServed: [{ '@type': 'State', name: 'Florida' }],

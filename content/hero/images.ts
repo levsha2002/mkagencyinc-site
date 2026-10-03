@@ -121,6 +121,14 @@ export const HERO_IMAGES = {
   'family-12': hero('family-12', 'Young parents hugging their toddler outdoors', 'Padres jóvenes abrazando a su hijo pequeño al aire libre', 'Молодые родители обнимают малыша на улице'),
   'family-13': hero('family-13', 'A mother and her daughters in a sunny field', 'Una madre y sus hijas en un campo soleado', 'Мама с дочерьми на солнечном поле'),
   'family-14': hero('family-14', 'A family enjoying a picnic in the park', 'Una familia disfrutando de un picnic en el parque', 'Семья на пикнике в парке'),
+
+  // ---- guide / hub page covers (content/pages/guides; also their og:image source) ----
+  'guide-homestead': legacy('hero/guide-homestead.webp', 1440, 757, 'A row of shops with palm trees beside farmland on a sunny South Florida road', 'Una hilera de tiendas con palmeras junto a campos de cultivo en una calle soleada del sur de Florida', 'Ряд магазинов с пальмами рядом с фермерскими полями на солнечной улице Южной Флориды'),
+  'guide-kendall': legacy('hero/guide-kendall.webp', 1440, 720, 'Aerial view of a palm-lined boulevard with condo towers, homes and a park', 'Vista aérea de un bulevar con palmeras, edificios de condominios, casas y un parque', 'Вид сверху на бульвар с пальмами, кондоминиумами, домами и парком'),
+  'guide-wind-deductible': legacy('hero/guide-wind-deductible.webp', 1440, 758, 'A single-story home with shutters as the wind bends the palm trees', 'Una casa de un piso con contraventanas mientras el viento dobla las palmeras', 'Одноэтажный дом со ставнями, ветер гнёт пальмы'),
+  'guide-after-accident': legacy('hero/guide-after-accident.webp', 1440, 758, 'A car stopped on a grassy roadside with a warning triangle at sunset', 'Un carro detenido al borde de la carretera con un triángulo de emergencia al atardecer', 'Машина у обочины с аварийным знаком на закате'),
+  'guide-commercial-gl': legacy('hero/guide-commercial-gl.webp', 1440, 720, 'A work van and tools parked outside a small shopping center with palm trees', 'Una camioneta de trabajo y herramientas frente a un pequeño centro comercial con palmeras', 'Рабочий фургон и инструменты у небольшого торгового центра с пальмами'),
+  'guide-russian-agent': legacy('hero/guide-russian-agent.webp', 1440, 720, 'A bright office desk with a laptop and two chairs by a window with palm trees', 'Un escritorio luminoso con una laptop y dos sillas junto a una ventana con palmeras', 'Светлый рабочий стол с ноутбуком и двумя стульями у окна с пальмами'),
 } satisfies Record<string, HeroImage>;
 
 export type HeroImageKey = keyof typeof HERO_IMAGES;

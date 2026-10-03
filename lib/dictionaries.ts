@@ -217,6 +217,10 @@ const en = {
     okText: "Got it! We'll text you back during office hours — Mon–Fri, 9am–6pm ET.",
     err: 'Something went wrong. Please try again or call us at (305) 859-3953.',
   },
+  googleReviewBadge: {
+    text: 'Review us on Google',
+    aria: 'Review us on Google (opens in a new tab)',
+  },
   ratingBadge: {
     one: 'review',
     many: 'reviews',
@@ -441,6 +445,10 @@ const es: typeof en = {
     okText: '¡Listo! Le enviaremos un texto en horario de oficina — lun–vie, 9am–6pm ET.',
     err: 'Algo salió mal. Inténtelo de nuevo o llámenos al (305) 859-3953.',
   },
+  googleReviewBadge: {
+    text: 'Déjanos una reseña en Google',
+    aria: 'Déjanos una reseña en Google (se abre en una pestaña nueva)',
+  },
   ratingBadge: {
     one: 'reseña',
     many: 'reseñas',
@@ -662,6 +670,10 @@ const ru: typeof en = {
     okCall: 'Принято! Агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
     okText: 'Принято! Мы напишем вам в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
     err: 'Что-то пошло не так. Попробуйте ещё раз или позвоните нам: (305) 859-3953.',
+  },
+  googleReviewBadge: {
+    text: 'Оставьте отзыв в Google',
+    aria: 'Оставьте отзыв в Google (откроется в новой вкладке)',
   },
   ratingBadge: {
     one: 'отзыв',

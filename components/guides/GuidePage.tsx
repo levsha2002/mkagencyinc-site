@@ -4,6 +4,7 @@ import HeroBackdrop from '@/components/hero/HeroBackdrop';
 import { HERO_IMAGES } from '@/content/hero/images';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import GoogleReviewsBadge from '@/components/GoogleReviewsBadge';
 import SendPolicyCta from '@/components/SendPolicyCta';
 import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
 import RelatedCoverage from '@/components/RelatedCoverage';
@@ -61,7 +62,10 @@ export function guideMetadata(path: string, lang: string) {
   const page = GUIDE_PAGES.find((p) => p.path === path);
   if (!page || !l) return {};
   const t = page.copy[l];
-  return pageMetadata({ lang: l, path, title: t.metaTitle, description: t.metaDesc });
+  return pageMetadata({
+    lang: l, path, title: t.metaTitle, description: t.metaDesc,
+    ...(page.ogImage ? { image: { src: page.ogImage.src, alt: page.ogImage.alt[l] } } : {}),
+  });
 }
 
 export default function GuidePage({ path, lang }: { path: string; lang: string }) {
@@ -161,6 +165,7 @@ export default function GuidePage({ path, lang }: { path: string; lang: string }
               <a className="cta" href="#quote">{ui.cta}</a>
               <div className="rated rated-stack">
                 <span>{ui.langLine}</span>
+                <GoogleReviewsBadge lang={l} />
               </div>
             </div>
             <SendPolicyCta lang={l} placement="hero" />

@@ -6,7 +6,8 @@ const SRC = ['newResident', 'flhsmv', 'floodsmart'] as const;
 export const RUSSIAN_AGENT: GuidePage = {
   path: '/russian-speaking-insurance-agent-miami',
   leadType: 'Auto',
-  heroImage: 'legacy-agent-office',
+  heroImage: 'guide-russian-agent',
+  ogImage: { src: '/og/russian-agent.webp', alt: { en: 'Russian-speaking insurance agent in Florida — M&K Agency', es: 'Agente de seguros que habla ruso en Florida — M&K Agency', ru: 'Русскоязычный страховой агент во Флориде — M&K Agency' } },
   published: '2026-10-03',
   modified: '2026-10-03',
   areaServed: [{ '@type': 'AdministrativeArea', name: 'Miami-Dade County, FL' }, { '@type': 'State', name: 'Florida' }],
