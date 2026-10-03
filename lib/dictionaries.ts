@@ -224,7 +224,7 @@ const en = {
   },
   footerExtra: {
     scan: 'Fill Out Request for a Quote',
-    qrAlt: 'QR code — request a quote via Allstate Lead Manager',
+    qrAlt: 'QR code — request a quote online',
     licenseLine: 'Florida License #L109526 · NPN #19586268 · Agent in Charge: Mikhail Kozlov',
     reviews: 'Reviews',
     community: 'Community Businesses',
@@ -446,7 +446,7 @@ const es: typeof en = {
   },
   footerExtra: {
     scan: 'Llene la solicitud de cotización',
-    qrAlt: 'Código QR — solicite una cotización a través de Allstate Lead Manager',
+    qrAlt: 'Código QR — solicite una cotización en línea',
     licenseLine: 'Licencia de Florida #L109526 · NPN #19586268 · Agente a cargo: Mikhail Kozlov',
     reviews: 'Reseñas',
     community: 'Negocios de la comunidad',
@@ -666,7 +666,7 @@ const ru: typeof en = {
   },
   footerExtra: {
     scan: 'Заполните заявку на расчёт',
-    qrAlt: 'QR-код — заявка на расчёт через Allstate Lead Manager',
+    qrAlt: 'QR-код — онлайн-заявка на расчёт',
     licenseLine: 'Florida License #L109526 · NPN #19586268 · Agent in Charge: Mikhail Kozlov',
     reviews: 'Отзывы',
     community: 'Местный бизнес',
