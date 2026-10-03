@@ -136,6 +136,7 @@ export default function CoverageCheckForm({
         trackConversion('callback_request', params, { transactionId, phone });
         // 2) Same generic lead event as LeadForm / quote page.
         window.gtag('event', 'generate_lead', {
+          send_to: GOOGLE_ADS_ID,
           currency: 'USD',
           value: 1,
           insurance_type: policyValue,

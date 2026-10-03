@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Honeypot from '@/components/Honeypot';
 import { getAttribution, type Attribution } from '@/lib/attribution';
-import { newTransactionId } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, newTransactionId } from '@/lib/analytics';
 import {
   LANGS,
   PARTNER_TYPES,
@@ -85,7 +85,7 @@ async function post(payload: Record<string, unknown>): Promise<boolean> {
 
 function track(kind: 'referral' | 'partner', lang: Lang) {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', kind === 'referral' ? 'referral_submit' : 'partner_inquiry_submit', { lang });
+    window.gtag('event', kind === 'referral' ? 'referral_submit' : 'partner_inquiry_submit', { lang, send_to: GOOGLE_ADS_ID });
   }
 }
 

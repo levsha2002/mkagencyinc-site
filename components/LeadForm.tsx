@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { getDict, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
-import { trackConversion, newTransactionId } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
 import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
@@ -60,6 +60,7 @@ export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string;
           // 2) Generic GA4-style signal, kept for broader analytics/event
           // history (not required for Google Ads conversion counting).
           window.gtag('event', 'generate_lead', {
+            send_to: GOOGLE_ADS_ID,
             currency: 'USD',
             value: 1,
             insurance_type: formData.insurance_type,

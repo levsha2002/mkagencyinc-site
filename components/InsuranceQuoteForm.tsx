@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { type InsuranceProduct, isBusinessProduct, VEHICLE_BUSINESS_SLUGS } from '@/lib/insurance-products';
-import { trackConversion, newTransactionId } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
 import { getDict, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import { consentPayload } from '@/lib/consent';
@@ -86,6 +86,7 @@ export default function InsuranceQuoteForm({
             { transactionId, email, phone },
           );
           window.gtag('event', 'generate_lead', {
+            send_to: GOOGLE_ADS_ID,
             currency: 'USD',
             value: 1,
             insurance_type: product.title,
