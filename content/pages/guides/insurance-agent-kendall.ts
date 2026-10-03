@@ -1,0 +1,183 @@
+import type { GuidePage } from './types';
+import { sources } from './sources';
+
+const SRC = ['condoMaster', 'deductibles', 'flhsmv'] as const;
+
+export const AGENT_KENDALL: GuidePage = {
+  path: '/insurance-agent-kendall',
+  leadType: 'Home',
+  heroImage: 'legacy-palm-street',
+  published: '2026-10-03',
+  modified: '2026-10-03',
+  areaServed: [{ '@type': 'Place', name: 'Kendall, FL' }],
+  copy: {
+    en: {
+      metaTitle: 'Insurance Agent for Kendall, FL | M&K Agency',
+      metaDesc: 'Insurance agent for Kendall home, condo, auto and small-business owners. A family-owned agency that handles most service by phone and WhatsApp. EN, ES, RU.',
+      breadcrumb: 'Insurance agent for Kendall',
+      kicker: 'Insurance agent · Kendall, FL',
+      h1a: 'Insurance agent for Kendall, FL:',
+      h1b: 'a personal agent without the drive.',
+      answer: 'M&K Agency serves Kendall from our office in Florida City, about 20 miles south. Most Kendall clients never need to visit. Quotes, policy reviews, changes and claim help happen by phone, WhatsApp, text and email with a licensed agent, in English, Spanish or Russian. Call (305) 859-3953, or leave your number and we’ll contact you within an hour during business hours.',
+      serviceType: 'Insurance agency',
+      intro: [
+        { type: 'h2', text: 'Who this page is for' },
+        { type: 'ul', items: [
+          '**Kendall condo and townhome owners** who want to understand what the association’s master policy covers and what an HO-6 should pick up.',
+          '**Single-family homeowners** reviewing a renewal, a roof question or a hurricane deductible.',
+          '**Families with several cars and teen drivers** who commute on the Don Shula Expressway, the Turnpike or US-1.',
+          '**Small business owners** who need general liability and want one agency for business and personal policies.',
+          '**People who are tired of call centers** and want to reach the same agency every time.',
+        ] },
+      ],
+      checklistTitle: 'Four questions we will ask you',
+      checklist: [
+        '**House, townhome or condo unit?** For a condo, we will ask for the association’s insurance summary. Florida law excludes items like flooring, cabinets, countertops, appliances and water heaters inside the unit from the master policy, so those fall to you.',
+        '**What is your hurricane deductible in dollars?** It is printed on your declarations page. We will ask whether you could actually pay it the week after a storm.',
+        '**How many drivers and cars, and how do you use them?** Commuting, rideshare or delivery work, and who drives which car all change what you need.',
+        '**What changed since your last renewal?** It might be a new roof, a renovation, a new driver, a home business or a refinance. Changes like these can affect coverage, and we would rather hear about them before a claim than after.',
+      ],
+      body: [
+        { type: 'h2', text: 'What is not covered (honest limits)' },
+        { type: 'ul', items: [
+          '**Flood** is not covered by standard homeowners or condo policies. It needs its own policy.',
+          '**The master policy is not your policy.** It does not cover your belongings or your personal liability, and it excludes the unit items listed above.',
+          '**State-minimum auto** ($10,000 PIP and $10,000 property damage liability) does not pay for injuries you cause to others.',
+          '**Remote service has limits.** If you need to sign or hand over documents in person, our office is in Florida City. We will tell you up front when that is the case.',
+          '**All coverage is subject to underwriting** and the terms of the policy.',
+        ] },
+      ],
+      officeTitle: 'Talk to a licensed agent',
+      office: [
+        { type: 'p', text: 'Call **(305) 859-3953**, or leave your number and we’ll contact you within an hour during business hours. WhatsApp: (971) 998-7313. The office is at **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**, open Monday to Friday 9 to 6, with Saturdays by appointment.' },
+      ],
+      faqTitle: 'Insurance agent for Kendall: FAQ',
+      faq: [
+        { q: 'Why use an agency 20 miles away?', a: 'Because most of the work happens by phone and message anyway. What matters is reaching a licensed person who knows your file. If you prefer to meet, you are welcome at our Florida City office.' },
+        { q: 'Do you have an office in Kendall?', a: 'No. We serve Kendall from Florida City. The drive is roughly 26 to 30 minutes in light traffic and longer at rush hour.' },
+        { q: 'Does my condo association’s policy cover my unit?', a: 'Only partly. Florida law requires the master policy to cover the building as originally built, but it excludes your belongings and many items inside your unit. An HO-6 policy is designed for those, subject to its terms.' },
+        { q: 'Can you review my current home and auto policies together?', a: 'Yes, at no charge. Send both declarations pages and we will walk you through the gaps we see.' },
+        { q: 'Can you help me in Spanish or Russian?', a: 'Yes. Jose Chalela, Carolina Silva and Elena De Oña (home insurance) help in Spanish, and Mikhail (Mike) Kozlov helps in Russian. Tell us your preferred language when you call or request a callback. Policy documents are issued in English; we explain them in your language.' },
+      ],
+      related: [
+        { path: '/car-insurance-kendall-fl', label: 'Car insurance in Kendall' },
+        { path: '/homeowners-insurance-kendall-fl', label: 'Home and condo insurance in Kendall' },
+        { path: '/florida-home-insurance-wind-deductible', label: 'Florida hurricane deductible, explained' },
+        { path: '/auto-insurance-after-accident-miami-dade', label: 'Car accident in Miami-Dade: what to do next' },
+      ],
+      sources: sources('en', [...SRC]),
+    },
+    es: {
+      metaTitle: 'Agente de seguros para Kendall, FL | M&K Agency',
+      metaDesc: 'Agente de seguros para Kendall: casa, condominio, auto y pequeños negocios. Agencia familiar que atiende casi todo por teléfono y WhatsApp. EN, ES, RU.',
+      breadcrumb: 'Agente de seguros para Kendall',
+      kicker: 'Agente de seguros · Kendall, FL',
+      h1a: 'Agente de seguros para Kendall, FL:',
+      h1b: 'un agente personal sin tener que manejar.',
+      answer: 'M&K Agency atiende a Kendall desde nuestra oficina en Florida City, a unas 20 millas al sur. La mayoría de nuestros clientes de Kendall nunca necesitan venir. Las cotizaciones, las revisiones de póliza, los cambios y la ayuda con reclamos se hacen por teléfono, WhatsApp, mensaje de texto y correo con un agente licenciado, en inglés, español o ruso. Llámenos al (305) 859-3953, o déjenos su número y lo contactamos en menos de una hora en horario de oficina.',
+      serviceType: 'Agencia de seguros',
+      intro: [
+        { type: 'h2', text: 'Para quién es esta página' },
+        { type: 'ul', items: [
+          '**Dueños de condominios y townhomes en Kendall** que quieren entender qué cubre la póliza maestra de la asociación y qué debe cubrir una póliza HO-6.',
+          '**Dueños de casas unifamiliares** que revisan una renovación, una pregunta sobre el techo o un deducible de huracán.',
+          '**Familias con varios carros y conductores adolescentes** que viajan por el Don Shula Expressway, el Turnpike o la US-1.',
+          '**Dueños de pequeños negocios** que necesitan responsabilidad civil general y quieren una sola agencia para sus pólizas comerciales y personales.',
+          '**Personas cansadas de los centros de llamadas** que quieren comunicarse siempre con la misma agencia.',
+        ] },
+      ],
+      checklistTitle: 'Cuatro preguntas que le haremos',
+      checklist: [
+        '**¿Casa, townhome o unidad de condominio?** Si es un condominio, le pediremos el resumen del seguro de la asociación. La ley de Florida excluye de la póliza maestra cosas como pisos, gabinetes, encimeras, electrodomésticos y calentadores de agua dentro de la unidad, así que esos le corresponden a usted.',
+        '**¿Cuánto es su deducible de huracán en dólares?** Aparece en su página de declaraciones. Le preguntaremos si de verdad podría pagarlo la semana después de una tormenta.',
+        '**¿Cuántos conductores y carros hay, y cómo los usan?** Ir al trabajo, hacer viajes de Uber/Lyft o entregas, y quién maneja cada carro cambian lo que necesita.',
+        '**¿Qué cambió desde su última renovación?** Puede ser un techo nuevo, una remodelación, un conductor nuevo, un negocio en casa o un refinanciamiento. Cambios así pueden afectar la cobertura, y preferimos saberlo antes de un reclamo que después.',
+      ],
+      body: [
+        { type: 'h2', text: 'Lo que no está cubierto (límites claros)' },
+        { type: 'ul', items: [
+          '**La inundación** no está cubierta por las pólizas estándar de casa ni de condominio. Necesita su propia póliza.',
+          '**La póliza maestra no es su póliza.** No cubre sus pertenencias ni su responsabilidad personal, y excluye los elementos de la unidad mencionados arriba.',
+          '**El seguro de auto mínimo del estado** ($10,000 de PIP y $10,000 de daños a la propiedad (PDL)) no paga las lesiones que usted cause a otros.',
+          '**La atención a distancia tiene límites.** Si necesita firmar o entregar documentos en persona, nuestra oficina está en Florida City. Se lo diremos desde el principio cuando sea el caso.',
+          '**Toda cobertura está sujeta a suscripción (underwriting)** y a los términos de la póliza.',
+        ] },
+      ],
+      officeTitle: 'Hable con un agente licenciado',
+      office: [
+        { type: 'p', text: 'Llame al **(305) 859-3953**, o déjenos su número y lo contactamos en menos de una hora en horario de oficina. WhatsApp: (971) 998-7313. La oficina está en **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**, abierta de lunes a viernes de 9 a 6, y los sábados con cita.' },
+      ],
+      faqTitle: 'Agente de seguros para Kendall: preguntas frecuentes',
+      faq: [
+        { q: '¿Por qué usar una agencia a 20 millas?', a: 'Porque la mayor parte del trabajo se hace de todos modos por teléfono y por mensajes. Lo importante es poder hablar con una persona licenciada que conoce su expediente. Si prefiere reunirse en persona, lo esperamos en nuestra oficina de Florida City.' },
+        { q: '¿Tienen oficina en Kendall?', a: 'No. Atendemos a Kendall desde Florida City. El viaje toma unos 26 a 30 minutos con poco tráfico, y más en hora pico.' },
+        { q: '¿La póliza de mi asociación de condominio cubre mi unidad?', a: 'Solo en parte. La ley de Florida exige que la póliza maestra cubra el edificio tal como se construyó originalmente, pero excluye sus pertenencias y muchos elementos dentro de su unidad. Una póliza HO-6 está pensada para eso, según sus términos.' },
+        { q: '¿Pueden revisar juntas mis pólizas actuales de casa y de auto?', a: 'Sí, sin costo. Envíenos las dos páginas de declaraciones y le explicamos los vacíos que veamos.' },
+        { q: '¿Me pueden atender en español o en ruso?', a: 'Sí. Jose Chalela, Carolina Silva y Elena De Oña (seguros de casa) le atienden en español, y Mikhail (Mike) Kozlov en ruso. Díganos su idioma preferido cuando llame o pida que lo llamemos. Las pólizas se emiten en inglés; se las explicamos en su idioma.' },
+      ],
+      related: [
+        { path: '/car-insurance-kendall-fl', label: 'Seguro de auto en Kendall' },
+        { path: '/homeowners-insurance-kendall-fl', label: 'Seguro de casa y condominio en Kendall' },
+        { path: '/florida-home-insurance-wind-deductible', label: 'El deducible de huracán en Florida, explicado' },
+        { path: '/auto-insurance-after-accident-miami-dade', label: 'Accidente de carro en Miami-Dade: qué hacer después' },
+      ],
+      sources: sources('es', [...SRC]),
+    },
+    ru: {
+      metaTitle: 'Страховой агент для Kendall, FL | M&K Agency',
+      metaDesc: 'Страховой агент для Kendall: дом, кондо, авто и малый бизнес. Семейное агентство, большую часть вопросов решаем по телефону и в WhatsApp. EN, ES, RU.',
+      breadcrumb: 'Страховой агент для Kendall',
+      kicker: 'Страховой агент · Kendall, FL',
+      h1a: 'Страховой агент для Kendall, FL:',
+      h1b: 'личный агент, к которому не нужно ехать.',
+      answer: 'M&K Agency обслуживает Kendall из офиса во Florida City, примерно в 20 милях к югу. Большинству клиентов из Kendall приезжать к нам не нужно. Расчёты, проверка полисов, изменения и помощь с клеймами — по телефону, в WhatsApp, по SMS и почте с лицензированным агентом, по-английски, по-испански или по-русски. Позвоните нам по номеру (305) 859-3953 или оставьте номер — мы свяжемся с вами в течение часа в рабочее время.',
+      serviceType: 'Страховое агентство',
+      intro: [
+        { type: 'h2', text: 'Для кого эта страница' },
+        { type: 'ul', items: [
+          '**Владельцы кондо и таунхаусов в Kendall**, которые хотят понять, что покрывает мастер-полис ассоциации и что должен покрыть полис HO-6.',
+          '**Владельцы отдельных домов**, у которых на очереди продление полиса, вопрос о крыше или ураганная франшиза.',
+          '**Семьи с несколькими машинами и водителями-подростками**, которые ездят по Don Shula Expressway, Turnpike или US-1.',
+          '**Владельцы малого бизнеса**, которым нужно страхование общей ответственности (general liability) и которые хотят одно агентство для бизнес- и личных полисов.',
+          '**Те, кто устал от колл-центров** и хочет каждый раз попадать в одно и то же агентство.',
+        ] },
+      ],
+      checklistTitle: 'Четыре вопроса, которые мы вам зададим',
+      checklist: [
+        '**Дом, таунхаус или квартира в кондо?** Для кондо мы попросим сводку о страховке ассоциации. По закону Флориды мастер-полис не покрывает полы, шкафы, столешницы, бытовую технику и водонагреватели внутри квартиры — это ваша зона ответственности.',
+        '**Сколько составляет ваша ураганная франшиза в долларах?** Она указана на декларационной странице полиса. Мы спросим, сможете ли вы реально заплатить её через неделю после шторма.',
+        '**Сколько водителей и машин и как вы ими пользуетесь?** Поездки на работу, работа в такси через приложение или доставка и то, кто на какой машине ездит, — всё это меняет то, что вам нужно.',
+        '**Что изменилось с последнего продления?** Новая крыша, ремонт, новый водитель, бизнес на дому или рефинансирование. Такие изменения могут влиять на покрытие, и нам лучше узнать о них до клейма, а не после.',
+      ],
+      body: [
+        { type: 'h2', text: 'Что не покрывается (честно о границах)' },
+        { type: 'ul', items: [
+          '**Наводнение** не покрывается обычными полисами на дом или кондо. Для него нужен свой полис.',
+          '**Мастер-полис — это не ваш полис.** Он не покрывает ваши вещи и вашу личную ответственность и исключает перечисленное выше внутри квартиры.',
+          '**Минимальная автостраховка штата** ($10,000 PIP и $10,000 PDL) не платит за травмы, которые вы причините другим.',
+          '**У удалённого обслуживания есть пределы.** Если документы нужно подписать или передать лично, наш офис — во Florida City. Мы заранее скажем, если это ваш случай.',
+          '**Любое покрытие предоставляется при условии андеррайтинга** и на условиях полиса.',
+        ] },
+      ],
+      officeTitle: 'Поговорите с лицензированным агентом',
+      office: [
+        { type: 'p', text: 'Звоните **(305) 859-3953** или оставьте номер — мы свяжемся с вами в течение часа в рабочее время. WhatsApp: (971) 998-7313. Офис: **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**, с понедельника по пятницу с 9 до 6, в субботу — по записи.' },
+      ],
+      faqTitle: 'Страховой агент для Kendall: частые вопросы',
+      faq: [
+        { q: 'Зачем агентство в 20 милях от дома?', a: 'Потому что основная работа всё равно идёт по телефону и в сообщениях. Важно дозвониться до лицензированного человека, который знает ваше дело. Если хотите встретиться лично, ждём вас в офисе во Florida City.' },
+        { q: 'У вас есть офис в Kendall?', a: 'Нет. Мы обслуживаем Kendall из Florida City. Дорога занимает примерно 26–30 минут без пробок и дольше в час пик.' },
+        { q: 'Покрывает ли полис ассоциации кондо мою квартиру?', a: 'Только частично. Закон Флориды требует, чтобы мастер-полис покрывал здание в том виде, в каком оно было построено, но ваши вещи и многое внутри квартиры он исключает. Для этого предназначен полис HO-6 — на его условиях.' },
+        { q: 'Можете проверить мои полисы на дом и машину вместе?', a: 'Да, бесплатно. Пришлите обе декларационные страницы, и мы разберём с вами пробелы, которые увидим.' },
+        { q: 'Можно получить помощь на испанском или русском?', a: 'Да. По-испански помогут Jose Chalela, Carolina Silva и Elena De Oña (страховка дома), по-русски — Михаил (Майк) Козлов. Скажите, какой язык вам удобнее, когда звоните или оставляете заявку на звонок. Полисы выдаются на английском языке; мы объясняем их на вашем языке.' },
+      ],
+      related: [
+        { path: '/car-insurance-kendall-fl', label: 'Автостраховка в Kendall' },
+        { path: '/homeowners-insurance-kendall-fl', label: 'Страховка дома и кондо в Kendall' },
+        { path: '/florida-home-insurance-wind-deductible', label: 'Ураганная франшиза во Флориде: как она работает' },
+        { path: '/auto-insurance-after-accident-miami-dade', label: 'ДТП в Miami-Dade: что делать дальше' },
+      ],
+      sources: sources('ru', [...SRC]),
+    },
+  },
+};

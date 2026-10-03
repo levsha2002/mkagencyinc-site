@@ -80,6 +80,10 @@ export default function Footer({ lang }: { lang: string }) {
             {lang === 'es' ? 'Seguro GAP' : lang === 'ru' ? 'GAP-страховка' : 'Gap Insurance'}
           </Link>
           {' · '}
+          <Link href={`/${lang}/russian-speaking-insurance-agent-miami`} style={{ color: '#bcd0ea' }}>
+            {lang === 'es' ? 'Agente que habla ruso' : lang === 'ru' ? 'Русскоязычный агент' : 'Russian-speaking agent'}
+          </Link>
+          {' · '}
           <Link href={`/${lang}/referral`} style={{ color: '#bcd0ea' }}>{fx.community}</Link>
           {' · '}
           <Link href={`/${lang}/news`} style={{ color: '#bcd0ea' }}>{lang === 'es' ? 'Noticias' : lang === 'ru' ? 'Новости' : 'News'}</Link>

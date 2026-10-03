@@ -6,6 +6,13 @@ import s from './Business.module.css';
 // on the general liability and commercial auto product pages.
 type Lang = 'en' | 'es' | 'ru';
 
+// Local commercial hub (content/pages/guides/commercial-insurance-florida-city.ts).
+const HUB: Record<Lang, string> = {
+  en: 'Commercial insurance in Florida City',
+  es: 'Seguro comercial en Florida City',
+  ru: 'Страхование бизнеса во Florida City',
+};
+
 const HEADING: Record<Lang, string> = {
   en: 'Insurance by business type',
   es: 'Seguros por tipo de negocio',
@@ -25,6 +32,9 @@ export default function BusinessTypeLinks({ lang, current }: { lang: string; cur
               <span aria-hidden>{p.icon}</span> {p.copy[l].linkLabel}
             </Link>
           ))}
+          <Link href={`/${l}/commercial-insurance-florida-city`} className={s.pill}>
+            <span aria-hidden>📍</span> {HUB[l]}
+          </Link>
         </div>
       </div>
     </section>
