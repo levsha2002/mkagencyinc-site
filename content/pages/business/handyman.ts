@@ -10,7 +10,7 @@ export const HANDYMAN: BusinessPage = {
   copy: {
     en: {
       metaTitle: 'Handyman Insurance in Florida | M&K Agency',
-      metaDesc: 'Insurance for Florida handymen and small repair businesses: general liability, tools, work vans and workers’ comp. Talk to an agent in English, Spanish or Russian.',
+      metaDesc: 'Insurance for Florida handymen and small repair businesses: general liability, tools, work vans, workers’ comp. Agents speak English, Spanish, Russian.',
       breadcrumb: 'Handyman insurance',
       kicker: 'Handyman Insurance · Florida',
       h1a: 'Handyman insurance in Florida,',

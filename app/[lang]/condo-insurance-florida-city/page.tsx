@@ -58,9 +58,9 @@ const C: Record<Lang, any> = {
     disclaimer: 'Coverage descriptions are general information, not policy language. Requirements and eligibility vary by carrier, association, and unit.',
   },
   es: {
-    metaTitle: 'Seguro de Condominio (HO-6) en Florida City y Homestead, FL | M&K Agency',
+    metaTitle: 'Seguro de Condominio HO-6, Florida City y Homestead | M&K Agency',
     metaDesc:
-      'Seguro HO-6 para condominios en el sur de Miami-Dade — cubre lo que la póliza maestra de su asociación no cubre. Cotización rápida para el cierre. Hablamos español.',
+      'Seguro HO-6 para condominios en el sur de Miami-Dade: cubre lo que no cubre la póliza maestra de su asociación. Cotización rápida. Hablamos español.',
     kicker: 'Seguro de Condominio (HO-6) · Florida City y Homestead',
     h1a: 'Seguro de condominio en Florida City y Homestead,',
     h1b: 'para lo que su HOA no cubre.',

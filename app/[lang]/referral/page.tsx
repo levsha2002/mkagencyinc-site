@@ -145,7 +145,7 @@ const C: Record<Lang, any> = {
     dirSuggest: 'Recommend a local business for the directory',
   },
   es: {
-    metaTitle: 'Recomiende a un amigo o sea socio de referidos | M&K Agency, Florida City',
+    metaTitle: 'Recomiende a un amigo o sea socio de referidos | M&K Agency',
     metaDesc:
       'Recomiende a un amigo a un agente de seguros licenciado en Florida City, o asóciese con nosotros como negocio local. Inglés, español y ruso. (305) 859-3953.',
     pill: '🤝 Recomendaciones y socios',
@@ -265,7 +265,7 @@ const C: Record<Lang, any> = {
   ru: {
     metaTitle: 'Порекомендуйте друга или станьте партнёром | M&K Agency, Florida City',
     metaDesc:
-      'Порекомендуйте другу лицензированного страхового агента во Florida City или станьте нашим партнёром как местный бизнес. English, Español, по-русски. (305) 859-3953.',
+      'Порекомендуйте другу лицензированного страхового агента во Florida City или станьте нашим партнёром как местный бизнес. Говорим по-русски. (305) 859-3953.',
     pill: '🤝 Рекомендации и партнёры',
     h1a: 'Поделитесь агентством,',
     h1b: 'которому уже звонят ваши соседи.',
