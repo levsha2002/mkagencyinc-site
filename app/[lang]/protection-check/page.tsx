@@ -2,6 +2,7 @@ import Image from 'next/image';
 import ProtectionPlanner from '@/components/ProtectionPlanner';
 import MortgageCalculator from '@/components/MortgageCalculator';
 import { pageMetadata } from '@/lib/seo';
+import ProtectGuideLink from '@/components/protect/ProtectGuideLink';
 
 const META: Record<string, { title: string; desc: string; h1: string; sub: string }> = {
   en: {
@@ -61,6 +62,7 @@ export default function ProtectionCheckPage({ params }: { params: { lang: string
           />
           <h1 style={{ marginBottom: 10 }}>{m.h1}</h1>
           <p style={{ color: 'var(--muted)', lineHeight: 1.6, maxWidth: 640 }}>{m.sub}</p>
+          <ProtectGuideLink lang={params.lang} style={{ marginLeft: 0 }} />
         </div>
       </section>
 

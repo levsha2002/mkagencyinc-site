@@ -54,6 +54,8 @@ export const post: BlogPost = {
         ] },
         { type: 'p', text: 'After a serious injury, PIP can run out quickly. DFS points out that health insurance usually has deductibles and copayments, normally doesn’t cover a stay in a convalescent center, and doesn’t replace lost income, help at home or modifications such as a wheelchair ramp. When the at-fault driver has little or no bodily injury coverage, UM is the coverage designed to fill that gap.' },
 
+        { type: 'callout', title: 'In plain words, with pictures', text: 'See our [car insurance protection guide](/en/protect/car-insurance): what a crash with an uninsured driver can do to your paycheck, with real Florida court cases.' },
+
         { type: 'h2', text: 'How much UM coverage you have by default' },
         { type: 'p', text: 'When your auto policy includes bodily injury liability, Florida law requires the insurer to include UM **at limits equal to your bodily injury liability limits**, unless a named insured **rejects UM or chooses lower limits in writing**. Limits are written as two numbers: 50/100, for example, means $50,000 per person and $100,000 per accident.' },
         { type: 'p', text: 'This requirement is tied to bodily injury liability. If your policy carries only the state minimums (PIP and PDL), the law does not require the insurer to include UM, so ask your agent what your options are.' },
@@ -144,6 +146,8 @@ export const post: BlogPost = {
           'Si un proveedor médico determina que usted **no tuvo una condición médica de emergencia**, los beneficios médicos del PIP se limitan a **$2,500**.',
         ] },
         { type: 'p', text: 'Después de una lesión grave, el PIP se puede agotar pronto. El DFS recuerda que el seguro de salud suele tener deducibles y copagos, normalmente no cubre la estadía en un centro de convalecencia y no reemplaza el ingreso perdido, la ayuda en la casa ni adaptaciones como una rampa para silla de ruedas. Cuando el conductor culpable tiene poca o ninguna cobertura de lesiones corporales, la UM es la cobertura pensada para llenar ese vacío.' },
+
+        { type: 'callout', title: 'En palabras simples y con dibujos', text: 'Vea nuestra [guía de protección del seguro de auto](/es/protect/car-insurance): lo que un choque con un conductor sin seguro puede hacerle a su sueldo, con casos reales de tribunales de Florida.' },
 
         { type: 'h2', text: 'Cuánta cobertura UM tiene de manera predeterminada' },
         { type: 'p', text: 'Si su póliza de auto incluye responsabilidad por lesiones corporales, la ley de Florida exige que la aseguradora incluya la UM **con los mismos límites que esa responsabilidad**, a menos que un asegurado nombrado **la rechace o elija límites más bajos por escrito**. Los límites se escriben con dos números: 50/100, por ejemplo, significa $50,000 por persona y $100,000 por accidente.' },
@@ -248,6 +252,8 @@ export const post: BlogPost = {
           'Если врач решит, что у вас **не было неотложного медицинского состояния** (emergency medical condition), медицинские выплаты PIP ограничены суммой **$2,500**.',
         ] },
         { type: 'p', text: 'После серьёзной травмы PIP может закончиться очень быстро. DFS напоминает, что у медицинской страховки обычно есть франшизы и доплаты, она, как правило, не оплачивает пребывание в реабилитационном центре и не возмещает потерянный заработок, помощь по дому или переоборудование, например пандус для инвалидной коляски. Когда у виновника мало или совсем нет страховки ответственности за травмы, именно UM закрывает этот пробел.' },
+
+        { type: 'callout', title: 'Простыми словами и в картинках', text: 'Смотрите наш [гид по автострахованию](/ru/protect/car-insurance): что авария с незастрахованным водителем может сделать с вашей зарплатой — с реальными делами из судов Флориды.' },
 
         { type: 'h2', text: 'Какой лимит UM вы получаете по умолчанию' },
         { type: 'p', text: 'Если в вашем автополисе есть страховка ответственности за травмы других людей, закон Флориды требует включить в него UM **с такими же лимитами**, если только застрахованный, указанный в полисе (named insured), **не откажется от UM или не выберет более низкие лимиты письменно**. Лимиты записываются двумя числами: например, 50/100 означает $50,000 на человека и $100,000 на одну аварию.' },

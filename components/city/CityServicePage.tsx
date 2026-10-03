@@ -27,6 +27,13 @@ import s from './City.module.css';
 
 type Lang = 'en' | 'es' | 'ru';
 
+// Links to the plain-language protection guide (/[lang]/protect).
+const GUIDE_LABEL: Record<Lang, { auto: string; home: string }> = {
+  en: { auto: 'Guide: hit by a driver with no insurance? (uninsured motorist coverage)', home: 'Guide: if someone gets hurt at your home (liability and umbrella)' },
+  es: { auto: 'Guía: ¿lo chocó alguien sin seguro? (cobertura UM)', home: 'Guía: si alguien se lesiona en su casa (responsabilidad y umbrella)' },
+  ru: { auto: 'Гид: в вас врезался водитель без страховки? (покрытие UM)', home: 'Гид: если кто-то пострадал у вас дома (ответственность и umbrella)' },
+};
+
 const UI: Record<Lang, {
   home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string; checked: string;
   servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward', string>; hub: string;
@@ -102,6 +109,9 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
   const extraLinks: { href: string; label: string }[] = [];
   if (sibling) extraLinks.push({ href: `/${l}${sibling.path}`, label: sibling.copy[l].h1a.replace(/[,—–\s]+$/, '') });
   if (parent) extraLinks.push({ href: `/${l}${parent.path}`, label: parent.copy[l].h1a.replace(/[,—–\s]+$/, '') });
+  extraLinks.push(page.line === 'auto'
+    ? { href: `/${l}/protect/car-insurance`, label: GUIDE_LABEL[l].auto }
+    : { href: `/${l}/protect/home-insurance`, label: GUIDE_LABEL[l].home });
   if (page.area === 'homestead' && page.line === 'home' && l !== 'ru') extraLinks.push({ href: `/${l}/flood-insurance-homestead-fl`, label: ui.flood });
 
   const crumbs = [
