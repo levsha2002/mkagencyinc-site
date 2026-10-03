@@ -5,7 +5,7 @@ import type React from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { team } from '@/lib/team-data';
-import { trackConversion, newTransactionId } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, trackConversion, newTransactionId } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
 import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
@@ -192,6 +192,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
             { transactionId, email: form.email, phone: form.phone },
           );
           window.gtag('event', 'generate_lead', {
+            send_to: GOOGLE_ADS_ID,
             currency: 'USD',
             value: 1,
             insurance_type: ins || 'General',

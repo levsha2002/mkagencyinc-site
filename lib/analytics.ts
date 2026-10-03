@@ -206,6 +206,14 @@ export function setUserData(opts: { email?: string; phone?: string } = {}) {
   gtag('set', 'user_data', data);
 }
 
+// Every gtag('event', ...) on the site must carry an explicit send_to.
+// gtagInitScript() configures two destinations: the account (GOOGLE_ADS_ID)
+// and the website call conversion (CALL_CONVERSION_SEND_TO). An event with no
+// send_to goes to EVERY configured destination, so e.g. a bare
+// 'generate_lead' was also sent as a conversion hit on the "Website calls"
+// label. Use send_to: GOOGLE_ADS_ID for plain events, and the
+// GOOGLE_ADS_ID/label form only for the conversion action it belongs to.
+
 /** Fires a named GA4 event plus, when a label is configured, the Ads conversion.
  *  Call only after the lead API has answered OK. */
 export function trackConversion(action: ConversionAction, params: Params = {}, opts: ConversionOptions = {}) {
