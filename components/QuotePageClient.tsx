@@ -12,6 +12,7 @@ import Honeypot from '@/components/Honeypot';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
 import { LEAD_MANAGER_URL, getDict } from '@/lib/dictionaries';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import { phoneInputProps, zipInputProps } from '@/lib/input-validation';
 
 declare global {
   interface Window {
@@ -288,7 +289,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
           <div className="qh-row">
             <div>
               <label htmlFor="qh-zip">{t.zip}</label>
-              <input id="qh-zip" name="zip" autoComplete="postal-code" inputMode="numeric" maxLength={5} value={form.zip}
+              <input id="qh-zip" name="zip" autoComplete="postal-code" inputMode="numeric" maxLength={5} {...zipInputProps(lang)} value={form.zip}
                 onChange={(e) => setForm({ ...form, zip: e.target.value })} placeholder="33034" required />
             </div>
             <div>
@@ -301,7 +302,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
           <div className="qh-row">
             <div>
               <label htmlFor="qh-phone">{t.phone}</label>
-              <input id="qh-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              <input id="qh-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" {...phoneInputProps(lang)} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder="(305) 555-0123" required />
             </div>
             <div>

@@ -8,6 +8,7 @@ import { consentPayload } from '@/lib/consent';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
 import { useLeadFormInView } from '@/components/useLeadFormInView';
 import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
+import { phoneInputProps } from '@/lib/input-validation';
 
 // `links` is only set on server refusals (rate limit / too long): tap-to-call
 // and on-site quote links rendered under the bot bubble. Never sent back to
@@ -222,7 +223,7 @@ export default function ChatWidget({ lang }: { lang: string }) {
             <form className="mk-cb" onSubmit={submitCb}>
               <input required aria-label={t.cbName} placeholder={t.cbName} autoComplete="name" value={cb.name}
                 onChange={(e) => setCb({ ...cb, name: e.target.value })} />
-              <input required type="tel" inputMode="tel" autoComplete="tel" aria-label={t.yourPhone} placeholder={t.yourPhone} value={cb.phone}
+              <input required type="tel" inputMode="tel" autoComplete="tel" {...phoneInputProps(lang)} aria-label={t.yourPhone} placeholder={t.yourPhone} value={cb.phone}
                 onChange={(e) => setCb({ ...cb, phone: e.target.value })} />
               <ConsentCheckbox id="mk-cb-consent" lang={lang} className="mk-consent" style={{ fontSize: '.74rem' }}
                 checked={cbConsent} onChange={setCbConsent} />

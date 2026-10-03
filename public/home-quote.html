@@ -190,7 +190,7 @@
       <form id="quoteForm">
         <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="text" id="f-name" placeholder="Your name" aria-label="Your name" autocomplete="name" required>
-        <input type="tel" id="f-phone" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" inputmode="tel" required>
+        <input type="tel" id="f-phone" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" inputmode="tel" pattern="[^0-9]*(1[^0-9]*)?([0-9][^0-9]*){10}" title="Enter a 10-digit phone number, e.g. (305) 555-0123" required>
         <input type="text" id="f-address" placeholder="Property address (optional)" aria-label="Property address (optional)" autocomplete="street-address">
         <textarea id="f-comments" placeholder="Anything we should know? (optional)" aria-label="Anything we should know? (optional)"></textarea>
         <label class="consent">
@@ -268,6 +268,7 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
       if (typeof window.gtag === 'function') {
         mkConversion('quote_submit', { insurance_type: 'Home Insurance', lang: 'en' }, { transactionId: txId, phone: phone });
         window.gtag('event', 'generate_lead', {
+          send_to: MK_ADS,
           currency: 'USD',
           value: 1,
           insurance_type: 'Home Insurance',

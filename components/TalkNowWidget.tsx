@@ -8,6 +8,7 @@ import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
 import { useLeadFormInView } from '@/components/useLeadFormInView';
+import { phoneInputProps } from '@/lib/input-validation';
 
 const AGENT_OPTIONS = team.filter((m) => m.slug !== 'mikhail-kozlov');
 
@@ -126,6 +127,7 @@ export default function TalkNowWidget({ lang }: { lang: string }) {
                   <input
                     required
                     type="tel"
+                    {...phoneInputProps(lang)}
                     inputMode="tel"
                     autoComplete="tel"
                     placeholder={t.phone}

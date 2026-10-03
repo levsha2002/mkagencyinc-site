@@ -78,3 +78,15 @@ export function guardSubmission(req: Request, body: Record<string, unknown>): Gu
 
 /** Props for the hidden honeypot input. Rendered by every public form. */
 export const HONEYPOT_FIELD = 'company';
+
+/** Parses a JSON request body. Returns null (instead of throwing) when the body
+ *  is empty, malformed or not a JSON object, so routes can answer 400 rather
+ *  than logging a 500 for junk requests from scanners. */
+export async function readJsonBody(req: Request): Promise<Record<string, any> | null> {
+  try {
+    const b = await req.json();
+    return b && typeof b === 'object' && !Array.isArray(b) ? b : null;
+  } catch {
+    return null;
+  }
+}
