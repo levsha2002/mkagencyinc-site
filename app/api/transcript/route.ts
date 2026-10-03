@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
+import { readJsonBody } from '@/lib/form-guard';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -11,7 +12,9 @@ const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 // 3) if the visitor left their email — sends them a copy too.
 export async function POST(req: Request) {
   try {
-    const { messages, visitorEmail, lang } = await req.json();
+    const body = await readJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 });
+    const { messages, visitorEmail, lang } = body;
     if (!Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json({ error: 'empty' }, { status: 400 });
     }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
+import { readJsonBody } from '@/lib/form-guard';
 
 // Hardcoded so email works regardless of Vercel env-var state (verified domain).
 const NOTIFY_EMAIL = 'mikhailkozlov@allstate.com';
@@ -8,7 +9,8 @@ const FROM_ADDRESS = 'M&K Agency Website <leads@mkagencyinc.com>';
 
 export async function POST(req: NextRequest) {
   try {
-    const b = await req.json();
+    const b = await readJsonBody(req);
+    if (!b) return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 });
 
     if (!b.business_name || !b.phone || !b.email) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });

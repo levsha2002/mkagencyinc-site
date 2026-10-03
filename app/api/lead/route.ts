@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { Resend } from 'resend';
-import { guardSubmission } from '@/lib/form-guard';
+import { guardSubmission, readJsonBody } from '@/lib/form-guard';
 import { cleanAttribution, attributionEmailRow } from '@/lib/attribution';
 import { sendTelegramLeadAlert } from '@/lib/telegram';
 
@@ -26,7 +26,8 @@ function clientIp(req: Request): string {
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body = await readJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 });
     const guard = guardSubmission(req, body);
     if (!guard.ok) {
       // Honeypot returns a success shape so bots learn nothing; nothing is stored.

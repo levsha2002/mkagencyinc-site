@@ -272,6 +272,7 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
       if (typeof window.gtag === 'function') {
         mkConversion('quote_submit', { insurance_type: p.type, lang: 'es' }, { transactionId: txId, phone: phone });
         window.gtag('event', 'generate_lead', {
+          send_to: MK_ADS,
           currency: 'USD',
           value: 1,
           insurance_type: p.type,
