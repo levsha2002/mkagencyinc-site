@@ -6,7 +6,8 @@ import type { GuidePage } from './types';
 export const COMMERCIAL_FC: GuidePage = {
   path: '/commercial-insurance-florida-city',
   leadType: 'Commercial',
-  heroImage: 'commercial-12',
+  heroImage: 'guide-commercial-gl',
+  ogImage: { src: '/og/commercial-gl.webp', alt: { en: 'Commercial general liability insurance in Florida — M&K Agency', es: 'Seguro de responsabilidad civil comercial en Florida — M&K Agency', ru: 'Страхование коммерческой ответственности во Флориде — M&K Agency' } },
   published: '2026-10-03',
   modified: '2026-10-03',
   areaServed: [{ '@type': 'City', name: 'Florida City, FL' }, { '@type': 'City', name: 'Homestead, FL' }, { '@type': 'State', name: 'Florida' }],

@@ -6,7 +6,8 @@ const SRC = ['condoMaster', 'deductibles', 'flhsmv'] as const;
 export const AGENT_KENDALL: GuidePage = {
   path: '/insurance-agent-kendall',
   leadType: 'Home',
-  heroImage: 'legacy-palm-street',
+  heroImage: 'guide-kendall',
+  ogImage: { src: '/og/kendall.webp', alt: { en: 'Insurance agent in Kendall, Miami — M&K Agency', es: 'Agente de seguros en Kendall, Miami — M&K Agency', ru: 'Страховой агент в Кендалле, Майами — M&K Agency' } },
   published: '2026-10-03',
   modified: '2026-10-03',
   areaServed: [{ '@type': 'Place', name: 'Kendall, FL' }],

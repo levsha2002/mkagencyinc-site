@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
+import GoogleReviewsBadge from '@/components/GoogleReviewsBadge';
 import RelatedCoverage from '@/components/RelatedCoverage';
 import GapAnalysis from '@/components/GapAnalysis';
 import TodaysArticle from '@/components/TodaysArticle';
@@ -87,6 +88,7 @@ export default function Home({ params }: { params: { lang: string } }) {
             <div className="rated rated-stack">
               <strong>Mikhail Kozlov</strong>
               <RatingBadge lang={lang} variant="hero" />
+              <GoogleReviewsBadge lang={lang} />
             </div>
           </div>
           {/* Daily hero image (picked server-side during the ISR render) */}

@@ -30,6 +30,7 @@ export function pageMetadata({
   description,
   langs,
   article,
+  image,
 }: {
   lang: string;
   path?: string;
@@ -39,8 +40,13 @@ export function pageMetadata({
   langs?: string[];
   /** Set for blog articles: og:type=article plus published/modified times. */
   article?: { publishedTime: string; modifiedTime?: string };
+  /** Optional per-page share image (1200x630). Falls back to /og.jpg. */
+  image?: { src: string; alt: string };
 }) {
   const url = `/${lang}${path}`;
+  const og = image
+    ? { url: image.src, width: 1200, height: 630, alt: image.alt }
+    : { url: '/og.jpg', width: 1200, height: 630, alt: 'M&K Agency — Florida Insurance: Auto, Home, Commercial' };
   return {
     title,
     ...(description ? { description } : {}),
@@ -54,13 +60,13 @@ export function pageMetadata({
         : { type: 'website' }),
       siteName: 'M&K Agency Inc.',
       locale: OG_LOCALE[lang] ?? 'en_US',
-      images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'M&K Agency — Florida Insurance: Auto, Home, Commercial' }],
+      images: [og],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       ...(description ? { description } : {}),
-      images: ['/og.jpg'],
+      images: [og],
     },
   };
 }

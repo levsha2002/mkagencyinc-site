@@ -55,5 +55,7 @@ export interface GuidePage {
   modified: string;
   /** schema.org areaServed for the Service. */
   areaServed: object[];
+  /** Per-page share image (public/og/<name>.webp, 1200x630) with per-locale alt. */
+  ogImage?: { src: string; alt: Record<Lang, string> };
   copy: Record<Lang, GuidePageCopy>;
 }

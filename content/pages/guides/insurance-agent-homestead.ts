@@ -6,7 +6,8 @@ const SRC = ['deductibles', 'citizensFlood', 'floodsmart'] as const;
 export const AGENT_HOMESTEAD: GuidePage = {
   path: '/insurance-agent-homestead',
   leadType: 'Home',
-  heroImage: 'legacy-family-home',
+  heroImage: 'guide-homestead',
+  ogImage: { src: '/og/homestead.webp', alt: { en: 'Insurance agent in Homestead, Florida — M&K Agency', es: 'Agente de seguros en Homestead, Florida — M&K Agency', ru: 'Страховой агент в Хомстеде, Флорида — M&K Agency' } },
   published: '2026-10-03',
   modified: '2026-10-03',
   areaServed: [{ '@type': 'City', name: 'Homestead, FL' }],

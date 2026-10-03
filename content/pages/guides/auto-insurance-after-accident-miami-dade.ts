@@ -6,7 +6,8 @@ const SRC = ['crashReport', 'crashReportDriver', 'pip', 'flhsmv', 'um'] as const
 export const AFTER_ACCIDENT: GuidePage = {
   path: '/auto-insurance-after-accident-miami-dade',
   leadType: 'Auto',
-  heroImage: 'auto-12',
+  heroImage: 'guide-after-accident',
+  ogImage: { src: '/og/after-accident.webp', alt: { en: 'What to do after a car accident in Florida — M&K Agency', es: 'Qué hacer después de un accidente de auto en Florida — M&K Agency', ru: 'Что делать после ДТП во Флориде — M&K Agency' } },
   published: '2026-10-03',
   modified: '2026-10-03',
   areaServed: [{ '@type': 'AdministrativeArea', name: 'Miami-Dade County, FL' }],

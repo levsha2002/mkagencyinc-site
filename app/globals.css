@@ -1094,6 +1094,11 @@ body { font-size: 16.5px; }
 .rated.rated-stack{flex-direction:column;align-items:flex-start;gap:4px}
 .rated-stack .rating-badge{font-size:.84rem}
 .rating-badge-text{white-space:nowrap}
+/* GoogleReviewsBadge (components/GoogleReviewsBadge.tsx): no stars, no count */
+.g-review-badge{display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none;font-size:.84rem;font-weight:600;line-height:1.3}
+.g-review-badge-mark{flex:none}
+.g-review-badge-text{text-decoration:underline;text-decoration-color:rgba(127,127,127,.5);text-underline-offset:2px}
+.g-review-badge:hover .g-review-badge-text,.g-review-badge:focus-visible .g-review-badge-text{text-decoration-color:currentColor}
 
 /* ===== WhatsApp (components/WhatsAppLink.tsx) =====
    Floating button: rendered as the first child of the chat widget column
