@@ -181,6 +181,16 @@
     if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action] }, params, { transaction_id: tx }));
   }
   document.addEventListener('click', function(e){
+    // WhatsApp: whatsapp_click + the "WhatsApp click" secondary conversion, once per click,
+    // same as trackWhatsAppClick() in lib/whatsapp.ts. Our number only; no preventDefault.
+    var w = e.target && e.target.closest ? e.target.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com/"]') : null;
+    if (w) {
+      var wh = w.getAttribute('href') || '';
+      if (wh.indexOf('19719987313') < 0) return;
+      gtag('event', 'whatsapp_click', { send_to: MK_ADS, page_path: location.pathname, link_location: 'static_page', link_url: wh });
+      gtag('event', 'conversion', { send_to: 'AW-18321801016/BpOFCLO7348dELj-waBE', value: 1.0, currency: 'USD' });
+      return;
+    }
     var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href^="sms:"]') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
