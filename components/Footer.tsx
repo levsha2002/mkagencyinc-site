@@ -68,6 +68,10 @@ export default function Footer({ lang }: { lang: string }) {
           </a>
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
+          <Link href={`/${lang}/protect`} style={{ color: '#bcd0ea' }}>
+            {lang === 'es' ? 'Guía de protección' : lang === 'ru' ? 'Гид по защите' : 'Protection Guide'}
+          </Link>
+          {' · '}
           <Link href={`/${lang}/coverage-check`} style={{ color: '#bcd0ea' }}>
             {lang === 'es' ? 'Revisión de cobertura gratis' : lang === 'ru' ? 'Бесплатная проверка страховки' : 'Free Coverage Check'}
           </Link>

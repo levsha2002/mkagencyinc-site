@@ -5,6 +5,7 @@ import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
 import { allEditions, editionLangs, newsHasLang } from '@/lib/news';
 import { BUSINESS_PAGES } from '@/content/pages/business';
 import { CITY_PAGES } from '@/content/pages/city';
+import { TOPICS, PROTECT_PATH, topicPath } from '@/content/pages/protect';
 
 // Полная карта сайта: реальные страницы (без /services и /about — это редиректы)
 // + все страницы страховых продуктов. Обновляется автоматически при
@@ -64,6 +65,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  // Protection learning section (content/pages/protect): hub + topic pages, all three languages.
+  const protectPages = langs.flatMap((l) => [
+    { url: `${base}/${l}${PROTECT_PATH}`, lastModified: '2026-10-03', changeFrequency: 'monthly' as const, priority: 0.9 },
+    ...TOPICS.map((p) => ({
+      url: `${base}/${l}${topicPath(p.slug)}`,
+      lastModified: p.modified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  ]);
+
   // Pages that exist only in some languages (see lib/page-langs.ts).
   const limitedPages = Object.entries(LIMITED_LANG_PAGES).flatMap(([path, { langs: ls }]) =>
     ls.map((l) => ({ url: `${base}/${l}${path}`, changeFrequency: 'weekly' as const, priority: 0.9 }))
@@ -97,5 +109,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...everyLang, ...cityPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
+  return [...everyLang, ...cityPages, ...protectPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
 }

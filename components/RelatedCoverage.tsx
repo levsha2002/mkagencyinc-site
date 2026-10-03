@@ -17,6 +17,7 @@ const LINKS: { path: string; label: Record<Lang, string>; icon: string; langs?: 
   { path: '/classic-car-insurance-florida-city', icon: '🚘', label: { en: 'Classic Car Insurance', es: 'Seguro de Auto Clásico', ru: 'Классические авто' } },
   { path: '/sr22-insurance-florida-city', icon: '📄', label: { en: 'SR-22 / FR-44', es: 'SR-22 / FR-44', ru: 'SR-22 / FR-44' } },
   { path: '/umbrella-insurance-florida-city', icon: '☂️', label: { en: 'Umbrella Insurance', es: 'Seguro Paraguas (Umbrella)', ru: 'Зонтичная страховка (Umbrella)' } },
+  { path: '/protect', icon: '🛡️', label: { en: 'Protection guide', es: 'Guía de protección', ru: 'Гид по защите' } },
   { path: '/insurance', icon: '📋', label: { en: 'All coverage', es: 'Todas las coberturas', ru: 'Все виды страхования' } },
 ];
 
