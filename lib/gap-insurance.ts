@@ -4,6 +4,9 @@
 // 'gap-insurance', Auto preselected and the note "Gap insurance".
 //
 // COMPLIANCE: no carrier brands, no price / "cheap" claims, no guarantees.
+// GAP is presented only as an add-on (endorsement) to the client's auto policy:
+// never compare it with dealer or lender/bank GAP products, never comment on
+// them, and never suggest canceling them or asking a lender for a refund.
 // The dollar example is clearly labeled as a hypothetical illustration.
 // Imported by the page (server); WhatsAppLink uses lib/gap-insurance-shared.
 
@@ -47,28 +50,28 @@ export type GapCopy = {
 };
 
 const EN: GapCopy = {
-  metaTitle: 'Gap Insurance for New Cars | M&K Agency, Florida City',
+  metaTitle: 'Gap Insurance: Add-On to Your Auto Policy | M&K Agency',
   metaDesc:
-    'Just bought or leased a new car? Gap insurance can pay the difference between your loan and the car\'s value if it\'s totaled or stolen. Ask a licensed agent.',
+    'Add gap coverage to your auto policy. It can pay the difference between the car\'s actual cash value and your loan or lease balance after a total loss.',
   badge: 'For new-car buyers',
   h1: 'New car? Protect yourself from the gap.',
-  sub: "A new car loses value fast, while your loan or lease balance goes down slowly. If the car is totaled or stolen, your auto insurance pays what the car is worth, not what you owe. Gap insurance covers the difference, so you don't keep paying for a car you no longer have.",
-  cta: 'Ask about gap insurance',
+  sub: "A new car loses value fast, while your loan or lease balance goes down slowly. If the car is totaled or stolen, your auto insurance pays what the car is worth, not what you owe. Gap coverage, added to your auto policy, can cover the difference, so you don't keep paying for a car you no longer have.",
+  cta: 'Request a gap coverage quote',
   callPrefix: 'Call',
   waHero: 'Message us on WhatsApp',
   micro: 'Free, no-obligation quote from a licensed Florida agent. English, Spanish, Russian.',
   heroAlt: 'Cars on a Florida highway at sunset',
   whatH2: 'What is gap insurance?',
   whatP: [
-    "Gap insurance pays the difference between what you still owe on your loan or lease and the car's actual cash value (what it was worth right before the loss) if the car is totaled or stolen and not recovered.",
-    "It works together with your auto policy's collision and comprehensive coverage. Your auto insurance pays the car's value first, and gap coverage helps pay the balance that's left on your loan or lease.",
+    "Gap insurance is an add-on (endorsement) to your auto policy. If the car is totaled or stolen and not recovered, it pays the difference between the car's actual cash value (what it was worth right before the loss) and what you still owe on your loan or lease.",
+    "To add it, your auto policy needs to carry comprehensive and collision coverage on the car. After a covered total loss, your policy pays the car's actual cash value first, and the gap coverage helps pay the balance that's left on your loan or lease. Coverage availability and terms depend on the policy.",
   ],
   exLabel: 'Example',
   exH3: 'How the gap can happen',
   exRows: [
     { k: 'You still owe on your loan', v: '$32,000' },
     { k: 'Actual cash value of the car after a total loss', v: '$26,000' },
-    { k: 'The gap you would still owe the lender', v: '$6,000', gap: true },
+    { k: 'The gap still left on your loan', v: '$6,000', gap: true },
   ],
   exP: "Without gap coverage, that $6,000 would come out of your pocket, even though the car is gone. Gap insurance is designed to pay that difference. Depending on the policy, your auto deductible may not be included.",
   exNote: 'Illustrative example only. The numbers are hypothetical; your loan, car value and coverage will be different.',
@@ -76,7 +79,7 @@ const EN: GapCopy = {
   who: [
     { icon: '💵', h: 'Little or no down payment', p: 'If you put down less than about 20%, you may owe more than the car is worth for a good part of the loan.' },
     { icon: '📅', h: 'Loans of 60 months or longer', p: 'Longer loans pay down the balance slowly, so the gap can last for years.' },
-    { icon: '📝', h: 'Leases', p: 'You are responsible for the lease balance if the car is totaled. Some leases already include gap coverage, so check your contract.' },
+    { icon: '📝', h: 'Leases', p: 'You are usually responsible for the lease balance if the car is totaled. Gap coverage on your auto policy can help with that difference; we\'ll tell you if it can be added for your car.' },
     { icon: '📉', h: 'Cars that lose value fast', p: 'Some models depreciate faster than others, especially in the first couple of years.' },
     { icon: '🔁', h: 'A balance rolled over from your last car', p: 'If you added what you owed on your old car to the new loan, you start out owing more than the car is worth.' },
   ],
@@ -90,23 +93,23 @@ const EN: GapCopy = {
     'Your auto deductible (in many policies)',
     "Injuries or damage to other people or their property (that's your liability coverage)",
   ],
-  noNote: "Every policy has its own terms and limits. We'll go over what yours includes before you decide.",
+  noNote: "Coverage availability, terms and limits depend on the policy. We'll go over what yours includes before you decide.",
   faqH2: 'Gap insurance questions',
   faq: [
     {
-      q: 'Can I add gap insurance after I already bought the car from the dealer?',
-      a: "Often, yes. Many auto policies let you add gap coverage after the purchase, but there are usually limits, such as how new the car is and whether you are the original owner. The rules vary, so it's best to call us soon after you buy.",
+      q: 'Can I add gap coverage after I already bought the car?',
+      a: "Often, yes, as long as the car carries comprehensive and collision coverage on your auto policy. There are usually limits, such as how new the car is and whether you are the original owner. Availability and terms depend on the policy, so it's best to call us soon after you buy.",
     },
     {
-      q: 'Do I need gap insurance on a lease?',
-      a: "Many leases already include gap coverage, so first check your lease contract. If yours doesn't, it's usually worth having, because a leased car often starts out worth less than what you owe on the lease. We can look at your contract with you.",
+      q: 'Can I add gap coverage if I lease my car?',
+      a: "In many cases, yes. With a lease you are usually responsible for the balance if the car is totaled, and a leased car often starts out worth less than what you owe. Gap coverage added to your auto policy is designed for that difference. We'll tell you whether it can be added for your car and on what terms.",
     },
     {
-      q: "Is the dealer's gap coverage my only option?",
-      a: "No. Dealers often offer gap coverage (sometimes called a GAP waiver) and add it to your loan, which means you may also pay interest on it. You can also ask about adding gap coverage to your auto insurance. We'll explain the options so you can compare before you sign.",
+      q: 'What do I need to add gap coverage to my auto policy?',
+      a: "Your auto policy needs comprehensive and collision coverage on the car, and gap coverage is meant for cars with a loan or lease. We'll also ask for the VIN and your loan or lease details. Coverage availability and terms depend on the policy, and we'll tell you whether it can be added.",
     },
     {
-      q: 'How fast can you add gap insurance?',
+      q: 'How fast can you add gap coverage to my policy?',
       a: "In many cases we can take care of it the same day once we have your VIN and your loan or lease details. It depends on the car and the policy, and we'll tell you right away whether it can be added.",
     },
     {
@@ -114,7 +117,7 @@ const EN: GapCopy = {
       a: "Yes. Call us first. We'll help you open the claim, gather what's needed (like the payoff statement from your lender and the settlement from your auto insurance) and follow the gap part of the claim with you until it's done.",
     },
   ],
-  formH2: 'Ask about gap insurance for your new car',
+  formH2: 'Request a quote to add gap coverage to your auto policy',
   formSub: "Leave your name and number. A licensed agent will call you back and explain your options in plain language.",
   form: {
     ...CC.en.form,
@@ -125,28 +128,28 @@ const EN: GapCopy = {
 };
 
 const ES: GapCopy = {
-  metaTitle: 'Seguro GAP para carros nuevos | M&K Agency, Florida City',
+  metaTitle: 'Seguro GAP: adicional a su póliza de auto | M&K Agency',
   metaDesc:
-    '¿Carro nuevo o arrendado? El seguro GAP puede pagar la diferencia entre lo que debe y lo que vale si es pérdida total o robo. Hable con un agente licenciado.',
+    'Agregue la cobertura GAP a su póliza de auto. Puede pagar la diferencia entre el valor real del carro y el saldo de su préstamo o lease tras una pérdida total.',
   badge: 'Para quienes compran carro nuevo',
   h1: '¿Carro nuevo? Protéjase de la diferencia.',
-  sub: 'Un carro nuevo pierde valor rápido, mientras que el saldo de su préstamo o arrendamiento baja despacio. Si el carro es pérdida total o se lo roban, su seguro de auto paga lo que vale el carro, no lo que usted debe. El seguro GAP cubre esa diferencia, para que no siga pagando por un carro que ya no tiene.',
-  cta: 'Pregunte por el seguro GAP',
+  sub: 'Un carro nuevo pierde valor rápido, mientras que el saldo de su préstamo o arrendamiento baja despacio. Si el carro es pérdida total o se lo roban, su seguro de auto paga lo que vale el carro, no lo que usted debe. La cobertura GAP, agregada a su póliza de auto, puede cubrir esa diferencia, para que no siga pagando por un carro que ya no tiene.',
+  cta: 'Solicite una cotización GAP',
   callPrefix: 'Llame al',
   waHero: 'Escríbanos por WhatsApp',
   micro: 'Cotización gratis y sin compromiso con un agente con licencia en Florida. Inglés, español y ruso.',
   heroAlt: 'Carros en una autopista de Florida al atardecer',
   whatH2: '¿Qué es el seguro GAP?',
   whatP: [
-    'El seguro GAP (gap insurance) paga la diferencia entre lo que usted todavía debe de su préstamo o arrendamiento y el valor real en efectivo del carro (lo que valía justo antes de la pérdida) si el carro es declarado pérdida total o se lo roban y no aparece.',
-    'Funciona junto con las coberturas de choque (collision) y comprensiva (comprehensive) de su póliza de auto. Su seguro de auto paga primero el valor del carro, y la cobertura GAP ayuda a pagar el saldo que queda del préstamo o arrendamiento.',
+    'El seguro GAP (gap insurance) es un adicional (endoso) de su póliza de auto. Si el carro es declarado pérdida total o se lo roban y no aparece, paga la diferencia entre el valor real en efectivo del carro (lo que valía justo antes de la pérdida) y lo que usted todavía debe de su préstamo o arrendamiento.',
+    'Para agregarlo, su póliza de auto debe incluir las coberturas de choque (collision) y comprensiva (comprehensive) para ese carro. Tras una pérdida total cubierta, su póliza paga primero el valor real en efectivo del carro, y la cobertura GAP ayuda a pagar el saldo que queda del préstamo o arrendamiento. La disponibilidad y los términos de la cobertura dependen de la póliza.',
   ],
   exLabel: 'Ejemplo',
   exH3: 'Cómo puede surgir la diferencia',
   exRows: [
     { k: 'Lo que todavía debe del préstamo', v: '$32,000' },
     { k: 'Valor real en efectivo del carro tras la pérdida total', v: '$26,000' },
-    { k: 'La diferencia que todavía le debería al prestamista', v: '$6,000', gap: true },
+    { k: 'La diferencia que todavía quedaría en su préstamo', v: '$6,000', gap: true },
   ],
   exP: 'Sin cobertura GAP, esos $6,000 saldrían de su bolsillo, aunque ya no tenga el carro. El seguro GAP está diseñado para pagar esa diferencia. Según la póliza, es posible que no incluya su deducible del seguro de auto.',
   exNote: 'Ejemplo solo ilustrativo. Las cifras son hipotéticas; su préstamo, el valor de su carro y su cobertura serán diferentes.',
@@ -154,7 +157,7 @@ const ES: GapCopy = {
   who: [
     { icon: '💵', h: 'Poco o ningún pago inicial', p: 'Si dio menos de un 20% de entrada, puede deber más de lo que vale el carro durante buena parte del préstamo.' },
     { icon: '📅', h: 'Préstamos de 60 meses o más', p: 'En préstamos largos el saldo baja despacio, así que la diferencia puede durar años.' },
-    { icon: '📝', h: 'Arrendamientos (lease)', p: 'Usted responde por el saldo del arrendamiento si el carro es pérdida total. Algunos contratos ya incluyen cobertura GAP; revise el suyo.' },
+    { icon: '📝', h: 'Arrendamientos (lease)', p: 'Por lo general, usted responde por el saldo del arrendamiento si el carro es pérdida total. La cobertura GAP en su póliza de auto puede ayudar con esa diferencia; le diremos si se puede agregar para su carro.' },
     { icon: '📉', h: 'Carros que pierden valor rápido', p: 'Algunos modelos se deprecian más rápido que otros, sobre todo en los primeros años.' },
     { icon: '🔁', h: 'Saldo pasado de su carro anterior', p: 'Si sumó al préstamo nuevo lo que debía del carro anterior, empieza debiendo más de lo que vale el carro.' },
   ],
@@ -168,23 +171,23 @@ const ES: GapCopy = {
     'Su deducible del seguro de auto (en muchas pólizas)',
     'Lesiones o daños a otras personas o a su propiedad (eso lo cubre su responsabilidad civil)',
   ],
-  noNote: 'Cada póliza tiene sus propios términos y límites. Revisaremos con usted qué incluye la suya antes de que decida.',
+  noNote: 'La disponibilidad, los términos y los límites dependen de la póliza. Revisaremos con usted qué incluye la suya antes de que decida.',
   faqH2: 'Preguntas sobre el seguro GAP',
   faq: [
     {
-      q: '¿Puedo agregar el seguro GAP después de comprar el carro en el concesionario?',
-      a: 'Muchas veces, sí. Muchas pólizas de auto permiten agregar la cobertura GAP después de la compra, pero suele haber límites, como qué tan nuevo es el carro y si usted es el primer dueño. Las reglas varían, así que lo mejor es llamarnos poco después de comprarlo.',
+      q: '¿Puedo agregar la cobertura GAP después de comprar el carro?',
+      a: 'Muchas veces, sí, siempre que el carro tenga las coberturas de choque y comprensiva en su póliza de auto. Suele haber límites, como qué tan nuevo es el carro y si usted es el primer dueño. La disponibilidad y los términos dependen de la póliza, así que lo mejor es llamarnos poco después de comprarlo.',
     },
     {
-      q: '¿Necesito seguro GAP si tengo el carro en arrendamiento (lease)?',
-      a: 'Muchos contratos de arrendamiento ya incluyen cobertura GAP, así que primero revise su contrato. Si el suyo no la incluye, por lo general vale la pena tenerla, porque un carro arrendado suele valer menos de lo que usted debe del arrendamiento al principio. Podemos revisar su contrato con usted.',
+      q: '¿Puedo agregar la cobertura GAP si tengo el carro en arrendamiento (lease)?',
+      a: 'En muchos casos, sí. Con un arrendamiento, usted suele responder por el saldo si el carro es pérdida total, y al principio un carro arrendado a menudo vale menos de lo que usted debe. La cobertura GAP agregada a su póliza de auto está pensada para esa diferencia. Le diremos si se puede agregar para su carro y en qué términos.',
     },
     {
-      q: '¿La cobertura GAP del concesionario es mi única opción?',
-      a: 'No. Los concesionarios suelen ofrecer cobertura GAP (a veces llamada GAP waiver) y la suman a su préstamo, lo que significa que también podría pagar intereses sobre ella. También puede preguntar por agregar la cobertura GAP a su seguro de auto. Le explicamos las opciones para que compare antes de firmar.',
+      q: '¿Qué necesito para agregar la cobertura GAP a mi póliza de auto?',
+      a: 'Su póliza de auto debe tener las coberturas de choque (collision) y comprensiva (comprehensive) para ese carro, y la cobertura GAP está pensada para carros con préstamo o arrendamiento. También le pediremos el VIN y los datos de su préstamo o arrendamiento. La disponibilidad y los términos dependen de la póliza, y le diremos si se puede agregar.',
     },
     {
-      q: '¿Qué tan rápido pueden agregar el seguro GAP?',
+      q: '¿Qué tan rápido pueden agregar la cobertura GAP a mi póliza?',
       a: 'En muchos casos podemos hacerlo el mismo día, una vez que tengamos el VIN y los datos de su préstamo o arrendamiento. Depende del carro y de la póliza, y le diremos enseguida si se puede agregar.',
     },
     {
@@ -192,7 +195,7 @@ const ES: GapCopy = {
       a: 'Sí. Llámenos primero. Le ayudamos a abrir el reclamo, a reunir lo necesario (como el estado de saldo de su prestamista y la liquidación de su seguro de auto) y damos seguimiento a la parte GAP del reclamo con usted hasta que se resuelva.',
     },
   ],
-  formH2: 'Pregunte por el seguro GAP para su carro nuevo',
+  formH2: 'Solicite una cotización para agregar la cobertura GAP a su póliza de auto',
   formSub: 'Déjenos su nombre y teléfono. Un agente con licencia le devolverá la llamada y le explicará sus opciones con palabras claras.',
   form: {
     ...CC.es.form,
@@ -203,28 +206,28 @@ const ES: GapCopy = {
 };
 
 const RU: GapCopy = {
-  metaTitle: 'GAP-страховка для нового автомобиля | M&K Agency, Флорида',
+  metaTitle: 'GAP-страховка: дополнение к автополису | M&K Agency',
   metaDesc:
-    'Новая машина в кредит или лизинг? GAP может покрыть разницу между долгом и стоимостью машины при полной гибели или угоне. Спросите лицензированного агента.',
+    'Добавьте GAP-покрытие к автополису. Оно может покрыть разницу между рыночной стоимостью машины и остатком кредита или лизинга при полной гибели.',
   badge: 'Для покупателей новых машин',
   h1: 'Новая машина? Защитите себя от разницы.',
-  sub: 'Новая машина быстро теряет в цене, а долг по кредиту или лизингу уменьшается медленно. Если машина полностью уничтожена (total loss) или угнана, автостраховка выплачивает её рыночную стоимость, а не сумму вашего долга. GAP-страховка покрывает эту разницу, чтобы вам не пришлось платить за машину, которой уже нет.',
-  cta: 'Узнать про GAP-страховку',
+  sub: 'Новая машина быстро теряет в цене, а долг по кредиту или лизингу уменьшается медленно. Если машина полностью уничтожена (total loss) или угнана, автостраховка выплачивает её рыночную стоимость, а не сумму вашего долга. GAP-покрытие, добавленное к вашему автополису, может покрыть эту разницу, чтобы вам не пришлось платить за машину, которой уже нет.',
+  cta: 'Запросить расчёт GAP',
   callPrefix: 'Позвоните',
   waHero: 'Написать в WhatsApp',
   micro: 'Бесплатный расчёт без обязательств от лицензированного агента во Флориде. Английский, испанский, русский.',
   heroAlt: 'Машины на шоссе во Флориде на закате',
   whatH2: 'Что такое GAP-страховка?',
   whatP: [
-    'GAP-страховка (gap insurance) выплачивает разницу между тем, что вы ещё должны по кредиту или лизингу, и фактической рыночной стоимостью машины (actual cash value, то есть сколько она стоила прямо перед страховым случаем), если машина признана полностью уничтоженной или угнана и не найдена.',
-    'Она работает вместе с покрытиями collision и comprehensive в вашем автополисе. Сначала автостраховка выплачивает стоимость машины, а GAP-покрытие помогает погасить остаток долга по кредиту или лизингу.',
+    'GAP-страховка (gap insurance) — это дополнение (endorsement) к вашему автополису. Если машина признана полностью уничтоженной или угнана и не найдена, она выплачивает разницу между фактической рыночной стоимостью машины (actual cash value, то есть сколько она стоила прямо перед страховым случаем) и тем, что вы ещё должны по кредиту или лизингу.',
+    'Чтобы его добавить, в вашем автополисе на эту машину должны быть покрытия comprehensive и collision. При страховом случае с полной гибелью полис сначала выплачивает рыночную стоимость машины, а GAP-покрытие помогает погасить остаток долга по кредиту или лизингу. Доступность покрытия и условия зависят от полиса.',
   ],
   exLabel: 'Пример',
   exH3: 'Откуда берётся разница',
   exRows: [
     { k: 'Остаток долга по кредиту', v: '$32,000' },
     { k: 'Рыночная стоимость машины после полной гибели', v: '$26,000' },
-    { k: 'Разница, которую вы остаётесь должны банку', v: '$6,000', gap: true },
+    { k: 'Разница, которая остаётся по кредиту', v: '$6,000', gap: true },
   ],
   exP: 'Без GAP-покрытия эти $6,000 пришлось бы платить из своего кармана, хотя машины уже нет. GAP-страховка создана как раз для того, чтобы покрыть эту разницу. В зависимости от полиса франшиза по автостраховке может не входить в выплату.',
   exNote: 'Пример приведён только для иллюстрации. Цифры условные; ваш кредит, стоимость машины и покрытие будут другими.',
@@ -232,7 +235,7 @@ const RU: GapCopy = {
   who: [
     { icon: '💵', h: 'Маленький первый взнос или без него', p: 'Если вы внесли меньше примерно 20%, большую часть срока кредита вы можете быть должны больше, чем стоит машина.' },
     { icon: '📅', h: 'Кредит на 60 месяцев и дольше', p: 'По длинному кредиту долг уменьшается медленно, и разница может сохраняться годами.' },
-    { icon: '📝', h: 'Лизинг', p: 'Если машина полностью уничтожена, остаток по лизингу на вас. В некоторые договоры лизинга GAP уже входит, проверьте свой.' },
+    { icon: '📝', h: 'Лизинг', p: 'Если машина полностью уничтожена, остаток по лизингу обычно на вас. GAP-покрытие в вашем автополисе может помочь с этой разницей; мы скажем, можно ли добавить его для вашей машины.' },
     { icon: '📉', h: 'Машины, которые быстро теряют в цене', p: 'Некоторые модели теряют в цене быстрее других, особенно в первые пару лет.' },
     { icon: '🔁', h: 'Долг за предыдущую машину', p: 'Если остаток долга за старую машину добавили в новый кредит, вы с самого начала должны больше, чем стоит машина.' },
   ],
@@ -246,23 +249,23 @@ const RU: GapCopy = {
     'Франшизу по автостраховке (во многих полисах)',
     'Травмы или ущерб другим людям и их имуществу (это покрытие ответственности, liability)',
   ],
-  noNote: 'У каждого полиса свои условия и лимиты. Мы разберём с вами, что входит в ваш, прежде чем вы примете решение.',
+  noNote: 'Доступность покрытия, условия и лимиты зависят от полиса. Мы разберём с вами, что входит в ваш, прежде чем вы примете решение.',
   faqH2: 'Вопросы о GAP-страховке',
   faq: [
     {
-      q: 'Можно ли добавить GAP-страховку, если машина уже куплена у дилера?',
-      a: 'Часто да. Многие автополисы позволяют добавить GAP-покрытие после покупки, но обычно есть ограничения: например, насколько новая машина и являетесь ли вы её первым владельцем. Правила различаются, поэтому лучше позвонить нам вскоре после покупки.',
+      q: 'Можно ли добавить GAP-покрытие, если машина уже куплена?',
+      a: 'Часто да, если машина застрахована по вашему автополису с покрытиями comprehensive и collision. Обычно есть ограничения: например, насколько новая машина и являетесь ли вы её первым владельцем. Доступность и условия зависят от полиса, поэтому лучше позвонить нам вскоре после покупки.',
     },
     {
-      q: 'Нужна ли GAP-страховка при лизинге?',
-      a: 'Во многие договоры лизинга GAP-покрытие уже входит, поэтому сначала проверьте свой договор. Если в вашем его нет, обычно его стоит оформить: в начале лизинга машина часто стоит меньше, чем вы должны. Можем посмотреть договор вместе с вами.',
+      q: 'Можно ли добавить GAP-покрытие, если машина в лизинге?',
+      a: 'Во многих случаях да. При лизинге остаток по договору в случае полной гибели машины обычно на вас, а в начале срока машина часто стоит меньше, чем вы должны. GAP-покрытие, добавленное к автополису, рассчитано как раз на эту разницу. Мы скажем, можно ли добавить его для вашей машины и на каких условиях.',
     },
     {
-      q: 'GAP от дилера — единственный вариант?',
-      a: 'Нет. Дилеры часто предлагают GAP-покрытие (иногда его называют GAP waiver) и включают его в кредит, а значит, на него могут начисляться проценты. Можно также спросить о добавлении GAP-покрытия к вашей автостраховке. Мы объясним варианты, чтобы вы могли сравнить их до подписания.',
+      q: 'Что нужно, чтобы добавить GAP-покрытие к автополису?',
+      a: 'В вашем автополисе на эту машину должны быть покрытия comprehensive и collision, а само GAP-покрытие рассчитано на машины в кредите или лизинге. Мы также попросим VIN и данные кредита или лизинга. Доступность покрытия и условия зависят от полиса, и мы сразу скажем, можно ли его добавить.',
     },
     {
-      q: 'Как быстро вы можете добавить GAP-страховку?',
+      q: 'Как быстро вы можете добавить GAP-покрытие к полису?',
       a: 'Во многих случаях в тот же день, как только у нас будут VIN и данные вашего кредита или лизинга. Это зависит от машины и полиса, и мы сразу скажем, можно ли его добавить.',
     },
     {
@@ -270,7 +273,7 @@ const RU: GapCopy = {
       a: 'Да. Сначала позвоните нам. Мы поможем открыть страховой случай, собрать нужные документы (например, справку об остатке долга от банка и расчёт выплаты от автостраховщика) и будем вести GAP-часть выплаты вместе с вами до конца.',
     },
   ],
-  formH2: 'Узнайте про GAP-страховку для новой машины',
+  formH2: 'Запросите расчёт: GAP-покрытие к вашему автополису',
   formSub: 'Оставьте имя и телефон. Лицензированный агент перезвонит вам и простыми словами объяснит варианты.',
   form: {
     ...CC.ru.form,

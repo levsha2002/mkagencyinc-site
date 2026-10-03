@@ -42,7 +42,7 @@ export const CAR_HOMESTEAD: CityPage = {
         '**Deductibles you can actually pay** the week after a hurricane or a crash.',
         '**Rental reimbursement and towing:** a long commute with no car is a lost paycheck.',
         '**Every licensed driver in the household listed**, including teens, and the correct garaging address.',
-        '**Gap coverage** if you finance or lease and owe more than the car is worth.',
+        '**Gap coverage added to your auto policy** if you finance or lease and owe more than the car is worth.',
         '**Work use:** delivery and rideshare driving are usually excluded from a personal policy unless you add the right coverage.',
       ],
       body: [
@@ -94,7 +94,7 @@ export const CAR_HOMESTEAD: CityPage = {
         '**Deducibles que usted pueda pagar** la semana después de un huracán o un choque.',
         '**Carro de alquiler y grúa:** con un viaje largo al trabajo, quedarse sin carro es perder días de sueldo.',
         '**Todos los conductores de la casa en la póliza**, incluidos los jóvenes, y la dirección correcta donde duerme el carro.',
-        '**Seguro GAP** si financia o arrienda y debe más de lo que vale el carro.',
+        '**Cobertura GAP agregada a su póliza de auto** si financia o arrienda y debe más de lo que vale el carro.',
         '**Uso para trabajar:** las entregas y Uber o Lyft casi nunca están cubiertas por una póliza personal si no se agrega la cobertura adecuada.',
       ],
       body: [
@@ -146,7 +146,7 @@ export const CAR_HOMESTEAD: CityPage = {
         '**Франшиза (deductible), которую реально заплатить** через неделю после урагана или аварии.',
         '**Аренда машины и эвакуатор:** при длинной дороге на работу остаться без машины — значит терять зарплату.',
         '**Все водители в семье вписаны в полис**, включая подростков, и указан правильный адрес, где ночует машина.',
-        '**GAP-страховка**, если машина в кредите или лизинге и долг больше её стоимости.',
+        '**GAP-покрытие в составе автополиса**, если машина в кредите или лизинге и долг больше её стоимости.',
         '**Работа за рулём:** доставка, Uber и Lyft обычно исключены из личного полиса, если не добавить нужное покрытие.',
       ],
       body: [
