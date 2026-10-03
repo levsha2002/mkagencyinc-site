@@ -5,6 +5,7 @@ import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import AreasWeServe from '@/components/city/AreasWeServe';
 import { pageMetadata } from '@/lib/seo';
 
 // ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
@@ -243,6 +244,7 @@ export default function HomeownersInsuranceFloridaCity({ params }: { params: { l
           </div>
         </div>
       </section>
+      <AreasWeServe lang={l} current="/homeowners-insurance-florida-city" />
       <RelatedCoverage lang={l} current="/homeowners-insurance-florida-city" />
     </main>
   );

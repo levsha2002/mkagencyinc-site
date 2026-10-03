@@ -5,6 +5,7 @@ import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import AreasWeServe from '@/components/city/AreasWeServe';
 import GapCallout from '@/components/GapCallout';
 import { pageMetadata } from '@/lib/seo';
 
@@ -245,6 +246,7 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
           </div>
         </div>
       </section>
+      <AreasWeServe lang={l} current="/car-insurance-florida-city" />
       <RelatedCoverage lang={l} current="/car-insurance-florida-city" />
     </main>
   );

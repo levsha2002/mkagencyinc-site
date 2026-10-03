@@ -19,7 +19,9 @@ declare global {
 
 // defaultType: the product the page is about (the homeowners page used to
 // open with "Auto" preselected).
-export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string; defaultType?: LeadType }) {
+// source: optional lead source sent to /api/lead (defaults to 'website' there),
+// e.g. 'city-car-insurance-homestead-fl' on the local city/county pages.
+export default function LeadForm({ lang, defaultType = 'Auto', source }: { lang: string; defaultType?: LeadType; source?: string }) {
   const t = getDict(lang).form;
   const empty = { insurance_type: defaultType as string, zip_code: '', name: '', phone: '', email: '', message: '' };
   const [formData, setFormData] = useState(empty);
@@ -41,6 +43,7 @@ export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string;
           lang,
           company,
           transaction_id: transactionId,
+          ...(source ? { source } : {}),
           ...consentPayload(lang),
           attribution: getAttribution(),
         }),
@@ -66,6 +69,7 @@ export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string;
             value: 1,
             insurance_type: formData.insurance_type,
             transaction_id: transactionId,
+            ...(source ? { lead_source: source } : {}),
           });
         }
         setFormData(empty);

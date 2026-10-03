@@ -4,6 +4,7 @@ import { allPosts, postLangs, blogHasLang } from '@/lib/blog';
 import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
 import { allEditions, editionLangs, newsHasLang } from '@/lib/news';
 import { BUSINESS_PAGES } from '@/content/pages/business';
+import { CITY_PAGES } from '@/content/pages/city';
 
 // Полная карта сайта: реальные страницы (без /services и /about — это редиректы)
 // + все страницы страховых продуктов. Обновляется автоматически при
@@ -44,6 +45,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Business-type service pages (content/pages/business), all three languages.
   const businessPages = BUSINESS_PAGES.map((p) => ({ path: p.path, priority: 0.9 }));
+
+  // Local SEO pages (content/pages/city): county hubs and city pages, all three languages.
+  const cityPages = langs.flatMap((l) =>
+    CITY_PAGES.map((p) => ({
+      url: `${base}/${l}${p.path}`,
+      lastModified: p.modified,
+      changeFrequency: 'monthly' as const,
+      priority: p.kind === 'county' ? 0.9 : 0.8,
+    }))
+  );
 
   const everyLang = langs.flatMap((l) =>
     [...staticPages, ...businessPages, ...productPages].map(({ path, priority }) => ({
@@ -86,5 +97,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...everyLang, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
+  return [...everyLang, ...cityPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
 }
