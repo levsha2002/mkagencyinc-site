@@ -7,6 +7,7 @@ import { getAttribution } from '@/lib/attribution';
 import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
+import { phoneInputProps, zipInputProps } from '@/lib/input-validation';
 
 export type LeadType = 'Auto' | 'Home' | 'Commercial' | 'Life';
 
@@ -92,7 +93,7 @@ export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string;
         <div className="grid2">
           <div className="field">
             <label htmlFor="lead-zip">{t.zip}</label>
-            <input id="lead-zip" name="zip" type="text" inputMode="numeric" autoComplete="postal-code" maxLength={5} required placeholder="33034" value={formData.zip_code}
+            <input id="lead-zip" name="zip" type="text" inputMode="numeric" autoComplete="postal-code" maxLength={5} required {...zipInputProps(lang)} placeholder="33034" value={formData.zip_code}
               onChange={(e) => setFormData({ ...formData, zip_code: e.target.value })} />
           </div>
           <div className="field">
@@ -104,7 +105,7 @@ export default function LeadForm({ lang, defaultType = 'Auto' }: { lang: string;
         <div className="grid2">
           <div className="field">
             <label htmlFor="lead-phone">{t.phone}</label>
-            <input id="lead-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" required value={formData.phone}
+            <input id="lead-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" required {...phoneInputProps(lang)} value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
           </div>
           <div className="field">

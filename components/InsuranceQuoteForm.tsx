@@ -8,6 +8,7 @@ import { getDict, GOOGLE_REVIEW_URL, REVIEW_CTA } from '@/lib/dictionaries';
 import { consentPayload } from '@/lib/consent';
 import Honeypot from '@/components/Honeypot';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
+import { phoneInputProps } from '@/lib/input-validation';
 
 declare global {
   interface Window {
@@ -132,6 +133,7 @@ export default function InsuranceQuoteForm({
               name="phone"
               required
               type="tel"
+              {...phoneInputProps(lang)}
               inputMode="tel"
               autoComplete="tel"
               value={phone}

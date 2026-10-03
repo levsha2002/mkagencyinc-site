@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { trackConversion } from '@/lib/analytics';
 import { getAttribution } from '@/lib/attribution';
 import Honeypot from '@/components/Honeypot';
+import { phoneInputProps } from '@/lib/input-validation';
 
 // Guided protection conversation.
 //
@@ -731,6 +732,9 @@ export default function ProtectionPlanner({ lang = 'en' }: { lang?: string }) {
                     <input
                       required
                       type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      {...phoneInputProps(L)}
                       placeholder={t.phone}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}

@@ -190,7 +190,7 @@
       <form id="quoteForm">
         <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="text" id="f-name" placeholder="Su nombre" aria-label="Su nombre" autocomplete="name" required>
-        <input type="tel" id="f-phone" placeholder="Número de teléfono" aria-label="Número de teléfono" autocomplete="tel" inputmode="tel" required>
+        <input type="tel" id="f-phone" placeholder="Número de teléfono" aria-label="Número de teléfono" autocomplete="tel" inputmode="tel" pattern="[^0-9]*(1[^0-9]*)?([0-9][^0-9]*){10}" title="Ingrese un número de teléfono de 10 dígitos, p. ej. (305) 555-0123" required>
         <textarea id="f-comments" placeholder="¿Algo que debamos saber? (opcional)" aria-label="¿Algo que debamos saber? (opcional)"></textarea>
         <label class="consent">
           <input type="checkbox" id="f-consent" required>
