@@ -49,7 +49,7 @@ export type GapCopy = {
 const EN: GapCopy = {
   metaTitle: 'Gap Insurance for New Cars | M&K Agency, Florida City',
   metaDesc:
-    'Just bought or leased a new car? Gap insurance can pay the difference between what you owe and what the car is worth if it is totaled or stolen. Ask a licensed Florida agent.',
+    'Just bought or leased a new car? Gap insurance can pay the difference between your loan and the car\'s value if it\'s totaled or stolen. Ask a licensed agent.',
   badge: 'For new-car buyers',
   h1: 'New car? Protect yourself from the gap.',
   sub: "A new car loses value fast, while your loan or lease balance goes down slowly. If the car is totaled or stolen, your auto insurance pays what the car is worth, not what you owe. Gap insurance covers the difference, so you don't keep paying for a car you no longer have.",
@@ -127,7 +127,7 @@ const EN: GapCopy = {
 const ES: GapCopy = {
   metaTitle: 'Seguro GAP para carros nuevos | M&K Agency, Florida City',
   metaDesc:
-    '¿Acaba de comprar o arrendar un carro nuevo? El seguro GAP puede pagar la diferencia entre lo que debe y lo que vale el carro si es pérdida total o se lo roban. Hable con un agente con licencia en Florida.',
+    '¿Carro nuevo o arrendado? El seguro GAP puede pagar la diferencia entre lo que debe y lo que vale si es pérdida total o robo. Hable con un agente licenciado.',
   badge: 'Para quienes compran carro nuevo',
   h1: '¿Carro nuevo? Protéjase de la diferencia.',
   sub: 'Un carro nuevo pierde valor rápido, mientras que el saldo de su préstamo o arrendamiento baja despacio. Si el carro es pérdida total o se lo roban, su seguro de auto paga lo que vale el carro, no lo que usted debe. El seguro GAP cubre esa diferencia, para que no siga pagando por un carro que ya no tiene.',
@@ -205,7 +205,7 @@ const ES: GapCopy = {
 const RU: GapCopy = {
   metaTitle: 'GAP-страховка для нового автомобиля | M&K Agency, Флорида',
   metaDesc:
-    'Купили или взяли в лизинг новую машину? GAP-страховка может покрыть разницу между долгом по кредиту и стоимостью машины, если она полностью уничтожена или угнана. Поговорите с лицензированным агентом во Флориде.',
+    'Новая машина в кредит или лизинг? GAP может покрыть разницу между долгом и стоимостью машины при полной гибели или угоне. Спросите лицензированного агента.',
   badge: 'Для покупателей новых машин',
   h1: 'Новая машина? Защитите себя от разницы.',
   sub: 'Новая машина быстро теряет в цене, а долг по кредиту или лизингу уменьшается медленно. Если машина полностью уничтожена (total loss) или угнана, автостраховка выплачивает её рыночную стоимость, а не сумму вашего долга. GAP-страховка покрывает эту разницу, чтобы вам не пришлось платить за машину, которой уже нет.',

@@ -195,6 +195,8 @@ const en = {
     reviews: 'Read our client reviews',
     underwriting: 'Coverage is subject to underwriting and eligibility. Descriptions are general information, not policy language.',
     metaSuffix: 'Florida City, FL agency serving all of Florida. Call (305) 859-3953.',
+    metaSuffixMedium: 'Florida City agency serving all of Florida. Call (305) 859-3953.',
+    metaSuffixShort: 'Florida City agency. Call (305) 859-3953.',
   },
   // "Talk to Agent Now" modal (components/TalkNowWidget.tsx).
   talkNow: {
@@ -418,6 +420,8 @@ const es: typeof en = {
     reviews: 'Lea las reseñas de nuestros clientes',
     underwriting: 'La cobertura está sujeta a suscripción (underwriting) y elegibilidad. Las descripciones son información general, no lenguaje de póliza.',
     metaSuffix: 'Agencia en Florida City, FL, que sirve a toda la Florida. Llame al (305) 859-3953.',
+    metaSuffixMedium: 'Agencia en Florida City, sirve a toda la Florida. Llame al (305) 859-3953.',
+    metaSuffixShort: 'Agencia en Florida City. Llame al (305) 859-3953.',
   },
   talkNow: {
     fab: '📲 Hable con un agente',
@@ -638,6 +642,8 @@ const ru: typeof en = {
     reviews: 'Читать отзывы клиентов',
     underwriting: 'Покрытие предоставляется при условии андеррайтинга и соответствия требованиям. Описания — общая информация, а не текст полиса.',
     metaSuffix: 'Агентство во Florida City, FL, работаем по всей Флориде. Звоните: (305) 859-3953.',
+    metaSuffixMedium: 'Агентство во Florida City, работаем по всей Флориде. Звоните: (305) 859-3953.',
+    metaSuffixShort: 'Агентство во Florida City. Звоните: (305) 859-3953.',
   },
   talkNow: {
     fab: '📲 Связаться с агентом',

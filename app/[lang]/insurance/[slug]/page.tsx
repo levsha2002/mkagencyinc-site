@@ -16,6 +16,7 @@ import Image from 'next/image';
 import BusinessTypeLinks from '@/components/business/BusinessTypeLinks';
 import HeroBackdrop from '@/components/hero/HeroBackdrop';
 import { dailyHero, type HeroType } from '@/content/hero';
+import { productMetaDescription, productMetaTitle } from '@/lib/product-meta';
 
 // ISR: re-render hourly (was daily) so the business + life pages pick up the
 // daily hero rotation shortly after midnight ET. The rating comes from
@@ -43,8 +44,17 @@ export async function generateMetadata({ params }: { params: { lang: string; slu
   return pageMetadata({
     lang: params.lang,
     path: `/insurance/${params.slug}`,
-    title: `${product.title} | M&K Agency, Florida`,
-    description: `${product.shortIntro} ${getDict(params.lang).productPage.metaSuffix}`,
+    title: productMetaTitle(params.lang, params.slug, product.title),
+    description: productMetaDescription(
+      params.lang,
+      params.slug,
+      product.shortIntro,
+      [
+        getDict(params.lang).productPage.metaSuffix,
+        getDict(params.lang).productPage.metaSuffixMedium,
+        getDict(params.lang).productPage.metaSuffixShort,
+      ],
+    ),
   });
 }
 

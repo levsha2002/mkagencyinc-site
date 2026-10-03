@@ -10,7 +10,7 @@ export const PAINTING: BusinessPage = {
   copy: {
     en: {
       metaTitle: 'Painting Contractor Insurance in Florida | M&K Agency',
-      metaDesc: 'Insurance for Florida painting contractors: general liability for overspray and spills, workers’ comp, sprayers and ladders, work vans. English, Spanish, Russian.',
+      metaDesc: 'Insurance for Florida painting contractors: general liability for overspray and spills, workers’ comp, sprayers, ladders, vans. English, Spanish, Russian.',
       breadcrumb: 'Painting contractor insurance',
       kicker: 'Painting Contractors · Florida',
       h1a: 'Painting contractor insurance in Florida,',

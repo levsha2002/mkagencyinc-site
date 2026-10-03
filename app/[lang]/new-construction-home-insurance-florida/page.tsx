@@ -56,7 +56,7 @@ const C: Record<Lang, any> = {
   es: {
     metaTitle: 'Seguro para Casa Nueva en Florida | M&K Agency',
     metaDesc:
-      '¿Acaba de comprar una casa o condominio de nueva construcción en Florida? Hable con un agente licenciado antes de aceptar el seguro del constructor. Cotizaciones rápidas para el cierre.',
+      '¿Casa o condominio de nueva construcción en Florida? Hable con un agente licenciado antes de aceptar el seguro del constructor. Cotización para el cierre.',
     kicker: 'Seguro de Nueva Construcción · Toda Florida',
     h1a: 'Seguro para casas de nueva construcción,',
     h1b: 'con el precio justo para su nueva casa.',

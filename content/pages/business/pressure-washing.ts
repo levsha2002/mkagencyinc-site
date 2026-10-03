@@ -10,7 +10,7 @@ export const PRESSURE_WASHING: BusinessPage = {
   copy: {
     en: {
       metaTitle: 'Pressure Washing Insurance in Florida | M&K Agency',
-      metaDesc: 'Insurance for Florida pressure washing and soft washing businesses: general liability, trailer rigs and equipment, work trucks, workers’ comp. English, Spanish, Russian.',
+      metaDesc: 'Insurance for Florida pressure and soft washing businesses: general liability, trailer rigs, equipment, work trucks, workers’ comp. English, Spanish, Russian.',
       breadcrumb: 'Pressure washing insurance',
       kicker: 'Pressure Washing · Florida',
       h1a: 'Pressure washing insurance in Florida,',
@@ -130,7 +130,7 @@ export const PRESSURE_WASHING: BusinessPage = {
     },
     ru: {
       metaTitle: 'Страховка для мойки под давлением во Флориде | M&K Agency',
-      metaDesc: 'Страхование бизнеса по мойке под давлением и soft wash во Флориде: ответственность, прицепы и оборудование, рабочие машины, workers’ comp. Агент говорит по-русски.',
+      metaDesc: 'Страхование бизнеса по мойке под давлением и soft wash во Флориде: ответственность, прицепы, оборудование, машины, workers’ comp. Агент говорит по-русски.',
       breadcrumb: 'Страховка для мойки под давлением',
       kicker: 'Мойка под давлением · Флорида',
       h1a: 'Страховка для мойки под давлением во Флориде —',

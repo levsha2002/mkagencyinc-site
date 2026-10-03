@@ -13,7 +13,7 @@ export const WORK_TRUCK: BusinessPage = {
   copy: {
     en: {
       metaTitle: 'Work Truck Insurance in Florida | M&K Agency',
-      metaDesc: 'Commercial auto insurance for pickups, cargo vans, box trucks and trailers used by local businesses within Florida. Talk to an agent in English, Spanish or Russian.',
+      metaDesc: 'Commercial auto insurance for pickups, cargo vans, box trucks and trailers used by Florida businesses. Talk to an agent in English, Spanish or Russian.',
       breadcrumb: 'Work truck insurance',
       kicker: 'Commercial Auto · Within Florida',
       h1a: 'Work truck insurance in Florida,',
