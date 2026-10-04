@@ -20,7 +20,7 @@ export const HOME_HOMESTEAD: CityPage = {
   copy: {
     en: {
       metaTitle: 'Homeowners Insurance in Homestead, FL | M&K Agency',
-      metaDesc: 'Homeowners insurance for Homestead: what Andrew changed, wind mitigation credits for newer homes, hurricane deductibles, flood gaps and a free review of your policy.',
+      metaDesc: 'Homeowners insurance for Homestead: what Andrew changed, wind mitigation credits for newer homes, hurricane deductibles, flood gaps and a free policy review.',
       breadcrumb: 'Homestead',
       kicker: 'Homeowners insurance · Homestead, FL',
       h1a: 'Homeowners insurance in Homestead, FL,',
@@ -73,7 +73,7 @@ export const HOME_HOMESTEAD: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Casa en Homestead, FL | M&K Agency',
-      metaDesc: 'Seguro de casa en Homestead: lo que cambió después de Andrew, créditos por mitigación de viento, deducible de huracán, inundación y revisión gratis de su póliza.',
+      metaDesc: 'Seguro de casa en Homestead: lo que cambió tras Andrew, créditos por mitigación de viento, deducible de huracán, inundación y revisión gratis de su póliza.',
       breadcrumb: 'Homestead',
       kicker: 'Seguro de casa · Homestead, FL',
       h1a: 'Seguro de casa en Homestead, FL,',

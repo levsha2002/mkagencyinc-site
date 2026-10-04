@@ -25,7 +25,7 @@ export const CAR_BROWARD: CityPage = {
   copy: {
     en: {
       metaTitle: 'Car Insurance in Broward County, FL | M&K Agency',
-      metaDesc: 'Car insurance for Broward drivers: I-95, I-595, the Turnpike and the Sawgrass, rail crossings, Florida PIP and uninsured motorist rules, and a free review of your policy by WhatsApp.',
+      metaDesc: 'Car insurance for Broward drivers: I-95, I-595, the Turnpike and Sawgrass, rail crossings, Florida PIP and uninsured motorist rules, and a free WhatsApp review.',
       breadcrumb: 'Broward County',
       kicker: 'Auto insurance · Broward County',
       h1a: 'Car insurance in Broward County,',
@@ -83,7 +83,7 @@ export const CAR_BROWARD: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Auto en el Condado Broward, FL | M&K Agency',
-      metaDesc: 'Seguro de auto en Broward: I-95, I-595, el Turnpike y la Sawgrass, cruces de tren, las reglas de PIP y conductor sin seguro en Florida, y revisión gratis de su póliza por WhatsApp.',
+      metaDesc: 'Seguro de auto en Broward: I-95, I-595, el Turnpike y la Sawgrass, cruces de tren, reglas de PIP y conductor sin seguro, y revisión gratis por WhatsApp.',
       breadcrumb: 'Condado Broward',
       kicker: 'Seguro de auto · Condado Broward',
       h1a: 'Seguro de auto en el Condado Broward,',
@@ -141,7 +141,7 @@ export const CAR_BROWARD: CityPage = {
     },
     ru: {
       metaTitle: 'Автостраховка в округе Broward, FL | M&K Agency',
-      metaDesc: 'Автостраховка для водителей Broward: I-95, I-595, Turnpike и Sawgrass, железнодорожные переезды, правила PIP и UM во Флориде и бесплатная проверка полиса через WhatsApp.',
+      metaDesc: 'Автостраховка в Broward: I-95, I-595, Turnpike и Sawgrass, железнодорожные переезды, правила PIP и UM во Флориде, бесплатная проверка полиса через WhatsApp.',
       breadcrumb: 'Округ Broward',
       kicker: 'Автостраховка · округ Broward',
       h1a: 'Автостраховка в округе Broward —',

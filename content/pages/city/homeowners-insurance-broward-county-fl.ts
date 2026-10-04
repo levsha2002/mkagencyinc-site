@@ -25,7 +25,7 @@ export const HOME_BROWARD: CityPage = {
   copy: {
     en: {
       metaTitle: 'Homeowners & Condo Insurance in Broward County | M&K Agency',
-      metaDesc: 'Home and condo insurance in Broward: HVHZ building code, new FEMA flood maps from July 2024, condo milestone inspections and HO-6 gaps, wind mitigation credits and a free policy review.',
+      metaDesc: 'Home and condo insurance in Broward: HVHZ code, July 2024 FEMA flood maps, condo milestone inspections, HO-6 gaps, wind mitigation credits and a free review.',
       breadcrumb: 'Broward County',
       kicker: 'Home & condo insurance · Broward County',
       h1a: 'Home and condo insurance in Broward County,',
@@ -78,7 +78,7 @@ export const HOME_BROWARD: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Casa y Condominio en Broward | M&K Agency',
-      metaDesc: 'Seguro de casa y condominio en Broward: código HVHZ, nuevos mapas de inundación de FEMA desde julio de 2024, inspecciones de hito y HO-6, créditos por mitigación y revisión gratis.',
+      metaDesc: 'Seguro de casa y condominio en Broward: código HVHZ, mapas de inundación de FEMA desde julio de 2024, inspecciones de hito, HO-6, mitigación y revisión gratis.',
       breadcrumb: 'Condado Broward',
       kicker: 'Seguro de casa y condominio · Condado Broward',
       h1a: 'Seguro de casa y condominio en Broward,',
@@ -131,7 +131,7 @@ export const HOME_BROWARD: CityPage = {
     },
     ru: {
       metaTitle: 'Страховка дома и кондо в округе Broward | M&K Agency',
-      metaDesc: 'Страховка дома и кондо в Broward: код HVHZ, новые карты затопления FEMA с июля 2024 года, milestone inspections и пробелы HO-6, кредиты за wind mitigation и бесплатная проверка полиса.',
+      metaDesc: 'Страховка дома и кондо в Broward: код HVHZ, карты затопления FEMA с июля 2024 года, milestone inspections, пробелы HO-6, wind mitigation и бесплатная проверка.',
       breadcrumb: 'Округ Broward',
       kicker: 'Страховка дома и кондо · округ Broward',
       h1a: 'Страховка дома и кондо в округе Broward —',

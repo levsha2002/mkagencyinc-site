@@ -28,7 +28,7 @@ export const CAR_MIAMI_DADE: CityPage = {
   copy: {
     en: {
       metaTitle: 'Car Insurance in Miami-Dade County, FL | M&K Agency',
-      metaDesc: 'Car insurance across Miami-Dade: I-95, the Palmetto, the Turnpike and US-1, Florida PIP and uninsured motorist rules, what to do after a crash, and a free review of your policy.',
+      metaDesc: 'Car insurance in Miami-Dade: I-95, the Palmetto, the Turnpike and US-1, Florida PIP and uninsured motorist rules, steps after a crash and a free policy review.',
       breadcrumb: 'Miami-Dade County',
       kicker: 'Auto insurance · Miami-Dade County',
       h1a: 'Car insurance in Miami-Dade County,',
@@ -85,7 +85,7 @@ export const CAR_MIAMI_DADE: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Auto en el Condado Miami-Dade, FL | M&K Agency',
-      metaDesc: 'Seguro de auto en todo Miami-Dade: I-95, el Palmetto, el Turnpike y la US-1, las reglas de PIP y conductor sin seguro, qué hacer después de un choque y revisión gratis de su póliza.',
+      metaDesc: 'Seguro de auto en Miami-Dade: I-95, el Palmetto, el Turnpike y la US-1, reglas de PIP y conductor sin seguro, qué hacer tras un choque y revisión gratis.',
       breadcrumb: 'Condado Miami-Dade',
       kicker: 'Seguro de auto · Condado Miami-Dade',
       h1a: 'Seguro de auto en el Condado Miami-Dade,',

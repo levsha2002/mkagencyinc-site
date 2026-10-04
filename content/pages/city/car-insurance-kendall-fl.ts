@@ -20,7 +20,7 @@ export const CAR_KENDALL: CityPage = {
   copy: {
     en: {
       metaTitle: 'Car Insurance in Kendall, FL | Local Agent | M&K Agency',
-      metaDesc: 'Car insurance for Kendall drivers: Kendall Drive, the Don Shula and Snapper Creek expressways, Florida PIP rules, uninsured motorist coverage and a free policy review.',
+      metaDesc: 'Car insurance for Kendall: Kendall Drive, the Don Shula and Snapper Creek expressways, Florida PIP rules, uninsured motorist coverage and a free policy review.',
       breadcrumb: 'Kendall',
       kicker: 'Auto insurance · Kendall, FL',
       h1a: 'Car insurance in Kendall, FL,',
@@ -72,7 +72,7 @@ export const CAR_KENDALL: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Auto en Kendall, FL | Agente Local | M&K Agency',
-      metaDesc: 'Seguro de auto en Kendall: Kendall Drive, las autopistas Don Shula y Snapper Creek, las reglas del PIP en Florida, conductor sin seguro y revisión gratis de su póliza.',
+      metaDesc: 'Seguro de auto en Kendall: Kendall Drive, las autopistas Don Shula y Snapper Creek, el PIP en Florida, conductor sin seguro y revisión gratis de su póliza.',
       breadcrumb: 'Kendall',
       kicker: 'Seguro de auto · Kendall, FL',
       h1a: 'Seguro de auto en Kendall, FL,',
@@ -124,7 +124,7 @@ export const CAR_KENDALL: CityPage = {
     },
     ru: {
       metaTitle: 'Автостраховка в Kendall, FL | Местный агент | M&K Agency',
-      metaDesc: 'Автостраховка в Kendall: Kendall Drive, платные Don Shula и Snapper Creek, правила PIP во Флориде, защита от незастрахованных водителей и бесплатная проверка полиса.',
+      metaDesc: 'Автостраховка в Kendall: Kendall Drive, платные Don Shula и Snapper Creek, PIP во Флориде, защита от незастрахованных водителей и бесплатная проверка полиса.',
       breadcrumb: 'Kendall',
       kicker: 'Автостраховка · Kendall, FL',
       h1a: 'Автостраховка в Kendall, FL —',
