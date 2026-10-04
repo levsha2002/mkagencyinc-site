@@ -5,7 +5,9 @@ import type { BlogPost } from '../types';
 // - My Safe Florida Home FAQs (mysafeflhome.com/faqs-2/) — inspection/grant eligibility; matching vs low-income; improvements; timelines
 // - MSFH Grant Application Jump Page — prioritization groups; inspection/grant criteria
 // - MSFH 2025–26 program overview (mysafeflhome.com/msfh-new-year-2025-26/)
-// - Florida Statutes s. 215.5586 (2025) — My Safe Florida Home Program (DFS; subject to appropriation; not an entitlement)
+// - Florida Statutes s. 215.5586 (2026) — My Safe Florida Home Program (DFS; subject to appropriation; not an entitlement;
+//   18-month completion window; grant applicants low/moderate income; inspection within 24 months; attached homes up to
+//   3 stories; many 2026 amendments expire July 1, 2027). ES/RU aligned with the 2026 text on 2026-10-04 (ET).
 // No private insurers named. No premium %, discount %, or savings promises. Grant dollar caps stated only as official program limits.
 // EN version added 2026-10-04 (ET). Re-checked the same day: MSFH support funding article (still “now accepting
 // applications”, modified Aug 17, 2026), MSFH FAQs, grant jump page, 2025–26 overview, and the 2026 text of
@@ -24,7 +26,7 @@ const SOURCES_ES = [
   { label: 'My Safe Florida Home: Preguntas frecuentes (elegibilidad de inspección y subsidio; tipos de grant; mejoras elegibles)', url: 'https://mysafeflhome.com/faqs-2/' },
   { label: 'My Safe Florida Home: página de inicio de solicitudes (grupos de priorización; criterios de inspección y grant)', url: 'https://mysafeflhome.com/grant-application-jump-page/' },
   { label: 'My Safe Florida Home: panorama del programa 2025–26 (inspección y grant)', url: 'https://mysafeflhome.com/msfh-new-year-2025-26/' },
-  { label: 'Estatutos de Florida s. 215.5586 (2025): My Safe Florida Home Program (DFS; sujeto a apropiación legislativa)', url: 'https://www.flsenate.gov/laws/statutes/2025/215.5586' },
+  { label: 'Estatutos de Florida s. 215.5586 (2026): My Safe Florida Home Program (DFS; sujeto a apropiación legislativa)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/215.5586' },
 ];
 
 const SOURCES_RU = [
@@ -32,7 +34,7 @@ const SOURCES_RU = [
   { label: 'My Safe Florida Home: Frequently Asked Questions (инспекция и гранты; типы грантов; eligible improvements)', url: 'https://mysafeflhome.com/faqs-2/' },
   { label: 'My Safe Florida Home: страница заявок (группы приоритета; критерии инспекции и гранта)', url: 'https://mysafeflhome.com/grant-application-jump-page/' },
   { label: 'My Safe Florida Home: обзор программы 2025–26 (инспекция и грант)', url: 'https://mysafeflhome.com/msfh-new-year-2025-26/' },
-  { label: 'Florida Statutes s. 215.5586 (2025): программа My Safe Florida Home (DFS; при наличии ассигнований)', url: 'https://www.flsenate.gov/laws/statutes/2025/215.5586' },
+  { label: 'Florida Statutes s. 215.5586 (2026): программа My Safe Florida Home (DFS; при наличии ассигнований)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/215.5586' },
 ];
 
 export const post: BlogPost = {
@@ -141,7 +143,7 @@ export const post: BlogPost = {
 
         { type: 'h2', text: 'Estado del financiamiento (verificado el 4 de octubre de 2026)' },
         { type: 'p', text: 'Según el artículo de soporte del programa **“Is funding currently available?”** (actualizado el **17 de agosto de 2026**), My Safe Florida Home **está aceptando solicitudes**. Los dueños deben crear una cuenta en el **Applicant Portal** (Neighborly), completar el **Prioritization Questionnaire** y quedar asignados a un grupo de inspección o de grant antes de presentar la solicitud correspondiente.' },
-        { type: 'callout', title: 'El financiamiento puede cambiar', text: 'El programa depende de apropiaciones legislativas anuales. El s. 215.5586 deja claro que no crea un derecho (entitlement) ni obliga al Estado a financiar inspecciones o retrofits. Antes de aplicar, vuelva a comprobar el estado en mysafeflhome.com y en el centro de soporte: ventanas por grupo y fondos disponibles pueden cambiar.' },
+        { type: 'callout', title: 'El financiamiento puede cambiar', text: 'El programa depende de apropiaciones legislativas anuales. El s. 215.5586 deja claro que no crea un derecho (entitlement) ni obliga al Estado a financiar inspecciones o retrofits, y el departamento no puede aceptar más solicitudes de las que cubren los fondos disponibles. Además, varios cambios de 2026 al estatuto son temporales y vencen el 1 de julio de 2027. Antes de aplicar, vuelva a comprobar el estado en mysafeflhome.com y en el centro de soporte: ventanas por grupo y fondos disponibles pueden cambiar.' },
         { type: 'p', text: 'El centro de llamadas citado por el programa es el **850-427-2559**. También puede enviar un ticket por el Support Center oficial.' },
 
         { type: 'h2', text: 'Qué ofrece el programa (dos componentes)' },
@@ -155,23 +157,23 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Quién puede pedir la inspección gratis' },
         { type: 'p', text: 'Según las FAQ del programa y el **s. 215.5586(1)**, para la inspección el hogar suele tener que cumplir **todos** estos puntos:' },
         { type: 'ul', items: [
-          'Ser una vivienda **unifamiliar independiente** o un **townhouse** (según la definición del programa / estatuto);',
+          'Ser una vivienda **unifamiliar** en su propia parcela: **independiente (detached)** o adosada tipo townhouse (el texto de 2026 del estatuto incluye viviendas adosadas de hasta tres pisos);',
           'Ser **construida in situ (site-built)** y **ocupada por el dueño**; y',
           'Tener **exención de homestead** bajo el Capítulo 196.',
         ] },
         { type: 'p', text: 'En general **no** califican: multifamiliares (apartamentos, dúplex, tríplex), condominios, cooperativas, hogares de retiro, casas móviles o manufactured homes, ni segundas viviendas, vacacionales o de alquiler. Las unifamiliares unidas a otras unidades se tratan como townhouses a efectos del programa.' },
 
         { type: 'h2', text: 'Elegibilidad adicional para el subsidio' },
-        { type: 'p', text: 'No todo el que recibe inspección califica para grant. Las FAQ y la página de solicitudes exigen, entre otros:' },
+        { type: 'p', text: 'No todo el que recibe inspección califica para grant. Las FAQ, la página de solicitudes y el estatuto exigen, entre otros:' },
         { type: 'ul', items: [
-          'Haber recibido la **inspección inicial** a través del programa;',
-          '**Valor asegurado** de la vivienda de **$700,000 o menos** (los materiales del programa indican una excepción para low-income en este punto; confirme la regla vigente en el portal);',
-          'Permiso de construcción inicial solicitado **antes del 1 de enero de 2008**;',
+          'Haber recibido la **inspección inicial** a través del programa (según el texto de 2026 del estatuto, dentro de los **24 meses** anteriores a la solicitud);',
+          '**Valor asegurado** de la vivienda de **$700,000 o menos** (la página de solicitudes del programa indica una excepción para dueños low-income, pero el texto de 2026 del estatuto no la incluye; confirme la regla vigente en el portal);',
+          'Vivienda **construida antes del 1 de enero de 2008**, según el sitio web del tasador de propiedades (property appraiser) del condado;',
           'Nombre y **número de licencia estatal** del contratista elegido;',
           'Acuerdo de permitir una **inspección final** al terminar el proyecto; y',
           'Acuerdo de entregar al programa la información que reciba de su aseguradora sobre descuentos vinculados a las mejoras financiadas.',
         ] },
-        { type: 'p', text: 'El estatuto prioriza a personas de **bajos o moderados ingresos** (definiciones ligadas a s. 420.0004). Orden de revisión: (1) low-income de 60+; (2) demás low-income; (3) moderate-income de 60+; (4) demás moderate-income; luego otros según las ventanas. Low-income suele ser ingreso del hogar **≤80%** de la mediana del condado; moderate-income, **<120%**, según materiales del programa referenciados a HUD.' },
+        { type: 'p', text: 'El estatuto prioriza a personas de **bajos o moderados ingresos** (definiciones ligadas a s. 420.0004), y el texto de 2026 exige que quien solicite el grant pertenezca a uno de esos dos grupos. Orden de revisión: (1) low-income de 60+; (2) demás low-income; (3) moderate-income de 60+; (4) demás moderate-income; luego otros según las ventanas. Low-income suele ser ingreso del hogar **≤80%** de la mediana del condado; moderate-income, **<120%**, según materiales del programa referenciados a HUD.' },
 
         { type: 'h2', text: 'Tipos de subsidio y tope oficial de $10,000' },
         { type: 'p', text: 'Las FAQ distinguen dos tipos (ambos **sujetos a apropiación legislativa**):' },
@@ -190,7 +192,7 @@ export const post: BlogPost = {
           '**Roof deck attachment** — refuerzo del clavado / fijación del deck del techo;',
           '**Secondary water resistance (SWR)** — subcapa autoadhesiva u otra medida contra filtraciones si se pierde el revestimiento del techo.',
         ] },
-        { type: 'p', text: 'Solo cuentan las mejoras **recomendadas** en el informe inicial y **observadas** en el informe final. Otra construcción no entra. Para townhouses, el estatuto ha limitado históricamente el uso del grant a opening protection; vigile actualizaciones legislativas en mysafeflhome.com si su propiedad es townhouse.' },
+        { type: 'p', text: 'Solo cuentan las mejoras **recomendadas** en el informe inicial y **observadas** en el informe final. Otra construcción no entra. Versiones anteriores del estatuto limitaban el grant de los townhouses a opening protection. Las FAQ del programa describen una actualización legislativa de 2026 (SB 1452) que permite a los townhomes recibir grants para el techo igual que las viviendas unifamiliares, y el texto de 2026 del estatuto ya no incluye ese límite. Si su propiedad es townhouse, confirme la regla vigente en mysafeflhome.com.' },
 
         { type: 'h2', text: 'Pasos prácticos en el portal' },
         { type: 'ol', items: [
@@ -201,7 +203,7 @@ export const post: BlogPost = {
           'Espere la **aprobación escrita del grant** antes de construir.',
           'Al terminar, solicite la **inspección final** por el portal (las FAQ indican una sola oportunidad) y complete el Draw Request con la documentación exigida.',
         ] },
-        { type: 'p', text: 'Plazos: el **s. 215.5586** pide finalizar la obra y solicitar la inspección final (o prórroga de 6 meses) **dentro del año** tras la aprobación; las FAQ hablan de **hasta 18 meses**. Si no cumple, la solicitud puede abandonarse y los fondos revierten. Responda a un **Request for Information (RFI)** en **60 días** o el caso puede cerrarse sin reapertura.' },
+        { type: 'p', text: 'Plazos: tanto las FAQ del programa como el texto de 2026 del **s. 215.5586** piden terminar la obra y solicitar la inspección final **dentro de los 18 meses** siguientes a la aprobación del grant. Si no cumple, la solicitud puede darse por abandonada y los fondos vuelven al departamento. Responda a cualquier **Request for Information (RFI)** dentro de **60 días**, o la solicitud puede darse por abandonada.' },
 
         { type: 'h2', text: 'Cómo encaja esto con su seguro de vivienda' },
         { type: 'p', text: 'MSFH es un programa de mitigation del Estado. Su póliza de homeowners es un contrato aparte. Documentar mejoras o entregar formularios de mitigation a una aseguradora **no garantiza** un crédito, un descuento ni una oferta. En [M&K Agency](/es/homeowners-insurance-florida-city) podemos ayudarle a revisar su declarations page y a entender qué papeles suelen pedir las aseguradoras — siempre sin prometer un resultado de prima.' },
@@ -211,7 +213,7 @@ export const post: BlogPost = {
       faq: [
         { q: '¿My Safe Florida Home está aceptando solicitudes en 2026?', a: 'Según el artículo de soporte del programa actualizado el 17 de agosto de 2026, sí estaba aceptando solicitudes. Debe crear cuenta en el Applicant Portal, completar el cuestionario de priorización y aplicar cuando abra la ventana de su grupo. Reverifique en mysafeflhome.com porque el financiamiento depende de apropiaciones anuales.' },
         { q: '¿Cuánto es el subsidio máximo?', a: 'Las FAQ del programa y el s. 215.5586 describen una contribución estatal máxima de $10,000 (matching $2 estatal por cada $1 del dueño, o hasta $10,000 sin matching para low-income elegibles). Es el tope oficial del grant, no una promesa sobre su prima de seguro.' },
-        { q: '¿Quién califica para la inspección gratis?', a: 'En general: vivienda unifamiliar o townhouse site-built, ocupada por el dueño, con homestead exemption. No suelen calificar condominios, multifamiliares, mobile/manufactured homes ni segundas viviendas o rentas. Detalles en las FAQ de mysafeflhome.com y en s. 215.5586.' },
+        { q: '¿Quién califica para la inspección gratis?', a: 'En general: vivienda unifamiliar site-built (independiente, o adosada tipo townhouse), ocupada por el dueño, con homestead exemption. No suelen calificar condominios, multifamiliares, mobile/manufactured homes ni segundas viviendas o rentas. Detalles en las FAQ de mysafeflhome.com y en s. 215.5586.' },
         { q: '¿Puedo empezar la remodelación antes de que aprueben el grant?', a: 'No. Las FAQ del programa indican que comenzar la construcción de mitigation antes de la aprobación oficial lo descalifica del reembolso.' },
         { q: '¿MSFH es lo mismo que una inspección privada OIR-B1-1802?', a: 'No. MSFH es el programa estatal (inspección asignada por el programa y posible grant). La forma OIR-B1-1802 es documentación de mitigation que suele usarse con aseguradoras cuando usted contrata un inspector autorizado por su cuenta. Son caminos distintos que a veces se complementan.' },
         { q: '¿Qué mejoras cubre el grant?', a: 'Cuando el informe inicial las recomienda: opening protection, roof-to-wall attachment, roof deck attachment y secondary water resistance (SWR). Solo lo recomendado y luego verificado en la inspección final.' },
@@ -231,7 +233,7 @@ export const post: BlogPost = {
 
         { type: 'h2', text: 'Статус финансирования (проверено 4 октября 2026)' },
         { type: 'p', text: 'По статье support-центра **“Is funding currently available?”** (обновление **17 августа 2026**) программа **принимает заявки**. Нужно создать аккаунт в **Applicant Portal** (Neighborly), заполнить **Prioritization Questionnaire** и получить группу (Inspection Group или Grant Group), после чего подать соответствующую заявку.' },
-        { type: 'callout', title: 'Финансирование может измениться', text: 'Программа зависит от ежегодных законодательных ассигнований. s. 215.5586 прямо говорит: это не entitlement и штат не обязан финансировать инспекции или retrofit. Перед подачей снова проверьте mysafeflhome.com и support-центр — окна групп и остаток средств меняются.' },
+        { type: 'callout', title: 'Финансирование может измениться', text: 'Программа зависит от ежегодных законодательных ассигнований. s. 215.5586 прямо говорит: это не entitlement и штат не обязан финансировать инспекции или retrofit, а департамент не может принимать заявок больше, чем покрывают доступные средства. Кроме того, многие изменения статута 2026 года временные и истекают 1 июля 2027. Перед подачей снова проверьте mysafeflhome.com и support-центр — окна групп и остаток средств меняются.' },
         { type: 'p', text: 'Call center программы, указанный в официальных материалах: **850-427-2559**. Также можно открыть ticket через Support Center.' },
 
         { type: 'h2', text: 'Два компонента программы' },
@@ -245,23 +247,23 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Кто может получить бесплатную инспекцию' },
         { type: 'p', text: 'По FAQ программы и **s. 215.5586(1)** для инспекции дом обычно должен одновременно:' },
         { type: 'ul', items: [
-          'быть **односемейным detached** жильём или **townhouse** (по определению программы / статута);',
+          'быть **односемейным** домом на отдельном участке — **detached** или присоединённым домом типа townhouse (редакция статута 2026 года включает присоединённые дома высотой до трёх этажей);',
           'быть **site-built** и **owner-occupied**; и',
           'иметь **homestead exemption** по главе 196.',
         ] },
         { type: 'p', text: 'Как правило **не** подходят: multifamily (квартиры, duplex, triplex), condominiums, cooperatives, retirement homes, mobile/manufactured homes, а также второе жильё, vacation и сдача в аренду. Односемейные дома, присоединённые к другим юнитам, для программы считаются townhouses.' },
 
         { type: 'h2', text: 'Дополнительные критерии для гранта' },
-        { type: 'p', text: 'Не каждый, кто прошёл инспекцию, получает grant. Среди требований FAQ и страницы заявок:' },
+        { type: 'p', text: 'Не каждый, кто прошёл инспекцию, получает grant. Среди требований FAQ, страницы заявок и статута:' },
         { type: 'ul', items: [
-          'уже получена **initial inspection** через программу;',
-          '**insured value** жилья **не выше $700,000** (материалы программы указывают исключение для low-income по этому пункту — уточняйте актуальную формулировку в портале);',
-          'разрешение на первоначальное строительство запрошено **до 1 января 2008**;',
+          'уже получена **initial inspection** через программу (по редакции статута 2026 года — в течение **24 месяцев** до подачи заявки на грант);',
+          '**insured value** жилья **не выше $700,000** (страница заявок программы указывает исключение для low-income, но в тексте статута 2026 года его нет — уточняйте актуальное правило в портале);',
+          'дом **построен до 1 января 2008** — по данным сайта property appraiser округа;',
           'имя и **номер лицензии штата** выбранного подрядчика;',
           'согласие на **final inspection** после работ; и',
           'согласие передать программе сведения от страховщика о скидках, связанных с улучшениями за счёт гранта.',
         ] },
-        { type: 'p', text: 'Статут также ориентирует программу на **low-income** и **moderate-income** заявителей (определения связаны с s. 420.0004). Порядок приоритета: (1) low-income 60+; (2) остальные low-income; (3) moderate-income 60+; (4) остальные moderate-income; затем остальные по календарю окон. Low-income обычно ≈ доход домохозяйства **не выше 80%** медианы округа; moderate-income — **ниже 120%**, по материалам программы со ссылкой на HUD.' },
+        { type: 'p', text: 'Статут также ориентирует программу на **low-income** и **moderate-income** заявителей (определения связаны с s. 420.0004), а редакция 2026 года требует, чтобы заявитель на грант относился к одной из этих двух групп. Порядок приоритета: (1) low-income 60+; (2) остальные low-income; (3) moderate-income 60+; (4) остальные moderate-income; затем остальные по календарю окон. Low-income обычно ≈ доход домохозяйства **не выше 80%** медианы округа; moderate-income — **ниже 120%**, по материалам программы со ссылкой на HUD.' },
 
         { type: 'h2', text: 'Типы грантов и официальный лимит $10,000' },
         { type: 'p', text: 'FAQ выделяет два типа (оба **при наличии ассигнований**):' },
@@ -280,7 +282,7 @@ export const post: BlogPost = {
           '**Roof deck attachment** — усиление крепления настила крыши;',
           '**Secondary water resistance (SWR)** — самоклеящаяся подложка или иная защита от протечек, если сорвало кровельное покрытие.',
         ] },
-        { type: 'p', text: 'Учитываются только улучшения, **рекомендованные** в initial report и **подтверждённые** в final report. Прочий ремонт не входит. Для townhouses статут исторически ограничивал грант opening protection; следите за обновлениями на mysafeflhome.com, если у вас townhouse.' },
+        { type: 'p', text: 'Учитываются только улучшения, **рекомендованные** в initial report и **подтверждённые** в final report. Прочий ремонт не входит. Прежние редакции статута ограничивали грант для townhouses только opening protection. FAQ программы описывает законодательное обновление 2026 года (SB 1452), по которому townhomes могут получать гранты на крышу так же, как односемейные дома, а в тексте статута 2026 года этого ограничения уже нет. Если у вас townhouse, уточните действующее правило на mysafeflhome.com.' },
 
         { type: 'h2', text: 'Практические шаги в портале' },
         { type: 'ol', items: [
@@ -291,7 +293,7 @@ export const post: BlogPost = {
           'Дождитесь **письменного одобрения гранта**, прежде чем строить.',
           'После работ запросите **final inspection** через портал (по FAQ — одна попытка) и оформите Draw Request с нужными документами.',
         ] },
-        { type: 'p', text: 'Сроки: по **s. 215.5586** нужно завершить строительство и запросить final inspection (или продление на 6 месяцев) **в течение года** после одобрения гранта; FAQ программы описывает срок **до 18 месяцев**. Иначе заявку могут считать abandoned, а средства — возвращёнными департаменту. На **Request for Information (RFI)** отвечайте в течение **60 дней**, иначе дело могут закрыть без повторного открытия.' },
+        { type: 'p', text: 'Сроки: и FAQ программы, и редакция **s. 215.5586** 2026 года требуют завершить строительство и запросить final inspection **в течение 18 месяцев** после одобрения гранта. Иначе заявку могут признать abandoned, а средства вернутся департаменту. На **Request for Information (RFI)** отвечайте в течение **60 дней**, иначе заявку также могут признать abandoned.' },
 
         { type: 'h2', text: 'Как это связано со страхованием жилья' },
         { type: 'p', text: 'MSFH — государственная программа mitigation. Ваш homeowners-полис — отдельный договор. Документы об улучшениях или формы mitigation **не гарантируют** кредит, скидку или предложение полиса. В [M&K Agency](/ru/homeowners-insurance-florida-city) лицензированный агент поможет разобрать declarations page и понять, какие бумаги обычно запрашивают страховщики — без обещаний по премии. Подробнее о частной форме OIR-B1-1802 — в статье про [инспекцию wind mitigation](/ru/blog/wind-mitigation-inspection-florida).' },
@@ -301,7 +303,7 @@ export const post: BlogPost = {
       faq: [
         { q: 'Принимает ли My Safe Florida Home заявки в 2026 году?', a: 'По статье support-центра от 17 августа 2026 программа принимала заявки. Нужны аккаунт в Applicant Portal, Prioritization Questionnaire и подача в окно вашей группы. Перепроверяйте mysafeflhome.com: финансирование зависит от ежегодных ассигнований.' },
         { q: 'Какой максимальный размер гранта?', a: 'FAQ и s. 215.5586 описывают максимальную долю штата $10,000 (matching $2 штата на каждый $1 домовладельца либо до $10,000 без matching для подходящих low-income). Это официальный лимит grant, а не обещание по страховой премии.' },
-        { q: 'Кто может получить бесплатную инспекцию?', a: 'Обычно: site-built односемейный дом или townhouse, owner-occupied, с homestead exemption. Как правило не подходят condominiums, multifamily, mobile/manufactured homes, второе жильё и аренда. Подробности — в FAQ mysafeflhome.com и s. 215.5586.' },
+        { q: 'Кто может получить бесплатную инспекцию?', a: 'Обычно: site-built односемейный дом (detached или присоединённый, типа townhouse), owner-occupied, с homestead exemption. Как правило не подходят condominiums, multifamily, mobile/manufactured homes, второе жильё и аренда. Подробности — в FAQ mysafeflhome.com и s. 215.5586.' },
         { q: 'Можно ли начать ремонт до одобрения гранта?', a: 'Нет. FAQ программы указывает: начало mitigation-строительства до официального одобрения лишает права на возмещение.' },
         { q: 'Чем MSFH отличается от частной инспекции OIR-B1-1802?', a: 'MSFH — госпрограмма (инспектор назначается программой, возможен грант). OIR-B1-1802 — форма mitigation для страховой документации при частной инспекции у уполномоченного инспектора. Это разные пути; о форме подробнее — в нашей статье про wind mitigation inspection.' },
         { q: 'Какие улучшения покрывает грант?', a: 'Если рекомендованы в initial report: opening protection, roof-to-wall attachment, roof deck attachment и secondary water resistance (SWR). Только рекомендованное и затем подтверждённое на final inspection.' },
