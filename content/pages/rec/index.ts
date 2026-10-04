@@ -51,7 +51,7 @@ export function recPageText(c: RecCopy): string {
 
 // Build-time guard (owner rules, see types.ts): no carriers, prices/rates,
 // discounts, superlatives, guarantees, dealers, lenders or finance companies.
-export const REC_FORBIDDEN = /allstate|castle key|natgen|national general|progressive|geico|state farm|liberty mutual|nationwide|travelers|farmers|usaa|markel|foremost|dairyland|boatus|sea tow|cheap|lowest|\bbest\b|guarantee|discount|\bsav(e|es|ing|ings)\b|\bprices?\b|\bpricing\b|\brates?\b|premium|afford|dealer|lender|\bloan|financing|finance compan|\bbank|descuento|ahorr|barat|garantiz|mejor|precio|tarifa|prima\b|primas\b|concesionari|prestamista|financiamiento|financiera|скидк|дешев|дешёв|экономи|гарантир|лучш|тариф|(?<![а-яё])цен[аыуе]?(?![а-яё])|дилер|кредитор|автосалон|лизинг|рассрочк|lic(ense)?\/npn/i;
+export const REC_FORBIDDEN = /allstate|castle key|natgen|national general|progressive|geico|state farm|liberty mutual|nationwide|travelers|farmers|usaa|markel|foremost|dairyland|boatus|sea tow|cheap|lowest|\bbest\b|guarantee|discount|\bsav(e|es|ing|ings)\b|\bprices?\b|\bpricing\b|\brates?\b|premium|afford|dealer|lender|\bloan|financing|finance compan|\bbank|descuento|ahorr|barat|garantiz|\bmejor(es)?\b|precio|tarifa|prima\b|primas\b|concesionari|prestamista|financiamiento|compañías? financieras?|empresas? financieras?|скидк|дешев|дешёв|экономи|гарантир|лучш|тариф|(?<![а-яё])цен[аыуе]?(?![а-яё])|дилер|кредитор|автосалон|лизинг|рассрочк|lic(ense)?\/npn/i;
 
 const LANGS: Lang[] = ['en', 'es', 'ru'];
 const seen = new Set<string>();

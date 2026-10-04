@@ -7,6 +7,7 @@ import { BUSINESS_PAGES } from '@/content/pages/business';
 import { CITY_PAGES } from '@/content/pages/city';
 import { GUIDE_PAGES } from '@/content/pages/guides';
 import { TOPICS, PROTECT_PATH, topicPath } from '@/content/pages/protect';
+import { REC_PAGES } from '@/content/pages/rec';
 
 // Полная карта сайта: реальные страницы (без /services и /about — это редиректы)
 // + все страницы страховых продуктов. Обновляется автоматически при
@@ -21,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/quote', priority: 0.9 },
     { path: '/car-insurance-florida-city', priority: 0.9 },
     { path: '/condo-insurance-florida-city', priority: 0.9 },
-    { path: '/motorcycle-insurance-florida-city', priority: 0.9 },
     { path: '/classic-car-insurance-florida-city', priority: 0.9 },
     { path: '/homeowners-insurance-florida-city', priority: 0.9 },
     { path: '/new-construction-home-insurance-florida', priority: 0.9 },
@@ -65,6 +65,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: p.modified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    }))
+  );
+
+  // Florida rec + life landing pages (content/pages/rec), all three languages.
+  const recPages = langs.flatMap((l) =>
+    REC_PAGES.map((p) => ({
+      url: `${base}/${l}${p.path}`,
+      lastModified: p.modified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
     }))
   );
 
@@ -120,5 +130,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...everyLang, ...cityPages, ...guidePages, ...protectPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
+  return [...everyLang, ...cityPages, ...guidePages, ...recPages, ...protectPages, ...limitedPages, ...blogIndex, ...blogPosts, ...newsIndex, ...newsEditions];
 }

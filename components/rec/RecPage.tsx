@@ -15,6 +15,7 @@ import { RichText, stripInline } from '@/components/article/RichText';
 import { DEFAULT_AUTHOR } from '@/content/authors';
 import { personLd } from '@/lib/author';
 import { formatDate } from '@/lib/blog';
+import { posts } from '@/content/blog';
 import { getRecPage, recHero, recFigure, recOg, REC_PAGES } from '@/content/pages/rec';
 import { topicPath } from '@/content/pages/protect/types-paths';
 import s from '@/components/city/City.module.css';
@@ -149,7 +150,11 @@ export default function RecPage({ path, lang }: { path: string; lang: string }) 
 
   const related = [
     ...t.related.map((x) => `[${x.label}](/${l}${x.path})`),
-    `[${ui.article}: ${t.breadcrumb}](/${l}/blog/${page.articleSlug})`,
+    // Article link only once the post exists in this language (pages can ship before articles).
+    ...(() => {
+      const post = posts.find((p) => p.slug === page.articleSlug)?.translations[l];
+      return post ? [`[${ui.article}: ${post.title}](/${l}/blog/${page.articleSlug})`] : [];
+    })(),
     ...(isLife ? [`[${ui.lifeTab}](/${l}${topicPath('life-insurance')})`] : [`[${ui.protect}](/${l}/protect)`]),
     ...(page.productSlug ? [`[${ui.product}](/${l}/insurance/${page.productSlug})`] : []),
   ];

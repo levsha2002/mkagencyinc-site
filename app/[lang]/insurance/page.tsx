@@ -4,6 +4,13 @@ import InsuranceCategoryNav from '@/components/InsuranceCategoryNav';
 import { pageMetadata } from '@/lib/seo';
 import { getDict } from '@/lib/dictionaries';
 import Image from 'next/image';
+import { REC_NAV, REC_NAV_TITLE } from '@/content/pages/rec/nav';
+
+const REC_INTRO: Record<'en' | 'es' | 'ru', string> = {
+  en: 'Plain-language Florida guides for riders, boaters, off-road families and anyone protecting a paycheck: the rules, the coverage gaps and a personal agent.',
+  es: 'Guías claras de Florida para motociclistas, dueños de botes, familias con todoterrenos y quien quiera proteger su sueldo: las reglas, los huecos de cobertura y un agente personal.',
+  ru: 'Понятные гиды по Флориде для мотоциклистов, владельцев лодок, семей с внедорожной техникой и всех, кто защищает доход семьи: правила, дыры в покрытии и личный агент.',
+};
 
 const CATEGORY_ICONS: Record<'auto' | 'home' | 'commercial' | 'life' | 'specialty', string> = {
   auto: '🚗',
@@ -34,6 +41,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 export default function InsuranceHub({ params }: { params: { lang: string } }) {
   const dict = getDict(params.lang);
   const t = dict.services;
+  const l = (params.lang === 'es' || params.lang === 'ru' ? params.lang : 'en') as 'en' | 'es' | 'ru';
 
   return (
     <main>
@@ -62,6 +70,17 @@ export default function InsuranceHub({ params }: { params: { lang: string } }) {
 
       <section className="team-body">
         <div className="container">
+          <div id="florida-guides" className="insurance-cat-section">
+            <h2>🌴 {REC_NAV_TITLE[l]}</h2>
+            <p style={{ color: 'var(--muted)', marginTop: 4 }}>{REC_INTRO[l]}</p>
+            <div className="cards4">
+              {REC_NAV.map((x) => (
+                <Link key={x.path} href={`/${params.lang}${x.path}`} className="svc">
+                  <h3>{x.icon} {x.label[l]}</h3>
+                </Link>
+              ))}
+            </div>
+          </div>
           {CATEGORY_KEYS.map((key) => {
             const products = getProductsByCategory(key, params.lang).filter((p) => !HIDDEN_FROM_HUB.has(p.slug));
             if (products.length === 0) return null;

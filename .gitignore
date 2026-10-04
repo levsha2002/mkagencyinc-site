@@ -8,3 +8,4 @@ npm-debug.log*
 .netlify
 .env*
 /media/
+/ads-plan.md

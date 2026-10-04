@@ -121,7 +121,7 @@ export const life: TopicPage = {
       related: [
         { href: '/en/protect/umbrella-insurance', label: 'Umbrella & wealth protection', text: 'Protect your savings and your future from a lawsuit, too.' },
         { href: '/en/protect/car-insurance', label: 'When a crash stops the paycheck', text: 'How uninsured motorist coverage helps if a driver with no insurance hits you.' },
-        { href: '/en/life', label: 'Life insurance with a personal agent', text: 'Term and permanent life, explained by a licensed agent who speaks your language.' },
+        { href: '/en/life-insurance-florida', label: 'Life insurance with a personal agent', text: 'Term and permanent life, explained by a licensed agent who speaks your language.' },
         { href: '/en/protection-check', label: 'Free protection check and mortgage calculator', text: 'Answer a few questions and see where your family may have gaps.' },
       ],
       faq: [
@@ -251,7 +251,7 @@ export const life: TopicPage = {
       related: [
         { href: '/es/protect/umbrella-insurance', label: 'Umbrella y protección del patrimonio', text: 'Proteja también sus ahorros y su futuro de una demanda.' },
         { href: '/es/protect/car-insurance', label: 'Cuando un choque detiene el sueldo', text: 'Cómo ayuda la cobertura de conductor sin seguro si lo choca alguien sin seguro.' },
-        { href: '/es/life', label: 'Seguro de vida con un agente personal', text: 'Vida a término y permanente, explicado por un agente licenciado que habla su idioma.' },
+        { href: '/es/life-insurance-florida', label: 'Seguro de vida con un agente personal', text: 'Vida a término y permanente, explicado por un agente licenciado que habla su idioma.' },
         { href: '/es/protection-check', label: 'Revisión de protección y calculadora de hipoteca', text: 'Conteste unas preguntas y vea dónde su familia puede tener huecos.' },
       ],
       faq: [
@@ -381,7 +381,7 @@ export const life: TopicPage = {
       related: [
         { href: '/ru/protect/umbrella-insurance', label: 'Umbrella и защита капитала', text: 'Защитите сбережения и будущее ещё и от судебного иска.' },
         { href: '/ru/protect/car-insurance', label: 'Когда авария останавливает зарплату', text: 'Как помогает UM, если в вас врезался водитель без страховки.' },
-        { href: '/ru/life', label: 'Страхование жизни с личным агентом', text: 'Срочное и пожизненное страхование — объяснит лицензированный агент на вашем языке.' },
+        { href: '/ru/life-insurance-florida', label: 'Страхование жизни с личным агентом', text: 'Срочное и пожизненное страхование — объяснит лицензированный агент на вашем языке.' },
         { href: '/ru/protection-check', label: 'Проверка защиты и ипотечный калькулятор', text: 'Ответьте на несколько вопросов и посмотрите, где у семьи могут быть пробелы.' },
       ],
       faq: [

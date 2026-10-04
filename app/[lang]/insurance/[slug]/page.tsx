@@ -17,6 +17,23 @@ import BusinessTypeLinks from '@/components/business/BusinessTypeLinks';
 import HeroBackdrop from '@/components/hero/HeroBackdrop';
 import { dailyHero, type HeroType } from '@/content/hero';
 import { productMetaDescription, productMetaTitle } from '@/lib/product-meta';
+import Link from 'next/link';
+import { REC_NAV } from '@/content/pages/rec/nav';
+
+// Catalog products that have a full Florida guide page (content/pages/rec/).
+const REC_BY_SLUG: Record<string, string> = {
+  'motorcycle-insurance': '/motorcycle-insurance-florida-city',
+  'jet-ski-insurance': '/jet-ski-insurance-florida',
+  'boat-insurance': '/boat-insurance-florida',
+  'off-road-insurance': '/atv-utv-insurance-florida',
+  'golf-cart-insurance': '/golf-cart-insurance-florida',
+  'life-insurance': '/life-insurance-florida',
+};
+const REC_CALLOUT: Record<'en' | 'es' | 'ru', { t: string; cta: string }> = {
+  en: { t: 'New: our Florida guide, with the rules, the coverage gaps and FAQs.', cta: 'Read the Florida guide' },
+  es: { t: 'Nuevo: nuestra guía de Florida, con las reglas, los huecos de cobertura y preguntas frecuentes.', cta: 'Lea la guía de Florida' },
+  ru: { t: 'Новое: наш гид по Флориде — правила, дыры в покрытии и ответы на частые вопросы.', cta: 'Читать гид по Флориде' },
+};
 
 // ISR: re-render hourly (was daily) so the business + life pages pick up the
 // daily hero rotation shortly after midnight ET. The rating comes from
@@ -95,6 +112,10 @@ export default function InsuranceProductPage({
   const pp = getDict(params.lang).productPage;
   const heroType = HERO_BY_SLUG[product.slug];
   const hero = heroType ? dailyHero(heroType, params.lang) : null;
+  const recLang = (params.lang === 'es' || params.lang === 'ru' ? params.lang : 'en') as 'en' | 'es' | 'ru';
+  const recPath = REC_BY_SLUG[product.slug];
+  const recCopy = REC_CALLOUT[recLang];
+  const recLabel = REC_NAV.find((x) => x.path === recPath)?.label[recLang];
 
   return (
     <main>
@@ -145,6 +166,14 @@ export default function InsuranceProductPage({
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="container product-body">
           <div>
+            {recPath && (
+              <p style={{ background: '#fff7e6', border: '1.5px solid #e0a93b', borderRadius: 12, padding: '12px 16px', color: 'var(--navy)', lineHeight: 1.5, marginBottom: 18 }}>
+                {recCopy.t}{' '}
+                <Link href={`/${params.lang}${recPath}`} style={{ fontWeight: 700 }}>
+                  {recLabel ? `${recCopy.cta}: ${recLabel}` : recCopy.cta} →
+                </Link>
+              </p>
+            )}
             {/* With the daily hero on top, the product summary opens the body instead. */}
             {hero && (
               <p style={{ color: 'var(--navy)', fontWeight: 600, lineHeight: 1.6, marginBottom: 14 }}>{product.shortIntro}</p>

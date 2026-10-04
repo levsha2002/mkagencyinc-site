@@ -118,7 +118,7 @@ export const LIFE: RecPage = {
       serviceType: 'Seguro de vida',
       leadLabel: 'Seguro de vida',
       intro: [
-        { type: 'p', text: 'Muchas familias piensan en el seguro de vida en un velorio. El mejor momento es ahora, mientras todavía se puede elegir. La pregunta de verdad no es “¿necesito una póliza?”, sino “si mañana dejara de entrar mi sueldo, ¿cuánto tiempo estaría bien mi familia?”.' },
+        { type: 'p', text: 'Muchas familias piensan en el seguro de vida en un velorio. El momento de pensarlo es ahora, mientras todavía se puede elegir. La pregunta de verdad no es “¿necesito una póliza?”, sino “si mañana dejara de entrar mi sueldo, ¿cuánto tiempo estaría bien mi familia?”.' },
         { type: 'p', text: 'Aquí vemos esa pregunta con palabras claras: cuánto ingreso reemplazar, por qué la cobertura del trabajo puede no alcanzar, cómo funcionan los beneficiarios según la ley de Florida y qué hacemos cuando su familia nos necesita.' },
       ],
       factsTitle: 'El seguro de vida en EE. UU.: lo que dicen las cifras',
