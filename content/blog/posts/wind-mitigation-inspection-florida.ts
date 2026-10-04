@@ -33,7 +33,7 @@ export const post: BlogPost = {
     en: {
       title: 'Wind Mitigation Inspection in Florida: What Form OIR-B1-1802 Documents',
       metaTitle: 'Wind Mitigation Inspection Florida | Form OIR-B1-1802',
-      description: 'What a Florida wind mitigation inspection covers, how Form OIR-B1-1802 is used, who may sign it, how long it lasts, and how My Safe Florida Home fits in for eligible homeowners.',
+      description: 'Wind mitigation inspection in Florida: what Form OIR-B1-1802 documents, who may sign it, how long it lasts, and how My Safe Florida Home fits.',
       excerpt: 'A wind mitigation inspection documents roof, openings, and other hurricane-resistant features on Form OIR-B1-1802. Here is what the form records, who can sign it, and how Florida programs fit in.',
       category: 'Homeowners insurance',
       body: [
@@ -109,7 +109,7 @@ export const post: BlogPost = {
     ru: {
       title: 'Инспекция wind mitigation во Флориде: что фиксирует форма OIR-B1-1802',
       metaTitle: 'Инспекция wind mitigation во Флориде | OIR-B1-1802',
-      description: 'Что проверяют на wind mitigation inspection во Флориде, как используют форму OIR-B1-1802, кто вправе её подписать, сколько она действует и как связан My Safe Florida Home.',
+      description: 'Инспекция wind mitigation во Флориде: что фиксирует форма OIR-B1-1802, кто вправе её подписать, срок действия и роль My Safe Florida Home.',
       excerpt: 'Инспекция wind mitigation фиксирует крышу, защиту проёмов и другие признаки устойчивости к урагану в форме OIR-B1-1802. Разбираем, что записывают, кто подписывает и где здесь госпрограмма.',
       category: 'Страхование жилья',
       body: [

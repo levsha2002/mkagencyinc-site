@@ -127,7 +127,7 @@ export const edition: NewsEdition = {
         'Noticias de seguros en Florida, 2 de octubre de 2026: tarifas para inquilinos, reglas de tránsito vigentes, agentes de Citizens y una orden contra un asegurador sin licencia',
       metaTitle: 'Noticias de seguros, 2 oct. 2026: inquilinos y tránsito | M&K Agency',
       description:
-        'Hoy: rebaja de tarifas en seguros de inquilinos, reglas de tránsito del 1 de octubre ya vigentes, menos agentes con Citizens y una orden de cese contra ventas sin licencia.',
+        'Noticias de seguros en Florida: rebaja de tarifas para inquilinos, tránsito vigente, menos agentes de Citizens y orden contra ventas sin licencia.',
       intro:
         'Cuatro novedades de los últimos días para inquilinos, conductores, propietarios y dueños de pequeños negocios del sur de la Florida. Cada una está resumida con nuestras propias palabras y enlaza a la fuente original.',
       items: [

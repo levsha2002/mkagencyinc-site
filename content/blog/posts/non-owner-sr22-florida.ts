@@ -35,7 +35,7 @@ export const post: BlogPost = {
     en: {
       title: 'Non-Owner SR-22 in Florida: When You Need It and What It Covers',
       metaTitle: 'Non-Owner SR-22 Florida: When You Need It | M&K Agency',
-      description: 'What a non-owner SR-22 means in Florida: how an operator’s liability policy differs from a regular SR-22, when FLHSMV may require it, what it covers, and how the filing works.',
+      description: 'Non-owner SR-22 in Florida: what it covers, when FLHSMV may require it, how it differs from an owner policy, and how filing works.',
       excerpt: 'If Florida requires an SR-22 and you do not own a car, an operator’s (non-owner) liability policy may be the path to the filing. Here is how it differs from a regular SR-22, what it covers, and how to get it filed.',
       category: 'Auto insurance',
       body: [
