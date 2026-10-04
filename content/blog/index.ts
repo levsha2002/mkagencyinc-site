@@ -31,6 +31,8 @@ import { post as epaLeadSafeRrp } from './posts/epa-lead-safe-rrp-painters-flori
 import { post as pressureWashingRunoff } from './posts/pressure-washing-runoff-storm-drains-miami-dade';
 import { post as usdotWorkTrucks } from './posts/usdot-number-florida-work-trucks';
 import { post as constructionStallsBuildersRisk } from './posts/construction-stalls-builders-risk-florida';
+import { post as bodilyInjuryFr44Florida } from './posts/bodily-injury-liability-fr44-florida';
+
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -62,4 +64,6 @@ export const posts: BlogPost[] = [
   pressureWashingRunoff,
   usdotWorkTrucks,
   constructionStallsBuildersRisk,
+  bodilyInjuryFr44Florida,
 ];
+
