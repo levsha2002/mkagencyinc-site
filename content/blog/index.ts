@@ -14,6 +14,7 @@ import { post as boatHurricanePlan } from './posts/hurricane-plan-for-your-boat-
 import { post as atvUtvRoads } from './posts/atv-utv-public-roads-florida';
 import { post as golfCartRoads } from './posts/golf-cart-rules-florida-public-roads';
 import { post as autocycleEndorsement } from './posts/autocycle-motorcycle-endorsement-florida';
+import { post as lifeIncomeReplacement } from './posts/life-insurance-income-replacement-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -28,4 +29,5 @@ export const posts: BlogPost[] = [
   atvUtvRoads,
   golfCartRoads,
   autocycleEndorsement,
+  lifeIncomeReplacement,
 ];
