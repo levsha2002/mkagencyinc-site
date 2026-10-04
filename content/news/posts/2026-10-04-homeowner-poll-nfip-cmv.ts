@@ -76,6 +76,7 @@ export const edition: NewsEdition = {
       metaTitle: 'Insurance News Oct. 4, 2026: Poll, NFIP, Trucks | M&K Agency',
       description:
         'Today: a UNF homeowner poll clashes with industry market data, NFIP authority runs to Dec. 11, and FHP joins a Southeast commercial-truck safety blitz.',
+      ogAlt: 'Clipboard with checkmarks beside a Florida flood map and a semi truck on a highway',
       intro:
         'Three updates from the last few days for South Florida homeowners, flood-policy buyers and small businesses that run work trucks. Each item is summarized in our own words, with a link to the original source.',
       items: [
@@ -119,6 +120,7 @@ export const edition: NewsEdition = {
       metaTitle: 'Noticias de seguros, 4 oct. 2026: encuesta, NFIP, CMV | M&K Agency',
       description:
         'Hoy: una encuesta de UNF choca con datos del mercado, el NFIP sigue autorizado hasta el 11 de diciembre y la FHP se suma a un operativo de camiones comerciales.',
+      ogAlt: 'Portapapeles con marcas junto a un mapa de inundación de Florida y un camión en la autopista',
       intro:
         'Tres novedades de los últimos días para propietarios, compradores de seguro de inundación y pequeños negocios con camiones de trabajo en el sur de la Florida. Cada una está resumida con nuestras propias palabras y enlaza a la fuente original.',
       items: [
@@ -162,6 +164,7 @@ export const edition: NewsEdition = {
       metaTitle: 'Новости страхования, 4 окт. 2026: опрос, NFIP, CMV | M&K Agency',
       description:
         'Сегодня: опрос UNF расходится с рыночными данными, NFIP действует до 11 декабря, FHP участвует в рейде по коммерческим грузовикам на I-95.',
+      ogAlt: 'Планшет с галочками рядом с картой наводнений Флориды и грузовиком на шоссе',
       intro:
         'Три новости последних дней для домовладельцев, покупателей flood-страховки и малого бизнеса с рабочими грузовиками в Южной Флориде. Каждая — своими словами, со ссылкой на первоисточник.',
       items: [
