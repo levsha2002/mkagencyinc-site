@@ -8,6 +8,7 @@ import { post as uninsuredMotoristFlorida } from './posts/uninsured-motorist-cov
 import { post as sr22FloridaGuia } from './posts/sr22-florida-guia';
 import { post as nonOwnerSr22Florida } from './posts/non-owner-sr22-florida';
 import { post as windMitigationInspectionFlorida } from './posts/wind-mitigation-inspection-florida';
+import { post as mySafeFloridaHome2026 } from './posts/my-safe-florida-home-2026';
 import { post as motorcycleHelmetLaw } from './posts/florida-motorcycle-helmet-law-medical-coverage';
 import { post as jetSkiRentalGuests } from './posts/jet-ski-rental-guest-drivers-florida';
 import { post as boatHurricanePlan } from './posts/hurricane-plan-for-your-boat-florida';
@@ -23,6 +24,7 @@ export const posts: BlogPost[] = [
   sr22FloridaGuia,
   nonOwnerSr22Florida,
   windMitigationInspectionFlorida,
+  mySafeFloridaHome2026,
   motorcycleHelmetLaw,
   jetSkiRentalGuests,
   boatHurricanePlan,
