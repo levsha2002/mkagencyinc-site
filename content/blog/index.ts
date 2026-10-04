@@ -13,6 +13,7 @@ import { post as jetSkiRentalGuests } from './posts/jet-ski-rental-guest-drivers
 import { post as boatHurricanePlan } from './posts/hurricane-plan-for-your-boat-florida';
 import { post as atvUtvRoads } from './posts/atv-utv-public-roads-florida';
 import { post as golfCartRoads } from './posts/golf-cart-rules-florida-public-roads';
+import { post as autocycleEndorsement } from './posts/autocycle-motorcycle-endorsement-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -26,4 +27,5 @@ export const posts: BlogPost[] = [
   boatHurricanePlan,
   atvUtvRoads,
   golfCartRoads,
+  autocycleEndorsement,
 ];
