@@ -3,6 +3,7 @@ import { getDict, PHONE_DISPLAY, PHONE_TEL, ADDRESS, REVIEWS_URL, GOOGLE_REVIEW_
 import { blogHasLang } from '@/lib/blog';
 import WhatsAppLink from '@/components/WhatsAppLink';
 import AreasWeServe from '@/components/city/AreasWeServe';
+import { REC_NAV, REC_NAV_TITLE } from '@/content/pages/rec/nav';
 
 export default function Footer({ lang }: { lang: string }) {
   const t = getDict(lang);
@@ -66,6 +67,17 @@ export default function Footer({ lang }: { lang: string }) {
           >
             Chamber of Commerce
           </a>
+        </p>
+        <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
+          <span style={{ color: '#fff', fontWeight: 600 }}>{REC_NAV_TITLE[(lang === 'es' || lang === 'ru' ? lang : 'en') as 'en' | 'es' | 'ru']}:</span>{' '}
+          {REC_NAV.map((x, i) => (
+            <span key={x.path}>
+              {i > 0 && ' · '}
+              <Link href={`/${lang}${x.path}`} style={{ color: '#bcd0ea' }}>
+                {x.label[(lang === 'es' || lang === 'ru' ? lang : 'en') as 'en' | 'es' | 'ru']}
+              </Link>
+            </span>
+          ))}
         </p>
         <p style={{ margin: '8px 0', fontSize: '.85rem' }}>
           <Link href={`/${lang}/protect`} style={{ color: '#bcd0ea' }}>

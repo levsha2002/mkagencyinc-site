@@ -7,3 +7,5 @@ npm-debug.log*
 .vercel
 .netlify
 .env*
+/media/
+/ads-plan.md

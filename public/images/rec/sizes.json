@@ -1,0 +1,86 @@
+{
+  "motorcycle-en": {
+    "width": 600,
+    "height": 763
+  },
+  "motorcycle-es": {
+    "width": 600,
+    "height": 792
+  },
+  "motorcycle-ru": {
+    "width": 600,
+    "height": 821
+  },
+  "jet-ski-en": {
+    "width": 600,
+    "height": 772
+  },
+  "jet-ski-es": {
+    "width": 600,
+    "height": 855
+  },
+  "jet-ski-ru": {
+    "width": 600,
+    "height": 835
+  },
+  "boat-en": {
+    "width": 600,
+    "height": 699
+  },
+  "boat-es": {
+    "width": 600,
+    "height": 795
+  },
+  "boat-ru": {
+    "width": 600,
+    "height": 770
+  },
+  "off-road-en": {
+    "width": 600,
+    "height": 757
+  },
+  "off-road-es": {
+    "width": 600,
+    "height": 882
+  },
+  "off-road-ru": {
+    "width": 600,
+    "height": 853
+  },
+  "golf-cart-en": {
+    "width": 600,
+    "height": 713
+  },
+  "golf-cart-es": {
+    "width": 600,
+    "height": 796
+  },
+  "golf-cart-ru": {
+    "width": 600,
+    "height": 767
+  },
+  "autocycle-en": {
+    "width": 600,
+    "height": 728
+  },
+  "autocycle-es": {
+    "width": 600,
+    "height": 824
+  },
+  "autocycle-ru": {
+    "width": 600,
+    "height": 786
+  },
+  "life-en": {
+    "width": 600,
+    "height": 810
+  },
+  "life-es": {
+    "width": 600,
+    "height": 859
+  },
+  "life-ru": {
+    "width": 600,
+    "height": 824
+  }
+}

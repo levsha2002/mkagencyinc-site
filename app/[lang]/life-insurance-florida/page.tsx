@@ -3,7 +3,7 @@ import RecPage, { recMetadata } from '@/components/rec/RecPage';
 // Florida landing page. Content: content/pages/rec/ (see index.ts).
 export const revalidate = 86400;
 
-const PATH = '/motorcycle-insurance-florida-city';
+const PATH = '/life-insurance-florida';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   return recMetadata(PATH, params.lang);
