@@ -1,0 +1,172 @@
+import type { BlogPost } from '../types';
+
+// Facts checked 2026-10-04 against the 2026 Florida Statutes on flsenate.gov:
+// s. 553.899 (milestone inspections: 3+ habitable stories, 30 years / local 25 years,
+// every 10 years, phase one/two, 14-day and 45-day owner notices, repairs within 365 days),
+// s. 718.112(2)(f)-(h) (SIRS items, who performs it, 10-year cycle, Dec 31 2025 / Dec 31 2026
+// deadlines, no waiver of SIRS reserves for budgets adopted on/after Dec 31 2024, funding
+// methods, 2-budget delay/pause), s. 718.503(2) (resale disclosure), s. 627.714 (loss
+// assessment $2,000 / $250 deductible), s. 627.70132(4) (loss assessment notice), the DBPR
+// condominium Inspections page and FAQs, and the DFS Homeowners Insurance Toolkit (HO-6
+// loss assessment must stem from a covered peril). No insurer named, no prices.
+const S = {
+  s553899: 'https://www.flsenate.gov/Laws/Statutes/2026/553.899',
+  s718112: 'https://www.flsenate.gov/Laws/Statutes/2026/718.112',
+  s718503: 'https://www.flsenate.gov/Laws/Statutes/2026/718.503',
+  s627714: 'https://www.flsenate.gov/Laws/Statutes/2026/627.714',
+  s62770132: 'https://www.flsenate.gov/Laws/Statutes/2026/627.70132',
+  dbpr: 'https://condos.myfloridalicense.com/inspections/',
+  dbprFaq: 'https://condos.myfloridalicense.com/faqs/',
+  dfs: 'https://www.myfloridacfo.com/docs-sf/consumer-services-libraries/consumerservices-documents/understanding-coverage/consumer-guides/english---homeowners-insurance-toolkit.pdf',
+};
+
+export const post: BlogPost = {
+  slug: 'condo-milestone-inspection-sirs-florida',
+  datePublished: '2026-10-04',
+  translations: {
+    en: {
+      title: 'Florida Condo Milestone Inspections and SIRS: What Unit Owners Should Know',
+      metaTitle: 'Condo Milestone Inspections and SIRS in Florida | M&K Agency',
+      description: 'Florida condo milestone inspections and structural integrity reserve studies (SIRS): which buildings, deadlines, what owners receive and where HO-6 fits in.',
+      excerpt: 'Two post-Surfside laws now shape condo budgets in Florida. What the milestone inspection and the SIRS are, what your association must send you, and what your HO-6 does and does not do.',
+      category: 'Condo insurance',
+      body: [
+        { type: 'p', text: 'Since 2022, Florida law asks many condo associations for two things: a **milestone inspection** of the building’s structure ([s. 553.899](' + S.s553899 + ')) and a **structural integrity reserve study**, or SIRS ([s. 718.112(2)(g)](' + S.s718112 + ')). Either one can lead to repair projects and higher reserve contributions. Here is what each one is, what you should receive as an owner, and where your own policy fits in.' },
+        { type: 'h2', text: 'Which buildings are covered' },
+        { type: 'ul', items: [
+          'Both rules apply to residential condominium buildings that are **three habitable stories or more**. They do not apply to one- to four-family dwellings with three or fewer habitable stories.',
+          '**Milestone inspection:** due by December 31 of the year the building turns **30**, counted from its certificate of occupancy, and **every 10 years** after that. The local building department may move the first one to **25 years** because of local conditions such as proximity to salt water.',
+          '**SIRS:** required at least **every 10 years** for each building that qualifies.',
+        ] },
+        { type: 'h2', text: 'The milestone inspection, in two phases' },
+        { type: 'p', text: 'In **phase one**, a Florida-licensed architect or engineer visually examines the building. If there are no signs of substantial structural deterioration, the inspection ends there. If there are, a **phase two** follows, which may include testing. The county or city must require repairs found in phase two to begin within **365 days** after it receives the report.' },
+        { type: 'p', text: 'What you receive: the association must tell owners within **14 days** after the local agency notifies it that an inspection is required. Within **45 days** after receiving a report, it must send every owner the inspector’s summary, post it on the property and publish the full report on its website if it is required to have one.' },
+        { type: 'h2', text: 'The SIRS is a budget tool' },
+        { type: 'p', text: 'A SIRS is a visual inspection of the roof, the structure and load-bearing walls, fireproofing and fire protection, plumbing, electrical systems, waterproofing and exterior painting, and windows and exterior doors, plus other costly items that affect them. It estimates each item’s remaining useful life and replacement cost and recommends a reserve funding plan. An engineer, an architect or a certified reserve specialist must perform or verify it.' },
+        { type: 'p', text: 'This is the part that reaches your monthly statement. For budgets adopted on or after December 31, 2024, owners in an association that must have a SIRS generally **can no longer vote to waive or reduce** reserves for those items. Reserves may be funded through regular assessments, **special assessments**, lines of credit or loans.' },
+        { type: 'ul', items: [
+          'Associations that existed on or before July 1, 2022 had to complete their first SIRS by **December 31, 2025**. One with a milestone inspection due by the end of 2026 may do both together, but no SIRS may be completed after **December 31, 2026** ([DBPR FAQs](' + S.dbprFaq + ')).',
+          'After a milestone inspection, an association may delay the SIRS for up to two budget years, and, for budgets adopted through 2028, owners may vote to pause or reduce reserve contributions for up to two budgets to pay for the milestone repairs.',
+          'Within 45 days after receiving the SIRS, the association must give each owner a copy or a notice that it is available, and report its completion to the state ([DBPR](' + S.dbpr + ')).',
+        ] },
+        { type: 'h2', text: 'Buying or selling a unit' },
+        { type: 'p', text: 'When an owner who is not the developer sells, the buyer is entitled, at the seller’s expense, to the milestone inspection summary (if one applies) and the most recent SIRS or a statement that none has been completed ([s. 718.503(2)](' + S.s718503 + ')). Read both before you sign.' },
+        { type: 'h2', text: 'Where your HO-6 fits in' },
+        { type: 'p', text: 'Florida requires a unit owner’s policy to include at least **$2,000 of loss assessment coverage**, with a deductible of no more than $250 ([s. 627.714](' + S.s627714 + ')). The Department of Financial Services adds a key condition: the cause of the loss behind the assessment must be one your HO-6 covers ([DFS toolkit](' + S.dfs + ')). An assessment to build reserves or fix aging concrete is not the same as an assessment after a covered windstorm, so do not assume your policy will pay it. Coverage always depends on the policy wording.' },
+        { type: 'p', text: 'If the board levies an assessment after a covered loss, the notice deadline is the later of one year after the loss or 90 days after the vote, and no later than three years after the loss ([s. 627.70132(4)](' + S.s62770132 + ')). For the rest of the claim process, see our [hurricane claim timeline](/en/blog/hurricane-claim-timeline-florida).' },
+        { type: 'callout', title: 'Questions about your HO-6?', text: 'Bring your association’s master policy summary and your declarations page. See our [condo insurance page](/en/condo-insurance-florida-city) or [request a quote](/en/quote), and a licensed agent will review your loss assessment limit with you.' },
+      ],
+      faq: [
+        { q: 'Does my condo need a milestone inspection?', a: 'If it is a residential condominium building three habitable stories or more, yes: by December 31 of the year it turns 30 (or 25 if the local building department requires it), and every 10 years after that.' },
+        { q: 'Can owners vote to skip SIRS reserves?', a: 'For budgets adopted on or after December 31, 2024, owners in an association that must have a SIRS generally cannot vote to waive or reduce reserves for the SIRS items. Narrow exceptions exist, such as an approved alternative funding method for a multicondominium.' },
+        { q: 'Will my HO-6 pay a special assessment for milestone repairs?', a: 'Loss assessment coverage applies when the loss behind the assessment is one your policy covers. Assessments to fund reserves or repair deterioration are usually a different situation. Read your policy and ask your agent.' },
+      ],
+      sources: [
+        { label: 'Florida Statutes s. 553.899 (2026): mandatory structural inspections for condominium and cooperative buildings', url: S.s553899 },
+        { label: 'Florida Statutes s. 718.112 (2026): bylaws, reserves, structural integrity reserve study, milestone inspections', url: S.s718112 },
+        { label: 'Florida Statutes s. 718.503 (2026): developer and nondeveloper disclosure before sale', url: S.s718503 },
+        { label: 'Florida Statutes s. 627.714 (2026): condominium unit owner coverage; loss assessment coverage', url: S.s627714 },
+        { label: 'Florida Statutes s. 627.70132 (2026): notice of property insurance claim', url: S.s62770132 },
+        { label: 'Florida DBPR, Division of Condominiums: Inspections (milestone and SIRS)', url: S.dbpr },
+        { label: 'Florida DBPR, Division of Condominiums: Frequently Asked Questions', url: S.dbprFaq },
+        { label: 'Florida Department of Financial Services: Homeowners Insurance Toolkit (PDF)', url: S.dfs },
+      ],
+    },
+    es: {
+      title: 'Inspecciones de hito y SIRS en los condominios de Florida: lo que debe saber el dueño',
+      metaTitle: 'Inspección de hito y SIRS en condominios de Florida | M&K Agency',
+      description: 'Inspección de hito (milestone) y estudio de reservas estructurales (SIRS) en Florida: qué edificios, plazos, qué recibe el dueño y qué papel tiene su HO-6.',
+      excerpt: 'Dos leyes posteriores a Surfside cambiaron los presupuestos de los condominios en Florida. Qué son la inspección de hito y el SIRS, qué le debe enviar la asociación y qué hace y qué no hace su HO-6.',
+      category: 'Seguro de condominio',
+      body: [
+        { type: 'p', text: 'Desde 2022, la ley de Florida exige a muchas asociaciones de condominio dos cosas: una **inspección de hito** (milestone inspection) de la estructura del edificio ([s. 553.899](' + S.s553899 + ')) y un **estudio de reservas para la integridad estructural**, conocido como SIRS ([s. 718.112(2)(g)](' + S.s718112 + ')). Cualquiera de los dos puede traer obras y cuotas de reserva más altas. Le explicamos qué es cada uno, qué debe recibir como dueño y dónde entra su propia póliza.' },
+        { type: 'h2', text: 'Qué edificios están incluidos' },
+        { type: 'ul', items: [
+          'Las dos reglas aplican a edificios residenciales en condominio de **tres pisos habitables o más**. No aplican a viviendas de una a cuatro familias con tres pisos habitables o menos.',
+          '**Inspección de hito:** vence el 31 de diciembre del año en que el edificio cumple **30 años**, contados desde su certificado de ocupación, y luego **cada 10 años**. El departamento de construcción local puede adelantarla a los **25 años** por condiciones locales, como la cercanía al agua salada.',
+          '**SIRS:** se exige por lo menos **cada 10 años** para cada edificio que califique.',
+        ] },
+        { type: 'h2', text: 'La inspección de hito, en dos fases' },
+        { type: 'p', text: 'En la **fase uno**, un arquitecto o ingeniero con licencia en Florida examina el edificio a simple vista. Si no hay señales de deterioro estructural importante, la inspección termina ahí. Si las hay, sigue una **fase dos**, que puede incluir pruebas. El condado o la ciudad debe exigir que las reparaciones detectadas en la fase dos comiencen dentro de **365 días** después de recibir el informe.' },
+        { type: 'p', text: 'Lo que usted recibe: la asociación debe avisar a los dueños dentro de **14 días** después de que la autoridad local le notifique que la inspección es obligatoria. Dentro de **45 días** después de recibir un informe, debe enviar a cada dueño el resumen del inspector, colocarlo en un lugar visible del edificio y publicar el informe completo en su sitio web si está obligada a tener uno.' },
+        { type: 'h2', text: 'El SIRS es una herramienta de presupuesto' },
+        { type: 'p', text: 'El SIRS es una inspección visual del techo, la estructura y las paredes de carga, la protección contra incendios, la plomería, el sistema eléctrico, la impermeabilización y la pintura exterior, y las ventanas y puertas exteriores, además de otros elementos costosos que los afecten. Calcula la vida útil restante y el costo de reemplazo de cada uno y recomienda un plan para financiar las reservas. Debe hacerlo o verificarlo un ingeniero, un arquitecto o un especialista en reservas certificado.' },
+        { type: 'p', text: 'Esta es la parte que llega a su estado de cuenta. En los presupuestos aprobados a partir del 31 de diciembre de 2024, los dueños de una asociación que debe tener SIRS, por lo general, **ya no pueden votar para eliminar o reducir** las reservas de esos elementos. Las reservas se pueden financiar con cuotas regulares, **cuotas especiales** (special assessments), líneas de crédito o préstamos.' },
+        { type: 'ul', items: [
+          'Las asociaciones que existían el 1 de julio de 2022 o antes debían completar su primer SIRS a más tardar el **31 de diciembre de 2025**. Si además tenían una inspección de hito para fines de 2026, pueden hacer las dos a la vez, pero ningún SIRS puede completarse después del **31 de diciembre de 2026** ([preguntas frecuentes del DBPR](' + S.dbprFaq + ')).',
+          'Después de una inspección de hito, la asociación puede aplazar el SIRS hasta dos años de presupuesto y, en los presupuestos aprobados hasta 2028, los dueños pueden votar para pausar o reducir los aportes a reservas hasta por dos presupuestos y así pagar las reparaciones.',
+          'Dentro de 45 días después de recibir el SIRS, la asociación debe entregar a cada dueño una copia o un aviso de que está disponible, e informar al estado que lo completó ([DBPR](' + S.dbpr + ')).',
+        ] },
+        { type: 'h2', text: 'Si va a comprar o vender' },
+        { type: 'p', text: 'Cuando vende un dueño que no es el desarrollador, el comprador tiene derecho, a costa del vendedor, al resumen de la inspección de hito (si aplica) y al SIRS más reciente o a una declaración de que no se ha hecho ([s. 718.503(2)](' + S.s718503 + ')). Léalos antes de firmar.' },
+        { type: 'h2', text: 'Dónde entra su HO-6' },
+        { type: 'p', text: 'Florida exige que la póliza del dueño de la unidad incluya por lo menos **$2,000 de cobertura de cuotas por pérdidas** (loss assessment), con un deducible de no más de $250 ([s. 627.714](' + S.s627714 + ')). El Departamento de Servicios Financieros aclara una condición clave: la causa de la pérdida que originó la cuota debe ser una que su HO-6 cubra ([guía del DFS](' + S.dfs + ')). Una cuota para llenar las reservas o arreglar concreto envejecido no es lo mismo que una cuota después de un vendaval cubierto, así que no dé por hecho que su póliza la pagará. La cobertura siempre depende de lo que diga la póliza.' },
+        { type: 'p', text: 'Si la junta impone una cuota después de una pérdida cubierta, el plazo para avisar es lo que ocurra más tarde: un año después de la pérdida o 90 días después de la votación, y nunca más de tres años después de la pérdida ([s. 627.70132(4)](' + S.s62770132 + ')). Para el resto del proceso, vea nuestros [plazos de un reclamo por huracán](/es/blog/hurricane-claim-timeline-florida).' },
+        { type: 'callout', title: '¿Dudas sobre su HO-6?', text: 'Traiga el resumen de la póliza maestra de su asociación y su página de declaraciones. Visite nuestra página de [seguro de condominio](/es/condo-insurance-florida-city) o [pida una cotización](/es/quote), y un agente con licencia revisará con usted su límite de loss assessment.' },
+      ],
+      faq: [
+        { q: '¿Mi condominio necesita inspección de hito?', a: 'Si es un edificio residencial en condominio de tres pisos habitables o más, sí: antes del 31 de diciembre del año en que cumple 30 años (o 25 si lo exige el departamento de construcción local) y luego cada 10 años.' },
+        { q: '¿Los dueños pueden votar para no tener reservas del SIRS?', a: 'En los presupuestos aprobados a partir del 31 de diciembre de 2024, los dueños de una asociación que debe tener SIRS por lo general no pueden votar para eliminar o reducir las reservas de esos elementos. Hay excepciones limitadas, como un método alternativo aprobado para un multicondominio.' },
+        { q: '¿Mi HO-6 paga una cuota especial para las reparaciones de la inspección?', a: 'La cobertura de loss assessment aplica cuando la pérdida que origina la cuota es una que su póliza cubre. Las cuotas para reservas o para reparar deterioro suelen ser otra situación. Lea su póliza y pregúntele a su agente.' },
+      ],
+      sources: [
+        { label: 'Estatutos de Florida, sección 553.899 (2026): inspecciones estructurales obligatorias de condominios y cooperativas (en inglés)', url: S.s553899 },
+        { label: 'Estatutos de Florida, sección 718.112 (2026): reglamentos, reservas, SIRS e inspecciones de hito (en inglés)', url: S.s718112 },
+        { label: 'Estatutos de Florida, sección 718.503 (2026): divulgación antes de la venta (en inglés)', url: S.s718503 },
+        { label: 'Estatutos de Florida, sección 627.714 (2026): cobertura del dueño de condominio y loss assessment (en inglés)', url: S.s627714 },
+        { label: 'Estatutos de Florida, sección 627.70132 (2026): aviso de reclamo de propiedad (en inglés)', url: S.s62770132 },
+        { label: 'DBPR de Florida, División de Condominios: inspecciones de hito y SIRS (en inglés)', url: S.dbpr },
+        { label: 'DBPR de Florida, División de Condominios: preguntas frecuentes (en inglés)', url: S.dbprFaq },
+        { label: 'Departamento de Servicios Financieros de Florida: guía del seguro de vivienda (PDF, en inglés)', url: S.dfs },
+      ],
+    },
+    ru: {
+      title: 'Milestone-инспекция и SIRS в кондо Флориды: что важно знать владельцу',
+      metaTitle: 'Milestone-инспекция и SIRS в кондо Флориды | M&K Agency',
+      description: 'Milestone-инспекция и SIRS (резервное исследование) в кондо Флориды: какие здания, сроки, что получает владелец и при чём тут полис HO-6.',
+      excerpt: 'Два закона, принятые после Surfside, теперь определяют бюджеты кондо во Флориде. Что такое milestone-инспекция и SIRS, что ассоциация обязана вам прислать и что ваш HO-6 покрывает, а что нет.',
+      category: 'Страхование кондо',
+      body: [
+        { type: 'p', text: 'С 2022 года закон Флориды требует от многих ассоциаций кондо двух вещей: **milestone-инспекции** конструкций здания ([ст. 553.899](' + S.s553899 + ')) и **исследования резервов на структурную целостность** — SIRS ([ст. 718.112(2)(g)](' + S.s718112 + ')). И то и другое может обернуться ремонтом и ростом взносов в резервный фонд. Разбираем, что это такое, что вы как владелец должны получить и где здесь ваш собственный полис.' },
+        { type: 'h2', text: 'Каких зданий это касается' },
+        { type: 'ul', items: [
+          'Оба правила касаются жилых кондо-зданий высотой **от трёх жилых этажей**. Они не применяются к домам на одну–четыре семьи с тремя жилыми этажами или меньше.',
+          '**Milestone-инспекция:** до 31 декабря того года, когда зданию исполняется **30 лет** с даты certificate of occupancy, и затем **каждые 10 лет**. Местный строительный департамент может сдвинуть первую инспекцию на **25 лет** из-за местных условий, например близости солёной воды.',
+          '**SIRS:** не реже **одного раза в 10 лет** для каждого подходящего здания.',
+        ] },
+        { type: 'h2', text: 'Milestone-инспекция: два этапа' },
+        { type: 'p', text: 'На **первом этапе** архитектор или инженер с лицензией Флориды осматривает здание визуально. Если признаков серьёзного разрушения конструкций нет, на этом всё. Если есть — проводится **второй этап**, возможно, с испытаниями. Округ или город обязан требовать, чтобы ремонт по итогам второго этапа начался не позже чем через **365 дней** после получения отчёта.' },
+        { type: 'p', text: 'Что получаете вы: ассоциация должна уведомить владельцев в течение **14 дней** после того, как местные власти сообщат ей об обязательной инспекции. В течение **45 дней** после получения отчёта она обязана разослать каждому владельцу краткое заключение инспектора, вывесить его на видном месте и опубликовать полный отчёт на своём сайте, если сайт ей положен по закону.' },
+        { type: 'h2', text: 'SIRS — это инструмент бюджета' },
+        { type: 'p', text: 'SIRS — визуальная проверка крыши, несущих конструкций и стен, противопожарной защиты, сантехники, электрики, гидроизоляции и наружной покраски, окон и наружных дверей, а также других дорогих элементов, от которых они зависят. В исследовании оценивают оставшийся срок службы и стоимость замены каждого элемента и предлагают план пополнения резервов. Делать или проверять SIRS должен инженер, архитектор или сертифицированный специалист по резервам.' },
+        { type: 'p', text: 'Именно это отражается в вашем ежемесячном счёте. В бюджетах, принятых 31 декабря 2024 года и позже, владельцы в ассоциации, обязанной иметь SIRS, как правило, **больше не могут голосовать за отказ от резервов или их сокращение** по этим элементам. Резервы можно пополнять обычными взносами, **спецсборами** (special assessment), кредитной линией или займом.' },
+        { type: 'ul', items: [
+          'Ассоциации, существовавшие на 1 июля 2022 года, должны были сделать первый SIRS до **31 декабря 2025 года**. Если у них ещё и milestone-инспекция до конца 2026 года, можно провести их вместе, но завершить SIRS позже **31 декабря 2026 года** нельзя ни в каком случае ([FAQ DBPR](' + S.dbprFaq + ')).',
+          'После milestone-инспекции ассоциация может отложить SIRS максимум на два бюджетных года, а в бюджетах, принятых до конца 2028 года, владельцы могут проголосовать за паузу или сокращение взносов в резервы максимум на два бюджета, чтобы оплатить ремонт.',
+          'В течение 45 дней после получения SIRS ассоциация должна выдать каждому владельцу копию или уведомление, что исследование доступно, и отчитаться о нём перед штатом ([DBPR](' + S.dbpr + ')).',
+        ] },
+        { type: 'h2', text: 'Если вы покупаете или продаёте квартиру' },
+        { type: 'p', text: 'Когда продаёт владелец, а не застройщик, покупатель имеет право за счёт продавца получить краткое заключение milestone-инспекции (если она положена) и последний SIRS или заявление, что его ещё не делали ([ст. 718.503(2)](' + S.s718503 + ')). Прочитайте оба документа до подписания контракта.' },
+        { type: 'h2', text: 'При чём тут ваш HO-6' },
+        { type: 'p', text: 'Закон Флориды требует, чтобы в полис владельца квартиры входило не меньше **$2,000 покрытия на спецсборы после ущерба** (loss assessment) с франшизой не больше $250 ([ст. 627.714](' + S.s627714 + ')). Департамент финансовых услуг уточняет главное условие: причина ущерба, из-за которой ассоциация ввела сбор, должна быть риском, который покрывает ваш HO-6 ([гид DFS](' + S.dfs + ')). Сбор на пополнение резервов или ремонт старого бетона — это не то же самое, что сбор после покрываемого урагана, поэтому не рассчитывайте, что полис его оплатит. Покрытие всегда зависит от текста полиса.' },
+        { type: 'p', text: 'Если совет ассоциации вводит сбор после покрываемого ущерба, заявить его страховой нужно в более поздний из двух сроков: в течение года после ущерба или 90 дней после голосования, но не позже трёх лет после ущерба ([ст. 627.70132(4)](' + S.s62770132 + ')). Об остальных сроках читайте в статье о [сроках по клейму после урагана](/ru/blog/hurricane-claim-timeline-florida).' },
+        { type: 'callout', title: 'Вопросы по вашему HO-6?', text: 'Возьмите сводку мастер-полиса ассоциации и декларационную страницу своего полиса. Загляните на страницу о [страховке кондо](/ru/condo-insurance-florida-city) или [оставьте заявку на расчёт](/ru/quote) — лицензированный агент проверит с вами лимит loss assessment.' },
+      ],
+      faq: [
+        { q: 'Нужна ли моему кондо milestone-инспекция?', a: 'Если это жилое кондо-здание от трёх жилых этажей — да: до 31 декабря года, когда ему исполняется 30 лет (или 25, если этого требует местный строительный департамент), и затем каждые 10 лет.' },
+        { q: 'Могут ли владельцы проголосовать против резервов по SIRS?', a: 'В бюджетах, принятых 31 декабря 2024 года и позже, владельцы в ассоциации, обязанной иметь SIRS, как правило, не могут отказаться от резервов по этим элементам или сократить их. Исключения узкие, например одобренный альтернативный способ финансирования для мультикондоминиума.' },
+        { q: 'Оплатит ли HO-6 спецсбор на ремонт после milestone-инспекции?', a: 'Покрытие loss assessment работает, когда сбор вызван ущербом от риска, который покрывает ваш полис. Сборы на резервы или ремонт износа — обычно другая ситуация. Прочитайте полис и спросите агента.' },
+      ],
+      sources: [
+        { label: 'Законы Флориды, ст. 553.899 (2026): обязательные инспекции конструкций кондо и кооперативов (на английском)', url: S.s553899 },
+        { label: 'Законы Флориды, ст. 718.112 (2026): устав, резервы, SIRS, milestone-инспекции (на английском)', url: S.s718112 },
+        { label: 'Законы Флориды, ст. 718.503 (2026): раскрытие информации перед продажей (на английском)', url: S.s718503 },
+        { label: 'Законы Флориды, ст. 627.714 (2026): покрытие владельца кондо, loss assessment (на английском)', url: S.s627714 },
+        { label: 'Законы Флориды, ст. 627.70132 (2026): уведомление о клейме по имуществу (на английском)', url: S.s62770132 },
+        { label: 'DBPR Флориды, отдел кондоминиумов: инспекции milestone и SIRS (на английском)', url: S.dbpr },
+        { label: 'DBPR Флориды, отдел кондоминиумов: частые вопросы (на английском)', url: S.dbprFaq },
+        { label: 'Департамент финансовых услуг Флориды: гид по страхованию жилья (PDF, на английском)', url: S.dfs },
+      ],
+    },
+  },
+};
