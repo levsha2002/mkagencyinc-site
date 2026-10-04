@@ -16,3 +16,5 @@
 @media (max-width: 760px) {
   .item { padding: 16px 16px; }
 }
+.cardImg { display: block; border-radius: 12px; overflow: hidden; margin: -8px -8px 4px; line-height: 0; }
+.cardImg img { width: 100%; height: auto; }
