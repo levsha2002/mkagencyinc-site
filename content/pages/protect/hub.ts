@@ -6,7 +6,7 @@ export const HUB: Record<Lang, HubCopy> = {
   en: {
     metaTitle: 'Protect Your Paycheck, Home and Family: Florida Guide | M&K Agency',
     metaDesc:
-      'Plain-language guides to uninsured motorist, home liability, life and umbrella insurance, with real Florida cases and simple pictures. In English, Spanish and Russian.',
+      'Plain-language guides to uninsured motorist, home liability, life and umbrella insurance, with real Florida cases and pictures. In English, Spanish and Russian.',
     kicker: 'Protection guide',
     h1: 'Protect your paycheck, your home and your family',
     sub: "A few things can take a family's money fast: a crash with a driver who has no insurance, a lawsuit, or a death or disability. Pick a topic below. Each guide uses plain words, simple pictures and real Florida cases.",
@@ -162,7 +162,7 @@ export const HUB: Record<Lang, HubCopy> = {
   ru: {
     metaTitle: 'Защитите доход, дом и семью: гид по Флориде | M&K Agency',
     metaDesc:
-      'Простые гиды по UM, ответственности дома, страхованию жизни и полису umbrella — с реальными делами во Флориде и понятными схемами. На русском, английском и испанском.',
+      'Простые гиды по UM, ответственности дома, страхованию жизни и umbrella — с реальными делами во Флориде и понятными схемами. На русском, английском и испанском.',
     kicker: 'Гид по защите',
     h1: 'Защитите свой доход, дом и семью',
     sub: 'Есть несколько вещей, которые быстро отнимают у семьи деньги: авария с водителем без страховки, судебный иск, смерть или потеря трудоспособности. Выберите тему ниже. В каждом гиде — простые слова, понятные схемы и реальные дела во Флориде.',

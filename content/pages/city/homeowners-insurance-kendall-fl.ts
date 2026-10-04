@@ -20,7 +20,7 @@ export const HOME_KENDALL: CityPage = {
   copy: {
     en: {
       metaTitle: 'Home & Condo Insurance in Kendall, FL | M&K Agency',
-      metaDesc: 'Homeowners and condo (HO-6) insurance in Kendall: what the master policy leaves to you, loss assessment, 1970s–80s homes and roofs, hurricane deductibles and a free policy review.',
+      metaDesc: 'Home and condo (HO-6) insurance in Kendall: master policy gaps, loss assessment, 1970s–80s homes and roofs, hurricane deductibles and a free policy review.',
       breadcrumb: 'Kendall',
       kicker: 'Home & condo insurance · Kendall, FL',
       h1a: 'Home and condo insurance in Kendall, FL,',
@@ -72,7 +72,7 @@ export const HOME_KENDALL: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Casa y Condominio en Kendall, FL | M&K Agency',
-      metaDesc: 'Seguro de casa y de condominio (HO-6) en Kendall: lo que la póliza maestra deja por su cuenta, loss assessment, casas de los 70 y 80, deducibles de huracán y revisión gratis.',
+      metaDesc: 'Seguro de casa y condominio (HO-6) en Kendall: lo que la póliza maestra le deja, loss assessment, casas de los 70 y 80, deducible de huracán y revisión gratis.',
       breadcrumb: 'Kendall',
       kicker: 'Seguro de casa y condominio · Kendall, FL',
       h1a: 'Seguro de casa y condominio en Kendall, FL,',
@@ -124,7 +124,7 @@ export const HOME_KENDALL: CityPage = {
     },
     ru: {
       metaTitle: 'Страховка дома и кондо в Kendall, FL | M&K Agency',
-      metaDesc: 'Страховка дома и кондо (HO-6) в Kendall: что мастер-полис ассоциации оставляет вам, loss assessment, дома 1970–80-х, ураганная франшиза и бесплатная проверка полиса.',
+      metaDesc: 'Страховка дома и кондо (HO-6) в Kendall: что мастер-полис оставляет вам, loss assessment, дома 1970–80-х, ураганная франшиза и бесплатная проверка полиса.',
       breadcrumb: 'Kendall',
       kicker: 'Страховка дома и кондо · Kendall, FL',
       h1a: 'Страховка дома и кондо в Kendall, FL —',

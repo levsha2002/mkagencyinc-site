@@ -20,7 +20,7 @@ export const HOME_CUTLER_BAY: CityPage = {
   copy: {
     en: {
       metaTitle: 'Homeowners Insurance in Cutler Bay, FL | M&K Agency',
-      metaDesc: 'Homeowners insurance for Cutler Bay: 1980s homes, roof age rules, storm surge zones near Biscayne Bay, hurricane deductibles and a free review of your current policy.',
+      metaDesc: 'Homeowners insurance for Cutler Bay: 1980s homes, roof age rules, storm surge zones near Biscayne Bay, hurricane deductibles and a free review of your policy.',
       breadcrumb: 'Cutler Bay',
       kicker: 'Homeowners insurance · Cutler Bay, FL',
       h1a: 'Homeowners insurance in Cutler Bay, FL,',
@@ -73,7 +73,7 @@ export const HOME_CUTLER_BAY: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Casa en Cutler Bay, FL | M&K Agency',
-      metaDesc: 'Seguro de casa en Cutler Bay: casas de los años 80, la ley sobre la edad del techo, zonas de marejada cerca de la bahía, deducibles de huracán y revisión gratis de su póliza.',
+      metaDesc: 'Seguro de casa en Cutler Bay: casas de los 80, la ley sobre la edad del techo, zonas de marejada cerca de la bahía, deducibles de huracán y revisión gratis.',
       breadcrumb: 'Cutler Bay',
       kicker: 'Seguro de casa · Cutler Bay, FL',
       h1a: 'Seguro de casa en Cutler Bay, FL,',

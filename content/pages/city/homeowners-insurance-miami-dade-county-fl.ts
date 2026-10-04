@@ -28,7 +28,7 @@ export const HOME_MIAMI_DADE: CityPage = {
   copy: {
     en: {
       metaTitle: 'Homeowners & Condo Insurance in Miami-Dade County | M&K Agency',
-      metaDesc: 'Home and condo insurance in Miami-Dade: the High-Velocity Hurricane Zone code, wind mitigation credits, condo master policies and HO-6, flood and surge zones, and a free policy review.',
+      metaDesc: 'Home and condo insurance in Miami-Dade: the HVHZ code, wind mitigation credits, condo master policies and HO-6, flood and surge zones and a free policy review.',
       breadcrumb: 'Miami-Dade County',
       kicker: 'Home & condo insurance · Miami-Dade County',
       h1a: 'Home and condo insurance in Miami-Dade,',
@@ -79,7 +79,7 @@ export const HOME_MIAMI_DADE: CityPage = {
     },
     es: {
       metaTitle: 'Seguro de Casa y Condominio en Miami-Dade | M&K Agency',
-      metaDesc: 'Seguro de casa y condominio en Miami-Dade: el código de la Zona de Huracanes de Alta Velocidad, créditos por mitigación, póliza maestra y HO-6, inundación y marejada, y revisión gratis.',
+      metaDesc: 'Seguro de casa y condominio en Miami-Dade: código HVHZ para huracanes, créditos por mitigación, póliza maestra y HO-6, inundación y marejada, y revisión gratis.',
       breadcrumb: 'Condado Miami-Dade',
       kicker: 'Seguro de casa y condominio · Condado Miami-Dade',
       h1a: 'Seguro de casa y condominio en Miami-Dade,',
@@ -130,7 +130,7 @@ export const HOME_MIAMI_DADE: CityPage = {
     },
     ru: {
       metaTitle: 'Страховка дома и кондо в округе Miami-Dade | M&K Agency',
-      metaDesc: 'Страховка дома и кондо в Miami-Dade: строительный код High-Velocity Hurricane Zone, кредиты за wind mitigation, мастер-полис и HO-6, зоны наводнения и нагонной волны, бесплатная проверка полиса.',
+      metaDesc: 'Страховка дома и кондо в Miami-Dade: строительный код HVHZ, кредиты за wind mitigation, мастер-полис и HO-6, зоны наводнения и нагона, бесплатная проверка.',
       breadcrumb: 'Округ Miami-Dade',
       kicker: 'Страховка дома и кондо · округ Miami-Dade',
       h1a: 'Страховка дома и кондо в Miami-Dade —',
