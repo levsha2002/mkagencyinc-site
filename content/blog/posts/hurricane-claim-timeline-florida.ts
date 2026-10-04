@@ -1,0 +1,195 @@
+import type { BlogPost } from '../types';
+
+// Facts checked 2026-10-04 against the 2026 Florida Statutes on flsenate.gov:
+// s. 627.70132 (1 year / 18 months notice; date of loss = landfall), s. 627.70131
+// (7-day acknowledgment; 7 days to begin investigation after proof of loss; inspection
+// within 30 days; adjuster name + license number; electronic inspection; estimate copy
+// within 7 days; pay or deny within 60 days with written explanation; interest under
+// s. 55.03; tolling for mediation and for info not provided within 10 days; OIR may
+// extend by no more than 30 days; applies to residential property insurers incl. surplus
+// lines), s. 627.7015 and DFS mediation pages ($500 dispute after deductible, insurer pays
+// the mediation cost, conference within 21 days of assignment). No insurer named.
+const S = {
+  s70131: 'https://www.flsenate.gov/Laws/Statutes/2026/627.70131',
+  s70132: 'https://www.flsenate.gov/Laws/Statutes/2026/627.70132',
+  s7015: 'https://www.flsenate.gov/Laws/Statutes/2026/627.7015',
+  dfsMed: 'https://myfloridacfo.com/division/consumers/mediation',
+  dfsMedFaq: 'https://www.myfloridacfo.com/division/consumers/understanding-insurance/faq/mediation',
+  dfsGuide: 'https://www.myfloridacfo.com/docs-sf/consumer-services-libraries/consumerservices-documents/understanding-coverage/consumer-guides/english---residential-property-mediation-guide.pdf',
+  dfsReq: 'https://www.myfloridacfo.com/division/consumers/RequestMediation',
+};
+
+export const post: BlogPost = {
+  slug: 'hurricane-claim-timeline-florida',
+  datePublished: '2026-10-04',
+  translations: {
+    en: {
+      title: 'Hurricane Claim Timeline in Florida: Notice, Inspection and Payment Deadlines',
+      metaTitle: 'Florida Hurricane Claim Timeline and Deadlines | M&K Agency',
+      description: 'How long does a Florida insurer have to answer a hurricane claim? The 7-day, 30-day and 60-day deadlines in state law, when they pause, and how mediation works.',
+      excerpt: 'After a storm, the waiting is often the hardest part. Florida law sets deadlines for you and for your insurer. Here they are in order, with what can pause them.',
+      category: 'Homeowners insurance',
+      body: [
+        { type: 'p', text: 'After a hurricane, most homeowners want to know one thing: **how long will this take?** Florida law sets deadlines for both sides of a home or condo claim. They apply to residential property insurers, including Citizens and surplus lines insurers ([s. 627.70131](' + S.s70131 + ')). Here they are in order.' },
+        { type: 'h2', text: '1. You report the claim' },
+        { type: 'p', text: 'A new or reopened claim must be reported **within 1 year** of the date of loss, and a supplemental claim within **18 months**. For a hurricane, the date of loss is the day it **made landfall** ([s. 627.70132](' + S.s70132 + ')). Those are outer limits. Your policy also asks for prompt notice, so report as soon as it is safe and write down your claim number.' },
+        { type: 'h2', text: '2. The insurer acknowledges: 7 days' },
+        { type: 'p', text: 'Within **7 calendar days** after receiving a communication about a claim, the insurer must review and acknowledge it, unless it pays within that time. If the communication is a notice of claim, the reply must include the claim forms, instructions and a phone number, unless it tells you the claim appears not to be covered.' },
+        { type: 'h2', text: '3. Investigation and inspection: 7 and 30 days' },
+        { type: 'ul', items: [
+          'The insurer must **begin its investigation within 7 days** after it receives your proof-of-loss statements.',
+          'If it inspects the property in person, it must do so **within 30 days** after receiving the proof of loss. The adjuster must give you his or her **name and state adjuster license number**, and later messages about the claim must include them too.',
+          'The insurer may also inspect electronically, with photos, video calls or drone footage, and may ask you to help with those.',
+          'If the adjuster prepares a **detailed estimate**, the insurer must send you a copy within **7 days** after it is generated.',
+        ] },
+        { type: 'h2', text: '4. Pay or deny: 60 days' },
+        { type: 'p', text: 'Within **60 days** after it receives notice of an initial, reopened or supplemental claim, the insurer must **pay or deny** the claim, or the part of it in question, and explain in writing the basis in the policy. If it pays less than its own detailed estimate, it must explain the difference in writing. A payment made after the deadline generally **bears interest** from the date the insurer received notice.' },
+        { type: 'h2', text: 'When the clock can pause or stretch' },
+        { type: 'ul', items: [
+          '**Mediation or another dispute process** pauses the deadlines while it lasts.',
+          '**Missing information:** if the insurer asks for material claim information and you do not provide it within **10 days**, the deadlines pause until it arrives. This applies only to requests sent at least 15 days before the pay-or-deny deadline.',
+          '**Major events:** after a state of emergency, a data breach or an IT failure, the Office of Insurance Regulation can give insurers more time, but **no more than 30 extra days** to pay or deny.',
+          'Fraud, lack of cooperation or misrepresentation by the policyholder can also excuse a missed deadline.',
+        ] },
+        { type: 'h2', text: 'If you disagree with the decision' },
+        { type: 'p', text: 'Florida’s Department of Financial Services runs a **residential property mediation program** ([s. 627.7015](' + S.s7015 + ')). A claim becomes eligible after the insurer pays or denies it. The dispute must be at least $500 after the deductible, over the cause of the damage or the amount offered, and the **insurer pays the cost** of the mediation unless you miss the conference and ask to reschedule ([DFS](' + S.dfsMed + ')). Once a mediator is assigned, the conference should happen within 21 days ([DFS FAQ](' + S.dfsMedFaq + ')). Mediation is non-binding ([DFS guide](' + S.dfsGuide + ')), and it does not handle NFIP flood policies ([DFS](' + S.dfsReq + ')).' },
+        { type: 'h2', text: 'Keep a simple claim log' },
+        { type: 'ul', items: [
+          'Date and way you reported the claim, and the claim number.',
+          'Each adjuster’s name and license number.',
+          'Dates of inspections, estimates, information requests and your replies.',
+          'Every payment and letter, with the date received.',
+          'Photos and receipts for temporary repairs.',
+        ] },
+        { type: 'p', text: 'Before any of this, it helps to know how much of the loss is yours under your **hurricane deductible**; see our [Florida hurricane deductible guide](/en/florida-home-insurance-wind-deductible). Condo owners facing an association assessment can also read about [milestone inspections and SIRS](/en/blog/condo-milestone-inspection-sirs-florida).' },
+        { type: 'callout', title: 'Want a second set of eyes on your policy?', text: 'Send us your declarations page or [request a quote](/en/quote). A licensed agent can explain your deductibles and claim steps in English, Spanish or Russian. This is general information, not legal advice; coverage depends on your policy.' },
+      ],
+      faq: [
+        { q: 'How long does my insurer have to pay a hurricane claim in Florida?', a: 'Generally 60 days after it receives notice of the claim to pay or deny it, with a written explanation. The deadline can pause during mediation or while the insurer waits for information it requested, and a state order can add up to 30 days.' },
+        { q: 'How soon must the insurer inspect my home?', a: 'If it inspects in person, within 30 days after it receives your proof-of-loss statements. It must begin its investigation within 7 days after receiving them.' },
+        { q: 'What if the insurer pays late?', a: 'A payment made after the 60-day deadline, or after any extension ordered by the state, generally bears interest from the date the insurer received notice of the claim.' },
+      ],
+      sources: [
+        { label: 'Florida Statutes s. 627.70131 (2026): insurer’s duty to acknowledge communications; investigation; pay or deny', url: S.s70131 },
+        { label: 'Florida Statutes s. 627.70132 (2026): notice of property insurance claim', url: S.s70132 },
+        { label: 'Florida Statutes s. 627.7015 (2026): alternative procedure for resolution of disputed property insurance claims', url: S.s7015 },
+        { label: 'Florida Department of Financial Services: Mediation and Neutral Evaluation', url: S.dfsMed },
+        { label: 'Florida Department of Financial Services: Mediation FAQs', url: S.dfsMedFaq },
+        { label: 'Florida Department of Financial Services: Residential Property Mediation guide (PDF)', url: S.dfsGuide },
+        { label: 'Florida Department of Financial Services: Request Mediation (claims that can’t be mediated)', url: S.dfsReq },
+      ],
+    },
+    es: {
+      title: 'Plazos de un reclamo por huracán en Florida: aviso, inspección y pago',
+      metaTitle: 'Plazos de un reclamo por huracán en Florida | M&K Agency',
+      description: '¿Cuánto tiempo tiene la aseguradora para responder un reclamo por huracán en Florida? Los plazos de 7, 30 y 60 días de la ley, cuándo se pausan y la mediación.',
+      excerpt: 'Después de una tormenta, lo más difícil suele ser esperar. La ley de Florida fija plazos para usted y para su aseguradora. Aquí están en orden, con lo que puede pausarlos.',
+      category: 'Seguro de casa',
+      body: [
+        { type: 'p', text: 'Después de un huracán, casi todos los dueños de casa quieren saber una sola cosa: **¿cuánto se va a demorar esto?** La ley de Florida fija plazos para las dos partes de un reclamo de casa o condominio. Aplican a las aseguradoras de propiedad residencial, incluidas Citizens y las aseguradoras surplus lines ([s. 627.70131](' + S.s70131 + ')). Aquí están, en orden.' },
+        { type: 'h2', text: '1. Usted reporta el reclamo' },
+        { type: 'p', text: 'Un reclamo nuevo o reabierto debe reportarse **dentro de 1 año** desde la fecha de la pérdida, y un reclamo suplementario dentro de **18 meses**. En un huracán, la fecha de la pérdida es el día en que **tocó tierra** ([s. 627.70132](' + S.s70132 + ')). Esos son los límites máximos. Su póliza también pide aviso rápido, así que repórtelo en cuanto sea seguro y anote su número de reclamo.' },
+        { type: 'h2', text: '2. La aseguradora confirma: 7 días' },
+        { type: 'p', text: 'Dentro de **7 días calendario** después de recibir una comunicación sobre un reclamo, la aseguradora debe revisarla y confirmar que la recibió, salvo que pague en ese tiempo. Si la comunicación es el aviso del reclamo, la respuesta debe incluir los formularios, las instrucciones y un número de teléfono, a menos que le informe que el reclamo parece no estar cubierto.' },
+        { type: 'h2', text: '3. Investigación e inspección: 7 y 30 días' },
+        { type: 'ul', items: [
+          'La aseguradora debe **empezar a investigar dentro de 7 días** después de recibir su prueba de pérdida (proof of loss).',
+          'Si inspecciona la propiedad en persona, debe hacerlo **dentro de 30 días** después de recibir la prueba de pérdida. El ajustador debe darle su **nombre y su número de licencia estatal de ajustador**, y los mensajes posteriores sobre el reclamo también deben incluirlos.',
+          'La aseguradora también puede inspeccionar a distancia, con fotos, videollamadas o imágenes de dron, y puede pedirle que ayude con eso.',
+          'Si el ajustador prepara un **estimado detallado**, la aseguradora debe enviarle una copia dentro de **7 días** después de hacerlo.',
+        ] },
+        { type: 'h2', text: '4. Pagar o negar: 60 días' },
+        { type: 'p', text: 'Dentro de **60 días** después de recibir el aviso de un reclamo inicial, reabierto o suplementario, la aseguradora debe **pagarlo o negarlo**, total o parcialmente, y explicarle por escrito en qué parte de la póliza se basa. Si paga menos que su propio estimado detallado, debe explicar la diferencia por escrito. Un pago hecho después del plazo, por lo general, **genera intereses** desde la fecha en que la aseguradora recibió el aviso.' },
+        { type: 'h2', text: 'Cuándo el reloj se puede pausar o alargar' },
+        { type: 'ul', items: [
+          '**Mediación u otro proceso de disputa:** los plazos se pausan mientras dura.',
+          '**Información pendiente:** si la aseguradora le pide información importante del reclamo y usted no la entrega dentro de **10 días**, los plazos se pausan hasta que llegue. Solo aplica a pedidos enviados por lo menos 15 días antes del plazo para pagar o negar.',
+          '**Eventos mayores:** después de un estado de emergencia, una filtración de datos o una falla informática, la Oficina de Regulación de Seguros puede dar más tiempo a las aseguradoras, pero **no más de 30 días adicionales** para pagar o negar.',
+          'El fraude, la falta de cooperación o la información falsa del asegurado también pueden justificar un plazo vencido.',
+        ] },
+        { type: 'h2', text: 'Si no está de acuerdo con la decisión' },
+        { type: 'p', text: 'El Departamento de Servicios Financieros de Florida tiene un **programa de mediación para reclamos de propiedad residencial** ([s. 627.7015](' + S.s7015 + ')). El reclamo puede ir a mediación después de que la aseguradora lo paga o lo niega. La diferencia debe ser de por lo menos $500 después del deducible, sobre la causa del daño o la cantidad ofrecida, y **la aseguradora paga el costo** de la mediación, salvo que usted falte a la conferencia y pida otra fecha ([DFS](' + S.dfsMed + ')). Una vez asignado el mediador, la conferencia debe hacerse dentro de 21 días ([preguntas frecuentes del DFS](' + S.dfsMedFaq + ')). Nadie está obligado a aceptar el resultado ([guía del DFS](' + S.dfsGuide + ')), y el programa no atiende pólizas de inundación del NFIP ([DFS](' + S.dfsReq + ')).' },
+        { type: 'h2', text: 'Lleve un registro sencillo' },
+        { type: 'ul', items: [
+          'Fecha y forma en que reportó el reclamo, y el número de reclamo.',
+          'Nombre y licencia de cada ajustador.',
+          'Fechas de inspecciones, estimados, pedidos de información y sus respuestas.',
+          'Cada pago y cada carta, con la fecha en que los recibió.',
+          'Fotos y recibos de las reparaciones temporales.',
+        ] },
+        { type: 'p', text: 'Antes de todo esto, conviene saber qué parte de la pérdida le toca a usted por su **deducible de huracán**; vea nuestra [guía del deducible de huracán en Florida](/es/florida-home-insurance-wind-deductible). Si tiene un condominio y la asociación le cobra una cuota, lea también sobre las [inspecciones de hito y el SIRS](/es/blog/condo-milestone-inspection-sirs-florida).' },
+        { type: 'callout', title: '¿Quiere que alguien revise su póliza?', text: 'Envíenos su página de declaraciones o [pida una cotización](/es/quote). Un agente con licencia le explica sus deducibles y los pasos del reclamo en español, inglés o ruso. Esto es información general, no asesoría legal; la cobertura depende de su póliza.' },
+      ],
+      faq: [
+        { q: '¿Cuánto tiempo tiene mi aseguradora para pagar un reclamo por huracán en Florida?', a: 'Por lo general, 60 días después de recibir el aviso del reclamo para pagarlo o negarlo, con una explicación por escrito. El plazo se puede pausar durante una mediación o mientras espera información que pidió, y una orden del estado puede sumar hasta 30 días.' },
+        { q: '¿En cuánto tiempo deben inspeccionar mi casa?', a: 'Si la inspeccionan en persona, dentro de 30 días después de recibir su prueba de pérdida. La investigación debe empezar dentro de 7 días después de recibirla.' },
+        { q: '¿Qué pasa si la aseguradora paga tarde?', a: 'Un pago hecho después del plazo de 60 días, o de la extensión ordenada por el estado, por lo general genera intereses desde la fecha en que la aseguradora recibió el aviso del reclamo.' },
+      ],
+      sources: [
+        { label: 'Estatutos de Florida, sección 627.70131 (2026): deber de la aseguradora de confirmar, investigar y pagar o negar (en inglés)', url: S.s70131 },
+        { label: 'Estatutos de Florida, sección 627.70132 (2026): aviso de reclamo de propiedad (en inglés)', url: S.s70132 },
+        { label: 'Estatutos de Florida, sección 627.7015 (2026): mediación de reclamos de propiedad (en inglés)', url: S.s7015 },
+        { label: 'Departamento de Servicios Financieros de Florida: mediación y evaluación neutral (en inglés)', url: S.dfsMed },
+        { label: 'Departamento de Servicios Financieros de Florida: preguntas frecuentes sobre mediación (en inglés)', url: S.dfsMedFaq },
+        { label: 'Departamento de Servicios Financieros de Florida: guía de mediación de propiedad residencial (PDF, en inglés)', url: S.dfsGuide },
+        { label: 'Departamento de Servicios Financieros de Florida: cómo pedir mediación (en inglés)', url: S.dfsReq },
+      ],
+    },
+    ru: {
+      title: 'Клейм после урагана во Флориде: сроки уведомления, осмотра и выплаты',
+      metaTitle: 'Сроки по клейму после урагана во Флориде | M&K Agency',
+      description: 'Сколько времени у страховой во Флориде на ответ по клейму после урагана? Сроки 7, 30 и 60 дней по закону, когда они приостанавливаются и как работает медиация.',
+      excerpt: 'После шторма тяжелее всего ждать. Закон Флориды устанавливает сроки и для вас, и для страховой. Вот они по порядку — и что может их приостановить.',
+      category: 'Страхование дома',
+      body: [
+        { type: 'p', text: 'После урагана почти каждого владельца дома волнует одно: **сколько всё это займёт?** Закон Флориды устанавливает сроки для обеих сторон клейма по дому или кондо. Они действуют для страховых компаний, страхующих жильё, включая Citizens и страховщиков surplus lines ([ст. 627.70131](' + S.s70131 + ')). Вот они по порядку.' },
+        { type: 'h2', text: '1. Вы заявляете клейм' },
+        { type: 'p', text: 'Новый или повторно открытый клейм нужно заявить **в течение 1 года** с даты ущерба, а дополнительный (supplemental) — в течение **18 месяцев**. При урагане дата ущерба — день, когда он **вышел на сушу** ([ст. 627.70132](' + S.s70132 + ')). Это крайние сроки. Полис тоже требует сообщать об ущербе без промедления, так что заявляйте, как только это безопасно, и запишите номер клейма.' },
+        { type: 'h2', text: '2. Страховая подтверждает получение: 7 дней' },
+        { type: 'p', text: 'В течение **7 календарных дней** после получения сообщения по клейму страховая обязана его рассмотреть и подтвердить получение, если только не заплатит за это время. Если сообщение — это заявление о клейме, в ответе должны быть формы, инструкции и номер телефона, если только страховая не сообщает, что случай, похоже, не покрывается.' },
+        { type: 'h2', text: '3. Расследование и осмотр: 7 и 30 дней' },
+        { type: 'ul', items: [
+          'Страховая должна **начать расследование в течение 7 дней** после получения вашего proof of loss (заявления об убытке).',
+          'Если она осматривает дом лично, осмотр должен пройти **в течение 30 дней** после получения proof of loss. Адъюстер обязан сообщить вам **имя и номер лицензии адъюстера штата**, и они же должны быть в последующих сообщениях по клейму.',
+          'Страховая может провести осмотр и дистанционно — по фото, видеосвязи или съёмке с дрона — и попросить вас помочь с этим.',
+          'Если адъюстер составил **подробную смету**, страховая должна прислать вам копию в течение **7 дней** после её составления.',
+        ] },
+        { type: 'h2', text: '4. Выплата или отказ: 60 дней' },
+        { type: 'p', text: 'В течение **60 дней** после получения уведомления о первичном, повторно открытом или дополнительном клейме страховая должна **заплатить или отказать** — полностью или по части клейма — и письменно объяснить, на каком положении полиса основано решение. Если выплата меньше её собственной подробной сметы, разницу тоже нужно объяснить письменно. На выплату после срока, как правило, **начисляются проценты** с даты получения уведомления.' },
+        { type: 'h2', text: 'Когда сроки приостанавливаются или продлеваются' },
+        { type: 'ul', items: [
+          '**Медиация или другой порядок урегулирования спора** — на время процедуры сроки приостанавливаются.',
+          '**Нет запрошенных данных:** если страховая запросила важную информацию по клейму, а вы не предоставили её в течение **10 дней**, сроки стоят, пока информация не поступит. Это касается только запросов, отправленных не позже чем за 15 дней до срока выплаты или отказа.',
+          '**Крупные события:** после объявления чрезвычайного положения, утечки данных или сбоя IT-систем Управление по регулированию страхования (OIR) может дать страховым больше времени, но **не более 30 дополнительных дней** на выплату или отказ.',
+          'Мошенничество, отказ сотрудничать или искажение фактов со стороны владельца полиса тоже могут оправдать пропуск срока.',
+        ] },
+        { type: 'h2', text: 'Если вы не согласны с решением' },
+        { type: 'p', text: 'Департамент финансовых услуг Флориды (DFS) проводит **медиацию по клеймам на жильё** ([ст. 627.7015](' + S.s7015 + ')). Клейм можно передать на медиацию после того, как страховая заплатила или отказала. Спор должен быть не меньше $500 сверх франшизы — о причине ущерба или о сумме, которую предлагают, — и **стоимость медиации оплачивает страховая**, если только вы не пропустите встречу и не попросите перенести её ([DFS](' + S.dfsMed + ')). После назначения медиатора встреча должна состояться в течение 21 дня ([FAQ DFS](' + S.dfsMedFaq + ')). Результат медиации ни для кого не обязателен ([гид DFS](' + S.dfsGuide + ')), а полисы от наводнения по программе NFIP она не охватывает ([DFS](' + S.dfsReq + ')).' },
+        { type: 'h2', text: 'Ведите простой журнал клейма' },
+        { type: 'ul', items: [
+          'Дата и способ заявления, номер клейма.',
+          'Имя и номер лицензии каждого адъюстера.',
+          'Даты осмотров, смет, запросов информации и ваших ответов.',
+          'Каждая выплата и каждое письмо с датой получения.',
+          'Фото и чеки за временный ремонт.',
+        ] },
+        { type: 'p', text: 'Ещё до всего этого полезно понимать, какую часть ущерба вы платите сами по **ураганной франшизе**, — читайте наш [гид по ураганной франшизе во Флориде](/ru/florida-home-insurance-wind-deductible). Владельцам кондо, которым ассоциация выставила спецсбор, пригодится статья о [milestone-инспекции и SIRS](/ru/blog/condo-milestone-inspection-sirs-florida).' },
+        { type: 'callout', title: 'Хотите, чтобы кто-то посмотрел ваш полис?', text: 'Пришлите нам декларационную страницу или [оставьте заявку на расчёт](/ru/quote). Лицензированный агент объяснит ваши франшизы и порядок клейма по-русски, по-английски или по-испански. Это общая информация, а не юридическая консультация; покрытие зависит от вашего полиса.' },
+      ],
+      faq: [
+        { q: 'Сколько времени у страховой во Флориде на выплату по клейму после урагана?', a: 'Как правило, 60 дней после получения уведомления о клейме, чтобы заплатить или отказать с письменным объяснением. Срок приостанавливается на время медиации или пока страховая ждёт запрошенную информацию, а распоряжение штата может добавить до 30 дней.' },
+        { q: 'Как быстро страховая должна осмотреть дом?', a: 'Если осмотр личный — в течение 30 дней после получения вашего proof of loss. Расследование должно начаться в течение 7 дней после его получения.' },
+        { q: 'Что если страховая заплатит с опозданием?', a: 'На выплату после 60-дневного срока или после продления по распоряжению штата, как правило, начисляются проценты с даты, когда страховая получила уведомление о клейме.' },
+      ],
+      sources: [
+        { label: 'Законы Флориды, ст. 627.70131 (2026): обязанность страховой подтверждать получение, расследовать, платить или отказывать (на английском)', url: S.s70131 },
+        { label: 'Законы Флориды, ст. 627.70132 (2026): уведомление о клейме по имуществу (на английском)', url: S.s70132 },
+        { label: 'Законы Флориды, ст. 627.7015 (2026): медиация по спорным клеймам на имущество (на английском)', url: S.s7015 },
+        { label: 'Департамент финансовых услуг Флориды: медиация и нейтральная оценка (на английском)', url: S.dfsMed },
+        { label: 'Департамент финансовых услуг Флориды: частые вопросы о медиации (на английском)', url: S.dfsMedFaq },
+        { label: 'Департамент финансовых услуг Флориды: гид по медиации клеймов на жильё (PDF, на английском)', url: S.dfsGuide },
+        { label: 'Департамент финансовых услуг Флориды: как подать запрос на медиацию (на английском)', url: S.dfsReq },
+      ],
+    },
+  },
+};

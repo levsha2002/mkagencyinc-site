@@ -16,6 +16,10 @@ import { post as atvUtvRoads } from './posts/atv-utv-public-roads-florida';
 import { post as golfCartRoads } from './posts/golf-cart-rules-florida-public-roads';
 import { post as autocycleEndorsement } from './posts/autocycle-motorcycle-endorsement-florida';
 import { post as lifeIncomeReplacement } from './posts/life-insurance-income-replacement-florida';
+import { post as condoMilestoneSirs } from './posts/condo-milestone-inspection-sirs-florida';
+import { post as hurricaneClaimTimeline } from './posts/hurricane-claim-timeline-florida';
+import { post as builderWarrantyVsInsurance } from './posts/builder-warranty-vs-homeowners-insurance-florida';
+import { post as antiqueLicensePlates } from './posts/antique-license-plates-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -32,4 +36,8 @@ export const posts: BlogPost[] = [
   golfCartRoads,
   autocycleEndorsement,
   lifeIncomeReplacement,
+  condoMilestoneSirs,
+  hurricaneClaimTimeline,
+  builderWarrantyVsInsurance,
+  antiqueLicensePlates,
 ];
