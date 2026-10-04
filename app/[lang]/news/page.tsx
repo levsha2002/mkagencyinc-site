@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
-import { allEditions, asLang, editionLangs, editionsForLang, formatDate, newsHasLang } from '@/lib/news';
+import { allEditions, asLang, editionLangs, editionOgAlt, editionOgImage, editionsForLang, formatDate, newsHasLang } from '@/lib/news';
 import { ArticleCta, articleStyles as s } from '@/components/article/ArticleParts';
 import n from '@/components/news/News.module.css';
 import type { Lang } from '@/content/types';
@@ -89,6 +90,15 @@ export default function NewsIndex({ params }: { params: { lang: string } }) {
             <div className={s.list}>
               {items.map(({ edition, t: et }) => (
                 <article key={edition.slug} className={s.card}>
+                  <Link href={`/${l}/news/${edition.slug}`} className={n.cardImg} aria-hidden tabIndex={-1}>
+                    <Image
+                      src={editionOgImage(edition)}
+                      alt=""
+                      width={1200}
+                      height={630}
+                      sizes="(max-width: 760px) 100vw, 50vw"
+                    />
+                  </Link>
                   <p className={s.cardMeta}>
                     <time dateTime={edition.datePublished}>{formatDate(edition.datePublished, l)}</time>
                   </p>
