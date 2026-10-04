@@ -61,4 +61,50 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     pages: ['/flood-insurance-homestead-fl'],
     links: [{ blog: 'citizens-flood-insurance-requirement-2027' }],
   },
+  // Condo page (supporting article from the gap-articles batches).
+  {
+    pages: ['/condo-insurance-florida-city'],
+    links: [{ blog: 'condo-milestone-inspection-sirs-florida' }],
+  },
+  {
+    pages: ['/florida-home-insurance-wind-deductible'],
+    links: [{ blog: 'hurricane-claim-timeline-florida' }],
+  },
+  {
+    pages: ['/new-construction-home-insurance-florida'],
+    links: [{ blog: 'builder-warranty-vs-homeowners-insurance-florida' }],
+  },
+  {
+    pages: ['/classic-car-insurance-florida-city'],
+    links: [{ blog: 'antique-license-plates-florida' }],
+  },
+  {
+    pages: ['/umbrella-insurance-florida-city'],
+    links: [{ blog: 'lending-your-car-florida-owner-liability' }],
+  },
+  {
+    pages: ['/commercial-insurance-florida-city'],
+    links: [{ blog: 'start-small-business-miami-dade-licenses' }],
+  },
+  // Trade pages (components/business/BusinessServicePage).
+  {
+    pages: ['/contractor-insurance-florida'],
+    links: [{ blog: 'chapter-558-notice-contractors-florida' }],
+  },
+  {
+    pages: ['/landscaping-insurance-florida'],
+    links: [{ blog: 'fertilizer-rules-landscapers-miami-dade' }],
+  },
+  {
+    pages: ['/handyman-insurance-florida'],
+    links: [{ blog: 'helper-employee-or-1099-florida-workers-comp' }],
+  },
+  {
+    pages: ['/window-cleaning-insurance-florida'],
+    links: [{ blog: 'osha-fall-protection-window-cleaners' }],
+  },
+  {
+    pages: ['/painting-contractor-insurance-florida'],
+    links: [{ blog: 'epa-lead-safe-rrp-painters-florida' }],
+  },
 ];

@@ -3,6 +3,7 @@ import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import RelatedGuides from '@/components/RelatedGuides';
 import ProtectGuideLink from '@/components/protect/ProtectGuideLink';
 import { pageMetadata } from '@/lib/seo';
 
@@ -261,6 +262,7 @@ export default function UmbrellaInsuranceFloridaCity({ params }: { params: { lan
         </div>
       </section>
 
+      <RelatedGuides lang={l} page="/umbrella-insurance-florida-city" />
       <RelatedCoverage lang={l} current="/umbrella-insurance-florida-city" />
     </main>
   );

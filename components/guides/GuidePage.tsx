@@ -8,6 +8,7 @@ import GoogleReviewsBadge from '@/components/GoogleReviewsBadge';
 import SendPolicyCta from '@/components/SendPolicyCta';
 import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import RelatedGuides from '@/components/RelatedGuides';
 import AreasWeServe from '@/components/city/AreasWeServe';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { ArticleBody, Byline, FaqList, SourceList, Disclaimer, articleStyles as a } from '@/components/article/ArticleParts';
@@ -248,6 +249,7 @@ export default function GuidePage({ path, lang }: { path: string; lang: string }
       </section>
 
       <AreasWeServe lang={l} />
+      <RelatedGuides lang={l} page={path} />
       <RelatedCoverage lang={l} current={path} />
     </main>
   );
