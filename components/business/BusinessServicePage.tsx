@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
+import RelatedGuides from '@/components/RelatedGuides';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { ArticleBody, Byline, FaqList, SourceList, Disclaimer, articleStyles as a } from '@/components/article/ArticleParts';
 import { stripInline } from '@/components/article/RichText';
@@ -220,6 +221,7 @@ export default function BusinessServicePage({ path, lang }: { path: string; lang
         </div>
       </section>
 
+      <RelatedGuides lang={l} page={path} />
       <BusinessTypeLinks lang={l} current={path} />
     </main>
   );

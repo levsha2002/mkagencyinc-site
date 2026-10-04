@@ -24,6 +24,10 @@ import { post as whenIsCarTotaled } from './posts/when-is-a-car-totaled-florida'
 import { post as lendingYourCar } from './posts/lending-your-car-florida-owner-liability';
 import { post as startBusinessMiamiDade } from './posts/start-small-business-miami-dade-licenses';
 import { post as chapter558Contractors } from './posts/chapter-558-notice-contractors-florida';
+import { post as fertilizerRulesMiamiDade } from './posts/fertilizer-rules-landscapers-miami-dade';
+import { post as helperEmployeeOr1099 } from './posts/helper-employee-or-1099-florida-workers-comp';
+import { post as oshaFallProtectionWindows } from './posts/osha-fall-protection-window-cleaners';
+import { post as epaLeadSafeRrp } from './posts/epa-lead-safe-rrp-painters-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -48,4 +52,8 @@ export const posts: BlogPost[] = [
   lendingYourCar,
   startBusinessMiamiDade,
   chapter558Contractors,
+  fertilizerRulesMiamiDade,
+  helperEmployeeOr1099,
+  oshaFallProtectionWindows,
+  epaLeadSafeRrp,
 ];

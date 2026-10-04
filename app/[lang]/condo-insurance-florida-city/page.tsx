@@ -5,6 +5,7 @@ import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import RelatedGuides from '@/components/RelatedGuides';
 import { pageMetadata } from '@/lib/seo';
 
 // ISR: re-render daily. The rating comes from data/reviews.json (see lib/reviews.ts);
@@ -243,6 +244,7 @@ export default function CondoInsuranceFloridaCity({ params }: { params: { lang: 
           </div>
         </div>
       </section>
+      <RelatedGuides lang={l} page="/condo-insurance-florida-city" />
       <RelatedCoverage lang={l} current="/condo-insurance-florida-city" />
     </main>
   );
