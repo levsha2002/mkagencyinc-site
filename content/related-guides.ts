@@ -1,0 +1,64 @@
+// "Related guides" links from landing pages to supporting articles and guides.
+// Pure data, rendered by components/RelatedGuides.tsx. To link a new article,
+// add `{ blog: '<slug>' }` to the right group: the block shows only the
+// languages the post really has (title comes from the post), so it never links
+// to a 404. `page` items are fixed guide pages; list their languages if they
+// don't exist in all three.
+type Lang = 'en' | 'es' | 'ru';
+
+export type RelatedGuideLink =
+  | { blog: string }
+  | { page: string; label: Record<Lang, string>; langs?: Lang[] };
+
+export interface RelatedGuideGroup {
+  /** Landing-page paths (no language prefix) that show this block. */
+  pages: string[];
+  links: RelatedGuideLink[];
+}
+
+export const RELATED_GUIDES: RelatedGuideGroup[] = [
+  {
+    // Car insurance page and its 5 city variants.
+    pages: [
+      '/car-insurance-florida-city',
+      '/car-insurance-homestead-fl',
+      '/car-insurance-cutler-bay-fl',
+      '/car-insurance-kendall-fl',
+      '/car-insurance-miami-dade-county-fl',
+      '/car-insurance-broward-county-fl',
+    ],
+    links: [{ blog: 'uninsured-motorist-coverage-florida' }],
+  },
+  {
+    // Homeowners page and its 5 city variants.
+    pages: [
+      '/homeowners-insurance-florida-city',
+      '/homeowners-insurance-homestead-fl',
+      '/homeowners-insurance-cutler-bay-fl',
+      '/homeowners-insurance-kendall-fl',
+      '/homeowners-insurance-miami-dade-county-fl',
+      '/homeowners-insurance-broward-county-fl',
+    ],
+    links: [
+      { blog: 'wind-mitigation-inspection-florida' },
+      { blog: 'my-safe-florida-home-2026' },
+      { blog: 'citizens-takeout-offer' },
+      {
+        page: '/florida-home-insurance-wind-deductible',
+        label: {
+          en: 'Florida hurricane (wind) deductible explained',
+          es: 'Deducible de huracán (viento) en Florida',
+          ru: 'Ураганная (ветровая) франшиза во Флориде',
+        },
+      },
+    ],
+  },
+  {
+    pages: ['/sr22-insurance-florida-city'],
+    links: [{ blog: 'non-owner-sr22-florida' }, { blog: 'sr22-florida-guia' }],
+  },
+  {
+    pages: ['/flood-insurance-homestead-fl'],
+    links: [{ blog: 'citizens-flood-insurance-requirement-2027' }],
+  },
+];

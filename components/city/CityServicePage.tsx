@@ -8,6 +8,7 @@ import LeadForm from '@/components/LeadForm';
 import SendPolicyCta from '@/components/SendPolicyCta';
 import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import RelatedGuides from '@/components/RelatedGuides';
 import GapCallout from '@/components/GapCallout';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { ArticleBody, Byline, FaqList, SourceList, Disclaimer, articleStyles as a } from '@/components/article/ArticleParts';
@@ -318,6 +319,7 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
       </section>
 
       <AreasWeServe lang={l} current={path} />
+      <RelatedGuides lang={l} page={path} />
       <RelatedCoverage lang={l} />
     </main>
   );

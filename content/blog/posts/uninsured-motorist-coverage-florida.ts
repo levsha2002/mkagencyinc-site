@@ -3,6 +3,7 @@ import type { BlogPost } from '../types';
 // Facts checked 2026-09-26 against ss. 627.727, 627.736, 627.733, 324.022, 316.027,
 // 316.062 and 316.065 F.S. (2026, flsenate.gov), SB 488 (2026) / ch. 2026-39
 // (enrolled text: s. 316.065(1) report threshold $500 -> $2,000, effective Oct 1, 2026),
+// Crash-report threshold re-checked 2026-10-04: s. 316.065(1) (2026) now reads $2,000 (s. 7, ch. 2026-39), in effect since Oct 1, 2026.
 // FLHSMV insurance requirements and traffic crash report pages, and the Florida DFS
 // Personal Automobile Insurance Overview and Automobile Insurance Toolkit.
 // Deliberately generic: no private insurer is named. No statistics, no prices.
@@ -14,7 +15,7 @@ const SOURCES_EN = [
   { label: 'Florida Statutes s. 316.065 (2026): crashes; reports', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.065' },
   { label: 'Florida Statutes s. 316.062 (2026): duty to give information and render aid', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.062' },
   { label: 'Florida Statutes s. 316.027 (2026): crash involving death or personal injuries', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.027' },
-  { label: 'Florida Senate: SB 488 (2026), Chapter 2026-39, effective October 1, 2026', url: 'https://www.flsenate.gov/Session/Bill/2026/488' },
+  { label: 'Florida Senate: SB 488 (2026), Chapter 2026-39, in effect since October 1, 2026', url: 'https://www.flsenate.gov/Session/Bill/2026/488' },
   { label: 'FLHSMV: Florida Insurance Requirements', url: 'https://www.flhsmv.gov/insurance/' },
   { label: 'FLHSMV: Traffic Crash Reports', url: 'https://www.flhsmv.gov/traffic-crash-reports/' },
   { label: 'Florida Department of Financial Services: Personal Automobile Insurance Overview', url: 'https://myfloridacfo.com/division/consumers/understanding-insurance/personal-automobile-insurance-overview' },
@@ -24,6 +25,7 @@ const SOURCES_EN = [
 export const post: BlogPost = {
   slug: 'uninsured-motorist-coverage-florida',
   datePublished: '2026-09-26',
+  dateModified: '2026-10-04',
   translations: {
     en: {
       title: 'Uninsured Motorist Coverage in Florida: What UM/UIM Covers and How to Check Yours',
@@ -93,7 +95,7 @@ export const post: BlogPost = {
         { type: 'h2', text: 'What to do if an uninsured driver hits you' },
         { type: 'ol', items: [
           '**Get safe and call 911.** Check for injuries, move out of traffic only if it’s safe, and stay at the scene. Florida law requires drivers in a crash with injuries to stop and remain there.',
-          '**Report the crash to law enforcement.** Florida law requires you to notify police immediately after a crash with injury, death, or apparent property damage of at least $500. **Starting October 1, 2026**, that property damage threshold rises to **$2,000** (SB 488). Hit-and-run and DUI crashes must be reported too. DFS recommends contacting law enforcement whenever you can, even when the damage looks minor.',
+          '**Report the crash to law enforcement.** Florida law requires you to notify police immediately after a crash with injury, death, or apparent property damage of at least **$2,000** (s. 316.065, as amended by SB 488; the threshold was $500 before October 1, 2026). Hit-and-run and DUI crashes must be reported too. DFS recommends contacting law enforcement whenever you can, even when the damage looks minor.',
           '**Exchange information.** Drivers must give each other their name, address and vehicle registration number, and show their license on request. Ask for the other driver’s insurance information, and note it if they say they have none.',
           '**Take photos** of the vehicles, license plates, the scene, road conditions and any visible injuries.',
           '**Get witness information:** names, addresses and phone numbers.',
@@ -186,7 +188,7 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Qué hacer si lo choca un conductor sin seguro' },
         { type: 'ol', items: [
           '**Póngase a salvo y llame al 911.** Revise si hay heridos, salga del tráfico solo si es seguro y quédese en el lugar. La ley de Florida exige que los conductores involucrados en un choque con heridos se detengan y permanezcan allí.',
-          '**Reporte el choque a la policía.** La ley de Florida exige avisar de inmediato a la policía cuando hay heridos, muertos o daños aparentes a la propiedad de al menos $500. **A partir del 1 de octubre de 2026**, ese monto sube a **$2,000** (ley SB 488). Los choques con fuga (hit-and-run) y los de conductores bajo los efectos del alcohol (DUI) también se deben reportar. El DFS recomienda llamar a la policía siempre que pueda, aunque el daño parezca menor.',
+          '**Reporte el choque a la policía.** La ley de Florida exige avisar de inmediato a la policía cuando hay heridos, muertos o daños aparentes a la propiedad de al menos **$2,000** (sección 316.065, modificada por la ley SB 488; hasta el 1 de octubre de 2026 el monto era de $500). Los choques con fuga (hit-and-run) y los de conductores bajo los efectos del alcohol (DUI) también se deben reportar. El DFS recomienda llamar a la policía siempre que pueda, aunque el daño parezca menor.',
           '**Intercambie información.** Los conductores deben darse su nombre, dirección y número de registro del vehículo, y mostrar la licencia si se la piden. Pida los datos del seguro del otro conductor y anote si le dice que no tiene.',
           '**Tome fotos** de los vehículos, las placas, el lugar, el estado de la vía y cualquier lesión visible.',
           '**Consiga los datos de los testigos:** nombres, direcciones y teléfonos.',
@@ -292,7 +294,7 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Что делать, если в вас врезался водитель без страховки' },
         { type: 'ol', items: [
           '**Позаботьтесь о безопасности и звоните 911.** Проверьте, нет ли пострадавших, уходите с проезжей части, только если это безопасно, и оставайтесь на месте. Закон Флориды требует, чтобы водители, попавшие в аварию с пострадавшими, остановились и оставались на месте.',
-          '**Сообщите об аварии в полицию.** По закону Флориды полицию нужно уведомить немедленно, если в аварии есть пострадавшие или погибшие либо видимый ущерб имуществу составляет не менее $500. **С 1 октября 2026 года** этот порог повышается до **$2,000** (закон SB 488). О наездах с побегом с места (hit-and-run) и авариях с нетрезвым водителем (DUI) тоже нужно сообщать. DFS советует вызывать полицию всегда, когда есть возможность, даже если повреждения кажутся мелкими.',
+          '**Сообщите об аварии в полицию.** По закону Флориды полицию нужно уведомить немедленно, если в аварии есть пострадавшие или погибшие либо видимый ущерб имуществу составляет не менее **$2,000** (ст. 316.065 в редакции закона SB 488; до 1 октября 2026 года порог был $500). О наездах с побегом с места (hit-and-run) и авариях с нетрезвым водителем (DUI) тоже нужно сообщать. DFS советует вызывать полицию всегда, когда есть возможность, даже если повреждения кажутся мелкими.',
           '**Обменяйтесь данными.** Водители обязаны сообщить друг другу имя, адрес и регистрационный номер машины, а по просьбе показать водительские права. Попросите данные страховки другого водителя и запишите, если он говорит, что её нет.',
           '**Сфотографируйте** машины, номерные знаки, место аварии, состояние дороги и видимые травмы.',
           '**Запишите данные свидетелей:** имена, адреса и телефоны.',
@@ -322,7 +324,7 @@ export const post: BlogPost = {
         { label: 'Законы Флориды, ст. 316.065 (2026): аварии и сообщения о них (на английском)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.065' },
         { label: 'Законы Флориды, ст. 316.062 (2026): обязанность предоставить информацию и оказать помощь (на английском)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.062' },
         { label: 'Законы Флориды, ст. 316.027 (2026): аварии с погибшими или пострадавшими (на английском)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.027' },
-        { label: 'Сенат Флориды: законопроект SB 488 (2026), глава 2026-39, вступает в силу 1 октября 2026 года (на английском)', url: 'https://www.flsenate.gov/Session/Bill/2026/488' },
+        { label: 'Сенат Флориды: закон SB 488 (2026), глава 2026-39, действует с 1 октября 2026 года (на английском)', url: 'https://www.flsenate.gov/Session/Bill/2026/488' },
         { label: 'FLHSMV: требования к автостраховке во Флориде (на английском)', url: 'https://www.flhsmv.gov/insurance/' },
         { label: 'FLHSMV: протоколы ДТП (на английском)', url: 'https://www.flhsmv.gov/traffic-crash-reports/' },
         { label: 'Департамент финансовых услуг Флориды: обзор личного автострахования (на английском)', url: 'https://myfloridacfo.com/division/consumers/understanding-insurance/personal-automobile-insurance-overview' },

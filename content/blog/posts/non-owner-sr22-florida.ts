@@ -18,6 +18,18 @@ const SOURCES_EN = [
   { label: 'FLHSMV: Verification criteria for financial responsibility sanctions', url: 'https://www.flhsmv.gov/pdf/frmanual/reference-verification-requests.pdf' },
 ];
 
+// ES version added 2026-10-04 (ET). Re-checked the same day: s. 324.021(7) 10/20/10, s. 324.023 100/300/50 (DUI after
+// Oct 1, 2007), s. 324.151(1)(a)–(b) owner's vs operator's policy (2026 texts), and the FLHSMV SR22 definition.
+const SOURCES_ES = [
+  { label: 'FLHSMV: Florida Insurance Requirements (definición de SR22; PIP/PDL para vehículos registrados)', url: 'https://www.flhsmv.gov/insurance/' },
+  { label: 'Estatutos de Florida, sección 324.021 (2026): definiciones; prueba de responsabilidad financiera 10/20/10; póliza de responsabilidad', url: 'https://www.flsenate.gov/Laws/Statutes/2026/324.021' },
+  { label: 'Estatutos de Florida, sección 324.023 (2026): responsabilidad financiera después de un DUI; 100/300/50; mínimo 3 años', url: 'https://www.flsenate.gov/Laws/Statutes/2026/324.023' },
+  { label: 'Estatutos de Florida, sección 324.031 (2026): formas de probar la responsabilidad financiera', url: 'https://www.flsenate.gov/Laws/Statutes/2026/324.031' },
+  { label: 'Estatutos de Florida, sección 324.151 (2026): póliza del dueño y póliza del conductor (operator’s policy)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/324.151' },
+  { label: 'FLHSMV: Procedures Manual — certificación SR22/FR44 (límites y mantenimiento continuo; en inglés)', url: 'https://www.flhsmv.gov/pdf/frmanual/ftp-procedure-manual.pdf' },
+  { label: 'FLHSMV: Verification criteria for financial responsibility sanctions (en inglés)', url: 'https://www.flhsmv.gov/pdf/frmanual/reference-verification-requests.pdf' },
+];
+
 const SOURCES_RU = [
   { label: 'FLHSMV: Florida Insurance Requirements (определение SR22; PIP/PDL для зарегистрированных авто)', url: 'https://www.flhsmv.gov/insurance/' },
   { label: 'Florida Statutes s. 324.021 (2026): определения; proof of financial responsibility 10/20/10; полис ответственности', url: 'https://www.flsenate.gov/Laws/Statutes/2026/324.021' },
@@ -111,6 +123,84 @@ export const post: BlogPost = {
       sources: SOURCES_EN,
     },
 
+    es: {
+      title: '¿Necesito SR-22 si no tengo carro? El SR-22 de no propietario en Florida',
+      metaTitle: 'SR-22 sin carro en Florida (no propietario) | M&K Agency',
+      description: '¿Le piden SR-22 y no tiene carro? Qué es el SR-22 de no propietario en Florida, qué cubre la póliza del conductor, 10/20/10, FR-44 y cómo se presenta.',
+      excerpt: 'Si el FLHSMV le pide un SR-22 y usted no tiene carro, lo habitual es una póliza de responsabilidad del conductor (non-owner) con la presentación del SR-22. Le explicamos en qué se diferencia, qué cubre y cómo se tramita.',
+      category: 'Seguro de auto',
+      body: [
+        { type: 'p', text: 'Es una de las preguntas que más escuchamos en la oficina: **“Me piden un SR-22, pero no tengo carro. ¿Qué hago?”** Pasa mucho. Hay quien maneja el carro de un familiar, quien pide prestado un vehículo o quien se quedó sin carro después de una suspensión. Aun así, el Departamento de Seguridad en las Carreteras y Vehículos Motorizados de Florida (**FLHSMV**) puede exigirle que demuestre responsabilidad financiera para recuperar su licencia. En muchos casos la solución es una póliza de responsabilidad **de no propietario** (póliza del conductor u *operator’s policy*) con la presentación del SR-22, no un producto “especial” aparte.' },
+        { type: 'p', text: 'Con base en los materiales del FLHSMV y el Capítulo 324 de los Estatutos de Florida, esta guía explica qué es el SR-22 de no propietario, en qué se diferencia del SR-22 normal (de dueño), cuándo puede pedirlo Florida, qué cubre y qué no cubre la póliza del conductor, dónde entra el **FR-44** después de ciertos casos de DUI y cómo se presenta. Si quiere la explicación general del SR-22, lea también nuestra guía [¿Qué es el SR-22 en Florida?](/es/blog/sr22-florida-guia).' },
+
+        { type: 'h2', text: 'El SR-22 es una presentación, no un tipo de seguro' },
+        { type: 'p', text: 'En su página de requisitos de seguro, el FLHSMV define el **SR22** como una presentación (filing) del seguro que **certifica la responsabilidad por lesiones corporales (BIL) y por daños a la propiedad (PDL)** para cumplir con la reinstalación bajo la Ley de Responsabilidad Financiera de Florida. Usted sigue necesitando una póliza de responsabilidad con los límites que exige su caso; el SR-22 es el certificado que su aseguradora envía al estado.' },
+        { type: 'ul', items: [
+          'Normalmente **usted no presenta** el SR-22: lo presenta su **aseguradora**, por lo general de forma electrónica ante el FLHSMV.',
+          'El certificado demuestra que usted tiene la cobertura de responsabilidad que el estado exige en su caso.',
+          'Si la póliza se cancela o la cobertura se interrumpe mientras el certificado está activo, la aseguradora suele avisar al departamento, y este puede volver a suspender su licencia.',
+        ] },
+        { type: 'callout', title: 'Importante', text: 'El SR-22 de no propietario sigue siendo un certificado SR-22, solo que sobre una póliza de responsabilidad del conductor. No le permite manejar mientras su licencia esté suspendida y no reemplaza el PIP y el PDL de un vehículo que usted sea dueño y tenga registrado en Florida. Esto es información general, no asesoría legal; confirme su requisito con el FLHSMV o con su carta de reinstalación.' },
+
+        { type: 'h2', text: 'SR-22 de no propietario vs. SR-22 normal: la póliza de fondo' },
+        { type: 'p', text: 'El certificado se llama igual (**SR-22**). Lo que cambia es la **póliza de responsabilidad** que lo respalda:' },
+        { type: 'ul', items: [
+          '**Póliza del dueño (SR-22 normal):** sección **324.151(1)(a)**. Describe los vehículos cubiertos y asegura al dueño nombrado (y, con pocas excepciones, a quienes manejan con su permiso) por la responsabilidad que surge de ser dueño, mantener o usar esos vehículos.',
+          '**Póliza del conductor (no propietario):** sección **324.151(1)(b)**. Asegura a la persona nombrada por la responsabilidad que surge del uso de **cualquier vehículo que no sea suyo**, con los mismos límites territoriales y de responsabilidad que una póliza de dueño bajo ese capítulo.',
+        ] },
+        { type: 'p', text: 'En el lenguaje de todos los días, esa póliza del conductor es el seguro de responsabilidad **non-owner**. La definición de “póliza de responsabilidad de vehículo motorizado” de la sección **324.021(8)** ya contempla una póliza **del dueño o del conductor** como prueba bajo la sección 324.031. Cuando el FLHSMV exige un SR-22 y usted no tiene carro, la cobertura de fondo suele ser una póliza del conductor que pueda certificar los límites requeridos.' },
+        { type: 'p', text: 'Si usted **sí** es dueño de un vehículo registrado en Florida, una póliza de no propietario **no sustituye** la cobertura de ese vehículo. El FLHSMV exige **PIP** y **PDL** continuos (al menos $10,000 de cada uno) en los vehículos registrados. Pregúntele a su agente qué estructura corresponde a su situación y al certificado que aparece en su aviso.' },
+
+        { type: 'h2', text: '¿Cuándo puede Florida pedirle un SR-22 (y cuándo encaja el de no propietario)?' },
+        { type: 'p', text: 'En la práctica, el FLHSMV pide un SR-22 o un FR-44 cuando el conductor **no puede demostrar** que tenía en vigor la cobertura de responsabilidad requerida en la fecha del hecho; por ejemplo, después de un choque que debía reportarse, de ciertas condenas o de suspensiones por responsabilidad financiera.' },
+        { type: 'p', text: 'La vía de **no propietario** encaja cuando su carta pide un **SR-22** (o un FR-44, vea más abajo), usted **no es dueño** de un vehículo para una póliza de dueño, pero igual tiene que demostrar cobertura de responsabilidad como **conductor**. Los motivos más comunes son choques reportables sin los límites de la sección 324.021(7), suspensiones relacionadas con el seguro y ciertas infracciones de tránsito. Su **carta del FLHSMV** es la mejor guía sobre el tipo de certificado y los demás pasos para recuperar la licencia.' },
+
+        { type: 'h2', text: 'Qué certifica el SR-22: límites 10/20/10' },
+        { type: 'p', text: 'La “prueba de responsabilidad financiera” de la sección **324.021(7)** es la capacidad de responder por daños de al menos **$10,000** por lesiones o muerte de una persona, **$20,000** por dos o más personas en un mismo choque (sujeto al límite por persona) y **$10,000** por daños a la propiedad de otros: el conocido **10/20/10**. Los manuales de procedimiento del FLHSMV indican que un **SR22** certifica BIL/PDL por al menos esos montos. La póliza del conductor que se use para la presentación tiene que cumplir esos límites; el certificado no baja el mínimo que fija la ley.' },
+
+        { type: 'h2', text: 'Qué suele cubrir una póliza de no propietario y qué no' },
+        { type: 'p', text: 'Según la sección **324.151(1)(b)**, la póliza de responsabilidad del conductor trata de **su responsabilidad frente a terceros** cuando usted usa un vehículo que no es suyo. En palabras sencillas:' },
+        { type: 'ul', items: [
+          '**Puede cubrir** la responsabilidad por lesiones y daños a la propiedad que usted cause al manejar un vehículo **ajeno**, hasta los límites que respaldan su SR-22 (o FR-44).',
+          '**No es** cobertura de choque (collision) ni integral (comprehensive) del carro prestado: esas coberturas van ligadas a un vehículo.',
+          '**No reemplaza** el PIP y el PDL que Florida exige en un vehículo que **usted** tenga y registre.',
+          '**No lo autoriza a manejar** si su licencia sigue suspendida; la reinstalación y la presentación son pasos distintos.',
+        ] },
+        { type: 'p', text: 'Las condiciones, las exclusiones y si una aseguradora emite o no una póliza del conductor para su hogar dependen de la suscripción (underwriting) y del texto de la póliza. Hable con un agente con licencia en Florida antes de contar con cualquier estructura.' },
+
+        { type: 'h2', text: 'FR-44: cuando se exigen límites más altos' },
+        { type: 'p', text: 'No todas las cartas piden un SR-22 normal. Después de ciertos casos de **DUI** bajo la sección 316.193 **posteriores al 1 de octubre de 2007**, la sección **324.023** exige que el dueño o conductor que fue declarado culpable, o que se declaró culpable o *nolo contendere* (haya o no adjudicación de culpabilidad), mantenga **$100,000 / $300,000 / $50,000** durante un **mínimo de 3 años**. El FLHSMV lo documenta con un **FR44**. Un FR-44 también cumple el nivel más bajo del SR-22 en el mismo caso. Si usted no tiene carro, la póliza del conductor puede seguir siendo la vía, pero con los límites del FR-44; guíese por el tipo de certificado que indica su aviso.' },
+
+        { type: 'h2', text: '¿Por cuánto tiempo debo mantener la presentación?' },
+        { type: 'p', text: 'Para el FR-44 después de un DUI bajo la sección 324.023, los límites más altos se exigen durante al menos **3 años**. Los manuales de procedimiento del FLHSMV también indican que el **SR22/FR44** debe mantenerse **de forma continua durante 3 años** desde la fecha original de la suspensión del caso de responsabilidad financiera. Una interrupción puede generar un aviso de cancelación SR-26/FR-46 y nuevos problemas con la licencia.' },
+        { type: 'p', text: 'Mantenga la cobertura de responsabilidad **sin interrupciones** durante el período que indica su aviso del FLHSMV. Si cambia de aseguradora, confirme que la nueva compañía presente el certificado a tiempo y que no quede ningún hueco entre pólizas.' },
+
+        { type: 'h2', text: 'Cómo tramitar un SR-22 de no propietario en Florida' },
+        { type: 'ol', items: [
+          '**Lea su carta del FLHSMV.** Confirme si es SR-22 o FR-44, anote el número de caso si lo tiene y apunte los demás pasos para recuperar la licencia (cargos, cursos, etc.).',
+          '**Confirme que necesita la vía de no propietario.** Si es dueño de un vehículo registrado en Florida, por lo general necesita cobertura para ese vehículo, no un sustituto solo para conductor.',
+          '**Consiga una póliza de responsabilidad** que cumpla los límites de su caso (al menos 10/20/10 en muchos casos de SR-22; 100/300/50 para el FR-44) y que la aseguradora vaya a usar para la presentación.',
+          '**Pida a la aseguradora que presente el certificado** ante el FLHSMV. Según los manuales, las aseguradoras presentan el SR22/FR44 de forma electrónica, y el SR22 debe presentarse dentro de los **15 días hábiles** siguientes a su emisión.',
+          '**Mantenga la cobertura continua** durante el período requerido, sin huecos a mitad del requisito salvo que haya una presentación de reemplazo sin interrupción.',
+          '**Guarde sus documentos** (póliza, página de declaraciones, confirmación de la presentación) por si el departamento pide verificación.',
+        ] },
+        { type: 'p', text: 'La sección **324.031** también permite otras formas de prueba (ciertos depósitos o certificados de autoseguro del departamento), pero para la mayoría de los conductores particulares la vía es una póliza de responsabilidad que califique más el certificado que presenta la aseguradora.' },
+
+        { type: 'h2', text: 'Ayuda local en Florida City y Homestead' },
+        { type: 'p', text: 'En [M&K Agency le ayudamos con el SR-22 y el FR-44](/es/sr22-insurance-florida-city), incluida la **póliza del conductor (no propietario)** cuando usted no tiene carro. Un agente con licencia revisa su carta del FLHSMV, confirma si es SR-22 o FR-44 y coordina la póliza y la presentación electrónica. Le atendemos en español.' },
+        { type: 'p', text: 'También puede [solicitar una cotización](/es/quote) o llamar al **(305) 859-3953**. Oficina: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034. Horario: lunes a viernes de 9 a 6; sábados con cita. Atendemos Florida City, Homestead y el sur de Miami-Dade.' },
+        { type: 'p', text: 'La cobertura depende de las condiciones, los límites y las exclusiones de cada póliza, y de su caso exacto ante el FLHSMV. Hable con un agente con licencia antes de cambiar su cobertura. Esta página es información general, no asesoría legal.' },
+      ],
+      faq: [
+        { q: '¿Necesito SR-22 si no tengo carro?', a: 'Si el FLHSMV le exige un SR-22, el requisito sigue en pie aunque usted no tenga carro. En ese caso se suele usar una póliza de responsabilidad del conductor (no propietario) bajo la sección 324.151(1)(b), y la aseguradora presenta el SR-22 sobre esa póliza. Confirme el tipo de certificado en su carta.' },
+        { q: '¿En qué se diferencia el SR-22 de no propietario del SR-22 normal?', a: 'El certificado es el mismo. Cambia la póliza de fondo: la póliza del dueño describe vehículos concretos (sección 324.151(1)(a)); la del conductor cubre la responsabilidad de la persona nombrada cuando usa vehículos que no son suyos (sección 324.151(1)(b)). Ambas pueden respaldar los límites que certifica el SR-22 cuando la aseguradora lo presenta ante el FLHSMV.' },
+        { q: '¿Qué límites exige el SR-22?', a: 'La prueba de responsabilidad financiera de la sección 324.021(7) es 10/20/10: $10,000 por persona y $20,000 por choque por lesiones, y $10,000 por daños a la propiedad. Los procedimientos del FLHSMV indican que el SR22 certifica al menos esos límites de BIL/PDL. Ciertos casos de DUI exigen en cambio un FR-44 con 100/300/50 (sección 324.023).' },
+        { q: '¿La póliza de no propietario cubre el carro que me prestan?', a: 'La póliza del conductor de la sección 324.151(1)(b) cubre su responsabilidad frente a terceros cuando usa un vehículo ajeno. No equivale a cobertura de choque o integral del carro prestado. Los detalles varían según la póliza; confírmelos con un agente con licencia y con el texto de la póliza.' },
+        { q: '¿Puedo presentar el SR-22 yo mismo?', a: 'En el proceso habitual, no. Su aseguradora presenta el SR-22 o el FR-44 ante el FLHSMV, por lo general de forma electrónica. A usted le toca conseguir una póliza de responsabilidad que califique, pedir que se haga la presentación y mantener la cobertura continua durante el período que exige su aviso.' },
+        { q: '¿Y si mi carta dice FR-44 en lugar de SR-22?', a: 'Después de ciertos casos de DUI bajo la sección 316.193 posteriores al 1 de octubre de 2007, la sección 324.023 exige límites más altos de 100/300/50 durante al menos tres años. El FLHSMV lo documenta con un FR-44. La póliza del conductor puede servir si usted no tiene carro, pero los límites deben cumplir los montos del FR-44. Un FR-44 cubre también el nivel más bajo del SR-22 en el mismo caso.' },
+      ],
+      sources: SOURCES_ES,
+    },
     ru: {
       title: 'Non-owner SR-22 во Флориде: когда нужен и что покрывает',
       metaTitle: 'Non-owner SR-22 во Флориде: когда нужен | M&K Agency',
