@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/dictionaries';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import RelatedGuides from '@/components/RelatedGuides';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { LIMITED_LANG_PAGES } from '@/lib/page-langs';
 import { FLOOD_PAGE, FLOOD_PAGE_DATE } from '@/content/pages/flood-insurance-homestead-fl';
@@ -149,6 +150,7 @@ export default function FloodInsurancePage({ params }: { params: { lang: string 
           </div>
         </div>
       </section>
+      <RelatedGuides lang={l} page={PATH} />
       <RelatedCoverage lang={l} current={PATH} />
     </main>
   );

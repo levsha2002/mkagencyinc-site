@@ -105,7 +105,7 @@ export const post: BlogPost = {
           'Hable con un agente de seguros con licencia en Florida y explique exactamente lo que pide el estado.',
           'Cuando la póliza esté lista, confirme que la aseguradora **ya presentó** el certificado electrónicamente.',
           'No cancele la póliza ni deje un hueco en la cobertura mientras el requisito esté activo.',
-          'Si no es dueño de un vehículo, pregunte por una póliza de operador (non-owner) que pueda cumplir los límites que su caso exige.',
+          'Si no es dueño de un vehículo, pregunte por una póliza de operador (non-owner) que pueda cumplir los límites que su caso exige. Lo explicamos en [¿Necesito SR-22 si no tengo carro?](/es/blog/non-owner-sr22-florida).',
         ] },
 
         { type: 'h2', text: 'Ayuda local en Florida City y Homestead' },
@@ -206,7 +206,7 @@ export const post: BlogPost = {
           'Обратитесь к лицензированному страховому агенту во Флориде и точно опишите, что требует штат.',
           'Когда полис готов, убедитесь, что страховая **уже подала** сертификат электронно.',
           'Не отменяйте полис и не допускайте перерыва в покрытии, пока требование действует.',
-          'Если у вас нет своего автомобиля, спросите про вариант non-owner (страховка оператора), который может закрыть нужные лимиты ответственности; доступность зависит от страховой и вашей ситуации.',
+          'Если у вас нет своего автомобиля, спросите про вариант non-owner (страховка оператора), который может закрыть нужные лимиты ответственности; доступность зависит от страховой и вашей ситуации. Подробнее — в статье [Non-owner SR-22 во Флориде](/ru/blog/non-owner-sr22-florida).',
         ] },
 
         { type: 'h2', text: 'Помощь рядом — Florida City и Homestead' },

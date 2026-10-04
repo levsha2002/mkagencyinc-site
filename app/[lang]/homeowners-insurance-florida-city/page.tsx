@@ -5,6 +5,7 @@ import { PHONE_DISPLAY, PHONE_TEL, getDict } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import LeadForm from '@/components/LeadForm';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import RelatedGuides from '@/components/RelatedGuides';
 import AreasWeServe from '@/components/city/AreasWeServe';
 import { pageMetadata } from '@/lib/seo';
 
@@ -245,6 +246,7 @@ export default function HomeownersInsuranceFloridaCity({ params }: { params: { l
         </div>
       </section>
       <AreasWeServe lang={l} current="/homeowners-insurance-florida-city" />
+      <RelatedGuides lang={l} page="/homeowners-insurance-florida-city" />
       <RelatedCoverage lang={l} current="/homeowners-insurance-florida-city" />
     </main>
   );
