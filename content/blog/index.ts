@@ -28,6 +28,9 @@ import { post as fertilizerRulesMiamiDade } from './posts/fertilizer-rules-lands
 import { post as helperEmployeeOr1099 } from './posts/helper-employee-or-1099-florida-workers-comp';
 import { post as oshaFallProtectionWindows } from './posts/osha-fall-protection-window-cleaners';
 import { post as epaLeadSafeRrp } from './posts/epa-lead-safe-rrp-painters-florida';
+import { post as pressureWashingRunoff } from './posts/pressure-washing-runoff-storm-drains-miami-dade';
+import { post as usdotWorkTrucks } from './posts/usdot-number-florida-work-trucks';
+import { post as constructionStallsBuildersRisk } from './posts/construction-stalls-builders-risk-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -56,4 +59,7 @@ export const posts: BlogPost[] = [
   helperEmployeeOr1099,
   oshaFallProtectionWindows,
   epaLeadSafeRrp,
+  pressureWashingRunoff,
+  usdotWorkTrucks,
+  constructionStallsBuildersRisk,
 ];
