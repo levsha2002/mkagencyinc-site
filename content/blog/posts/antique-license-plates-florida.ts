@@ -28,6 +28,7 @@ export const post: BlogPost = {
       title: 'Florida Antique and Horseless Carriage License Plates: Rules for Classic Car Owners',
       metaTitle: 'Antique and Horseless Carriage Plates in Florida | M&K Agency',
       description: 'Florida’s special plates for older cars: Horseless Carriage, Antique, show-only and model-year plates, street rods, and the insurance proof FLHSMV requires.',
+      ogAlt: 'Vintage 1930s convertible parked by palm trees with a blank antique license plate',
       excerpt: 'Florida has several special plates for older vehicles, each with its own age rule, renewal rule and use limits. Here is which one fits your classic and what FLHSMV asks for.',
       category: 'Classic car insurance',
       body: [
@@ -64,6 +65,7 @@ export const post: BlogPost = {
       title: 'Placas de antigüedad y Horseless Carriage en Florida: reglas para dueños de autos clásicos',
       metaTitle: 'Placas de antigüedad para autos clásicos en Florida | M&K Agency',
       description: 'Placas especiales de Florida para carros antiguos: Horseless Carriage, Antique, de exhibición y del año del modelo, street rods y el seguro que pide el FLHSMV.',
+      ogAlt: 'Automóvil clásico convertible de los años 30 junto a palmeras, con placa antigua en blanco',
       excerpt: 'Florida tiene varias placas especiales para vehículos antiguos, cada una con su regla de edad, de renovación y de uso. Cuál le corresponde a su clásico y qué pide el FLHSMV.',
       category: 'Seguro de auto clásico',
       body: [
@@ -100,6 +102,7 @@ export const post: BlogPost = {
       title: 'Номера Antique и Horseless Carriage во Флориде: правила для владельцев классических авто',
       metaTitle: 'Номера Antique для классических авто во Флориде | M&K Agency',
       description: 'Специальные номера Флориды для старых машин: Horseless Carriage, Antique, номера для выставочных авто и номера года выпуска, стрит-роды и нужная страховка.',
+      ogAlt: 'Ретро-кабриолет 1930-х годов у пальм с пустой табличкой ретро-номера',
       excerpt: 'Во Флориде есть несколько специальных номеров для старых машин, у каждого свои требования к возрасту, продлению и использованию. Какой подходит вашей классике и что требует FLHSMV.',
       category: 'Страхование классических авто',
       body: [

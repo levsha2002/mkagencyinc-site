@@ -16,6 +16,7 @@ export const post: BlogPost = {
       title: 'ATVs, UTVs and Dirt Bikes in Florida: A Family Checklist for Titles, Roads and Riders',
       metaTitle: 'ATV and UTV Rules in Florida: Family Checklist | M&K Agency',
       description: 'Buying, riding or lending an ATV, UTV or dirt bike in Florida? Titles, when road riding is allowed, helmets for kids and what to do after a crash.',
+      ogAlt: 'ATV riding a dirt trail lined with pines and palm trees',
       excerpt: 'Off-road machines are a big part of family life in rural Florida. Here is a short checklist on the title, the road rules, the kids and the coverage.',
       category: 'Off-road vehicle insurance',
       body: [
@@ -51,7 +52,8 @@ export const post: BlogPost = {
     es: {
       title: 'ATV, UTV y motos de tierra en Florida: lista para la familia sobre títulos, vías y conductores',
       metaTitle: 'Reglas de ATV y UTV en Florida: lista familiar | M&K Agency',
-      description: '¿Va a comprar, manejar o prestar un ATV, UTV o moto de tierra en Florida? Título, cuándo se puede ir por la vía, casco para los niños y qué hacer tras un accidente.',
+      description: '¿Va a comprar, manejar o prestar un ATV o UTV en Florida? Título, cuándo puede ir por la vía, casco para niños y qué hacer tras un accidente.',
+      ogAlt: 'Cuatrimoto (ATV) en un sendero de tierra entre pinos y palmeras',
       excerpt: 'Los todoterrenos son parte de la vida familiar en la Florida rural. Una lista corta sobre el título, las reglas de la vía, los niños y la cobertura.',
       category: 'Seguro de vehículos todoterreno',
       body: [
@@ -88,6 +90,7 @@ export const post: BlogPost = {
       title: 'Квадроциклы, UTV и эндуро во Флориде: семейный чек-лист по титулу, дорогам и водителям',
       metaTitle: 'Правила для квадроциклов и UTV во Флориде | M&K Agency',
       description: 'Покупаете, катаетесь или даёте покататься на квадроцикле, UTV или эндуро во Флориде? Титул, когда можно на дорогу, шлемы для детей и что делать после аварии.',
+      ogAlt: 'Квадроцикл на грунтовой тропе среди сосен и пальм',
       excerpt: 'Внедорожная техника — часть семейной жизни в сельской Флориде. Короткий чек-лист: титул, правила дорог, дети и страховка.',
       category: 'Страхование внедорожной техники',
       body: [

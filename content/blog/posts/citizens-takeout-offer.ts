@@ -12,6 +12,7 @@ export const post: BlogPost = {
       title: 'Got a Citizens Take-Out Offer? How to Compare It Before You Accept',
       metaTitle: 'Citizens Take-Out Offer? How to Compare It | M&K Agency',
       description: 'Got a Citizens take-out letter? How the 20% rule works, what happens if you miss the deadline, and a checklist to compare the offer with your Citizens policy.',
+      ogAlt: 'Suburban Florida home with an open mailbox and an envelope at the front door',
       excerpt: 'A take-out letter from Citizens comes with a deadline, and doing nothing is a decision. Here is how the 20% rule works and what to compare before you accept.',
       category: 'Homeowners insurance',
       body: [

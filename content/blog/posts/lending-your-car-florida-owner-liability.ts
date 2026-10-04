@@ -25,6 +25,7 @@ export const post: BlogPost = {
       title: 'Lending Your Car in Florida: The Dangerous Instrumentality Rule and Owner Liability',
       metaTitle: 'Lending Your Car in Florida: Owner Liability | M&K Agency',
       description: 'Are you liable if a friend crashes your car in Florida? The dangerous instrumentality doctrine, the owner liability caps in s. 324.021(9)(b)3, what to check.',
+      ogAlt: 'Two parked cars with a car key floating between them',
       excerpt: 'In Florida, the owner of a car can be held responsible when someone else crashes it. What the dangerous instrumentality doctrine means, the limits the law sets, and the questions to ask before you hand over the keys.',
       category: 'Umbrella insurance',
       body: [
@@ -70,6 +71,7 @@ export const post: BlogPost = {
       title: 'Prestar su carro en Florida: la doctrina del instrumento peligroso y la responsabilidad del dueño',
       metaTitle: 'Prestar su carro en Florida: responsabilidad | M&K Agency',
       description: '¿Responde usted si un amigo choca su carro en Florida? La doctrina del instrumento peligroso, los límites de la sección 324.021(9)(b)3 y qué revisar.',
+      ogAlt: 'Dos carros estacionados con una llave flotando entre ellos',
       excerpt: 'En Florida, el dueño de un carro puede tener que responder cuando otra persona lo choca. Qué significa la doctrina del instrumento peligroso, qué límites fija la ley y qué preguntar antes de entregar las llaves.',
       category: 'Seguro sombrilla',
       body: [
@@ -115,6 +117,7 @@ export const post: BlogPost = {
       title: 'Дали машину другу во Флориде? Доктрина «опасного инструмента» и ответственность владельца',
       metaTitle: 'Дали машину другу во Флориде: ответственность | M&K Agency',
       description: 'Отвечаете ли вы, если друг разбил вашу машину во Флориде? Доктрина dangerous instrumentality, лимиты по ст. 324.021(9)(b)3 и что проверить в полисе.',
+      ogAlt: 'Две припаркованные машины, между ними парит ключ',
       excerpt: 'Во Флориде владелец машины может отвечать за аварию, которую устроил другой водитель. Что такое доктрина «опасного инструмента», какие лимиты устанавливает закон и что спросить, прежде чем отдать ключи.',
       category: 'Зонтичное страхование',
       body: [

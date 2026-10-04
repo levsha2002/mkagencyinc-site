@@ -10,6 +10,8 @@ export interface PostTranslation {
   description: string;
   /** 1–2 sentence teaser for the blog index card. Defaults to description. */
   excerpt?: string;
+  /** Alt text for the post's OG/share image (1200x630). Falls back to the title. */
+  ogAlt?: string;
   /** Small label above the H1, e.g. "Flood insurance". */
   category?: string;
   body: Block[];

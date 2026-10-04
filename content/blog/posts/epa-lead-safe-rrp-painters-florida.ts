@@ -32,6 +32,7 @@ const S = {
   s86: E('86'),
   s103: E('103'),
   epaFirm: 'https://www.epa.gov/lead/renovation-repair-and-painting-program-firm-certification',
+  epaRrp: 'https://www.epa.gov/lead/renovation-repair-and-painting-program',
   fdoh: 'https://www.floridahealth.gov/community-environmental-public-health/environmental-public-health/lead/renovation-repair-and-painting-rrp/',
 };
 
@@ -43,6 +44,7 @@ export const post: BlogPost = {
       title: 'EPA Lead-Safe (RRP) Certification for Painters: Working on Pre-1978 Homes in Florida',
       metaTitle: 'EPA Lead-Safe RRP Rule for Florida Painters | M&K Agency',
       description: 'Painting a home built before 1978? When the EPA lead-safe RRP rule applies, firm and renovator certification, the Renovate Right pamphlet and job rules.',
+      ogAlt: 'Older Florida home with a ladder, a paint roller and paint cans',
       excerpt: 'Scraping and sanding old paint can release lead dust. If you paint homes built before 1978, the EPA RRP rule decides who may do the work and how. The basics, with links to the regulation.',
       category: 'Painting contractor insurance',
       body: [
@@ -54,7 +56,7 @@ export const post: BlogPost = {
           '**Tested lead-free:** a certified inspector or risk assessor, or a certified renovator with an EPA-recognized test kit or lab samples, found the components free of lead-based paint.',
           'Certain housing for the elderly or people with disabilities, and studio-type dwellings, unless a child under 6 lives there.',
         ] },
-        { type: 'p', text: 'The Florida Department of Health notes that the rule generally does not apply to homeowners working on their own homes, but does apply to someone who rents out a home, runs a child care in it, or flips houses ([FDOH](' + S.fdoh + ')).' },
+        { type: 'p', text: 'EPA notes that the rule generally does not apply to homeowners working on their own homes, but does apply to someone who rents out a home, runs a child care in it, or flips houses ([EPA](' + S.epaRrp + ')).' },
         { type: 'h2', text: 'Two certifications: the firm and the renovator' },
         { type: 'ul', items: [
           '**The firm.** Since April 22, 2010, a firm may not perform, offer or claim to perform covered renovations without EPA firm certification. Florida is not one of the states that runs its own RRP program, so certification comes from EPA. It lasts five years ([EPA](' + S.epaFirm + ')).',
@@ -85,6 +87,7 @@ export const post: BlogPost = {
         { label: '40 CFR 745.86: recordkeeping (eCFR)', url: S.s86 },
         { label: '40 CFR 745.103: definition of target housing (eCFR)', url: S.s103 },
         { label: 'EPA: Renovation, Repair and Painting Program, firm certification', url: S.epaFirm },
+        { label: 'EPA: Renovation, Repair, and Painting (RRP) Program', url: S.epaRrp },
         { label: 'Florida Department of Health: Renovation, Repair, and Painting', url: S.fdoh },
       ],
     },
@@ -92,6 +95,7 @@ export const post: BlogPost = {
       title: 'Certificación EPA Lead-Safe (RRP) para pintores: trabajos en casas de antes de 1978 en Florida',
       metaTitle: 'Regla RRP de la EPA para pintores en Florida | M&K Agency',
       description: '¿Pintará una casa de antes de 1978? Cuándo aplica la regla RRP de la EPA, la certificación de empresa y renovador, el folleto Renovate Right y las prácticas.',
+      ogAlt: 'Casa antigua en Florida con escalera, rodillo y latas de pintura',
       excerpt: 'Raspar y lijar pintura vieja puede soltar polvo de plomo. Si pinta casas construidas antes de 1978, la regla RRP de la EPA decide quién puede hacer el trabajo y cómo. Lo básico, con enlaces a la norma.',
       category: 'Seguro para pintores',
       body: [
@@ -103,7 +107,7 @@ export const post: BlogPost = {
           '**Sin plomo comprobado:** un inspector o evaluador de riesgos certificado, o un renovador certificado con un kit reconocido por la EPA o muestras de laboratorio, determinó que los componentes no tienen pintura con plomo.',
           'Cierta vivienda para personas mayores o con discapacidad, y los estudios sin dormitorio separado, salvo que viva allí un niño menor de 6 años.',
         ] },
-        { type: 'p', text: 'El Departamento de Salud de Florida aclara que, en general, la regla no aplica al dueño que trabaja en su propia casa, pero sí a quien la alquila, tiene una guardería en ella o compra y revende casas ([FDOH](' + S.fdoh + ')).' },
+        { type: 'p', text: 'La EPA aclara que, en general, la regla no aplica al dueño que trabaja en su propia casa, pero sí a quien la alquila, tiene una guardería en ella o compra y revende casas ([EPA](' + S.epaRrp + ')).' },
         { type: 'h2', text: 'Dos certificaciones: la empresa y el renovador' },
         { type: 'ul', items: [
           '**La empresa.** Desde el 22 de abril de 2010, ninguna empresa puede hacer, ofrecer ni anunciar renovaciones cubiertas sin la certificación de empresa de la EPA. Florida no es uno de los estados con programa RRP propio, así que la certificación la da la EPA. Dura cinco años ([EPA](' + S.epaFirm + ')).',
@@ -134,6 +138,7 @@ export const post: BlogPost = {
         { label: '40 CFR 745.86: registros (eCFR, en inglés)', url: S.s86 },
         { label: '40 CFR 745.103: definición de target housing (eCFR, en inglés)', url: S.s103 },
         { label: 'EPA: programa RRP, certificación de empresas (en inglés)', url: S.epaFirm },
+        { label: 'EPA: programa Renovation, Repair, and Painting (RRP) (en inglés)', url: S.epaRrp },
         { label: 'Departamento de Salud de Florida: Renovation, Repair, and Painting (en inglés)', url: S.fdoh },
       ],
     },
@@ -141,6 +146,7 @@ export const post: BlogPost = {
       title: 'Сертификат EPA Lead-Safe (RRP) для маляров: работа в домах постройки до 1978 года во Флориде',
       metaTitle: 'Правило EPA RRP для маляров во Флориде | M&K Agency',
       description: 'Красите дом постройки до 1978 года? Когда действует правило EPA RRP, сертификация фирмы и renovator, брошюра Renovate Right и правила на объекте.',
+      ogAlt: 'Старый дом во Флориде: лестница, валик и банки с краской',
       excerpt: 'Когда шкурят и скоблят старую краску, может подниматься свинцовая пыль. Если вы красите дома постройки до 1978 года, правило EPA RRP определяет, кто может делать эту работу и как. Основное со ссылками на нормы.',
       category: 'Страхование для маляров',
       body: [
@@ -152,7 +158,7 @@ export const post: BlogPost = {
           '**Подтверждено отсутствие свинца:** сертифицированный инспектор или risk assessor либо certified renovator с признанным EPA тест-набором или лабораторными пробами установил, что свинцовой краски нет.',
           'Некоторое жильё для пожилых или людей с инвалидностью и студии без отдельной спальни — если там не живёт ребёнок младше 6 лет.',
         ] },
-        { type: 'p', text: 'Департамент здравоохранения Флориды уточняет: обычно правило не касается владельца, который ремонтирует свой дом сам, но касается того, кто сдаёт дом в аренду, держит в нём детский сад или перепродаёт дома (флиппинг) ([FDOH](' + S.fdoh + ')).' },
+        { type: 'p', text: 'EPA уточняет: обычно правило не касается владельца, который ремонтирует свой дом сам, но касается того, кто сдаёт дом в аренду, держит в нём детский сад или перепродаёт дома (флиппинг) ([EPA](' + S.epaRrp + ')).' },
         { type: 'h2', text: 'Два сертификата: фирма и renovator' },
         { type: 'ul', items: [
           '**Фирма.** С 22 апреля 2010 года фирма не может выполнять, предлагать или рекламировать такие работы без сертификата фирмы от EPA. У Флориды нет собственной программы RRP, поэтому сертификат выдаёт EPA. Он действует пять лет ([EPA](' + S.epaFirm + ')).',
@@ -183,6 +189,7 @@ export const post: BlogPost = {
         { label: '40 CFR 745.86: хранение документов (eCFR, на английском)', url: S.s86 },
         { label: '40 CFR 745.103: определение target housing (eCFR, на английском)', url: S.s103 },
         { label: 'EPA: программа RRP, сертификация фирм (на английском)', url: S.epaFirm },
+        { label: 'EPA: программа Renovation, Repair, and Painting (RRP) (на английском)', url: S.epaRrp },
         { label: 'Департамент здравоохранения Флориды: Renovation, Repair, and Painting (на английском)', url: S.fdoh },
       ],
     },

@@ -66,6 +66,7 @@ export const edition: NewsEdition = {
       title: 'Florida insurance news, Sept. 26, 2026: rate filings, Citizens, king tides and new driving rules',
       metaTitle: 'Insurance News Sept. 26, 2026: Citizens, Rates, Flood | M&K Agency',
       description: 'This week: more homeowners rate decreases approved, Citizens shrinks and urges shopping, a Supreme Court arbitration case, king tides and Oct. 1 driving rules.',
+      ogAlt: 'Florida home with a document showing a downward arrow and high-tide canal water',
       intro: 'Five updates from this week for South Miami-Dade homeowners, drivers and small business owners. Each one is summarized in our own words, with a link to the original source.',
       items: [
         {
@@ -107,7 +108,8 @@ export const edition: NewsEdition = {
     es: {
       title: 'Noticias de seguros en Florida, 26 de septiembre de 2026: tarifas, Citizens, mareas altas y nuevas reglas para conductores',
       metaTitle: 'Noticias de seguros, 26 sept. 2026: Citizens y más | M&K Agency',
-      description: 'Esta semana: más rebajas de tarifas de hogar aprobadas, Citizens se achica, un caso de arbitraje en la Corte Suprema, mareas reales y reglas de tránsito del 1 de octubre.',
+      description: 'Esta semana: más rebajas de tarifas de hogar aprobadas, Citizens se achica, arbitraje en la Corte Suprema, mareas reales y reglas de tránsito.',
+      ogAlt: 'Casa en Florida con un documento de flecha hacia abajo y canal con marea alta',
       intro: 'Cinco novedades de esta semana para propietarios, conductores y dueños de pequeños negocios del sur de Miami-Dade. Cada una está resumida con nuestras propias palabras y enlaza a la fuente original.',
       items: [
         {
@@ -150,6 +152,7 @@ export const edition: NewsEdition = {
       title: 'Новости страхования во Флориде, 26 сентября 2026: тарифы, Citizens, высокие приливы и новые правила для водителей',
       metaTitle: 'Новости страхования, 26 сентября 2026 | M&K Agency',
       description: 'За неделю: штат одобрил новые снижения тарифов на страхование жилья, Citizens сокращается, дело об арбитраже в Верховном суде, приливы и правила с 1 октября.',
+      ogAlt: 'Дом во Флориде: документ со стрелкой вниз и канал с высокой водой',
       intro: 'Пять новостей этой недели для домовладельцев, водителей и владельцев малого бизнеса на юге Miami-Dade. Каждая пересказана своими словами, со ссылкой на первоисточник.',
       items: [
         {

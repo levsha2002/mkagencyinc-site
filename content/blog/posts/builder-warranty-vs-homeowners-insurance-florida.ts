@@ -27,6 +27,7 @@ export const post: BlogPost = {
       title: 'Builder Warranty vs. Homeowners Insurance: Who Pays for What in a New Florida Home',
       metaTitle: 'Builder Warranty vs. Home Insurance in Florida | M&K Agency',
       description: 'New home in Florida? What a builder warranty does, what homeowners insurance does, Florida’s condo warranties, the Chapter 558 defect process and key deadlines.',
+      ogAlt: 'Brand-new Florida home with a blueprint roll and a house key floating above it',
       excerpt: 'At a new-construction closing you get two promises: the builder’s warranty and your insurance policy. They do different jobs. Here is how to tell which one to call.',
       category: 'Homeowners insurance',
       body: [
@@ -77,6 +78,7 @@ export const post: BlogPost = {
       title: 'Garantía del constructor o seguro de casa: quién paga qué en una casa nueva en Florida',
       metaTitle: 'Garantía del constructor vs. seguro de casa | M&K Agency',
       description: '¿Casa nueva en Florida? Qué hace la garantía del constructor, qué hace el seguro de casa, las garantías de condominio, el proceso del Capítulo 558 y los plazos.',
+      ogAlt: 'Casa nueva en Florida con un plano enrollado y una llave flotando arriba',
       excerpt: 'Al cerrar la compra de una casa nueva recibe dos promesas: la garantía del constructor y su póliza de seguro. Hacen trabajos distintos. Así sabrá a quién llamar.',
       category: 'Seguro de casa',
       body: [
@@ -127,6 +129,7 @@ export const post: BlogPost = {
       title: 'Гарантия застройщика или страховка дома: кто за что платит в новом доме во Флориде',
       metaTitle: 'Гарантия застройщика и страховка дома во Флориде | M&K Agency',
       description: 'Новый дом во Флориде? Что даёт гарантия застройщика, что — страховка дома, гарантии по кондо, порядок по Chapter 558 и важные сроки.',
+      ogAlt: 'Новый дом во Флориде, над ним — свёрнутый чертёж и ключ от дома',
       excerpt: 'На закрытии сделки по новому дому вы получаете два обещания: гарантию застройщика и страховой полис. У них разные задачи. Разбираемся, куда звонить в каком случае.',
       category: 'Страхование дома',
       body: [
@@ -155,7 +158,7 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Сроки, которые продолжают идти' },
         { type: 'p', text: 'Иски по поводу строительства дома, как правило, нужно подать в течение **4 лет** с даты certificate of occupancy или с момента, когда скрытый дефект обнаружили (или должны были обнаружить), и в любом случае не позже **7 лет** ([ст. 95.11(3)(b)](' + S.s9511 + ')). Гарантийный ремонт этот срок не продлевает, а уведомление по Chapter 558 его не приостанавливает. О юридических сроках в вашей ситуации лучше поговорить с адвокатом во Флориде.' },
         { type: 'h2', text: 'Когда работает и то и другое' },
-        { type: 'p', text: 'Представьте, что на второй год после шторма потекла крыша. Это может быть и внезапный ущерб для страховой, **и** возможный дефект для застройщика. Как можно скорее заявите ущерб страховой (крайний срок во Флориде — 1 год с даты ущерба, [ст. 627.70132](' + S.s70132 + ')), письменно уведомите застройщика, как требует гарантия, и сохраните фото. Что страховая обязана сделать дальше, читайте в статье о [сроках по клейму после урагана](/ru/blog/hurricane-claim-timeline-florida).' },
+        { type: 'p', text: 'Представьте, что на второй год после шторма потекла крыша. Это может быть и внезапный ущерб для страховой, **и** возможный дефект для застройщика. Как можно скорее заявите ущерб страховой (крайний срок во Флориде — 1 год с даты ущерба, [ст. 627.70132](' + S.s70132 + ')), письменно уведомите застройщика, как требует гарантия, и сохраните фото. Что страховая обязана сделать дальше, читайте в статье о [сроках рассмотрения страхового случая после урагана](/ru/blog/hurricane-claim-timeline-florida).' },
         { type: 'callout', title: 'Скоро закрытие по новому дому?', text: 'Загляните на страницу о [страховке нового дома](/ru/new-construction-home-insurance-florida) или [оставьте заявку на расчёт](/ru/quote). Лицензированный агент объяснит, что полис покрывает и что исключает. Это общая информация, а не юридическая консультация; покрытие зависит от вашего полиса.' },
       ],
       faq: [

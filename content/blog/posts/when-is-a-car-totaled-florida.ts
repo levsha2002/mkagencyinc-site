@@ -24,6 +24,7 @@ export const post: BlogPost = {
       title: 'When Is a Car “Totaled” in Florida? Total Loss, Actual Cash Value and Your Title',
       metaTitle: 'When Is a Car Totaled in Florida? | M&K Agency',
       description: 'How a total loss works in Florida: what the law says about the “80% rule,” how insurers must value your car, salvage titles, and what to ask if you owe on it.',
+      ogAlt: 'Car on a repair-shop lift with assessment documents nearby',
       excerpt: 'Many drivers have heard of an “80% rule.” Florida law is more specific than that. How a car becomes a total loss, how the insurer must value it, and what happens to the title.',
       category: 'Auto insurance',
       body: [
@@ -69,6 +70,7 @@ export const post: BlogPost = {
       title: '¿Cuándo se considera “pérdida total” un carro en Florida? Valor real en efectivo y su título',
       metaTitle: '¿Cuándo es pérdida total un carro en Florida? | M&K Agency',
       description: 'Pérdida total en Florida: qué dice la ley sobre la “regla del 80%”, cómo deben valorar su carro, el título de salvamento y qué preguntar si debe el préstamo.',
+      ogAlt: 'Carro en un elevador de taller con documentos de evaluación al lado',
       excerpt: 'Muchos conductores han oído hablar de una “regla del 80%”. La ley de Florida es más precisa. Cómo un carro pasa a ser pérdida total, cómo deben valorarlo y qué pasa con el título.',
       category: 'Seguro de auto',
       body: [
@@ -114,6 +116,7 @@ export const post: BlogPost = {
       title: 'Когда машину признают тоталом во Флориде: total loss, рыночная стоимость и титул',
       metaTitle: 'Когда машина — тотал во Флориде | M&K Agency',
       description: 'Как работает total loss во Флориде: что закон говорит о «правиле 80%», как страховая оценивает машину, что будет с титулом и что спросить, если есть кредит.',
+      ogAlt: 'Машина на подъёмнике в автосервисе, рядом — документы оценки',
       excerpt: 'Многие слышали о «правиле 80%». Закон Флориды говорит конкретнее. Когда машина становится тоталом, как страховая обязана её оценить и что происходит с титулом.',
       category: 'Автострахование',
       body: [

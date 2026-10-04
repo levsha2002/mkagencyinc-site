@@ -16,6 +16,7 @@ export const post: BlogPost = {
       title: 'How Much Life Insurance Do You Need? An Income-Replacement Worksheet for Florida Families',
       metaTitle: 'How Much Life Insurance Do You Need? | M&K Agency',
       description: 'A plain-language worksheet to estimate how much life insurance your family needs to replace your income, plus the Florida beneficiary rules worth knowing.',
+      ogAlt: 'Florida home sheltered under a giant navy-blue umbrella',
       excerpt: 'Nearly half of Americans say their household would struggle within six months of losing the main earner. Here is a simple way to size the gap.',
       category: 'Life insurance',
       body: [
@@ -54,7 +55,8 @@ export const post: BlogPost = {
     es: {
       title: '¿Cuánto seguro de vida necesita? Una hoja de cálculo para reemplazar su ingreso en Florida',
       metaTitle: '¿Cuánto seguro de vida necesita? | M&K Agency',
-      description: 'Una hoja sencilla para calcular cuánto seguro de vida necesita su familia para reemplazar su ingreso, más las reglas de beneficiarios de Florida que conviene saber.',
+      description: 'Hoja sencilla para calcular cuánto seguro de vida necesita su familia para reemplazar su ingreso, y las reglas de beneficiarios de Florida.',
+      ogAlt: 'Casa en Florida protegida bajo un gran paraguas azul marino',
       excerpt: 'Casi la mitad de los estadounidenses dice que en su casa tendrían problemas antes de seis meses si muriera quien más aporta. Así se calcula el hueco.',
       category: 'Seguro de vida',
       body: [
@@ -94,6 +96,7 @@ export const post: BlogPost = {
       title: 'Сколько страховки жизни вам нужно? Расчёт замены дохода для семьи во Флориде',
       metaTitle: 'Сколько страховки жизни нужно семье | M&K Agency',
       description: 'Простой расчёт: сколько страховки жизни нужно, чтобы заменить ваш доход для семьи, и правила Флориды о выгодоприобретателях, которые стоит знать.',
+      ogAlt: 'Дом во Флориде под огромным тёмно-синим зонтом',
       excerpt: 'Почти половина американцев говорит, что их семья не справится уже через полгода после смерти главного кормильца. Вот как оценить эту дыру.',
       category: 'Страхование жизни',
       body: [

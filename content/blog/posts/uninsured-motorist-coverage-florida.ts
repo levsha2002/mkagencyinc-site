@@ -31,6 +31,7 @@ export const post: BlogPost = {
       title: 'Uninsured Motorist Coverage in Florida: What UM/UIM Covers and How to Check Yours',
       metaTitle: 'Uninsured Motorist Coverage in Florida (UM/UIM) | M&K Agency',
       description: 'Uninsured motorist coverage in Florida explained: what UM/UIM pays, stacked vs non-stacked, how to see if you declined it, and what to do after a crash.',
+      ogAlt: 'Two cars on a Florida road, one with a large protective shield above it',
       excerpt: 'Most Florida drivers are not required to carry bodily injury liability. If one of them injures you, UM/UIM coverage on your own policy is what can pay. Here is how it works and how to check whether you have it.',
       category: 'Auto insurance',
       body: [
@@ -124,6 +125,7 @@ export const post: BlogPost = {
       title: 'Cobertura de motorista sin seguro en Florida (UM/UIM): qué cubre y cómo saber si la tiene',
       metaTitle: 'Cobertura de motorista sin seguro en Florida | M&K Agency',
       description: 'Cobertura de motorista sin seguro (UM/UIM) en Florida: qué paga, acumulable o no, cómo saber si la rechazó y qué hacer si lo choca un conductor sin seguro.',
+      ogAlt: 'Dos carros en una carretera de Florida, uno con un gran escudo protector encima',
       excerpt: 'En Florida, la mayoría de los conductores no está obligada a tener seguro de responsabilidad por lesiones corporales. Si uno de ellos lo lesiona, la cobertura UM/UIM de su propia póliza es la que puede pagar. Le explicamos cómo funciona y cómo revisar si la tiene.',
       category: 'Seguro de auto',
       body: [
@@ -230,6 +232,7 @@ export const post: BlogPost = {
       title: 'Страховка от незастрахованных водителей во Флориде (UM/UIM): что она покрывает и как проверить свой полис',
       metaTitle: 'Страховка от незастрахованных водителей во Флориде | M&K Agency',
       description: 'Страховка от незастрахованных водителей (UM/UIM) во Флориде: что она оплачивает, stacked или non-stacked, как проверить свой полис и что делать после ДТП.',
+      ogAlt: 'Две машины на дороге Флориды, над одной — большой защитный щит',
       excerpt: 'Во Флориде большинство водителей не обязаны страховать ответственность за травмы других людей. Если такой водитель вас травмирует, платить может покрытие UM/UIM в вашем собственном полисе. Объясняем, как оно работает и как проверить, есть ли оно у вас.',
       category: 'Автострахование',
       body: [

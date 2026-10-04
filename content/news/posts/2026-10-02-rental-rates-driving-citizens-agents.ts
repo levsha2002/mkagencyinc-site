@@ -70,8 +70,8 @@ export const edition: NewsEdition = {
       title:
         'Florida insurance news, Oct. 2, 2026: renter rates, driving rules now live, Citizens agents and an unlicensed-insurer order',
       metaTitle: 'Insurance News Oct. 2, 2026: Renters, Drivers, Citizens | M&K Agency',
-      description:
-        'Today: a statewide renter’s-insurance rate decrease, Oct. 1 driving rules now in effect, fewer Citizens-appointed agents, and a cease-and-desist for unlicensed sales.',
+      description: 'Today: a statewide renters-insurance rate decrease, Oct. 1 driving rules in effect, fewer Citizens-appointed agents, and an unlicensed-sales crackdown.',
+      ogAlt: 'Apartment building with rental keys and a car on the road in front',
       intro:
         'Four updates from the last few days for South Florida renters, drivers, homeowners and small-business owners. Each one is summarized in our own words, with a link to the original source.',
       items: [
@@ -128,6 +128,7 @@ export const edition: NewsEdition = {
       metaTitle: 'Noticias de seguros, 2 oct. 2026: inquilinos y tránsito | M&K Agency',
       description:
         'Noticias de seguros en Florida: rebaja de tarifas para inquilinos, tránsito vigente, menos agentes de Citizens y orden contra ventas sin licencia.',
+      ogAlt: 'Edificio de apartamentos con llaves de alquiler y un carro en la calle',
       intro:
         'Cuatro novedades de los últimos días para inquilinos, conductores, propietarios y dueños de pequeños negocios del sur de la Florida. Cada una está resumida con nuestras propias palabras y enlaza a la fuente original.',
       items: [
@@ -182,8 +183,8 @@ export const edition: NewsEdition = {
       title:
         'Новости страхования во Флориде, 2 октября 2026: тарифы для арендаторов, правила для водителей, агенты Citizens и запрет незарегистрированному страховщику',
       metaTitle: 'Новости страхования, 2 окт. 2026: аренда и водители | M&K Agency',
-      description:
-        'Сегодня: снижение тарифов по страховке арендаторов, правила вождения с 1 октября уже в силе, меньше агентов у Citizens и приказ о прекращении продаж без лицензии.',
+      description: 'Сегодня: снижение тарифов по страховке арендаторов, новые правила вождения с 1 октября, меньше агентов у Citizens и запрет продаж без лицензии.',
+      ogAlt: 'Многоквартирный дом, ключи от аренды и машина на дороге',
       intro:
         'Четыре новости последних дней для арендаторов, водителей, домовладельцев и малого бизнеса Южной Флориды. Каждая — своими словами, со ссылкой на первоисточник.',
       items: [

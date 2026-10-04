@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
-import { asLang, formatDate, getPost, postLangs, postsForLang, readingMinutes } from '@/lib/blog';
+import { asLang, formatDate, getPost, postLangs, postOgAlt, postOgImage, postsForLang, readingMinutes } from '@/lib/blog';
 import { ArticleBody, ArticleCta, Byline, Disclaimer, FaqList, SourceList, articleStyles as s } from '@/components/article/ArticleParts';
 import { DEFAULT_AUTHOR } from '@/content/authors';
 import { personLd } from '@/lib/author';
@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: { params: { lang: string; slu
     description: d.t.description,
     langs: postLangs(d.post),
     article: { publishedTime: d.post.datePublished, modifiedTime: d.post.dateModified },
+    image: { src: postOgImage(d.post), alt: postOgAlt(d.post, d.l) },
   });
 }
 
@@ -67,7 +68,7 @@ export default function BlogArticle({ params }: { params: { lang: string; slug: 
       dateModified: modified,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url, reviewedBy: person },
       url,
-      image: `${SITE_URL}/og.jpg`,
+      image: `${SITE_URL}${postOgImage(post)}`,
       author: person,
       publisher: org,
       isAccessibleForFree: true,

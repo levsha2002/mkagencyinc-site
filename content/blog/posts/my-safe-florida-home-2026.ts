@@ -45,6 +45,7 @@ export const post: BlogPost = {
       title: 'My Safe Florida Home 2026: Free Inspection and Grants (Official $10,000 Cap)',
       metaTitle: 'My Safe Florida Home 2026: Grants & Inspection | M&K Agency',
       description: 'My Safe Florida Home 2026: the free hurricane inspection, who qualifies for a grant, the official $10,000 cap, priority groups and how to check funding.',
+      ogAlt: 'Florida home with impact-resistant windows and a reinforced garage door under a bright sun',
       excerpt: 'My Safe Florida Home offers eligible homeowners a free hurricane mitigation inspection and, for those who qualify, a state grant with an official cap of $10,000. Here is how the program works, who qualifies and how to check funding.',
       category: 'Homeowners insurance',
       body: [
@@ -135,7 +136,8 @@ export const post: BlogPost = {
       title: 'My Safe Florida Home 2026: inspección gratis y subsidio (tope oficial de $10,000)',
       metaTitle: 'My Safe Florida Home 2026: subsidio e inspección | M&K Agency',
       description: 'My Safe Florida Home 2026: inspección gratis, elegibilidad del subsidio, tope oficial de $10,000, grupos de prioridad y cómo verificar el financiamiento (DFS).',
-      excerpt: 'My Safe Florida Home ofrece a dueños elegibles una inspección gratis de mitigation y, si califican, un subsidio estatal con tope oficial de hasta $10,000. Aquí el proceso, la elegibilidad y cómo verificar el financiamiento.',
+      ogAlt: 'Casa en Florida con ventanas resistentes a impactos y puerta de garaje reforzada bajo el sol',
+      excerpt: 'My Safe Florida Home ofrece a dueños elegibles una inspección gratis de mitigación y, si califican, un subsidio estatal con tope oficial de hasta $10,000. Aquí el proceso, la elegibilidad y cómo verificar el financiamiento.',
       category: 'Seguro de vivienda',
       body: [
         { type: 'p', text: 'Si es dueño de casa en South Florida — Florida City, Homestead, Cutler Bay u otro punto de Miami-Dade — probablemente ha oído de **My Safe Florida Home (MSFH)**. Es el programa estatal del **Department of Financial Services (DFS)** de Florida: **inspección gratis** de mitigation ante huracanes y, si cumple criterios adicionales, un **subsidio (grant)** hacia mejoras recomendadas.' },
@@ -144,7 +146,7 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Estado del financiamiento (verificado el 4 de octubre de 2026)' },
         { type: 'p', text: 'Según el artículo de soporte del programa **“Is funding currently available?”** (actualizado el **17 de agosto de 2026**), My Safe Florida Home **está aceptando solicitudes**. Los dueños deben crear una cuenta en el **Applicant Portal** (Neighborly), completar el **Prioritization Questionnaire** y quedar asignados a un grupo de inspección o de grant antes de presentar la solicitud correspondiente.' },
         { type: 'callout', title: 'El financiamiento puede cambiar', text: 'El programa depende de apropiaciones legislativas anuales. El s. 215.5586 deja claro que no crea un derecho (entitlement) ni obliga al Estado a financiar inspecciones o retrofits, y el departamento no puede aceptar más solicitudes de las que cubren los fondos disponibles. Además, varios cambios de 2026 al estatuto son temporales y vencen el 1 de julio de 2027. Antes de aplicar, vuelva a comprobar el estado en mysafeflhome.com y en el centro de soporte: ventanas por grupo y fondos disponibles pueden cambiar.' },
-        { type: 'p', text: 'El centro de llamadas citado por el programa es el **850-427-2559**. También puede enviar un ticket por el Support Center oficial.' },
+        { type: 'p', text: 'El centro de llamadas citado por el programa es el **850-427-2559**. También puede enviar una solicitud por el centro de soporte oficial.' },
 
         { type: 'h2', text: 'Qué ofrece el programa (dos componentes)' },
         { type: 'p', text: 'Los materiales oficiales describen dos piezas principales:' },
@@ -178,8 +180,8 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Tipos de subsidio y tope oficial de $10,000' },
         { type: 'p', text: 'Las FAQ distinguen dos tipos (ambos **sujetos a apropiación legislativa**):' },
         { type: 'ul', items: [
-          '**Matching grants:** el Estado aporta **$2 por cada $1** que aporte el dueño (base de reembolso), hasta un **máximo de contribución estatal de $10,000**.',
-          '**Low-income grants:** hasta **$10,000** **sin** aporte de matching obligatorio y, según las FAQ, sin exigir factura pagada en su totalidad como en el matching.',
+          '**Subsidios con contrapartida (matching):** el Estado aporta **$2 por cada $1** que aporte el dueño (base de reembolso), hasta un **máximo de contribución estatal de $10,000**.',
+          '**Subsidios para bajos ingresos (low-income):** hasta **$10,000** **sin** aporte de matching obligatorio y, según las FAQ, sin exigir factura pagada en su totalidad (a diferencia del matching, donde sí se exige).',
         ] },
         { type: 'callout', title: 'Tope del programa, no promesa de prima', text: 'Los $10,000 son el límite oficial de contribución estatal del grant según las FAQ y el s. 215.5586. No significan que su seguro de vivienda vaya a costar menos, ni un porcentaje de descuento. Cualquier efecto en la tarifa depende de su aseguradora, su póliza y las características reales de la casa.' },
         { type: 'p', text: '**No empiece la obra antes de la aprobación oficial del grant.** Las FAQ son explícitas: comenzar antes lo descalifica del reembolso. El pago suele hacerse mediante **Draw Request** después de terminar el trabajo y completar los pasos del portal (incluida la inspección final).' },
@@ -225,6 +227,7 @@ export const post: BlogPost = {
       title: 'My Safe Florida Home 2026: бесплатная инспекция и грант (официальный лимит до $10,000)',
       metaTitle: 'My Safe Florida Home 2026: грант и инспекция | M&K Agency',
       description: 'My Safe Florida Home 2026: бесплатная инспекция, критерии гранта, официальный лимит до $10,000, группы приоритета и как проверить финансирование (DFS).',
+      ogAlt: 'Дом во Флориде с ударопрочными окнами и усиленными воротами гаража под ярким солнцем',
       excerpt: 'My Safe Florida Home даёт подходящим домовладельцам бесплатную hurricane mitigation inspection и, при соответствии критериям, государственный грант с официальным лимитом до $10,000. Разбираем процесс и как проверить финансирование.',
       category: 'Страхование жилья',
       body: [
@@ -234,7 +237,7 @@ export const post: BlogPost = {
         { type: 'h2', text: 'Статус финансирования (проверено 4 октября 2026)' },
         { type: 'p', text: 'По статье support-центра **“Is funding currently available?”** (обновление **17 августа 2026**) программа **принимает заявки**. Нужно создать аккаунт в **Applicant Portal** (Neighborly), заполнить **Prioritization Questionnaire** и получить группу (Inspection Group или Grant Group), после чего подать соответствующую заявку.' },
         { type: 'callout', title: 'Финансирование может измениться', text: 'Программа зависит от ежегодных законодательных ассигнований. s. 215.5586 прямо говорит: это не entitlement и штат не обязан финансировать инспекции или retrofit, а департамент не может принимать заявок больше, чем покрывают доступные средства. Кроме того, многие изменения статута 2026 года временные и истекают 1 июля 2027. Перед подачей снова проверьте mysafeflhome.com и support-центр — окна групп и остаток средств меняются.' },
-        { type: 'p', text: 'Call center программы, указанный в официальных материалах: **850-427-2559**. Также можно открыть ticket через Support Center.' },
+        { type: 'p', text: 'Колл-центр программы, указанный в официальных материалах: **850-427-2559**. Также можно создать обращение через официальный центр поддержки.' },
 
         { type: 'h2', text: 'Два компонента программы' },
         { type: 'p', text: 'Официальные материалы выделяют:' },
@@ -269,7 +272,7 @@ export const post: BlogPost = {
         { type: 'p', text: 'FAQ выделяет два типа (оба **при наличии ассигнований**):' },
         { type: 'ul', items: [
           '**Matching grants:** штат даёт **$2 на каждый $1** вклада домовладельца (возмещение), до **максимума государственной доли $10,000**.',
-          '**Low-income grants:** до **$10,000** **без** обязательного matching; по FAQ для low-income также не требуется paid-in-full invoice так же, как при matching.',
+          '**Гранты для low-income:** до **$10,000** **без** обязательного matching; по FAQ для low-income не требуется paid-in-full invoice (в отличие от matching-гранта, где он требуется).',
         ] },
         { type: 'callout', title: 'Лимит программы ≠ обещание по премии', text: '$10,000 — официальный максимум вклада штата в grant по FAQ и s. 215.5586. Это не гарантия, что страхование жилья станет дешевле, и не процент скидки. Любой эффект на тариф зависит от страховщика, полиса и реальных характеристик дома.' },
         { type: 'p', text: '**Не начинайте строительство до официального одобрения гранта.** FAQ прямо говорит: старт работ раньше лишает права на возмещение. Выплата обычно идёт через **Draw Request** после завершения работ и шагов в портале (включая final inspection).' },

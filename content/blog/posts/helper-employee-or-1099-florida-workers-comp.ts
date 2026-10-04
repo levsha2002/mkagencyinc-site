@@ -37,6 +37,7 @@ export const post: BlogPost = {
       title: 'Your Helper Got Hurt on the Job: Employee or 1099 Contractor Under Florida Workers’ Comp?',
       metaTitle: 'Helper Hurt on the Job: Employee or 1099? | M&K Agency',
       description: 'A helper gets hurt on your job. Employee or 1099 contractor under Florida workers’ comp? What the law looks at, construction vs. other work, and next steps.',
+      ogAlt: 'Construction site with a hard hat resting on a toolbox',
       excerpt: 'Paying someone on a 1099 does not decide whether they are your employee for workers’ comp. How Florida law draws the line, why construction work is different, and the first steps after an injury.',
       category: 'Handyman insurance',
       body: [
@@ -85,6 +86,7 @@ export const post: BlogPost = {
       title: 'Su ayudante se lastimó en el trabajo: ¿empleado o contratista 1099 según la compensación laboral de Florida?',
       metaTitle: 'Ayudante lesionado: ¿empleado o 1099? | M&K Agency',
       description: 'Un ayudante se lastima en su obra. ¿Empleado o contratista 1099 para el workers’ comp de Florida? Qué mira la ley, construcción vs. otros trabajos y qué hacer.',
+      ogAlt: 'Obra con un casco sobre una caja de herramientas',
       excerpt: 'Pagarle a alguien con un 1099 no decide si es su empleado para el workers’ comp. Cómo traza la línea la ley de Florida, por qué la construcción es distinta y los primeros pasos después de una lesión.',
       category: 'Seguro para handyman',
       body: [
@@ -133,6 +135,7 @@ export const post: BlogPost = {
       title: 'Помощник травмировался на работе: работник или подрядчик на 1099 по закону Флориды о workers’ comp?',
       metaTitle: 'Травма помощника: работник или 1099? | M&K Agency',
       description: 'Помощник травмировался на вашем объекте. Работник он или подрядчик на 1099 для workers’ comp во Флориде? Что смотрит закон, стройка и другие работы, что делать.',
+      ogAlt: 'Стройплощадка: каска лежит на ящике с инструментами',
       excerpt: 'Оплата по 1099 не решает, считается ли человек вашим работником для workers’ comp. Где закон Флориды проводит границу, почему со стройкой всё иначе и что делать сразу после травмы.',
       category: 'Страхование для хендименов',
       body: [

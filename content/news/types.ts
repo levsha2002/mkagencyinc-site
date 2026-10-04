@@ -36,6 +36,8 @@ export interface EditionTranslation {
   description: string;
   /** Optional teaser for the index card. Defaults to the description. */
   excerpt?: string;
+  /** Alt text for the edition's OG/share image (1200x630). Falls back to the title. */
+  ogAlt?: string;
   /** Short lead paragraph above the items. */
   intro?: string;
   items: NewsItem[];

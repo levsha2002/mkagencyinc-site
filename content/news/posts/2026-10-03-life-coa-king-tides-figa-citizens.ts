@@ -82,8 +82,8 @@ export const edition: NewsEdition = {
       title:
         'Florida insurance news, Oct. 3, 2026: life-insurer suspension, king-tide outages, FIGA line ends, Citizens choice deadline',
       metaTitle: 'Insurance News Oct. 3, 2026: Life COA, Tides, FIGA | M&K Agency',
-      description:
-        'Today: OIR suspends a life insurer’s Florida license, Miami Beach king-tide outages, the FIGA 1% line ends for Oct. 1+ policies, and a Monday Citizens takeout deadline.',
+      description: 'Today: OIR suspends a life insurer’s Florida license, Miami Beach king-tide outages, FIGA 1% ends for Oct. 1+ policies, Citizens takeout deadline Monday.',
+      ogAlt: 'Miami street with water pooling at the curb at sunrise',
       intro:
         'Four updates from the last few days for South Florida homeowners, renters, drivers and anyone with a Citizens or life/annuity policy. Each item is summarized in our own words, with a link to the original source.',
       items: [
@@ -133,8 +133,8 @@ export const edition: NewsEdition = {
       title:
         'Noticias de seguros en Florida, 3 de octubre de 2026: suspensión de un asegurador de vida, mareas reales, fin del cargo FIGA y plazo de Citizens',
       metaTitle: 'Noticias de seguros, 3 oct. 2026: vida, mareas, FIGA | M&K Agency',
-      description:
-        'Hoy: la OIR suspende la licencia de un asegurador de vida, apagones por mareas reales en Miami Beach, el cargo FIGA del 1% deja de aplicar a pólizas del 1 de octubre en adelante, y el lunes vence la elección de takeout de Citizens.',
+      description: 'Hoy: la OIR suspende la licencia de un asegurador de vida, apagones por mareas reales, termina el cargo FIGA del 1% y vence el takeout de Citizens.',
+      ogAlt: 'Calle de Miami con agua acumulada en la acera al amanecer',
       intro:
         'Cuatro novedades de los últimos días para propietarios, inquilinos y quien tenga una póliza de Citizens o de vida/anualidad en el sur de la Florida. Cada una está resumida con nuestras propias palabras y enlaza a la fuente original.',
       items: [
@@ -184,8 +184,8 @@ export const edition: NewsEdition = {
       title:
         'Новости страхования во Флориде, 3 октября 2026: приостановка страховщика жизни, king tides, конец сбора FIGA и срок выбора Citizens',
       metaTitle: 'Новости страхования, 3 окт. 2026: жизнь, приливы, FIGA | M&K Agency',
-      description:
-        'Сегодня: OIR приостановила лицензию страховщика жизни, отключения из‑за king tides в Miami Beach, сбор FIGA 1% больше не действует для полисов с 1 октября, в понедельник — дедлайн выбора takeout Citizens.',
+      description: 'Сегодня: OIR приостановила лицензию страховщика жизни, отключения из-за king tides, сбор FIGA 1% отменён для новых полисов, дедлайн takeout Citizens.',
+      ogAlt: 'Улица Майами: вода у обочины на рассвете',
       intro:
         'Четыре новости последних дней для домовладельцев, арендаторов и тех, у кого есть полис Citizens или жизни/аннуитета в Южной Флориде. Каждая — своими словами, со ссылкой на первоисточник.',
       items: [

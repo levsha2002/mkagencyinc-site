@@ -64,3 +64,14 @@ export function editionSources(t: EditionTranslation): NewsSource[] {
   const all = [...t.items.flatMap((i) => i.sources), ...(t.extraSources ?? [])];
   return all.filter((s, i) => all.findIndex((x) => x.url === s.url) === i);
 }
+
+/** OG/share image for a news edition. Convention: /og/articles/<slug>.webp (1200x630). */
+export function editionOgImage(edition: NewsEdition): string {
+  return `/og/articles/${edition.slug}.webp`;
+}
+
+/** Alt text for the edition's OG image in the requested language (falls back to title). */
+export function editionOgAlt(edition: NewsEdition, lang: string): string {
+  const t = edition.translations[asLang(lang)];
+  return t?.ogAlt ?? t?.title ?? edition.slug;
+}

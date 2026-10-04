@@ -36,6 +36,7 @@ export const post: BlogPost = {
       title: '¿Qué es el SR-22 en Florida? Duración, presentación y diferencia con el FR-44',
       metaTitle: 'SR-22 en Florida: qué es, duración y FR-44 | M&K Agency',
       description: 'Guía del SR-22 en Florida: qué es el certificado, cuándo lo exige el estado, límites 10/20/10, duración aproximada y cómo se diferencia del FR-44 tras un DUI.',
+      ogAlt: 'Tablero de carro con un documento sobre el parabrisas y palmeras afuera',
       excerpt: 'El SR-22 no es un tipo de seguro: es un certificado que su aseguradora presenta ante el FLHSMV. Le explicamos qué es, cuándo se exige, por cuánto tiempo suele mantenerse y en qué se diferencia del FR-44.',
       category: 'Seguro de auto',
       body: [
@@ -127,6 +128,7 @@ export const post: BlogPost = {
       title: 'Что такое SR-22 во Флориде: срок, подача и отличие от FR-44',
       metaTitle: 'SR-22 во Флориде: что это, срок и FR-44 | M&K Agency',
       description: 'Гид по SR-22 во Флориде: что это за сертификат, когда его требует штат, лимиты 10/20/10, обычный срок и чем FR-44 отличается после DUI.',
+      ogAlt: 'Приборная панель автомобиля, на лобовом стекле — документ, за окном пальмы',
       excerpt: 'SR-22 — это не отдельный вид страховки, а сертификат, который страховая подаёт в FLHSMV. Разбираем, что это, когда требуют, сколько обычно держать покрытие и чем отличается FR-44.',
       category: 'Автострахование',
       body: [
