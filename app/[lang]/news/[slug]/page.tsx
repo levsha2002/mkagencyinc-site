@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
-import { asLang, editionLangs, editionSources, editionsForLang, formatDate, getEdition } from '@/lib/news';
+import { asLang, editionLangs, editionOgAlt, editionOgImage, editionSources, editionsForLang, formatDate, getEdition } from '@/lib/news';
 import { ArticleBody, ArticleCta, Byline, articleStyles as s } from '@/components/article/ArticleParts';
 import { RichText, stripInline } from '@/components/article/RichText';
 import { DEFAULT_AUTHOR } from '@/content/authors';
@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: { params: { lang: string; slu
     description: d.t.description,
     langs: editionLangs(d.edition),
     article: { publishedTime: d.edition.datePublished, modifiedTime: d.edition.dateModified },
+    image: { src: editionOgImage(d.edition), alt: editionOgAlt(d.edition, d.l) },
   });
 }
 
@@ -79,7 +80,7 @@ export default function NewsEditionPage({ params }: { params: { lang: string; sl
       dateModified: modified,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
       url,
-      image: `${SITE_URL}/og.jpg`,
+      image: `${SITE_URL}${editionOgImage(edition)}`,
       author: person,
       publisher: { '@type': 'Organization', name: 'M&K Agency', url: SITE_URL },
       isAccessibleForFree: true,
