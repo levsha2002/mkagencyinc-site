@@ -59,3 +59,14 @@ export function readingMinutes(t: PostTranslation): number {
     .filter(Boolean).length;
   return Math.max(1, Math.round(words / 200));
 }
+
+/** OG/share image for a post. Convention: /og/articles/<slug>.webp (1200x630). */
+export function postOgImage(post: BlogPost): string {
+  return `/og/articles/${post.slug}.webp`;
+}
+
+/** Alt text for the post's OG image in the requested language (falls back to title). */
+export function postOgAlt(post: BlogPost, lang: string): string {
+  const t = post.translations[asLang(lang)];
+  return t?.ogAlt ?? t?.title ?? post.slug;
+}
