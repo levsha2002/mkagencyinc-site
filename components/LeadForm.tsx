@@ -21,9 +21,12 @@ declare global {
 // open with "Auto" preselected).
 // source: optional lead source sent to /api/lead (defaults to 'website' there),
 // e.g. 'city-car-insurance-homestead-fl' on the local city/county pages.
-export default function LeadForm({ lang, defaultType = 'Auto', source }: { lang: string; defaultType?: LeadType; source?: string }) {
+// extraType: optional page-specific product (e.g. { value: 'Boat', label: 'Barco' }
+// on the Florida boat page). It is added as the first option and preselected,
+// so the lead email says exactly what the visitor asked about.
+export default function LeadForm({ lang, defaultType = 'Auto', source, extraType }: { lang: string; defaultType?: LeadType; source?: string; extraType?: { value: string; label: string } }) {
   const t = getDict(lang).form;
-  const empty = { insurance_type: defaultType as string, zip_code: '', name: '', phone: '', email: '', message: '' };
+  const empty = { insurance_type: (extraType ? extraType.value : defaultType) as string, zip_code: '', name: '', phone: '', email: '', message: '' };
   const [formData, setFormData] = useState(empty);
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
@@ -88,6 +91,7 @@ export default function LeadForm({ lang, defaultType = 'Auto', source }: { lang:
           <label htmlFor="lead-insurance-type">{t.need}</label>
           <select id="lead-insurance-type" value={formData.insurance_type}
             onChange={(e) => setFormData({ ...formData, insurance_type: e.target.value })}>
+            {extraType && <option value={extraType.value}>{extraType.label}</option>}
             <option value="Auto">{t.auto}</option>
             <option value="Home">{t.home}</option>
             <option value="Commercial">{t.commercial}</option>
