@@ -17,6 +17,7 @@ export const post: BlogPost = {
       title: 'Florida’s Motorcycle Helmet Law and the $10,000 Medical Coverage Rule',
       metaTitle: 'Florida Motorcycle Helmet Law and the $10,000 Rule | M&K Agency',
       description: 'Who may ride without a helmet in Florida, what proof of $10,000 in medical benefits police accept, and why car PIP does not count on a motorcycle.',
+      ogAlt: 'Motorcycle parked on a Florida road at sunset with a helmet on the seat',
       excerpt: 'Florida is not a “no-helmet” state. Adults may ride without one only with at least $10,000 in medical benefits. Here is what counts, and what it does not cover.',
       category: 'Motorcycle insurance',
       body: [
@@ -56,6 +57,7 @@ export const post: BlogPost = {
       title: 'La ley del casco para motociclistas en Florida y la regla de los $10,000 en gastos médicos',
       metaTitle: 'Ley del casco en Florida y la regla de $10,000 | M&K Agency',
       description: 'Quién puede andar en moto sin casco en Florida, qué prueba de $10,000 en beneficios médicos acepta la policía y por qué el PIP del carro no cuenta.',
+      ogAlt: 'Motocicleta estacionada en una carretera de Florida al atardecer, con casco en el asiento',
       excerpt: 'Florida no es un estado “sin casco”. Un adulto puede ir sin él solo si tiene al menos $10,000 en beneficios médicos. Qué cuenta y qué no cubre.',
       category: 'Seguro de motocicleta',
       body: [
@@ -95,6 +97,7 @@ export const post: BlogPost = {
       title: 'Закон о мотошлемах во Флориде и правило $10 000 на медицинские расходы',
       metaTitle: 'Закон о мотошлемах во Флориде и правило $10 000 | M&K',
       description: 'Кому во Флориде можно ездить на мотоцикле без шлема, какое подтверждение $10 000 медпокрытия принимает полиция и почему PIP от машины не считается.',
+      ogAlt: 'Мотоцикл на дороге Флориды на закате, шлем лежит на сиденье',
       excerpt: 'Флорида — не «штат без шлемов». Взрослый может ехать без шлема, только если у него есть медпокрытие не меньше $10 000. Что засчитывается и чего оно не покрывает.',
       category: 'Страхование мотоциклов',
       body: [

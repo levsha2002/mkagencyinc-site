@@ -30,6 +30,7 @@ export const post: BlogPost = {
       title: 'Got a Chapter 558 Notice? A Florida Contractor’s Guide to the Defect Claim Deadlines',
       metaTitle: 'Chapter 558 Notice: A Guide for Florida Contractors | M&K Agency',
       description: 'A Florida contractor’s guide to a Chapter 558 defect notice: what it is, the 10, 15, 30 and 45-day deadlines, response options and when to tell your insurer.',
+      ogAlt: 'Contractor van parked by a Florida home with a clipboard and an envelope',
       excerpt: 'A Chapter 558 notice is not a lawsuit, but the clock starts the day it is served. What the notice means for a contractor, the deadlines in s. 558.004, the five ways to respond, and where your insurance fits in.',
       category: 'Contractor insurance',
       body: [
@@ -83,6 +84,7 @@ export const post: BlogPost = {
       title: '¿Recibió un aviso del Capítulo 558? Guía para contratistas sobre los plazos de un reclamo por defectos en Florida',
       metaTitle: 'Aviso del Capítulo 558: guía para contratistas | M&K Agency',
       description: 'Aviso del Capítulo 558 para contratistas en Florida: qué es, los plazos de 10, 15, 30 y 45 días, cómo responder y cuándo avisar a su aseguradora.',
+      ogAlt: 'Camioneta de contratista junto a una casa en Florida, con portapapeles y sobre',
       excerpt: 'Un aviso del Capítulo 558 no es una demanda, pero el reloj empieza a correr el día que se lo entregan. Qué significa para un contratista, los plazos de la sección 558.004, las cinco formas de responder y el papel de su seguro.',
       category: 'Seguro para contratistas',
       body: [
@@ -136,6 +138,7 @@ export const post: BlogPost = {
       title: 'Пришло уведомление по Chapter 558? Сроки по претензии о строительном дефекте для подрядчика во Флориде',
       metaTitle: 'Уведомление Chapter 558: памятка подрядчику | M&K Agency',
       description: 'Уведомление о дефекте по Chapter 558 для подрядчика во Флориде: что это, сроки 10, 15, 30 и 45 дней, варианты ответа и когда сообщать страховой.',
+      ogAlt: 'Фургон подрядчика у дома во Флориде, рядом — планшет и конверт',
       excerpt: 'Уведомление по Chapter 558 — ещё не иск, но отсчёт сроков начинается в день его вручения. Что оно значит для подрядчика, какие сроки устанавливает ст. 558.004, пять вариантов ответа и при чём здесь страховка.',
       category: 'Страхование подрядчиков',
       body: [

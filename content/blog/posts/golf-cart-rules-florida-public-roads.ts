@@ -17,6 +17,7 @@ export const post: BlogPost = {
       title: 'Golf Carts on Florida Roads: Where You Can Drive, Who Can Drive and When It Becomes an LSV',
       metaTitle: 'Golf Cart Rules on Florida Roads | M&K Agency',
       description: 'Florida golf cart law in plain words: designated roads, night driving, teen drivers, sidewalks, tickets, and how a golf cart becomes a street-legal LSV.',
+      ogAlt: 'Golf cart driving on a suburban Florida street',
       excerpt: 'A golf cart is not a toy under Florida law. Here is where it may go, who may drive it, what a ticket looks like and what changes when you convert it.',
       category: 'Golf cart insurance',
       body: [
@@ -51,6 +52,7 @@ export const post: BlogPost = {
       title: 'Carritos de golf en las calles de Florida: por dónde, quién puede manejar y cuándo se vuelve un LSV',
       metaTitle: 'Reglas del carrito de golf en Florida | M&K Agency',
       description: 'La ley de carritos de golf en Florida con palabras claras: vías designadas, manejo de noche, conductores jóvenes, aceras, multas y cómo convertirlo en LSV.',
+      ogAlt: 'Carrito de golf circulando por una calle suburbana de Florida',
       excerpt: 'Para la ley de Florida, un carrito de golf no es un juguete. Por dónde puede ir, quién lo puede manejar, cómo es una multa y qué cambia si lo convierte.',
       category: 'Seguro de carrito de golf',
       body: [
@@ -85,6 +87,7 @@ export const post: BlogPost = {
       title: 'Гольф-кары на дорогах Флориды: где можно ездить, кому можно водить и когда кар становится LSV',
       metaTitle: 'Правила для гольф-каров во Флориде | M&K Agency',
       description: 'Закон Флориды о гольф-карах простыми словами: назначенные дороги, езда ночью, подростки за рулём, тротуары, штрафы и как переделать кар в LSV.',
+      ogAlt: 'Гольф-кар едет по пригородной улице Флориды',
       excerpt: 'По закону Флориды гольф-кар — не игрушка. Где на нём можно ездить, кто может водить, как выглядит штраф и что меняется после переделки.',
       category: 'Страхование гольф-каров',
       body: [

@@ -17,6 +17,7 @@ export const post: BlogPost = {
       title: 'Slingshot, Trike or Autocycle? Florida’s License, Helmet and Insurance Rules for Three-Wheelers',
       metaTitle: 'Autocycle and Trike Rules in Florida | M&K Agency',
       description: 'Do you need a motorcycle endorsement for a Slingshot or a trike in Florida? How the law tells an autocycle from a trike, plus the helmet and PIP questions.',
+      ogAlt: 'Three-wheeled autocycle on a Florida road at golden hour',
       excerpt: 'Two three-wheelers can look alike and follow different rules. The difference is the seat and the steering. Here is how Florida sorts them out.',
       category: 'Motorcycle insurance',
       body: [
@@ -55,6 +56,7 @@ export const post: BlogPost = {
       title: '¿Slingshot, trimoto o autociclo? Las reglas de licencia, casco y seguro para vehículos de tres ruedas en Florida',
       metaTitle: 'Reglas de autociclos y trimotos en Florida | M&K Agency',
       description: '¿Necesita endoso de motocicleta para un Slingshot o una trimoto en Florida? Cómo distingue la ley un autociclo de una trimoto, y las preguntas de casco y PIP.',
+      ogAlt: 'Autociclo de tres ruedas en una carretera de Florida al atardecer',
       excerpt: 'Dos vehículos de tres ruedas pueden parecerse y seguir reglas distintas. La diferencia está en el asiento y la dirección. Así los clasifica Florida.',
       category: 'Seguro de motocicleta',
       body: [
@@ -93,6 +95,7 @@ export const post: BlogPost = {
       title: 'Slingshot, трайк или автоцикл? Правила Флориды о правах, шлемах и страховке для трёхколёсников',
       metaTitle: 'Автоциклы и трайки во Флориде: правила | M&K Agency',
       description: 'Нужна ли мотоциклетная отметка для Slingshot или трайка во Флориде? Чем по закону автоцикл отличается от трайка и что со шлемом и PIP.',
+      ogAlt: 'Трицикл-автоцикл на дороге Флориды в золотой час',
       excerpt: 'Два трёхколёсника могут быть похожи, но подчиняться разным правилам. Всё решают сиденье и руль. Вот как их различает Флорида.',
       category: 'Страхование мотоциклов',
       body: [

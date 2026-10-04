@@ -28,6 +28,7 @@ export const post: BlogPost = {
       title: 'When a Florida Construction Project Stalls: Permits, an Empty Site and Your Builders Risk Policy',
       metaTitle: 'Stalled Construction in Florida: Builders Risk | M&K Agency',
       description: 'Project on hold in Florida? When a single-family permit can expire, what the law says about an abandoned job, and what to check in your builders risk policy.',
+      ogAlt: 'Paused construction site with a crane, a half-built house frame and traffic cones',
       excerpt: 'Financing, a contractor dispute or a storm can stop a project for months. What Florida law says about expiring permits and abandoned jobs, and the builders risk questions to ask while the site sits empty.',
       category: 'Builders risk insurance',
       body: [
@@ -70,6 +71,7 @@ export const post: BlogPost = {
       title: 'Cuando una obra se detiene en Florida: permisos, terreno vacío y su póliza builders risk',
       metaTitle: '¿Obra detenida en Florida? Permisos y builders risk | M&K Agency',
       description: '¿Obra en pausa en Florida? Cuándo vence el permiso de una casa unifamiliar, qué dice la ley sobre una obra abandonada y qué revisar en su póliza builders risk.',
+      ogAlt: 'Obra en pausa con grúa, estructura de casa a medio construir y conos',
       excerpt: 'El financiamiento, un problema con el contratista o una tormenta pueden parar una obra por meses. Qué dice la ley de Florida sobre permisos que vencen y obras abandonadas, y qué preguntar sobre su builders risk mientras el terreno está solo.',
       category: 'Seguro builders risk',
       body: [
@@ -110,14 +112,15 @@ export const post: BlogPost = {
     },
     ru: {
       title: 'Стройка во Флориде встала: разрешение, пустой участок и ваш полис builders risk',
-      metaTitle: 'Стройка встала во Флориде: permit и builders risk | M&K Agency',
-      description: 'Стройка во Флориде на паузе? Когда истекает permit на частный дом, что закон говорит о брошенном объекте и что проверить в полисе builders risk.',
+      metaTitle: 'Стройка встала: разрешение и builders risk | M&K Agency',
+      description: 'Стройка во Флориде на паузе? Когда истекает разрешение на частный дом, что закон говорит о брошенном объекте и что проверить в полисе builders risk.',
+      ogAlt: 'Замороженная стройка: кран, недостроенный каркас дома и конусы',
       excerpt: 'Финансирование, конфликт с подрядчиком или шторм могут остановить стройку на месяцы. Что закон Флориды говорит об истекающих разрешениях и брошенных объектах и какие вопросы задать по builders risk, пока участок стоит пустой.',
       category: 'Страхование builders risk',
       body: [
         { type: 'p', text: 'Строительный кредит задерживается, подрядчик уходит, материалы опаздывают, а сезон ураганов может сдвинуть график на недели. Когда работы останавливаются, недостроенный дом или здание остаётся на участке, и возникают три практических вопроса: что будет с разрешением (permit), что делать, если подрядчик исчез, и подходит ли проекту ваш полис builders risk.' },
         { type: 'h2', text: 'У разрешения на строительство есть срок' },
-        { type: 'p', text: 'Для **частного односемейного дома** закон Флориды говорит, что building permit истекает **через 1 год после выдачи** или в день вступления в силу следующей редакции Строительного кодекса Флориды — в зависимости от того, что наступит позже. Местные власти могут продлить разрешение и могут направить владельцу и подрядчику письменное уведомление не позднее чем за 30 дней до истечения ([ст. 553.79(1)(c)](' + S.s55379 + ')). Для других зданий и по вопросам продления обращайтесь в местный строительный департамент.' },
+        { type: 'p', text: 'Для **частного односемейного дома** закон Флориды говорит, что разрешение на строительство истекает **через 1 год после выдачи** или в день вступления в силу следующей редакции Строительного кодекса Флориды — в зависимости от того, что наступит позже. Местные власти могут продлить разрешение и могут направить владельцу и подрядчику письменное уведомление не позднее чем за 30 дней до истечения ([ст. 553.79(1)(c)](' + S.s55379 + ')). Для других зданий и по вопросам продления обращайтесь в местный строительный департамент.' },
         { type: 'p', text: 'Если разрешение истекло, закон даёт владельцу несколько способов его **закрыть** ([ст. 553.79(16)](' + S.s55379 + ')):' },
         { type: 'ul', items: [
           'Можно оставить прежнего подрядчика или нанять **другого лицензированного подрядчика**, чтобы выполнить то, что требует разрешение. Новый подрядчик отвечает только за свою работу, а не за дефекты прежнего.',
@@ -141,7 +144,7 @@ export const post: BlogPost = {
         { type: 'callout', title: 'Стройка на паузе?', text: '[Оставьте заявку на расчёт](/ru/quote) или пришлите нам текущий полис builders risk и новый график. Лицензированный агент разберёт условия с вами на русском, английском или испанском. Это общая информация, а не юридическая консультация; полисы различаются, и мы смотрим условия конкретного полиса.' },
       ],
       faq: [
-        { q: 'Когда истекает building permit во Флориде?', a: 'Для частного односемейного дома закон Флориды говорит, что разрешение истекает через 1 год после выдачи или при вступлении в силу следующей редакции Строительного кодекса Флориды — что наступит позже. Местные власти могут его продлить.' },
+        { q: 'Когда истекает разрешение на строительство во Флориде?', a: 'Для частного односемейного дома закон Флориды говорит, что разрешение истекает через 1 год после выдачи или при вступлении в силу следующей редакции Строительного кодекса Флориды — что наступит позже. Местные власти могут его продлить.' },
         { q: 'Когда объект считается брошенным во Флориде?', a: 'По ст. 489.129(1)(j) объект может считаться брошенным через 90 дней, если подрядчик прекратил работы без уважительной причины или надлежащего уведомления, либо без уважительной причины не работал 90 дней подряд.' },
         { q: 'Покрывает ли builders risk остановившуюся стройку?', a: 'Зависит от полиса. В некоторых есть условия на случай остановки работ или пустого участка, и у любого полиса есть дата окончания. Прочитайте свой полис или пришлите его нам на проверку.' },
       ],

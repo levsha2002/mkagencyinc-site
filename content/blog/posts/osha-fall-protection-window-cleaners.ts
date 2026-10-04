@@ -34,6 +34,7 @@ export const post: BlogPost = {
       title: 'OSHA Fall Protection Basics for Window Cleaners: Ladders, Roof Edges and Rope Descent',
       metaTitle: 'OSHA Fall Protection for Window Cleaners | M&K Agency',
       description: 'Which OSHA rules apply when your window cleaning crew works at height? Ladder rules in 29 CFR 1910.23, the 4-foot edge rule, rope descent and training.',
+      ogAlt: 'Tall commercial building with safety harness equipment hanging from the roof edge',
       excerpt: 'Falls are the injury every window cleaning business worries about. A plain-language summary of the OSHA general industry rules on ladders, unprotected edges, rope descent systems and training, with links to the regulations.',
       category: 'Window cleaning insurance',
       body: [
@@ -80,6 +81,7 @@ export const post: BlogPost = {
       title: 'Protección contra caídas de OSHA para limpiadores de ventanas: escaleras, bordes de techo y descenso con cuerdas',
       metaTitle: 'OSHA y caídas: guía para limpiadores de ventanas | M&K Agency',
       description: '¿Qué reglas de OSHA aplican cuando su equipo limpia ventanas en altura? Escaleras (1910.23), la regla de 4 pies, descenso con cuerdas y capacitación.',
+      ogAlt: 'Edificio alto con equipo de arnés de seguridad colgando del borde del techo',
       excerpt: 'Las caídas son la lesión que más preocupa en un negocio de limpieza de ventanas. Un resumen sencillo de las reglas de OSHA sobre escaleras, bordes sin protección, sistemas de descenso con cuerdas y capacitación, con enlaces a cada norma.',
       category: 'Seguro para limpieza de ventanas',
       body: [
@@ -126,6 +128,7 @@ export const post: BlogPost = {
       title: 'Защита от падений по правилам OSHA для мойщиков окон: лестницы, края крыш и спуск на верёвках',
       metaTitle: 'OSHA и защита от падений: мойщикам окон | M&K Agency',
       description: 'Какие правила OSHA действуют, когда ваша бригада моет окна на высоте? Лестницы по 29 CFR 1910.23, правило 4 футов, анкеры для спуска на верёвках и обучение.',
+      ogAlt: 'Высокое здание, с края крыши свисает страховочное снаряжение',
       excerpt: 'Падение — главный риск в бизнесе по мойке окон. Простым языком о правилах OSHA для general industry: лестницы, незащищённые края, системы спуска на верёвках и обучение, со ссылками на нормы.',
       category: 'Страхование для мойки окон',
       body: [

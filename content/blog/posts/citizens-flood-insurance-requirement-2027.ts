@@ -4,7 +4,7 @@ import type { BlogPost } from '../types';
 // (2026), flsenate.gov (SB 1024 / HB 909 died 3/13/2026), floodsmart.gov and CRS IN10835.
 // RU version added 2026-10-04 (ET); re-checked that day: citizensfla.com/flood (phases, exemptions, CIT FW01, NFIP
 // maximums), s. 627.351(6)(aa) (2026), SB 1024/HB 909 died 3/13/2026, NFIP authorized through Dec. 11, 2026
-// (H.R. 6500 / CRS IN10835), FloodSmart 30-day wait, Miami-Dade Zone X >20% of NFIP claims.
+// (H.R. 6500 / CRS IN10835), FloodSmart 30-day wait, FEMA national stat: >20% of NFIP claims from outside high-risk zones.
 export const post: BlogPost = {
   slug: 'citizens-flood-insurance-requirement-2027',
   datePublished: '2026-09-26',
@@ -13,6 +13,7 @@ export const post: BlogPost = {
       title: 'Citizens Will Require Flood Insurance on Most Wind Policies Starting Jan. 1, 2027: What to Do Now',
       metaTitle: 'Citizens Flood Requirement 2027: What to Do Now | M&K Agency',
       description: 'From Jan. 1, 2027, Citizens home policies with wind coverage need flood insurance at any home value. Who is exempt, how much you need and a timeline to act.',
+      ogAlt: 'Florida home near a canal with rising water lines and a row of sandbags',
       excerpt: 'The last phase of the Citizens flood mandate hits policies effective on or after January 1, 2027. Here is who is affected, what counts as proof and why South Miami-Dade homeowners should start now.',
       category: 'Flood insurance',
       body: [
@@ -63,7 +64,7 @@ export const post: BlogPost = {
         ] },
 
         { type: 'h2', text: 'Why this matters in Homestead and Florida City' },
-        { type: 'p', text: 'Citizens puts it bluntly: rising water and storm surge are not covered by Citizens policies. In South Miami-Dade, much of the land is close to sea level and the water table sits just below the surface, so heavy rain can flood streets and yards far from Biscayne Bay. Miami-Dade County reports that moderate-to-low risk Zone X areas account for more than 20% of NFIP claims. The mandate is a deadline, but having flood coverage in place before the next hurricane season is also simply a good idea.' },
+        { type: 'p', text: 'Citizens puts it bluntly: rising water and storm surge are not covered by Citizens policies. In South Miami-Dade, much of the land is close to sea level and the water table sits just below the surface, so heavy rain can flood streets and yards far from Biscayne Bay. Nationally, FEMA reports that more than 20% of NFIP claims come from properties outside high-risk flood zones. The mandate is a deadline, but having flood coverage in place before the next hurricane season is also simply a good idea.' },
         { type: 'p', text: 'For a full rundown of flood zones, NFIP limits and what flood insurance covers, see our page on [flood insurance in Florida City and Homestead](/en/flood-insurance-homestead-fl).' },
 
         { type: 'h2', text: 'How M&K Agency can help' },
@@ -91,6 +92,7 @@ export const post: BlogPost = {
       title: 'Citizens exigirá seguro de inundación en 2027: qué debe hacer ahora',
       metaTitle: 'Citizens exigirá seguro de inundación en 2027 | M&K Agency',
       description: 'Desde el 1 de enero de 2027, las pólizas de casa de Citizens con viento necesitan seguro de inundación sin importar el valor. Quién está exento y qué hacer ya.',
+      ogAlt: 'Casa en Florida junto a un canal con líneas de agua en ascenso y sacos de arena',
       excerpt: 'La última etapa del requisito de inundación de Citizens llega con las pólizas que entren en vigor a partir del 1 de enero de 2027. Le explicamos a quién afecta, qué prueba piden y por qué conviene empezar ya.',
       category: 'Seguro de inundación',
       body: [
@@ -141,7 +143,7 @@ export const post: BlogPost = {
         ] },
 
         { type: 'h2', text: 'Por qué esto importa en Homestead y Florida City' },
-        { type: 'p', text: 'Citizens lo dice sin rodeos: el agua que sube y la marejada ciclónica no están cubiertas por sus pólizas. En el sur de Miami-Dade gran parte del terreno está casi al nivel del mar y el agua subterránea está a muy poca profundidad, así que un aguacero fuerte puede inundar calles y patios lejos de la bahía de Biscayne. Según el Condado de Miami-Dade, más del 20% de los reclamos al NFIP vienen de zonas X, de riesgo moderado o bajo. El requisito es una fecha límite, pero tener seguro de inundación antes de la próxima temporada de huracanes también es, sencillamente, una buena decisión.' },
+        { type: 'p', text: 'Citizens lo dice sin rodeos: el agua que sube y la marejada ciclónica no están cubiertas por sus pólizas. En el sur de Miami-Dade gran parte del terreno está casi al nivel del mar y el agua subterránea está a muy poca profundidad, así que un aguacero fuerte puede inundar calles y patios lejos de la bahía de Biscayne. A nivel nacional, FEMA indica que más del 20% de los reclamos al NFIP vienen de propiedades fuera de las zonas de alto riesgo. El requisito es una fecha límite, pero tener seguro de inundación antes de la próxima temporada de huracanes también es, sencillamente, una buena decisión.' },
         { type: 'p', text: 'Para una explicación completa de zonas de inundación, límites del NFIP y qué cubre el seguro, vea nuestra página sobre [seguro de inundación en Homestead y Florida City](/es/flood-insurance-homestead-fl).' },
 
         { type: 'h2', text: 'Cómo le ayuda M&K Agency' },
@@ -169,6 +171,7 @@ export const post: BlogPost = {
       title: 'Citizens потребует страховку от наводнения почти для всех полисов с ветром с 1 января 2027 года: что делать сейчас',
       metaTitle: 'Citizens: страховка от наводнения с 2027 года | M&K Agency',
       description: 'С 1 января 2027 года полисам Citizens на дом с покрытием ветра нужна страховка от наводнения при любой стоимости дома. Кого это касается и что делать.',
+      ogAlt: 'Дом во Флориде у канала с отметками подъёма воды и мешками с песком',
       excerpt: 'Последний этап требования Citizens о страховке от наводнения касается полисов, вступающих в силу 1 января 2027 года и позже. Кого это затрагивает, что считается подтверждением и почему владельцам домов на юге Miami-Dade стоит начать уже сейчас.',
       category: 'Страхование от наводнения',
       body: [
@@ -219,7 +222,7 @@ export const post: BlogPost = {
         ] },
 
         { type: 'h2', text: 'Почему это важно в Homestead и Florida City' },
-        { type: 'p', text: 'Citizens говорит прямо: подъём воды и штормовой нагон его полисы не покрывают. На юге Miami-Dade значительная часть территории находится почти на уровне моря, а грунтовые воды стоят у самой поверхности, поэтому сильный дождь может затопить улицы и дворы далеко от залива Бискейн. Округ Miami-Dade сообщает, что на районы умеренного и низкого риска (зона X) приходится более 20% страховых случаев NFIP. Требование Citizens — это срок, но иметь страховку от наводнения до следующего сезона ураганов разумно и без него.' },
+        { type: 'p', text: 'Citizens говорит прямо: подъём воды и штормовой нагон его полисы не покрывают. На юге Miami-Dade значительная часть территории находится почти на уровне моря, а грунтовые воды стоят у самой поверхности, поэтому сильный дождь может затопить улицы и дворы далеко от залива Бискейн. По данным FEMA, в целом по стране более 20% страховых случаев NFIP приходится на объекты вне зон высокого риска наводнений. Требование Citizens — это срок, но иметь страховку от наводнения до следующего сезона ураганов разумно и без него.' },
         { type: 'p', text: 'О том, как мы помогаем подобрать страховку для дома во Florida City и Homestead, читайте на странице [страхование жилья](/ru/homeowners-insurance-florida-city).' },
 
         { type: 'h2', text: 'Как может помочь M&K Agency' },

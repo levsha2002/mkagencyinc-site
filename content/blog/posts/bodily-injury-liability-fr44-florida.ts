@@ -26,6 +26,7 @@ export const post: BlogPost = {
       title: 'Bodily Injury Liability in Florida: Lawsuits, FR-44, and Protecting What You Own',
       metaTitle: 'Bodily Injury Liability & FR-44 in Florida | M&K Agency',
       description: 'Bodily injury liability in Florida: what you owe after a serious crash, how FR-44, garnishment, liens and homestead protection work.',
+      ogAlt: 'Sedan with a protective shield emblem driving on a palm-lined highway',
       excerpt: 'Florida doesn\u2019t require most drivers to carry bodily injury liability. But if you cause a serious crash without enough of it, the bill doesn\u2019t disappear \u2014 it can follow your paycheck and your property for years.',
       category: 'Auto insurance',
       body: [
@@ -95,6 +96,7 @@ export const post: BlogPost = {
       title: 'Responsabilidad por lesiones corporales en Florida: demandas, FR-44 y c\u00f3mo proteger lo tuyo',
       metaTitle: 'Lesiones corporales y FR-44 en Florida | M&K Agency',
       description: 'Responsabilidad por lesiones corporales en Florida: qu\u00e9 debes tras un choque grave, c\u00f3mo funcionan FR-44, embargo de salario, grav\u00e1menes y la protecci\u00f3n homestead.',
+      ogAlt: 'Sedán con emblema de escudo protector en una autopista con palmeras',
       excerpt: 'Florida no exige a la mayor\u00eda de los conductores llevar responsabilidad por lesiones corporales. Pero si causas un choque grave sin suficiente cobertura, la cuenta no desaparece: puede seguir tu salario y tus bienes por a\u00f1os.',
       category: 'Seguro de auto',
       body: [
@@ -164,6 +166,7 @@ export const post: BlogPost = {
       title: 'Ответственность за телесные повреждения во Флориде: суды, FR-44 и защита имущества',
       metaTitle: 'Bodily injury и FR-44 во Флориде | M&K Agency',
       description: 'Ответственность за телесные повреждения во Флориде: что вы должны после серьёзного ДТП, как работают FR-44, garnishment, liens и защита homestead.',
+      ogAlt: 'Седан с эмблемой защитного щита на шоссе среди пальм',
       excerpt: 'Флорида не требует от большинства водителей страховку ответственности за телесные повреждения. Но если вы стали виновником серьёзного ДТП без достаточного покрытия — счёт не исчезнет: он может преследовать вашу зарплату и имущество годами.',
       category: 'Автострахование',
       body: [

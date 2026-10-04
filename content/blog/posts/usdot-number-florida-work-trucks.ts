@@ -31,6 +31,7 @@ export const post: BlogPost = {
       title: 'Does Your Florida Work Truck Need a USDOT Number? The Rules for Trucks That Stay in Florida',
       metaTitle: 'USDOT Number for a Florida Work Truck? | M&K Agency',
       description: 'When a work truck that stays in Florida needs a USDOT number: the 26,001-pound line, why trailers count, rules that apply below it, and how to register.',
+      ogAlt: 'White work truck with a ladder rack on a Florida highway',
       excerpt: 'Florida applies most federal truck safety rules to trucks that never leave the state. A plain guide to when a Florida work truck needs a USDOT number, why the trailer matters, and what still applies to lighter trucks.',
       category: 'Commercial auto insurance',
       body: [
@@ -73,6 +74,7 @@ export const post: BlogPost = {
       title: '¿Su camión de trabajo en Florida necesita número USDOT? Las reglas para camiones que no salen de Florida',
       metaTitle: '¿Número USDOT para su camión de trabajo en Florida? | M&K Agency',
       description: 'Cuándo un camión que solo opera en Florida necesita un USDOT: el límite de 26,001 libras, por qué cuenta el tráiler, qué aplica por debajo y cómo registrarse.',
+      ogAlt: 'Camión de trabajo blanco con portaescaleras en una autopista de Florida',
       excerpt: 'Florida aplica la mayoría de las reglas federales de seguridad a camiones que nunca salen del estado. Una guía clara de cuándo un camión de trabajo necesita número USDOT, por qué importa el tráiler y qué aplica a los más livianos.',
       category: 'Seguro de auto comercial',
       body: [
@@ -115,6 +117,7 @@ export const post: BlogPost = {
       title: 'Нужен ли вашему рабочему траку во Флориде номер USDOT? Правила для машин, которые не выезжают из штата',
       metaTitle: 'Номер USDOT для рабочего трака во Флориде | M&K Agency',
       description: 'Когда рабочему траку, который ездит только по Флориде, нужен номер USDOT: граница 26,001 фунт, при чём тут прицеп, что действует ниже и как получить номер.',
+      ogAlt: 'Белый рабочий грузовик с багажником для лестниц на шоссе Флориды',
       excerpt: 'Флорида применяет большинство федеральных правил безопасности к тракам, которые никогда не покидают штат. Простым языком о том, когда рабочей машине нужен номер USDOT, почему важен прицеп и что действует для лёгких машин.',
       category: 'Коммерческое автострахование',
       body: [

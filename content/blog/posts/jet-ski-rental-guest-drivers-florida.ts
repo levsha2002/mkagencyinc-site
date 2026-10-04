@@ -17,6 +17,7 @@ export const post: BlogPost = {
       title: 'Renting or Lending a Jet Ski in Florida: What Renters, Owners and Guest Drivers Should Know',
       metaTitle: 'Jet Ski Rentals and Guest Drivers in Florida | M&K Agency',
       description: 'Florida jet ski rental rules, the boating ID, age limits and what happens when you lend your PWC to a friend. Plain-language guide with links to the law.',
+      ogAlt: 'Jet ski speeding across blue water with a palm-lined shore',
       excerpt: 'Florida law sets rules for rental shops, renters and owners who hand the key to a friend. Here is what each one should check before the ride.',
       category: 'Boat and PWC insurance',
       body: [
@@ -58,6 +59,7 @@ export const post: BlogPost = {
       title: 'Alquilar o prestar un jet ski en Florida: lo que deben saber quienes alquilan, los dueños y los invitados',
       metaTitle: 'Alquiler de jet ski y conductores invitados en Florida | M&K',
       description: 'Las reglas de Florida para alquilar jet ski, la tarjeta de navegación, los límites de edad y qué pasa cuando le presta su moto acuática a un amigo.',
+      ogAlt: 'Moto acuática a velocidad sobre el agua azul, con costa de palmeras',
       excerpt: 'La ley de Florida pone reglas a los negocios de alquiler, a quienes alquilan y a los dueños que le dan la llave a un amigo. Qué revisar antes de salir.',
       category: 'Seguro de botes y motos acuáticas',
       body: [
@@ -99,6 +101,7 @@ export const post: BlogPost = {
       title: 'Прокат и «дай покататься»: что нужно знать о гидроциклах во Флориде арендаторам, владельцам и гостям',
       metaTitle: 'Прокат гидроциклов и чужие водители во Флориде | M&K',
       description: 'Правила проката гидроциклов во Флориде, удостоверение о безопасности на воде, возрастные ограничения и что будет, если дать гидроцикл другу.',
+      ogAlt: 'Гидроцикл мчится по синей воде, на берегу — пальмы',
       excerpt: 'Закон Флориды устанавливает правила для прокатов, арендаторов и владельцев, которые дают ключ другу. Что проверить до поездки.',
       category: 'Страхование лодок и гидроциклов',
       body: [

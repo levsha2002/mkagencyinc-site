@@ -28,6 +28,7 @@ export const post: BlogPost = {
       title: 'Florida Condo Milestone Inspections and SIRS: What Unit Owners Should Know',
       metaTitle: 'Condo Milestone Inspections and SIRS in Florida | M&K Agency',
       description: 'Florida condo milestone inspections and structural integrity reserve studies (SIRS): which buildings, deadlines, what owners receive and where HO-6 fits in.',
+      ogAlt: 'Mid-rise condo building with scaffolding and inspection equipment',
       excerpt: 'Two post-Surfside laws now shape condo budgets in Florida. What the milestone inspection and the SIRS are, what your association must send you, and what your HO-6 does and does not do.',
       category: 'Condo insurance',
       body: [
@@ -76,6 +77,7 @@ export const post: BlogPost = {
       title: 'Inspecciones de hito y SIRS en los condominios de Florida: lo que debe saber el dueño',
       metaTitle: 'Inspección de hito y SIRS en condominios de Florida | M&K Agency',
       description: 'Inspección de hito (milestone) y estudio de reservas estructurales (SIRS) en Florida: qué edificios, plazos, qué recibe el dueño y qué papel tiene su HO-6.',
+      ogAlt: 'Edificio de condominios con andamios y equipo de inspección',
       excerpt: 'Dos leyes posteriores a Surfside cambiaron los presupuestos de los condominios en Florida. Qué son la inspección de hito y el SIRS, qué le debe enviar la asociación y qué hace y qué no hace su HO-6.',
       category: 'Seguro de condominio',
       body: [
@@ -124,6 +126,7 @@ export const post: BlogPost = {
       title: 'Milestone-инспекция и SIRS в кондо Флориды: что важно знать владельцу',
       metaTitle: 'Milestone-инспекция и SIRS в кондо Флориды | M&K Agency',
       description: 'Milestone-инспекция и SIRS (резервное исследование) в кондо Флориды: какие здания, сроки, что получает владелец и при чём тут полис HO-6.',
+      ogAlt: 'Среднеэтажный кондоминиум со строительными лесами и оборудованием для инспекции',
       excerpt: 'Два закона, принятые после Surfside, теперь определяют бюджеты кондо во Флориде. Что такое milestone-инспекция и SIRS, что ассоциация обязана вам прислать и что ваш HO-6 покрывает, а что нет.',
       category: 'Страхование кондо',
       body: [
@@ -149,7 +152,7 @@ export const post: BlogPost = {
         { type: 'p', text: 'Когда продаёт владелец, а не застройщик, покупатель имеет право за счёт продавца получить краткое заключение milestone-инспекции (если она положена) и последний SIRS или заявление, что его ещё не делали ([ст. 718.503(2)](' + S.s718503 + ')). Прочитайте оба документа до подписания контракта.' },
         { type: 'h2', text: 'При чём тут ваш HO-6' },
         { type: 'p', text: 'Закон Флориды требует, чтобы в полис владельца квартиры входило не меньше **$2,000 покрытия на спецсборы после ущерба** (loss assessment) с франшизой не больше $250 ([ст. 627.714](' + S.s627714 + ')). Департамент финансовых услуг уточняет главное условие: причина ущерба, из-за которой ассоциация ввела сбор, должна быть риском, который покрывает ваш HO-6 ([гид DFS](' + S.dfs + ')). Сбор на пополнение резервов или ремонт старого бетона — это не то же самое, что сбор после покрываемого урагана, поэтому не рассчитывайте, что полис его оплатит. Покрытие всегда зависит от текста полиса.' },
-        { type: 'p', text: 'Если совет ассоциации вводит сбор после покрываемого ущерба, заявить его страховой нужно в более поздний из двух сроков: в течение года после ущерба или 90 дней после голосования, но не позже трёх лет после ущерба ([ст. 627.70132(4)](' + S.s62770132 + ')). Об остальных сроках читайте в статье о [сроках по клейму после урагана](/ru/blog/hurricane-claim-timeline-florida).' },
+        { type: 'p', text: 'Если совет ассоциации вводит сбор после покрываемого ущерба, заявить его страховой нужно в более поздний из двух сроков: в течение года после ущерба или 90 дней после голосования, но не позже трёх лет после ущерба ([ст. 627.70132(4)](' + S.s62770132 + ')). Об остальных сроках читайте в статье о [сроках рассмотрения страхового случая после урагана](/ru/blog/hurricane-claim-timeline-florida).' },
         { type: 'callout', title: 'Вопросы по вашему HO-6?', text: 'Возьмите сводку мастер-полиса ассоциации и декларационную страницу своего полиса. Загляните на страницу о [страховке кондо](/ru/condo-insurance-florida-city) или [оставьте заявку на расчёт](/ru/quote) — лицензированный агент проверит с вами лимит loss assessment.' },
       ],
       faq: [

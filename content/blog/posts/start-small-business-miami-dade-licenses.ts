@@ -36,6 +36,7 @@ export const post: BlogPost = {
       title: 'Opening a Small Business in Miami-Dade: Registration, Business Tax Receipt and State Licenses',
       metaTitle: 'Opening a Small Business in Miami-Dade: First Steps | M&K Agency',
       description: 'Starting a business in Miami-Dade? First steps: Sunbiz registration, fictitious names, city and county business tax receipts, DBPR licenses and sales tax.',
+      ogAlt: 'Small Florida storefront with an awning and documents floating above it',
       excerpt: 'Before the first customer walks in, a new Miami-Dade business usually deals with three offices: the state, the county and sometimes the city. Here is the order most owners follow, with the official links.',
       category: 'Business insurance',
       body: [
@@ -79,6 +80,7 @@ export const post: BlogPost = {
       title: 'Cómo abrir un pequeño negocio en Miami-Dade: registro, recibo de impuesto local y licencias del estado',
       metaTitle: 'Abrir un negocio en Miami-Dade: primeros pasos | M&K Agency',
       description: 'Abrir un negocio en Miami-Dade: registro en Sunbiz, nombre ficticio, recibo de impuesto local de la ciudad y el condado, licencias del DBPR y sales tax.',
+      ogAlt: 'Pequeño local comercial en Florida con toldo y documentos flotando arriba',
       excerpt: 'Antes del primer cliente, un negocio nuevo en Miami-Dade suele pasar por tres oficinas: el estado, el condado y a veces la ciudad. Este es el orden que siguen la mayoría de los dueños, con los enlaces oficiales.',
       category: 'Seguro comercial',
       body: [
@@ -122,6 +124,7 @@ export const post: BlogPost = {
       title: 'Как открыть малый бизнес в Майами-Дейд: регистрация, Business Tax Receipt и лицензии штата',
       metaTitle: 'Открыть бизнес в Майами-Дейд: первые шаги | M&K Agency',
       description: 'Открываете бизнес в Майами-Дейд? Первые шаги: регистрация на Sunbiz, fictitious name, business tax receipt от города и округа, лицензии DBPR и sales tax.',
+      ogAlt: 'Небольшой магазин во Флориде с навесом, над ним парят документы',
       excerpt: 'До первого клиента новый бизнес в Майами-Дейд обычно проходит через три инстанции: штат, округ и иногда город. Вот порядок, которому следует большинство владельцев, со ссылками на официальные источники.',
       category: 'Коммерческое страхование',
       body: [

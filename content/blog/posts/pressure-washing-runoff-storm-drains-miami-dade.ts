@@ -34,6 +34,7 @@ export const post: BlogPost = {
       title: 'Pressure Washing Runoff in Miami-Dade: What Can Go Down the Storm Drain?',
       metaTitle: 'Pressure Washing Runoff in Miami-Dade | M&K Agency',
       description: 'Where does pressure washing water go? Miami-Dade’s storm sewer rule, what EPA calls an illicit discharge, and FDEP methods to contain wash water.',
+      ogAlt: 'Pressure washer spraying a driveway that slopes toward a storm drain',
       excerpt: 'A storm drain is not the sewer that goes to a treatment plant. What the county code and state guidance say about wash water, and practical ways to keep it out of the drain.',
       category: 'Pressure washing insurance',
       body: [
@@ -82,6 +83,7 @@ export const post: BlogPost = {
       title: 'Agua del lavado a presión en Miami-Dade: ¿qué puede ir al desagüe pluvial?',
       metaTitle: 'Lavado a presión y desagües pluviales en Miami-Dade | M&K Agency',
       description: '¿A dónde va el agua del lavado a presión? La regla de Miami-Dade sobre el drenaje pluvial, la descarga ilícita según la EPA y cómo contener el agua según FDEP.',
+      ogAlt: 'Lavado a presión en una entrada que baja hacia un drenaje pluvial',
       excerpt: 'Un desagüe pluvial no es la cloaca que va a la planta de tratamiento. Qué dicen el código del condado y la guía del estado sobre el agua de lavado, y formas prácticas de mantenerla fuera del desagüe.',
       category: 'Seguro para lavado a presión',
       body: [
@@ -130,6 +132,7 @@ export const post: BlogPost = {
       title: 'Вода после мойки под давлением в Майами-Дейд: что можно сливать в ливнёвку?',
       metaTitle: 'Мойка под давлением и ливнёвки в Майами-Дейд | M&K Agency',
       description: 'Куда уходит вода после мойки под давлением? Правило Майами-Дейд о ливневой канализации, незаконный сброс по EPA и как собирать воду по советам FDEP.',
+      ogAlt: 'Мойка под давлением: вода с подъездной дорожки стекает к ливневому стоку',
       excerpt: 'Ливнёвка — это не та канализация, что ведёт на очистные. Что говорят окружной кодекс и рекомендации штата о воде после мойки и как на практике не пускать её в ливнёвку.',
       category: 'Страхование для мойки под давлением',
       body: [

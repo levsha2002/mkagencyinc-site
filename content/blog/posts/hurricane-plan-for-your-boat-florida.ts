@@ -17,6 +17,7 @@ export const post: BlogPost = {
       title: 'A Hurricane Plan for Your Boat in Florida: Before the Season, at the Watch, After the Storm',
       metaTitle: 'Hurricane Plan for Your Boat in Florida | M&K Agency',
       description: 'A step-by-step hurricane plan for Florida boat owners: marina rules, haul-out or tie-down, what to photograph, and your duties if the boat sinks.',
+      ogAlt: 'Boat secured with extra ropes at a marina dock under gathering storm clouds',
       excerpt: 'Most storm damage to boats is decided before the storm: where the boat goes, who moves it and what the policy says. A three-stage plan for Florida owners.',
       category: 'Boat and PWC insurance',
       body: [
@@ -55,6 +56,7 @@ export const post: BlogPost = {
       title: 'Plan de huracán para su bote en Florida: antes de la temporada, con la vigilancia y después de la tormenta',
       metaTitle: 'Plan de huracán para su bote en Florida | M&K Agency',
       description: 'Plan paso a paso para dueños de botes en Florida: reglas de la marina, sacarlo del agua o amarrarlo, qué fotografiar y qué hacer si el bote se hunde.',
+      ogAlt: 'Bote amarrado con cuerdas extra en un muelle, con nubes de tormenta',
       excerpt: 'Casi todo el daño que un huracán le hace a un bote se decide antes: adónde va, quién lo mueve y qué dice la póliza. Un plan en tres etapas.',
       category: 'Seguro de botes y motos acuáticas',
       body: [
@@ -93,6 +95,7 @@ export const post: BlogPost = {
       title: 'План на ураган для вашей лодки во Флориде: до сезона, при штормовом предупреждении и после шторма',
       metaTitle: 'План на ураган для лодки во Флориде | M&K Agency',
       description: 'Пошаговый план для владельцев лодок во Флориде: правила марины, подъём на берег или швартовка, что сфотографировать и что делать, если лодка затонула.',
+      ogAlt: 'Лодка, закреплённая дополнительными тросами у причала, собираются грозовые тучи',
       excerpt: 'Почти весь ущерб, который ураган нанесёт лодке, решается заранее: куда она встанет, кто её перегонит и что написано в полисе. План из трёх этапов.',
       category: 'Страхование лодок и гидроциклов',
       body: [

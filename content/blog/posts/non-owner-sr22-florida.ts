@@ -48,6 +48,7 @@ export const post: BlogPost = {
       title: 'Non-Owner SR-22 in Florida: When You Need It and What It Covers',
       metaTitle: 'Non-Owner SR-22 Florida: When You Need It | M&K Agency',
       description: 'Non-owner SR-22 in Florida: what it covers, when FLHSMV may require it, how it differs from an owner policy, and how filing works.',
+      ogAlt: 'Car keys floating between two parked cars',
       excerpt: 'If Florida requires an SR-22 and you do not own a car, an operator’s (non-owner) liability policy may be the path to the filing. Here is how it differs from a regular SR-22, what it covers, and how to get it filed.',
       category: 'Auto insurance',
       body: [
@@ -127,6 +128,7 @@ export const post: BlogPost = {
       title: '¿Necesito SR-22 si no tengo carro? El SR-22 de no propietario en Florida',
       metaTitle: 'SR-22 sin carro en Florida (no propietario) | M&K Agency',
       description: '¿Le piden SR-22 y no tiene carro? Qué es el SR-22 de no propietario en Florida, qué cubre la póliza del conductor, 10/20/10, FR-44 y cómo se presenta.',
+      ogAlt: 'Llaves de carro flotando entre dos carros estacionados',
       excerpt: 'Si el FLHSMV le pide un SR-22 y usted no tiene carro, lo habitual es una póliza de responsabilidad del conductor (non-owner) con la presentación del SR-22. Le explicamos en qué se diferencia, qué cubre y cómo se tramita.',
       category: 'Seguro de auto',
       body: [
@@ -204,7 +206,8 @@ export const post: BlogPost = {
     ru: {
       title: 'Non-owner SR-22 во Флориде: когда нужен и что покрывает',
       metaTitle: 'Non-owner SR-22 во Флориде: когда нужен | M&K Agency',
-      description: 'Что такое non-owner SR-22 во Флориде: чем полис оператора отличается от обычного SR-22, когда его может потребовать FLHSMV, что покрывает и как подают сертификат.',
+      description: 'Что такое non-owner SR-22 во Флориде: чем полис оператора отличается от обычного, когда его требует FLHSMV и как подают сертификат.',
+      ogAlt: 'Ключи от машины парят между двумя припаркованными автомобилями',
       excerpt: 'Если Флорида требует SR-22, а своего автомобиля нет, часто оформляют полис оператора (non-owner) и подачу сертификата. Разбираем отличия от обычного SR-22, покрытие и порядок подачи.',
       category: 'Автострахование',
       body: [
