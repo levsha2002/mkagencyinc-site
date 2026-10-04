@@ -1,133 +1,171 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
-import { allEditions, asLang, editionLangs, editionOgAlt, editionOgImage, editionsForLang, formatDate, newsHasLang } from '@/lib/news';
-import { ArticleCta, articleStyles as s } from '@/components/article/ArticleParts';
+import { asLang, editionLangs, editionOgAlt, editionOgImage, editionSources, editionsForLang, formatDate, getEdition } from '@/lib/news';
+import { ArticleBody, ArticleCta, Byline, articleStyles as s } from '@/components/article/ArticleParts';
+import { RichText, stripInline } from '@/components/article/RichText';
+import { DEFAULT_AUTHOR } from '@/content/authors';
+import { personLd } from '@/lib/author';
 import n from '@/components/news/News.module.css';
 import type { Lang } from '@/content/types';
 
-// News index: /[lang]/news. Fully data-driven from content/news/index.ts.
-const T: Record<Lang, { crumb: string; metaTitle: string; desc: string; h1: string; intro: string; read: string; home: string; empty: string }> = {
+// Daily edition template: /[lang]/news/[slug]. Only (lang, slug) pairs that
+// exist in content/news are generated; everything else is a real 404.
+export const dynamicParams = false;
+
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
+  return editionsForLang(params.lang).map(({ edition }) => ({ slug: edition.slug }));
+}
+
+const LANG_NAME: Record<Lang, string> = { en: 'English', es: 'Español', ru: 'Русский' };
+const UI: Record<Lang, { home: string; news: string; kicker: string; alsoIn: string; updated: string; published: string; why: string; source: string; more: string; all: string; disclaimer: string }> = {
   en: {
-    crumb: 'News',
-    metaTitle: 'Florida Insurance News for South Miami-Dade | M&K Agency',
-    desc: 'Short, source-linked updates on Citizens, Florida insurance rules, flood insurance, hurricanes and driving laws for Homestead, Florida City and South Miami-Dade.',
-    h1: 'Insurance News',
-    intro: 'Short daily roundups of the insurance news that matters to South Miami-Dade homeowners, drivers and small businesses. Every item is summarized in our own words and links to the original source.',
-    read: 'Read this edition →',
-    home: 'Home',
-    empty: 'No news editions in English yet. Here are the latest editions in other languages:',
+    home: 'Home', news: 'News', kicker: 'Daily insurance news', alsoIn: 'Also available in:', updated: 'Updated', published: 'Published',
+    why: 'Why it matters for you:', source: 'Source:', more: 'Earlier editions', all: 'All news editions →',
+    disclaimer: 'This roundup is general information, not legal advice or policy language. Each item is our own short summary of the linked original report; details can change after publication, so check the source for the full story. Coverage depends on the terms, limits and exclusions of your policy. Talk with a licensed agent about your situation.',
   },
   es: {
-    crumb: 'Noticias',
-    metaTitle: 'Noticias de seguros en Florida para el sur de Miami-Dade | M&K Agency',
-    desc: 'Resúmenes breves con enlace a la fuente sobre Citizens, reglas de seguros en Florida, inundaciones, huracanes y leyes de tránsito para Homestead y Florida City.',
-    h1: 'Noticias de seguros',
-    intro: 'Resúmenes diarios y breves de las noticias de seguros que importan a propietarios, conductores y pequeños negocios del sur de Miami-Dade. Cada noticia está contada con nuestras propias palabras y enlaza a la fuente original.',
-    read: 'Leer esta edición →',
-    home: 'Inicio',
-    empty: 'Todavía no hay ediciones en español. Estas son las más recientes en otros idiomas:',
+    home: 'Inicio', news: 'Noticias', kicker: 'Noticias de seguros del día', alsoIn: 'También disponible en:', updated: 'Actualizado', published: 'Publicado',
+    why: 'Por qué le importa:', source: 'Fuente:', more: 'Ediciones anteriores', all: 'Todas las ediciones →',
+    disclaimer: 'Este resumen es información general, no asesoría legal ni lenguaje de póliza. Cada noticia es un breve resumen propio del reporte original enlazado; los detalles pueden cambiar después de publicarse, así que consulte la fuente para ver la información completa. La cobertura depende de los términos, límites y exclusiones de su póliza. Consulte su caso con un agente licenciado.',
   },
   ru: {
-    crumb: 'Новости',
-    metaTitle: 'Новости страхования во Флориде для юга Miami-Dade | M&K Agency',
-    desc: 'Короткие новости со ссылками на источники: Citizens, правила страхования во Флориде, наводнения, ураганы и правила для водителей на юге Miami-Dade.',
-    h1: 'Новости страхования',
-    intro: 'Короткие ежедневные обзоры новостей страхования, важных для домовладельцев, водителей и малого бизнеса на юге Miami-Dade. Каждая новость пересказана своими словами и со ссылкой на первоисточник.',
-    read: 'Читать выпуск →',
-    home: 'Главная',
-    empty: 'Выпусков на русском пока нет. Последние выпуски на других языках:',
+    home: 'Главная', news: 'Новости', kicker: 'Новости страхования за день', alsoIn: 'Также на:', updated: 'Обновлено', published: 'Опубликовано',
+    why: 'Почему это важно для вас:', source: 'Источник:', more: 'Предыдущие выпуски', all: 'Все выпуски →',
+    disclaimer: 'Этот обзор — общая информация, а не юридическая консультация и не текст полиса. Каждая новость — наш краткий пересказ оригинального материала по ссылке; после публикации детали могут измениться, поэтому подробности смотрите в источнике. Покрытие зависит от условий, лимитов и исключений вашего полиса. Обсудите свою ситуацию с лицензированным агентом.',
   },
 };
 
-const LANG_NAME: Record<Lang, string> = { en: 'English', es: 'Español', ru: 'Русский' };
-
-export async function generateMetadata({ params }: { params: { lang: string } }) {
+function load(params: { lang: string; slug: string }) {
   const l = asLang(params.lang);
-  const t = T[l];
-  const langs = (['en', 'es', 'ru'] as Lang[]).filter((x) => newsHasLang(x));
-  const meta = pageMetadata({
-    lang: l,
-    path: '/news',
-    title: t.metaTitle,
-    description: t.desc,
-    langs: langs.length ? langs : ['en'],
-  });
-  // A language with no editions yet still gets a working page (the nav links
-  // to it), but it stays out of the index and the sitemap until it has one.
-  return newsHasLang(l) ? meta : { ...meta, robots: { index: false, follow: true } };
+  const edition = getEdition(params.slug);
+  const t = edition?.translations[l];
+  return edition && t && l === params.lang ? { l, edition, t } : null;
 }
 
-export default function NewsIndex({ params }: { params: { lang: string } }) {
-  const l = asLang(params.lang);
-  const t = T[l];
-  const items = editionsForLang(l);
-  const others = items.length
-    ? []
-    : allEditions().slice(0, 5).flatMap((e) => editionLangs(e).filter((x) => x !== l).slice(0, 1).map((x) => ({ e, x })));
+export async function generateMetadata({ params }: { params: { lang: string; slug: string } }) {
+  const d = load(params);
+  if (!d) return {};
+  return pageMetadata({
+    lang: d.l,
+    path: `/news/${d.edition.slug}`,
+    title: d.t.metaTitle ?? `${d.t.title} | M&K Agency`,
+    description: d.t.description,
+    langs: editionLangs(d.edition),
+    article: { publishedTime: d.edition.datePublished, modifiedTime: d.edition.dateModified },
+    image: { src: editionOgImage(d.edition), alt: editionOgAlt(d.edition, d.l) },
+  });
+}
 
-  const ld = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.home, item: `${SITE_URL}/${l}` },
-      { '@type': 'ListItem', position: 2, name: t.crumb, item: `${SITE_URL}/${l}/news` },
-    ],
-  };
+export default function NewsEditionPage({ params }: { params: { lang: string; slug: string } }) {
+  const d = load(params);
+  if (!d) notFound();
+  const { l, edition, t } = d;
+  const ui = UI[l];
+  const url = `${SITE_URL}/${l}/news/${edition.slug}`;
+  const translations = editionLangs(edition).filter((x) => x !== l);
+  const modified = edition.dateModified ?? edition.datePublished;
+  const earlier = editionsForLang(l).filter((x) => x.edition.slug !== edition.slug).slice(0, 5);
+
+  const author = edition.author ?? DEFAULT_AUTHOR;
+  const person = personLd(author, l);
+  const ld: Record<string, unknown>[] = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      headline: t.title.length > 110 ? `${t.title.slice(0, 107)}…` : t.title,
+      description: t.description,
+      inLanguage: l,
+      datePublished: edition.datePublished,
+      dateModified: modified,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      url,
+      image: `${SITE_URL}${editionOgImage(edition)}`,
+      author: person,
+      publisher: { '@type': 'Organization', name: 'M&K Agency', url: SITE_URL },
+      isAccessibleForFree: true,
+      about: t.items.map((it) => stripInline(it.headline)),
+      citation: editionSources(t).map((x) => x.url),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: ui.home, item: `${SITE_URL}/${l}` },
+        { '@type': 'ListItem', position: 2, name: ui.news, item: `${SITE_URL}/${l}/news` },
+        { '@type': 'ListItem', position: 3, name: t.title, item: url },
+      ],
+    },
+  ];
 
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-      <section style={{ padding: '40px 0 60px' }}>
+      <section style={{ padding: '36px 0 56px' }}>
         <div className="container">
-          <nav className={s.crumbs} aria-label="Breadcrumb">
-            <Link href={`/${l}`}>{t.home}</Link><span aria-hidden>›</span>{t.crumb}
-          </nav>
-          <h1 className={s.h1}>{t.h1}</h1>
-          <p className={s.intro}>{t.intro}</p>
+          <article className={s.wrap}>
+            <nav className={s.crumbs} aria-label="Breadcrumb">
+              <Link href={`/${l}`}>{ui.home}</Link><span aria-hidden>›</span>
+              <Link href={`/${l}/news`}>{ui.news}</Link>
+            </nav>
+            <span className={s.kicker}>{ui.kicker}</span>
+            <h1 className={s.h1}>{t.title}</h1>
+            <p className={s.meta}>
+              <Byline lang={l} author={author} />
+              <span>{ui.published} <time dateTime={edition.datePublished}>{formatDate(edition.datePublished, l)}</time></span>
+              {edition.dateModified && edition.dateModified !== edition.datePublished && (
+                <span>{ui.updated} <time dateTime={edition.dateModified}>{formatDate(edition.dateModified, l)}</time></span>
+              )}
+            </p>
+            {translations.length > 0 && (
+              <p className={s.langs}>
+                {ui.alsoIn}{' '}
+                {translations.map((x, i) => (
+                  <span key={x}>
+                    {i > 0 && ' · '}
+                    <Link href={`/${x}/news/${edition.slug}`} hrefLang={x} lang={x}>{LANG_NAME[x]}</Link>
+                  </span>
+                ))}
+              </p>
+            )}
+            {t.intro && <p className={n.lead}><RichText text={t.intro} /></p>}
 
-          {items.length > 0 ? (
-            <div className={s.list}>
-              {items.map(({ edition, t: et }) => (
-                <article key={edition.slug} className={s.card}>
-                  <Link href={`/${l}/news/${edition.slug}`} className={n.cardImg} aria-hidden tabIndex={-1}>
-                    <Image
-                      src={editionOgImage(edition)}
-                      alt=""
-                      width={1200}
-                      height={630}
-                      sizes="(max-width: 760px) 100vw, 50vw"
-                    />
-                  </Link>
-                  <p className={s.cardMeta}>
-                    <time dateTime={edition.datePublished}>{formatDate(edition.datePublished, l)}</time>
-                  </p>
-                  <h2><Link href={`/${l}/news/${edition.slug}`}>{et.title}</Link></h2>
-                  <ul className={n.headlines}>
-                    {et.items.map((it) => <li key={it.headline}>{it.headline}</li>)}
-                  </ul>
-                  <Link className={s.more} href={`/${l}/news/${edition.slug}`} aria-label={`${t.read} ${et.title}`}>{t.read}</Link>
-                </article>
+            <div className={n.items}>
+              {t.items.map((it, i) => (
+                <section key={it.headline} className={n.item} aria-labelledby={`item-${i + 1}`}>
+                  <h2 id={`item-${i + 1}`}><span className={n.num}>{i + 1}.</span>{it.headline}</h2>
+                  <p className={n.summary}><RichText text={it.summary} /></p>
+                  <p className={n.why}><strong>{ui.why}</strong> <RichText text={it.why} /></p>
+                  {it.sources.map((src) => (
+                    <p key={src.url} className={n.src}>
+                      {ui.source}{' '}
+                      <a href={src.url} target="_blank" rel="noopener noreferrer" title={src.title}>{src.name}</a>
+                      {', '}<time dateTime={src.date}>{formatDate(src.date, l)}</time>
+                    </p>
+                  ))}
+                </section>
               ))}
             </div>
-          ) : (
-            <>
-              <p style={{ marginTop: 20 }}>{t.empty}</p>
-              {others.length > 0 && (
-                <div className={s.list}>
-                  {others.map(({ e, x }) => (
-                    <article key={e.slug} className={s.card}>
-                      <p className={s.cardMeta}>{LANG_NAME[x]} · {formatDate(e.datePublished, x)}</p>
-                      <h2><Link href={`/${x}/news/${e.slug}`} hrefLang={x}>{e.translations[x]!.title}</Link></h2>
-                    </article>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-          <div className={s.wrap}>
+
+            {t.extra && t.extra.length > 0 && <ArticleBody blocks={t.extra} />}
+
             <ArticleCta lang={l} />
-          </div>
+            <p className={s.disclaimer}>{ui.disclaimer}</p>
+
+            <nav className={s.related} aria-label={ui.more}>
+              {earlier.length > 0 && (
+                <>
+                  <h2>{ui.more}</h2>
+                  <ul>
+                    {earlier.map(({ edition: e, t: et }) => (
+                      <li key={e.slug}><Link href={`/${l}/news/${e.slug}`}>{et.title}</Link></li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              <p style={{ marginTop: 10 }}><Link href={`/${l}/news`}>{ui.all}</Link></p>
+            </nav>
+          </article>
         </div>
       </section>
     </main>
