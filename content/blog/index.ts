@@ -20,6 +20,10 @@ import { post as condoMilestoneSirs } from './posts/condo-milestone-inspection-s
 import { post as hurricaneClaimTimeline } from './posts/hurricane-claim-timeline-florida';
 import { post as builderWarrantyVsInsurance } from './posts/builder-warranty-vs-homeowners-insurance-florida';
 import { post as antiqueLicensePlates } from './posts/antique-license-plates-florida';
+import { post as whenIsCarTotaled } from './posts/when-is-a-car-totaled-florida';
+import { post as lendingYourCar } from './posts/lending-your-car-florida-owner-liability';
+import { post as startBusinessMiamiDade } from './posts/start-small-business-miami-dade-licenses';
+import { post as chapter558Contractors } from './posts/chapter-558-notice-contractors-florida';
 
 export const posts: BlogPost[] = [
   citizensFlood2027,
@@ -40,4 +44,8 @@ export const posts: BlogPost[] = [
   hurricaneClaimTimeline,
   builderWarrantyVsInsurance,
   antiqueLicensePlates,
+  whenIsCarTotaled,
+  lendingYourCar,
+  startBusinessMiamiDade,
+  chapter558Contractors,
 ];
