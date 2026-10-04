@@ -107,4 +107,16 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     pages: ['/painting-contractor-insurance-florida'],
     links: [{ blog: 'epa-lead-safe-rrp-painters-florida' }],
   },
+  {
+    pages: ['/pressure-washing-insurance-florida'],
+    links: [{ blog: 'pressure-washing-runoff-storm-drains-miami-dade' }],
+  },
+  {
+    pages: ['/work-truck-insurance-florida'],
+    links: [{ blog: 'usdot-number-florida-work-trucks' }],
+  },
+  {
+    pages: ['/builders-risk-insurance-florida'],
+    links: [{ blog: 'construction-stalls-builders-risk-florida' }],
+  },
 ];
