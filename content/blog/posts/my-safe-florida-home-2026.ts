@@ -7,6 +7,18 @@ import type { BlogPost } from '../types';
 // - MSFH 2025–26 program overview (mysafeflhome.com/msfh-new-year-2025-26/)
 // - Florida Statutes s. 215.5586 (2025) — My Safe Florida Home Program (DFS; subject to appropriation; not an entitlement)
 // No private insurers named. No premium %, discount %, or savings promises. Grant dollar caps stated only as official program limits.
+// EN version added 2026-10-04 (ET). Re-checked the same day: MSFH support funding article (still “now accepting
+// applications”, modified Aug 17, 2026), MSFH FAQs, grant jump page, 2025–26 overview, and the 2026 text of
+// s. 215.5586 (18-month completion window; grant applicants must be low- or moderate-income; 2026 amendments
+// expire July 1, 2027). Where program pages and the statute differ, the EN text says so and points to the portal.
+const SOURCES_EN = [
+  { label: 'My Safe Florida Home Support: Is funding currently available? (accepting applications; Aug. 17, 2026 update)', url: 'https://support.mysafeflhome.com/en/support/solutions/articles/156000024197-is-funding-currently-available-' },
+  { label: 'My Safe Florida Home: Frequently Asked Questions (inspection and grant eligibility; grant types; eligible improvements)', url: 'https://mysafeflhome.com/faqs-2/' },
+  { label: 'My Safe Florida Home: Grant application jump page (prioritization groups; inspection and grant criteria)', url: 'https://mysafeflhome.com/grant-application-jump-page/' },
+  { label: 'My Safe Florida Home: 2025–26 program overview (inspection and grant criteria)', url: 'https://mysafeflhome.com/msfh-new-year-2025-26/' },
+  { label: 'Florida Statutes s. 215.5586 (2026): My Safe Florida Home Program (DFS; subject to legislative appropriation)', url: 'https://www.flsenate.gov/Laws/Statutes/2026/215.5586' },
+];
+
 const SOURCES_ES = [
   { label: 'My Safe Florida Home Support: ¿Hay financiamiento disponible? (aceptación de solicitudes; actualización 17 ago. 2026)', url: 'https://support.mysafeflhome.com/en/support/solutions/articles/156000024197-is-funding-currently-available-' },
   { label: 'My Safe Florida Home: Preguntas frecuentes (elegibilidad de inspección y subsidio; tipos de grant; mejoras elegibles)', url: 'https://mysafeflhome.com/faqs-2/' },
@@ -27,6 +39,96 @@ export const post: BlogPost = {
   slug: 'my-safe-florida-home-2026',
   datePublished: '2026-10-04',
   translations: {
+    en: {
+      title: 'My Safe Florida Home 2026: Free Inspection and Grants (Official $10,000 Cap)',
+      metaTitle: 'My Safe Florida Home 2026: Grants & Inspection | M&K Agency',
+      description: 'My Safe Florida Home 2026: the free hurricane inspection, who qualifies for a grant, the official $10,000 cap, priority groups and how to check funding.',
+      excerpt: 'My Safe Florida Home offers eligible homeowners a free hurricane mitigation inspection and, for those who qualify, a state grant with an official cap of $10,000. Here is how the program works, who qualifies and how to check funding.',
+      category: 'Homeowners insurance',
+      body: [
+        { type: 'p', text: 'If you own a home in South Florida — Florida City, Homestead, Cutler Bay or anywhere in Miami-Dade — you have probably heard of **My Safe Florida Home (MSFH)**. It is the state program run by the Florida **Department of Financial Services (DFS)**: a **free hurricane mitigation inspection** for eligible homes and, if you meet additional criteria, a **grant** toward the improvements that inspection recommends.' },
+        { type: 'p', text: 'This guide is about the **program** — who can apply, how the grants work, the steps in the portal and where funding stands. It is not a walkthrough of Form OIR-B1-1802, the private wind mitigation form; for that, see our guide to the [wind mitigation inspection in Florida](/en/blog/wind-mitigation-inspection-florida). Facts below come from [mysafeflhome.com](https://mysafeflhome.com), the program’s support center and **s. 215.5586**, Florida Statutes. The dollar amounts are **official program limits**, not a promise about your [homeowners insurance](/en/homeowners-insurance-florida-city) premium.' },
+
+        { type: 'h2', text: 'Funding status (checked October 4, 2026)' },
+        { type: 'p', text: 'According to the program’s support article **“Is funding currently available?”** (last updated **August 17, 2026**), My Safe Florida Home **is accepting applications**. Homeowners create an account in the **Applicant Portal** (Neighborly) and complete the **Prioritization Questionnaire**; the program then places them in an Inspection Group or a Grant Group, and they can submit the matching application.' },
+        { type: 'callout', title: 'Funding can change', text: 'The program depends on annual legislative appropriations. Section 215.5586 states that it does not create an entitlement or obligate the state to fund inspections or retrofits, and the department may not accept more applications than available funds cover. Several 2026 changes to the statute are also temporary and set to expire July 1, 2027. Re-check mysafeflhome.com and the support center before you apply — group windows and remaining funds change.' },
+        { type: 'p', text: 'The call center number listed by the program is **850-427-2559**. You can also submit a ticket through the official MSFH Support Center.' },
+
+        { type: 'h2', text: 'What the program offers (two parts)' },
+        { type: 'p', text: 'Official program materials describe two main components:' },
+        { type: 'ol', items: [
+          '**Free hurricane mitigation inspection** — no cost and **no obligation** to apply for a grant. An inspector under contract with the program reviews your home’s wind-resistant features and recommends improvements.',
+          '**Mitigation grant** — financial help toward improvements **recommended in the initial inspection report**, subject to eligibility, prioritization and available funds.',
+        ] },
+        { type: 'p', text: 'For the MSFH inspection you **cannot use your own inspector**: once your application is approved, the program assigns a licensed inspector it has under contract. That is different from a private OIR-B1-1802 inspection you arrange yourself for insurance paperwork.' },
+
+        { type: 'h2', text: 'Who can get the free inspection' },
+        { type: 'p', text: 'Under the program FAQs and **s. 215.5586(1)**, the home generally must meet **all** of these:' },
+        { type: 'ul', items: [
+          'A **single-family** home on its own parcel — **detached**, or a townhouse-style attached home (the 2026 statute covers attached homes of up to three stories);',
+          '**Site-built** and **owner-occupied**; and',
+          'Granted a **homestead exemption** under Chapter 196.',
+        ] },
+        { type: 'p', text: 'Generally **not** eligible: multifamily buildings (apartments, duplexes, triplexes), condominiums, cooperatives, retirement homes, mobile or manufactured homes, and second, vacation or rental homes. Single-family homes attached to other units are treated as townhouses for program purposes.' },
+
+        { type: 'h2', text: 'Extra requirements for a grant' },
+        { type: 'p', text: 'Not everyone who gets an inspection qualifies for a grant. The FAQs, the application page and the statute list, among other things:' },
+        { type: 'ul', items: [
+          'You received the **initial inspection** through the program (the 2026 statute says within the **24 months** before you apply);',
+          'An **insured value** of **$700,000 or less** (the program’s application page lists an exception for low-income homeowners, but the 2026 statute text does not — confirm the current rule in the portal);',
+          'The home was **built before January 1, 2008**, as shown on the county property appraiser’s website;',
+          'You provide the name and **Florida license number** of the contractor you chose;',
+          'You agree to a **final inspection** when the project is done; and',
+          'You agree to share with the program any information your insurer sends you about premium changes tied to the funded improvements.',
+        ] },
+        { type: 'p', text: 'The statute directs the program to prioritize **low- and moderate-income** applicants (as defined in s. 420.0004), and the 2026 version requires grant applicants to fall in one of those groups. Review order: (1) low-income, 60 or older; (2) other low-income; (3) moderate-income, 60 or older; (4) other moderate-income; then everyone else, in timed windows. Program materials define low-income as household income **at or below 80%** of the county median and moderate-income as **below 120%**, using HUD income rules.' },
+
+        { type: 'h2', text: 'Grant types and the official $10,000 cap' },
+        { type: 'p', text: 'The FAQs describe two grant types (both **subject to legislative appropriation**):' },
+        { type: 'ul', items: [
+          '**Matching grants:** the state pays **$2 for every $1** the homeowner contributes (on a reimbursement basis), up to a **maximum state contribution of $10,000**.',
+          '**Low-income grants:** up to **$10,000** with **no** matching contribution and, per the FAQs, no paid-in-full invoice required.',
+        ] },
+        { type: 'callout', title: 'A program cap, not a premium promise', text: 'The $10,000 figure is the official maximum state contribution under the FAQs and s. 215.5586. It does not mean your homeowners insurance will cost less or change by any set amount. Any effect on your rate depends on your insurer, your policy and your home’s actual features.' },
+        { type: 'p', text: '**Do not start work before official grant approval.** The FAQs are explicit: starting early disqualifies you from reimbursement. Payment is made through a **Draw Request** after the work is finished and the portal steps (including the final inspection) are complete.' },
+
+        { type: 'h2', text: 'Improvements a grant can cover' },
+        { type: 'p', text: 'When they appear in the **Initial Inspection Report**, the program lists four eligible categories:' },
+        { type: 'ol', items: [
+          '**Opening protection** — impact-rated windows, doors, garage doors and skylights that protect against flying debris;',
+          '**Roof-to-wall attachment** — strengthening the roof-to-wall connection with clips or wraps;',
+          '**Roof deck attachment** — better nailing and fastening of the roof deck;',
+          '**Secondary water resistance (SWR)** — self-adhering underlayment that limits leaks if the roof covering is lost.',
+        ] },
+        { type: 'p', text: 'Only improvements **recommended** in the initial report and **observed** in the final report qualify; no other construction work counts. Older versions of the statute limited townhouse grants to opening protection. The program FAQ describes a 2026 legislative update (SB 1452) that lets townhomes receive roof grants like single-family homes, and the 2026 statute text no longer has the opening-protection-only limit — if you own a townhouse, confirm the current rule on mysafeflhome.com.' },
+
+        { type: 'h2', text: 'Practical steps in the portal' },
+        { type: 'ol', items: [
+          'Create your **Applicant Portal** account and complete the Prioritization Questionnaire.',
+          'When your group’s window opens, submit the **inspection** application (if you don’t have an MSFH inspection yet).',
+          'Review the initial report in the portal; if improvements are recommended and you qualify, move on to the **Grant Phase**.',
+          'Choose a Florida-licensed contractor (general, building, residential, specialty or roofing, per DBPR) and verify the license on MyFloridaLicense.com.',
+          'Wait for **written grant approval** before any work begins.',
+          'When the work is done, request the **final inspection** in the portal (the FAQs say you get one opportunity) and complete the Draw Request with the required documents.',
+        ] },
+        { type: 'p', text: 'Deadlines: both the program FAQs and the 2026 text of **s. 215.5586** say to finish construction and request the final inspection **within 18 months** of grant approval. Miss it and the application can be deemed abandoned, with the grant money returning to the department. Answer any **Request for Information (RFI)** within **60 days**, or the application can be deemed abandoned.' },
+
+        { type: 'h2', text: 'How this fits with your homeowners insurance' },
+        { type: 'p', text: 'MSFH is a state mitigation program. Your homeowners policy is a separate contract. Documenting improvements or sending mitigation paperwork to an insurer does **not** ensure a credit, a lower rate or a policy offer. At [M&K Agency](/en/homeowners-insurance-florida-city), a licensed agent can help you review your declarations page and understand what paperwork insurers usually ask for — without promising any premium outcome. For the private form insurers use, read our [wind mitigation inspection guide](/en/blog/wind-mitigation-inspection-florida).' },
+        { type: 'p', text: 'If you also want help with coverage, [request a quote](/en/quote) or call **(305) 859-3953**. Office: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034. Hours: Monday–Friday 9–6; Saturday by appointment.' },
+        { type: 'p', text: 'This page is general information based on official program sources and the statute. It is not a quote, legal advice, or an assurance of eligibility or funding. Always confirm the criteria and funding status on mysafeflhome.com on the day you apply.' },
+      ],
+      faq: [
+        { q: 'Is My Safe Florida Home accepting applications in 2026?', a: 'According to the program’s support article last updated August 17, 2026, yes — it was accepting applications. Create an Applicant Portal account, complete the Prioritization Questionnaire and apply when your group’s window opens. Re-check mysafeflhome.com, because funding depends on annual appropriations.' },
+        { q: 'What is the maximum grant?', a: 'The program FAQs and s. 215.5586 describe a maximum state contribution of $10,000: a matching grant of $2 from the state for every $1 from the homeowner, or up to $10,000 with no match for eligible low-income homeowners. That is the official grant cap, not a promise about your insurance premium.' },
+        { q: 'Who qualifies for the free inspection?', a: 'Generally a site-built, owner-occupied single-family home (detached, or an attached townhouse-style home) with a homestead exemption. Condominiums, multifamily buildings, mobile or manufactured homes, and second or rental homes usually do not qualify. Details are in the mysafeflhome.com FAQs and s. 215.5586.' },
+        { q: 'Can I start the work before my grant is approved?', a: 'No. The program FAQs say that starting mitigation work before official grant approval disqualifies you from reimbursement.' },
+        { q: 'Is MSFH the same as a private OIR-B1-1802 inspection?', a: 'No. MSFH is the state program: the program assigns the inspector and a grant may follow. Form OIR-B1-1802 is the mitigation form an authorized inspector you hire completes for insurance documentation. They are separate paths that can complement each other; our wind mitigation inspection guide covers the form.' },
+        { q: 'What improvements does the grant cover?', a: 'When the initial report recommends them: opening protection, roof-to-wall attachment, roof deck attachment and secondary water resistance (SWR). Only what was recommended and then verified at the final inspection qualifies.' },
+      ],
+      sources: SOURCES_EN,
+    },
+
     es: {
       title: 'My Safe Florida Home 2026: inspección gratis y subsidio (tope oficial de $10,000)',
       metaTitle: 'My Safe Florida Home 2026: subsidio e inspección | M&K Agency',
