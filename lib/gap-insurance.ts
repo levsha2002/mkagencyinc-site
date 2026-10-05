@@ -44,8 +44,11 @@ export type GapCopy = {
   noNote: string;
   faqH2: string;
   faq: Faq[];
-  formH2: string;
-  formSub: string;
+  /** Short add-on form title in the hero. Not a new-policy quote. */
+  addonTitle: string;
+  addonSub: string;
+  finalH2: string;
+  finalSub: string;
   form: CcFormCopy;
 };
 
@@ -117,13 +120,17 @@ const EN: GapCopy = {
       a: "Yes. Call us first. We'll help you open the claim, gather what's needed (like the payoff statement from your lender and the settlement from your auto insurance) and follow the gap part of the claim with you until it's done.",
     },
   ],
-  formH2: 'Request a quote to add gap coverage to your auto policy',
-  formSub: "Leave your name and number. A licensed agent will call you back and explain your options in plain language.",
+  addonTitle: 'Add GAP to your auto policy',
+  addonSub: 'Leave your name and phone. A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.',
+  finalH2: 'Prefer to talk to an agent?',
+  finalSub: 'Call or send a WhatsApp message during office hours — Mon–Fri, 9am–6pm ET.',
   form: {
     ...CC.en.form,
     policy: 'Type of insurance',
     waText: GAP_WA_TEXT.en,
     noteLabel: 'Gap insurance',
+    submit: 'Add GAP to my auto policy',
+    okP: 'A licensed agent will call you back during office hours — Mon–Fri, 9am–6pm ET.',
   },
 };
 
@@ -195,13 +202,17 @@ const ES: GapCopy = {
       a: 'Sí. Llámenos primero. Le ayudamos a abrir el reclamo, a reunir lo necesario (como el estado de saldo de su prestamista y la liquidación de su seguro de auto) y damos seguimiento a la parte GAP del reclamo con usted hasta que se resuelva.',
     },
   ],
-  formH2: 'Solicite una cotización para agregar la cobertura GAP a su póliza de auto',
-  formSub: 'Déjenos su nombre y teléfono. Un agente con licencia le devolverá la llamada y le explicará sus opciones con palabras claras.',
+  addonTitle: 'Agregue GAP a su póliza de auto',
+  addonSub: 'Deje su nombre y teléfono. Un agente licenciado le llamará en horario de oficina — lun–vie, 9am–6pm ET.',
+  finalH2: '¿Prefiere hablar con un agente?',
+  finalSub: 'Llame o escriba por WhatsApp en horario de oficina — lun–vie, 9am–6pm ET.',
   form: {
     ...CC.es.form,
     policy: 'Tipo de seguro',
     waText: GAP_WA_TEXT.es,
     noteLabel: 'Seguro GAP',
+    submit: 'Agregar GAP a mi póliza de auto',
+    okP: 'Un agente licenciado le llamará en horario de oficina — lun–vie, 9am–6pm ET.',
   },
 };
 
@@ -273,13 +284,17 @@ const RU: GapCopy = {
       a: 'Да. Сначала позвоните нам. Мы поможем открыть страховой случай, собрать нужные документы (например, справку об остатке долга от банка и расчёт выплаты от автостраховщика) и будем вести GAP-часть выплаты вместе с вами до конца.',
     },
   ],
-  formH2: 'Запросите расчёт: GAP-покрытие к вашему автополису',
-  formSub: 'Оставьте имя и телефон. Лицензированный агент перезвонит вам и простыми словами объяснит варианты.',
+  addonTitle: 'Добавьте GAP к вашему автополису',
+  addonSub: 'Оставьте имя и телефон. Лицензированный агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
+  finalH2: 'Удобнее поговорить с агентом?',
+  finalSub: 'Позвоните или напишите в WhatsApp в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
   form: {
     ...CC.ru.form,
     policy: 'Вид страховки',
     waText: GAP_WA_TEXT.ru,
     noteLabel: 'GAP-страховка',
+    submit: 'Добавить GAP к моему автополису',
+    okP: 'Лицензированный агент перезвонит в рабочие часы — Пн–Пт, 9:00–18:00 ET.',
   },
 };
 

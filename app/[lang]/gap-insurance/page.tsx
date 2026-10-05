@@ -9,10 +9,11 @@ import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
 // /[lang]/gap-insurance: gap insurance landing page for new-car buyers.
 // Same design system and short lead form as /coverage-check (source
 // 'gap-insurance', Auto preselected, note "Gap insurance", same conversion
-// tracking). Every CTA button jumps to the form (#quote). Phone numbers use
-// PHONE_DISPLAY / PHONE_TEL so the site-wide call tracking applies. WhatsApp
-// links on this page carry a gap-specific message (see WhatsAppLink
-// pageText). Copy lives in lib/gap-insurance.ts.
+// tracking). The hero leads with a large call button and a large WhatsApp
+// button, then the add-on form (#quote). Later "request a quote" buttons
+// jump to that form. Phone numbers use PHONE_DISPLAY / PHONE_TEL so the
+// site-wide call tracking applies. WhatsApp links use WhatsAppLink (gap
+// message via pageText). Copy lives in lib/gap-insurance.ts.
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const c = GAP[pickLang(params.lang)];
@@ -26,6 +27,30 @@ function CtaButton({ label }: { label: string }) {
     <a href="#quote" className="cta cc-cta">
       {label} →
     </a>
+  );
+}
+
+function GapActions({
+  lang,
+  callPrefix,
+  waLabel,
+  placement,
+}: {
+  lang: string;
+  callPrefix: string;
+  waLabel: string;
+  placement: string;
+}) {
+  return (
+    <div className="gap-actions">
+      <a href={`tel:${PHONE_TEL}`} className="cta gap-call">
+        <span aria-hidden="true">📞</span>
+        <span>{callPrefix} <span className="cc-nowrap">{PHONE_DISPLAY}</span></span>
+      </a>
+      <WhatsAppLink lang={lang} placement={placement} className="cta gap-wa-btn">
+        <WhatsAppIcon size={22} /> {waLabel}
+      </WhatsAppLink>
+    </div>
   );
 }
 
@@ -43,32 +68,38 @@ export default function GapInsurancePage({ params }: { params: { lang: string } 
     <main className="cc gap">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      {/* ===== Hero ===== */}
+      {/* ===== Hero: call + WhatsApp, then the short add-on form ===== */}
       <section className="cc-hero">
-        <div className="container cc-hero-grid">
-          <div>
+        <div className="container gap-hero-grid">
+          <div className="gap-hero-copy">
             <span className="badge gold">{c.badge}</span>
             <h1>{c.h1}</h1>
             <p className="cc-sub">{c.sub}</p>
-            <div className="cc-cta-row">
-              <CtaButton label={c.cta} />
-              <a href={`tel:${PHONE_TEL}`} className="cta cc-call">
-                📞 {c.callPrefix} <span className="cc-nowrap">{PHONE_DISPLAY}</span>
-              </a>
-            </div>
             <p className="cc-micro">{c.micro}</p>
-            <WhatsAppLink lang={lang} placement="gap_hero" className="gap-wa">
-              <WhatsAppIcon size={18} /> {c.waHero}
-            </WhatsAppLink>
+            <GapActions lang={lang} callPrefix={c.callPrefix} waLabel={c.waHero} placement="gap_hero" />
           </div>
-          <div className="cc-hero-photo-wrap">
+          <div id="quote" className="gap-hero-form">
+            <CoverageCheckForm
+              lang={lang}
+              copy={c.form}
+              source={GAP_SOURCE}
+              leadEvent="gap_insurance_lead"
+              defaultPolicy="Auto"
+              hashPolicy={NO_HASH_POLICY}
+              note={GAP_NOTE}
+              variant="addon"
+              heading={c.addonTitle}
+              subheading={c.addonSub}
+            />
+          </div>
+          <div className="cc-hero-photo-wrap gap-hero-photo">
             <Image
               src="/images/cat-auto.jpg"
               alt={c.heroAlt}
               width={1280}
               height={720}
               priority
-              sizes="(max-width: 900px) 100vw, 500px"
+              sizes="(max-width: 900px) 100vw, 520px"
               className="cc-hero-photo"
             />
           </div>
@@ -155,28 +186,15 @@ export default function GapInsurancePage({ params }: { params: { lang: string } 
         </div>
       </section>
 
-      {/* ===== Final CTA + form ===== */}
-      <section className="section cc-form-section" id="quote">
-        <div className="container cc-form-grid">
-          <div className="cc-form-intro">
-            <h2>{c.formH2}</h2>
-            <p className="cc-sub">{c.formSub}</p>
-            <a href={`tel:${PHONE_TEL}`} className="cc-big-phone">📞 {PHONE_DISPLAY}</a>
-            <p>
-              <WhatsAppLink lang={lang} placement="gap_final" className="gap-wa">
-                <WhatsAppIcon size={18} /> {c.waHero}
-              </WhatsAppLink>
-            </p>
+      {/* ===== Final contact (the only form is in the hero, #quote) ===== */}
+      <section className="section cc-form-section">
+        <div className="container gap-final">
+          <h2>{c.finalH2}</h2>
+          <p className="gap-final-sub">{c.finalSub}</p>
+          <GapActions lang={lang} callPrefix={c.callPrefix} waLabel={c.waHero} placement="gap_final" />
+          <div className="center-cta">
+            <CtaButton label={c.cta} />
           </div>
-          <CoverageCheckForm
-            lang={lang}
-            copy={c.form}
-            source={GAP_SOURCE}
-            leadEvent="gap_insurance_lead"
-            defaultPolicy="Auto"
-            hashPolicy={NO_HASH_POLICY}
-            note={GAP_NOTE}
-          />
         </div>
       </section>
     </main>
