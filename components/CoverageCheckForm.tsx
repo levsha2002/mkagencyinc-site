@@ -35,7 +35,9 @@ import {
 //
 // Shared by the landing pages: /coverage-check (defaults) and /gap-insurance
 // (copy, source 'gap-insurance', event 'gap_insurance_lead', Auto preselected,
-// note 'Gap insurance'). See the props below.
+// note 'Gap insurance'). The gap page uses variant="addon": same POST, TCPA
+// consent and honeypot, with the policy picker and extra contact line hidden
+// so the form reads as adding GAP to an auto policy. See the props below.
 
 declare global {
   interface Window {
@@ -54,6 +56,9 @@ export default function CoverageCheckForm({
   defaultPolicy = '',
   hashPolicy = CC_HASH_POLICY,
   note,
+  variant = 'default',
+  heading,
+  subheading,
 }: {
   lang: string;
   /** Form strings; default: the coverage-check copy for this language. */
@@ -67,9 +72,18 @@ export default function CoverageCheckForm({
   hashPolicy?: Record<string, CcPolicy>;
   /** Fixed request label shown on the form and sent with the lead (whitelisted server-side). */
   note?: string;
+  /**
+   * `addon` is the short GAP form: policy stays at defaultPolicy (not a
+   * picker) and the "prefer to talk" line is omitted. The payload is unchanged.
+   */
+  variant?: 'default' | 'addon';
+  /** Optional title inside the card (GAP add-on heading). */
+  heading?: string;
+  subheading?: string;
 }) {
   const lang = pickLang(rawLang);
   const t = copy || CC[lang].form;
+  const addon = variant === 'addon';
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [prefLang, setPrefLang] = useState<Lang>(lang);
@@ -165,9 +179,11 @@ export default function CoverageCheckForm({
   }
 
   return (
-    <form className="card cc-form" onSubmit={submit} data-lead-form>
+    <form className={`card cc-form${addon ? ' cc-form-addon' : ''}`} onSubmit={submit} data-lead-form>
       <Honeypot />
-      {note && t.noteLabel && (
+      {heading && <h2>{heading}</h2>}
+      {subheading && <p className="sub">{subheading}</p>}
+      {!addon && note && t.noteLabel && (
         <p className="cc-note"><span aria-hidden="true">🚗</span> {t.noteLabel}</p>
       )}
       <div className="field">
@@ -193,15 +209,17 @@ export default function CoverageCheckForm({
           ))}
         </div>
       </fieldset>
-      <div className="field">
-        <label htmlFor="cc-policy">{t.policy}</label>
-        <select id="cc-policy" name="policy_type" required value={policy} onChange={(e) => setPolicy(e.target.value as CcPolicy)}>
-          <option value="" disabled>{t.choose}</option>
-          {CC_POLICIES.map((p) => (
-            <option key={p} value={p}>{t.policies[p]}</option>
-          ))}
-        </select>
-      </div>
+      {!addon && (
+        <div className="field">
+          <label htmlFor="cc-policy">{t.policy}</label>
+          <select id="cc-policy" name="policy_type" required value={policy} onChange={(e) => setPolicy(e.target.value as CcPolicy)}>
+            <option value="" disabled>{t.choose}</option>
+            {CC_POLICIES.map((p) => (
+              <option key={p} value={p}>{t.policies[p]}</option>
+            ))}
+          </select>
+        </div>
+      )}
       <ConsentCheckbox id="cc-consent" lang={lang} checked={consent} onChange={setConsent} />
       <button type="submit" className="submit" disabled={status === 'sending'}>
         {status === 'sending' ? t.sending : t.submit}
@@ -211,16 +229,18 @@ export default function CoverageCheckForm({
           {t.err} <a href={`tel:${PHONE_TEL}`} style={{ textDecoration: 'underline' }}>{PHONE_DISPLAY}</a>
         </p>
       )}
-      <p className="cc-talk">
-        {t.talkBefore}
-        <a href={`tel:${PHONE_TEL}`} className="cc-talk-phone">{PHONE_DISPLAY}</a>
-        {t.talkMid}
-        <WhatsAppLink lang={lang} placement={source} text={t.waText} className="wa-link cc-talk-wa" iconSize={15}>
-          <WhatsAppIcon size={15} />
-          {t.talkWa}
-        </WhatsAppLink>
-        {t.talkAfter}
-      </p>
+      {!addon && (
+        <p className="cc-talk">
+          {t.talkBefore}
+          <a href={`tel:${PHONE_TEL}`} className="cc-talk-phone">{PHONE_DISPLAY}</a>
+          {t.talkMid}
+          <WhatsAppLink lang={lang} placement={source} text={t.waText} className="wa-link cc-talk-wa" iconSize={15}>
+            <WhatsAppIcon size={15} />
+            {t.talkWa}
+          </WhatsAppLink>
+          {t.talkAfter}
+        </p>
+      )}
     </form>
   );
 }

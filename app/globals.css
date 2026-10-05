@@ -1343,8 +1343,27 @@ body { font-size: 16.5px; }
 .gap-callout a:hover { text-decoration: underline; }
 
 /* ===== Gap insurance landing (app/[lang]/gap-insurance) — reuses the cc-* system ===== */
-.gap-wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #157a3c; font-weight: 800; }
-.gap-wa:hover { text-decoration: underline; }
+/* Hero conversion: large primary call + WhatsApp, then the short add-on form. */
+.gap-hero-grid { display: grid; grid-template-columns: 1fr; gap: 18px; align-items: start; }
+.gap-hero-copy .cc-sub { margin-bottom: 8px; }
+.gap-hero-copy .cc-micro { margin-top: 0; margin-bottom: 14px; }
+.gap-actions { display: flex; flex-direction: column; gap: 12px; }
+.gap-actions .cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; text-align: center; font-size: 1.12rem; font-weight: 800;
+  line-height: 1.2; padding: 16px 18px; min-height: 58px;
+}
+.gap-call { background: var(--navy); color: #fff; }
+.gap-wa-btn { background: #1a8f47; color: #fff; box-shadow: 0 8px 20px rgba(21,122,60,.25); }
+.gap-wa-btn:hover { background: #157a3c; color: #fff; text-decoration: none; }
+.gap-hero-form .cc-form { max-width: none; justify-self: stretch; }
+.cc-form-addon h2 { text-align: left; color: var(--navy); font-size: clamp(1.35rem, 2.4vw, 1.7rem); line-height: 1.2; margin-bottom: 6px; }
+.cc-form-addon .sub { margin-bottom: 14px; }
+.cc-form-addon .field { margin-bottom: 10px; }
+.gap-final { max-width: 40rem; text-align: center; }
+.gap-final-sub { color: var(--muted); margin: 8px auto 18px; max-width: 36rem; }
+.gap-final .gap-actions { max-width: 40rem; margin: 0 auto; }
+.gap-final .center-cta { margin-top: 18px; }
 .gap-what { background: #fff; border-top: 1px solid #eef2f7; border-bottom: 1px solid #eef2f7; }
 .gap-what-grid { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: start; }
 .gap-what h2, .gap-no h2 { text-align: left; }
@@ -1374,9 +1393,14 @@ body { font-size: 16.5px; }
 .gap-no-list li:before { content: '✕'; position: absolute; left: 4px; top: 10px; color: #b3261e; font-weight: 900; }
 .gap-no .cc-tip { margin-left: 0; }
 @media (min-width: 701px) {
+  .gap-actions { flex-direction: row; align-items: stretch; }
+  .gap-actions .cta { flex: 1 1 0; width: auto; }
   .gap-who-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (min-width: 901px) {
+@media (min-width: 900px) {
+  .gap-hero-grid { grid-template-columns: 1.05fr .95fr; gap: 22px 40px; }
+  .gap-hero-form { grid-column: 2; grid-row: 1 / span 2; }
+  .gap-hero-photo { grid-column: 1; }
   .gap-what-grid { grid-template-columns: 1.1fr 1fr; gap: 40px; }
   .gap-who-grid { grid-template-columns: repeat(6, 1fr); }
   .gap-who-card { grid-column: span 2; }
