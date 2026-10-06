@@ -24,9 +24,15 @@ declare global {
 // extraType: optional page-specific product (e.g. { value: 'Boat', label: 'Barco' }
 // on the Florida boat page). It is added as the first option and preselected,
 // so the lead email says exactly what the visitor asked about.
-export default function LeadForm({ lang, defaultType = 'Auto', source, extraType }: { lang: string; defaultType?: LeadType; source?: string; extraType?: { value: string; label: string } }) {
+// lockType: trade pages (BusinessServicePage) pass this with defaultType
+// "Commercial". The visitor cannot switch the lead to Auto or Home.
+// extraType, if also passed, is only the visible label (the trade name);
+// the posted insurance_type stays defaultType.
+export default function LeadForm({ lang, defaultType = 'Auto', source, extraType, lockType = false }: { lang: string; defaultType?: LeadType; source?: string; extraType?: { value: string; label: string }; lockType?: boolean }) {
   const t = getDict(lang).form;
-  const empty = { insurance_type: (extraType ? extraType.value : defaultType) as string, zip_code: '', name: '', phone: '', email: '', message: '' };
+  const typeLabels: Record<LeadType, string> = { Auto: t.auto, Home: t.home, Commercial: t.commercial, Life: t.life };
+  const postedType = lockType ? defaultType : (extraType ? extraType.value : defaultType);
+  const empty = { insurance_type: postedType, zip_code: '', name: '', phone: '', email: '', message: '' };
   const [formData, setFormData] = useState(empty);
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<'' | 'sending' | 'ok' | 'err'>('');
@@ -37,17 +43,23 @@ export default function LeadForm({ lang, defaultType = 'Auto', source, extraType
     const company = hpEl ? hpEl.value : '';
     setStatus('sending');
     const transactionId = newTransactionId('lead');
+    const insuranceType = lockType ? defaultType : formData.insurance_type;
+    // Full URL, including query (utm_source and the rest), so the lead email
+    // and DB show the exact page. /api/lead already stores page_url.
+    const pageUrl = typeof window !== 'undefined' ? window.location.href.slice(0, 500) : '';
     try {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          insurance_type: insuranceType,
           lang,
           company,
           transaction_id: transactionId,
           ...(source ? { source } : {}),
           ...consentPayload(lang),
+          page_url: pageUrl,
           attribution: getAttribution(),
         }),
       });
@@ -61,7 +73,7 @@ export default function LeadForm({ lang, defaultType = 'Auto', source, extraType
           // Conversions -> Summary.
           trackConversion(
             'callback_request',
-            { insurance_type: formData.insurance_type, lang },
+            { insurance_type: insuranceType, lang },
             { transactionId, email: formData.email, phone: formData.phone },
           );
           // 2) Generic GA4-style signal, kept for broader analytics/event
@@ -70,7 +82,7 @@ export default function LeadForm({ lang, defaultType = 'Auto', source, extraType
             send_to: GOOGLE_ADS_ID,
             currency: 'USD',
             value: 1,
-            insurance_type: formData.insurance_type,
+            insurance_type: insuranceType,
             transaction_id: transactionId,
             ...(source ? { lead_source: source } : {}),
           });
@@ -89,13 +101,19 @@ export default function LeadForm({ lang, defaultType = 'Auto', source, extraType
         <Honeypot />
         <div className="field">
           <label htmlFor="lead-insurance-type">{t.need}</label>
-          <select id="lead-insurance-type" value={formData.insurance_type}
-            onChange={(e) => setFormData({ ...formData, insurance_type: e.target.value })}>
-            {extraType && <option value={extraType.value}>{extraType.label}</option>}
-            <option value="Auto">{t.auto}</option>
-            <option value="Home">{t.home}</option>
-            <option value="Commercial">{t.commercial}</option>
-            <option value="Life">{t.life}</option>
+          <select id="lead-insurance-type" value={lockType ? defaultType : formData.insurance_type}
+            onChange={(e) => { if (!lockType) setFormData({ ...formData, insurance_type: e.target.value }); }}>
+            {lockType ? (
+              <option value={defaultType}>{extraType?.label || typeLabels[defaultType]}</option>
+            ) : (
+              <>
+                {extraType && <option value={extraType.value}>{extraType.label}</option>}
+                <option value="Auto">{t.auto}</option>
+                <option value="Home">{t.home}</option>
+                <option value="Commercial">{t.commercial}</option>
+                <option value="Life">{t.life}</option>
+              </>
+            )}
           </select>
         </div>
         <div className="grid2">
