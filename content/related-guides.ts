@@ -40,6 +40,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       '/homeowners-insurance-broward-county-fl',
     ],
     links: [
+      { blog: 'roof-age-home-insurance-florida' },
       { blog: 'wind-mitigation-inspection-florida' },
       { blog: 'my-safe-florida-home-2026' },
       { blog: 'citizens-takeout-offer' },
@@ -72,7 +73,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/new-construction-home-insurance-florida'],
-    links: [{ blog: 'builder-warranty-vs-homeowners-insurance-florida' }],
+    links: [
+      { blog: 'builder-warranty-vs-homeowners-insurance-florida' },
+      { blog: 'roof-age-home-insurance-florida' },
+    ],
   },
   {
     pages: ['/classic-car-insurance-florida-city'],
