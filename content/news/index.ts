@@ -6,10 +6,12 @@ import { edition as e20260926 } from './posts/2026-09-26-citizens-rate-filings-k
 import { edition as e20261002 } from './posts/2026-10-02-rental-rates-driving-citizens-agents';
 import { edition as e20261003 } from './posts/2026-10-03-life-coa-king-tides-figa-citizens';
 import { edition as e20261004 } from './posts/2026-10-04-homeowner-poll-nfip-cmv';
+import { edition as e20261006 } from './posts/2026-10-06-citizens-forms-comp-hearing-claims';
 
 export const editions: NewsEdition[] = [
   e20260926,
   e20261002,
   e20261003,
   e20261004,
+  e20261006,
 ];
