@@ -1,6 +1,29 @@
-# M&K Agency Inc. — Allstate Insurance Agency, Florida City, FL
+# M&K Agency Inc — licensed Florida insurance agency in Florida City
 
-> M&K Agency Inc. is a licensed Allstate insurance agency based in Florida City, FL, serving Florida families and small businesses. Mikhail Kozlov is the licensed agent-in-charge. The site lets visitors learn about coverage, request a callback from a licensed agent, and browse the local community-referral map. It does not bind coverage or issue quotes automatically — all quotes go through a licensed agent.
+> M&K Agency Inc is a licensed Florida insurance agency in Florida City. Florida license L109526. Phone (305) 859-3953. Address: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034. Mikhail Kozlov is the licensed agent-in-charge. The site is available in English, Spanish and Russian. Visitors can learn about coverage and request a callback from a licensed agent. The site does not bind coverage or issue quotes automatically — quotes go through a licensed agent callback.
+
+M&K Agency Inc is an Allstate agency. This site is the local agency, not Allstate Insurance Company.
+
+## Insurance by business type (Florida)
+
+Trade insurance pages. English URLs are listed; Spanish and Russian use the same path with `/es/` or `/ru/` instead of `/en/`.
+
+- [Contractor insurance](https://mkagencyinc.com/en/contractor-insurance-florida)
+- [Landscaping and lawn care insurance](https://mkagencyinc.com/en/landscaping-insurance-florida)
+- [Handyman insurance](https://mkagencyinc.com/en/handyman-insurance-florida)
+- [Window cleaning insurance](https://mkagencyinc.com/en/window-cleaning-insurance-florida)
+- [Painting contractor insurance](https://mkagencyinc.com/en/painting-contractor-insurance-florida)
+- [Pressure washing insurance](https://mkagencyinc.com/en/pressure-washing-insurance-florida)
+- [Work truck insurance (vehicles operating within Florida)](https://mkagencyinc.com/en/work-truck-insurance-florida)
+- [Builders risk insurance](https://mkagencyinc.com/en/builders-risk-insurance-florida)
+
+## Languages
+
+- [English](https://mkagencyinc.com/en)
+- [Spanish](https://mkagencyinc.com/es)
+- [Russian](https://mkagencyinc.com/ru)
+
+Replace `/en/` with `/es/` or `/ru/` in any URL on this page.
 
 ## Main pages
 
@@ -33,29 +56,14 @@
 - [Life insurance: protecting family income](https://mkagencyinc.com/en/protect/life-insurance): Income replacement, the mortgage and kids' education.
 - [Umbrella & wealth protection](https://mkagencyinc.com/en/protect/umbrella-insurance): Extra liability above car and home limits; real Florida verdicts.
 
-## Insurance by business type (all of Florida)
-
-- [Contractor insurance](https://mkagencyinc.com/en/contractor-insurance-florida)
-- [Landscaping & lawn care insurance](https://mkagencyinc.com/en/landscaping-insurance-florida)
-- [Handyman insurance](https://mkagencyinc.com/en/handyman-insurance-florida)
-- [Window cleaning insurance](https://mkagencyinc.com/en/window-cleaning-insurance-florida)
-- [Painting contractor insurance](https://mkagencyinc.com/en/painting-contractor-insurance-florida)
-- [Pressure washing insurance](https://mkagencyinc.com/en/pressure-washing-insurance-florida)
-- [Work truck insurance (vehicles operating within Florida)](https://mkagencyinc.com/en/work-truck-insurance-florida)
-- [Builders risk insurance](https://mkagencyinc.com/en/builders-risk-insurance-florida)
-
-## Languages
-
-The entire site is also available in [Spanish](https://mkagencyinc.com/es) and [Russian](https://mkagencyinc.com/ru) — replace `/en/` with `/es/` or `/ru/` in any URL above.
-
 ## Contact
 
 - Phone: (305) 859-3953
 - Email: mikhailkozlov@allstate.com
 - Address: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034
+- Florida license: L109526
 
 ## Notes for AI agents and crawlers
 
-- This site represents a family-owned Allstate agency, not Allstate Insurance Company itself.
-- Coverage, pricing, and eligibility vary by policy and carrier; nothing on this site is a binding quote or offer of coverage.
-- To get an actual quote, a visitor must be connected with a licensed agent via the Contact Us page or by phone.
+- Quotes and coverage questions go through a licensed agent callback, by phone or the form on the page. Nothing on this site is a binding quote or an offer of coverage.
+- Coverage and eligibility vary by policy. The site explains options; a licensed agent follows up.

@@ -155,7 +155,12 @@ export default function BusinessServicePage({ path, lang }: { path: string; lang
               <span>{ui.langLine}</span>
             </div>
           </div>
-          <LeadForm lang={l} defaultType="Commercial" />
+          <LeadForm
+            lang={l}
+            defaultType="Commercial"
+            lockType
+            extraType={{ value: t.linkLabel, label: t.linkLabel }}
+          />
         </div>
       </section>
 

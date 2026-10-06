@@ -171,7 +171,12 @@ export default function GuidePage({ path, lang }: { path: string; lang: string }
             </div>
             <SendPolicyCta lang={l} placement="hero" />
           </div>
-          <LeadForm lang={l} defaultType={page.leadType} source={source} />
+          <LeadForm
+            lang={l}
+            defaultType={page.leadType}
+            source={source}
+            {...(page.leadType === 'Commercial' ? { lockType: true } : {})}
+          />
         </div>
       </section>
 
