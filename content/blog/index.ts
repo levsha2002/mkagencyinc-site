@@ -33,6 +33,7 @@ import { post as usdotWorkTrucks } from './posts/usdot-number-florida-work-truck
 import { post as constructionStallsBuildersRisk } from './posts/construction-stalls-builders-risk-florida';
 import { post as bodilyInjuryFr44Florida } from './posts/bodily-injury-liability-fr44-florida';
 import { post as roofAgeHomeInsurance } from './posts/roof-age-home-insurance-florida';
+import { post as seguroAutoLicenciaExtranjera } from './posts/seguro-auto-licencia-extranjera-florida';
 
 
 export const posts: BlogPost[] = [
@@ -67,5 +68,6 @@ export const posts: BlogPost[] = [
   constructionStallsBuildersRisk,
   bodilyInjuryFr44Florida,
   roofAgeHomeInsurance,
+  seguroAutoLicenciaExtranjera,
 ];
 
