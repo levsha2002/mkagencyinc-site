@@ -27,7 +27,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       '/car-insurance-miami-dade-county-fl',
       '/car-insurance-broward-county-fl',
     ],
-    links: [{ blog: 'uninsured-motorist-coverage-florida' }],
+    links: [
+      { blog: 'uninsured-motorist-coverage-florida' },
+      { blog: 'seguro-auto-licencia-extranjera-florida' },
+    ],
   },
   {
     // Homeowners page and its 5 city variants.
