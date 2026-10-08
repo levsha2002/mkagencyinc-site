@@ -28,6 +28,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       '/car-insurance-broward-county-fl',
     ],
     links: [
+      { blog: 'florida-minimum-car-insurance-requirements' },
       { blog: 'uninsured-motorist-coverage-florida' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
