@@ -8,6 +8,7 @@ import { edition as e20261003 } from './posts/2026-10-03-life-coa-king-tides-fig
 import { edition as e20261004 } from './posts/2026-10-04-homeowner-poll-nfip-cmv';
 import { edition as e20261006 } from './posts/2026-10-06-citizens-forms-comp-hearing-claims';
 import { edition as e20261007 } from './posts/2026-10-07-isaias-citizens-battery-appraisal';
+import { edition as e20261008 } from './posts/2026-10-08-isaias-binding-refills-affiliates-flood';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -16,4 +17,5 @@ export const editions: NewsEdition[] = [
   e20261004,
   e20261006,
   e20261007,
+  e20261008,
 ];
