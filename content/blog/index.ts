@@ -3,6 +3,7 @@
 // matter (the index sorts by datePublished). See content/blog/README.md.
 import type { BlogPost } from './types';
 import { post as hurricaneClaimChecklist } from './posts/hurricane-claim-checklist-florida';
+import { post as comprehensiveVsCollision } from './posts/comprehensive-vs-collision-florida';
 import { post as citizensFlood2027 } from './posts/citizens-flood-insurance-requirement-2027';
 import { post as citizensTakeoutOffer } from './posts/citizens-takeout-offer';
 import { post as uninsuredMotoristFlorida } from './posts/uninsured-motorist-coverage-florida';
@@ -73,5 +74,6 @@ export const posts: BlogPost[] = [
   seguroAutoLicenciaExtranjera,
   floridaMinimumCarInsurance,
   hurricaneClaimChecklist,
+  comprehensiveVsCollision,
 ];
 

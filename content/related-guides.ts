@@ -29,6 +29,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     ],
     links: [
       { blog: 'florida-minimum-car-insurance-requirements' },
+      { blog: 'comprehensive-vs-collision-florida' },
       { blog: 'uninsured-motorist-coverage-florida' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
