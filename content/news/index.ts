@@ -11,6 +11,7 @@ import { edition as e20261007 } from './posts/2026-10-07-isaias-citizens-battery
 import { edition as e20261008 } from './posts/2026-10-08-isaias-binding-refills-affiliates-flood';
 import { edition as e20261009 } from './posts/2026-10-09-isaias-major-deductible-citizens-claims';
 import { edition as e20261010 } from './posts/2026-10-10-isaias-landfall-fema-dfs-claim-deadlines';
+import { edition as e20261011 } from './posts/2026-10-11-citizens-reopens-emergency-expands-oir-data-call';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -22,4 +23,5 @@ export const editions: NewsEdition[] = [
   e20261008,
   e20261009,
   e20261010,
+  e20261011,
 ];
