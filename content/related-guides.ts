@@ -50,6 +50,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'wind-mitigation-inspection-florida' },
       { blog: 'my-safe-florida-home-2026' },
       { blog: 'citizens-takeout-offer' },
+      { blog: 'citizens-property-insurance-local-agent' },
       {
         page: '/florida-home-insurance-wind-deductible',
         label: {
