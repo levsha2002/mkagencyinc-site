@@ -56,3 +56,11 @@ export const team: TeamMember[] = [
     quote: "Protecting someone's home is personal to me — it's where their whole life happens.",
   },
 ];
+
+// Former staff. The build fails if a name comes back onto a team list.
+const FORMER_STAFF = /brenda|quiroz|emily|senise/i;
+for (const member of team) {
+  if (FORMER_STAFF.test(`${member.name} ${member.slug} ${member.role}`)) {
+    throw new Error(`team list must not include ${member.name}`);
+  }
+}

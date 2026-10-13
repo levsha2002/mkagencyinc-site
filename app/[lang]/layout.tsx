@@ -142,9 +142,12 @@ export default function RootLayout({
         )}
         {process.env.NODE_ENV === 'production' && (
           <>
+            {/* lazyOnload: afterInteractive preloads this ~490KB file in the
+                document head and it was the largest request on mobile /quote.
+                The inline config below still queues hits until the file loads. */}
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
             <Script id="ad-attribution" strategy="afterInteractive">
               {attributionCaptureScript()}

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Honeypot from '@/components/Honeypot';
 import { getAttribution, type Attribution } from '@/lib/attribution';
-import { GOOGLE_ADS_ID, newTransactionId } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, newTransactionId, trackSiteEvent } from '@/lib/analytics';
 import {
   LANGS,
   PARTNER_TYPES,
@@ -84,8 +84,11 @@ async function post(payload: Record<string, unknown>): Promise<boolean> {
 }
 
 function track(kind: 'referral' | 'partner', lang: Lang) {
+  const form = kind === 'referral' ? 'referral_submit' : 'partner_inquiry_submit';
+  // No Ads conversion label exists for these directory forms. gtag event only.
+  trackSiteEvent('form_submit', { form });
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', kind === 'referral' ? 'referral_submit' : 'partner_inquiry_submit', { lang, send_to: GOOGLE_ADS_ID });
+    window.gtag('event', form, { lang, send_to: GOOGLE_ADS_ID });
   }
 }
 

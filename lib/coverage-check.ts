@@ -38,6 +38,10 @@ export type CcCopy = {
   h1: string;
   sub: string;
   cta: string;
+  /** Large top-of-page call button, before the phone number. */
+  topCall: string;
+  /** Large top-of-page WhatsApp button, before the WhatsApp number. */
+  topWa: string;
   callPrefix: string; // followed by the phone number
   micro: string;
   heroAlt: string;
@@ -88,6 +92,8 @@ export const CC: Record<Lang, CcCopy> = {
     h1: 'Free 5-Minute Coverage Check for Florida Families',
     sub: "Most people find out what their policy doesn't cover after the accident, the storm, or the lawsuit. A licensed agent will review your auto, home, condo, business, or life coverage and show you the gaps before they cost you.",
     cta: 'Have an agent call me',
+    topCall: 'Call',
+    topWa: 'WhatsApp',
     callPrefix: 'Or call now:',
     micro: 'Free. No obligation. English · Español · Русский',
     heroAlt: 'A Florida family in front of their home',
@@ -207,6 +213,8 @@ export const CC: Record<Lang, CcCopy> = {
     h1: 'Revisión gratis de su cobertura en 5 minutos para familias de Florida',
     sub: 'La mayoría de las personas descubre lo que su póliza no cubre después del accidente, la tormenta o la demanda. Un agente licenciado revisará su seguro de auto, casa, condominio, negocio o vida y le mostrará los huecos antes de que le cuesten caro.',
     cta: 'Que me llame un agente',
+    topCall: 'Llame al',
+    topWa: 'WhatsApp',
     callPrefix: 'O llame ahora:',
     micro: 'Gratis. Sin compromiso. English · Español · Русский',
     heroAlt: 'Una familia de Florida frente a su casa',
@@ -326,6 +334,8 @@ export const CC: Record<Lang, CcCopy> = {
     h1: 'Бесплатная проверка страховки за 5 минут для семей во Флориде',
     sub: 'Большинство людей узнаёт, чего не покрывает их полис, уже после аварии, шторма или судебного иска. Лицензированный агент проверит вашу страховку авто, дома, кондо, бизнеса или жизни и покажет пробелы до того, как они обойдутся вам дорого.',
     cta: 'Заказать звонок агента',
+    topCall: 'Позвоните',
+    topWa: 'WhatsApp',
     callPrefix: 'Или позвоните сейчас:',
     micro: 'Бесплатно. Без обязательств. English · Español · Русский',
     heroAlt: 'Семья во Флориде перед своим домом',

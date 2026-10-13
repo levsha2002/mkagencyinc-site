@@ -1,10 +1,11 @@
-import { GOOGLE_ADS_ID, whatsappConversionParams } from '@/lib/analytics';
+import { GOOGLE_ADS_ID, trackSiteEvent, whatsappConversionParams } from '@/lib/analytics';
 
 // WhatsApp contact: Mikhail Kozlov's mobile, (971) 998-7313. Deliberately a
 // different number from the office/call-tracking line (305) 859-3953, so the
 // Google forwarding-number swap (mkCallSwap in lib/analytics.ts), which only
 // matches tel: links and the 305 number, never touches these links.
 export const WHATSAPP_NUMBER = '19719987313';
+export const WHATSAPP_DISPLAY = '(971) 998-7313';
 
 type Lang = 'en' | 'es' | 'ru';
 
@@ -39,6 +40,9 @@ export function whatsappLabel(lang: string): string {
  *  calls preventDefault, so the link opens normally (gtag sends with beacon). */
 export function trackWhatsAppClick(lang: string, placement: string) {
   if (typeof window === 'undefined') return;
+  // Vercel event even if gtag is blocked. The delegated click script skips
+  // [data-wa-link], so this is the only whatsapp_click for <WhatsAppLink>.
+  trackSiteEvent('whatsapp_click', { link_location: placement });
   const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
   if (typeof gtag !== 'function') return;
   gtag('event', 'whatsapp_click', {

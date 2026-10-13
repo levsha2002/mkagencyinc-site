@@ -65,18 +65,15 @@ export default function LeadForm({ lang, defaultType = 'Auto', source, extraType
       });
       if (res.ok) {
         setStatus('ok');
-        // Fires on every successful form submit.
+        // Fires on every successful form submit. Vercel form_submit plus the
+        // existing "Submit lead form" Ads conversion (skipped if gtag is absent).
+        trackConversion(
+          'callback_request',
+          { insurance_type: insuranceType, lang },
+          { transactionId, email: formData.email, phone: formData.phone },
+        );
         if (typeof window !== 'undefined' && window.gtag) {
-          // 1) Google Ads conversion — this is what makes the submission
-          // count as a "Conversion" (with cost-per-lead reporting) in
-          // Google Ads, tied to the "Submit lead form" action created in
-          // Conversions -> Summary.
-          trackConversion(
-            'callback_request',
-            { insurance_type: insuranceType, lang },
-            { transactionId, email: formData.email, phone: formData.phone },
-          );
-          // 2) Generic GA4-style signal, kept for broader analytics/event
+          // Generic GA4-style signal, kept for broader analytics/event
           // history (not required for Google Ads conversion counting).
           window.gtag('event', 'generate_lead', {
             send_to: GOOGLE_ADS_ID,

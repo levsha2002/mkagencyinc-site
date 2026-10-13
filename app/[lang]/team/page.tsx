@@ -3,6 +3,7 @@ import TeamSection from '@/components/TeamSection';
 import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import OfficeMap from '@/components/OfficeMap';
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const t = getDict(params.lang).team;
@@ -21,10 +22,15 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
 
   return (
     <main>
-      <section
-        className="team-hero"
-        style={{ backgroundImage: "url('/images/Hero-hurricane.jpg')" }}
-      >
+      <section className="team-hero">
+        <Image
+          src="/images/Hero-hurricane.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="team-hero-img"
+        />
         <div className="team-hero-overlay">
           <div className="container">
             <h1>{t.h1}</h1>
@@ -50,14 +56,7 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
 
           <div>
             <div className="office-map-side">
-              <div className="office-map-embed">
-                <iframe
-                  title="M&K Agency office location"
-                  src="https://www.google.com/maps?q=33550+S+Dixie+Hwy+Suite+102,+Florida+City,+FL+33034&z=17&output=embed"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+              <OfficeMap label={t.officeMapLabel} title="M&K Agency office location" />
               {/* Sized from the CSS 4/3 aspect ratio; the class still controls
                   the actual layout, these dimensions only tell next/image what
                   to generate. */}
@@ -108,10 +107,14 @@ export default function TeamPage({ params }: { params: { lang: string } }) {
       {/* ===== Full agent roster ===== */}
       <TeamSection lang={params.lang} />
 
-      <section
-        className="team-community-banner"
-        style={{ backgroundImage: "url('/images/Flood_water_street.jpg')" }}
-      >
+      <section className="team-community-banner">
+        <Image
+          src="/images/Flood_water_street.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="team-hero-img"
+        />
         <div className="team-community-overlay">
           <div className="container">
             <h2>{t.communityTitle}</h2>

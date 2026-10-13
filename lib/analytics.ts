@@ -10,6 +10,8 @@
 //      imported into Google Ads as a conversion from the GA4 property.
 //   2. A Google Ads conversion, only once a label is filled in below.
 
+import { ATTR_KEY } from '@/lib/attribution';
+
 export const GOOGLE_ADS_ID = 'AW-18321801016';
 
 // Website call conversion ("Website calls 60s+": Google forwarding number,
@@ -228,10 +230,59 @@ export function setUserData(opts: { email?: string; phone?: string } = {}) {
 // label. Use send_to: GOOGLE_ADS_ID for plain events, and the
 // GOOGLE_ADS_ID/label form only for the conversion action it belongs to.
 
+const ATTR_MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000;
+
+/** utm_source from the current URL, else the stored mk_attr click (90 days). */
+export function readUtmSource(): string {
+  if (typeof window === 'undefined') return '';
+  try {
+    const q = new URLSearchParams(window.location.search).get('utm_source');
+    if (q) return q.slice(0, 200);
+  } catch {}
+  try {
+    const a = JSON.parse(localStorage.getItem(ATTR_KEY) || '{}') as { utm_source?: string; ts?: number };
+    if (!a.ts || Date.now() - a.ts > ATTR_MAX_AGE_MS) return '';
+    return (a.utm_source || '').slice(0, 200);
+  } catch {
+    return '';
+  }
+}
+
+type SiteEventName = 'call_click' | 'whatsapp_click' | 'form_submit';
+
+/** Vercel Web Analytics custom event. Queues on window.va until the analytics
+ *  script replaces it, so an early click is not dropped. Does not call gtag. */
+export function trackSiteEvent(name: SiteEventName, extra: Record<string, string | number | boolean | undefined> = {}) {
+  if (typeof window === 'undefined') return;
+  const w = window as Window & { va?: (...args: unknown[]) => void; vaq?: unknown[][] };
+  if (typeof w.va !== 'function') {
+    w.va = function vaQueue(...params: unknown[]) {
+      (w.vaq = w.vaq || []).push(params);
+    };
+  }
+  const path = window.location.pathname.slice(0, 200);
+  const seg = path.split('/')[1] || '';
+  const lang = seg === 'en' || seg === 'es' || seg === 'ru' ? seg : '';
+  const utm = readUtmSource();
+  const data: Record<string, string | number | boolean> = { path };
+  if (lang) data.lang = lang;
+  if (utm) data.utm_source = utm;
+  for (const [k, v] of Object.entries(extra)) {
+    if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') {
+      if (v !== '') data[k] = v;
+    }
+  }
+  w.va('event', { name, data });
+}
+
 /** Fires a named GA4 event plus, when a label is configured, the Ads conversion.
- *  Call only after the lead API has answered OK. */
+ *  Call only after the lead API has answered OK.
+ *  Also fires one Vercel `form_submit` event. There is no Ads conversion label
+ *  named form_submit; the conversion below is the existing label for `action`
+ *  (callback_request, quote_submit, chat_lead, talknow_lead). */
 export function trackConversion(action: ConversionAction, params: Params = {}, opts: ConversionOptions = {}) {
   if (typeof window === 'undefined') return;
+  trackSiteEvent('form_submit', { form: action });
   const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
   if (typeof gtag !== 'function') return;
 
@@ -253,7 +304,33 @@ export function phoneClickTrackingScript() {
   const labels = JSON.stringify(CONVERSION_LABELS);
   return `
 (function(){
-  var ADS='${GOOGLE_ADS_ID}', L=${labels};
+  var ADS='${GOOGLE_ADS_ID}', L=${labels}, ATTR='${ATTR_KEY}';
+  function ctx(){
+    var path=location.pathname.slice(0,200), seg=(path.split('/')[1]||''), lang='';
+    if(seg==='en'||seg==='es'||seg==='ru') lang=seg;
+    var utm='';
+    try {
+      var q=new URLSearchParams(location.search).get('utm_source');
+      if(q) utm=q.slice(0,200);
+    } catch(e){}
+    if(!utm){
+      try {
+        var a=JSON.parse(localStorage.getItem(ATTR)||'{}');
+        if(a && a.ts && (Date.now()-a.ts)<7776000000 && a.utm_source) utm=String(a.utm_source).slice(0,200);
+      } catch(e2){}
+    }
+    var d={path:path};
+    if(lang) d.lang=lang;
+    if(utm) d.utm_source=utm;
+    return d;
+  }
+  function va(name){
+    var w=window;
+    if(typeof w.va!=='function'){
+      w.va=function(){ (w.vaq=w.vaq||[]).push(Array.prototype.slice.call(arguments)); };
+    }
+    w.va('event', {name:name, data:ctx()});
+  }
   function fire(action, href){
     if(typeof window.gtag!=='function') return;
     window.gtag('event', action, { send_to: ADS, link_url: href });
@@ -274,6 +351,7 @@ export function phoneClickTrackingScript() {
       if(w.hasAttribute('data-wa-link')) return;
       var wh=w.getAttribute('href')||'';
       if(wh.indexOf('${WHATSAPP_TRACK_NUMBER}')<0) return;
+      va('whatsapp_click');
       if(typeof window.gtag!=='function') return;
       window.gtag('event','whatsapp_click',{ send_to: ADS, page_path: location.pathname, link_location: 'raw_link', link_url: wh });
       window.gtag('event','conversion',{ send_to: '${WHATSAPP_CONVERSION_SEND_TO}', value: 1.0, currency: 'USD' });
@@ -282,7 +360,8 @@ export function phoneClickTrackingScript() {
     var a=t.closest('a[href^="tel:"], a[href^="sms:"]');
     if(!a) return;
     var href=a.getAttribute('href')||'';
-    fire(href.slice(0,4)==='tel:' ? 'phone_call' : 'sms_click', href);
+    if(href.slice(0,4)==='tel:'){ va('call_click'); fire('phone_call', href); }
+    else fire('sms_click', href);
   }, true);
 })();`.trim();
 }

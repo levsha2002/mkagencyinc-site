@@ -144,11 +144,11 @@ export default function CoverageCheckForm({
         return;
       }
       setStatus('ok');
+      const params = { insurance_type: policyValue, lang, preferred_lang: prefLang, source };
+      // Same Google Ads conversion + GA event as the other lead forms.
+      trackConversion('callback_request', params, { transactionId, phone });
       if (window.gtag) {
-        const params = { insurance_type: policyValue, lang, preferred_lang: prefLang, source };
-        // 1) Same Google Ads conversion + GA event as the other lead forms.
-        trackConversion('callback_request', params, { transactionId, phone });
-        // 2) Same generic lead event as LeadForm / quote page.
+        // Same generic lead event as LeadForm / quote page.
         window.gtag('event', 'generate_lead', {
           send_to: GOOGLE_ADS_ID,
           currency: 'USD',

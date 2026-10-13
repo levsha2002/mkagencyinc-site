@@ -96,6 +96,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Your info stays private. No spam, ever.',
     okH1: "You're all set!", okSub: 'Thanks — our team will call you back during office hours, Mon–Fri 9am–6pm ET. Need us right now?', okCall: '📞 Call (305) 859-3953',
     mapTitle: '📍 Visit us — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
+    showMap: 'Show the office map',
     scan: 'Prefer an online quote form? Scan or tap the code.',
     callTitle: 'Call', textTitle: 'Text', smsBody: "Hi! I'd like to talk to {name} about my insurance.",
     prefAgent: 'Preferred agent',
@@ -117,6 +118,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Su información es privada. Nunca le enviaremos spam.',
     okH1: '¡Todo listo!', okSub: 'Gracias — nuestro equipo le llamará en horario de oficina, lun–vie 9am–6pm ET. ¿Nos necesita ahora mismo?', okCall: '📞 Llamar (305) 859-3953',
     mapTitle: '📍 Visítenos — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
+    showMap: 'Ver el mapa de la oficina',
     scan: '¿Prefiere un formulario de cotización en línea? Escanee o toque el código.',
     callTitle: 'Llamar', textTitle: 'Texto', smsBody: '¡Hola! Me gustaría hablar con {name} sobre mi seguro.',
     prefAgent: 'Agente preferido',
@@ -138,6 +140,7 @@ const UI: Record<Lang, Record<string, string>> = {
     privacy: '🔒 Ваши данные конфиденциальны. Никакого спама.',
     okH1: 'Готово!', okSub: 'Спасибо — перезвоним в рабочие часы, Пн–Пт 9:00–18:00 ET. Нужны прямо сейчас?', okCall: '📞 Позвонить (305) 859-3953',
     mapTitle: '📍 Наш офис — 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034',
+    showMap: 'Показать карту офиса',
     scan: 'Удобнее онлайн-форма заявки? Отсканируйте или нажмите на код.',
     callTitle: 'Позвонить', textTitle: 'Написать', smsBody: 'Здравствуйте! Хочу поговорить с {name} о страховке.',
     prefAgent: 'Предпочитаемый агент',
@@ -156,6 +159,7 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
   const [ins, setIns] = useState('');
   const [form, setForm] = useState({ zip: '', name: '', phone: '', email: '', message: '', consent: false });
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err' | 'err-consent'>('idle');
+  const [mapOn, setMapOn] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -186,12 +190,12 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
         // single highest-volume conversion point. Uses the same Google Ads
         // conversion action as LeadForm.tsx so all lead-capture forms roll
         // up into one "Submit lead form" conversion in Conversions -> Summary.
+        trackConversion(
+          'callback_request',
+          { insurance_type: ins || 'General', lang },
+          { transactionId, email: form.email, phone: form.phone },
+        );
         if (typeof window !== 'undefined' && window.gtag) {
-          trackConversion(
-            'callback_request',
-            { insurance_type: ins || 'General', lang },
-            { transactionId, email: form.email, phone: form.phone },
-          );
           window.gtag('event', 'generate_lead', {
             send_to: GOOGLE_ADS_ID,
             currency: 'USD',
@@ -331,7 +335,11 @@ export default function ContactAgentsPage({ ratingBadge }: { ratingBadge?: React
 
         <div className="qh-map" id="map">
           <div className="qh-map-cap">{t.mapTitle}</div>
-          <iframe src={MAP_EMBED} loading="lazy" title="M&K Agency office map" />
+          {mapOn ? (
+            <iframe src={MAP_EMBED} loading="lazy" title="M&K Agency office map" />
+          ) : (
+            <button type="button" className="qh-map-open" onClick={() => setMapOn(true)}>{t.showMap}</button>
+          )}
         </div>
 
         <div className="qh-qr">
@@ -391,6 +399,7 @@ const CSS = `
 .qh-map{margin-top:26px;border-radius:20px;overflow:hidden;border:1px solid #dbe4f0;box-shadow:0 8px 28px rgba(6,28,61,.10)}
 .qh-map-cap{background:#fff;padding:12px 16px;font-size:14px;font-weight:700;color:#082a59}
 .qh-map iframe{width:100%;height:300px;border:0;display:block}
+.qh-map-open{width:100%;height:180px;border:0;background:#e8f1fc;color:#07274f;font-weight:800;font-size:16px;cursor:pointer}
 .qh-qr{display:flex;flex-direction:column;align-items:center;gap:8px;margin:26px auto 0;padding:18px;background:#fff;border:1px solid #e6ecf5;border-radius:18px;max-width:220px;text-align:center}
 .qh-qr span{font-size:12px;color:#5b6b7f;line-height:1.4}
 .qh-ok{min-height:100vh;background:linear-gradient(180deg,#eef4fd,#f8fafc);color:#07274f;display:flex;align-items:center;justify-content:center;padding:24px}
