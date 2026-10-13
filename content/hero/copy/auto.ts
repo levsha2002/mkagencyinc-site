@@ -1,6 +1,6 @@
 // Car insurance landing page (/[lang]/car-insurance-florida-city). `h` completes
 // the fixed SEO prefix: "Car insurance in Florida City & Homestead," /
-// "Seguro de auto en Florida City y Homestead," / "Автостраховка во Florida City и Homestead —".
+// "Seguro de carro en Florida City y Homestead," / "Автостраховка во Florida City и Homestead —".
 import { V, type HeroCopyPool } from './types';
 
 export const auto: HeroCopyPool = {
