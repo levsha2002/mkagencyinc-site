@@ -5,6 +5,8 @@ import { team } from '@/lib/team-data';
 import { CC, CC_PATH, pickLang } from '@/lib/coverage-check';
 import CoverageCheckForm from '@/components/CoverageCheckForm';
 import SendPolicyCta from '@/components/SendPolicyCta';
+import WhatsAppLink, { WhatsAppIcon } from '@/components/WhatsAppLink';
+import { WHATSAPP_DISPLAY } from '@/lib/whatsapp';
 import { dailyHero } from '@/content/hero';
 
 // /[lang]/coverage-check: "Free Coverage Check" landing page (EN/ES/RU).
@@ -52,6 +54,16 @@ export default function CoverageCheckPage({ params }: { params: { lang: string }
       <section className="cc-hero">
         <div className="container cc-hero-grid">
           <div>
+            {/* Large call + WhatsApp first, so both sit above the fold on a phone. */}
+            <div className="gap-actions cc-top-actions">
+              <a href={`tel:${PHONE_TEL}`} className="cta gap-call">
+                <span aria-hidden="true">📞</span>
+                <span>{c.topCall} <span className="cc-nowrap">{PHONE_DISPLAY}</span></span>
+              </a>
+              <WhatsAppLink lang={lang} placement="coverage_top" className="cta gap-wa-btn">
+                <WhatsAppIcon size={22} /> {c.topWa} <span className="cc-nowrap">{WHATSAPP_DISPLAY}</span>
+              </WhatsAppLink>
+            </div>
             <span className="badge gold">{c.badge}</span>
             <h1>{hero.copy.h}</h1>
             <p className="cc-sub">{hero.copy.sub}</p>

@@ -19,9 +19,11 @@ const GOV_EO: NewsSource = {
 
 const CITIZENS_BINDING: NewsSource = {
   name: 'Citizens Property Insurance Corporation',
-  date: '2025-12-30',
-  url: 'https://securesupport.citizensfla.com/app/answers/detail/a_id/1455',
-  title: 'What is Citizens hurricane or tropical storm binding suspension rule?',
+  date: '2026-10-07',
+  // The agent knowledge-base URL (securesupport.citizensfla.com) returns 401
+  // to the public. This is the public notice of the same binding rule.
+  url: 'https://www.citizensfla.com/-/20261007-citizens-is-under-binding-suspension',
+  title: 'Citizens Is Under Binding Suspension',
 };
 
 const FLOODSMART: NewsSource = {
@@ -69,6 +71,7 @@ const MIAMI_DADE_TIDES: NewsSource = {
 export const edition: NewsEdition = {
   slug: '2026-10-07-isaias-citizens-battery-appraisal',
   datePublished: '2026-10-07',
+  dateModified: '2026-10-13',
   translations: {
     en: {
       title:

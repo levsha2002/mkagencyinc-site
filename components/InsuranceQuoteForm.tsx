@@ -80,12 +80,12 @@ export default function InsuranceQuoteForm({
       if (res.ok) {
         // Success-only: same "Submit lead form" conversion action as
         // LeadForm.tsx and /quote.
+        trackConversion(
+          'quote_submit',
+          { insurance_type: product.title, product_slug: product.slug, lang },
+          { transactionId, email, phone },
+        );
         if (typeof window !== 'undefined' && window.gtag) {
-          trackConversion(
-            'quote_submit',
-            { insurance_type: product.title, product_slug: product.slug, lang },
-            { transactionId, email, phone },
-          );
           window.gtag('event', 'generate_lead', {
             send_to: GOOGLE_ADS_ID,
             currency: 'USD',

@@ -17,7 +17,7 @@ export default function TeamSection({ lang }: { lang: string }) {
         <div className="team-grid">
           {team.map((m) => (
             <div key={m.slug} id={m.slug} className="agent-card">
-              <Image src={m.photo} alt={m.name} width={140} height={175} className="agent-photo" />
+              <Image src={m.photo} alt={m.name} width={140} height={175} sizes="(max-width: 560px) 100vw, 140px" className="agent-photo" />
               <div className="agent-info">
                 <h3>{m.name}</h3>
                 <p className="agent-role">{m.role}</p>
