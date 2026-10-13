@@ -22,6 +22,9 @@ export const revalidate = 3600;
 
 type Lang = 'en' | 'es' | 'ru';
 
+// Inline links in the copy (global CSS resets <a> to inherit color).
+const linkStyle = { color: 'var(--blue)', fontWeight: 600 } as const;
+
 const C: Record<Lang, any> = {
   en: {
     metaTitle: 'Car Insurance in Florida City, FL | M&K Agency',
@@ -61,41 +64,48 @@ const C: Record<Lang, any> = {
     disclaimer: 'Coverage descriptions are general information, not policy language. Requirements and eligibility vary by carrier and driver profile.',
   },
   es: {
-    metaTitle: 'Seguro de Auto en Florida City, FL | M&K Agency',
+    metaTitle: 'Seguro de carro en Florida City y Homestead | M&K Agency',
     metaDesc:
-      'Agentes locales licenciados en Florida City y Homestead le explican qué cubre su póliza de auto. Hablamos español.',
-    kicker: 'Seguro de Auto · Florida City y Homestead',
-    h1a: 'Seguro de auto en Florida City y Homestead,',
+      `¿Busca seguro de auto o aseguranza de carro en Homestead o Florida City? Agentes licenciados le explican su póliza en español. Llame al ${PHONE_DISPLAY}.`,
+    kicker: 'Seguro de auto · Florida City y Homestead',
+    h1a: 'Seguro de carro en Florida City y Homestead,',
     h1b: 'explicado con claridad.',
     sub: 'Sus vecinos en S Dixie Hwy le explican exactamente qué cubre su póliza de auto. Una llamada, tres idiomas, agentes locales de verdad.',
     cta: 'Que me llame un agente',
-    call: `Llame ${PHONE_DISPLAY}`,
-    whyTitle: 'Por qué el seguro de auto cuesta más aquí — y qué hacemos al respecto',
+    call: `Llame al ${PHONE_DISPLAY}`,
+    whyTitle: 'Su seguro de auto, explicado por un agente local',
     whyText:
-      'Los conductores de Miami-Dade pagan algunas de las primas más altas de Florida: tráfico denso en la US-1 y el Turnpike, alto porcentaje de conductores sin seguro y exposición a tormentas. Como agencia local en Florida City, revisamos su perfil exacto de manejo y aplicamos cada descuento que le corresponde — y le explicamos su cobertura en lenguaje sencillo.',
+      'Muchos en Homestead y Florida City le dicen “aseguranza de carro”; en la póliza aparece como seguro de auto. Se llame como se llame, en M&K Agency le explicamos en español qué cubre cada parte: el PIP y el PDL que exige Florida, la responsabilidad por lesiones corporales, la cobertura de motorista sin seguro y las coberturas de choque y amplia para su propio carro. Revisamos con usted quién maneja, qué vehículos tiene y qué necesita proteger, y le decimos con claridad qué incluye cada opción antes de que firme.',
+    whyLinks: [
+      '¿Le pidieron un SR-22 o un FR-44? Vea nuestra página de ',
+      { href: '/es/sr22-insurance-florida-city', label: 'seguro SR-22 y FR-44 en Florida City' },
+      '. ¿Acaba de llegar a Florida o maneja con licencia de otro país? Lea nuestra guía sobre el ',
+      { href: '/es/blog/seguro-auto-licencia-extranjera-florida', label: 'seguro de auto con licencia extranjera' },
+      '.',
+    ],
     covTitle: 'Coberturas que cotizamos todos los días',
     cov: [
-      { h: 'Mínimo estatal: PIP y PDL', p: 'Florida exige $10,000 de PIP y $10,000 de responsabilidad por daños a la propiedad. Cumplimos la ley — y le explicamos dónde el mínimo lo deja expuesto.' },
-      { h: 'Cobertura completa (comp & collision)', p: 'Protección para su propio auto — accidentes, robo, inundación y huracán. Requerida por la mayoría de los financiamientos y leases.' },
-      { h: 'Lesiones corporales y conductor sin seguro', p: 'Aproximadamente 1 de cada 5 conductores en Florida no tiene seguro. La cobertura UM lo protege a usted y a su familia.' },
-      { h: 'Trámites SR-22 / FR-44', p: 'Después de un DUI o problema de licencia, hacemos el trámite estatal y buscamos aseguradoras con tarifas justas.' },
-      { h: 'Rideshare (Uber / Lyft)', p: 'Las pólizas personales excluyen el rideshare. Cotizamos endosos y pólizas híbridas que cubren cada milla.' },
-      { h: 'Motocicleta, bote y RV', p: 'De Harleys a jet skis — combine sus vehículos con su póliza de auto y ahorre en ambos.' },
+      { h: 'Mínimo de Florida: PIP y PDL', p: 'La ley de Florida exige $10,000 de PIP y $10,000 de responsabilidad por daños a la propiedad (PDL). Nos aseguramos de que cumpla con la ley y le explicamos en qué casos el mínimo lo deja desprotegido.', link: { href: '/es/blog/florida-minimum-car-insurance-requirements', label: 'Qué cubren el PIP y el PDL' } },
+      { h: 'Cobertura completa: choque y amplia', p: 'Las coberturas de choque (collision) y amplia (comprehensive) protegen su propio carro en accidentes, robo, inundación y huracanes. La mayoría de los préstamos y contratos de leasing las exigen.', link: { href: '/es/blog/comprehensive-vs-collision-florida', label: 'Cobertura amplia vs. colisión' } },
+      { h: 'Lesiones corporales y motorista sin seguro', p: 'No todos los conductores en Florida tienen seguro suficiente. La cobertura de motorista sin seguro (UM) lo protege a usted y a su familia cuando el otro conductor no tiene con qué responder.' },
+      { h: 'Certificados SR-22 y FR-44', p: 'Después de ciertas infracciones o de una condena por DUI, el estado puede exigirle un SR-22 (límites 10/20/10) o un FR-44 (100/300/50). Le cotizamos la póliza y la aseguradora presenta el certificado ante el FLHSMV.', link: { href: '/es/sr22-insurance-florida-city', label: 'Seguro SR-22 y FR-44 en Florida City' } },
+      { h: 'Rideshare (Uber / Lyft)', p: 'Por lo general, la póliza personal no cubre el tiempo en que usted maneja para una app de rideshare. Le cotizamos endosos y pólizas pensadas para ese uso.' },
+      { h: 'Moto, bote y casa rodante (RV)', p: 'De motos a jet skis: cotizamos sus otros vehículos junto con su seguro de carro, con el mismo agente para todo.' },
     ],
-    localTitle: 'Una oficina real, a 10 minutos',
+    localTitle: 'Una oficina de verdad, a 10 minutos',
     localText:
-      'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City — junto a Homestead, Leisure City y Naranja. Visítenos, llame o envíe un texto. Comprobante de seguro el mismo día, ayuda con trámites del DHSMV y acompañamiento en reclamos.',
+      'Estamos en 33550 S Dixie Hwy, Suite 102, Florida City, cerca de Homestead, Leisure City y Naranja. Atendemos de lunes a viernes de 9 a 6, y los sábados con cita. Visítenos, llámenos o envíenos un mensaje de texto: normalmente puede tener su comprobante de seguro el mismo día, le ayudamos con los trámites del FLHSMV y lo acompañamos durante el reclamo.',
     langLine: 'English · Español · По-русски',
     formTitle: 'Hable con un agente licenciado',
-    faqTitle: 'Seguro de auto en Florida City — preguntas frecuentes',
+    faqTitle: 'Seguro de carro en Florida City: preguntas frecuentes',
     faq: [
-      { q: '¿Qué seguro de auto es obligatorio en Florida City, FL?', a: 'La ley de Florida exige $10,000 de Protección por Lesiones Personales (PIP) y $10,000 de Responsabilidad por Daños a la Propiedad (PDL). La cobertura por lesiones corporales no es obligatoria para la mayoría, pero es muy recomendable — y obligatoria tras ciertas infracciones (SR-22/FR-44).' },
-      { q: '¿Por qué el seguro es tan caro en el condado de Miami-Dade?', a: 'Tráfico denso, uno de los porcentajes más altos de conductores sin seguro del país, exposición a tormentas y costos legales elevan las primas. Revisar su perfil exacto y aplicar cada descuento disponible es la forma más eficaz de no pagar de más.' },
-      { q: '¿Aseguran a conductores con licencia extranjera?', a: 'Sí. Trabajamos con recién llegados cada semana, en inglés, español y ruso, y le explicamos cada paso del proceso.' },
-      { q: '¿Qué tan rápido obtengo mi comprobante de seguro?', a: 'Normalmente el mismo día. La mayoría de las pólizas se cotizan y emiten en una hora — sale con su comprobante válido de Florida.' },
-      { q: '¿Cobran por cotizar?', a: 'No. Las cotizaciones son gratis y sin compromiso, y pedir una no afecta su puntaje de crédito.' },
+      { q: '¿Qué seguro de auto es obligatorio en Florida?', a: 'La ley de Florida exige $10,000 de Protección contra Lesiones Personales (PIP) y $10,000 de Responsabilidad por Daños a la Propiedad (PDL). La cobertura de lesiones corporales (BI) no es obligatoria para la mayoría de los conductores, pero es muy recomendable, y el estado la exige después de ciertas infracciones mediante un SR-22 o un FR-44.' },
+      { q: '¿Cuándo me piden un SR-22 o un FR-44?', a: 'Según el FLHSMV, si usted tuvo la culpa de un choque con heridos y no tenía cobertura de lesiones corporales, debe mantener límites de 10/20/10 con un SR-22 durante tres años, además de cumplir otros requisitos del caso. Tras una condena por DUI, la ley exige un FR-44 con $100,000/$300,000 por lesiones y $50,000 por daños a la propiedad durante un mínimo de tres años (s. 324.023).', link: { href: '/es/sr22-insurance-florida-city', label: 'Seguro SR-22 y FR-44 en Florida City' } },
+      { q: '¿Aseguran a conductores con licencia extranjera?', a: 'Sí. Cada semana atendemos a recién llegados en español, inglés y ruso. Como visitante, puede manejar en Florida con una licencia válida de su país (s. 322.04); cuando se establece aquí, tiene 30 días para sacar la licencia de Florida.', link: { href: '/es/blog/seguro-auto-licencia-extranjera-florida', label: 'Guía para recién llegados con licencia extranjera' } },
+      { q: '¿Qué tan rápido obtengo mi comprobante de seguro?', a: 'Normalmente el mismo día. Muchas pólizas se cotizan y se emiten en menos de una hora, y usted sale con su comprobante de seguro de Florida.' },
+      { q: '¿Qué necesito para cotizar mi seguro de carro?', a: 'Su licencia de conducir, el número VIN o el año, la marca y el modelo del carro, la dirección donde lo guarda, los datos de los demás conductores de su casa y, si la tiene, la página de declaraciones de su póliza actual. Si le exigen un SR-22 o un FR-44, traiga también el aviso del FLHSMV.' },
     ],
-    disclaimer: 'Las descripciones de cobertura son información general, no lenguaje de póliza. Los requisitos y la elegibilidad varían según la aseguradora y el perfil del conductor.',
+    disclaimer: 'Las descripciones de las coberturas son información general, no el texto de la póliza. Los requisitos y la elegibilidad varían según la aseguradora y el perfil del conductor.',
   },
   ru: {
     metaTitle: 'Автостраховка во Флорида-Сити, FL | M&K Agency',
@@ -195,6 +205,13 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
           <p style={{ maxWidth: '46rem', margin: '0 auto', textAlign: 'center', color: 'var(--muted)' }}>
             {t.whyText}
           </p>
+          {t.whyLinks && (
+            <p style={{ maxWidth: '46rem', margin: '14px auto 0', textAlign: 'center', color: 'var(--muted)' }}>
+              {t.whyLinks.map((x: string | { href: string; label: string }, i: number) =>
+                typeof x === 'string' ? x : <Link key={i} href={x.href} style={{ ...linkStyle, textDecoration: 'underline' }}>{x.label}</Link>,
+              )}
+            </p>
+          )}
         </div>
       </section>
 
@@ -202,10 +219,15 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
         <div className="container">
           <h2>{t.covTitle}</h2>
           <div className="cards4 cards3">
-            {t.cov.map((c: { h: string; p: string }) => (
+            {t.cov.map((c: { h: string; p: string; link?: { href: string; label: string } }) => (
               <div className="svc" key={c.h}>
                 <h3>{c.h}</h3>
                 <p>{c.p}</p>
+                {c.link && (
+                  <p style={{ marginTop: 8 }}>
+                    <Link href={c.link.href} style={linkStyle}>{c.link.label} →</Link>
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -234,10 +256,15 @@ export default function CarInsuranceFloridaCity({ params }: { params: { lang: st
         <div className="container">
           <h2>{t.faqTitle}</h2>
           <div style={{ maxWidth: '46rem', margin: '0 auto' }}>
-            {t.faq.map((f: { q: string; a: string }) => (
+            {t.faq.map((f: { q: string; a: string; link?: { href: string; label: string } }) => (
               <details key={f.q} style={{ background: '#fff', border: '1px solid #e6ecf5', borderRadius: 14, padding: '14px 18px', marginBottom: 10 }}>
                 <summary style={{ fontWeight: 700, color: 'var(--navy)', cursor: 'pointer' }}>{f.q}</summary>
                 <p style={{ marginTop: 8, color: 'var(--muted)' }}>{f.a}</p>
+                {f.link && (
+                  <p style={{ marginTop: 6 }}>
+                    <Link href={f.link.href} style={linkStyle}>{f.link.label} →</Link>
+                  </p>
+                )}
               </details>
             ))}
             <p style={{ fontSize: '.78rem', color: 'var(--muted)', marginTop: 14 }}>{t.disclaimer}</p>
