@@ -14,6 +14,7 @@ import { edition as e20261010 } from './posts/2026-10-10-isaias-landfall-fema-df
 import { edition as e20261011 } from './posts/2026-10-11-citizens-reopens-emergency-expands-oir-data-call';
 import { edition as e20261012 } from './posts/2026-10-12-dfs-hub-deductible-closes-king-tides';
 import { edition as e20261013 } from './posts/2026-10-13-pensacola-hub-oir-crf-bridge-loan';
+import { edition as e20261014 } from './posts/2026-10-14-dfast-claims-flhsmv-fema';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -28,4 +29,5 @@ export const editions: NewsEdition[] = [
   e20261011,
   e20261012,
   e20261013,
+  e20261014,
 ];
