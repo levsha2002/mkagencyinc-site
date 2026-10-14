@@ -38,6 +38,7 @@ import { post as roofAgeHomeInsurance } from './posts/roof-age-home-insurance-fl
 import { post as seguroAutoLicenciaExtranjera } from './posts/seguro-auto-licencia-extranjera-florida';
 import { post as floridaMinimumCarInsurance } from './posts/florida-minimum-car-insurance-requirements';
 import { post as citizensLocalAgent } from './posts/citizens-property-insurance-local-agent';
+import { post as floodDamagedUsedCar } from './posts/flood-damaged-used-car-florida';
 
 
 export const posts: BlogPost[] = [
@@ -77,5 +78,6 @@ export const posts: BlogPost[] = [
   hurricaneClaimChecklist,
   comprehensiveVsCollision,
   citizensLocalAgent,
+  floodDamagedUsedCar,
 ];
 
