@@ -48,6 +48,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     links: [
       { blog: 'roof-age-home-insurance-florida' },
       { blog: 'hurricane-claim-checklist-florida' },
+      { blog: 'king-tides-flood-insurance-miami-dade' },
       { blog: 'wind-mitigation-inspection-florida' },
       { blog: 'my-safe-florida-home-2026' },
       { blog: 'citizens-takeout-offer' },
@@ -68,7 +69,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/flood-insurance-homestead-fl'],
-    links: [{ blog: 'citizens-flood-insurance-requirement-2027' }],
+    links: [
+      { blog: 'king-tides-flood-insurance-miami-dade' },
+      { blog: 'citizens-flood-insurance-requirement-2027' },
+    ],
   },
   // Condo page (supporting article from the gap-articles batches).
   {

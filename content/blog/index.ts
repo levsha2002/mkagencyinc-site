@@ -39,6 +39,7 @@ import { post as seguroAutoLicenciaExtranjera } from './posts/seguro-auto-licenc
 import { post as floridaMinimumCarInsurance } from './posts/florida-minimum-car-insurance-requirements';
 import { post as citizensLocalAgent } from './posts/citizens-property-insurance-local-agent';
 import { post as floodDamagedUsedCar } from './posts/flood-damaged-used-car-florida';
+import { post as kingTidesFloodInsurance } from './posts/king-tides-flood-insurance-miami-dade';
 
 
 export const posts: BlogPost[] = [
@@ -79,5 +80,6 @@ export const posts: BlogPost[] = [
   comprehensiveVsCollision,
   citizensLocalAgent,
   floodDamagedUsedCar,
+  kingTidesFloodInsurance,
 ];
 
