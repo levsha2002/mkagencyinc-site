@@ -105,7 +105,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   // Trade pages (components/business/BusinessServicePage).
   {
     pages: ['/contractor-insurance-florida'],
-    links: [{ blog: 'chapter-558-notice-contractors-florida' }],
+    links: [
+      { blog: 'chapter-558-notice-contractors-florida' },
+      { blog: 'helper-employee-or-1099-florida-workers-comp' },
+    ],
   },
   {
     pages: ['/landscaping-insurance-florida'],
