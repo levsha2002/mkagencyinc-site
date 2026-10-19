@@ -31,6 +31,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'florida-minimum-car-insurance-requirements' },
       { blog: 'comprehensive-vs-collision-florida' },
       { blog: 'flood-damaged-used-car-florida' },
+      { blog: 'florida-license-suspended-no-insurance' },
       { blog: 'uninsured-motorist-coverage-florida' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
@@ -65,7 +66,11 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/sr22-insurance-florida-city'],
-    links: [{ blog: 'non-owner-sr22-florida' }, { blog: 'sr22-florida-guia' }],
+    links: [
+      { blog: 'florida-license-suspended-no-insurance' },
+      { blog: 'non-owner-sr22-florida' },
+      { blog: 'sr22-florida-guia' },
+    ],
   },
   {
     pages: ['/flood-insurance-homestead-fl'],
