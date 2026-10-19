@@ -18,6 +18,7 @@ import { edition as e20261014 } from './posts/2026-10-14-dfast-claims-flhsmv-fem
 import { edition as e20261015 } from './posts/2026-10-15-escambia-pda-oir-crf-hubs-fdacs';
 import { edition as e20261017 } from './posts/2026-10-17-major-disaster-rv-citizens';
 import { edition as e20261018 } from './posts/2026-10-18-rip-currents-flood-panels-isaias-losses';
+import { edition as e20261019 } from './posts/2026-10-19-flhsmv-breach-coastal-low-school-bus';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -36,4 +37,5 @@ export const editions: NewsEdition[] = [
   e20261015,
   e20261017,
   e20261018,
+  e20261019,
 ];
