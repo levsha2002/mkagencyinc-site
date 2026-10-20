@@ -41,6 +41,7 @@ import { post as citizensLocalAgent } from './posts/citizens-property-insurance-
 import { post as floodDamagedUsedCar } from './posts/flood-damaged-used-car-florida';
 import { post as kingTidesFloodInsurance } from './posts/king-tides-flood-insurance-miami-dade';
 import { post as licenseSuspendedNoInsurance } from './posts/florida-license-suspended-no-insurance';
+import { post as certificateOfInsuranceContractors } from './posts/certificate-of-insurance-contractors-florida';
 
 
 export const posts: BlogPost[] = [
@@ -83,5 +84,6 @@ export const posts: BlogPost[] = [
   floodDamagedUsedCar,
   kingTidesFloodInsurance,
   licenseSuspendedNoInsurance,
+  certificateOfInsuranceContractors,
 ];
 

@@ -111,6 +111,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   {
     pages: ['/contractor-insurance-florida'],
     links: [
+      { blog: 'certificate-of-insurance-contractors-florida' },
       { blog: 'chapter-558-notice-contractors-florida' },
       { blog: 'helper-employee-or-1099-florida-workers-comp' },
     ],
@@ -121,7 +122,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/handyman-insurance-florida'],
-    links: [{ blog: 'helper-employee-or-1099-florida-workers-comp' }],
+    links: [
+      { blog: 'helper-employee-or-1099-florida-workers-comp' },
+      { blog: 'certificate-of-insurance-contractors-florida' },
+    ],
   },
   {
     pages: ['/window-cleaning-insurance-florida'],
@@ -133,7 +137,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/pressure-washing-insurance-florida'],
-    links: [{ blog: 'pressure-washing-runoff-storm-drains-miami-dade' }],
+    links: [
+      { blog: 'certificate-of-insurance-contractors-florida' },
+      { blog: 'pressure-washing-runoff-storm-drains-miami-dade' },
+    ],
   },
   {
     pages: ['/work-truck-insurance-florida'],
