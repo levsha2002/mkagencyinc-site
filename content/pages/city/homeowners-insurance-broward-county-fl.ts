@@ -2,7 +2,6 @@ import type { CityPage } from './types';
 import { sources } from './sources';
 
 // /[lang]/homeowners-insurance-broward-county-fl (county hub). Facts checked 2026-10-03.
-// No Broward city pages exist yet, so `served` has no links.
 const SRC = ['wilma', 'fbcHvhz', 'browardBora', 'acsBroward', 'browardFlood', 'floodsmart', 'windForm', 'mitigation', 'roofAge', 'deductibles', 'claimDeadline', 'condoMaster', 'lossAssessment', 'condoInspections', 'msfh'] as const;
 
 export const HOME_BROWARD: CityPage = {
@@ -14,7 +13,7 @@ export const HOME_BROWARD: CityPage = {
   published: '2026-10-03',
   modified: '2026-10-03',
   served: [
-    { name: 'Fort Lauderdale' }, { name: 'Hollywood' }, { name: 'Hallandale Beach' }, { name: 'Pembroke Pines' },
+    { name: 'Fort Lauderdale' }, { name: 'Hollywood', path: '/homeowners-insurance-hollywood-fl' }, { name: 'Hallandale Beach', path: '/homeowners-insurance-hallandale-beach-fl' }, { name: 'Pembroke Pines' },
     { name: 'Miramar' }, { name: 'Davie' }, { name: 'Plantation' }, { name: 'Sunrise' }, { name: 'Weston' },
     { name: 'Coral Springs' }, { name: 'Pompano Beach' }, { name: 'Deerfield Beach' }, { name: 'Dania Beach' },
     { name: 'Lauderdale-by-the-Sea' }, { name: 'Cooper City' }, { name: 'Tamarac' }, { name: 'Margate' }, { name: 'Coconut Creek' },

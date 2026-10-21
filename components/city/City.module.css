@@ -22,6 +22,9 @@ span.pill { color: #4b5b70; font-weight: 500; background: #f7f9fc; }
 .areas ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .areas a { display: inline-block; background: #fff; border: 1.5px solid #d9e2ec; border-radius: 999px; padding: 7px 13px; color: #082a59; font-weight: 600; font-size: .9rem; text-decoration: none; }
 .areas a:hover, .areas a[aria-current='page'] { border-color: var(--gold); }
+.areaGroup { margin-top: 12px; }
+.areaCounty { margin: 0 0 8px; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.areaCounty a { display: inline; background: none; border: 0; border-radius: 0; padding: 0; color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
 @media (max-width: 640px) {
   .areas { grid-template-columns: minmax(0, 1fr); }
   .check { padding: 18px 16px; }
@@ -30,3 +33,4 @@ span.pill { color: #4b5b70; font-weight: 500; background: #f7f9fc; }
 .footerAreas { margin: 6px auto 14px; max-width: 60rem; font-size: .85rem; line-height: 1.9; }
 .footerAreas strong { color: #fff; margin-right: 6px; }
 .footerAreas a { color: #bcd0ea; white-space: nowrap; }
+.footerGroup { display: block; }

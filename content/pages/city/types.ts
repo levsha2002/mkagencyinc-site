@@ -46,7 +46,7 @@ export interface CityPage {
   line: Line;
   kind: 'city' | 'county';
   /** Short area key used for link lists and the lead `source`. */
-  area: 'homestead' | 'cutler-bay' | 'kendall' | 'miami-dade' | 'broward';
+  area: 'homestead' | 'cutler-bay' | 'kendall' | 'sunny-isles-beach' | 'aventura' | 'hallandale-beach' | 'hollywood' | 'miami-dade' | 'broward';
   /** Parent county hub path (city pages only), for the breadcrumb. */
   parent?: string;
   heroImage: HeroImageKey;

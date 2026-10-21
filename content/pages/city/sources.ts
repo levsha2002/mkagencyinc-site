@@ -10,7 +10,11 @@ type Key =
   | 'acsHomestead' | 'acsCutlerBay' | 'acsKendall' | 'acsMiamiDade' | 'acsBroward'
   | 'roofAge' | 'deductibles' | 'mitigation' | 'claimDeadline' | 'windForm' | 'lossAssessment'
   | 'floodsmart' | 'mdFloodMaps' | 'mdSurge' | 'browardFlood' | 'condoInspections' | 'msfh'
-  | 'cutlerBayTown' | 'homesteadCity' | 'fbcHvhz' | 'mdProductControl' | 'browardBora' | 'pip2026' | 'condoMaster' | 'crashReport';
+  | 'cutlerBayTown' | 'homesteadCity' | 'fbcHvhz' | 'mdProductControl' | 'browardBora' | 'pip2026' | 'condoMaster' | 'crashReport'
+  | 'acsSunnyIsles' | 'acsHallandale' | 'acsAventura' | 'acsHollywood'
+  | 'sibCity' | 'wilmaMd' | 'brightline' | 'brightlineStation'
+  | 'flhsmvNew' | 'flhsmvHandbook' | 'flhsmvVisit'
+  | 'hollywoodHistory' | 'hollywoodFirm' | 'hollywoodBridge';
 
 const EN_SUFFIX: Record<Lang, string> = { en: '', es: ' (en inglés)', ru: ' (на английском)' };
 
@@ -163,6 +167,62 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'Florida Statutes s. 316.065: duty to report crashes with injury or at least $2,000 of apparent damage',
     es: 'Estatutos de Florida, s. 316.065: obligación de reportar accidentes con lesiones o daños aparentes de $2,000 o más',
     ru: 'Статуты Флориды, s. 316.065: обязанность сообщать о ДТП с пострадавшими или ущербом от $2,000' } },
+  acsSunnyIsles: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1269555', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting and language (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Sunny Isles Beach',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo e idioma (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Sunny Isles Beach',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу и язык (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Sunny Isles Beach' } },
+  acsHallandale: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1228452', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting and language (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Hallandale Beach',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo e idioma (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Hallandale Beach',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу и язык (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Hallandale Beach' } },
+  acsAventura: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1202681', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting and language (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Aventura',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo e idioma (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Aventura',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу и язык (B01003, B25024, B25034, B25035, B25003, B25004, B08303, C16001), Aventura' } },
+  acsHollywood: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1232000', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting, nativity and language (B01003, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Hollywood',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo, lugar de nacimiento e idioma (B01003, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Hollywood',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу, место рождения и язык (B01003, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Hollywood' } },
+  sibCity: { url: 'https://www.sibfl.gov/City-Hall/About-Sunny-Isles-Beach', label: {
+    en: 'City of Sunny Isles Beach: incorporated June 16, 1997',
+    es: 'Ciudad de Sunny Isles Beach: incorporada el 16 de junio de 1997',
+    ru: 'City of Sunny Isles Beach: муниципалитет с 16 июня 1997 г.' } },
+  wilmaMd: { url: 'https://www.miamidade.gov/building/library/reports/wilma-assessment.pdf', label: {
+    en: 'Miami-Dade Building Code Compliance: post-Hurricane Wilma assessment (Aventura glazing, Sunny Isles Beach high-rise repairs)',
+    es: 'Miami-Dade Building Code Compliance: evaluación posterior al huracán Wilma (vidrios en Aventura, reparaciones de torres en Sunny Isles Beach)',
+    ru: 'Miami-Dade Building Code Compliance: оценка после урагана Wilma (остекление в Aventura, ремонт высоток в Sunny Isles Beach)' } },
+  brightline: { url: 'https://emma.msrb.org/P21645448-P21266442-P21693053.pdf', label: {
+    en: 'Brightline, December 2022 monthly report: Aventura station opened for passengers on December 24, 2022',
+    es: 'Brightline, informe mensual de diciembre de 2022: la estación de Aventura abrió al público el 24 de diciembre de 2022',
+    ru: 'Brightline, месячный отчёт за декабрь 2022: станция Aventura открылась для пассажиров 24 декабря 2022 г.' } },
+  brightlineStation: { url: 'https://wsvn.com/news/local/miami-dade/grand-opening-held-for-new-brightline-station-in-aventura/', label: {
+    en: 'WSVN, December 24, 2022: Aventura station at 19796 West Dixie Highway, with a shuttle to Aventura Mall',
+    es: 'WSVN, 24 de diciembre de 2022: estación de Aventura en 19796 West Dixie Highway, con servicio al Aventura Mall',
+    ru: 'WSVN, 24 декабря 2022: станция Aventura по адресу 19796 West Dixie Highway и шаттл до Aventura Mall' } },
+  flhsmvNew: { url: 'https://www.flhsmv.gov/new-resident/', label: {
+    en: 'Florida DHSMV: new residents, the 30-day driver-license rule, and insurance before you title or register a vehicle',
+    es: 'Florida DHSMV: nuevos residentes, licencia de conducir en 30 días y seguro antes de titular o registrar un vehículo',
+    ru: 'Florida DHSMV: новые резиденты, права в течение 30 дней и страховка до регистрации машины' } },
+  flhsmvHandbook: { url: 'https://www.flhsmv.gov/pdf/handbooks/englishdriverhandbook.pdf', label: {
+    en: 'Florida Driver License Handbook (FLHSMV): who must get a Florida license, the International Driving Permit, and which foreign licenses waive the exams',
+    es: 'Manual de licencia de conducir de Florida (FLHSMV): quién necesita licencia de Florida, el permiso internacional y qué licencias extranjeras eximen de los exámenes',
+    ru: 'Florida Driver License Handbook (FLHSMV): кому нужны права Флориды, International Driving Permit и какие иностранные права освобождают от экзаменов' } },
+  flhsmvVisit: { url: 'https://www.flhsmv.gov/driver-licenses-id-cards/visiting-florida-faqs/', label: {
+    en: 'Florida DHSMV: visiting Florida with a driver license from another country',
+    es: 'Florida DHSMV: visitar Florida con una licencia de conducir de otro país',
+    ru: 'Florida DHSMV: поездка во Флориду с водительскими правами другой страны' } },
+  hollywoodHistory: { url: 'https://hollywoodfl.org/1539/History-of-Hollywood', label: {
+    en: 'City of Hollywood: Joseph Young’s plan, the lakes along Hollywood Boulevard, and the 1925 Intracoastal bridge',
+    es: 'Ciudad de Hollywood: el plan de Joseph Young, los lagos junto a Hollywood Boulevard y el puente del Intracoastal de 1925',
+    ru: 'City of Hollywood: план Joseph Young, озёра вдоль Hollywood Boulevard и мост через Intracoastal 1925 года' } },
+  hollywoodFirm: { url: 'https://www.hollywoodcra.org/412/FEMAFlood-Maps', label: {
+    en: 'City of Hollywood CRA: FEMA flood maps effective July 31, 2024; more than 11,000 properties added to the Special Flood Hazard Area, 2,115 removed from the mandate',
+    es: 'CRA de Hollywood: mapas de inundación de FEMA vigentes desde el 31 de julio de 2024; más de 11,000 propiedades en la zona especial de riesgo y 2,115 fuera del mandato',
+    ru: 'CRA Hollywood: карты FEMA с 31 июля 2024 г.; более 11 000 участков вошли в Special Flood Hazard Area, 2 115 вышли из обязательного требования' } },
+  hollywoodBridge: { url: 'https://heavymovablestructures.org/wp-content/uploads/2017/12/Rehabilitation-of-the-Hollywood-Blvd-Bridge.pdf', label: {
+    en: 'Hollywood Boulevard (SR 820) bridge: FDOT double-leaf bascule over the Intracoastal Waterway, replaced in 1976',
+    es: 'Puente de Hollywood Boulevard (SR 820): puente basculante de dos hojas del FDOT sobre el Intracoastal, reemplazado en 1976',
+    ru: 'Мост Hollywood Boulevard (SR 820): разводной двукрылый мост FDOT через Intracoastal, заменён в 1976 г.' } },
 };
 
 /** Localized source list for a page, in the given order. */

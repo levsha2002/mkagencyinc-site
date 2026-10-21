@@ -19,7 +19,7 @@ export const CAR_MIAMI_DADE: CityPage = {
     { name: 'Kendall', path: '/car-insurance-kendall-fl' },
     { name: 'Palmetto Bay' }, { name: 'Pinecrest' }, { name: 'South Miami' }, { name: 'Coral Gables' },
     { name: 'Miami' }, { name: 'Doral' }, { name: 'Hialeah' }, { name: 'Miami Beach' },
-    { name: 'North Miami' }, { name: 'Aventura' }, { name: 'Sunny Isles Beach' },
+    { name: 'North Miami' }, { name: 'Aventura', path: '/car-insurance-aventura-fl' }, { name: 'Sunny Isles Beach', path: '/car-insurance-sunny-isles-beach-fl' },
     { name: 'Redland, Leisure City, Naranja and Princeton' },
   ],
   areaServed: [

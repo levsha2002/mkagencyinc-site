@@ -2,7 +2,6 @@ import type { CityPage } from './types';
 import { sources } from './sources';
 
 // /[lang]/car-insurance-broward-county-fl (county hub). Facts checked 2026-10-03.
-// No Broward city pages exist yet, so `served` has no links.
 const SRC = ['flhsmv', 'pip', 'pip2026', 'um', 'iiiUm', 'hb837', 'crashReport', 'wilma', 'acsBroward'] as const;
 
 export const CAR_BROWARD: CityPage = {
@@ -14,7 +13,7 @@ export const CAR_BROWARD: CityPage = {
   published: '2026-10-03',
   modified: '2026-10-03',
   served: [
-    { name: 'Fort Lauderdale' }, { name: 'Hollywood' }, { name: 'Hallandale Beach' }, { name: 'Pembroke Pines' },
+    { name: 'Fort Lauderdale' }, { name: 'Hollywood', path: '/car-insurance-hollywood-fl' }, { name: 'Hallandale Beach', path: '/car-insurance-hallandale-beach-fl' }, { name: 'Pembroke Pines' },
     { name: 'Miramar' }, { name: 'Davie' }, { name: 'Plantation' }, { name: 'Sunrise' }, { name: 'Weston' },
     { name: 'Coral Springs' }, { name: 'Pompano Beach' }, { name: 'Deerfield Beach' }, { name: 'Dania Beach' },
     { name: 'Cooper City' }, { name: 'Lauderhill' }, { name: 'Tamarac' }, { name: 'Margate' }, { name: 'Coconut Creek' },
