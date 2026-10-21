@@ -19,7 +19,7 @@ export const HOME_MIAMI_DADE: CityPage = {
     { name: 'Kendall', path: '/homeowners-insurance-kendall-fl' },
     { name: 'Palmetto Bay' }, { name: 'Pinecrest' }, { name: 'South Miami' }, { name: 'Coral Gables' },
     { name: 'Miami' }, { name: 'Doral' }, { name: 'Hialeah' }, { name: 'Miami Beach' },
-    { name: 'North Miami' }, { name: 'Aventura' }, { name: 'Sunny Isles Beach' },
+    { name: 'North Miami' }, { name: 'Aventura', path: '/homeowners-insurance-aventura-fl' }, { name: 'Sunny Isles Beach', path: '/homeowners-insurance-sunny-isles-beach-fl' },
     { name: 'Redland, Leisure City, Naranja and Princeton' },
   ],
   areaServed: [

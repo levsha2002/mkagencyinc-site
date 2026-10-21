@@ -4,6 +4,7 @@ import { getDict, PHONE_TEL } from '@/lib/dictionaries';
 import RatingBadge from '@/components/RatingBadge';
 import GoogleReviewsBadge from '@/components/GoogleReviewsBadge';
 import RelatedCoverage from '@/components/RelatedCoverage';
+import AreasWeServe from '@/components/city/AreasWeServe';
 import GapAnalysis from '@/components/GapAnalysis';
 import TodaysArticle from '@/components/TodaysArticle';
 import { dailyHero } from '@/content/hero';
@@ -172,6 +173,8 @@ export default function Home({ params }: { params: { lang: string } }) {
         </div>
       </section>
       <RelatedCoverage lang={lang} />
+
+      <AreasWeServe lang={lang} />
 
       {/* ===== FAQ — answers the questions people quietly worry about ===== */}
       <section className="section" style={{ background: '#f2f7ff' }}>

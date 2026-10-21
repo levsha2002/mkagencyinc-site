@@ -35,15 +35,29 @@ const GUIDE_LABEL: Record<Lang, { auto: string; home: string }> = {
   ru: { auto: 'Гид: в вас врезался водитель без страховки? (покрытие UM)', home: 'Гид: если кто-то пострадал у вас дома (ответственность и umbrella)' },
 };
 
+const MONTHS: Record<Lang, string[]> = {
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+  ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+};
+
+/** Matches the October 3, 2026 wording already on the wave 0 pages. */
+function checkedLine(lang: Lang, iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const month = MONTHS[lang][m - 1];
+  if (lang === 'en') return `Facts on this page were checked against these sources on ${month} ${d}, ${y}.`;
+  if (lang === 'es') return `Los datos de esta página se verificaron con estas fuentes el ${d} de ${month} de ${y}.`;
+  return `Факты на этой странице проверены по этим источникам ${d} ${month} ${y} года.`;
+}
+
 const UI: Record<Lang, {
-  home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string; checked: string;
+  home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string;
   servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward', string>; hub: string;
   related: string; flood: string; quoteTitle: string; quoteText: string;
   agent: Record<'homestead' | 'kendall', string>; windGuide: string; accidentGuide: string;
 }> = {
   en: {
     home: 'Home', updated: 'Updated', call: 'Call', cta: 'Have an agent call me', whatsapp: 'WhatsApp us', langLine: 'English · Español · По-русски',
-    checked: 'Facts on this page were checked against these sources on October 3, 2026.',
     servedTitle: (c) => `Communities we serve in ${c}`,
     servedText: {
       'miami-dade': 'We work with clients all over the county from our Florida City office. Communities with their own page are linked.',
@@ -59,7 +73,6 @@ const UI: Record<Lang, {
   },
   es: {
     home: 'Inicio', updated: 'Actualizado el', call: 'Llame al', cta: 'Quiero que me llame un agente', whatsapp: 'Escríbanos por WhatsApp', langLine: 'English · Español · По-русски',
-    checked: 'Los datos de esta página se verificaron con estas fuentes el 3 de octubre de 2026.',
     servedTitle: (c) => `Comunidades que atendemos en el ${c}`,
     servedText: {
       'miami-dade': 'Trabajamos con clientes de todo el condado desde nuestra oficina en Florida City. Las comunidades que tienen su propia página aparecen con enlace.',
@@ -75,7 +88,6 @@ const UI: Record<Lang, {
   },
   ru: {
     home: 'Главная', updated: 'Обновлено', call: 'Звоните', cta: 'Пусть агент мне перезвонит', whatsapp: 'Написать в WhatsApp', langLine: 'English · Español · По-русски',
-    checked: 'Факты на этой странице проверены по этим источникам 3 октября 2026 года.',
     servedTitle: (c) => `Где мы работаем: ${c}`,
     servedText: {
       'miami-dade': 'Мы работаем с клиентами по всему округу из офиса во Florida City. Населённые пункты, у которых есть своя страница, даны ссылками.',
@@ -313,7 +325,7 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
             </p>
             <SendPolicyCta lang={l} placement="final" />
             <Disclaimer lang={l} />
-            <SourceList lang={l} sources={t.sources} updatedLine={ui.checked} />
+            <SourceList lang={l} sources={t.sources} updatedLine={checkedLine(l, page.modified)} />
           </div>
         </div>
       </section>
