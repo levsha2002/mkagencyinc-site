@@ -101,7 +101,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/umbrella-insurance-florida-city'],
-    links: [{ blog: 'lending-your-car-florida-owner-liability' }],
+    links: [
+      { blog: 'umbrella-insurance-explained-florida' },
+      { blog: 'lending-your-car-florida-owner-liability' },
+    ],
   },
   {
     pages: ['/commercial-insurance-florida-city'],
