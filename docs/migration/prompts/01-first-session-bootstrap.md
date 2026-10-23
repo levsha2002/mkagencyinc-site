@@ -22,8 +22,10 @@ Then work through this list and report each item as done, blocked, or not needed
    Google Calendar, Slack, Netlify, Apollo.io, GitHub). For Drive, open the folder
    «Claude Account Migration — M&K Agency» and list its contents.
 3. **Cockpit.** From that Drive folder, download `artifacts/01-mk-agency-cockpit.html`
-   and publish it as a new artifact with the title «M&K Agency Cockpit», unchanged.
-   Give me the new URL.
+   and publish it as a new artifact with the title «M&K Agency Cockpit», HTML unchanged,
+   declaring the capabilities listed in `docs/migration/inventory.md` (Google Drive
+   `list_recent_files`, Google Calendar `list_events`) so the live cells work. Give me
+   the new URL.
 4. **Scheduled tasks.** Create the two scheduled tasks exactly as written in
    `docs/migration/prompts/03-scheduled-tasks.md`, substituting the new Cockpit URL.
    For the Cockpit task, the full original prompt with baseline figures is in Drive

@@ -14,13 +14,29 @@ Full definitions, ready to paste: `prompts/03-scheduled-tasks.md`.
 
 ## Artifacts (11)
 
-HTML copies are in Google Drive → «Claude Account Migration — M&K Agency» → `artifacts/`.
-The new account republishes each one it still needs; the old URLs die with the old account.
+HTML copies are in Google Drive → «Claude Account Migration — M&K Agency» → `artifacts/`
+(exported 23 Oct 2026, 11 files, byte sizes verified against the source). The new account
+republishes each one it still needs; the old URLs die with the old account.
+
+Two things to know before republishing:
+
+- **Cockpit** (`01-mk-agency-cockpit.html`) has live cells that read Google Drive and
+  Google Calendar. Capabilities are not stored in the HTML, so the first publish in the
+  new account must declare them (later refreshes then omit the parameter):
+
+  ```json
+  {"mcp":{"servers":[{"server":"Google Drive","tools":["list_recent_files"]},{"server":"Google Calendar","tools":["list_events"]}]}}
+  ```
+
+- **Coverage Proposal – Velocity Exterior Cleaning** was a Claude Docs document, not an
+  HTML page. The export (`02-coverage-proposal-velocity-exterior-cleaning.html`) is the
+  document body as an HTML fragment: all text is preserved, but it is re-created as a new
+  Claude Docs document (paste the content), not republished as a page.
 
 | Title | Last updated | Role |
 |---|---|---|
 | M&K Agency Cockpit | 2026-09-07 (refreshed weekly by the scheduled task) | Owner's weekly cost-plan and lead-spend dashboard |
-| Coverage Proposal – Velocity Exterior Cleaning | 2026-10-07 | Client proposal (contains client data) |
+| Coverage Proposal – Velocity Exterior Cleaning | 2026-10-07 | Client proposal, Claude Docs document (contains client data) |
 | The Transfer Chain | 2026-09-23 | Operations memo |
 | M&K Agency — Fast Auto Quote Landing Page | 2026-09-23 | Landing page prototype |
 | Weekly Agent Review | 2026-09-17 | Team review template |
