@@ -14,22 +14,30 @@ import { formatDate } from '@/lib/blog';
 import { stripInline } from '@/components/article/RichText';
 
 // Service page: flood insurance for Florida City & Homestead. Content lives in
-// content/pages/flood-insurance-homestead-fl.ts. EN + ES only for now: /ru/...
-// returns 404 and hreflang lists only en/es (see lib/page-langs.ts).
+// content/pages/flood-insurance-homestead-fl.ts. EN, ES and RU (see lib/page-langs.ts).
 export const revalidate = 86400;
 
 const PATH = '/flood-insurance-homestead-fl';
 const LANGS = LIMITED_LANG_PAGES[PATH].langs;
 
+type L = 'en' | 'es' | 'ru';
+const OG = '/og/flood-insurance-homestead-fl.webp';
+
 function pick(lang: string) {
-  if (lang === 'en' || lang === 'es') return { l: lang as 'en' | 'es', t: FLOOD_PAGE[lang as 'en' | 'es'] };
+  if ((LANGS as string[]).includes(lang)) return { l: lang as L, t: FLOOD_PAGE[lang as L] };
   return null;
 }
+
+const UI: Record<L, { home: string; checked: string; updated: string; service: string }> = {
+  en: { home: 'Home', checked: 'Facts checked against these official sources on October 23, 2026.', updated: 'Updated', service: 'Flood insurance' },
+  es: { home: 'Inicio', checked: 'Datos verificados con estas fuentes oficiales el 23 de octubre de 2026.', updated: 'Actualizado el', service: 'Seguro de inundación' },
+  ru: { home: 'Главная', checked: 'Факты проверены по этим официальным источникам 23 октября 2026 года.', updated: 'Обновлено', service: 'Страхование от наводнения' },
+};
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
   const d = pick(params.lang);
   if (!d) return {};
-  return pageMetadata({ lang: d.l, path: PATH, title: d.t.metaTitle, description: d.t.metaDesc, langs: LANGS });
+  return pageMetadata({ lang: d.l, path: PATH, title: d.t.metaTitle, description: d.t.metaDesc, langs: LANGS, image: { src: OG, alt: d.t.ogAlt } });
 }
 
 export default function FloodInsurancePage({ params }: { params: { lang: string } }) {
@@ -37,10 +45,7 @@ export default function FloodInsurancePage({ params }: { params: { lang: string 
   if (!d) notFound();
   const { l, t } = d;
   const url = `${SITE_URL}/${l}${PATH}`;
-  const home = l === 'es' ? 'Inicio' : 'Home';
-  const checked = l === 'es' ? 'Datos verificados con estas fuentes oficiales el 26 de septiembre de 2026.' : 'Facts checked against these official sources on September 26, 2026.';
-
-  const updated = l === 'es' ? 'Actualizado el' : 'Updated';
+  const { home, checked, updated } = UI[l];
   const person = personLd(DEFAULT_AUTHOR, l);
 
   const ld = [
@@ -59,13 +64,14 @@ export default function FloodInsurancePage({ params }: { params: { lang: string 
       reviewedBy: person,
       publisher: { '@type': 'Organization', name: 'M&K Agency', url: SITE_URL },
       mainEntity: { '@id': `${url}#service` },
+      image: `${SITE_URL}${OG}`,
     },
     {
       '@context': 'https://schema.org',
       '@type': 'Service',
       '@id': `${url}#service`,
-      name: stripInline(`${t.h1a} ${t.h1b}`).replace(/,\s*/, ' – '),
-      serviceType: l === 'es' ? 'Seguro de inundación' : 'Flood insurance',
+      name: stripInline(`${t.h1a.replace(/,\s*$/, ' –')} ${t.h1b}`),
+      serviceType: UI[l].service,
       description: t.metaDesc,
       url,
       inLanguage: l,
