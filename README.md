@@ -22,6 +22,12 @@ mk-agency-next/
 └─ package.json
 ```
 
+## Moving to a new computer or a new Claude account
+
+See `docs/migration/README.md` (Russian) — the full plan, the asset inventory and the
+ready-to-paste prompts in `docs/migration/prompts/`. `CLAUDE.md` in the repo root is the
+project guide Claude reads in every session.
+
 ## Quick start
 
 ```bash
