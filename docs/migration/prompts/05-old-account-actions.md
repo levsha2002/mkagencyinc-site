@@ -13,7 +13,7 @@ Do not summarize or shorten; include every fact, number, name and preference you
 stored. If the list is long, continue in a second message.
 ```
 
-Save the answer as `memory-export.md` in Google Drive → «Claude Account Migration — M&K Agency».
+Done 24 Oct 2026: raw answer in the Drive document `memory-export`, cleaned version in `memory-import-ready` (import that one).
 
 ## B. Projects inventory (claude.ai → new chat → paste)
 
@@ -24,8 +24,11 @@ List every Project in this account with its name, its custom instructions (verba
 and the names of the knowledge files attached to it.
 ```
 
-For each project that still matters: copy the instructions into a text file and
-download the knowledge files into the same Drive folder, subfolder `projects/<name>/`.
+Claude cannot see project instructions or files from a chat outside the project (confirmed
+24 Oct 2026). Open each project instead; the per-project procedure and the prompt to run
+inside the project are in Drive → `projects/00 projects-export-instructions`. A folder per
+project already exists there. Five projects hold memory: How to use Claude; Leads; M&K
+Insurance Agency Strategics growth; M&K Employment; Team Management June 2026.
 
 ## C. Message to Anthropic support (claude.ai → bottom-left menu → Get help)
 
