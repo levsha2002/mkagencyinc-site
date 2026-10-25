@@ -32,7 +32,7 @@ const es: Record<string, ProductI18n> = {
     shortIntro: 'Cobertura para el vehículo que conduce todos los días — al trabajo, a la escuela y a todas partes.',
     article: [
       'Un accidente de auto no solo daña su vehículo — puede poner en riesgo sus ahorros, sus ingresos y su futuro financiero. Nos enfocamos en cobertura que protege lo que usted ha construido, no solo el mínimo estatal.',
-      'Para conductores que quieren más, ofrecemos accident forgiveness para que un error no dispare su tarifa, además de acceso en línea a su póliza 24/7 — vea sus tarjetas de identificación, haga pagos y presente un reclamo desde su teléfono.',
+      'Para conductores que quieren más, ofrecemos accident forgiveness para que un error no dispare su tarifa, además de acceso en línea a su póliza — vea sus tarjetas de identificación, haga pagos y presente un reclamo desde su teléfono.',
     ],
     coverageHighlights: [
       'Responsabilidad civil por lesiones corporales y daños a la propiedad',
@@ -317,7 +317,7 @@ const ru: Record<string, ProductI18n> = {
     shortIntro: 'Покрытие для машины, на которой вы ездите каждый день — на работу, в школу и куда угодно.',
     article: [
       'Авария повреждает не только машину — под угрозой оказываются ваши накопления, доход и финансовое будущее. Мы делаем ставку на покрытие, которое защищает то, что вы построили, а не только на минимум, требуемый штатом.',
-      'Для тех, кому нужно больше, мы предлагаем accident forgiveness, чтобы одна ошибка не подбросила тариф, плюс круглосуточный онлайн-доступ к полису — ID-карты, платежи и подача claim прямо с телефона.',
+      'Для тех, кому нужно больше, мы предлагаем accident forgiveness, чтобы одна ошибка не подбросила тариф, плюс онлайн-доступ к полису — ID-карты, платежи и подача claim прямо с телефона.',
     ],
     coverageHighlights: [
       'Liability: вред здоровью и ущерб имуществу',
