@@ -22,7 +22,7 @@ Your only job: write a short weekly reminder message in Russian addressed to Mik
 
 ## Task B — Refresh M&K Owner's Cockpit (Mondays 7am ET)
 
-- Schedule: `0 11 * * 1` UTC (Monday 7:00am EDT, 6:00am EST)
+- Schedule: `CRON_TZ=America/New_York 0 7 * * 1` (Monday 7:00am New York time, all year; changed from `0 11 * * 1` UTC on 24 Oct 2026)
 - Model: Opus
 - Notifications: push on
 - Fresh session each firing; connectors: Google Drive, Google Calendar (others optional)
