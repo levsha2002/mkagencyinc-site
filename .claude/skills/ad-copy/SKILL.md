@@ -3,7 +3,7 @@ name: ad-copy
 description: Approved ad copy library for M&K Agency in English, Spanish and Russian, with the rules it must satisfy. Use when writing or reviewing headlines, descriptions, sitelinks, Business Profile text or any customer-facing marketing copy.
 ---
 
-# Approved copy — M&K Agency Inc, Agency R3001
+# Approved copy — M&K Agency Inc, Agent code 0C5016 (contract R3001)
 
 Everything here has been checked against Allstate Agency Standards
 (rev. July 15 2026, No. 43). Reuse rather than reinvent: new copy needs a new

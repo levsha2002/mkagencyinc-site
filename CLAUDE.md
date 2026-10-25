@@ -7,7 +7,7 @@ account on a fresh computer starts with the same picture.
 ## Who this is for
 
 - Owner: Mikhail (Mike) Kozlov, M&K Agency Inc, an **Allstate Exclusive Agent** in
-  Florida City, FL. Agency code R3001. Office hours Mon–Fri 9am–6pm ET,
+  Florida City, FL. Agent code 0C5016 (Allstate contract number R3001). Office hours Mon–Fri 9am–6pm ET,
   phone (305) 247-8877. Agency mailbox: mkagency2020@hotmail.com.
 - The owner reads on mobile and wants a Big-Four / investment-bank register:
   direct, quantified, no filler, recommendation first. Act as a professional

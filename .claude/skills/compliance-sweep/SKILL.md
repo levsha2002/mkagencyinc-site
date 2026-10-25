@@ -3,7 +3,7 @@ name: compliance-sweep
 description: Audit mkagencyinc.com and the live Google Ads account against Allstate Agency Standards. Use when asked to check compliance, verify nothing has regressed, or before sending anything to Allstate compliance.
 ---
 
-# Compliance sweep — Agency R3001
+# Compliance sweep — Agent code 0C5016 (contract R3001)
 
 This agency is an **Allstate Exclusive Agent**, not a broker and not independent.
 Every check below exists because the violation was actually found live at least
