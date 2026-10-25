@@ -24,6 +24,7 @@ import { edition as e20261021 } from './posts/2026-10-21-weekend-flood-threat-pu
 import { edition as e20261022 } from './posts/2026-10-22-king-tide-peak-josephine-unlicensed-sellers';
 import { edition as e20261023 } from './posts/2026-10-23-keys-flood-warning-presuit-notice-license-fraud';
 import { edition as e20261024 } from './posts/2026-10-24-coastal-flood-watch-amendment-3-isaias-data';
+import { edition as e20261025 } from './posts/2026-10-25-coastal-flood-warning-tax-bills-citizens-takeout';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -48,4 +49,5 @@ export const editions: NewsEdition[] = [
   e20261022,
   e20261023,
   e20261024,
+  e20261025,
 ];
