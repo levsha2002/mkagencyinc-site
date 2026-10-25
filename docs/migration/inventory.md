@@ -1,4 +1,4 @@
-# Inventory — what the old Claude account holds (snapshot 23 Oct 2026)
+# Inventory — what the old Claude account holds (snapshot 23 Oct 2026, updated 25 Oct 2026)
 
 Everything in this file is account-bound and must be re-created in the new account.
 Repository-bound assets are not listed: they move with `git clone`.
@@ -10,7 +10,24 @@ Full definitions, ready to paste: `prompts/03-scheduled-tasks.md`.
 | Name | Schedule (UTC) | Model used | Notes |
 |---|---|---|---|
 | M&K Agency — Weekly Google Ads check-in reminder | `0 13 * * 1` (Mon 9am EDT) | Sonnet | Writes a 2–3 sentence Russian reminder; no live data. |
-| Refresh M&K Owner's Cockpit (Mondays 7am ET) | `0 11 * * 1` (Mon 7am EDT) | Opus | Reads Drive statements, republishes the Cockpit artifact, push notification on. The full prompt with baseline figures is in Drive (`cockpit-trigger-prompt-full.txt`), not in this public repo. |
+| Refresh M&K Owner's Cockpit (Mondays 7am ET) | `CRON_TZ=America/New_York 0 7 * * 1` (Mon 7am New York, set 24 Oct 2026) | Opus | Reads Drive statements, republishes the Cockpit artifact, push notification on. The full prompt with baseline figures is in Drive (`cockpit-trigger-prompt-full.txt`), not in this public repo. |
+
+## claude.ai Projects (5) — all backed up to Drive
+
+Drive → «Claude Account Migration — M&K Agency» → `projects/`. Each folder holds
+«ГОТОВО — instructions» and «ГОТОВО — project-memory», extracted verbatim on 25 Oct 2026
+from the official export (`projects-000.zip`, `memories-000.zip`).
+
+| # | Project | Instructions | Text files | Knowledge files | Re-create in new account? |
+|---|---|---|---|---|---|
+| 1 | How to use Claude | yes (416 chars) | Anthropic starter guide only | 41 PDFs (21 unique), not in export, optional | No — archive |
+| 2 | Leads | none | none | 26 bank/card/personal statements, uploaded to Drive `projects/2 Leads/files` | No — archive; statements stay in Drive |
+| 3 | M&K Insurance Agency Strategics growth | yes (1,601 chars) | 2 docs saved to Drive | — | **Yes** |
+| 4 | M&K Employment | none | none | none (playbooks were chat outputs) | No — archive |
+| 5 | Team Management June 2026 | yes (369 chars) | none | none | **Yes** |
+
+Chat history of all projects is in `conversations-000.zip` (archive only; it cannot be
+imported into another personal account).
 
 ## Artifacts (11)
 

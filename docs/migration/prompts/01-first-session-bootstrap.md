@@ -1,8 +1,9 @@
 # Prompt 01 — first session in the new Claude account
 
 Paste the whole block below as the first message in a Claude Code session opened on
-the `mkagencyinc-site` folder (desktop app or cloud). It assumes GitHub, Google Drive
-and the other connectors from `docs/migration/README.md`, step 4, are already connected.
+the `mkagencyinc-site` repository (cloud or desktop app). It assumes Parts 1 and 2 of
+`docs/migration/README.md` are done: GitHub and Google Drive connected, memory imported,
+the two working projects created.
 
 ---
 
@@ -33,10 +34,17 @@ Then work through this list and report each item as done, blocked, or not needed
    at the bottom of the file. Show me the list of scheduled tasks afterwards.
 5. **Compliance.** Run the `compliance-sweep` skill against the live site and report
    findings in the six-class table from the skill.
-6. **Gap check.** Compare what the migration plan says should exist with what you
+6. **Memory and projects.** Tell me in two lines what you know about me and the agency
+   from memory, so I can see whether the import (README step 2.6) worked. Remind me
+   which of the OPEN QUESTIONS in the Drive document `memory-import-ready` I still need
+   to answer.
+7. **Gap check.** Compare what the migration plan says should exist with what you
    actually found. List anything missing or any instruction you would have needed
    that is not written down anywhere in the repository, so I can add it while the
    old account is still open.
+
+Explain anything I need to click in plain Russian, one action per line: I am not
+technical.
 
 Register: professional analyst (Goldman Sachs / PwC / Deloitte). Lead with the
 result, quantify, no filler. Russian is fine for the summary; keep file names,
