@@ -3,8 +3,10 @@
 Claude Code in the cloud cannot open claude.ai Settings, read the account memory, cancel
 a subscription or write to Anthropic support. These four texts are for the owner to paste.
 
-**Status 25 Oct 2026:** A done, B done (recovered from the official export instead), C not
-done yet (this is step 1.1 of `docs/migration/README.md`), D in progress.
+**Status 25 Oct 2026:** A done, B done (recovered from the official export instead), D in
+progress. C: the message below was sent from inside the old account; support replied that
+the request must come by e-mail from the new personal address with the work address in CC.
+The current e-mail text is in `docs/migration/README.md`, step 1.1.
 
 ## A. Memory export (claude.ai → new chat → paste)
 
@@ -33,7 +35,7 @@ memory for all five projects were extracted from the official export (`projects-
 The 26 knowledge files of «Leads» were uploaded by the owner. The 21 PDFs of «How to use
 Claude» are optional and not uploaded.
 
-## C. Message to Anthropic support (claude.ai → bottom-left menu → Get help)
+## C. Message to Anthropic support (sent 25 Oct 2026 via Get help; superseded by README step 1.1)
 
 ```
 Subject: Unlink phone number from this account (account being retired)

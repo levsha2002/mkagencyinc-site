@@ -1,6 +1,6 @@
 # Переезд на новый аккаунт Claude и новый компьютер — план для M&K Agency
 
-Обновлено: 25 октября 2026.
+Обновлено: 25 октября 2026 (шаг 1.1 изменён по ответу поддержки Anthropic).
 
 Этот план написан для человека без технической подготовки. Каждый шаг — одно
 действие. Делайте шаги по порядку и ставьте галочку. Если что-то непонятно,
@@ -48,7 +48,7 @@
 | 8 | Полный текст задачи Cockpit сохранён | ✅ Сделано | Claude |
 | 9 | Доступ к папке Drive проверен: только владелец | ✅ Сделано | Claude |
 | 10 | PDF проекта «How to use Claude» (21 файл) | ⏸ По желанию | Вы |
-| 11 | Отвязать номер телефона от старого аккаунта | ⬜ Не сделано | Вы, шаг 1.1 |
+| 11 | Отвязать номер телефона от старого аккаунта | 🟡 В процессе: поддержка ответила 25 Oct, нужно письмо с личной почты | Вы, шаг 1.1 |
 | 12 | Создать новый аккаунт | ⬜ Не сделано | Вы, Часть 2 |
 | 13 | Импорт памяти и два рабочих проекта в новом аккаунте | ⬜ Не сделано | Вы, Часть 2 |
 | 14 | Подключить GitHub и Google Drive к новому аккаунту | ⬜ Не сделано | Вы, Часть 2 |
@@ -66,31 +66,59 @@ Cockpit по понедельникам) продолжают работать �
 
 Осталось одно обязательное действие и одно по желанию.
 
-### Шаг 1.1. Попросить поддержку отвязать телефон (обязательно, 5 минут)
+### Шаг 1.1. Письмо в поддержку: отвязать телефон (обязательно, 10 минут)
 
 Зачем: новый аккаунт проверяется по SMS. Ваш номер сейчас привязан к старому
 аккаунту, и второй раз его не примут, пока поддержка его не отвяжет.
 
-1. Откройте сайт **claude.ai** и войдите в старый аккаунт.
-2. Внизу слева нажмите на своё имя.
-3. В меню нажмите **Get help**.
-4. Откроется окно переписки. Скопируйте и вставьте этот текст:
+Что уже сделано: 25 октября вы написали в поддержку из старого аккаунта.
+Поддержка ответила, что запрос нужно прислать **с новой личной почты**, а рабочую
+почту `mikhailkozlov@allstate.com` поставить **в копию (CC)**. В письме нужно
+подтвердить, что вы хотите отвязать номер.
+
+1. Откройте рабочую почту Allstate и найдите письмо от поддержки Anthropic
+   («Hi Mikhail, I understand you need to unlink your phone number…»).
+2. Посмотрите адрес отправителя этого письма (строка «From» / «От»). Запишите
+   его: на этот адрес нужно писать.
+3. Откройте личную почту **Levsha2002@hotmail.com** (outlook.com).
+4. Нажмите **New mail** / **Создать**.
+5. В поле **To / Кому** вставьте адрес отправителя из пункта 2.
+6. Нажмите **Cc / Копия** и вставьте: `mikhailkozlov@allstate.com`
+7. В поле **Subject / Тема** вставьте:
 
    ```
-   Subject: Unlink phone number from this account (account being retired)
-
-   Hello. My employer no longer allows me to use this work email
-   (mikhailkozlov@allstate.com) for Claude, so I am creating a new personal
-   Claude account and will delete this one afterwards. My mobile number is
-   currently verified on this account and I need to use the same number for the
-   new account. Please unlink the phone number from this account so the new
-   account can pass SMS verification. I have already exported my data. I will
-   cancel the subscription before deleting this account. Thank you.
+   Unlink phone number from Claude account mikhailkozlov@allstate.com
    ```
 
-5. Отправьте. Ответ придёт на почту старого аккаунта или в это же окно, обычно
-   в течение 1–3 рабочих дней.
-6. ☐ Ответ получен, номер отвязан. Только после этого переходите к Части 2.
+8. В текст письма вставьте:
+
+   ```
+   Hello,
+
+   This is Mikhail Kozlov. As your support team asked, I am writing from my new
+   personal email address (Levsha2002@hotmail.com) with my work email
+   (mikhailkozlov@allstate.com) in CC.
+
+   I confirm that I want my phone number unlinked from the Claude account
+   registered to mikhailkozlov@allstate.com, so that I can use the same number
+   to verify my new personal Claude account (Levsha2002@hotmail.com).
+
+   My data has already been exported. Once the number is unlinked, I will cancel
+   the subscription on the old account and then delete it.
+
+   Thank you,
+   Mikhail Kozlov
+   ```
+
+9. Нажмите **Send / Отправить**.
+10. Ответ придёт на Levsha2002@hotmail.com (копия — на рабочую почту), обычно
+    в течение 1–3 рабочих дней.
+11. ☐ Поддержка подтвердила, что номер отвязан. Только после этого переходите
+    к Части 2.
+
+Если в письме поддержки нет адреса отправителя или ответ не приходит 3 рабочих
+дня: откройте в браузере **support.claude.com**, нажмите значок сообщения внизу
+справа, укажите почту Levsha2002@hotmail.com и вставьте тот же текст.
 
 ### Шаг 1.2. PDF проекта «How to use Claude» (по желанию)
 
@@ -310,6 +338,8 @@ GitHub и Vercel.
 ## Часть 5. Закрыть старый аккаунт (только после Части 3)
 
 ### Шаг 5.1. Отменить подписку
+
+Поддержка напомнила: сначала отменить подписку, потом удалять аккаунт.
 
 1. Войдите в **старый** аккаунт на claude.ai.
 2. Своё имя → **Settings** → **Billing** → **Cancel subscription**.
