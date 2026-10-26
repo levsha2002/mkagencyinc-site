@@ -82,7 +82,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   // Condo page (supporting article from the gap-articles batches).
   {
     pages: ['/condo-insurance-florida-city'],
-    links: [{ blog: 'condo-milestone-inspection-sirs-florida' }],
+    links: [{ blog: 'condo-association-vs-ho6-florida' }, { blog: 'condo-milestone-inspection-sirs-florida' }],
   },
   {
     pages: ['/florida-home-insurance-wind-deductible'],
