@@ -43,6 +43,7 @@ import { post as kingTidesFloodInsurance } from './posts/king-tides-flood-insura
 import { post as licenseSuspendedNoInsurance } from './posts/florida-license-suspended-no-insurance';
 import { post as certificateOfInsuranceContractors } from './posts/certificate-of-insurance-contractors-florida';
 import { post as umbrellaInsuranceExplained } from './posts/umbrella-insurance-explained-florida';
+import { post as condoAssociationVsHo6 } from './posts/condo-association-vs-ho6-florida';
 
 
 export const posts: BlogPost[] = [
@@ -87,5 +88,6 @@ export const posts: BlogPost[] = [
   licenseSuspendedNoInsurance,
   certificateOfInsuranceContractors,
   umbrellaInsuranceExplained,
+  condoAssociationVsHo6,
 ];
 
