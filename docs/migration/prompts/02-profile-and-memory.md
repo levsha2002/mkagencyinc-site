@@ -27,7 +27,7 @@ implying AI or prerecorded voice calls. My website repository on GitHub
 
 ```
 - User: Mikhail (Mike) Kozlov, owner of M&K Agency Inc, Florida City, FL. Allstate
-  Exclusive Agent, agency code R3001. Office Mon–Fri 9am–6pm ET. Phone (305) 247-8877.
+  Exclusive Agent, agency code R3001. Office Mon–Fri 9am–6pm ET. Phone (305) 859-3953.
   Agency mailbox mkagency2020@hotmail.com. Prefers Russian for conversation; works in
   English, Spanish and Russian with clients.
 - Wants a Big-Four / investment-bank register on business topics: recommendation first,
