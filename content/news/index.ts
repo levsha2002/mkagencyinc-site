@@ -26,6 +26,7 @@ import { edition as e20261023 } from './posts/2026-10-23-keys-flood-warning-pres
 import { edition as e20261024 } from './posts/2026-10-24-coastal-flood-watch-amendment-3-isaias-data';
 import { edition as e20261025 } from './posts/2026-10-25-coastal-flood-warning-tax-bills-citizens-takeout';
 import { edition as e20261026 } from './posts/2026-10-26-flood-warning-extended-wind-advisory-move-over';
+import { edition as e20261027 } from './posts/2026-10-27-king-tide-peak-auto-rates-multifamily-liability';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -52,4 +53,5 @@ export const editions: NewsEdition[] = [
   e20261024,
   e20261025,
   e20261026,
+  e20261027,
 ];
