@@ -44,6 +44,7 @@ import { post as licenseSuspendedNoInsurance } from './posts/florida-license-sus
 import { post as certificateOfInsuranceContractors } from './posts/certificate-of-insurance-contractors-florida';
 import { post as umbrellaInsuranceExplained } from './posts/umbrella-insurance-explained-florida';
 import { post as condoAssociationVsHo6 } from './posts/condo-association-vs-ho6-florida';
+import { post as workersCompExemptionConstruction } from './posts/workers-comp-exemption-florida-construction';
 
 
 export const posts: BlogPost[] = [
@@ -89,5 +90,6 @@ export const posts: BlogPost[] = [
   certificateOfInsuranceContractors,
   umbrellaInsuranceExplained,
   condoAssociationVsHo6,
+  workersCompExemptionConstruction,
 ];
 
