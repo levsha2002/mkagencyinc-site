@@ -24,7 +24,7 @@ export default function Footer({ lang }: { lang: string }) {
         <AreasWeServe lang={lang} variant="footer" />
         <p><strong>{t.footer.lic}</strong></p>
         <p style={{ margin: '8px 0' }}>
-          {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}>{PHONE_DISPLAY}</a>
+          {ADDRESS} · <a href={`tel:${PHONE_TEL}`} style={{ color: '#fff', fontWeight: 700 }}><span className="mk-phone">{PHONE_DISPLAY}</span></a>
           {' · '}
           <WhatsAppLink lang={lang} placement="footer" className="wa-link" style={{ color: '#fff', fontWeight: 700 }} />
         </p>

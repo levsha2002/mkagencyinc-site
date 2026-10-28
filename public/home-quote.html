@@ -112,9 +112,9 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'AW-18321801016', { allow_enhanced_conversions: true });
-  // Website call conversion + Google forwarding-number swap. Copied verbatim from
-  // gtagInitScript() in lib/analytics.ts (the city pages); keep the two in sync.
+  // Website call conversion + Google forwarding-number swap. Copied from
+  // gtagInitScript() in lib/analytics.ts; keep the two in sync. The phone
+  // snippet is registered BEFORE gtag('config','AW-18321801016').
   (function(){
     var NUM_RE=/\(?\b305\)?[\s.\-]*859[\s.\-]*3953\b/g;
     var REAL='3058593953';
@@ -171,6 +171,16 @@
       if(document.body) start(); else document.addEventListener('DOMContentLoaded', start);
     };
   })();
+  gtag('set', {
+    'phone_conversion_number': '(305) 859-3953',
+    'phone_conversion_ids': ['AW-18321801016/P8qXCI3yzIYdELj-waBE'],
+    'phone_conversion_callback': window.mkCallSwap
+  });
+  gtag('config', 'AW-18321801016', {
+    'allow_enhanced_conversions': true,
+    'phone_conversion_number': '(305) 859-3953',
+    'phone_conversion_callback': window.mkCallSwap
+  });
   gtag('config', 'AW-18321801016/P8qXCI3yzIYdELj-waBE', {
     'phone_conversion_number': '(305) 859-3953',
     'phone_conversion_callback': window.mkCallSwap
@@ -191,24 +201,51 @@
     params = params || {}; opts = opts || {};
     var tx = opts.transactionId || mkTxnId(action);
     if (opts.phone) { var p = mkE164(opts.phone); if (p) gtag('set', 'user_data', { phone_number: p }); }
-    gtag('event', action, Object.assign({ send_to: MK_ADS, transaction_id: tx }, params));
-    if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action] }, params, { transaction_id: tx }));
+    gtag('event', action, Object.assign({ send_to: MK_ADS, transaction_id: tx, transport_type: 'beacon' }, params));
+    if (MK_LABELS[action]) gtag('event', 'conversion', Object.assign({ send_to: MK_ADS + '/' + MK_LABELS[action], transport_type: 'beacon' }, params, { transaction_id: tx }));
   }
+  // tel:/sms:/wa.me taps. Same contract as phoneClickTrackingScript() in lib/analytics.ts:
+  // one conversion per click, beacon before navigation. This page has no React
+  // WhatsAppLink, so data-wa-link links are tracked here (do not skip them).
   document.addEventListener('click', function(e){
-    // WhatsApp: whatsapp_click + the "WhatsApp click" secondary conversion, once per click,
-    // same as trackWhatsAppClick() in lib/whatsapp.ts. Our number only; no preventDefault.
+    function adsReady(){ return !!(window.google_tag_manager || window.google_tag_data); }
+    function plain(ev){ return ev.button===0 && !ev.metaKey && !ev.ctrlKey && !ev.shiftKey && !ev.altKey && !ev.defaultPrevented; }
+    function hold(ev, el){ return !adsReady() && plain(ev) && el.target!=='_blank'; }
     var w = e.target && e.target.closest ? e.target.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com/"]') : null;
     if (w) {
       var wh = w.getAttribute('href') || '';
       if (wh.indexOf('19719987313') < 0) return;
-      gtag('event', 'whatsapp_click', { send_to: MK_ADS, page_path: location.pathname, link_location: w.getAttribute('data-wa-link') || 'static_page', link_url: wh });
-      gtag('event', 'conversion', { send_to: 'AW-18321801016/BpOFCLO7348dELj-waBE', value: 1.0, currency: 'USD' });
+      var delayW = hold(e, w);
+      if (delayW) e.preventDefault();
+      function sendWa(){
+        var gone=false;
+        function done(){ if(gone) return; gone=true; if(delayW) window.location.href=wh; }
+        gtag('event', 'whatsapp_click', { send_to: MK_ADS, page_path: location.pathname, link_location: w.getAttribute('data-wa-link') || 'static_page', link_url: wh, transport_type: 'beacon' });
+        gtag('event', 'conversion', { send_to: 'AW-18321801016/BpOFCLO7348dELj-waBE', value: 1.0, currency: 'USD', transport_type: 'beacon', event_callback: done });
+        if (delayW) setTimeout(done, 700);
+      }
+      if (delayW) {
+        var n=0, iv=setInterval(function(){ n++; if(adsReady()||n>=14){ clearInterval(iv); sendWa(); } }, 50);
+      } else sendWa();
       return;
     }
-    var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href^="sms:"]') : null;
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href^="sms:"], a[href^="TEL:"], a[href^="SMS:"]') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    mkConversion(href.slice(0,4) === 'tel:' ? 'phone_call' : 'sms_click', { link_url: href });
+    var action = href.slice(0,4).toLowerCase() === 'tel:' ? 'phone_call' : 'sms_click';
+    var delay = hold(e, a);
+    if (delay) e.preventDefault();
+    function sendTel(){
+      var gone=false;
+      function done(){ if(gone) return; gone=true; if(delay) window.location.href=href; }
+      var tx = mkTxnId(action);
+      gtag('event', action, { send_to: MK_ADS, link_url: href, transaction_id: tx, transport_type: 'beacon' });
+      if (MK_LABELS[action]) gtag('event', 'conversion', { send_to: MK_ADS + '/' + MK_LABELS[action], link_url: href, transaction_id: tx, transport_type: 'beacon', event_callback: done });
+      if (delay) setTimeout(done, 700);
+    }
+    if (delay) {
+      var m=0, tv=setInterval(function(){ m++; if(adsReady()||m>=14){ clearInterval(tv); sendTel(); } }, 50);
+    } else sendTel();
   }, true);
   (function(){
     try {
@@ -260,7 +297,7 @@
   </section>
 
   <div class="cta-repeat">
-    <a href="tel:+13058593953">📞 Call (305) 859-3953</a>
+    <a href="tel:+13058593953">📞 Call <span class="mk-phone">(305) 859-3953</span></a>
     <div class="fine">Or use the form above. Office hours: Mon–Fri, 9am–6pm ET.</div>
   </div>
 

@@ -50,6 +50,9 @@ export function trackWhatsAppClick(lang: string, placement: string) {
     lang: pick(lang),
     page_path: window.location.pathname,
     link_location: placement,
+    transport_type: 'beacon',
   });
+  // One conversion per click. <WhatsAppLink> is target=_blank and marked
+  // data-wa-link, so the delegated listener does not also fire this.
   gtag('event', 'conversion', whatsappConversionParams());
 }

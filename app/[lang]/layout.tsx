@@ -142,21 +142,23 @@ export default function RootLayout({
         )}
         {process.env.NODE_ENV === 'production' && (
           <>
-            {/* lazyOnload: afterInteractive preloads this ~490KB file in the
-                document head and it was the largest request on mobile /quote.
-                The inline config below still queues hits until the file loads. */}
+            {/* beforeInteractive puts gtag.js in the initial HTML. lazyOnload
+                (PR #86) kept it off the page until idle, so Google never saw
+                the website-call snippet in time to swap the number, and a
+                tel: / WhatsApp tap unloaded the page before the queued
+                conversion was sent. The file is async; it does not block HTML. */}
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-              strategy="lazyOnload"
+              strategy="beforeInteractive"
             />
-            <Script id="ad-attribution" strategy="afterInteractive">
-              {attributionCaptureScript()}
+            <Script id="gtag-init" strategy="beforeInteractive">
+              {gtagInitScript()}
             </Script>
-            <Script id="phone-click-tracking" strategy="afterInteractive">
+            <Script id="phone-click-tracking" strategy="beforeInteractive">
               {phoneClickTrackingScript()}
             </Script>
-            <Script id="gtag-init" strategy="afterInteractive">
-              {gtagInitScript()}
+            <Script id="ad-attribution" strategy="afterInteractive">
+              {attributionCaptureScript()}
             </Script>
           </>
         )}
