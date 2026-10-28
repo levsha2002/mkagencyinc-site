@@ -122,6 +122,18 @@ export default function RootLayout({
   };
   return (
     <html lang={params.lang} className={`${inter.variable} ${playfair.variable}`}>
+      {process.env.NODE_ENV === 'production' && (
+        <head>
+          {/* Raw tags, not next/script. Google's website-call check reads the
+              HTML source for gtag.js and phone_conversion_number. next/script
+              only queues them in __next_s, and lazyOnload (PR #86) waited
+              until idle — the forwarding number never swapped and tel:/WhatsApp
+              hits were dropped on navigation. async does not block parsing. */}
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
+          <script dangerouslySetInnerHTML={{ __html: gtagInitScript() }} />
+          <script dangerouslySetInnerHTML={{ __html: phoneClickTrackingScript() }} />
+        </head>
+      )}
       <body>
         <script
           type="application/ld+json"
@@ -141,26 +153,9 @@ export default function RootLayout({
           </>
         )}
         {process.env.NODE_ENV === 'production' && (
-          <>
-            {/* beforeInteractive puts gtag.js in the initial HTML. lazyOnload
-                (PR #86) kept it off the page until idle, so Google never saw
-                the website-call snippet in time to swap the number, and a
-                tel: / WhatsApp tap unloaded the page before the queued
-                conversion was sent. The file is async; it does not block HTML. */}
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-              strategy="beforeInteractive"
-            />
-            <Script id="gtag-init" strategy="beforeInteractive">
-              {gtagInitScript()}
-            </Script>
-            <Script id="phone-click-tracking" strategy="beforeInteractive">
-              {phoneClickTrackingScript()}
-            </Script>
-            <Script id="ad-attribution" strategy="afterInteractive">
-              {attributionCaptureScript()}
-            </Script>
-          </>
+          <Script id="ad-attribution" strategy="afterInteractive">
+            {attributionCaptureScript()}
+          </Script>
         )}
       </body>
     </html>
