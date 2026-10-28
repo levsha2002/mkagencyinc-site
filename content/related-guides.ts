@@ -133,7 +133,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/window-cleaning-insurance-florida'],
-    links: [{ blog: 'osha-fall-protection-window-cleaners' }],
+    links: [
+      { blog: 'osha-fall-protection-window-cleaners' },
+      { blog: 'certificate-of-insurance-contractors-florida' },
+    ],
   },
   {
     pages: ['/painting-contractor-insurance-florida'],
