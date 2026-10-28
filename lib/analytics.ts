@@ -32,11 +32,25 @@ const WHATSAPP_TRACK_NUMBER = '19719987313';
 export const WHATSAPP_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/BpOFCLO7348dELj-waBE`;
 /** The exact conversion payload: gtag('event', 'conversion', whatsappConversionParams()). */
 export function whatsappConversionParams() {
-  return { send_to: WHATSAPP_CONVERSION_SEND_TO, value: 1.0, currency: 'USD' };
+  return {
+    send_to: WHATSAPP_CONVERSION_SEND_TO,
+    value: 1.0,
+    currency: 'USD',
+    // wa.me hands the tab to the WhatsApp app; beacon survives that unload.
+    transport_type: 'beacon' as const,
+  };
 }
 
 /** Inline script: gtag bootstrap + base Ads config + the website call
  *  conversion config with a `phone_conversion_callback`.
+ *
+ *  The phone snippet has to run BEFORE gtag('config', AW-ID). The current
+ *  Google tag (support.google.com/google-ads/answer/7548399) ignores a phone
+ *  number that is only attached afterwards, which is why "Website calls 60s+"
+ *  stopped receiving forwarding numbers. The same number is also set on the
+ *  AW-ID config itself (the form Google's UI asks for) and on the legacy
+ *  AW-ID/label config (support.google.com/google-ads/answer/6095883) so either
+ *  tag generation still swaps the number.
  *
  *  Google docs (support.google.com/google-ads/answer/6095883): the callback is
  *  invoked with (formatted_number, mobile_number) only when a Google forwarding
@@ -57,7 +71,6 @@ export function gtagInitScript() {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
 (function(){
   var NUM_RE=/\(?\b305\)?[\s.\-]*859[\s.\-]*3953\b/g;
   var REAL='3058593953';
@@ -114,6 +127,20 @@ gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
     if(document.body) start(); else document.addEventListener('DOMContentLoaded', start);
   };
 })();
+// BEFORE the AW-ID config. gtag('set') is the current phone snippet;
+// phone_conversion_number on the AW-ID config is the form the Ads UI shows;
+// the AW-ID/label config is the legacy snippet. All three name the same
+// "(305) 859-3953" so a tag on either side of Google's snippet change swaps it.
+gtag('set', {
+  'phone_conversion_number': '${CALL_CONVERSION_PHONE}',
+  'phone_conversion_ids': ['${CALL_CONVERSION_SEND_TO}'],
+  'phone_conversion_callback': window.mkCallSwap
+});
+gtag('config', '${GOOGLE_ADS_ID}', {
+  'allow_enhanced_conversions': true,
+  'phone_conversion_number': '${CALL_CONVERSION_PHONE}',
+  'phone_conversion_callback': window.mkCallSwap
+});
 gtag('config', '${CALL_CONVERSION_SEND_TO}', {
   'phone_conversion_number': '${CALL_CONVERSION_PHONE}',
   'phone_conversion_callback': window.mkCallSwap
@@ -289,17 +316,25 @@ export function trackConversion(action: ConversionAction, params: Params = {}, o
   setUserData({ email: opts.email, phone: opts.phone });
   const transaction_id = opts.transactionId || newTransactionId(action);
 
-  gtag('event', action, { ...params, transaction_id, send_to: GOOGLE_ADS_ID });
+  gtag('event', action, { ...params, transaction_id, send_to: GOOGLE_ADS_ID, transport_type: 'beacon' });
 
   const label = CONVERSION_LABELS[action];
   if (label) {
-    gtag('event', 'conversion', { send_to: `${GOOGLE_ADS_ID}/${label}`, ...params, transaction_id });
+    gtag('event', 'conversion', {
+      send_to: `${GOOGLE_ADS_ID}/${label}`,
+      ...params,
+      transaction_id,
+      transport_type: 'beacon',
+    });
   }
 }
 
-/** Inline script that captures every tel:/sms: click on the page via delegation.
- *  Delegation rather than per-link handlers: there are 27 such links across 20
- *  files today, and any added later are covered automatically. */
+/** Inline script that captures every tel:/sms:/wa.me click on the page via delegation.
+ *  Delegation rather than per-link handlers: there are dozens of such links, and
+ *  any added later are covered automatically. Each click sends one conversion
+ *  with transport_type beacon before the browser follows the link. If gtag.js
+ *  has not finished loading, the click is held (event_callback, 700ms cap) so
+ *  a fast tap is not lost; once the library is ready the dialer opens immediately. */
 export function phoneClickTrackingScript() {
   const labels = JSON.stringify(CONVERSION_LABELS);
   return `
@@ -331,10 +366,44 @@ export function phoneClickTrackingScript() {
     }
     w.va('event', {name:name, data:ctx()});
   }
-  function fire(action, href){
-    if(typeof window.gtag!=='function') return;
-    window.gtag('event', action, { send_to: ADS, link_url: href });
-    if(L[action]) window.gtag('event','conversion',{ send_to: ADS+'/'+L[action], link_url: href });
+  if(window.__mkClickTrack) return;
+  window.__mkClickTrack=1;
+  function adsReady(){ return !!(window.google_tag_manager||window.google_tag_data); }
+  function plainClick(e){
+    return e.button===0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.defaultPrevented;
+  }
+  // Hold navigation only while gtag.js is still loading. Once it is ready,
+  // beacon is dispatched in this same click turn and the browser follows the
+  // link immediately (a delayed tel: loses the iOS dialer gesture).
+  function hold(e, anchor){
+    return !adsReady() && plainClick(e) && anchor.target!=='_blank';
+  }
+  function go(href){ if(href) window.location.href=href; }
+  function fire(action, href, thenNav){
+    var gone=false;
+    function done(){ if(gone) return; gone=true; if(thenNav) go(thenNav); }
+    if(typeof window.gtag!=='function'){ done(); return; }
+    window.gtag('event', action, { send_to: ADS, link_url: href, transport_type: 'beacon' });
+    if(L[action]){
+      window.gtag('event','conversion',{
+        send_to: ADS+'/'+L[action],
+        link_url: href,
+        transport_type: 'beacon',
+        event_callback: done
+      });
+    }
+    if(thenNav) setTimeout(done, 700);
+  }
+  function track(action, href, e, anchor){
+    if(hold(e, anchor)){
+      e.preventDefault();
+      var n=0, t=setInterval(function(){
+        n++;
+        if(adsReady() || n>=14){ clearInterval(t); fire(action, href, href); }
+      }, 50);
+      return;
+    }
+    fire(action, href, '');
   }
   document.addEventListener('click', function(e){
     var t=e.target;
@@ -342,7 +411,7 @@ export function phoneClickTrackingScript() {
     // Off-site Allstate Lead Manager form: the click is the last thing we can
     // observe, because the form itself lives on a page we can't tag.
     var o=t.closest('a[href*="${LEAD_MANAGER_HOST}"]');
-    if(o){ fire('lead_manager_click', o.getAttribute('href')||''); return; }
+    if(o){ track('lead_manager_click', o.getAttribute('href')||'', e, o); return; }
     // WhatsApp links that are NOT <WhatsAppLink> (which tracks itself and is
     // marked data-wa-link), so each click fires exactly once. Our number only;
     // share links (wa.me/?text=..., referral ShareBar) are not a contact.
@@ -352,16 +421,30 @@ export function phoneClickTrackingScript() {
       var wh=w.getAttribute('href')||'';
       if(wh.indexOf('${WHATSAPP_TRACK_NUMBER}')<0) return;
       va('whatsapp_click');
-      if(typeof window.gtag!=='function') return;
-      window.gtag('event','whatsapp_click',{ send_to: ADS, page_path: location.pathname, link_location: 'raw_link', link_url: wh });
-      window.gtag('event','conversion',{ send_to: '${WHATSAPP_CONVERSION_SEND_TO}', value: 1.0, currency: 'USD' });
+      var delay=hold(e, w);
+      if(delay) e.preventDefault();
+      function sendWa(){
+        var gone=false;
+        function done(){ if(gone) return; gone=true; if(delay) go(wh); }
+        if(typeof window.gtag!=='function'){ done(); return; }
+        window.gtag('event','whatsapp_click',{ send_to: ADS, page_path: location.pathname, link_location: 'raw_link', link_url: wh, transport_type: 'beacon' });
+        window.gtag('event','conversion',{ send_to: '${WHATSAPP_CONVERSION_SEND_TO}', value: 1.0, currency: 'USD', transport_type: 'beacon', event_callback: done });
+        if(delay) setTimeout(done, 700);
+      }
+      if(delay){
+        var n=0, iv=setInterval(function(){
+          n++;
+          if(adsReady() || n>=14){ clearInterval(iv); sendWa(); }
+        }, 50);
+      } else sendWa();
       return;
     }
-    var a=t.closest('a[href^="tel:"], a[href^="sms:"]');
+    var a=t.closest('a[href^="tel:"], a[href^="sms:"], a[href^="TEL:"], a[href^="SMS:"]');
     if(!a) return;
     var href=a.getAttribute('href')||'';
-    if(href.slice(0,4)==='tel:'){ va('call_click'); fire('phone_call', href); }
-    else fire('sms_click', href);
+    var tel=href.slice(0,4).toLowerCase()==='tel:';
+    if(tel) va('call_click');
+    track(tel ? 'phone_call' : 'sms_click', href, e, a);
   }, true);
 })();`.trim();
 }

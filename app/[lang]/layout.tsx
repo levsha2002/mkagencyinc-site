@@ -122,6 +122,18 @@ export default function RootLayout({
   };
   return (
     <html lang={params.lang} className={`${inter.variable} ${playfair.variable}`}>
+      {process.env.NODE_ENV === 'production' && (
+        <head>
+          {/* Raw tags, not next/script. Google's website-call check reads the
+              HTML source for gtag.js and phone_conversion_number. next/script
+              only queues them in __next_s, and lazyOnload (PR #86) waited
+              until idle — the forwarding number never swapped and tel:/WhatsApp
+              hits were dropped on navigation. async does not block parsing. */}
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
+          <script dangerouslySetInnerHTML={{ __html: gtagInitScript() }} />
+          <script dangerouslySetInnerHTML={{ __html: phoneClickTrackingScript() }} />
+        </head>
+      )}
       <body>
         <script
           type="application/ld+json"
@@ -141,24 +153,9 @@ export default function RootLayout({
           </>
         )}
         {process.env.NODE_ENV === 'production' && (
-          <>
-            {/* lazyOnload: afterInteractive preloads this ~490KB file in the
-                document head and it was the largest request on mobile /quote.
-                The inline config below still queues hits until the file loads. */}
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-              strategy="lazyOnload"
-            />
-            <Script id="ad-attribution" strategy="afterInteractive">
-              {attributionCaptureScript()}
-            </Script>
-            <Script id="phone-click-tracking" strategy="afterInteractive">
-              {phoneClickTrackingScript()}
-            </Script>
-            <Script id="gtag-init" strategy="afterInteractive">
-              {gtagInitScript()}
-            </Script>
-          </>
+          <Script id="ad-attribution" strategy="afterInteractive">
+            {attributionCaptureScript()}
+          </Script>
         )}
       </body>
     </html>

@@ -9,7 +9,7 @@ export default function StickyCallBar({ lang }: { lang: string }) {
   return (
     <div className="sticky-call-bar" role="navigation" aria-label="Quick contact">
       <a href={`tel:${PHONE_TEL}`} className="scb-btn scb-call" aria-label={`${t.call247} ${PHONE_DISPLAY}`}>
-        📞 {PHONE_DISPLAY}
+        📞 <span className="mk-phone">{PHONE_DISPLAY}</span>
       </a>
       <a href={`sms:${PHONE_TEL}`} className="scb-btn scb-text">
         💬 {t.contact.textUs}

@@ -91,7 +91,7 @@ export default function Header({ lang }: { lang: string }) {
       <div className="header-cta">
         <div className="container header-cta-in">
           <a href={`tel:${PHONE_TEL}`} className="call-btn">
-            📞 <span className="call-btn-text">{t.call247} · {PHONE_DISPLAY}</span>
+            📞 <span className="call-btn-text">{t.call247} · <span className="mk-phone">{PHONE_DISPLAY}</span></span>
           </a>
           <a href={`sms:${PHONE_TEL}`} className="text-btn">💬 <span className="text-btn-text">{t.contact.textUs}</span></a>
           <a href={hasOnSiteForm ? '#quote' : `/${lang}/quote`} className="text-btn header-quote-btn">📝 <span className="text-btn-text">{onSiteQuoteLabel}</span></a>
@@ -118,7 +118,7 @@ export default function Header({ lang }: { lang: string }) {
             ))}
           </div>
           <a href={`tel:${PHONE_TEL}`} className="mobile-menu-call">
-            📞 {t.call247} · {PHONE_DISPLAY}
+            📞 {t.call247} · <span className="mk-phone">{PHONE_DISPLAY}</span>
           </a>
         </nav>
       )}
