@@ -33,6 +33,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'flood-damaged-used-car-florida' },
       { blog: 'florida-license-suspended-no-insurance' },
       { blog: 'uninsured-motorist-coverage-florida' },
+      { blog: 'florida-headlight-move-over-law' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
   },
