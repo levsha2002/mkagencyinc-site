@@ -30,6 +30,7 @@ import { edition as e20261027 } from './posts/2026-10-27-king-tide-peak-auto-rat
 import { edition as e20261028 } from './posts/2026-10-28-record-king-tide-isaias-disaster-risk-scores';
 import { edition as e20261029 } from './posts/2026-10-29-fake-coverage-arrests-move-over-citizens-payments';
 import { edition as e20261030 } from './posts/2026-10-30-isaias-individual-aid-home-rate-decreases-weekend-rain';
+import { edition as e20261031 } from './posts/2026-10-31-flood-risk-sham-insurer-indictment-smoke-alarms';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -60,4 +61,5 @@ export const editions: NewsEdition[] = [
   e20261028,
   e20261029,
   e20261030,
+  e20261031,
 ];
