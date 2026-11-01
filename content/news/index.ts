@@ -31,6 +31,7 @@ import { edition as e20261028 } from './posts/2026-10-28-record-king-tide-isaias
 import { edition as e20261029 } from './posts/2026-10-29-fake-coverage-arrests-move-over-citizens-payments';
 import { edition as e20261030 } from './posts/2026-10-30-isaias-individual-aid-home-rate-decreases-weekend-rain';
 import { edition as e20261031 } from './posts/2026-10-31-flood-risk-sham-insurer-indictment-smoke-alarms';
+import { edition as e20261101 } from './posts/2026-11-01-flood-watch-flood-coverage-gap-driver-data';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -62,4 +63,5 @@ export const editions: NewsEdition[] = [
   e20261029,
   e20261030,
   e20261031,
+  e20261101,
 ];
