@@ -15,7 +15,7 @@ export interface LatestArticle {
 }
 
 function clip(text: string, max = 190): string {
-  const plain = text.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\[(.+?)\]\([^)]+\)/g, '$1').trim();
+  const plain = text.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\[(.+?)\]\((?:[^()]|\([^()]*\))+\)/g, '$1').trim();
   if (plain.length <= max) return plain;
   const cut = plain.slice(0, max);
   return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:.\s—-]+$/, '')}…`;
