@@ -2,7 +2,10 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 // Renders the tiny inline markup used in content/*: [text](href) and **bold**.
-const TOKEN = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*/g;
+// The href may contain one level of balanced parentheses, e.g. eCFR "Appendix%20A(1)%20to%20Part%2061".
+const HREF = String.raw`((?:[^()\s]|\([^()\s]*\))+)`;
+const TOKEN = new RegExp(String.raw`\[([^\]]+)\]\(` + HREF + String.raw`\)|\*\*([^*]+)\*\*`, 'g');
+const LINK = new RegExp(String.raw`\[([^\]]+)\]\(` + HREF + String.raw`\)`, 'g');
 
 export function RichText({ text }: { text: string }) {
   const out: React.ReactNode[] = [];
@@ -32,5 +35,5 @@ export function RichText({ text }: { text: string }) {
 
 /** Plain text version (for JSON-LD and meta). */
 export function stripInline(text: string): string {
-  return text.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1');
+  return text.replace(LINK, '$1').replace(/\*\*([^*]+)\*\*/g, '$1');
 }

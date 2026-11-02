@@ -23,11 +23,11 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'Florida DHSMV: Florida insurance requirements (PIP and PDL)',
     es: 'Florida DHSMV: requisitos de seguro de auto en Florida (PIP y PDL)',
     ru: 'Florida DHSMV: обязательная автостраховка во Флориде (PIP и PDL)' } },
-  pip: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.736.html', label: {
+  pip: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.736.html', label: {
     en: 'Florida Statutes s. 627.736: required PIP benefits (80% medical, 60% lost income, 14-day rule)',
     es: 'Estatutos de Florida, s. 627.736: beneficios obligatorios de PIP (80% médico, 60% de ingresos, regla de 14 días)',
     ru: 'Статуты Флориды, s. 627.736: обязательные выплаты PIP (80% лечения, 60% дохода, правило 14 дней)' } },
-  um: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.727.html', label: {
+  um: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.727.html', label: {
     en: 'Florida Statutes s. 627.727: uninsured and underinsured motorist coverage',
     es: 'Estatutos de Florida, s. 627.727: cobertura de conductor sin seguro o con seguro insuficiente',
     ru: 'Статуты Флориды, s. 627.727: покрытие от незастрахованных и недостаточно застрахованных водителей' } },
@@ -87,19 +87,19 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'U.S. Census Bureau, ACS 2020–2024 5-year: housing and commuting (B25024, B25034, B25003, B08303, B08013), Broward County',
     es: 'Oficina del Censo, ACS 2020–2024 (5 años): vivienda y traslado al trabajo (B25024, B25034, B25003, B08303, B08013), Broward',
     ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): жильё и поездки на работу (B25024, B25034, B25003, B08303, B08013), Broward' } },
-  roofAge: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.7011.html', label: {
+  roofAge: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.7011.html', label: {
     en: 'Florida Statutes s. 627.7011: roof-age rule (15 years), law and ordinance coverage, replacement cost',
     es: 'Estatutos de Florida, s. 627.7011: regla de antigüedad del techo (15 años), ley y ordenanza, costo de reemplazo',
     ru: 'Статуты Флориды, s. 627.7011: правило о возрасте крыши (15 лет), law and ordinance, replacement cost' } },
-  deductibles: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.701.html', label: {
+  deductibles: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.701.html', label: {
     en: 'Florida Statutes s. 627.701: hurricane deductible options and the calendar-year rule',
     es: 'Estatutos de Florida, s. 627.701: opciones de deducible de huracán y la regla del año calendario',
     ru: 'Статуты Флориды, s. 627.701: варианты ураганной франшизы и правило календарного года' } },
-  mitigation: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.0629.html', label: {
+  mitigation: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.0629.html', label: {
     en: 'Florida Statutes s. 627.0629: required wind mitigation credits',
     es: 'Estatutos de Florida, s. 627.0629: créditos obligatorios por mitigación de viento',
     ru: 'Статуты Флориды, s. 627.0629: обязательные кредиты за защиту от ветра (wind mitigation)' } },
-  claimDeadline: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.70132.html', label: {
+  claimDeadline: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.70132.html', label: {
     en: 'Florida Statutes s. 627.70132: property claim notice deadlines (1 year, 18 months)',
     es: 'Estatutos de Florida, s. 627.70132: plazos para avisar un reclamo de propiedad (1 año, 18 meses)',
     ru: 'Статуты Флориды, s. 627.70132: сроки заявления имущественного клейма (1 год, 18 месяцев)' } },
@@ -107,7 +107,7 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'Florida Department of Financial Services: wind mitigation inspection form OIR-B1-1802',
     es: 'Departamento de Servicios Financieros de Florida: formulario de mitigación de viento OIR-B1-1802',
     ru: 'Департамент финансовых услуг Флориды: форма wind mitigation OIR-B1-1802' } },
-  lossAssessment: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.714.html', label: {
+  lossAssessment: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.714.html', label: {
     en: 'Florida Statutes s. 627.714: condo unit owner loss assessment coverage',
     es: 'Estatutos de Florida, s. 627.714: cobertura de evaluación por pérdida para dueños de condominio',
     ru: 'Статуты Флориды, s. 627.714: покрытие loss assessment для владельцев кондо' } },
@@ -159,11 +159,11 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'The Florida Senate: SB 522 (2026), PIP repeal bill, died in committee March 13, 2026',
     es: 'Senado de Florida: SB 522 (2026), proyecto para eliminar el PIP, murió en comité el 13 de marzo de 2026',
     ru: 'Сенат Флориды: SB 522 (2026), законопроект об отмене PIP, не прошёл комитет 13 марта 2026 г.' } },
-  condoMaster: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0718/Sections/0718.111.html', label: {
+  condoMaster: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0718/Sections/0718.111.html', label: {
     en: 'Florida Statutes s. 718.111(11): what a condo association’s master policy must and need not cover',
     es: 'Estatutos de Florida, s. 718.111(11): qué cubre y qué no la póliza maestra de la asociación de condominio',
     ru: 'Статуты Флориды, s. 718.111(11): что покрывает и чего не покрывает мастер-полис ассоциации кондоминиума' } },
-  crashReport: { url: 'http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.065.html', label: {
+  crashReport: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.065.html', label: {
     en: 'Florida Statutes s. 316.065: duty to report crashes with injury or at least $2,000 of apparent damage',
     es: 'Estatutos de Florida, s. 316.065: obligación de reportar accidentes con lesiones o daños aparentes de $2,000 o más',
     ru: 'Статуты Флориды, s. 316.065: обязанность сообщать о ДТП с пострадавшими или ущербом от $2,000' } },
