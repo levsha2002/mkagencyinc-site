@@ -46,6 +46,7 @@ import { post as umbrellaInsuranceExplained } from './posts/umbrella-insurance-e
 import { post as condoAssociationVsHo6 } from './posts/condo-association-vs-ho6-florida';
 import { post as workersCompExemptionConstruction } from './posts/workers-comp-exemption-florida-construction';
 import { post as floridaHeadlightMoveOver } from './posts/florida-headlight-move-over-law';
+import { post as rentalCarInsuranceHolidays } from './posts/rental-car-insurance-florida-holidays';
 
 
 export const posts: BlogPost[] = [
@@ -93,5 +94,6 @@ export const posts: BlogPost[] = [
   condoAssociationVsHo6,
   workersCompExemptionConstruction,
   floridaHeadlightMoveOver,
+  rentalCarInsuranceHolidays,
 ];
 

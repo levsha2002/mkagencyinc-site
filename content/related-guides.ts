@@ -34,6 +34,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'florida-license-suspended-no-insurance' },
       { blog: 'uninsured-motorist-coverage-florida' },
       { blog: 'florida-headlight-move-over-law' },
+      { blog: 'rental-car-insurance-florida-holidays' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
   },
