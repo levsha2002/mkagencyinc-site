@@ -33,6 +33,7 @@ import { edition as e20261030 } from './posts/2026-10-30-isaias-individual-aid-h
 import { edition as e20261031 } from './posts/2026-10-31-flood-risk-sham-insurer-indictment-smoke-alarms';
 import { edition as e20261101 } from './posts/2026-11-01-flood-watch-flood-coverage-gap-driver-data';
 import { edition as e20261102 } from './posts/2026-11-02-flood-watch-amendments-health-enrollment';
+import { edition as e20261103 } from './posts/2026-11-03-auto-excess-profits-firms-flood';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -66,4 +67,5 @@ export const editions: NewsEdition[] = [
   e20261031,
   e20261101,
   e20261102,
+  e20261103,
 ];
