@@ -51,6 +51,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     links: [
       { blog: 'roof-age-home-insurance-florida' },
       { blog: 'hurricane-claim-checklist-florida' },
+      { blog: 'end-of-hurricane-season-checklist-florida' },
       { blog: 'king-tides-flood-insurance-miami-dade' },
       { blog: 'wind-mitigation-inspection-florida' },
       { blog: 'my-safe-florida-home-2026' },
@@ -88,7 +89,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/florida-home-insurance-wind-deductible'],
-    links: [{ blog: 'hurricane-claim-timeline-florida' }, { blog: 'hurricane-claim-checklist-florida' }],
+    links: [{ blog: 'hurricane-claim-timeline-florida' }, { blog: 'hurricane-claim-checklist-florida' }, { blog: 'end-of-hurricane-season-checklist-florida' }],
   },
   {
     pages: ['/new-construction-home-insurance-florida'],

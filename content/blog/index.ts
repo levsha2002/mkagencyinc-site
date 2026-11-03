@@ -47,6 +47,7 @@ import { post as condoAssociationVsHo6 } from './posts/condo-association-vs-ho6-
 import { post as workersCompExemptionConstruction } from './posts/workers-comp-exemption-florida-construction';
 import { post as floridaHeadlightMoveOver } from './posts/florida-headlight-move-over-law';
 import { post as rentalCarInsuranceHolidays } from './posts/rental-car-insurance-florida-holidays';
+import { post as endOfHurricaneSeasonChecklist } from './posts/end-of-hurricane-season-checklist-florida';
 
 
 export const posts: BlogPost[] = [
@@ -95,5 +96,6 @@ export const posts: BlogPost[] = [
   workersCompExemptionConstruction,
   floridaHeadlightMoveOver,
   rentalCarInsuranceHolidays,
+  endOfHurricaneSeasonChecklist,
 ];
 
