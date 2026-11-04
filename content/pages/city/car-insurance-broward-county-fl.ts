@@ -13,9 +13,9 @@ export const CAR_BROWARD: CityPage = {
   published: '2026-10-03',
   modified: '2026-10-03',
   served: [
-    { name: 'Fort Lauderdale' }, { name: 'Hollywood', path: '/car-insurance-hollywood-fl' }, { name: 'Hallandale Beach', path: '/car-insurance-hallandale-beach-fl' }, { name: 'Pembroke Pines' },
+    { name: 'Fort Lauderdale', path: '/car-insurance-fort-lauderdale-fl' }, { name: 'Hollywood', path: '/car-insurance-hollywood-fl' }, { name: 'Hallandale Beach', path: '/car-insurance-hallandale-beach-fl' }, { name: 'Pembroke Pines' },
     { name: 'Miramar' }, { name: 'Davie' }, { name: 'Plantation' }, { name: 'Sunrise' }, { name: 'Weston' },
-    { name: 'Coral Springs' }, { name: 'Pompano Beach' }, { name: 'Deerfield Beach' }, { name: 'Dania Beach' },
+    { name: 'Coral Springs' }, { name: 'Pompano Beach', path: '/car-insurance-pompano-beach-fl' }, { name: 'Deerfield Beach' }, { name: 'Dania Beach' },
     { name: 'Cooper City' }, { name: 'Lauderhill' }, { name: 'Tamarac' }, { name: 'Margate' }, { name: 'Coconut Creek' },
   ],
   areaServed: [

@@ -3,7 +3,7 @@ import { CITY_PAGES } from '@/content/pages/city';
 import s from './City.module.css';
 
 // "Areas we serve" links for the local city/county pages. Server component.
-// Grouped by county: Miami-Dade (south county plus the condo coast) and Broward.
+// Grouped by county: Miami-Dade, Broward and Palm Beach.
 // - variant 'section': two columns (auto / home) on the homepage, the Florida
 //   City product pages and the city pages themselves.
 // - variant 'footer': compact lines in the site footer.
@@ -12,9 +12,9 @@ type Lang = 'en' | 'es' | 'ru';
 const L = (lang: string): Lang => (lang === 'es' || lang === 'ru' ? lang : 'en');
 
 const T: Record<Lang, { title: string; auto: string; home: string; intro: string }> = {
-  en: { title: 'Areas we serve', auto: 'Car insurance', home: 'Home insurance', intro: 'We serve these Miami-Dade and Broward communities from our Florida City office, in person by appointment and by phone, WhatsApp, text and email.' },
-  es: { title: 'Zonas que atendemos', auto: 'Seguro de auto', home: 'Seguro de casa', intro: 'Atendemos estas comunidades de Miami-Dade y Broward desde nuestra oficina en Florida City, en persona con cita y por teléfono, WhatsApp, texto y correo.' },
-  ru: { title: 'Где мы работаем', auto: 'Автостраховка', home: 'Страховка дома', intro: 'Эти города Miami-Dade и Broward мы обслуживаем из офиса во Florida City — лично по записи, по телефону, в WhatsApp, по SMS и почте.' },
+  en: { title: 'Areas we serve', auto: 'Car insurance', home: 'Home insurance', intro: 'We serve these Miami-Dade, Broward and Palm Beach communities from our Florida City office, in person by appointment and by phone, WhatsApp, text and email.' },
+  es: { title: 'Zonas que atendemos', auto: 'Seguro de auto', home: 'Seguro de casa', intro: 'Atendemos estas comunidades de Miami-Dade, Broward y Palm Beach desde nuestra oficina en Florida City, en persona con cita y por teléfono, WhatsApp, texto y correo.' },
+  ru: { title: 'Где мы работаем', auto: 'Автостраховка', home: 'Страховка дома', intro: 'Эти города Miami-Dade, Broward и Palm Beach мы обслуживаем из офиса во Florida City — лично по записи, по телефону, в WhatsApp, по SMS и почте.' },
 };
 
 const AREA: Record<string, Record<Lang, string>> = {
@@ -26,13 +26,19 @@ const AREA: Record<string, Record<Lang, string>> = {
   aventura: { en: 'Aventura', es: 'Aventura', ru: 'Aventura' },
   'hallandale-beach': { en: 'Hallandale Beach', es: 'Hallandale Beach', ru: 'Hallandale Beach' },
   hollywood: { en: 'Hollywood', es: 'Hollywood', ru: 'Hollywood' },
+  'miami-beach': { en: 'Miami Beach', es: 'Miami Beach', ru: 'Miami Beach' },
+  'fort-lauderdale': { en: 'Fort Lauderdale', es: 'Fort Lauderdale', ru: 'Fort Lauderdale' },
+  'pompano-beach': { en: 'Pompano Beach', es: 'Pompano Beach', ru: 'Pompano Beach' },
+  'boca-raton': { en: 'Boca Raton', es: 'Boca Raton', ru: 'Boca Raton' },
   'miami-dade': { en: 'Miami-Dade County', es: 'Condado Miami-Dade', ru: 'Округ Miami-Dade' },
   broward: { en: 'Broward County', es: 'Condado Broward', ru: 'Округ Broward' },
+  'palm-beach': { en: 'Palm Beach County', es: 'Condado Palm Beach', ru: 'Округ Palm Beach' },
 };
 
 const GROUPS: { hub: string; cities: string[] }[] = [
-  { hub: 'miami-dade', cities: ['florida-city', 'homestead', 'cutler-bay', 'kendall', 'sunny-isles-beach', 'aventura'] },
-  { hub: 'broward', cities: ['hallandale-beach', 'hollywood'] },
+  { hub: 'miami-dade', cities: ['florida-city', 'homestead', 'cutler-bay', 'kendall', 'miami-beach', 'sunny-isles-beach', 'aventura'] },
+  { hub: 'broward', cities: ['hallandale-beach', 'hollywood', 'fort-lauderdale', 'pompano-beach'] },
+  { hub: 'palm-beach', cities: ['boca-raton'] },
 ];
 
 function pathFor(line: 'auto' | 'home', area: string): string | undefined {
