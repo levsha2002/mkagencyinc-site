@@ -121,6 +121,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'workers-comp-exemption-florida-construction' },
       { blog: 'chapter-558-notice-contractors-florida' },
       { blog: 'helper-employee-or-1099-florida-workers-comp' },
+      { blog: 'construction-stalls-builders-risk-florida' },
     ],
   },
   {
@@ -161,6 +162,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/builders-risk-insurance-florida'],
-    links: [{ blog: 'construction-stalls-builders-risk-florida' }],
+    links: [
+      { blog: 'construction-stalls-builders-risk-florida' },
+      { blog: 'builder-warranty-vs-homeowners-insurance-florida' },
+      { blog: 'certificate-of-insurance-contractors-florida' },
+    ],
   },
 ];
