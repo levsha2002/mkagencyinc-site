@@ -13,9 +13,9 @@ export const HOME_BROWARD: CityPage = {
   published: '2026-10-03',
   modified: '2026-10-03',
   served: [
-    { name: 'Fort Lauderdale' }, { name: 'Hollywood', path: '/homeowners-insurance-hollywood-fl' }, { name: 'Hallandale Beach', path: '/homeowners-insurance-hallandale-beach-fl' }, { name: 'Pembroke Pines' },
+    { name: 'Fort Lauderdale', path: '/homeowners-insurance-fort-lauderdale-fl' }, { name: 'Hollywood', path: '/homeowners-insurance-hollywood-fl' }, { name: 'Hallandale Beach', path: '/homeowners-insurance-hallandale-beach-fl' }, { name: 'Pembroke Pines' },
     { name: 'Miramar' }, { name: 'Davie' }, { name: 'Plantation' }, { name: 'Sunrise' }, { name: 'Weston' },
-    { name: 'Coral Springs' }, { name: 'Pompano Beach' }, { name: 'Deerfield Beach' }, { name: 'Dania Beach' },
+    { name: 'Coral Springs' }, { name: 'Pompano Beach', path: '/homeowners-insurance-pompano-beach-fl' }, { name: 'Deerfield Beach' }, { name: 'Dania Beach' },
     { name: 'Lauderdale-by-the-Sea' }, { name: 'Cooper City' }, { name: 'Tamarac' }, { name: 'Margate' }, { name: 'Coconut Creek' },
   ],
   areaServed: [

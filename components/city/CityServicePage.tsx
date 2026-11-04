@@ -52,7 +52,7 @@ function checkedLine(lang: Lang, iso: string): string {
 
 const UI: Record<Lang, {
   home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string;
-  servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward', string>; hub: string;
+  servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward' | 'palm-beach', string>; hub: string;
   related: string; flood: string; quoteTitle: string; quoteText: string;
   agent: Record<'homestead' | 'kendall', string>; windGuide: string; accidentGuide: string;
 }> = {
@@ -62,6 +62,7 @@ const UI: Record<Lang, {
     servedText: {
       'miami-dade': 'We work with clients all over the county from our Florida City office. Communities with their own page are linked.',
       broward: 'We serve Broward clients from our Florida City office, mainly by phone, WhatsApp, text and email, including these communities and the rest of the county.',
+      'palm-beach': 'We serve Palm Beach County from our Florida City office. Boca Raton is about 80 miles north, and towns farther up the coast are a longer drive, so most of the work is by phone, WhatsApp, text and email. Communities with their own page are linked.',
     },
     hub: 'Miami-Dade County', related: 'More for this area',
     flood: 'Flood insurance in Homestead',
@@ -77,6 +78,7 @@ const UI: Record<Lang, {
     servedText: {
       'miami-dade': 'Trabajamos con clientes de todo el condado desde nuestra oficina en Florida City. Las comunidades que tienen su propia página aparecen con enlace.',
       broward: 'Atendemos a los clientes de Broward desde nuestra oficina en Florida City, sobre todo por teléfono, WhatsApp, texto y correo, en estas comunidades y en el resto del condado.',
+      'palm-beach': 'Atendemos el condado de Palm Beach desde nuestra oficina en Florida City. Boca Raton queda a unas 80 millas al norte, y las ciudades más al norte implican un viaje más largo, así que la mayor parte del trabajo es por teléfono, WhatsApp, texto y correo. Las comunidades con página propia aparecen con enlace.',
     },
     hub: 'Condado Miami-Dade', related: 'Más para esta zona',
     flood: 'Seguro de inundación en Homestead',
@@ -92,6 +94,7 @@ const UI: Record<Lang, {
     servedText: {
       'miami-dade': 'Мы работаем с клиентами по всему округу из офиса во Florida City. Населённые пункты, у которых есть своя страница, даны ссылками.',
       broward: 'Клиентов из Broward мы обслуживаем из офиса во Florida City — в основном по телефону, в WhatsApp, по SMS и почте: в этих городах и по всему округу.',
+      'palm-beach': 'Округ Palm Beach мы обслуживаем из офиса во Florida City. До Boca Raton около 80 миль на север, а города дальше по побережью ещё дальше, поэтому основная работа идёт по телефону, в WhatsApp, по SMS и почте. Города со своей страницей даны ссылками.',
     },
     hub: 'Округ Miami-Dade', related: 'Ещё по этому району',
     flood: 'Страховка от наводнения в Homestead',
@@ -139,7 +142,7 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
   // Local agent hubs and guides (content/pages/guides).
   if (page.area === 'homestead' || page.area === 'kendall') extraLinks.push({ href: `/${l}/insurance-agent-${page.area}`, label: ui.agent[page.area] });
   if (page.line === 'home') extraLinks.push({ href: `/${l}/florida-home-insurance-wind-deductible`, label: ui.windGuide });
-  if (page.line === 'auto' && page.area !== 'broward') extraLinks.push({ href: `/${l}/auto-insurance-after-accident-miami-dade`, label: ui.accidentGuide });
+  if (page.line === 'auto' && page.area !== 'broward' && page.area !== 'palm-beach' && page.area !== 'boca-raton') extraLinks.push({ href: `/${l}/auto-insurance-after-accident-miami-dade`, label: ui.accidentGuide });
 
   const crumbs = [
     { name: ui.home, item: `${SITE_URL}/${l}` },
@@ -292,7 +295,7 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
         </div>
       </section>
 
-      {page.served && (page.area === 'miami-dade' || page.area === 'broward') && (
+      {page.served && (page.area === 'miami-dade' || page.area === 'broward' || page.area === 'palm-beach') && (
         <section className="section" aria-labelledby="communities">
           <div className={`container ${s.served}`}>
             <h2 id="communities">{ui.servedTitle(t.breadcrumb)}</h2>

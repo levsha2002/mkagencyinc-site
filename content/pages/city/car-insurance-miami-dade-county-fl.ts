@@ -18,7 +18,7 @@ export const CAR_MIAMI_DADE: CityPage = {
     { name: 'Cutler Bay', path: '/car-insurance-cutler-bay-fl' },
     { name: 'Kendall', path: '/car-insurance-kendall-fl' },
     { name: 'Palmetto Bay' }, { name: 'Pinecrest' }, { name: 'South Miami' }, { name: 'Coral Gables' },
-    { name: 'Miami' }, { name: 'Doral' }, { name: 'Hialeah' }, { name: 'Miami Beach' },
+    { name: 'Miami' }, { name: 'Doral' }, { name: 'Hialeah' }, { name: 'Miami Beach', path: '/car-insurance-miami-beach-fl' },
     { name: 'North Miami' }, { name: 'Aventura', path: '/car-insurance-aventura-fl' }, { name: 'Sunny Isles Beach', path: '/car-insurance-sunny-isles-beach-fl' },
     { name: 'Redland, Leisure City, Naranja and Princeton' },
   ],

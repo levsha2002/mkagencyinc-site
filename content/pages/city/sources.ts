@@ -14,7 +14,9 @@ type Key =
   | 'acsSunnyIsles' | 'acsHallandale' | 'acsAventura' | 'acsHollywood'
   | 'sibCity' | 'wilmaMd' | 'brightline' | 'brightlineStation'
   | 'flhsmvNew' | 'flhsmvHandbook' | 'flhsmvVisit'
-  | 'hollywoodHistory' | 'hollywoodFirm' | 'hollywoodBridge';
+  | 'hollywoodHistory' | 'hollywoodFirm' | 'hollywoodBridge'
+  | 'acsBoca' | 'acsFortLauderdale' | 'acsMiamiBeach' | 'acsPompano' | 'acsPalmBeach'
+  | 'pbcFlood' | 'pbcWind' | 'nceiFllFlood' | 'nwsIrma';
 
 const EN_SUFFIX: Record<Lang, string> = { en: '', es: ' (en inglés)', ru: ' (на английском)' };
 
@@ -223,6 +225,42 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'Hollywood Boulevard (SR 820) bridge: FDOT double-leaf bascule over the Intracoastal Waterway, replaced in 1976',
     es: 'Puente de Hollywood Boulevard (SR 820): puente basculante de dos hojas del FDOT sobre el Intracoastal, reemplazado en 1976',
     ru: 'Мост Hollywood Boulevard (SR 820): разводной двукрылый мост FDOT через Intracoastal, заменён в 1976 г.' } },
+  acsBoca: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1207300', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting, age, nativity and language (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Boca Raton',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo, edad, lugar de nacimiento e idioma (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Boca Raton',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу, возраст, место рождения и язык (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Boca Raton' } },
+  acsFortLauderdale: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1224000', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting, age, nativity and language (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Fort Lauderdale',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo, edad, lugar de nacimiento e idioma (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Fort Lauderdale',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу, возраст, место рождения и язык (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Fort Lauderdale' } },
+  acsMiamiBeach: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1245025', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting, age, nativity and language (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Miami Beach',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo, edad, lugar de nacimiento e idioma (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Miami Beach',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу, возраст, место рождения и язык (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Miami Beach' } },
+  acsPompano: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1258050', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting, age, nativity and language (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Pompano Beach',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo, edad, lugar de nacimiento e idioma (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Pompano Beach',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу, возраст, место рождения и язык (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Pompano Beach' } },
+  acsPalmBeach: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=050XX00US12099', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, housing, vacancy, commuting, age, nativity and language (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), Palm Beach County',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, vivienda, vacancia, traslado al trabajo, edad, lugar de nacimiento e idioma (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), condado de Palm Beach',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, жильё, пустующие квартиры, поездки на работу, возраст, место рождения и язык (B01003, B01001, B25024, B25034, B25035, B25003, B25004, B08303, B08013, B05002, C16001), округ Palm Beach' } },
+  pbcFlood: { url: 'https://discover.pbc.gov/pzb/building/PDF/NewsReleases/Flood%20Zone%20LiMWA%20CCCL-PZBGIS_Quick%20Reference_2025.pdf', label: {
+    en: 'Palm Beach County Planning, Zoning & Building: flood-zone map layers, current FIRMs revised December 20, 2024, prior countywide FIRMs October 5, 2017',
+    es: 'Planning, Zoning & Building del condado de Palm Beach: capas de zonas de inundación, FIRMs vigentes revisados el 20 de diciembre de 2024 y mapas anteriores del 5 de octubre de 2017',
+    ru: 'Palm Beach County Planning, Zoning & Building: слои зон затопления, действующие FIRM от 20 декабря 2024 г. и предыдущие карты округа от 5 октября 2017 г.' } },
+  pbcWind: { url: 'https://discover.pbc.gov/pzb/Maps/Wind-Speeds.aspx', label: {
+    en: 'Palm Beach County: ultimate design wind-speed maps for the Florida Building Code, and the wind-borne debris region (unincorporated county)',
+    es: 'Condado de Palm Beach: mapas de velocidad de viento de diseño del Código de Construcción de Florida y la región de escombros arrastrados por el viento (área no incorporada)',
+    ru: 'Округ Palm Beach: карты расчётной скорости ветра Florida Building Code и зона wind-borne debris (неинкорпорированная часть округа)' } },
+  nceiFllFlood: { url: 'https://www.ncei.noaa.gov/stormevents/eventdetails.jsp?id=1097614', label: {
+    en: 'NOAA NCEI Storm Events: April 12–13, 2023 flash flood in Broward, 25.91 inches at the Fort Lauderdale airport gauge, building and vehicle damage in Fort Lauderdale',
+    es: 'NOAA NCEI Storm Events: inundación súbita del 12–13 de abril de 2023 en Broward, 25.91 pulgadas en el medidor del aeropuerto de Fort Lauderdale, daños a edificios y vehículos',
+    ru: 'NOAA NCEI Storm Events: ливень 12–13 апреля 2023 г. в Broward, 25,91 дюйма на датчике аэропорта Fort Lauderdale, ущерб зданиям и машинам' } },
+  nwsIrma: { url: 'https://www.weather.gov/mfl/hurricaneirma', label: {
+    en: 'National Weather Service Miami: Hurricane Irma local report (winds and coastal inundation in Miami-Dade, Broward and Palm Beach)',
+    es: 'Servicio Meteorológico Nacional, Miami: informe local del huracán Irma (viento e inundación costera en Miami-Dade, Broward y Palm Beach)',
+    ru: 'Национальная служба погоды, Майами: местный отчёт об урагане Irma (ветер и затопление берега в Miami-Dade, Broward и Palm Beach)' } },
 };
 
 /** Localized source list for a page, in the given order. */
