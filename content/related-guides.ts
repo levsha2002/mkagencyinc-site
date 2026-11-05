@@ -35,6 +35,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'uninsured-motorist-coverage-florida' },
       { blog: 'florida-headlight-move-over-law' },
       { blog: 'rental-car-insurance-florida-holidays' },
+      { blog: 'teen-driver-license-rules-florida' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
   },
