@@ -36,6 +36,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'florida-headlight-move-over-law' },
       { blog: 'rental-car-insurance-florida-holidays' },
       { blog: 'teen-driver-license-rules-florida' },
+      { blog: 'buying-car-florida-insurance-registration' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
   },
