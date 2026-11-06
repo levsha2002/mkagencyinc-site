@@ -36,6 +36,7 @@ import { edition as e20261102 } from './posts/2026-11-02-flood-watch-amendments-
 import { edition as e20261103 } from './posts/2026-11-03-auto-excess-profits-firms-flood';
 import { edition as e20261104 } from './posts/2026-11-04-amendment-results-isaias-crf-king-tides';
 import { edition as e20261105 } from './posts/2026-11-05-citizens-deadline-king-tides-flood-emergency';
+import { edition as e20261106 } from './posts/2026-11-06-king-tides-citizens-fraud-flood';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -72,4 +73,5 @@ export const editions: NewsEdition[] = [
   e20261103,
   e20261104,
   e20261105,
+  e20261106,
 ];
