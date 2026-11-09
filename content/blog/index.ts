@@ -50,6 +50,7 @@ import { post as rentalCarInsuranceHolidays } from './posts/rental-car-insurance
 import { post as endOfHurricaneSeasonChecklist } from './posts/end-of-hurricane-season-checklist-florida';
 import { post as teenDriverLicenseRules } from './posts/teen-driver-license-rules-florida';
 import { post as buyingCarFloridaInsuranceRegistration } from './posts/buying-car-florida-insurance-registration';
+import { post as subcontractorInsuranceCertificates } from './posts/subcontractor-insurance-certificates-florida';
 
 
 export const posts: BlogPost[] = [
@@ -101,5 +102,6 @@ export const posts: BlogPost[] = [
   endOfHurricaneSeasonChecklist,
   teenDriverLicenseRules,
   buyingCarFloridaInsuranceRegistration,
+  subcontractorInsuranceCertificates,
 ];
 
