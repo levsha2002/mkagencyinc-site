@@ -38,6 +38,7 @@ import { edition as e20261104 } from './posts/2026-11-04-amendment-results-isaia
 import { edition as e20261105 } from './posts/2026-11-05-citizens-deadline-king-tides-flood-emergency';
 import { edition as e20261106 } from './posts/2026-11-06-king-tides-citizens-fraud-flood';
 import { edition as e20261107 } from './posts/2026-11-07-isaias-claims-election-tax-session-king-tides';
+import { edition as e20261109 } from './posts/2026-11-09-citizens-child-care-nfip-comp-cold-front';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -76,4 +77,5 @@ export const editions: NewsEdition[] = [
   e20261105,
   e20261106,
   e20261107,
+  e20261109,
 ];
