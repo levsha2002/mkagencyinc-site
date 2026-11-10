@@ -53,6 +53,8 @@ export interface GuidePage {
   heroImage: HeroImageKey;
   published: string;
   modified: string;
+  /** Date (YYYY-MM-DD) the sources were last checked; defaults to 2026-10-03. */
+  sourcesChecked?: string;
   /** schema.org areaServed for the Service. */
   areaServed: object[];
   /** Per-page share image (public/og/<name>.webp, 1200x630) with per-locale alt. */

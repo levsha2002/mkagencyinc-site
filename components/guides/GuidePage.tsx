@@ -28,26 +28,26 @@ import s from '@/components/city/City.module.css';
 type Lang = 'en' | 'es' | 'ru';
 
 const UI: Record<Lang, {
-  home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string; checked: string;
+  home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string; checked: (date: string) => string;
   answer: string; related: string; quoteTitle: string; quoteText: string;
 }> = {
   en: {
     home: 'Home', updated: 'Updated', call: 'Call', cta: 'Have an agent call me', whatsapp: 'WhatsApp us', langLine: 'English · Español · По-русски',
-    checked: 'Facts on this page were checked against these sources on October 3, 2026.',
+    checked: (d) => `Facts on this page were checked against these sources on ${d}.`,
     answer: 'Quick answer:', related: 'Related pages',
     quoteTitle: 'Questions about your coverage?',
     quoteText: 'Call us, or leave your number and we’ll contact you within an hour during business hours.',
   },
   es: {
     home: 'Inicio', updated: 'Actualizado el', call: 'Llame al', cta: 'Quiero que me llame un agente', whatsapp: 'Escríbanos por WhatsApp', langLine: 'English · Español · По-русски',
-    checked: 'Los datos de esta página se verificaron con estas fuentes el 3 de octubre de 2026.',
+    checked: (d) => `Los datos de esta página se verificaron con estas fuentes el ${d}.`,
     answer: 'Respuesta rápida:', related: 'Páginas relacionadas',
     quoteTitle: '¿Tiene preguntas sobre su cobertura?',
     quoteText: 'Llámenos, o déjenos su número y lo contactamos en menos de una hora en horario de oficina.',
   },
   ru: {
     home: 'Главная', updated: 'Обновлено', call: 'Звоните', cta: 'Пусть агент мне перезвонит', whatsapp: 'Написать в WhatsApp', langLine: 'English · Español · По-русски',
-    checked: 'Факты на этой странице проверены по этим источникам 3 октября 2026 года.',
+    checked: (d) => `Факты на этой странице проверены по этим источникам ${d.replace(/\s*г\.$/, ' года')}.`,
     answer: 'Коротко:', related: 'Связанные страницы',
     quoteTitle: 'Есть вопросы о вашем покрытии?',
     quoteText: 'Позвоните нам или оставьте номер — мы свяжемся с вами в течение часа в рабочее время.',
@@ -248,7 +248,7 @@ export default function GuidePage({ path, lang }: { path: string; lang: string }
             </p>
             <SendPolicyCta lang={l} placement="final" />
             <Disclaimer lang={l} />
-            {t.sources.length > 0 && <SourceList lang={l} sources={t.sources} updatedLine={ui.checked} />}
+            {t.sources.length > 0 && <SourceList lang={l} sources={t.sources} updatedLine={ui.checked(formatDate(page.sourcesChecked ?? '2026-10-03', l))} />}
           </div>
         </div>
       </section>

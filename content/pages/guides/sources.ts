@@ -6,7 +6,8 @@ import type { Lang, Source } from '../../types';
 type Key =
   | 'flhsmv' | 'pip' | 'um' | 'crashReport' | 'crashReportDriver'
   | 'deductibles' | 'hurricaneDef' | 'mitigation' | 'claimDeadline' | 'oirTropical' | 'dfsHurricane'
-  | 'citizensFlood' | 'floodsmart' | 'condoMaster' | 'newResident';
+  | 'citizensFlood' | 'floodsmart' | 'condoMaster' | 'newResident'
+  | 'crashScene' | 'crashInfo' | 'crashInjury' | 'crashPortal' | 'selfReport' | 'involvedCrash';
 
 const EN_SUFFIX: Record<Lang, string> = { en: '', es: ' (en inglés)', ru: ' (на английском)' };
 
@@ -71,6 +72,30 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'Florida DHSMV: new residents (driver license within 30 days, Florida insurance to title and register)',
     es: 'Florida DHSMV: nuevos residentes (licencia en 30 días, seguro de Florida para titular y registrar)',
     ru: 'Florida DHSMV: новым жителям (права Флориды в течение 30 дней, страховка Флориды для регистрации машины)' } },
+  crashScene: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.061.html', label: {
+    en: 'Florida Statutes s. 316.061: stopping at a property-damage crash and moving a vehicle that blocks traffic',
+    es: 'Estatutos de Florida, s. 316.061: detenerse en un choque con daños y mover el vehículo que bloquea el tráfico',
+    ru: 'Статуты Флориды, s. 316.061: остановка при ДТП с ущербом и перемещение машины, мешающей движению' } },
+  crashInfo: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.062.html', label: {
+    en: 'Florida Statutes s. 316.062: duty to give information and render aid',
+    es: 'Estatutos de Florida, s. 316.062: obligación de dar datos y prestar ayuda',
+    ru: 'Статуты Флориды, s. 316.062: обязанность сообщить данные и оказать помощь' } },
+  crashInjury: { url: 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.027.html', label: {
+    en: 'Florida Statutes s. 316.027: crashes involving death or personal injury',
+    es: 'Estatutos de Florida, s. 316.027: choques con muertes o lesiones',
+    ru: 'Статуты Флориды, s. 316.027: ДТП с погибшими или пострадавшими' } },
+  crashPortal: { url: 'https://www.flhsmv.gov/traffic-crash-reports/', label: {
+    en: 'Florida DHSMV: traffic crash reports (buying a report, reporting a crash, self-reporting)',
+    es: 'Florida DHSMV: informes de choques (comprar un informe, reportar un choque, autoinforme)',
+    ru: 'Florida DHSMV: отчёты о ДТП (покупка отчёта, сообщение о ДТП, самоотчёт)' } },
+  selfReport: { url: 'https://www.flhsmv.gov/pdf/forms/90011s.pdf', label: {
+    en: 'Florida DHSMV form HSMV 90011S: Driver Report of Traffic Crash (Self Report)',
+    es: 'Formulario HSMV 90011S de Florida DHSMV: autoinforme del conductor sobre un choque',
+    ru: 'Форма HSMV 90011S (Florida DHSMV): самоотчёт водителя о ДТП' } },
+  involvedCrash: { url: 'https://www.flhsmv.gov/insurance/involved-in-a-crash/', label: {
+    en: 'Florida DHSMV: Involved in a crash? (other party’s insurance, injury crashes, releases)',
+    es: 'Florida DHSMV: ¿Tuvo un choque? (seguro de la otra parte, choques con lesiones, liberaciones)',
+    ru: 'Florida DHSMV: попали в ДТП? (страховка другой стороны, ДТП с травмами, отказ от претензий)' } },
 };
 
 /** Localized source list for a page, in the given order. */
