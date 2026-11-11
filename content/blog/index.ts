@@ -51,6 +51,7 @@ import { post as endOfHurricaneSeasonChecklist } from './posts/end-of-hurricane-
 import { post as teenDriverLicenseRules } from './posts/teen-driver-license-rules-florida';
 import { post as buyingCarFloridaInsuranceRegistration } from './posts/buying-car-florida-insurance-registration';
 import { post as subcontractorInsuranceCertificates } from './posts/subcontractor-insurance-certificates-florida';
+import { post as floridaInsuranceChangesJanuary2027 } from './posts/florida-insurance-changes-january-2027';
 
 
 export const posts: BlogPost[] = [
@@ -103,5 +104,6 @@ export const posts: BlogPost[] = [
   teenDriverLicenseRules,
   buyingCarFloridaInsuranceRegistration,
   subcontractorInsuranceCertificates,
+  floridaInsuranceChangesJanuary2027,
 ];
 
