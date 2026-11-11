@@ -7,6 +7,8 @@ type Lang = 'en' | 'es' | 'ru';
  *  the switcher sends visitors of a missing language (a path without /lang). */
 export const LIMITED_LANG_PAGES: Record<string, { langs: Lang[]; fallback: string }> = {
   '/flood-insurance-homestead-fl': { langs: ['en', 'es', 'ru'], fallback: '/homeowners-insurance-florida-city' },
+  // Spanish Google Ads landing page ("seguro de carro", "agente de seguros").
+  '/seguro-de-carro-florida-city': { langs: ['es'], fallback: '/car-insurance-florida-city' },
 };
 
 /** Target of the language switcher for `pathname` in language `l`.

@@ -81,6 +81,8 @@ const C: Record<Lang, any> = {
       { href: '/es/sr22-insurance-florida-city', label: 'seguro SR-22 y FR-44 en Florida City' },
       '. ¿Acaba de llegar a Florida o maneja con licencia de otro país? Lea nuestra guía sobre el ',
       { href: '/es/blog/seguro-auto-licencia-extranjera-florida', label: 'seguro de auto con licencia extranjera' },
+      '. ¿Prefiere tratar todo en español? Conozca a su ',
+      { href: '/es/seguro-de-carro-florida-city', label: 'agente de seguros en Florida City que habla español' },
       '.',
     ],
     covTitle: 'Coberturas que cotizamos todos los días',
