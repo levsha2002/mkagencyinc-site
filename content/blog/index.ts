@@ -52,6 +52,7 @@ import { post as teenDriverLicenseRules } from './posts/teen-driver-license-rule
 import { post as buyingCarFloridaInsuranceRegistration } from './posts/buying-car-florida-insurance-registration';
 import { post as subcontractorInsuranceCertificates } from './posts/subcontractor-insurance-certificates-florida';
 import { post as floridaInsuranceChangesJanuary2027 } from './posts/florida-insurance-changes-january-2027';
+import { post as commercialAutoRenewalChecklist } from './posts/commercial-auto-renewal-checklist-florida';
 
 
 export const posts: BlogPost[] = [
@@ -105,5 +106,6 @@ export const posts: BlogPost[] = [
   buyingCarFloridaInsuranceRegistration,
   subcontractorInsuranceCertificates,
   floridaInsuranceChangesJanuary2027,
+  commercialAutoRenewalChecklist,
 ];
 
