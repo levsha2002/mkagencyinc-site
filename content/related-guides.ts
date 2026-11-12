@@ -165,7 +165,10 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
   },
   {
     pages: ['/work-truck-insurance-florida'],
-    links: [{ blog: 'usdot-number-florida-work-trucks' }],
+    links: [
+      { blog: 'commercial-auto-renewal-checklist-florida' },
+      { blog: 'usdot-number-florida-work-trucks' },
+    ],
   },
   {
     pages: ['/builders-risk-insurance-florida'],
