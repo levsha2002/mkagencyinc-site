@@ -41,6 +41,7 @@ import { edition as e20261107 } from './posts/2026-11-07-isaias-claims-election-
 import { edition as e20261109 } from './posts/2026-11-09-citizens-child-care-nfip-comp-cold-front';
 import { edition as e20261110 } from './posts/2026-11-10-pbm-fines-fortified-roofs-tax-session-cold-front';
 import { edition as e20261111 } from './posts/2026-11-11-flood-recovery-comp-fraud-cold-front';
+import { edition as e20261112 } from './posts/2026-11-12-flood-aid-request-hoa-registry-legislature-cold-front';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -82,4 +83,5 @@ export const editions: NewsEdition[] = [
   e20261109,
   e20261110,
   e20261111,
+  e20261112,
 ];
