@@ -38,6 +38,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'lending-your-car-florida-owner-liability' },
       { blog: 'teen-driver-license-rules-florida' },
       { blog: 'buying-car-florida-insurance-registration' },
+      { blog: 'electronic-proof-of-insurance-florida' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
   },
