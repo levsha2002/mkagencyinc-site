@@ -43,6 +43,7 @@ import { edition as e20261110 } from './posts/2026-11-10-pbm-fines-fortified-roo
 import { edition as e20261111 } from './posts/2026-11-11-flood-recovery-comp-fraud-cold-front';
 import { edition as e20261112 } from './posts/2026-11-12-flood-aid-request-hoa-registry-legislature-cold-front';
 import { edition as e20261113 } from './posts/2026-11-13-flood-aid-counties-holiday-driving-king-tides-cold-front';
+import { edition as e20261114 } from './posts/2026-11-14-msfh-portal-delivery-robots-windy-week';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -86,4 +87,5 @@ export const editions: NewsEdition[] = [
   e20261111,
   e20261112,
   e20261113,
+  e20261114,
 ];
