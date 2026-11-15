@@ -39,6 +39,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'teen-driver-license-rules-florida' },
       { blog: 'buying-car-florida-insurance-registration' },
       { blog: 'electronic-proof-of-insurance-florida' },
+      { blog: 'winter-residents-florida-license-registration-insurance' },
       { blog: 'seguro-auto-licencia-extranjera-florida' },
     ],
   },
