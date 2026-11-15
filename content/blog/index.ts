@@ -53,6 +53,7 @@ import { post as buyingCarFloridaInsuranceRegistration } from './posts/buying-ca
 import { post as subcontractorInsuranceCertificates } from './posts/subcontractor-insurance-certificates-florida';
 import { post as floridaInsuranceChangesJanuary2027 } from './posts/florida-insurance-changes-january-2027';
 import { post as commercialAutoRenewalChecklist } from './posts/commercial-auto-renewal-checklist-florida';
+import { post as winterResidentsLicenseRegistration } from './posts/winter-residents-florida-license-registration-insurance';
 import { post as electronicProofOfInsurance } from './posts/electronic-proof-of-insurance-florida';
 
 
@@ -109,5 +110,6 @@ export const posts: BlogPost[] = [
   floridaInsuranceChangesJanuary2027,
   commercialAutoRenewalChecklist,
   electronicProofOfInsurance,
+  winterResidentsLicenseRegistration,
 ];
 
