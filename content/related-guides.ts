@@ -57,6 +57,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'roof-age-home-insurance-florida' },
       { blog: 'hurricane-claim-checklist-florida' },
       { blog: 'end-of-hurricane-season-checklist-florida' },
+      { blog: 'space-heater-fire-safety-florida-homes' },
       { blog: 'florida-insurance-changes-january-2027' },
       { blog: 'king-tides-flood-insurance-miami-dade' },
       { blog: 'wind-mitigation-inspection-florida' },
