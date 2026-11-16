@@ -55,6 +55,7 @@ import { post as floridaInsuranceChangesJanuary2027 } from './posts/florida-insu
 import { post as commercialAutoRenewalChecklist } from './posts/commercial-auto-renewal-checklist-florida';
 import { post as winterResidentsLicenseRegistration } from './posts/winter-residents-florida-license-registration-insurance';
 import { post as electronicProofOfInsurance } from './posts/electronic-proof-of-insurance-florida';
+import { post as spaceHeaterFireSafety } from './posts/space-heater-fire-safety-florida-homes';
 
 
 export const posts: BlogPost[] = [
@@ -111,5 +112,6 @@ export const posts: BlogPost[] = [
   commercialAutoRenewalChecklist,
   electronicProofOfInsurance,
   winterResidentsLicenseRegistration,
+  spaceHeaterFireSafety,
 ];
 
