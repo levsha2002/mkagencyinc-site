@@ -45,6 +45,7 @@ import { edition as e20261112 } from './posts/2026-11-12-flood-aid-request-hoa-r
 import { edition as e20261113 } from './posts/2026-11-13-flood-aid-counties-holiday-driving-king-tides-cold-front';
 import { edition as e20261114 } from './posts/2026-11-14-msfh-portal-delivery-robots-windy-week';
 import { edition as e20261115 } from './posts/2026-11-15-heavy-rain-risk-mitigation-grants-citizens-flood';
+import { edition as e20261116 } from './posts/2026-11-16-urban-flood-risk-new-flood-maps-park-outside-recall';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -90,4 +91,5 @@ export const editions: NewsEdition[] = [
   e20261113,
   e20261114,
   e20261115,
+  e20261116,
 ];
