@@ -46,6 +46,7 @@ import { edition as e20261113 } from './posts/2026-11-13-flood-aid-counties-holi
 import { edition as e20261114 } from './posts/2026-11-14-msfh-portal-delivery-robots-windy-week';
 import { edition as e20261115 } from './posts/2026-11-15-heavy-rain-risk-mitigation-grants-citizens-flood';
 import { edition as e20261116 } from './posts/2026-11-16-urban-flood-risk-new-flood-maps-park-outside-recall';
+import { edition as e20261117 } from './posts/2026-11-17-flood-watch-workers-comp-order-citizens-policy-count';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -92,4 +93,5 @@ export const editions: NewsEdition[] = [
   e20261114,
   e20261115,
   e20261116,
+  e20261117,
 ];
