@@ -14,6 +14,11 @@ import { CAR_BOCA } from './car-insurance-boca-raton-fl';
 import { CAR_MIAMI_DADE } from './car-insurance-miami-dade-county-fl';
 import { CAR_BROWARD } from './car-insurance-broward-county-fl';
 import { CAR_PALM_BEACH } from './car-insurance-palm-beach-county-fl';
+import { CAR_SARASOTA } from './car-insurance-sarasota-county-fl';
+import { CAR_NORTH_PORT } from './car-insurance-north-port-fl';
+import { CAR_VENICE } from './car-insurance-venice-fl';
+import { CAR_HILLSBOROUGH } from './car-insurance-hillsborough-county-fl';
+import { CAR_TAMPA } from './car-insurance-tampa-fl';
 import { HOME_HOMESTEAD } from './homeowners-insurance-homestead-fl';
 import { HOME_CUTLER_BAY } from './homeowners-insurance-cutler-bay-fl';
 import { HOME_KENDALL } from './homeowners-insurance-kendall-fl';
@@ -28,14 +33,19 @@ import { HOME_BOCA } from './homeowners-insurance-boca-raton-fl';
 import { HOME_MIAMI_DADE } from './homeowners-insurance-miami-dade-county-fl';
 import { HOME_BROWARD } from './homeowners-insurance-broward-county-fl';
 import { HOME_PALM_BEACH } from './homeowners-insurance-palm-beach-county-fl';
+import { HOME_SARASOTA } from './homeowners-insurance-sarasota-county-fl';
+import { HOME_NORTH_PORT } from './homeowners-insurance-north-port-fl';
+import { HOME_VENICE } from './homeowners-insurance-venice-fl';
+import { HOME_HILLSBOROUGH } from './homeowners-insurance-hillsborough-county-fl';
+import { HOME_TAMPA } from './homeowners-insurance-tampa-fl';
 import { HERO_IMAGES } from '../../hero/images';
 
 export type { CityPage, CityPageCopy } from './types';
 
 // Local SEO pages: city pages + county hubs. Routes live in app/[lang]/<slug>/.
 export const CITY_PAGES: CityPage[] = [
-  CAR_MIAMI_DADE, CAR_HOMESTEAD, CAR_CUTLER_BAY, CAR_KENDALL, CAR_MIAMI_BEACH, CAR_SUNNY_ISLES, CAR_AVENTURA, CAR_BROWARD, CAR_HALLANDALE, CAR_HOLLYWOOD, CAR_FORT_LAUDERDALE, CAR_POMPANO, CAR_PALM_BEACH, CAR_BOCA,
-  HOME_MIAMI_DADE, HOME_HOMESTEAD, HOME_CUTLER_BAY, HOME_KENDALL, HOME_MIAMI_BEACH, HOME_SUNNY_ISLES, HOME_AVENTURA, HOME_BROWARD, HOME_HALLANDALE, HOME_HOLLYWOOD, HOME_FORT_LAUDERDALE, HOME_POMPANO, HOME_PALM_BEACH, HOME_BOCA,
+  CAR_MIAMI_DADE, CAR_HOMESTEAD, CAR_CUTLER_BAY, CAR_KENDALL, CAR_MIAMI_BEACH, CAR_SUNNY_ISLES, CAR_AVENTURA, CAR_BROWARD, CAR_HALLANDALE, CAR_HOLLYWOOD, CAR_FORT_LAUDERDALE, CAR_POMPANO, CAR_PALM_BEACH, CAR_BOCA, CAR_SARASOTA, CAR_NORTH_PORT, CAR_VENICE, CAR_HILLSBOROUGH, CAR_TAMPA,
+  HOME_MIAMI_DADE, HOME_HOMESTEAD, HOME_CUTLER_BAY, HOME_KENDALL, HOME_MIAMI_BEACH, HOME_SUNNY_ISLES, HOME_AVENTURA, HOME_BROWARD, HOME_HALLANDALE, HOME_HOLLYWOOD, HOME_FORT_LAUDERDALE, HOME_POMPANO, HOME_PALM_BEACH, HOME_BOCA, HOME_SARASOTA, HOME_NORTH_PORT, HOME_VENICE, HOME_HILLSBOROUGH, HOME_TAMPA,
 ];
 
 export function getCityPage(path: string): CityPage {
