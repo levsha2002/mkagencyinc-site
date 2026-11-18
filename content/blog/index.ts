@@ -56,6 +56,7 @@ import { post as commercialAutoRenewalChecklist } from './posts/commercial-auto-
 import { post as winterResidentsLicenseRegistration } from './posts/winter-residents-florida-license-registration-insurance';
 import { post as electronicProofOfInsurance } from './posts/electronic-proof-of-insurance-florida';
 import { post as spaceHeaterFireSafety } from './posts/space-heater-fire-safety-florida-homes';
+import { post as yearEndHomeownersRenewalChecklist } from './posts/year-end-homeowners-renewal-checklist-florida';
 
 
 export const posts: BlogPost[] = [
@@ -113,5 +114,6 @@ export const posts: BlogPost[] = [
   electronicProofOfInsurance,
   winterResidentsLicenseRegistration,
   spaceHeaterFireSafety,
+  yearEndHomeownersRenewalChecklist,
 ];
 
