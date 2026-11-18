@@ -16,7 +16,10 @@ type Key =
   | 'flhsmvNew' | 'flhsmvHandbook' | 'flhsmvVisit'
   | 'hollywoodHistory' | 'hollywoodFirm' | 'hollywoodBridge'
   | 'acsBoca' | 'acsFortLauderdale' | 'acsMiamiBeach' | 'acsPompano' | 'acsPalmBeach'
-  | 'pbcFlood' | 'pbcWind' | 'nceiFllFlood' | 'nwsIrma';
+  | 'pbcFlood' | 'pbcWind' | 'nceiFllFlood' | 'nwsIrma'
+  | 'acsNorthPort' | 'acsVenice' | 'acsSouthVenice' | 'acsSarasotaCity' | 'acsSarasota' | 'acsTampa' | 'acsHillsborough'
+  | 'femaCis' | 'npFlood' | 'veniceFlood' | 'sarasotaFirm' | 'scgovFirm' | 'hcCoastal' | 'tampaFlood'
+  | 'nhcIan' | 'nhcMilton' | 'nhcHelene' | 'nwsHelene' | 'fdotHfb';
 
 const EN_SUFFIX: Record<Lang, string> = { en: '', es: ' (en inglés)', ru: ' (на английском)' };
 
@@ -261,6 +264,82 @@ const S: Record<Key, { url: string; label: Record<Lang, string> }> = {
     en: 'National Weather Service Miami: Hurricane Irma local report (winds and coastal inundation in Miami-Dade, Broward and Palm Beach)',
     es: 'Servicio Meteorológico Nacional, Miami: informe local del huracán Irma (viento e inundación costera en Miami-Dade, Broward y Palm Beach)',
     ru: 'Национальная служба погоды, Майами: местный отчёт об урагане Irma (ветер и затопление берега в Miami-Dade, Broward и Palm Beach)' } },
+  acsNorthPort: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1249675', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), North Port',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), North Port',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), North Port' } },
+  acsVenice: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1273900', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Venice city',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), ciudad de Venice',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), город Venice' } },
+  acsSouthVenice: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1268100', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), South Venice CDP',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), South Venice CDP',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), South Venice CDP' } },
+  acsSarasotaCity: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1264175', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Sarasota city',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), ciudad de Sarasota',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), город Sarasota' } },
+  acsSarasota: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=050XX00US12115', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Sarasota County',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), condado de Sarasota',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), округ Sarasota' } },
+  acsTampa: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=160XX00US1271000', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Tampa',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Tampa',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Tampa' } },
+  acsHillsborough: { url: 'https://data.census.gov/table/ACSDT5Y2024.B25024?g=050XX00US12057', label: {
+    en: 'U.S. Census Bureau, ACS 2020–2024 5-year: population, age, nativity, language, housing and commuting (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), Hillsborough County',
+    es: 'Oficina del Censo, ACS 2020–2024 (5 años): población, edad, lugar de nacimiento, idioma, vivienda y traslado al trabajo (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), condado de Hillsborough',
+    ru: 'Бюро переписи США, ACS 2020–2024 (5 лет): население, возраст, место рождения, язык, жильё и поездки на работу (B01003, B01001, B05002, C16001, B25024, B25034, B25035, B25003, B25004, B08303, B08013), округ Hillsborough' } },
+  femaCis: { url: 'https://www.fema.gov/cis/FL.html', label: {
+    en: 'FEMA Community Status Book, Florida: current FIRM effective dates and NFIP Community Rating System classes',
+    es: 'Community Status Book de FEMA, Florida: fechas vigentes de los FIRM y clases del Community Rating System del NFIP',
+    ru: 'FEMA Community Status Book, Флорида: действующие даты карт FIRM и классы Community Rating System программы NFIP' } },
+  npFlood: { url: 'https://www.northportfl.gov/City-Services-and-Safety/Public-Works/Flood-Information/FEMA-Flood-Map-Updates', label: {
+    en: 'City of North Port: coastal flood-map changes effective March 27, 2024, along the Myakka River, Myakkahatchee Creek and US-41',
+    es: 'Ciudad de North Port: cambios del mapa costero de inundación vigentes desde el 27 de marzo de 2024, junto al río Myakka, Myakkahatchee Creek y la US-41',
+    ru: 'City of North Port: изменения береговой карты затопления с 27 марта 2024 г. вдоль реки Myakka, Myakkahatchee Creek и US-41' } },
+  veniceFlood: { url: 'https://www.venicegov.com/government/engineering/floodplain-management', label: {
+    en: 'City of Venice: floodplain management and Community Rating System participation since 1991; Class 5 as of 2025',
+    es: 'Ciudad de Venice: manejo de la llanura de inundación y participación en el Community Rating System desde 1991; clase 5 desde 2025',
+    ru: 'City of Venice: управление поймой и участие в Community Rating System с 1991 года; класс 5 с 2025 года' } },
+  sarasotaFirm: { url: 'https://www.sarasotafl.gov/Department-Pages/Development-Services/Flood-Information/Map-Information', label: {
+    en: 'City of Sarasota: Flood Insurance Rate Maps effective March 27, 2024, replacing the November 4, 2016 maps, including the Limit of Moderate Wave Action',
+    es: 'Ciudad de Sarasota: mapas FIRM vigentes desde el 27 de marzo de 2024, que reemplazan los del 4 de noviembre de 2016, con la línea Limit of Moderate Wave Action',
+    ru: 'City of Sarasota: карты FIRM с 27 марта 2024 г. вместо карт от 4 ноября 2016 г., включая линию Limit of Moderate Wave Action' } },
+  scgovFirm: { url: 'https://www.scgov.net/Home/Components/News/News/6109/23', label: {
+    en: 'Sarasota County: FEMA flood maps effective March 27, 2024, including the Limit of Moderate Wave Action; the update does not change hurricane evacuation levels',
+    es: 'Condado de Sarasota: mapas de inundación de FEMA vigentes desde el 27 de marzo de 2024, con la línea Limit of Moderate Wave Action; el cambio no modifica los niveles de evacuación por huracán',
+    ru: 'Округ Sarasota: карты затопления FEMA с 27 марта 2024 г., включая Limit of Moderate Wave Action; обновление не меняет уровни эвакуации при урагане' } },
+  hcCoastal: { url: 'https://hcfl.gov/residents/public-safety/flooding/coastal-flood-risk-map-update', label: {
+    en: 'Hillsborough County: coastal Flood Insurance Rate Map changes effective October 7, 2021; the 2008 countywide update had not redone the coastal analysis',
+    es: 'Condado de Hillsborough: cambios de los mapas costeros FIRM vigentes desde el 7 de octubre de 2021; la actualización de 2008 no rehízo el análisis costero',
+    ru: 'Округ Hillsborough: береговые карты FIRM с 7 октября 2021 г.; окружное обновление 2008 года не пересчитывало береговой анализ' } },
+  tampaFlood: { url: 'https://www.tampa.gov/tss-stormwater/info/flood', label: {
+    en: 'City of Tampa Stormwater: FEMA flood maps, and Tampa’s participation in the NFIP Community Rating System as a Class 5 community',
+    es: 'Stormwater de la ciudad de Tampa: mapas de inundación de FEMA y participación de Tampa en el Community Rating System del NFIP como comunidad clase 5',
+    ru: 'Stormwater города Tampa: карты затопления FEMA и участие Tampa в Community Rating System программы NFIP как сообщества класса 5' } },
+  nhcIan: { url: 'https://www.nhc.noaa.gov/data/tcr/AL092022_Ian.pdf', label: {
+    en: 'National Hurricane Center: Tropical Cyclone Report, Hurricane Ian (2022); record crests on the Peace and Myakka rivers, and an I-75 closure in southern Sarasota County',
+    es: 'Centro Nacional de Huracanes: informe del huracán Ian (2022); crestas récord en los ríos Peace y Myakka, y un cierre de la I-75 en el sur del condado de Sarasota',
+    ru: 'Национальный центр ураганов: отчёт об урагане Ian (2022); рекордные гребни рек Peace и Myakka и перекрытие I-75 на юге округа Sarasota' } },
+  nhcMilton: { url: 'https://www.nhc.noaa.gov/data/tcr/AL142024_Milton.pdf', label: {
+    en: 'National Hurricane Center: Tropical Cyclone Report, Hurricane Milton (2024); Category 3 landfall at Siesta Key, Venice Beach wind, and surge from Longboat Key to Venice',
+    es: 'Centro Nacional de Huracanes: informe del huracán Milton (2024); entrada a tierra de categoría 3 en Siesta Key, viento en Venice Beach y marejada de Longboat Key a Venice',
+    ru: 'Национальный центр ураганов: отчёт об урагане Milton (2024); выход на сушу 3-й категории у Siesta Key, ветер на Venice Beach и нагон от Longboat Key до Venice' } },
+  nhcHelene: { url: 'https://www.nhc.noaa.gov/data/tcr/AL092024_Helene.pdf', label: {
+    en: 'National Hurricane Center: Tropical Cyclone Report, Hurricane Helene (2024); Category 4 landfall in the Big Bend and storm surge in Tampa Bay and at Venice',
+    es: 'Centro Nacional de Huracanes: informe del huracán Helene (2024); entrada a tierra de categoría 4 en Big Bend y marejada en Tampa Bay y en Venice',
+    ru: 'Национальный центр ураганов: отчёт об урагане Helene (2024); выход на сушу 4-й категории в Big Bend и штормовой нагон в Tampa Bay и у Venice' } },
+  nwsHelene: { url: 'https://www.weather.gov/media/tbw/TropicalEventSummary/PSHTBW_2024AL09_Helene_ImpactNarratives.pdf', label: {
+    en: 'National Weather Service Tampa Bay: Hurricane Helene county impacts, including the Hillsborough wind gust, rainfall and the East Bay water-level record',
+    es: 'Servicio Meteorológico Nacional, Tampa Bay: impactos del huracán Helene por condado, incluida la ráfaga en Hillsborough, la lluvia y el récord de nivel en East Bay',
+    ru: 'Национальная служба погоды, Tampa Bay: последствия урагана Helene по округам, включая порыв ветра в Hillsborough, осадки и рекорд уровня на East Bay' } },
+  fdotHfb: { url: 'https://www.fdottampabay.com/project/417/the-new-howard-frankland-bridge', label: {
+    en: 'FDOT District Seven: I-275 Howard Frankland Bridge between Tampa and St. Petersburg, new southbound span opened in 2025, crossing Old Tampa Bay',
+    es: 'FDOT, Distrito Siete: puente Howard Frankland de la I-275 entre Tampa y St. Petersburg; el nuevo tramo en dirección sur abrió en 2025 y cruza Old Tampa Bay',
+    ru: 'FDOT, District Seven: мост Howard Frankland на I-275 между Tampa и St. Petersburg; новый пролёт на юг открыт в 2025 году и пересекает Old Tampa Bay' } },
 };
 
 /** Localized source list for a page, in the given order. */

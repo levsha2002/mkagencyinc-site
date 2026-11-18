@@ -1,0 +1,188 @@
+import type { CityPage } from './types';
+import { sources } from './sources';
+
+// /[lang]/car-insurance-venice-fl. Also covers the South Venice CDP. Facts checked 2026-11-18.
+// Venice city ACS: pop 27,479; 65+ 61.4%; foreign-born 11.7%; Slavic 410 / 27,202 (1.5%);
+// seasonal units 4,723 (22.5% of 20,966); commute 26.1 min; 60+ 4.6%.
+// South Venice CDP: pop 17,484; 65+ 28.6%; Slavic 1,207 / 16,616 (7.3%);
+// detached 92%; commute 22.5 min; 60+ 0.3%. CDP is not inside the city.
+// OSRM office → Venice City Hall, 401 W Venice Ave: 232.6 mi / 262 min.
+// Helene: USGS 5.71 ft MHHW near Venice Fishing Pier; 4–6 ft AGL Venice to south of Englewood.
+// Milton: landfall Siesta Key 0030 UTC 10 Oct 2024, ~100 kt, ~958 mb.
+// Venice Beach tower 79 kt sustained, gust 93 kt. Surge 4–6 ft Longboat Key to Venice.
+const SRC = ['flhsmv', 'pip', 'pip2026', 'um', 'iiiUm', 'hb837', 'crashReport', 'acsVenice', 'acsSouthVenice', 'nhcHelene', 'nhcMilton', 'fbcHvhz', 'flhsmvNew', 'flhsmvHandbook', 'flhsmvVisit'] as const;
+
+export const CAR_VENICE: CityPage = {
+  path: '/car-insurance-venice-fl',
+  line: 'auto',
+  kind: 'city',
+  area: 'venice',
+  parent: '/car-insurance-sarasota-county-fl',
+  heroImage: 'auto-08',
+  published: '2026-11-18',
+  modified: '2026-11-18',
+  areaServed: [
+    { '@type': 'City', name: 'Venice, FL' },
+    { '@type': 'Place', name: 'South Venice, FL' },
+    { '@type': 'AdministrativeArea', name: 'Sarasota County, FL' },
+  ],
+  copy: {
+    en: {
+      metaTitle: 'Car Insurance in Venice, FL | M&K Agency',
+      metaDesc: 'Car insurance in Venice and South Venice: Gulf Coast surge, Florida PIP and uninsured-motorist rules, served remotely from Florida City.',
+      breadcrumb: 'Venice',
+      kicker: 'Auto insurance · Venice and South Venice, FL',
+      h1a: 'Car insurance in Venice, FL,',
+      h1b: 'and in South Venice, which is not the same place.',
+      sub: 'A city where about three in five residents are 65 or older, a census place just south of it with a different commute, and two hurricanes in the fall of 2024. Send the policy. English, Spanish or Russian.',
+      serviceType: 'Auto insurance',
+      intro: [
+        { type: 'h2', text: 'The city and the CDP do not share one driveway' },
+        { type: 'p', text: 'The City of Venice and the South Venice census-designated place sit next to each other in Sarasota County, and the Census counts them apart. The city had about 27,500 residents in the 2020–2024 estimates. About 61% are 65 or older. About 12% were born outside the United States. Census table C16001 counts Russian, Polish and other Slavic languages as one line: about 410 people age 5 and older in the city, about 1.5% of that age group. South Venice CDP had about 17,500 residents. About 29% are 65 or older. The same Slavic line there is about 1,200 people, about 7% of residents age 5 and older. The line is not a count of Russian alone. We work with Russian-speaking clients in both places. The garaging address has to name the one where the car actually sleeps. A South Venice address is not a City of Venice address.' },
+        { type: 'p', text: '**I-75** is the inland freeway, east of both communities, the road that continues south toward our office. **US-41**, the Tamiami Trail, is the surface road through the city and on through the CDP. The average one-way commute in the city is about 26 minutes, and about 5% of workers who leave home for work travel 60 minutes or more. In South Venice the average is about 22 minutes, and the share at 60 minutes or more is well under 1%. About 4,700 housing units in the city, roughly 23%, were vacant for seasonal or occasional use. In the CDP that share is about 8%. A car that sits from May to November is a different risk from a car that leaves for work on US-41 every morning.' },
+        { type: 'p', text: 'We do not have an office in Venice or in South Venice. The light-traffic driving route from our Florida City office to Venice City Hall, 401 West Venice Avenue, is about 233 miles and about 4 hours 20 minutes. South Venice is on the same drive, not a shorter one. Phone, WhatsApp, text and email are how the file moves.' },
+      ],
+      checklistTitle: 'Coverage gaps we check in Venice and South Venice',
+      checklist: [
+        '**Bodily injury liability.** Florida does not require it of most drivers. US-41 through a city of older drivers is not a slow parking lot.',
+        '**Uninsured motorist coverage at the same limits as BI**, and any written rejection still in the file.',
+        '**The garaging ZIP and the city name.** Venice and South Venice are different places on the Census map. The policy should match the driveway.',
+        '**Comprehensive** for surge, floodwater and wind debris. Collision does not pay for rising water. The fall of 2024 put measured water on this coast twice.',
+        '**A collision deductible you can pay**, including a car that sits for the season and then takes a low-speed hit in a condo garage or an HOA lane.',
+        '**Medical payments coverage** on top of PIP. PIP pays 80% of medical bills, not the whole bill.',
+        '**Every licensed driver**, including a spouse here for the season on a foreign license.',
+        '**Rental reimbursement** if the repair shop is not in Venice and the car will be there for days.',
+        '**GAP only as an add-on to your auto policy**, when a loan balance can sit above the value of the car.',
+      ],
+      body: [
+        { type: 'h2', text: 'The state minimum does not get smaller on the Gulf' },
+        { type: 'p', text: 'Every registered car needs **$10,000 of Personal Injury Protection (PIP)** and **$10,000 of Property Damage Liability (PDL)**, kept in force with no lapse. PIP is no-fault coverage for your own injuries: 80% of reasonable medical bills and 60% of lost income. It generally also covers you and relatives who live with you if a car hits you while you are walking or cycling. Initial treatment has to start within 14 days, and benefits above $2,500 generally require a physician to find an emergency medical condition. Bills to repeal PIP died in committee in March 2026, so the system is unchanged for now.' },
+        { type: 'p', text: 'What the law does not require of most drivers is bodily injury liability. The Insurance Research Council estimated that about 20.6% of Florida drivers were uninsured in 2023, about one in five. When that driver hurts you, **uninsured motorist coverage (UM)** is what responds above PIP. Insurers must offer UM at your BI limits. You can lower it or reject it only in writing. Without BI you generally cannot buy UM. If the household has two or more cars, ask whether UM is stacked. Since March 24, 2023, Florida’s modified comparative negligence rule has barred recovery from the other driver when you are found more than 50% at fault for your own injuries, and most negligence lawsuits now have a two-year deadline instead of four.' },
+        { type: 'h2', text: 'Two storms, two different water stories' },
+        { type: 'p', text: 'Venice is not in the High-Velocity Hurricane Zone. Florida Building Code section 1620 limits that zone to Miami-Dade and Broward. The building line does not change an auto policy. Hurricane Helene made landfall in Florida’s Big Bend as a Category 4 on the night of September 26, 2024. The National Hurricane Center found 4 to 6 feet of inundation above ground from Venice south to Englewood, and a USGS sensor near the Venice Fishing Pier measured 5.71 feet above mean higher high water. That pier reading is a coastal measurement. It is not a depth we assign to every lot in the South Venice CDP, which sits inland of the island. Two weeks later, Hurricane Milton’s center came ashore at Siesta Key, north of Venice, at 8:30 p.m. EDT on October 9, 2024 (0030 UTC on October 10), as a Category 3 with winds near 100 knots, about 115 mph, and an estimated pressure near 958 millibars. The NHC put maximum surge inundation of 4 to 6 feet from Longboat Key to Venice. A USGS sensor on Longboat Key measured 5.04 feet above mean higher high water. The strongest sustained wind the report lists in Florida was 79 knots, about 91 mph, with a gust of 93 knots, about 107 mph, at a University of Florida tower at Venice Beach.' },
+        { type: 'p', text: 'A flooded car, or a car under debris, is a comprehensive claim, and only if that coverage was on the policy before the storm was threatening. Insurers can stop accepting changes at that point. Collision does not pay for surge. After a crash with injuries, a death, or apparent damage of at least $2,000, Florida requires a report to the police, the sheriff or the Florida Highway Patrol. On I-75 that is usually the Highway Patrol. Photograph the cars and the other driver’s documents, and get medical care inside 14 days so PIP is not lost. Then call us with the claim number.' },
+        { type: 'h2', text: 'A seasonal license, handled from Florida City' },
+        { type: 'p', text: 'Visitors may drive with a valid license from the country where they live. Florida’s driver handbook describes the non-resident exception as an International Driving Permit carried with that license. The permit is a translation, not a license by itself. You are treated as a Florida resident, and you then have 30 days to get a Florida license, if you take a job here, put a child in public school, register to vote, file for a homestead exemption, or live here more than six months in a row. To title and register a car you also need a policy from an agent licensed in Florida, generally within 10 days of becoming a resident. Whether a company will accept a foreign license is an underwriting question. Send the license and the declarations page by WhatsApp or email, and say whether the car is garaged in the city or in South Venice. We will tell you what we can place. We do not promise a policy. M&K Agency is a family-owned agency with a team of 12 and more than 5,000 clients across Florida. **Send us your policy and we’ll check your coverage.**' },
+      ],
+      officeTitle: 'Venice and South Venice, served from Florida City',
+      office: [
+        { type: 'p', text: 'Our only office is at **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**. We do not have an office in Venice or in South Venice. The light-traffic drive to Venice City Hall is about 233 miles and about 4 hours 20 minutes. That is why quotes, reviews, changes and claims are handled by phone, WhatsApp, text and email. Remote service is the main path.' },
+        { type: 'p', text: 'Hours are Monday to Friday, 9 to 6, and Saturday by appointment. Call (305) 859-3953 or WhatsApp (971) 998-7313. On requests that arrive during business hours, an agent calls back within an hour.' },
+      ],
+      faqTitle: 'Car insurance in Venice and South Venice: common questions',
+      faq: [
+        { q: 'Do you have an office in Venice?', a: 'No. The only office is in Florida City, about 233 miles and about 4 hours 20 minutes from Venice City Hall in light traffic. South Venice is on that same drive. The work is by phone, WhatsApp, text and email. A visit is by appointment.' },
+        { q: 'Is South Venice part of the City of Venice for the garaging address?', a: 'No. South Venice is a census-designated place next to the city, with its own population count. The policy should show the address where the car sleeps. About 7% of South Venice residents age 5 and older are on the Census Slavic-language line, against about 1.5% in the city. Neither figure is a count of Russian alone.' },
+        { q: 'Did Milton and Helene do the same thing here?', a: 'No. Helene, on the night of September 26, 2024, pushed surge onto this coast while the center landed in the Big Bend. A sensor near the Venice Fishing Pier measured 5.71 feet above mean higher high water. Milton made landfall at Siesta Key, north of Venice, on the evening of October 9 as a Category 3. The NHC analyzed 4 to 6 feet of surge from Longboat Key to Venice, and the strongest Florida sustained wind in that report was at a tower on Venice Beach.' },
+        { q: 'Is uninsured motorist coverage required?', a: 'No. Insurers must offer it when you buy bodily injury liability, at the same limits, and you can reject it only in writing. About one in five Florida drivers was uninsured in the 2023 estimate. Without BI you generally cannot buy UM.' },
+        { q: 'Can I insure a car with a foreign driver license?', a: 'You may be able to. Visitors with a valid foreign license can drive. An International Driving Permit is a translation you carry with the license, not a license on its own. Once you are a Florida resident you have 30 days to get a Florida license, and you need a Florida policy to register the car. Send a photo of the license by WhatsApp. We do not promise an approval.' },
+      ],
+      sources: sources('en', [...SRC]),
+    },
+    es: {
+      metaTitle: 'Seguro de Auto en Venice, FL | M&K Agency',
+      metaDesc: 'Seguro de auto en Venice y South Venice: marejada en la costa del Golfo, reglas de PIP y de conductor sin seguro, con atención a distancia desde Florida City.',
+      breadcrumb: 'Venice',
+      kicker: 'Seguro de auto · Venice y South Venice, FL',
+      h1a: 'Seguro de auto en Venice, FL,',
+      h1b: 'y en South Venice, que no es el mismo lugar.',
+      sub: 'Una ciudad donde cerca de tres de cada cinco residentes tienen 65 años o más, un lugar del Censo justo al sur con otro tiempo de traslado, y dos huracanes en el otoño de 2024. Envíe la póliza. En español, inglés o ruso.',
+      serviceType: 'Seguro de auto',
+      intro: [
+        { type: 'h2', text: 'La ciudad y el CDP no comparten la misma entrada' },
+        { type: 'p', text: 'La ciudad de Venice y el lugar designado por el Censo de South Venice están uno junto al otro en el condado de Sarasota, y el Censo los cuenta por separado. La ciudad tenía unos 27,500 residentes en las estimaciones de 2020–2024. Cerca del 61% tiene 65 años o más. Cerca del 12% nació fuera de Estados Unidos. La tabla C16001 agrupa ruso, polaco y otras lenguas eslavas en una sola línea: unas 410 personas de 5 años o más en la ciudad, cerca del 1.5% de ese grupo. El CDP de South Venice tenía unos 17,500 residentes. Cerca del 29% tiene 65 años o más. La misma línea eslava allí es de unas 1,200 personas, cerca del 7% de los residentes de 5 años o más. No es un conteo solo de ruso. Trabajamos con clientes de habla rusa en los dos lugares. La dirección del garaje tiene que nombrar el lugar donde el carro realmente duerme. Una dirección de South Venice no es una dirección de la ciudad de Venice.' },
+        { type: 'p', text: 'La **I-75** es la autopista del interior, al este de las dos comunidades, la vía que sigue al sur hacia nuestra oficina. La **US-41**, el Tamiami Trail, es la carretera de superficie por la ciudad y luego por el CDP. El viaje promedio de ida en la ciudad dura unos 26 minutos, y cerca del 5% de quienes salen de casa a trabajar tarda 60 minutos o más. En South Venice el promedio es de unos 22 minutos, y la parte de 60 minutos o más está muy por debajo del 1%. Unas 4,700 viviendas de la ciudad, cerca del 23%, estaban vacías por uso de temporada u ocasional. En el CDP esa parte es de cerca del 8%. Un carro que se queda de mayo a noviembre es un riesgo distinto de un carro que sale a la US-41 todas las mañanas.' },
+        { type: 'p', text: 'No tenemos oficina en Venice ni en South Venice. El trayecto sin tráfico pesado desde nuestra oficina en Florida City hasta el ayuntamiento de Venice, 401 West Venice Avenue, es de unas 233 millas y unas 4 horas y 20 minutos. South Venice queda sobre el mismo trayecto, no sobre uno más corto. Teléfono, WhatsApp, texto y correo son la forma en que se mueve el expediente.' },
+      ],
+      checklistTitle: 'Lo que revisamos en Venice y en South Venice',
+      checklist: [
+        '**Responsabilidad por lesiones (BI).** Florida no se la exige a la mayoría. La US-41 por una ciudad de conductores mayores no es un estacionamiento lento.',
+        '**Conductor sin seguro (UM) con los mismos límites que la BI**, y cualquier rechazo firmado que siga en el expediente.',
+        '**El código postal del garaje y el nombre de la ciudad.** Venice y South Venice son lugares distintos en el mapa del Censo. La póliza debe coincidir con la entrada.',
+        '**Cobertura integral** para marejada, agua de inundación y escombros de viento. El choque no paga por el agua que sube. El otoño de 2024 puso agua medida en esta costa dos veces.',
+        '**Un deducible de choque que pueda pagar**, incluido un carro que pasa la temporada quieto y luego recibe un golpe a baja velocidad en un garaje de condominio o en una calle de HOA.',
+        '**Pagos médicos (MedPay)** además del PIP. El PIP paga el 80% de las facturas, no la factura completa.',
+        '**Todos los conductores con licencia**, incluido un cónyuge que pasa la temporada con licencia extranjera.',
+        '**Carro de alquiler** si el taller no está en Venice y el suyo va a quedarse varios días.',
+        '**GAP solo como un anexo de su póliza de auto**, cuando el saldo del préstamo puede quedar por encima del valor del carro.',
+      ],
+      body: [
+        { type: 'h2', text: 'El mínimo del estado no se achica en el Golfo' },
+        { type: 'p', text: 'Todo carro registrado necesita **$10,000 de Protección contra Lesiones Personales (PIP)** y **$10,000 de Responsabilidad por Daños a la Propiedad (PDL)**, sin interrupciones. El PIP es cobertura sin culpa para sus propias lesiones: 80% de los gastos médicos razonables y 60% del ingreso perdido. Por lo general también cubre a usted y a los familiares que viven con usted si un carro los atropella caminando o en bicicleta. La primera atención tiene que empezar dentro de 14 días, y por encima de $2,500 normalmente hace falta que un médico determine una condición de emergencia. Los proyectos para eliminar el PIP murieron en comité en marzo de 2026, así que el sistema sigue igual.' },
+        { type: 'p', text: 'Lo que la ley no exige a la mayoría es la responsabilidad por lesiones corporales. El Insurance Research Council estimó que en 2023 cerca del 20.6% de los conductores de Florida no tenía seguro, más o menos uno de cada cinco. Si ese conductor le lesiona, lo que responde por encima del PIP es la **cobertura de conductor sin seguro (UM)**. La aseguradora debe ofrecerla con los límites de su BI. Solo se puede bajar o rechazar por escrito. Sin BI, normalmente no se puede comprar UM. Si en la casa hay dos carros o más, pregunte si la UM es acumulable. Desde el 24 de marzo de 2023, la regla de negligencia comparativa modificada impide cobrarle al otro conductor cuando a usted lo encuentran responsable en más del 50% de sus propias lesiones, y la mayoría de las demandas por negligencia tienen ahora un plazo de dos años en vez de cuatro.' },
+        { type: 'h2', text: 'Dos tormentas, dos historias de agua' },
+        { type: 'p', text: 'Venice no está en la High-Velocity Hurricane Zone. La sección 1620 del Código de Construcción de Florida limita esa zona a Miami-Dade y Broward. Esa línea de construcción no cambia una póliza de auto. El huracán Helene tocó tierra en Big Bend de Florida como categoría 4 en la noche del 26 de septiembre de 2024. El Centro Nacional de Huracanes encontró de 4 a 6 pies de inundación sobre el terreno desde Venice hacia el sur hasta Englewood, y un sensor del USGS cerca del Venice Fishing Pier midió 5.71 pies por encima de la pleamar media más alta. Esa lectura del muelle es una medición costera. No es una profundidad que asignemos a cada lote del CDP de South Venice, que queda tierra adentro de la isla. Dos semanas después, el centro del huracán Milton entró a tierra en Siesta Key, al norte de Venice, a las 8:30 p.m. EDT del 9 de octubre de 2024 (0030 UTC del 10 de octubre), como categoría 3, con vientos cercanos a 100 nudos, unas 115 mph, y una presión estimada cercana a 958 milibares. El NHC puso una inundación máxima por marejada de 4 a 6 pies desde Longboat Key hasta Venice. Un sensor del USGS en Longboat Key midió 5.04 pies por encima de la pleamar media más alta. El viento sostenido más fuerte que el informe lista en Florida fue de 79 nudos, unas 91 mph, con una ráfaga de 93 nudos, unas 107 mph, en una torre de la Universidad de Florida en Venice Beach.' },
+        { type: 'p', text: 'Un carro inundado, o un carro bajo escombros, es un reclamo de cobertura integral, y solo si esa cobertura ya estaba en la póliza antes de que la tormenta estuviera encima. En ese momento las aseguradoras pueden dejar de aceptar cambios. El choque no paga la marejada. Después de un choque con heridos, una muerte o daños aparentes de al menos $2,000, Florida exige reportarlo a la policía, al alguacil o a la Patrulla de Carreteras. En la I-75 suele ser la Patrulla. Fotografíe los carros y los documentos del otro conductor, y atienda las lesiones dentro de 14 días para no perder el PIP. Después llámenos con el número de reclamo.' },
+        { type: 'h2', text: 'Licencia de temporada, atendida desde Florida City' },
+        { type: 'p', text: 'Un visitante puede manejar con una licencia vigente del país donde vive. El manual de licencias de Florida describe la excepción del no residente como un Permiso Internacional de Conducir llevado junto con esa licencia. El permiso es una traducción, no una licencia por sí solo. Se le considera residente de Florida, y entonces tiene 30 días para sacar la licencia del estado, si acepta un empleo aquí, inscribe a un hijo en la escuela pública, se registra para votar, pide la exención homestead o vive aquí más de seis meses seguidos. Para titular y registrar un carro también necesita una póliza de un agente licenciado en Florida, en general dentro de 10 días de hacerse residente. Si una compañía acepta una licencia extranjera es una pregunta de suscripción. Envíenos la licencia y la página de declaraciones por WhatsApp o por correo, y diga si el carro duerme en la ciudad o en South Venice. Le diremos qué podemos colocar. No prometemos una póliza. M&K Agency es una agencia familiar con un equipo de 12 personas y más de 5,000 clientes en toda Florida. **Envíenos su póliza y la revisamos.**' },
+      ],
+      officeTitle: 'Venice y South Venice, desde Florida City',
+      office: [
+        { type: 'p', text: 'Nuestra única oficina está en **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**. No tenemos oficina en Venice ni en South Venice. El trayecto sin tráfico pesado hasta el ayuntamiento de Venice es de unas 233 millas y unas 4 horas y 20 minutos. Por eso las cotizaciones, las revisiones, los cambios y los reclamos se atienden por teléfono, WhatsApp, texto y correo. La atención a distancia es la vía principal.' },
+        { type: 'p', text: 'Horario: lunes a viernes de 9 a 6, sábados con cita. Llame al (305) 859-3953 o escriba por WhatsApp al (971) 998-7313. Si la solicitud llega en horario de oficina, un agente devuelve la llamada en menos de una hora.' },
+      ],
+      faqTitle: 'Seguro de auto en Venice y South Venice: preguntas',
+      faq: [
+        { q: '¿Tienen oficina en Venice?', a: 'No. La única oficina está en Florida City, a unas 233 millas y unas 4 horas y 20 minutos del ayuntamiento de Venice sin tráfico pesado. South Venice queda sobre ese mismo trayecto. El trabajo es por teléfono, WhatsApp, texto y correo. La visita es con cita.' },
+        { q: '¿South Venice forma parte de la ciudad de Venice para la dirección del garaje?', a: 'No. South Venice es un lugar designado por el Censo junto a la ciudad, con su propio conteo de población. La póliza debe mostrar la dirección donde el carro duerme. Cerca del 7% de los residentes de South Venice de 5 años o más está en la línea eslava del Censo, frente a cerca del 1.5% en la ciudad. Ninguna de las dos cifras es un conteo solo de ruso.' },
+        { q: '¿Milton y Helene hicieron lo mismo aquí?', a: 'No. Helene, en la noche del 26 de septiembre de 2024, empujó marejada a esta costa mientras el centro tocaba tierra en Big Bend. Un sensor cerca del Venice Fishing Pier midió 5.71 pies por encima de la pleamar media más alta. Milton entró a tierra en Siesta Key, al norte de Venice, en la tarde del 9 de octubre como categoría 3. El NHC analizó de 4 a 6 pies de marejada desde Longboat Key hasta Venice, y el viento sostenido más fuerte de Florida en ese informe fue en una torre de Venice Beach.' },
+        { q: '¿Es obligatoria la cobertura de conductor sin seguro?', a: 'No. La aseguradora debe ofrecerla cuando usted compra responsabilidad por lesiones, con los mismos límites, y solo se rechaza por escrito. En la estimación de 2023, cerca de uno de cada cinco conductores de Florida no tenía seguro. Sin BI, normalmente no se puede comprar UM.' },
+        { q: '¿Puedo asegurar un carro con licencia extranjera?', a: 'Puede ser. Un visitante con licencia extranjera vigente puede manejar. El Permiso Internacional de Conducir es una traducción que se lleva junto con la licencia, no una licencia sola. Cuando usted es residente de Florida tiene 30 días para obtener la licencia del estado, y necesita una póliza de Florida para registrar el carro. Envíe una foto de la licencia por WhatsApp. No prometemos una aprobación.' },
+      ],
+      sources: sources('es', [...SRC]),
+    },
+    ru: {
+      metaTitle: 'Страховка автомобиля Венис, FL | M&K Agency',
+      metaDesc: 'Страховка автомобиля в Venice и South Venice: нагон на побережье, правила PIP и UM. Работаем удалённо из офиса во Florida City.',
+      breadcrumb: 'Venice',
+      kicker: 'Автостраховка · Venice и South Venice, FL',
+      h1a: 'Страховка автомобиля в Venice —',
+      h1b: 'и в South Venice, это не одно и то же место.',
+      sub: 'Город, где около трёх из пяти жителей старше 65 лет, соседний участок переписи с другой дорогой на работу и два урагана осенью 2024 года. Пришлите полис. По-русски, по-английски или по-испански.',
+      serviceType: 'Автострахование',
+      intro: [
+        { type: 'h2', text: 'Город и CDP — не одна подъездная дорожка' },
+        { type: 'p', text: 'Город Venice и место переписи South Venice стоят рядом в округе Sarasota, и Census считает их отдельно. В городе по оценке 2020–2024 годов около 27 500 жителей. Около 61% старше 65 лет. Около 12% родились за пределами США. В таблице C16001 русский, польский и другие славянские языки идут одной строкой: около 410 человек от 5 лет в городе, примерно 1,5% этой группы. В South Venice CDP около 17 500 жителей. Около 29% старше 65 лет. Та же славянская строка там — около 1 200 человек, примерно 7% жителей от 5 лет. Это не число «только русских». Мы работаем с русскоязычными клиентами в обоих местах. Адрес гаража должен называть то место, где машина реально ночует. Адрес в South Venice — не адрес города Venice.' },
+        { type: 'p', text: '**I-75** — внутренняя скоростная, восточнее обоих мест, дорога, которая продолжается на юг к нашему офису. **US-41**, Tamiami Trail, — шоссе в одном уровне через город и дальше через CDP. Дорога на работу в городе в одну сторону в среднем около 26 минут, и около 5% тех, кто ездит не из дома, тратят 60 минут и больше. В South Venice средняя около 22 минут, а доля поездок от 60 минут сильно ниже 1%. Около 4 700 единиц жилья в городе, примерно 23%, пустовали как сезонное или редкое жильё. В CDP эта доля около 8%. Машина, которая стоит с мая по ноябрь, — другой риск, чем машина, которая каждое утро выезжает на US-41.' },
+        { type: 'p', text: 'Офиса в Venice и в South Venice у нас нет. Без плотного трафика путь от офиса во Florida City до Venice City Hall, 401 West Venice Avenue, — около 233 миль и около 4 часов 20 минут. South Venice на той же дороге, не на более короткой. Дело идёт по телефону, в WhatsApp, по SMS и почте.' },
+      ],
+      checklistTitle: 'Что мы проверяем в Venice и в South Venice',
+      checklist: [
+        '**Bodily injury liability (BI), ответственность за вред здоровью.** Для большинства водителей Флориды она не обязательна. US-41 через город, где много старших водителей, — не тихая стоянка.',
+        '**UM (uninsured motorist) с теми же лимитами, что и BI**, и письменный отказ, если он ещё лежит в деле.',
+        '**Индекс гаража и название места.** Venice и South Venice — разные места на карте Census. Полис должен совпадать с подъездной дорожкой.',
+        '**Comprehensive** от нагона, паводковой воды и обломков. Collision за поднимающуюся воду не платит. Осенью 2024 года на этом берегу воду измеряли дважды.',
+        '**Франшиза collision, которую вы реально заплатите**, включая машину, которая стоит сезон и потом получает удар на малой скорости в гараже кондо или на улице HOA.',
+        '**Medical payments (MedPay)** сверх PIP. PIP оплачивает 80% медицинских счетов, а не весь счёт.',
+        '**Все водители с правами**, включая супруга, который проводит сезон по иностранным правам.',
+        '**Аренда на время ремонта**, если сервис не в Venice и машина простоит несколько дней.',
+        '**GAP только как дополнение к автополису**, если остаток кредита может быть выше стоимости машины.',
+      ],
+      body: [
+        { type: 'h2', text: 'Минимум штата на побережье не становится меньше' },
+        { type: 'p', text: 'На каждую зарегистрированную машину нужны **$10 000 PIP (Personal Injury Protection)** и **$10 000 PDL (Property Damage Liability)**, без перерывов. PIP — это не ОСАГО. ОСАГО платит за вред, который вы причинили другому. PIP — покрытие no-fault ваших собственных травм: 80% разумных медицинских расходов и 60% потерянного дохода, независимо от того, кто виноват. Как правило, PIP также покрывает вас и родственников, которые живут с вами, если машину сбила вас пешком или на велосипеде. К врачу нужно попасть за 14 дней, а выплаты свыше $2 500 обычно требуют заключения врача об emergency medical condition. Законопроекты об отмене PIP не прошли комитет в марте 2026 года, система пока прежняя.' },
+        { type: 'p', text: 'Чего закон не требует от большинства водителей — это BI, ответственности за чужие травмы. По оценке Insurance Research Council, в 2023 году около 20,6% водителей Флориды были без страховки, примерно каждый пятый. Если такой водитель травмировал вас, сверх PIP отвечает **UM**. Страховая обязана предложить UM с лимитами вашей BI. Уменьшить или отказаться можно только письменно. Без BI UM, как правило, не продают. Если в семье две машины и больше, спросите, stacked ли UM. С 24 марта 2023 года действует модифицированная сравнительная вина: если в ваших травмах вас признали виновным больше чем на 50%, с другого водителя вы, как правило, ничего не получите. Срок для большинства исков о небрежности теперь два года, а не четыре.' },
+        { type: 'h2', text: 'Два шторма и две разные истории про воду' },
+        { type: 'p', text: 'Venice не входит в High-Velocity Hurricane Zone. Раздел 1620 Florida Building Code ограничивает эту зону округами Miami-Dade и Broward. Строительная линия не меняет автополис. Ураган Helene вышел на сушу в Big Bend Флориды как ураган 4-й категории в ночь на 26 сентября 2024 года. Национальный центр ураганов оценил затопление в 4–6 футов над землёй от Venice на юг до Englewood, а датчик USGS у Venice Fishing Pier показал 5,71 фута выше средней высшей полной воды. Это береговой замер. Мы не переносим его на каждый участок South Venice CDP: CDP лежит в глубине от острова. Через две недели центр урагана Milton вышел на сушу у Siesta Key, севернее Venice, в 20:30 по восточному летнему времени 9 октября 2024 года (0030 UTC 10 октября), как ураган 3-й категории, с ветром около 100 узлов, примерно 115 миль в час, и с давлением около 958 миллибар. NHC оценил максимальный нагон в 4–6 футов от Longboat Key до Venice. Датчик USGS на Longboat Key показал 5,04 фута выше средней высшей полной воды. Самый сильный устойчивый ветер, который отчёт приводит по Флориде, — 79 узлов, около 91 мили в час, с порывом 93 узла, около 107 миль в час, на вышке Университета Флориды на Venice Beach.' },
+        { type: 'p', text: 'Залитую машину или машину под обломками оформляют как клейм по comprehensive, и только если покрытие уже было в полисе, когда шторм приближался. В этот момент страховые могут перестать принимать изменения. Collision за нагон не платит. Если в ДТП есть пострадавшие, погибшие или видимый ущерб от $2 000, Флорида требует сообщить в полицию, шерифу или на Florida Highway Patrol. На I-75 это обычно патруль штата. Снимите машины и документы второго водителя и попадите к врачу за 14 дней, иначе PIP можно потерять. Потом позвоните нам с номером клейма.' },
+        { type: 'h2', text: 'Сезонные права, разбор из Florida City' },
+        { type: 'p', text: 'Гость может ездить с действующими правами страны, где он живёт. В справочнике FLHSMV исключение для нерезидента описано так: International Driving Permit вместе с этими правами. IDP — это перевод, а не права. Резидентом Флориды вас считают, и тогда на местные права есть 30 дней, если вы вышли на работу, отдали ребёнка в государственную школу, зарегистрировались для голосования, подали на homestead exemption или живёте здесь больше шести месяцев подряд. Чтобы поставить машину на учёт, нужна ещё и страховка у агента с лицензией Флориды — как правило, в течение 10 дней после того, как вы стали резидентом. Возьмёт ли компания иностранные права, решает андеррайтинг. Пришлите фото прав и declarations page в WhatsApp или на почту и напишите, ночует машина в городе или в South Venice. Скажем прямо, сможем ли оформить полис. Одобрение не обещаем. M&K Agency — семейное агентство: в команде 12 человек и больше 5 000 клиентов по всей Флориде. **Пришлите нам свой полис — мы проверим покрытие.**' },
+      ],
+      officeTitle: 'Venice и South Venice обслуживаем из Florida City',
+      office: [
+        { type: 'p', text: 'Единственный офис — **33550 S Dixie Hwy, Suite 102, Florida City, FL 33034**. Офиса в Venice и в South Venice нет. Без плотного трафика до Venice City Hall около 233 миль и около 4 часов 20 минут. Поэтому расчёты, проверку, изменения и клеймы ведём по телефону, в WhatsApp, по SMS и почте. Удалённая работа — основной путь.' },
+        { type: 'p', text: 'Часы: понедельник–пятница с 9 до 6, суббота по записи. Телефон (305) 859-3953, WhatsApp (971) 998-7313. Если заявка пришла в рабочее время, агент перезванивает в течение часа.' },
+      ],
+      faqTitle: 'Страховка автомобиля в Венис: вопросы',
+      faq: [
+        { q: 'Есть ли у вас офис в Venice?', a: 'Нет. Единственный офис во Florida City, около 233 миль и около 4 часов 20 минут от Venice City Hall без плотного трафика. South Venice на той же дороге. Основная работа — телефон, WhatsApp, SMS и почта. Визит — по записи.' },
+        { q: 'South Venice — это город Venice для адреса гаража?', a: 'Нет. South Venice — отдельное место переписи рядом с городом, со своим числом жителей. В полисе должен быть адрес, где машина ночует. Около 7% жителей South Venice от 5 лет стоят в славянской строке Census, в городе — около 1,5%. Ни одна цифра не считает только русских.' },
+        { q: 'Milton и Helene сделали здесь одно и то же?', a: 'Нет. Helene в ночь на 26 сентября 2024 года дал нагон на этот берег, а центр вышел на сушу в Big Bend. Датчик у Venice Fishing Pier показал 5,71 фута выше средней высшей полной воды. Milton вышел на сушу у Siesta Key, севернее Venice, вечером 9 октября как ураган 3-й категории. NHC оценил нагон в 4–6 футов от Longboat Key до Venice, а самый сильный устойчивый ветер по Флориде в том отчёте был на вышке Venice Beach.' },
+        { q: 'UM обязательна?', a: 'Нет. Страховая обязана предложить её вместе с BI, с теми же лимитами, а отказ — только письменно. По оценке 2023 года около каждого пятого водителя Флориды был без страховки. Без BI UM, как правило, не продают.' },
+        { q: 'Можно ли застраховать машину с иностранными правами?', a: 'Иногда да. Гость с действующими иностранными правами может ездить. International Driving Permit — перевод, его возят вместе с правами. Когда вы стали резидентом Флориды, на местные права есть 30 дней, а для регистрации нужна флоридская страховка. Пришлите фото прав в WhatsApp. Одобрение не обещаем.' },
+        { q: 'Сколько можно ездить по правам другой страны?', a: 'Пока вы гость, достаточно действующих прав страны проживания и, если они не на английском, International Driving Permit. Резидентом вас считают при работе, государственной школе, регистрации избирателя, заявке на homestead или жизни здесь больше шести месяцев подряд. Тогда права Флориды нужны за 30 дней. Прав России, Украины, Беларуси и стран Центральной Азии нет в коротком списке взаимного признания экзаменов Class E.' },
+      ],
+      sources: sources('ru', [...SRC]),
+    },
+  },
+};

@@ -52,7 +52,7 @@ function checkedLine(lang: Lang, iso: string): string {
 
 const UI: Record<Lang, {
   home: string; updated: string; call: string; cta: string; whatsapp: string; langLine: string;
-  servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward' | 'palm-beach', string>; hub: string;
+  servedTitle: (county: string) => string; servedText: Record<'miami-dade' | 'broward' | 'palm-beach' | 'sarasota' | 'hillsborough', string>; hub: string;
   related: string; flood: string; quoteTitle: string; quoteText: string;
   agent: Record<'homestead' | 'kendall', string>; windGuide: string; accidentGuide: string;
 }> = {
@@ -63,6 +63,8 @@ const UI: Record<Lang, {
       'miami-dade': 'We work with clients all over the county from our Florida City office. Communities with their own page are linked.',
       broward: 'We serve Broward clients from our Florida City office, mainly by phone, WhatsApp, text and email, including these communities and the rest of the county.',
       'palm-beach': 'We serve Palm Beach County from our Florida City office. Boca Raton is about 80 miles north, and towns farther up the coast are a longer drive, so most of the work is by phone, WhatsApp, text and email. Communities with their own page are linked.',
+      sarasota: 'We serve Sarasota County from our Florida City office. There is no office in the county. North Port is about 218 miles and about 4 hours in light traffic, and Sarasota City Hall is about 250 miles and about 4 hours 40 minutes, so the work is by phone, WhatsApp, text and email. Communities with their own page are linked.',
+      hillsborough: 'We serve Hillsborough County from our Florida City office. There is no office in the county. Tampa City Hall is about 300 miles and about 5 hours 30 minutes in light traffic. We have not published a separate drive time for every community. The work is by phone, WhatsApp, text and email. Tampa has its own page.',
     },
     hub: 'Miami-Dade County', related: 'More for this area',
     flood: 'Flood insurance in Homestead',
@@ -79,6 +81,8 @@ const UI: Record<Lang, {
       'miami-dade': 'Trabajamos con clientes de todo el condado desde nuestra oficina en Florida City. Las comunidades que tienen su propia página aparecen con enlace.',
       broward: 'Atendemos a los clientes de Broward desde nuestra oficina en Florida City, sobre todo por teléfono, WhatsApp, texto y correo, en estas comunidades y en el resto del condado.',
       'palm-beach': 'Atendemos el condado de Palm Beach desde nuestra oficina en Florida City. Boca Raton queda a unas 80 millas al norte, y las ciudades más al norte implican un viaje más largo, así que la mayor parte del trabajo es por teléfono, WhatsApp, texto y correo. Las comunidades con página propia aparecen con enlace.',
+      sarasota: 'Atendemos el condado de Sarasota desde nuestra oficina en Florida City. No hay oficina en el condado. North Port queda a unas 218 millas y unas 4 horas sin tráfico pesado, y el ayuntamiento de Sarasota a unas 250 millas y unas 4 horas y 40 minutos, así que el trabajo es por teléfono, WhatsApp, texto y correo. Las comunidades con página propia aparecen con enlace.',
+      hillsborough: 'Atendemos el condado de Hillsborough desde nuestra oficina en Florida City. No hay oficina en el condado. El ayuntamiento de Tampa queda a unas 300 millas y unas 5 horas y 30 minutos sin tráfico pesado. No publicamos un tiempo de manejo distinto para cada comunidad. El trabajo es por teléfono, WhatsApp, texto y correo. Tampa tiene su propia página.',
     },
     hub: 'Condado Miami-Dade', related: 'Más para esta zona',
     flood: 'Seguro de inundación en Homestead',
@@ -95,6 +99,8 @@ const UI: Record<Lang, {
       'miami-dade': 'Мы работаем с клиентами по всему округу из офиса во Florida City. Населённые пункты, у которых есть своя страница, даны ссылками.',
       broward: 'Клиентов из Broward мы обслуживаем из офиса во Florida City — в основном по телефону, в WhatsApp, по SMS и почте: в этих городах и по всему округу.',
       'palm-beach': 'Округ Palm Beach мы обслуживаем из офиса во Florida City. До Boca Raton около 80 миль на север, а города дальше по побережью ещё дальше, поэтому основная работа идёт по телефону, в WhatsApp, по SMS и почте. Города со своей страницей даны ссылками.',
+      sarasota: 'Округ Sarasota мы обслуживаем из офиса во Florida City. Офиса в округе нет. До North Port около 218 миль и около 4 часов без плотного трафика, до мэрии Sarasota около 250 миль и около 4 часов 40 минут. Работа идёт по телефону, в WhatsApp, по SMS и почте. Города со своей страницей даны ссылками.',
+      hillsborough: 'Округ Hillsborough мы обслуживаем из офиса во Florida City. Офиса в округе нет. До мэрии Tampa около 300 миль и около 5 часов 30 минут без плотного трафика. Отдельное время в пути для каждого города мы не публикуем. Работа идёт по телефону, в WhatsApp, по SMS и почте. У Tampa есть своя страница.',
     },
     hub: 'Округ Miami-Dade', related: 'Ещё по этому району',
     flood: 'Страховка от наводнения в Homestead',
@@ -295,7 +301,7 @@ export default function CityServicePage({ path, lang }: { path: string; lang: st
         </div>
       </section>
 
-      {page.served && (page.area === 'miami-dade' || page.area === 'broward' || page.area === 'palm-beach') && (
+      {page.served && (page.area === 'miami-dade' || page.area === 'broward' || page.area === 'palm-beach' || page.area === 'sarasota' || page.area === 'hillsborough') && (
         <section className="section" aria-labelledby="communities">
           <div className={`container ${s.served}`}>
             <h2 id="communities">{ui.servedTitle(t.breadcrumb)}</h2>
