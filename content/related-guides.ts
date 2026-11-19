@@ -81,6 +81,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'florida-license-suspended-no-insurance' },
       { blog: 'non-owner-sr22-florida' },
       { blog: 'sr22-florida-guia' },
+      { blog: 'bodily-injury-liability-fr44-florida' },
     ],
   },
   {

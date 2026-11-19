@@ -1,236 +1,295 @@
 import type { BlogPost } from '../types';
 
-// Facts checked 2026-10-04: FR-44 required in FL after DUI conviction
-// (s. 316.193; s. 324.023 F.S.): BI 100/300 + PD 50, minimum 3 years; only FL
-// and VA use FR-44. FL does not require BI liability for most drivers (PIP
-// $10k + PDL $10k per ss. 627.733, 627.736). FL judgments generally valid
-// 20 years (s. 55.081). Homestead: Art. X, s. 4, FL Constitution (primary
-// residence shielded from forced sale by most creditors; exceptions include
-// mortgages, tax liens, mechanic's liens). Wage garnishment: head-of-family
-// protections exist (s. 222.11) with limits \u2014 kept general here.
-// Deliberately generic: no private insurer named. No premium rates, no savings
-// claims, no guaranteed outcomes. Not legal advice. ES/RU mirror EN.
-const SOURCES = [
-  { label: 'Florida Statutes s. 324.023 (2026): financial responsibility \u2014 FR-44 after DUI', url: 'https://www.flsenate.gov/Laws/Statutes/2026/324.023' },
-  { label: 'Florida Statutes s. 316.193 (2026): driving under the influence', url: 'https://www.flsenate.gov/Laws/Statutes/2026/316.193' },
-  { label: 'Florida Constitution, Article X, Section 4: homestead exemption', url: 'https://www.flsenate.gov/Laws/Constitution' },
-  { label: 'FLHSMV: Florida Insurance Requirements', url: 'https://www.flhsmv.gov/insurance/' },
-  { label: 'Florida Department of Financial Services: Consumer Services', url: 'https://www.myfloridacfo.com/division/consumers/' },
-];
+// Refreshed 2026-11-19 (ET) (content plan 2026-11, row 2026-11-19): rewritten around FR-44 vs SR-22 and
+// what a DUI conviction (holiday angle) means for bodily injury liability. datePublished 2026-10-04 kept.
+// Facts checked 2026-11-19 against official sources (raw copies in /workspace/fr44/; notes in
+// /workspace/articles/bodily-injury-liability-fr44-florida_sources.md):
+// - s. 324.023 (2026, Online Sunshine): guilty / guilty or nolo plea to DUI under s. 316.193 after Oct 1, 2007,
+//   regardless of adjudication -> 100,000/300,000 BI + 50,000 PD; CD alternative at least $350,000; minimum 3 years;
+//   exempt after 3 years from reinstatement with no DUI or felony traffic conviction.
+// - s. 324.021(7): proof of financial responsibility 10/20/10.
+// - s. 316.193 (2026): 0.08; (2)(a) first conviction fine $500-$1,000, up to 6 months; (4) 0.15+/minor $1,000-$2,000,
+//   up to 9 months; (5) DUI program course + probation; (6)(a) first conviction 10-day impoundment/immobilization.
+// - s. 322.2615: refusal 1 yr / 18 mo; 0.08+ 6 months / 1 yr; 10-day temporary permit; review request within 10 days.
+// - s. 322.28(2)(a)1: first conviction revocation at least 180 days, not more than 1 year.
+// - FLHSMV Florida Insurance Requirements: PIP/PDL $10,000 each; BIL definition; SR22 definition; failure to maintain
+//   insurance -> suspension up to 3 years, reinstatement fee up to $500.
+// - FLHSMV DUI FAQs: FR-44 required at reinstatement (hardship or full license) for DUI convictions after Oct 1, 2007;
+//   100/300 BI + 50 PD or CSL $350,000; keep 3 years from reinstatement. Pre-Oct 1, 2007: 10/20/10 proof.
+// - FLHSMV DUI and Administrative Suspension Laws: first offense with bodily injury minimum 3 years revocation; first
+//   conviction hardship = DUI school + hearing.
+// - FLHSMV FR procedures manual (PDF): SR22/FR44 filed electronically within 15 working days of issuance; FR44 covers
+//   SR22 limits; SR22/FR44 kept continuously 3 years; renewal not re-reported unless policy number changes or lapse;
+//   FR46 cancellation within 15 days. Verification criteria PDF: FR-44 sanctions are person-specific (not VIN).
+// Removed from the Oct 4 version (not re-verified today / off-topic): homestead, garnishment, 20-year judgments.
+// No private insurers named. No premium or outcome claims. Not legal advice.
+const LEG = 'https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=';
+const TEL = 'tel:+13058593953';
+const U = {
+  s324023: LEG + '0300-0399/0324/Sections/0324.023.html',
+  s324021: LEG + '0300-0399/0324/Sections/0324.021.html',
+  s316193: LEG + '0300-0399/0316/Sections/0316.193.html',
+  s3222615: LEG + '0300-0399/0322/Sections/0322.2615.html',
+  s32228: LEG + '0300-0399/0322/Sections/0322.28.html',
+  ins: 'https://www.flhsmv.gov/insurance/',
+  duiFaq: 'https://www.flhsmv.gov/driver-licenses-id-cards/education-courses/dui-and-iid/dui-faqs/',
+  duiLaws: 'https://www.flhsmv.gov/driver-licenses-id-cards/education-courses/dui-and-iid/florida-dui-administrative-suspension-laws/',
+  manual: 'https://www.flhsmv.gov/pdf/frmanual/ftp-procedure-manual.pdf',
+};
 
 export const post: BlogPost = {
   slug: 'bodily-injury-liability-fr44-florida',
   datePublished: '2026-10-04',
+  dateModified: '2026-11-19',
   translations: {
     en: {
-      title: 'Bodily Injury Liability in Florida: Lawsuits, FR-44, and Protecting What You Own',
-      metaTitle: 'Bodily Injury Liability & FR-44 in Florida | M&K Agency',
-      description: 'Bodily injury liability in Florida: what you owe after a serious crash, how FR-44, garnishment, liens and homestead protection work.',
-      ogAlt: 'Sedan with a protective shield emblem driving on a palm-lined highway',
-      excerpt: 'Florida doesn\u2019t require most drivers to carry bodily injury liability. But if you cause a serious crash without enough of it, the bill doesn\u2019t disappear \u2014 it can follow your paycheck and your property for years.',
+      title: 'Bodily Injury Liability and FR-44 in Florida: What a Holiday DUI Means for Your Insurance',
+      metaTitle: 'FR-44 vs SR-22 in Florida: Liability After a DUI | M&K Agency',
+      description: 'FR-44 in Florida after a DUI: the 100/300/50 limits in s. 324.023, how it differs from an SR-22, who files it, how long to keep it and what a lapse means.',
+      ogAlt: 'Flat illustration of a car on a palm-lined road next to a shield and a filed document with a check mark',
+      excerpt: 'A DUI conviction in Florida brings an FR-44: proof of 100/300/50 liability limits for three years. How it differs from an SR-22, who files it and what to check before you reinstate.',
       category: 'Auto insurance',
       body: [
-        { type: 'p', text: '**Bodily injury (BI) liability** is the part of your auto policy that pays for injuries **you cause to other people** \u2014 their medical bills, lost wages, and pain and suffering. Here is the part most Florida drivers miss: for most drivers, Florida **does not require it**. To register a car you need only **PIP ($10,000)** and **property damage liability ($10,000)**. That means you can be driving legally with **zero coverage** for the injuries you cause to others.' },
-        { type: 'p', text: 'So what happens when a driver with minimum coverage \u2014 or no BI at all \u2014 causes a serious crash? This article walks through it: the lawsuit, what a judgment can reach, where Florida\u2019s homestead protection helps (and where it doesn\u2019t), what a DUI adds through FR-44, and where a personal umbrella fits in.' },
+        { type: 'p', text: 'The holidays fill the calendar with office parties, Thanksgiving dinners and New Year’s Eve. If one of those nights ends with a DUI arrest in Florida, the criminal case is only part of the story. A conviction also changes your **auto insurance**: before you can legally drive again, Florida requires proof of much higher **bodily injury liability** limits on a form called the **FR-44**.' },
+        { type: 'p', text: 'This updated guide explains what bodily injury liability is, how the FR-44 works under **s. 324.023, Florida Statutes**, how it differs from an SR-22, and what to check before you reinstate your license. Every penalty mentioned below comes from the statutes and FLHSMV pages as they read on November 19, 2026.' },
 
-        { type: 'h2', text: 'The crash is only the beginning: how a judgment follows you' },
+        { type: 'h2', text: 'Bodily injury liability: what it is and when Florida requires it' },
+        { type: 'p', text: 'FLHSMV defines **bodily injury liability (BIL)** as coverage that pays for injury or death to others. To register a vehicle with at least four wheels, most Florida drivers only need **$10,000 of Personal Injury Protection (PIP)** and **$10,000 of Property Damage Liability (PDL)**. That is why many drivers carry little or no bodily injury liability. See [Florida minimum car insurance requirements](/en/blog/florida-minimum-car-insurance-requirements) for the basics.' },
+        { type: 'p', text: 'That changes after certain events. After some financial-responsibility cases, FLHSMV asks for an **SR-22**. After a DUI conviction, the requirement becomes the **FR-44**, with limits ten times higher.' },
+
+        { type: 'h2', text: 'After a DUI arrest: two separate tracks' },
         { type: 'ul', items: [
-          'The injured person can **sue you personally** for what insurance didn\u2019t pay: medical bills, future care, lost wages, and pain and suffering.',
-          'A money judgment in Florida is generally valid for **20 years** and can be renewed. It doesn\u2019t expire when the crash fades from memory.',
-          'With a judgment in hand, the creditor can pursue **wage garnishment** (Florida law shields a head of household\u2019s wages in many cases, but the protection has limits and doesn\u2019t cover every kind of debt), **levy on bank accounts**, and **liens on property** you own that isn\u2019t otherwise protected.',
-          'Interest keeps running on the unpaid balance while you sort it out.',
+          '**Administrative suspension (at the arrest).** Under s. 322.2615, if you refuse a breath, blood or urine test, or your blood- or breath-alcohol level is 0.08 or higher, the officer takes your license and issues a 10-day temporary permit. A first 0.08 suspension lasts 6 months; a first refusal, 1 year. You have **10 days** to request a review from FLHSMV.',
+          '**Criminal case (conviction).** If you are convicted under s. 316.193, the court revokes your license. For a first conviction not involving a death, s. 322.28 sets a revocation of at least 180 days and no more than 1 year. FLHSMV lists a minimum of three years for a first offense with bodily injury.',
         ] },
+        { type: 'p', text: 'For a first conviction, s. 316.193 also sets a fine of $500 to $1,000 (or $1,000 to $2,000 with a level of 0.15 or higher or a minor in the vehicle), up to 6 months in jail (up to 9 months in those cases), probation with a DUI program course, and a 10-day impoundment or immobilization of a vehicle. Penalties grow with repeat convictions. For the criminal case, talk to an attorney.' },
 
-        { type: 'h2', text: 'Can they take your house? Homestead protection' },
-        { type: 'p', text: 'Florida\u2019s homestead protection (Article X, Section 4 of the Florida Constitution) shields your **primary residence** from forced sale by most creditors \u2014 and unlike many states, Florida puts **no dollar cap** on the value protected. But it is narrower than people think:' },
+        { type: 'h2', text: 'What the FR-44 requires' },
+        { type: 'p', text: 'Section 324.023 applies to anyone found guilty of DUI after October 1, 2007, or who pleaded guilty or no contest, regardless of adjudication. You must prove you can respond in damages for at least:' },
         { type: 'ul', items: [
-          'It doesn\u2019t stop the **judgment itself** \u2014 you still owe the money.',
-          'It doesn\u2019t protect **bank accounts, investments, second homes, rental property, or business assets**.',
-          'It doesn\u2019t block **mortgages, property-tax liens, or contractor (mechanic\u2019s) liens** \u2014 those creditors can still force a sale.',
+          '**$100,000** for bodily injury to one person in a crash',
+          '**$300,000** for bodily injury to two or more people in a crash',
+          '**$50,000** for property damage in a crash',
         ] },
-        { type: 'p', text: 'In plain terms: homestead keeps a roof over your head, but it doesn\u2019t make the debt go away \u2014 and everything outside the homestead is exposed.' },
+        { type: 'p', text: 'FLHSMV also accepts a **combined single limit of $350,000**, and the statute allows a certificate of deposit of at least $350,000 instead of a policy. According to FLHSMV’s DUI FAQs, you need the FR-44 **at reinstatement, whether for a hardship license or a full license**, and you must keep it for **three years from the date your driving privilege is reinstated**. The statute also has an end point: after three years from reinstatement with no new DUI or felony traffic conviction, s. 324.023 no longer applies to you.' },
 
-        { type: 'h2', text: 'A DUI makes it much worse: FR-44' },
-        { type: 'p', text: 'After a DUI conviction (s. 316.193), Florida \u2014 one of only two states to use it \u2014 requires an **FR-44** filing (s. 324.023):' },
-        { type: 'ul', items: [
-          'You must carry **$100,000 per person / $300,000 per accident** in bodily injury liability plus **$50,000** in property damage \u2014 roughly ten times the BI limits many drivers carry.',
-          'You must maintain those limits for a **minimum of 3 years**.',
-          'Your insurer files the FR-44 certificate with the state. If the coverage lapses, your license goes away again \u2014 and the clock can restart.',
-        ] },
-        { type: 'p', text: 'An FR-44 isn\u2019t insurance itself. It\u2019s proof, filed by your insurer, that you carry the limits the state demands after a DUI.' },
-
-        { type: 'h2', text: 'Where a personal umbrella fits' },
-        { type: 'p', text: 'A **personal umbrella policy** sits **on top of** your auto and homeowners liability limits. When a covered claim burns through your underlying BI limit, the umbrella can pay what\u2019s left, up to its own limit \u2014 for both auto and home liability claims under one policy.' },
-        { type: 'ul', items: [
-          'For **homeowners**, an umbrella is especially worth understanding: a house, savings and investments are visible assets that make you a worthwhile target to sue.',
-          'Umbrella coverage generally requires you to carry certain **underlying auto and home liability limits** first \u2014 it doesn\u2019t replace them.',
-          'It\u2019s the layer that responds when the numbers get bigger than your auto policy was built for.',
-        ] },
-        { type: 'p', text: 'See our [personal umbrella guide](/en/protect/umbrella-insurance) for how the coverage is structured.' },
-
-        { type: 'h2', text: 'What to check on your own policy' },
+        { type: 'h2', text: 'Who files the FR-44 and how' },
         { type: 'ol', items: [
-          'Find your **bodily injury liability limits** on your declarations page \u2014 two numbers, such as 100/300.',
-          'If you see only PIP and property damage, you likely have **no BI liability at all**.',
-          'Ask what a serious injury claim would do to your savings, a second property, or your wages over the next 20 years.',
-          'If you own a home, ask a licensed agent how an umbrella would stack over your auto and home policies.',
-          'If you carry an FR-44, **never let the coverage lapse** \u2014 a lapse can restart the multi-year clock.',
+          'You buy an auto policy with at least 100/300/50 limits. The FR-44 is not a separate kind of insurance; it is a certificate proving that the policy exists.',
+          'Your insurer files the FR-44 with FLHSMV electronically. FLHSMV’s procedures manual says FR-44s must be filed within 15 working days of issuance.',
+          'FLHSMV treats the requirement as tied to **the person**, not to one vehicle. A driver who doesn’t own a car can ask about a [non-owner policy](/en/blog/non-owner-sr22-florida).',
+          'If the policy is cancelled, the insurer reports it to FLHSMV on a cancellation form (**FR-46**). FLHSMV warns that failing to keep required insurance can lead to suspension of your license and registration and a reinstatement fee of up to $500.',
         ] },
-        { type: 'callout', title: 'Please note', text: 'This is general insurance information, not legal advice. Lawsuits, garnishment, liens and homestead questions turn on specific facts \u2014 talk to an attorney about a specific situation, and to a licensed agent about coverage.' },
 
-        { type: 'h2', text: 'Not sure what your limits are? Get a free coverage check' },
-        { type: 'p', text: 'Our [Free 5-Minute Coverage Check](/en/coverage-check) reviews your auto liability limits, whether an umbrella makes sense for your household, and where the gaps are. Free, no obligation, in English, Spanish or Russian.' },
-        { type: 'p', text: 'You can also visit M&K Agency at 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034, call (305) 859-3953, or [request a quote](/en/quote).' },
+        { type: 'h2', text: 'FR-44 vs SR-22: the key differences' },
+        { type: 'ul', items: [
+          '**Limits:** an SR-22 certifies at least **10/20/10** (s. 324.021(7)); an FR-44 certifies **100/300/50**.',
+          '**Trigger:** the FR-44 is for DUI convictions after October 1, 2007. FLHSMV says people convicted on or before that date still need SR-22-level proof. The SR-22 covers other cases, such as some crashes without required insurance — see [license suspended for no insurance](/en/blog/florida-license-suspended-no-insurance).',
+          '**Overlap:** you don’t need both. FLHSMV’s manual says an FR-44 covers both sets of limits.',
+          '**Duration:** both must stay in force continuously for three years under FLHSMV’s procedures.',
+        ] },
+        { type: 'p', text: 'More detail: our [SR-22 in Florida guide](/en/blog/sr22-florida-guia) and the [SR-22 and FR-44 filings page](/en/sr22-insurance-florida-city).' },
+
+        { type: 'h2', text: 'Why the higher limits matter beyond paperwork' },
+        { type: 'p', text: 'Bodily injury liability pays for injuries you cause to other people. A serious crash can produce claims well beyond 10/20 limits, and if a claim exceeds your policy, you can be sued personally for the difference. Some households add an [umbrella policy](/en/blog/umbrella-insurance-explained-florida) on top of auto liability. Ask a licensed agent what fits your situation.' },
+
+        { type: 'h2', text: 'Before you reinstate: a short checklist' },
+        { type: 'ol', items: [
+          'Keep the court disposition and every FLHSMV letter; note the reinstatement date.',
+          'Complete or enroll in the DUI program. FLHSMV requires it for a hardship license and for reinstatement.',
+          'Get a policy with at least 100/300/50 (or a $350,000 single limit) and confirm that the FR-44 reached FLHSMV.',
+          'Set up automatic payments or reminders so the policy never lapses during the three years.',
+          'If you change cars or policies, call your agent first: per FLHSMV’s manual, a new policy number requires a new filing.',
+          'Mark the end date: three years from reinstatement, with no new DUI or felony traffic conviction.',
+        ] },
+        { type: 'callout', title: 'Please note', text: 'This is general insurance information, not legal advice. DUI cases depend on specific facts; talk to an attorney about your case and to a licensed agent about coverage.' },
+
+        { type: 'h2', text: 'Need an FR-44 filing?' },
+        { type: 'p', text: 'M&K Agency helps drivers in Florida City, Homestead and across Miami-Dade with FR-44 and SR-22 filings in English, Spanish and Russian. Call [(305) 859-3953](' + TEL + '), [request a quote](/en/quote), or visit us at 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034. See also our [car insurance page](/en/car-insurance-florida-city).' },
         { type: 'p', text: 'Coverage depends on the terms, limits and exclusions of each policy. Talk with a licensed agent before you change your coverage.' },
       ],
       faq: [
-        { q: 'Is bodily injury liability required in Florida?', a: 'For most drivers, no. Florida requires PIP ($10,000) and property damage liability ($10,000). Drivers with certain violations \u2014 including DUI convictions carrying an FR-44 \u2014 must carry much higher BI limits.' },
-        { q: 'What is an FR-44?', a: 'A certificate your insurer files with the state proving you carry elevated liability limits after a DUI: $100,000/$300,000 bodily injury and $50,000 property damage in Florida, maintained for a minimum of 3 years.' },
-        { q: 'Can a crash judgment garnish my wages in Florida?', a: 'Possibly. Florida law protects a head of household\u2019s wages from garnishment in many cases, but the protection has limits. Judgments in Florida are generally valid for 20 years.' },
-        { q: 'Can they put a lien on my house?', a: 'Your primary residence is generally shielded from forced sale under Florida\u2019s homestead protection (Article X, Section 4), with exceptions for mortgages, tax liens and contractor liens. Non-homestead property \u2014 second homes, rentals, investments \u2014 is not shielded.' },
-        { q: 'Does a personal umbrella replace my auto BI limits?', a: 'No. An umbrella sits on top of your auto and home liability limits and requires you to carry specified underlying limits first.' },
+        { q: 'Is an FR-44 the same as an SR-22?', a: 'No. Both are certificates your insurer files with FLHSMV, but an SR-22 certifies at least 10/20/10, while an FR-44 certifies 100/300/50 and applies after a DUI conviction (after October 1, 2007).' },
+        { q: 'Do I need an FR-44 right after a DUI arrest?', a: 'The FR-44 rule in s. 324.023 is tied to a finding of guilt or a guilty or no contest plea. At the arrest, the administrative suspension under s. 322.2615 applies. FLHSMV asks for the FR-44 at reinstatement after a conviction.' },
+        { q: 'How long do I have to keep an FR-44?', a: 'FLHSMV says three years from the date your driving privilege is reinstated. The coverage must stay continuous; if it is cancelled, the insurer notifies FLHSMV.' },
       ],
-      sources: SOURCES,
+      sources: [
+        { label: 'Florida Statutes s. 324.023 (2026): financial responsibility after DUI (100/300/50, 3 years)', url: U.s324023 },
+        { label: 'Florida Statutes s. 324.021(7) (2026): proof of financial responsibility (10/20/10)', url: U.s324021 },
+        { label: 'Florida Statutes s. 316.193 (2026): driving under the influence; penalties', url: U.s316193 },
+        { label: 'Florida Statutes s. 322.2615 (2026): administrative suspension; review within 10 days', url: U.s3222615 },
+        { label: 'Florida Statutes s. 322.28 (2026): revocation periods after DUI', url: U.s32228 },
+        { label: 'FLHSMV: Florida Insurance Requirements (PIP/PDL, BIL, SR22, penalties)', url: U.ins },
+        { label: 'FLHSMV: DUI FAQs (FR-44 at reinstatement, 3 years)', url: U.duiFaq },
+        { label: 'FLHSMV: Florida DUI and Administrative Suspension Laws', url: U.duiLaws },
+        { label: 'FLHSMV: Financial Responsibility procedures manual (SR22/FR44 filing)', url: U.manual },
+      ],
     },
     es: {
-      title: 'Responsabilidad por lesiones corporales en Florida: demandas, FR-44 y c\u00f3mo proteger lo tuyo',
-      metaTitle: 'Lesiones corporales y FR-44 en Florida | M&K Agency',
-      description: 'Responsabilidad por lesiones corporales en Florida: qu\u00e9 debes tras un choque grave, c\u00f3mo funcionan FR-44, embargo de salario, grav\u00e1menes y la protecci\u00f3n homestead.',
-      ogAlt: 'Sedán con emblema de escudo protector en una autopista con palmeras',
-      excerpt: 'Florida no exige a la mayor\u00eda de los conductores llevar responsabilidad por lesiones corporales. Pero si causas un choque grave sin suficiente cobertura, la cuenta no desaparece: puede seguir tu salario y tus bienes por a\u00f1os.',
+      title: 'Responsabilidad por lesiones corporales y FR-44 en Florida: qué significa un DUI en las fiestas para su seguro',
+      metaTitle: 'FR-44 vs. SR-22 en Florida: seguro tras un DUI | M&K Agency',
+      description: 'El FR-44 en Florida tras un DUI: límites 100/300/50 de la s. 324.023, en qué se diferencia del SR-22, quién lo presenta, cuánto dura y qué pasa si caduca.',
+      ogAlt: 'Ilustración plana de un auto en una carretera con palmeras junto a un escudo y un documento con una marca de verificación',
+      excerpt: 'Una condena por DUI en Florida trae el FR-44: prueba de límites 100/300/50 durante tres años. En qué se diferencia del SR-22, quién lo presenta y qué revisar antes de recuperar la licencia.',
       category: 'Seguro de auto',
       body: [
-        { type: 'p', text: 'La **responsabilidad por lesiones corporales (BI)** es la parte de tu p\u00f3liza de auto que paga por las lesiones **que t\u00fa causas a otras personas**: sus cuentas m\u00e9dicas, salarios perdidos y dolor y sufrimiento. Y esto es lo que la mayor\u00eda de los conductores de Florida no sabe: para la mayor\u00eda, Florida **no la exige**. Para registrar un auto solo necesitas **PIP ($10,000)** y **responsabilidad por da\u00f1os a la propiedad ($10,000)**. Es decir, puedes manejar legalmente con **cero cobertura** para las lesiones que causes a otros.' },
-        { type: 'p', text: '\u00bfQu\u00e9 pasa cuando un conductor con cobertura m\u00ednima \u2014 o sin BI \u2014 causa un choque grave? Este art\u00edculo lo explica: la demanda, qu\u00e9 puede alcanzar un fallo judicial, d\u00f3nde ayuda la protecci\u00f3n homestead de Florida (y d\u00f3nde no), qu\u00e9 agrega un DUI con el FR-44, y d\u00f3nde encaja una p\u00f3liza paraguas personal.' },
+        { type: 'p', text: 'Fiestas de la oficina, Acción de Gracias, Fin de Año: si una de esas noches termina con un arresto por DUI en Florida, el caso penal es solo parte del problema. Una condena también cambia su **seguro de auto**: antes de volver a manejar legalmente, Florida exige demostrar límites mucho más altos de **responsabilidad por lesiones corporales** con un formulario llamado **FR-44**.' },
+        { type: 'p', text: 'Esta guía actualizada explica cómo funciona el FR-44 según la **sección 324.023 de los Estatutos de Florida**, en qué se diferencia del SR-22 y qué revisar antes de restablecer su licencia. Las sanciones que mencionamos salen de los estatutos y de las páginas de FLHSMV tal como estaban el 19 de noviembre de 2026.' },
 
-        { type: 'h2', text: 'El choque es solo el principio: c\u00f3mo te sigue un fallo judicial' },
+        { type: 'h2', text: 'Qué es la responsabilidad por lesiones corporales y cuándo la exige Florida' },
+        { type: 'p', text: 'FLHSMV define la **responsabilidad por lesiones corporales (BIL)** como la cobertura que paga las lesiones o la muerte de otras personas. Para registrar un vehículo de cuatro ruedas o más, a la mayoría de los conductores solo se les exige **$10,000 de Protección contra Lesiones Personales (PIP)** y **$10,000 de responsabilidad por daños a la propiedad (PDL)**. Por eso muchos manejan con poca o ninguna cobertura BIL. Repase lo básico en [requisitos mínimos de seguro de auto en Florida](/es/blog/florida-minimum-car-insurance-requirements).' },
+        { type: 'p', text: 'En algunos casos de responsabilidad financiera, FLHSMV pide un **SR-22**. Después de una condena por DUI, lo que se exige es el **FR-44**, con límites diez veces más altos.' },
+
+        { type: 'h2', text: 'Después del arresto: dos procesos distintos' },
         { type: 'ul', items: [
-          'La persona lesionada puede **demandarte personalmente** por lo que el seguro no pag\u00f3: cuentas m\u00e9dicas, atenci\u00f3n futura, salarios perdidos y dolor y sufrimiento.',
-          'Un fallo monetario en Florida generalmente es v\u00e1lido por **20 a\u00f1os** y puede renovarse. No expira cuando el choque se olvida.',
-          'Con un fallo en mano, el acreedor puede buscar el **embargo de salario** (la ley de Florida protege el salario del cabeza de familia en muchos casos, pero la protecci\u00f3n tiene l\u00edmites y no cubre todo tipo de deuda), el **embargo de cuentas bancarias** y **grav\u00e1menes sobre propiedades** que tengas y no est\u00e9n protegidas.',
-          'Los intereses siguen corriendo sobre el saldo impago mientras lo resuelves.',
+          '**Suspensión administrativa (en el momento del arresto).** Según la s. 322.2615, si usted se niega a la prueba de aliento, sangre u orina, o su nivel de alcohol es de 0.08 o más, el oficial le retira la licencia y le entrega un permiso temporal de 10 días. La primera suspensión por 0.08 dura 6 meses; la primera negativa, 1 año. Tiene **10 días** para pedir una revisión ante FLHSMV.',
+          '**Caso penal (condena).** Si lo condenan bajo la s. 316.193, el tribunal revoca su licencia. En una primera condena sin muerte, la s. 322.28 fija una revocación de 180 días como mínimo y 1 año como máximo. FLHSMV indica un mínimo de tres años si en la primera infracción hubo lesiones corporales.',
         ] },
+        { type: 'p', text: 'Para una primera condena, la s. 316.193 también establece una multa de $500 a $1,000 (de $1,000 a $2,000 si el nivel fue de 0.15 o más o había un menor en el vehículo), hasta 6 meses de cárcel (hasta 9 meses en esos casos), libertad condicional con un curso de un programa DUI y 10 días de incautación o inmovilización de un vehículo. Las sanciones aumentan con cada condena adicional. Para el caso penal, consulte con un abogado.' },
 
-        { type: 'h2', text: '\u00bfPueden quitarte la casa? La protecci\u00f3n homestead' },
-        { type: 'p', text: 'La protecci\u00f3n homestead de Florida (Art\u00edculo X, Secci\u00f3n 4 de la Constituci\u00f3n de Florida) protege tu **residencia principal** de la venta forzada por la mayor\u00eda de los acreedores \u2014 y a diferencia de muchos estados, Florida **no pone tope** al valor protegido. Pero es m\u00e1s limitada de lo que la gente cree:' },
+        { type: 'h2', text: 'Qué exige el FR-44' },
+        { type: 'p', text: 'La sección 324.023 se aplica a quien sea declarado culpable de DUI después del 1 de octubre de 2007, o se haya declarado culpable o no contest, sin importar si hubo adjudicación. Debe demostrar capacidad de responder por daños de al menos:' },
         { type: 'ul', items: [
-          'No detiene el **fallo en s\u00ed** \u2014 sigues debiendo el dinero.',
-          'No protege **cuentas bancarias, inversiones, segundas viviendas, propiedades de alquiler ni activos de negocios**.',
-          'No bloquea **hipotecas, grav\u00e1menes de impuestos a la propiedad ni grav\u00e1menes de contratistas** \u2014 esos acreedores s\u00ed pueden forzar una venta.',
+          '**$100,000** por lesiones corporales a una persona en un choque',
+          '**$300,000** por lesiones corporales a dos o más personas en un choque',
+          '**$50,000** por daños a la propiedad en un choque',
         ] },
-        { type: 'p', text: 'En palabras simples: el homestead mantiene un techo sobre tu cabeza, pero no hace desaparecer la deuda \u2014 y todo lo que est\u00e1 fuera del homestead queda expuesto.' },
+        { type: 'p', text: 'FLHSMV también acepta un **límite único combinado de $350,000**, y el estatuto permite un certificado de depósito de al menos $350,000 en lugar de una póliza. Según las preguntas frecuentes de FLHSMV sobre DUI, el FR-44 se pide **al restablecer la licencia, sea una licencia por dificultad (hardship) o una licencia completa**, y debe mantenerse **tres años desde la fecha en que se restablece su privilegio de manejar**. El estatuto también marca un final: pasados tres años desde el restablecimiento sin otra condena por DUI ni por un delito grave de tránsito, la s. 324.023 deja de aplicarse.' },
 
-        { type: 'h2', text: 'Un DUI lo empeora mucho: FR-44' },
-        { type: 'p', text: 'Tras una condena por DUI (s. 316.193), Florida \u2014 uno de solo dos estados que lo usan \u2014 exige una declaraci\u00f3n **FR-44** (s. 324.023):' },
-        { type: 'ul', items: [
-          'Debes llevar **$100,000 por persona / $300,000 por accidente** en responsabilidad por lesiones corporales m\u00e1s **$50,000** en da\u00f1os a la propiedad: unas diez veces los l\u00edmites de BI que llevan muchos conductores.',
-          'Debes mantener esos l\u00edmites por un **m\u00ednimo de 3 a\u00f1os**.',
-          'Tu aseguradora presenta el certificado FR-44 ante el estado. Si la cobertura se interrumpe, pierdes la licencia de nuevo \u2014 y el reloj puede reiniciarse.',
-        ] },
-        { type: 'p', text: 'El FR-44 no es un seguro en s\u00ed. Es la prueba, presentada por tu aseguradora, de que llevas los l\u00edmites que el estado exige tras un DUI.' },
-
-        { type: 'h2', text: 'D\u00f3nde encaja una p\u00f3liza paraguas personal' },
-        { type: 'p', text: 'Una **p\u00f3liza paraguas personal** se coloca **encima de** tus l\u00edmites de responsabilidad de auto y de vivienda. Cuando un reclamo cubierto agota tu l\u00edmite base de BI, el paraguas puede pagar el resto, hasta su propio l\u00edmite \u2014 para reclamos de auto y de hogar bajo una sola p\u00f3liza.' },
-        { type: 'ul', items: [
-          'Para los **propietarios de vivienda**, el paraguas vale la pena entenderlo: una casa, ahorros e inversiones son activos visibles que te convierten en un objetivo que vale la pena demandar.',
-          'La cobertura paraguas generalmente exige que primero lleves ciertos **l\u00edmites base de responsabilidad de auto y hogar** \u2014 no los reemplaza.',
-          'Es la capa que responde cuando las cifras superan lo que tu p\u00f3liza de auto fue dise\u00f1ada para cubrir.',
-        ] },
-        { type: 'p', text: 'Mira nuestra [gu\u00eda de paraguas personal](/es/protect/umbrella-insurance) para ver c\u00f3mo se estructura la cobertura.' },
-
-        { type: 'h2', text: 'Qu\u00e9 revisar en tu propia p\u00f3liza' },
+        { type: 'h2', text: 'Quién presenta el FR-44 y cómo' },
         { type: 'ol', items: [
-          'Busca tus **l\u00edmites de responsabilidad por lesiones corporales** en tu p\u00e1gina de declaraciones: dos n\u00fameros, como 100/300.',
-          'Si solo ves PIP y da\u00f1os a la propiedad, probablemente **no tienes BI en absoluto**.',
-          'Preg\u00fantate qu\u00e9 har\u00eda un reclamo grave con tus ahorros, una segunda propiedad o tu salario durante los pr\u00f3ximos 20 a\u00f1os.',
-          'Si tienes casa propia, pregunta a un agente licenciado c\u00f3mo un paraguas se sumar\u00eda sobre tus p\u00f3lizas de auto y hogar.',
-          'Si llevas un FR-44, **nunca dejes que la cobertura se interrumpa**: una interrupci\u00f3n puede reiniciar el reloj de varios a\u00f1os.',
+          'Usted contrata una póliza de auto con límites de al menos 100/300/50. El FR-44 no es otro tipo de seguro: es un certificado que demuestra que la póliza existe.',
+          'La aseguradora presenta el FR-44 ante FLHSMV de forma electrónica. El manual de procedimientos de FLHSMV indica que debe presentarse dentro de los 15 días hábiles siguientes a su emisión.',
+          'Para FLHSMV, el requisito va ligado a **la persona**, no a un vehículo. Si no tiene auto propio, pregunte por una [póliza de no propietario](/es/blog/non-owner-sr22-florida).',
+          'Si la póliza se cancela, la aseguradora lo notifica a FLHSMV con un formulario de cancelación (**FR-46**). FLHSMV advierte que no mantener el seguro exigido puede llevar a la suspensión de la licencia y del registro, además de un cargo de restablecimiento de hasta $500.',
         ] },
-        { type: 'callout', title: 'Ten en cuenta', text: 'Esta es informaci\u00f3n general sobre seguros, no asesor\u00eda legal. Las demandas, embargos, grav\u00e1menes y temas de homestead dependen de hechos espec\u00edficos: habla con un abogado sobre tu situaci\u00f3n y con un agente licenciado sobre tu cobertura.' },
 
-        { type: 'h2', text: '\u00bfNo sabes cu\u00e1les son tus l\u00edmites? Revisi\u00f3n gratuita' },
-        { type: 'p', text: 'Nuestra [Revisi\u00f3n de Cobertura Gratuita de 5 Minutos](/es/coverage-check) revisa tus l\u00edmites de responsabilidad de auto, si un paraguas tiene sentido para tu hogar y d\u00f3nde est\u00e1n los vac\u00edos. Gratis, sin obligaci\u00f3n, en ingl\u00e9s, espa\u00f1ol o ruso.' },
-        { type: 'p', text: 'Tambi\u00e9n puedes visitar M&K Agency en 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034, llamar al (305) 859-3953, o [solicitar una cotizaci\u00f3n](/es/quote).' },
-        { type: 'p', text: 'La cobertura depende de los t\u00e9rminos, l\u00edmites y exclusiones de cada p\u00f3liza. Habla con un agente licenciado antes de cambiar tu cobertura.' },
+        { type: 'h2', text: 'FR-44 vs. SR-22: las diferencias clave' },
+        { type: 'ul', items: [
+          '**Límites:** el SR-22 certifica al menos **10/20/10** (s. 324.021(7)); el FR-44 certifica **100/300/50**.',
+          '**Motivo:** el FR-44 corresponde a condenas por DUI posteriores al 1 de octubre de 2007. Según FLHSMV, quienes fueron condenados en esa fecha o antes siguen necesitando la prueba al nivel del SR-22. El SR-22 se usa en otros casos, como ciertos choques sin el seguro exigido; vea [licencia suspendida por no tener seguro](/es/blog/florida-license-suspended-no-insurance).',
+          '**No se duplican:** no necesita los dos. El manual de FLHSMV dice que el FR-44 cubre ambos niveles de límites.',
+          '**Duración:** ambos deben mantenerse sin interrupción durante tres años, según los procedimientos de FLHSMV.',
+        ] },
+        { type: 'p', text: 'Más detalles en nuestra [guía del SR-22 en Florida](/es/blog/sr22-florida-guia) y en la página de [trámites SR-22 y FR-44](/es/sr22-insurance-florida-city).' },
+
+        { type: 'h2', text: 'Por qué importan los límites más altos' },
+        { type: 'p', text: 'La cobertura BIL paga las lesiones que usted causa a otras personas. Un choque grave puede generar reclamos muy superiores a 10/20, y lo que supere su póliza pueden reclamárselo personalmente. Algunas familias suman una [póliza paraguas (umbrella)](/es/blog/umbrella-insurance-explained-florida) por encima de la responsabilidad del auto. Consúltelo con un agente con licencia.' },
+
+        { type: 'h2', text: 'Antes de restablecer la licencia: lista rápida' },
+        { type: 'ol', items: [
+          'Guarde la resolución del tribunal y las cartas de FLHSMV.',
+          'Complete o inscríbase en el programa DUI. FLHSMV lo exige para la licencia por dificultad y para el restablecimiento.',
+          'Contrate una póliza de al menos 100/300/50 (o un límite único de $350,000) y confirme que el FR-44 llegó a FLHSMV.',
+          'Active el pago automático para que la póliza no caduque.',
+          'Si cambia de auto o de póliza, llame antes a su agente: según el manual de FLHSMV, un nuevo número de póliza requiere una nueva presentación.',
+          'Marque la fecha final: tres años desde el restablecimiento, sin nuevas condenas por DUI ni delitos graves de tránsito.',
+        ] },
+        { type: 'callout', title: 'Importante', text: 'Esta es información general sobre seguros, no asesoría legal. Cada caso de DUI depende de los hechos; consulte a un abogado sobre su caso y a un agente con licencia sobre su cobertura.' },
+
+        { type: 'h2', text: '¿Necesita presentar un FR-44?' },
+        { type: 'p', text: 'En M&K Agency ayudamos a conductores de Florida City, Homestead y todo Miami-Dade con trámites FR-44 y SR-22, en español, inglés y ruso. Llame al [(305) 859-3953](' + TEL + '), [pida una cotización](/es/quote) o visítenos en 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034. Vea también nuestra [página de seguro de auto](/es/car-insurance-florida-city).' },
+        { type: 'p', text: 'La cobertura depende de los términos, límites y exclusiones de cada póliza. Hable con un agente con licencia antes de cambiar su cobertura.' },
       ],
       faq: [
-        { q: '\u00bfLa responsabilidad por lesiones corporales es obligatoria en Florida?', a: 'Para la mayor\u00eda de los conductores, no. Florida exige PIP ($10,000) y responsabilidad por da\u00f1os a la propiedad ($10,000). Conductores con ciertas violaciones \u2014 incluyendo DUI con FR-44 \u2014 deben llevar l\u00edmites de BI mucho m\u00e1s altos.' },
-        { q: '\u00bfQu\u00e9 es un FR-44?', a: 'Un certificado que tu aseguradora presenta ante el estado probando que llevas l\u00edmites elevados tras un DUI: $100,000/$300,000 en lesiones corporales y $50,000 en da\u00f1os a la propiedad en Florida, por un m\u00ednimo de 3 a\u00f1os.' },
-        { q: '\u00bfUn fallo por choque puede embargar mi salario en Florida?', a: 'Posiblemente. La ley de Florida protege el salario del cabeza de familia del embargo en muchos casos, pero la protecci\u00f3n tiene l\u00edmites. Los fallos en Florida generalmente son v\u00e1lidos por 20 a\u00f1os.' },
-        { q: '\u00bfPueden poner un gravamen sobre mi casa?', a: 'Tu residencia principal generalmente est\u00e1 protegida de la venta forzada bajo la protecci\u00f3n homestead (Art\u00edculo X, Secci\u00f3n 4), con excepciones para hipotecas, impuestos y contratistas. Las propiedades que no son homestead \u2014 segundas viviendas, alquileres, inversiones \u2014 no est\u00e1n protegidas.' },
-        { q: '\u00bfUn paraguas personal reemplaza mi BI de auto?', a: 'No. El paraguas se coloca encima de tus l\u00edmites de responsabilidad de auto y hogar, y exige que primero lleves los l\u00edmites base requeridos.' },
+        { q: '¿El FR-44 es lo mismo que el SR-22?', a: 'No. Ambos son certificados que la aseguradora presenta ante FLHSMV, pero el SR-22 certifica al menos 10/20/10 y el FR-44 certifica 100/300/50 y se exige tras una condena por DUI (posterior al 1 de octubre de 2007).' },
+        { q: '¿Necesito el FR-44 justo después del arresto?', a: 'La regla del FR-44 en la s. 324.023 depende de una declaración de culpabilidad o de una declaración de culpable o no contest. En el arresto se aplica la suspensión administrativa de la s. 322.2615. FLHSMV pide el FR-44 al restablecer la licencia después de una condena.' },
+        { q: '¿Cuánto tiempo debo mantener el FR-44?', a: 'Según FLHSMV, tres años desde la fecha en que se restablece su privilegio de manejar. La cobertura debe ser continua; si se cancela, la aseguradora avisa a FLHSMV.' },
       ],
-      sources: SOURCES,
+      sources: [
+        { label: 'Estatutos de Florida s. 324.023 (2026): responsabilidad financiera tras un DUI (100/300/50, 3 años)', url: U.s324023 },
+        { label: 'Estatutos de Florida s. 324.021(7) (2026): prueba de responsabilidad financiera (10/20/10)', url: U.s324021 },
+        { label: 'Estatutos de Florida s. 316.193 (2026): manejar bajo la influencia; sanciones', url: U.s316193 },
+        { label: 'Estatutos de Florida s. 322.2615 (2026): suspensión administrativa; revisión en 10 días', url: U.s3222615 },
+        { label: 'Estatutos de Florida s. 322.28 (2026): períodos de revocación tras un DUI', url: U.s32228 },
+        { label: 'FLHSMV: Florida Insurance Requirements (PIP/PDL, BIL, SR22, sanciones)', url: U.ins },
+        { label: 'FLHSMV: DUI FAQs (FR-44 al restablecer la licencia, 3 años)', url: U.duiFaq },
+        { label: 'FLHSMV: Florida DUI and Administrative Suspension Laws', url: U.duiLaws },
+        { label: 'FLHSMV: manual de procedimientos de responsabilidad financiera (SR22/FR44)', url: U.manual },
+      ],
     },
     ru: {
-      title: 'Ответственность за телесные повреждения во Флориде: суды, FR-44 и защита имущества',
-      metaTitle: 'Bodily injury и FR-44 во Флориде | M&K Agency',
-      description: 'Ответственность за телесные повреждения во Флориде: что вы должны после серьёзного ДТП, как работают FR-44, garnishment, liens и защита homestead.',
-      ogAlt: 'Седан с эмблемой защитного щита на шоссе среди пальм',
-      excerpt: 'Флорида не требует от большинства водителей страховку ответственности за телесные повреждения. Но если вы стали виновником серьёзного ДТП без достаточного покрытия — счёт не исчезнет: он может преследовать вашу зарплату и имущество годами.',
+      title: 'Ответственность за вред здоровью и FR-44 во Флориде: чем праздничный DUI грозит вашей страховке',
+      metaTitle: 'FR-44 и SR-22 во Флориде: страховка после DUI | M&K Agency',
+      description: 'FR-44 во Флориде после DUI: лимиты 100/300/50 по s. 324.023, чем он отличается от SR-22, кто подаёт сертификат, сколько его держать и что будет при перерыве.',
+      ogAlt: 'Плоская иллюстрация: машина на дороге с пальмами рядом со щитом и документом с галочкой',
+      excerpt: 'После осуждения за DUI во Флориде нужен FR-44 — подтверждение лимитов 100/300/50 на три года. Чем он отличается от SR-22, кто его подаёт и что проверить перед восстановлением прав.',
       category: 'Автострахование',
       body: [
-        { type: 'p', text: '**Ответственность за телесные повреждения (BI)** — это часть вашего автополиса, которая платит за травмы, **которые вы причинили другим людям**: их медицинские счета, потерянную зарплату, боль и страдания. И вот что большинство водителей Флориды упускает: для большинства водителей Флорида **её не требует**. Для регистрации машины нужны только **PIP ($10 000)** и **ответственность за ущерб имуществу ($10 000)**. То есть вы можете ездить легально с **нулёвым покрытием** травм, которые причините другим.' },
-        { type: 'p', text: 'Что происходит, когда водитель с минимальным покрытием — или вообще без BI — становится виновником серьёзного ДТП? В этой статье — по шагам: суд, до чего может дотянуться судебное решение, где помогает защита homestead во Флориде (а где нет), что добавляет DUI через FR-44 и где вписывается личный umbrella-полис.' },
+        { type: 'p', text: 'Конец года — это корпоративы, ужин на День благодарения и новогодняя ночь. Если такой вечер во Флориде заканчивается арестом за DUI (вождение в состоянии опьянения), уголовное дело — только часть проблемы. Обвинительный приговор меняет и вашу **автостраховку**: чтобы снова законно сесть за руль, штат потребует подтвердить гораздо более высокие лимиты **ответственности за вред здоровью** — через форму **FR-44**.' },
+        { type: 'p', text: 'В этой обновлённой статье разбираем, что это за покрытие, как работает FR-44 по **статье 324.023 законов Флориды**, чем он отличается от SR-22 и что проверить перед восстановлением прав. Все санкции ниже взяты из текстов законов и страниц FLHSMV в редакции на 19 ноября 2026 года.' },
 
-        { type: 'h2', text: 'ДТП — только начало: как судебное решение преследует вас' },
+        { type: 'h2', text: 'Что такое ответственность за вред здоровью и когда Флорида её требует' },
+        { type: 'p', text: 'FLHSMV определяет **bodily injury liability (BIL)** как покрытие, которое оплачивает травмы или гибель других людей. Чтобы зарегистрировать машину с четырьмя и более колёсами, большинству водителей достаточно **$10,000 PIP** (страхование от личных травм) и **$10,000 PDL** (ответственность за ущерб чужому имуществу). Поэтому у многих BIL в полисе минимальный или его нет вовсе. Основы — в статье о [минимальной автостраховке во Флориде](/ru/blog/florida-minimum-car-insurance-requirements).' },
+        { type: 'p', text: 'В некоторых ситуациях всё меняется. По ряду дел о финансовой ответственности FLHSMV требует **SR-22**. А после осуждения за DUI нужен **FR-44** — с лимитами в десять раз выше.' },
+
+        { type: 'h2', text: 'После ареста: два отдельных процесса' },
         { type: 'ul', items: [
-          'Пострадавший может **подать на вас в суд лично** — взыскать то, что не покрыла страховка: медицинские счета, будущее лечение, потерянную зарплату, боль и страдания.',
-          'Денежное судебное решение во Флориде, как правило, действительно **20 лет** и может продлеваться. Оно не истекает, когда о ДТП уже забыли.',
-          'С решением суда на руках кредитор может добиваться **удержания из зарплаты (garnishment)** (закон Флориды во многих случаях защищает зарплату главы семьи, но у защиты есть лимиты и она покрывает не все виды долгов), **ареста банковских счетов** и **залоговых обременений (liens)** на ваше имущество, которое не защищено иначе.',
-          'Проценты на неоплаченный остаток продолжают капать, пока вы разбираетесь.',
+          '**Административная приостановка (сразу при аресте).** По s. 322.2615, если вы отказались от теста дыхания, крови или мочи либо уровень алкоголя 0.08 или выше, офицер забирает права и выдаёт временное разрешение на 10 дней. Первая приостановка за 0.08 длится 6 месяцев, за первый отказ от теста — 1 год. На запрос пересмотра в FLHSMV даётся **10 дней**.',
+          '**Уголовное дело (осуждение).** При осуждении по s. 316.193 суд лишает вас прав. За первое осуждение без гибели людей s. 322.28 предусматривает лишение минимум на 180 дней и максимум на 1 год. Если при первом нарушении пострадали люди, FLHSMV указывает минимум три года.',
         ] },
+        { type: 'p', text: 'Кроме того, за первое осуждение s. 316.193 предусматривает штраф от $500 до $1,000 (от $1,000 до $2,000, если уровень алкоголя 0.15 и выше или в машине был несовершеннолетний), до 6 месяцев заключения (до 9 месяцев в этих случаях), пробацию с курсом DUI-программы и 10 дней ареста или блокировки автомобиля. При повторных осуждениях наказания строже. По уголовному делу консультируйтесь с адвокатом.' },
 
-        { type: 'h2', text: 'Могут ли забрать дом? Защита homestead' },
-        { type: 'p', text: 'Защита homestead во Флориде (статья X, раздел 4 Конституции Флориды) — защищает ваше **основное жильё** от принудительной продажи большинством кредиторов, и в отличие от многих штатов Флорида **не ограничивает** стоимость защищённого жилья. Но она уже, чем думают:' },
+        { type: 'h2', text: 'Что требует FR-44' },
+        { type: 'p', text: 'Статья 324.023 распространяется на всех, кого признали виновным в DUI после 1 октября 2007 года или кто признал вину либо заявил no contest, — независимо от того, вынесен ли формальный приговор. Нужно подтвердить способность возместить ущерб минимум:' },
         { type: 'ul', items: [
-          'Она не отменяет **само решение суда** — деньги вы всё равно должны.',
-          'Она не защищает **банковские счета, инвестиции, второй дом, сдаваемую недвижимость и бизнес-активы**.',
-          'Она не блокирует **ипотеку, налоговые обременения и залоги подрядчиков (mechanic’s liens)** — эти кредиторы всё равно могут добиться продажи.',
+          '**$100,000** — травмы одного человека в ДТП',
+          '**$300,000** — травмы двух и более человек в ДТП',
+          '**$50,000** — ущерб имуществу в ДТП',
         ] },
-        { type: 'p', text: 'Простыми словами: homestead сохраняет крышу над головой, но не гасит долг — а всё, что вне homestead, под ударом.' },
+        { type: 'p', text: 'FLHSMV также принимает **единый комбинированный лимит $350,000**, а закон допускает вместо полиса депозитный сертификат минимум на $350,000. Согласно FAQ FLHSMV по DUI, FR-44 требуется **при восстановлении прав — и ограниченных (hardship, для работы), и полных**, и держать его нужно **три года с даты восстановления права на вождение**. У требования есть и конец: если за три года после восстановления не было нового DUI или тяжкого дорожного преступления, s. 324.023 к вам больше не применяется.' },
 
-        { type: 'h2', text: 'DUI сильно всё ухудшает: FR-44' },
-        { type: 'p', text: 'После осуждения за DUI (s. 316.193) Флорида — один из всего двух штатов, где это применяется — требует filing **FR-44** (s. 324.023):' },
-        { type: 'ul', items: [
-          'Вы обязаны держать **$100 000 на человека / $300 000 на аварию** ответственности за телесные повреждения плюс **$50 000** ущерба имуществу — примерно в десять раз больше BI-лимитов, с которыми ездит большинство.',
-          'Эти лимиты нужно держать **минимум 3 года**.',
-          'Ваш страховщик подаёт сертификат FR-44 в штат. Если покрытие прервётся — права отберут снова, а отсчёт может начаться заново.',
-        ] },
-        { type: 'p', text: 'FR-44 — не страховка сама по себе. Это подтверждение, которое ваш страховщик подаёт в штат, что у вас есть требуемые лимиты после DUI.' },
-
-        { type: 'h2', text: 'Где вписывается личный umbrella' },
-        { type: 'p', text: '**Личный umbrella-полис** ложится **поверх** ваших лимитов ответственности авто и homeowners. Когда покрываемый иск съедает ваш базовый BI-лимит, umbrella может доплатить остаток — в пределах своего лимита, по искам и авто, и дома в одном полисе.' },
-        { type: 'ul', items: [
-          '**Владельцам домов** umbrella особенно стоит понять: дом, сбережения и инвестиции — видимые активы, из-за которых на вас стоит подавать в суд.',
-          'Umbrella обычно требует, чтобы сначала были оформлены определённые **базовые лимиты ответственности авто и дома** — он их не заменяет.',
-          'Это слой, который срабатывает, когда суммы превышают то, на что был рассчитан ваш автополис.',
-        ] },
-        { type: 'p', text: 'Смотрите наш [гид по личному umbrella](/ru/protect/umbrella-insurance), как устроено покрытие.' },
-
-        { type: 'h2', text: 'Что проверить в своём полисе' },
+        { type: 'h2', text: 'Кто подаёт FR-44 и как это происходит' },
         { type: 'ol', items: [
-          'Найдите **лимиты ответственности за телесные повреждения** на declarations page — два числа, например 100/300.',
-          'Если видите только PIP и ущерб имуществу — скорее всего, у вас **вообще нет BI**.',
-          'Спросите себя: что серьёзный иск сделает с вашими сбережениями, вторым объектом или зарплатой за 20 лет?',
-          'Если у вас свой дом — спросите лицензированного агента, как umbrella ляжет поверх ваших полисов авто и дома.',
-          'Если у вас FR-44 — **никогда не допускайте разрыва покрытия**: разрыв может перезапустить многолетний отсчёт.',
+          'Вы оформляете автополис с лимитами не ниже 100/300/50. FR-44 — не отдельный вид страховки, а сертификат, подтверждающий, что такой полис есть.',
+          'Страховая компания подаёт FR-44 в FLHSMV электронно. По процедурному руководству FLHSMV это нужно сделать в течение 15 рабочих дней после выдачи.',
+          'FLHSMV привязывает требование к **человеку**, а не к конкретной машине. Если своей машины нет, спросите про [полис для водителя без автомобиля](/ru/blog/non-owner-sr22-florida).',
+          'Если полис отменён, страховщик сообщает об этом в FLHSMV формой отмены (**FR-46**). FLHSMV предупреждает: без обязательной страховки могут приостановить права и регистрацию, а за восстановление взять сбор до $500.',
         ] },
-        { type: 'callout', title: 'Обратите внимание', text: 'Это общая информация о страховании, а не юридическая консультация. Суды, garnishment, liens и вопросы homestead зависят от конкретных фактов — по конкретной ситуации говорите с адвокатом, по покрытию — с лицензированным агентом.' },
 
-        { type: 'h2', text: 'Не уверены в своих лимитах? Бесплатная проверка покрытия' },
-        { type: 'p', text: 'Наша [бесплатная 5-минутная проверка покрытия](/ru/coverage-check) разберёт лимиты вашей автоответственности, есть ли смысл в umbrella для вашей семьи и где пробелы. Бесплатно, ни к чему не обязывает, на английском, испанском или русском.' },
-        { type: 'p', text: 'Вы также можете посетить офис M&K Agency: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034, позвонить (305) 859-3953 или [запросить котировку](/ru/quote).' },
-        { type: 'p', text: 'Покрытие зависит от условий, лимитов и исключений каждого полиса. Проконсультируйтесь с лицензированным агентом, прежде чем менять покрытие.' },
+        { type: 'h2', text: 'FR-44 и SR-22: главные различия' },
+        { type: 'ul', items: [
+          '**Лимиты:** SR-22 подтверждает минимум **10/20/10** (s. 324.021(7)), FR-44 — **100/300/50**.',
+          '**Основание:** FR-44 — для осуждений за DUI после 1 октября 2007 года. По данным FLHSMV, тем, кого осудили до этой даты включительно, по-прежнему нужно подтверждение на уровне SR-22. SR-22 применяется и в других случаях — например, после некоторых ДТП без обязательной страховки; см. статью о [приостановке прав без страховки](/ru/blog/florida-license-suspended-no-insurance).',
+          '**Два сразу не нужно:** по руководству FLHSMV, FR-44 покрывает оба уровня лимитов.',
+          '**Срок:** по процедурам FLHSMV оба сертификата нужно поддерживать без перерыва три года.',
+        ] },
+        { type: 'p', text: 'Подробнее — в нашем [гиде по SR-22 во Флориде](/ru/blog/sr22-florida-guia) и на странице [оформления SR-22 и FR-44](/ru/sr22-insurance-florida-city).' },
+
+        { type: 'h2', text: 'Почему высокие лимиты важны не только для бумаг' },
+        { type: 'p', text: 'BIL оплачивает травмы, которые вы причинили другим людям. Серьёзное ДТП может привести к претензиям намного выше 10/20, а если сумма превышает лимит полиса, разницу могут взыскать с вас лично через суд. Некоторые семьи добавляют поверх автостраховки [зонтичный полис (umbrella)](/ru/blog/umbrella-insurance-explained-florida). Что подходит именно вам, обсудите с лицензированным агентом.' },
+
+        { type: 'h2', text: 'Перед восстановлением прав: короткий чек-лист' },
+        { type: 'ol', items: [
+          'Сохраните решение суда и все письма FLHSMV; запишите дату восстановления.',
+          'Пройдите DUI-программу или запишитесь на неё. FLHSMV требует этого и для hardship-прав, и для восстановления.',
+          'Оформите полис не ниже 100/300/50 (или с единым лимитом $350,000) и убедитесь, что FR-44 дошёл до FLHSMV.',
+          'Включите автоплатёж или напоминания, чтобы полис не прервался за эти три года.',
+          'Меняете машину или полис — сначала позвоните агенту: по руководству FLHSMV новый номер полиса требует новой подачи.',
+          'Отметьте дату окончания: три года после восстановления без нового DUI и тяжких дорожных преступлений.',
+        ] },
+        { type: 'callout', title: 'Важно', text: 'Это общая информация о страховании, а не юридическая консультация. Каждое дело о DUI зависит от обстоятельств: по делу обращайтесь к адвокату, по покрытию — к лицензированному агенту.' },
+
+        { type: 'h2', text: 'Нужно оформить FR-44?' },
+        { type: 'p', text: 'M&K Agency помогает водителям Florida City, Homestead и всего Майами-Дейд с FR-44 и SR-22 — на русском, английском и испанском. Звоните по номеру [(305) 859-3953](' + TEL + '), [оставьте заявку](/ru/quote) или приходите: 33550 S Dixie Hwy, Suite 102, Florida City, FL 33034. Мы говорим по-русски — [о нас](/ru/russian-speaking-insurance-agent-miami). См. также страницу об [автостраховании](/ru/car-insurance-florida-city).' },
+        { type: 'p', text: 'Покрытие зависит от условий, лимитов и исключений конкретного полиса. Перед изменением страховки поговорите с лицензированным агентом.' },
       ],
       faq: [
-        { q: 'Ответственность за телесные повреждения обязательна во Флориде?', a: 'Для большинства водителей — нет. Флорида требует PIP ($10 000) и ответственность за ущерб имуществу ($10 000). Водители с отдельными нарушениями — включая DUI с FR-44 — обязаны держать гораздо более высокие BI-лимиты.' },
-        { q: 'Что такое FR-44?', a: 'Сертификат, который ваш страховщик подаёт в штат, подтверждая повышенные лимиты после DUI: $100 000/$300 000 телесных повреждений и $50 000 ущерба имуществу во Флориде, минимум на 3 года.' },
-        { q: 'Могут ли удерживать зарплату по решению суда во Флориде?', a: 'Возможно. Закон Флориды во многих случаях защищает зарплату главы семьи от удержания, но у защиты есть лимиты. Судебные решения во Флориде, как правило, действительны 20 лет.' },
-        { q: 'Могут ли наложить lien на мой дом?', a: 'Основное жильё, как правило, защищено от принудительной продажи по homestead (статья X, раздел 4), с исключениями для ипотеки, налогов и подрядчиков. Не-homestead имущество — второй дом, аренда, инвестиции — не защищено.' },
-        { q: 'Заменяет ли личный umbrella мои BI-лимиты авто?', a: 'Нет. Umbrella ложится поверх лимитов ответственности авто и дома и требует сначала оформить установленные базовые лимиты.' },
+        { q: 'FR-44 и SR-22 — это одно и то же?', a: 'Нет. Оба — сертификаты, которые страховщик подаёт в FLHSMV, но SR-22 подтверждает минимум 10/20/10, а FR-44 — 100/300/50 и требуется после осуждения за DUI (после 1 октября 2007 года).' },
+        { q: 'Нужен ли FR-44 сразу после ареста?', a: 'Требование FR-44 по s. 324.023 возникает при признании виновным, признании вины или заявлении no contest. При аресте действует административная приостановка по s. 322.2615. FLHSMV требует FR-44 при восстановлении прав после осуждения.' },
+        { q: 'Сколько нужно держать FR-44?', a: 'По данным FLHSMV — три года с даты восстановления права на вождение. Покрытие должно быть непрерывным; при отмене полиса страховщик уведомляет FLHSMV.' },
       ],
-      sources: SOURCES,
+      sources: [
+        { label: 'Florida Statutes s. 324.023 (2026): финансовая ответственность после DUI (100/300/50, 3 года)', url: U.s324023 },
+        { label: 'Florida Statutes s. 324.021(7) (2026): подтверждение финансовой ответственности (10/20/10)', url: U.s324021 },
+        { label: 'Florida Statutes s. 316.193 (2026): DUI; наказания', url: U.s316193 },
+        { label: 'Florida Statutes s. 322.2615 (2026): административная приостановка; пересмотр в течение 10 дней', url: U.s3222615 },
+        { label: 'Florida Statutes s. 322.28 (2026): сроки лишения прав после DUI', url: U.s32228 },
+        { label: 'FLHSMV: Florida Insurance Requirements (PIP/PDL, BIL, SR22, санкции)', url: U.ins },
+        { label: 'FLHSMV: DUI FAQs (FR-44 при восстановлении прав, 3 года)', url: U.duiFaq },
+        { label: 'FLHSMV: Florida DUI and Administrative Suspension Laws', url: U.duiLaws },
+        { label: 'FLHSMV: процедурное руководство по финансовой ответственности (SR22/FR44)', url: U.manual },
+      ],
     },
   },
 };
