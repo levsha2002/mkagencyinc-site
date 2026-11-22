@@ -130,6 +130,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     pages: ['/contractor-insurance-florida'],
     links: [
       { blog: 'certificate-of-insurance-contractors-florida' },
+      { blog: 'additional-insured-vs-certificate-florida' },
       { blog: 'subcontractor-insurance-certificates-florida' },
       { blog: 'workers-comp-exemption-florida-construction' },
       { blog: 'chapter-558-notice-contractors-florida' },
