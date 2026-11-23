@@ -52,6 +52,7 @@ import { edition as e20261119 } from './posts/2026-11-19-rain-totals-state-emerg
 import { edition as e20261120 } from './posts/2026-11-20-flood-watch-ends-auto-excess-profits-robot-rules-deferred';
 import { edition as e20261121 } from './posts/2026-11-21-citizens-ceo-king-tides-holiday-grease';
 import { edition as e20261122 } from './posts/2026-11-22-tornado-warnings-tuesday-tides-cooking-fires';
+import { edition as e20261123 } from './posts/2026-11-23-coastal-flooding-ef1-tornado-flood-damage-reports';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -104,4 +105,5 @@ export const editions: NewsEdition[] = [
   e20261120,
   e20261121,
   e20261122,
+  e20261123,
 ];
