@@ -53,6 +53,7 @@ import { edition as e20261120 } from './posts/2026-11-20-flood-watch-ends-auto-e
 import { edition as e20261121 } from './posts/2026-11-21-citizens-ceo-king-tides-holiday-grease';
 import { edition as e20261122 } from './posts/2026-11-22-tornado-warnings-tuesday-tides-cooking-fires';
 import { edition as e20261123 } from './posts/2026-11-23-coastal-flooding-ef1-tornado-flood-damage-reports';
+import { edition as e20261124 } from './posts/2026-11-24-flood-watch-disaster-request-bridge-loans-scams';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -106,4 +107,5 @@ export const editions: NewsEdition[] = [
   e20261121,
   e20261122,
   e20261123,
+  e20261124,
 ];
