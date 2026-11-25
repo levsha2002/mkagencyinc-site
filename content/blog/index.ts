@@ -43,6 +43,7 @@ import { post as kingTidesFloodInsurance } from './posts/king-tides-flood-insura
 import { post as waterBackupVsFlood } from './posts/water-backup-vs-flood-insurance-florida';
 import { post as additionalInsuredVsCertificate } from './posts/additional-insured-vs-certificate-florida';
 import { post as thanksgivingHolidayDriving } from './posts/thanksgiving-holiday-driving-florida';
+import { post as burstPipesColdWeather } from './posts/burst-pipes-cold-weather-florida-insurance';
 import { post as licenseSuspendedNoInsurance } from './posts/florida-license-suspended-no-insurance';
 import { post as certificateOfInsuranceContractors } from './posts/certificate-of-insurance-contractors-florida';
 import { post as umbrellaInsuranceExplained } from './posts/umbrella-insurance-explained-florida';
@@ -121,5 +122,6 @@ export const posts: BlogPost[] = [
   waterBackupVsFlood,
   additionalInsuredVsCertificate,
   thanksgivingHolidayDriving,
+  burstPipesColdWeather,
 ];
 

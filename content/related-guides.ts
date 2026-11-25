@@ -63,6 +63,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
       { blog: 'florida-insurance-changes-january-2027' },
       { blog: 'king-tides-flood-insurance-miami-dade' },
       { blog: 'water-backup-vs-flood-insurance-florida' },
+      { blog: 'burst-pipes-cold-weather-florida-insurance' },
       { blog: 'wind-mitigation-inspection-florida' },
       { blog: 'my-safe-florida-home-2026' },
       { blog: 'citizens-takeout-offer' },
@@ -91,6 +92,7 @@ export const RELATED_GUIDES: RelatedGuideGroup[] = [
     links: [
       { blog: 'king-tides-flood-insurance-miami-dade' },
       { blog: 'water-backup-vs-flood-insurance-florida' },
+      { blog: 'burst-pipes-cold-weather-florida-insurance' },
       { blog: 'citizens-flood-insurance-requirement-2027' },
       { blog: 'florida-insurance-changes-january-2027' },
     ],
