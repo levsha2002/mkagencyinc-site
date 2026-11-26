@@ -55,6 +55,7 @@ import { edition as e20261122 } from './posts/2026-11-22-tornado-warnings-tuesda
 import { edition as e20261123 } from './posts/2026-11-23-coastal-flooding-ef1-tornado-flood-damage-reports';
 import { edition as e20261124 } from './posts/2026-11-24-flood-watch-disaster-request-bridge-loans-scams';
 import { edition as e20261125 } from './posts/2026-11-25-severe-storms-federal-disaster-declaration-hollywood-garages';
+import { edition as e20261126 } from './posts/2026-11-26-rain-totals-hurricane-season-wrap-recovery-help';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -110,4 +111,5 @@ export const editions: NewsEdition[] = [
   e20261123,
   e20261124,
   e20261125,
+  e20261126,
 ];
