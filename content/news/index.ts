@@ -57,6 +57,7 @@ import { edition as e20261124 } from './posts/2026-11-24-flood-watch-disaster-re
 import { edition as e20261125 } from './posts/2026-11-25-severe-storms-federal-disaster-declaration-hollywood-garages';
 import { edition as e20261126 } from './posts/2026-11-26-rain-totals-hurricane-season-wrap-recovery-help';
 import { edition as e20261127 } from './posts/2026-11-27-tuesday-rain-fort-lauderdale-flood-report-broward-recovery-center';
+import { edition as e20261128 } from './posts/2026-11-28-broward-federal-aid-mold-limit-ruling-record-rain';
 
 export const editions: NewsEdition[] = [
   e20260926,
@@ -114,4 +115,5 @@ export const editions: NewsEdition[] = [
   e20261125,
   e20261126,
   e20261127,
+  e20261128,
 ];
